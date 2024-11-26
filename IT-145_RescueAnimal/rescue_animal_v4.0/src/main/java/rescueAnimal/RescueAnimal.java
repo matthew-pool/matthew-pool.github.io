@@ -1,5 +1,8 @@
 package rescueAnimal;
 
+import java.io.Serial;
+import java.io.Serializable;
+
 /**
  * RescueAnimal base class for all rescue animals.
  * 
@@ -8,12 +11,15 @@ package rescueAnimal;
  * acquisitionCountry, trainingStatus, reserved, and inServiceCountry.</p>
  * 
  * @author Matthew Pool
- * @version 3.0
- * @since 2024-11-24
+ * @version 4.0
+ * @since 2024-12-01
  * @see Dog
  * @see Monkey
  */
-public class RescueAnimal {
+public class RescueAnimal implements Serializable {
+	// Used for Serializable functionality
+	@Serial
+	private static final long serialVersionUID = 1L;
 
     // Attributes (instance variables)
     private String name;

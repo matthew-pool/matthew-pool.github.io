@@ -21,6 +21,11 @@
             <version>5.11.3</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.mapdb</groupId>
+            <artifactId>mapdb</artifactId>
+            <version>3.1.0</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -62,10 +67,12 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.5.2</version>
             </plugin>
-            <!-- SpotBugs static analyzer (uncomment block to use)
+            <!-- Uncomment below to use:
+                SpotBugs static analyzer (uncomment block to use)
+                "mvn spotbugs:check" -> Then fix issues found in XML.
+                -> Report found at "target/spotbugs" -->
+            <!--
             <plugin>
-                -> "mvn spotbugs:check" -> Then fix issues found in XML.
-                -> Report found at "target/spotbugs"
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-maven-plugin</artifactId>
                 <version>4.8.6.5</version>

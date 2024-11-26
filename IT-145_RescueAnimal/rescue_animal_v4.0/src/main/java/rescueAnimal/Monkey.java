@@ -1,5 +1,8 @@
 package rescueAnimal;
 
+import java.io.Serial;
+import java.io.Serializable;
+
 /**
  * Monkey class extends RescueAnimal.
  * 
@@ -7,12 +10,15 @@ package rescueAnimal;
  * species, tailLength, height, and bodyLength.</p>
  * 
  * @author Matthew Pool
- * @version 3.0
- * @since 2024-11-24
+ * @version 4.0
+ * @since 2024-12-01
  * @see RescueAnimal
  */
-public class Monkey extends RescueAnimal {
-	
+public class Monkey extends RescueAnimal implements Serializable {
+	// Used for Serializable functionality
+	@Serial
+	private static final long serialVersionUID = 1L;
+
 	// Attributes (instance variables)
 	private String species;
 	private String tailLength;

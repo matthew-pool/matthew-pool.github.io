@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: rescueAnimal.MonkeyTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s -- in rescueAnimal.MonkeyTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 s -- in rescueAnimal.MonkeyTest

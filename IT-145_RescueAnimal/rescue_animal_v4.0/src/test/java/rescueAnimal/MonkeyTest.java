@@ -11,8 +11,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * <p>Tests class functions and instantiations.</p>
  *
  * @author Matthew Pool
- * @version 3.0
- * @since 2024-11-24
+ * @version 4.0
+ * @since 2024-12-01
  */
 public class MonkeyTest {
 

@@ -4,20 +4,25 @@ import java.nio.charset.StandardCharsets;  // For internationalization/parsing
 import java.time.Year;
 import java.util.*;
 
+import org.mapdb.DB;
+import org.mapdb.DBMaker;
+import org.mapdb.HTreeMap;
+import org.mapdb.Serializer;
+
 /**
  * Rescue Animal Management System
  * 
  * <p>The Main class is the program entry point and helps maintain
  * a list of animals. The user can add dogs and monkeys (and related
- * attributes) to temporary storage with the option to print to console.</p>
+ * attributes) to permanent storage with options to print to console.</p>
  * 
  * @author Matthew Pool
- * @version 3.0
- * @since 2024-11-24
+ * @version 4.0
+ * @since 2024-12-01
  */
 public class Main {
     // Allowable menu options that the user can enter
-    private static final List<String> ALLOWED_OPTIONS = Arrays.asList("1", "2", "3", "4", "5", "6", "q", "Q");
+    private static final List<String> MENU_OPTIONS = Arrays.asList("1", "2", "3", "4", "5", "6", "q", "Q");
     // Allowable status options that the user can enter
     private static final List<String> STATUS_OPTIONS = Arrays.asList("phase 1", "phase 2", "phase 3", "phase 4", "phase 5", "intake", "in service", "farm");
 
@@ -37,11 +42,49 @@ public class Main {
     private static final String GRAY = "\u001B[37m";
     private static final String BLACK_BG = "\u001B[40m";
     private static final String WHITE_BG = "\u001B[47m";
-    // Example: System.out.print(STYLE + COLOR + BACKGROUND)
+    // Example: System.out.print(STYLE + COLOR + BACKGROUND + "Text" + RESET);
 
-    // Animal name used as key
+    // NOTE: animal name used as key
     private static final LinkedHashMap<String, Dog> dogMap = new LinkedHashMap<>();
     private static final LinkedHashMap<String, Monkey> monkeyMap = new LinkedHashMap<>();
+
+    // Dog
+    private static DB dogDB = null;
+    private static HTreeMap<String, Dog> dogHashMap;
+    static {
+        try {
+            // Create/Open persistent database
+            dogDB = DBMaker.fileDB("dog_file.db").make();
+            // Create persistent hash map
+            dogHashMap = dogDB
+                    .hashMap("dogHashMap")
+                    .keySerializer(Serializer.STRING)
+                    .valueSerializer(Serializer.JAVA)
+                    .createOrOpen();
+            dogDB.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Monkey
+    private static DB monkeyDB = null;
+    private static HTreeMap<String, Monkey> monkeyHashMap;
+    static {
+        try {
+            // Create/Open persistent database
+            monkeyDB = DBMaker.fileDB("monkey_file.db").make();
+            // Create persistent hash map
+            monkeyHashMap = monkeyDB
+                    .hashMap("monkeyHashMap")
+                    .keySerializer(Serializer.STRING)
+                    .valueSerializer(Serializer.JAVA)
+                    .createOrOpen();
+            monkeyDB.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Prints menu options to console
@@ -63,9 +106,15 @@ public class Main {
     }
 
     /**
-     * Creates and adds dogs to a list for testing
+     * Loads NoSQL records into LinkedHashMap
      */
-    public static void initializeDogList() {
+    public static void initializeDogMap() {
+        // Load data from persistent storage to temporary memory
+        dogMap.putAll(dogHashMap);
+        dogDB.commit();
+
+        // NOTE: Uncomment below block to test temporary in-memory storage
+        /*
         Dog dog1 = new Dog("Sophie", "German Shepherd", "male", "1", "25.6", "05-12-2019",
                 "United States", "intake", false, "United States");
         Dog dog2 = new Dog("Crimson", "Great Dane", "male", "3", "35.2", "02-03-2020",
@@ -75,12 +124,35 @@ public class Main {
         dogMap.put(dog1.getName(), dog1);
         dogMap.put(dog2.getName(), dog2);
         dogMap.put(dog3.getName(), dog3);
+        */
+
+        // NOTE: Uncomment below block 1st to test persistent storage
+        /*
+        Dog dog = new Dog("Max", "German Shepherd", "male", "1", "25.6", "05-12-2019",
+                "United States", "intake", false, "United States");
+        String name = dog.getName();
+        dogMap.put(name, dog);  // temporary memory
+        dogHashMap.put(name, dog);  // persistent storage
+        dogDB.commit();
+        */
+        // NOTE: Uncomment below block 2nd to test persistent storage retrieval
+        /*
+        Dog dog = (Dog) dogHashMap.get("Max");
+        if (dog != null) System.out.println("Dog: " + dog);
+        else System.out.println("This dog name not found in database!");
+        */
     }
 
     /**
-     * Creates and adds monkeys to a list for testing
+     * Loads NoSQL records into LinkedHashMap
      */
-    public static void initializeMonkeyList() {
+    public static void initializeMonkeyMap() {
+        // Load data from persistent storage to temporary memory
+        monkeyMap.putAll(monkeyHashMap);
+        monkeyDB.commit();
+
+        // NOTE: Uncomment below block to test temporary in-memory storage
+        /*
         Monkey monkey1 = new Monkey("Kimchi",      "capuchin",	"male", 	"1", "25.6",
                 "05-12-2019", "United States", "intake", 		false,
                 "United States",    "3",  "12", "11");
@@ -93,6 +165,7 @@ public class Main {
         monkeyMap.put(monkey1.getName(), monkey1);
         monkeyMap.put(monkey2.getName(), monkey2);
         monkeyMap.put(monkey3.getName(), monkey3);
+        */
     }
 
     /**
@@ -400,6 +473,8 @@ public class Main {
                     Dog dog = new Dog(name, breed, gender, age, weight, acquisitionDate,
                             acquisitionCountry, trainingStatus, reserved, inServiceCountry);
                     dogMap.put(name, dog);
+                    dogHashMap.put(name, dog);
+                    dogDB.commit();
                     System.out.println(CYAN + "\nSuccessfully added!" + RESET);
                     return;
                 } else if (userChoice.equalsIgnoreCase("n")) return;
@@ -539,7 +614,9 @@ public class Main {
                 } else if (userChoice.equalsIgnoreCase("y")) {
                     Monkey monkey = new Monkey(name, species, gender, age, weight, acquisitionDate, acquisitionCountry,
                             trainingStatus, reserved, inServiceCountry, tailLength, height, bodyLength);
-                    monkeyMap.put(monkey.getName(), monkey);
+                    monkeyMap.put(name, monkey);
+                    monkeyHashMap.put(name, monkey);
+                    monkeyDB.commit();
                     System.out.println(CYAN + "\nSuccessfully added!" + RESET);
                     return;
                 } else if (userChoice.equalsIgnoreCase("n")) return;
@@ -759,8 +836,8 @@ public class Main {
     	Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8);
     	
     	// Initializations of sample animals
-        initializeDogList();
-        initializeMonkeyList();
+        initializeDogMap();
+        initializeMonkeyMap();
 
         // Loop until user enters 'q' or 'Q'
         do {
@@ -771,7 +848,7 @@ public class Main {
             while (true) {
                 try {
                     userOption = scanner.nextLine().trim();
-                    if (userOption.length() != 1 || !ALLOWED_OPTIONS.contains(userOption)) {
+                    if (userOption.length() != 1 || !MENU_OPTIONS.contains(userOption)) {
                         System.out.print(RED + "Please enter a menu option number: " + RESET);
                     }
                     else break;  // Exit inner loop if valid option entered
@@ -814,5 +891,11 @@ public class Main {
         } while (!userOption.equalsIgnoreCase("q"));
 
         scanner.close();
+        if (dogDB != null && !dogDB.isClosed()) {
+            dogDB.close();
+        }
+        if (monkeyDB != null && !monkeyDB.isClosed()) {
+            monkeyDB.close();
+        }
     }
 }

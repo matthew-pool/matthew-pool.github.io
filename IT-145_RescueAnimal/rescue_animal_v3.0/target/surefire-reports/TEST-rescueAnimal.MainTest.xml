@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="rescueAnimal.MainTest" time="0.151" tests="14" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="rescueAnimal.MainTest" time="0.14" tests="14" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="22"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-22\bin"/>
-    <property name="sun.java.command" value="org.apache.maven.surefire.booter.ForkedBooter C:\Users\mathy\AppData\Local\Temp\surefire9084738473832379152 2024-11-22T11-13-10_238-jvmRun1 surefire-20241122111310726_1tmp surefire_0-20241122111310726_2tmp"/>
+    <property name="sun.java.command" value="org.apache.maven.surefire.booter.ForkedBooter C:\Users\mathy\AppData\Local\Temp\surefire13262178762212400875 2024-11-25T15-24-02_122-jvmRun1 surefire-20241125152402436_1tmp surefire_0-20241125152402436_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\mathy\OneDrive\Documents\GitHubRepositories\github-page\matthew-pool.github.io\IT-145_RescueAnimal\rescue_animal_v3.0\target\test-classes;C:\Users\mathy\.m2\repository\org\junit\jupiter\junit-jupiter\5.11.3\junit-jupiter-5.11.3.jar;C:\Users\mathy\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.11.3\junit-jupiter-api-5.11.3.jar;C:\Users\mathy\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\mathy\.m2\repository\org\junit\platform\junit-platform-commons\1.11.3\junit-platform-commons-1.11.3.jar;C:\Users\mathy\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\mathy\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.11.3\junit-jupiter-params-5.11.3.jar;C:\Users\mathy\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.11.3\junit-jupiter-engine-5.11.3.jar;C:\Users\mathy\.m2\repository\org\junit\platform\junit-platform-engine\1.11.3\junit-platform-engine-1.11.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -59,10 +59,10 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="66.0"/>
   </properties>
-  <testcase name="testGetAcquisitionCountry" classname="rescueAnimal.MainTest" time="0.009">
+  <testcase name="testGetAcquisitionCountry" classname="rescueAnimal.MainTest" time="0.007">
     <system-out><![CDATA[Acquisition Country: ]]></system-out>
   </testcase>
-  <testcase name="testEmptyInput" classname="rescueAnimal.MainTest" time="0.002"/>
+  <testcase name="testEmptyInput" classname="rescueAnimal.MainTest" time="0.001"/>
   <testcase name="testMenu" classname="rescueAnimal.MainTest" time="0.002">
     <system-out><![CDATA[
 
@@ -78,7 +78,7 @@
 
 &amp#27;[37mEnter a menu selection: &amp#27;[0m]]></system-out>
   </testcase>
-  <testcase name="testIntakeNewMonkey" classname="rescueAnimal.MainTest" time="0.037">
+  <testcase name="testIntakeNewMonkey" classname="rescueAnimal.MainTest" time="0.043">
     <system-out><![CDATA[Monkey Name: &amp#27;[31mPlease enter a valid name: &amp#27;[0mSpecies: &amp#27;[31mOnly allowed species are capuchin, guenon, macaque, marmoset, squirrel monkey, or tamarin: &amp#27;[0mGender (male/female): Please enter a gender: &amp#27;[31mMale or female, please: &amp#27;[0mAge: &amp#27;[31mPlease enter a valid age: &amp#27;[0m&amp#27;[31mPlease enter a valid age: &amp#27;[0mWeight (lbs.): &amp#27;[31mPlease enter weight in pounds (lbs.): &amp#27;[0m&amp#27;[31mPlease enter a valid weight in pounds (lbs.): &amp#27;[0mAcquisition Date (MM-DD-YYYY): &amp#27;[31mPlease enter a date (MM-DD-YYYY): &amp#27;[0m&amp#27;[31mPlease enter the acquisition date (MM-DD-YYYY): &amp#27;[0mAcquisition Country: &amp#27;[31mPlease enter a country: &amp#27;[0mTraining Status (phase number, intake, in service, or farm): &amp#27;[31mPlease enter status (phase number, intake, in service, or farm): &amp#27;[0m&amp#27;[31mPlease enter status (examples: 'Phase 1', 'intake', 'in service', farm): &amp#27;[0mReserved (true or false): &amp#27;[31mPlease enter true or false: &amp#27;[0m&amp#27;[31mPlease enter true or false: &amp#27;[0mIn Service Country: &amp#27;[31mEnter the in service country: &amp#27;[0mTail Length (in.): &amp#27;[31mPlease enter the tail length in inches: &amp#27;[0m&amp#27;[31mPlease enter a valid tail length in inches: &amp#27;[0mHeight (in.): &amp#27;[31mPlease enter the height in inches (in.): &amp#27;[0m&amp#27;[31mPlease enter a valid height in inches (in.): &amp#27;[0mBody Length (in.): &amp#27;[31mPlease enter the body length in inches: &amp#27;[0m&amp#27;[31mPlease enter a valid body length in inches: &amp#27;[0m&amp#27;[33m
 Would you like to add this monkey (Y or N): &amp#27;[0m&amp#27;[33mWould you like to add this monkey (Y or N): &amp#27;[0m&amp#27;[33mWould you like to add this monkey (Y or N): &amp#27;[0m&amp#27;[33mWould you like to add this monkey (Y or N): &amp#27;[0m&amp#27;[33mWould you like to add this monkey (Y or N): &amp#27;[0m&amp#27;[36m
 Successfully added!&amp#27;[0m
@@ -89,7 +89,7 @@ Would you like to add this monkey (Y or N): &amp#27;[0m&amp#27;[36m
 Successfully added!&amp#27;[0m
 ]]></system-out>
   </testcase>
-  <testcase name="testOptions456Q" classname="rescueAnimal.MainTest" time="0.038">
+  <testcase name="testOptions456Q" classname="rescueAnimal.MainTest" time="0.031">
     <system-out><![CDATA[
 &amp#27;[4m&amp#27;[30m&amp#27;[47mName                 Training Status      In Service Locations      Reserved  
 &amp#27;[0m
@@ -114,14 +114,14 @@ Gizmo                Phase 1              United States             No
 Jack                 in service           United States             No        
 ]]></system-out>
   </testcase>
-  <testcase name="testGetAcquisitionDate" classname="rescueAnimal.MainTest" time="0.006">
+  <testcase name="testGetAcquisitionDate" classname="rescueAnimal.MainTest" time="0.01">
     <system-out><![CDATA[Acquisition Date (MM-DD-YYYY): Acquisition Date (MM-DD-YYYY): &amp#27;[31mPlease enter a date (MM-DD-YYYY): &amp#27;[0m&amp#27;[31mPlease enter the acquisition date (MM-DD-YYYY): &amp#27;[0m&amp#27;[31mPlease enter the acquisition date (MM-DD-YYYY): &amp#27;[0m&amp#27;[31mPlease enter the acquisition date (MM-DD-YYYY): &amp#27;[0m&amp#27;[31mPlease enter the acquisition date (MM-DD-YYYY): &amp#27;[0m&amp#27;[31mPlease enter the acquisition date (MM-DD-YYYY): &amp#27;[0m&amp#27;[31mPlease enter the acquisition date (MM-DD-YYYY): &amp#27;[0m&amp#27;[31mPlease enter a valid acquisition date (MM-DD-YYYY): &amp#27;[0m&amp#27;[31mPlease enter a valid acquisition date (MM-DD-YYYY): &amp#27;[0m&amp#27;[31mPlease enter the acquisition date (MM-DD-YYYY): &amp#27;[0m&amp#27;[31mPlease enter a valid date (MM-DD-YYYY): &amp#27;[0m&amp#27;[31mPlease enter a valid date (MM-DD-YYYY): &amp#27;[0m&amp#27;[31mPlease enter a valid date (MM-DD-YYYY): &amp#27;[0m
 &amp#27;[31mPlease enter a valid acquisition date (MM-DD-YYYY): &amp#27;[0m]]></system-out>
   </testcase>
-  <testcase name="testGetInServiceCountry" classname="rescueAnimal.MainTest" time="0.004">
+  <testcase name="testGetInServiceCountry" classname="rescueAnimal.MainTest" time="0.002">
     <system-out><![CDATA[In Service Country: &amp#27;[31mEnter the in service country: &amp#27;[0m]]></system-out>
   </testcase>
-  <testcase name="testIntakeNewDog" classname="rescueAnimal.MainTest" time="0.009">
+  <testcase name="testIntakeNewDog" classname="rescueAnimal.MainTest" time="0.005">
     <system-out><![CDATA[Dog Name: &amp#27;[31mPlease enter a valid name: &amp#27;[0mBreed: &amp#27;[31mPlease enter a dog breed: &amp#27;[0mGender (male/female): Please enter a gender: Age: &amp#27;[31mPlease enter a valid age: &amp#27;[0m&amp#27;[31mPlease enter a valid age: &amp#27;[0m&amp#27;[31mPlease enter a valid age: &amp#27;[0m&amp#27;[31mPlease enter a valid age: &amp#27;[0mWeight (lbs.): &amp#27;[31mPlease enter weight in pounds (lbs.): &amp#27;[0m&amp#27;[31mPlease enter a valid weight in pounds (lbs.): &amp#27;[0mAcquisition Date (MM-DD-YYYY): &amp#27;[31mPlease enter a date (MM-DD-YYYY): &amp#27;[0m&amp#27;[31mPlease enter the acquisition date (MM-DD-YYYY): &amp#27;[0mAcquisition Country: &amp#27;[31mPlease enter a country: &amp#27;[0mTraining Status (phase number, intake, in service, or farm): &amp#27;[31mPlease enter status (phase number, intake, in service, or farm): &amp#27;[0m&amp#27;[31mPlease enter status (examples: 'Phase 1', 'intake', 'in service', farm): &amp#27;[0mReserved (true or false): &amp#27;[31mPlease enter true or false: &amp#27;[0m&amp#27;[31mPlease enter true or false: &amp#27;[0mIn Service Country: &amp#27;[31mEnter the in service country: &amp#27;[0m&amp#27;[33m
 Would you like to add this dog (Y or N): &amp#27;[0m&amp#27;[33mWould you like to add this dog (Y or N): &amp#27;[0m&amp#27;[33mWould you like to add this dog (Y or N): &amp#27;[0m&amp#27;[33mWould you like to add this dog (Y or N): &amp#27;[0m&amp#27;[33mWould you like to add this dog (Y or N): &amp#27;[0m&amp#27;[36m
 Successfully added!&amp#27;[0m
@@ -132,14 +132,14 @@ Would you like to add this dog (Y or N): &amp#27;[0m&amp#27;[36m
 Successfully added!&amp#27;[0m
 ]]></system-out>
   </testcase>
-  <testcase name="testReserveAnimal" classname="rescueAnimal.MainTest" time="0.003">
+  <testcase name="testReserveAnimal" classname="rescueAnimal.MainTest" time="0.002">
     <system-out><![CDATA[Animal type to reserve (dog or monkey): &amp#27;[31mPlease enter a valid animal type (dog or monkey): &amp#27;[0m&amp#27;[31mPlease enter a valid animal type (dog or monkey): &amp#27;[0m&amp#27;[31mPlease enter a valid animal type (dog or monkey): &amp#27;[0mWhat country is the service needed: &amp#27;[31mPlease enter a valid country: &amp#27;[0m&amp#27;[33m
 Would you like to reserve this animal if available here (Y or N): &amp#27;[0m&amp#27;[33m
 Would you like to reserve this animal if available here (Y or N): &amp#27;[0m&amp#27;[31m
 No in service dogs for this country!&amp#27;[0m
 ]]></system-out>
   </testcase>
-  <testcase name="testGetTrainingStatus" classname="rescueAnimal.MainTest" time="0.003">
+  <testcase name="testGetTrainingStatus" classname="rescueAnimal.MainTest" time="0.002">
     <system-out><![CDATA[Training Status (phase number, intake, in service, or farm): Training Status (phase number, intake, in service, or farm): &amp#27;[31mPlease enter status (phase number, intake, in service, or farm): &amp#27;[0m&amp#27;[31mPlease enter status (examples: 'Phase 1', 'intake', 'in service', farm): &amp#27;[0m&amp#27;[31mPlease enter status (examples: 'Phase 1', 'intake', 'in service', farm): &amp#27;[0m&amp#27;[31mPlease enter status (examples: 'Phase 1', 'intake', 'in service', farm): &amp#27;[0m&amp#27;[31mPlease enter status (examples: 'Phase 1', 'intake', 'in service', farm): &amp#27;[0m&amp#27;[31mPlease enter status (examples: 'Phase 1', 'intake', 'in service', farm): &amp#27;[0m]]></system-out>
   </testcase>
   <testcase name="testGetReserved" classname="rescueAnimal.MainTest" time="0.002">
@@ -148,10 +148,10 @@ No in service dogs for this country!&amp#27;[0m
   <testcase name="testGetGender" classname="rescueAnimal.MainTest" time="0.002">
     <system-out><![CDATA[Gender (male/female): Gender (male/female): Please enter a gender: &amp#27;[31mMale or female, please: &amp#27;[0m&amp#27;[31mMale or female, please: &amp#27;[0m&amp#27;[31mMale or female, please: &amp#27;[0m&amp#27;[31mMale or female, please: &amp#27;[0m&amp#27;[31mMale or female, please: &amp#27;[0m&amp#27;[31mMale or female, please: &amp#27;[0m&amp#27;[31mMale or female, please: &amp#27;[0m]]></system-out>
   </testcase>
-  <testcase name="testGetAge" classname="rescueAnimal.MainTest" time="0.002">
+  <testcase name="testGetAge" classname="rescueAnimal.MainTest" time="0.003">
     <system-out><![CDATA[Age: Age: &amp#27;[31mPlease enter a valid age: &amp#27;[0m&amp#27;[31mPlease enter a valid age: &amp#27;[0m&amp#27;[31mPlease enter a valid age: &amp#27;[0m&amp#27;[31mPlease enter a valid age: &amp#27;[0m&amp#27;[31mPlease enter a valid age: &amp#27;[0m&amp#27;[31mPlease enter a valid age: &amp#27;[0m]]></system-out>
   </testcase>
-  <testcase name="testGetWeight" classname="rescueAnimal.MainTest" time="0.003">
+  <testcase name="testGetWeight" classname="rescueAnimal.MainTest" time="0.004">
     <system-out><![CDATA[Weight (lbs.): Weight (lbs.): &amp#27;[31mPlease enter weight in pounds (lbs.): &amp#27;[0m&amp#27;[31mPlease enter a valid weight in pounds (lbs.): &amp#27;[0m&amp#27;[31mPlease enter a valid weight in pounds (lbs.): &amp#27;[0m&amp#27;[31mPlease enter a valid weight in pounds (lbs.): &amp#27;[0m&amp#27;[31mPlease enter a valid weight in pounds (lbs.): &amp#27;[0m&amp#27;[31mPlease enter a valid weight in pounds (lbs.): &amp#27;[0m]]></system-out>
   </testcase>
 </testsuite>

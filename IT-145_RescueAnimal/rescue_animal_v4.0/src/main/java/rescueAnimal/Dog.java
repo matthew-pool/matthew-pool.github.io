@@ -1,16 +1,22 @@
 package rescueAnimal;
 
+import java.io.Serial;
+import java.io.Serializable;  // Used to integrate MapDB
+
 /**
  * Dog class extends RescueAnimal.
  * 
  * <p>The Dog class provides dog-specific attribute 'breed'.</p>
  * 
  * @author Matthew Pool
- * @version 3.0
- * @since 2024-11-24
+ * @version 4.0
+ * @since 2024-12-01
  * @see RescueAnimal
  */
-public class Dog extends RescueAnimal {
+public class Dog extends RescueAnimal implements Serializable {
+    // Used for Serializable functionality
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     // Attribute (instance variable)
     private String breed;
