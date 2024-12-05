@@ -1,0 +1,10 @@
+#NOTE: before committing and pushing, run "git rm --cached <file_name>"
+
+# Ignore directories
+# EXAMPLE: build/
+
+# Ignore files
+NOTES.txt
+
+# Ignore log files
+*.log
