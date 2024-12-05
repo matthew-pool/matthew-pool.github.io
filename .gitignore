@@ -4,6 +4,7 @@
 # EXAMPLE: build/
 
 # Ignore files
+*NOTES*.txt
 NOTES.txt
 
 # Ignore log files
