@@ -1,4 +1,4 @@
-#NOTE: before committing and pushing, run "git rm --cached <file_name>"
+# IMPORTANT!!! Before committing and pushing, run "git rm --cached <file_name>"
 
 # Ignore directories
 # EXAMPLE: build/
