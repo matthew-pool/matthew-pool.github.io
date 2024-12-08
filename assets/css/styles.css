@@ -8,7 +8,8 @@ body {
 
 /* Page margins */
 body {
-    margin: 20px;
+    margin: 0;
+    padding: 0;
 }
 
   /* Navigation bar */
