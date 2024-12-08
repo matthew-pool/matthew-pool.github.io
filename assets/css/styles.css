@@ -2,8 +2,14 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
-    margin: 0;  /* Page margins */
+    margin: 20px;  /* Page margins */
     padding: 0;
   }
 
+video {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
 
