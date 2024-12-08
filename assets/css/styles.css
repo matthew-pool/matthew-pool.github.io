@@ -5,3 +5,8 @@ body {
     margin: 20px;  /* Page margins */
     padding: 0;
   }
+
+  video {
+    width: 100%;  /* 100% of the browser window's width */
+    height: auto; /* height scales with width */
+  }
