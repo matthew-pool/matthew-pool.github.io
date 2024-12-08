@@ -7,8 +7,9 @@ body {
   }
 
 .video-container {
-    max-width: 100%;
-    overflow: hidden;  /* Prevents overflow if video exceeds container size */ 
+    width: 100%;
+    overflow: hidden;  /* Prevents overflow if video exceeds container size */
+    padding: 0; 
 }
 
 video {
