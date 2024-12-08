@@ -8,8 +8,7 @@ body {
 
 /* Page margins */
 body {
-    margin: 0;
-    padding: 0;
+    margin: 20px;
 }
 
   /* Navigation bar */
@@ -38,10 +37,7 @@ body {
   
   /* Responsive video */
   video {
-    display: block; /* No inline spacing */
     width: 100vw;   /* Full width of viewport */
     height: 100vh;  /* Full height of viewport */
-    margin: 0;      /* Removes default margins */
-    padding: 0;     /* Removes default padding */  
   }
   
