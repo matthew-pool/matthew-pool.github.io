@@ -5,7 +5,12 @@ body {
     margin: 0;
     padding: 0;
   }
-  
+
+/* Page margins */
+body {
+    margin: 20px; /* Adds 20px of space around the entire page */
+}
+
   /* Navigation bar */
   nav ul {
     list-style: none;
