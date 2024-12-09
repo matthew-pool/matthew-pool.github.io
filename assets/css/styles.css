@@ -20,17 +20,44 @@ video {
     padding: 0;
 }
 
-.go-to-top {
+/* Floating navigation */
+.floating-nav {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    padding: 10px 15px;
-    background-color: #007BFF;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    background-color: #333;
+    padding: 10px;
+    border-radius: 0 10px 10px 0;
+    z-index: 1000;
 }
 
-.go-to-top:hover {
-    background-color: #0056b3;
+.floating-nav a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    transition: background-color 0.3s;
+}
+
+.floating-nav a:hover {
+    background-color: #555;
+}
+
+/* Page sections */
+section {
+    padding: 100px 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+section#home {
+    background-color: #f4f4f4;
+}
+
+section#java-enhancements {
+    background-color: #e9ecef;
+}
+
+section#super-mario-bros {
+    background-color: #dee2e6;
 }
