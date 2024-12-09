@@ -24,9 +24,10 @@ video {
 .navbar {
     position: fixed; /* Changed to fixed to ensure it floats */
     left: 0; /* Align it to the left */
-    top: 50%; /* Center it vertically */
+    top: 75%; /* Vertical alignment */
     transform: translateY(-50%); /* Adjust vertical centering */
-    background-color: #333;
+    background-color: #0a0094;
+    opacity: 0.7;  /* 70% opacity */
     width: 200px; /* Set a width for the navbar */
     padding: 0; /* Some padding for spacing */
     z-index: 100; /* Ensure it stays above other content */
@@ -44,7 +45,7 @@ video {
 
 /* Change link color on hover */
 .navbar a:hover {
-    background-color: #575757;
+    background-color: #2000c2;
 }
 
 /* Page content */
