@@ -28,7 +28,7 @@ video {
     transform: translateY(-50%); /* Adjust vertical centering */
     background-color: #333;
     width: 200px; /* Set a width for the navbar */
-    padding: 10px; /* Some padding for spacing */
+    padding: 0; /* Some padding for spacing */
     z-index: 100; /* Ensure it stays above other content */
 }
 
@@ -37,9 +37,9 @@ video {
     display: block;
     color: #f2f2f2;
     text-align: left; /* Align text to the left */
-    padding: 14px;
+    padding: 0;
     text-decoration: none;
-    margin-bottom: 10px; /* Space between links */
+    margin-bottom: 0; /* Space between links */
 }
 
 /* Change link color on hover */
@@ -49,5 +49,5 @@ video {
 
 /* Page content */
 .content {
-    padding: 16px;
+    padding: 0;
 }
