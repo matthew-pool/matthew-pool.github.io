@@ -6,34 +6,34 @@ This is a simple text-based program written in Java that keeps track of rescue a
 The user can add new dogs and monkeys (and their attributes) to temporary storage. 
 The user can also print out a list of dogs or monkeys or a list of all non-reserved animals.<br>
 
-![pic11](images/new11.png)<br>
+![System menu](images/new11.png)<br>
 
 ### Program Enhancements:
 Added documentation with JavaDocs:<br>
-![pic19](images/new19.png)<br>
-![pic20](images/new20.png)<br>
+![Main class JavaDoc](images/new19.png)<br>
+![Helper function JavaDoc](images/new20.png)<br>
 
 Added Error-Handling and Input Validation:<br>
-![pic9](images/new9.png)<br>
+![Error-handling & input validation](images/new9.png)<br>
 
 Converted to Maven Framework:<br>
-![pic2](images/new2.png)<br>
-![pic4](images/new4.png)<br>
+![Maven project architecture](images/new2.png)<br>
+![Maven pom.xml file](images/new4.png)<br>
 
 Implemented JUnit Unit Testing:<br>
-![pic1](images/new1.png)<br>
-![pic3](images/new3.png)<br>
+![JUnit test coverage with 83% of lines and 75% of branches covered](images/new1.png)<br>
+![20 JUnit tests run with 0 failures](images/new3.png)<br>
 
 Added Custom Text Colors and Styles:<br>
-![pic6](images/new6.png)<br>
-![pic10](images/new10.png)<br>
-![pic13](images/new13.png)<br>
-![pic14](images/new14.png)<br>
+![ANSI escape code declarations in Java](images/new6.png)<br>
+![Various formatting applied to text](images/new10.png)<br>
+![Prompting user and receiving user input for system responses](images/new13.png)<br>
+![Quitting system shown in custom colored text](images/new14.png)<br>
 
 Added Persistent Storage:<br>
-![pic18](images/new18.png)<br>
-![pic7](images/new7.png)<br>
+![MapDB imports](images/new18.png)<br>
+![MapDB and HTreeMap implementation](images/new7.png)<br>
 
 Optimized from O(n) down to O(log n) worst-case time complexity:<br>
-![pic5](images/new5.png)<br>
-![pic17](images/new17.png)<br>
+![LinkedHashMap declarations](images/new5.png)<br>
+![Writing to the hash map](images/new17.png)<br>
