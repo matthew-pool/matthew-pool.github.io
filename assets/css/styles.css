@@ -21,7 +21,7 @@ video {
 }
 
 /* Style the navbar */
-#floating-nav {
+#navbar {
     position: sticky;
     top: 0;
     overflow: hidden;
@@ -29,7 +29,7 @@ video {
   }
   
   /* Navbar links */
-  #floating-nav a {
+  #navbar a {
     float: left;
     display: block;
     color: #f2f2f2;
