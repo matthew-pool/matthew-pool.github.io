@@ -1,0 +1,44 @@
+<!-- Copied (and changed extension) from app.js/travel.html -->
+<!-- .HBS extension will use the Handlebars processor rendering -->
+<!-- NOTE: static HTML files use same code for headers and footers -->
+
+<!DOCTYPE html>
+<!-- Website template by freewebsitetemplates.com -->
+<html>
+<head>
+	<!-- Character encoding for document -->
+	<meta charset="UTF-8">
+	<!-- Web page title -->
+	<title>Dive Sites - Bhaccasyoniztas Beach Resort Website Template</title>
+	<!-- Link to external CSS stylesheet -->
+	<link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+<body>
+	<div id="background">
+		<div id="page">
+			{{> header}}  <!-- Includes header.hbs <div> header partial -->
+			<div id="contents">
+				<div class="box">  <!-- Outer container for page content -->
+					<div>  <!-- Inner container for content alignment -->
+						<div class="body">  <!-- Main content area -->
+							<h1>Travel</h1>  <!-- Section title -->
+							<ul id="sites">  <!-- Unordered list to display dive sites -->
+								<!-- Handlebars directive (notation) to create a loop (iterate) over each object in the "trips" data collection (array) -->								
+								{{#each trips}}
+									<!-- Data to display for each trip -->
+									<li>
+										<a href="/api/trips/{{this.code}}"><img src="images/{{this.image}}" alt="Img"></a>  <!-- Link to travel page with image of current trip -->
+										<h2><a href="/travel">{{this.name}}</a></h2>  <!-- Trip name as a link to trip page -->
+										{{{this.description}}}  <!-- Trip desciption (triple curly braces allow HTML rendering) -->
+									</li>
+								{{/each}}
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{{> footer}}  <!-- Includes header.hbs <div> header partial -->
+	</div>
+</body>
+</html>

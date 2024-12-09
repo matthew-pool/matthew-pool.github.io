@@ -1,0 +1,31 @@
+// Top-level build file for configuration of all sub-projects/modules.
+buildscript {
+    ext {
+        //compose_version = '1.0.5'
+        //kotlin_version = '1.5.31'
+        hilt_version = '2.50'
+        gradle_version = '8.5.1'
+    }
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:$gradle_version"
+        // TODO: classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+plugins {
+    id 'com.android.application' version "$gradle_version" apply false
+    id 'com.google.dagger.hilt.android' version "$hilt_version" apply false
+}
+
+/*
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+*/
