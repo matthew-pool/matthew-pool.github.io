@@ -9,6 +9,10 @@ The user can also print out a list of dogs or monkeys or a list of all non-reser
 ![pic11](images/new11.png)<br>
 
 ### Program Enhancements:
+Added documentation with JavaDocs:
+![pic19](images/new19.png)<br>
+![pic20](images/new20.png)<br>
+
 Added Error-Handling and Input Validation:<br>
 ![pic9](images/new9.png)<br>
 
