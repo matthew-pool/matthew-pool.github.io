@@ -25,7 +25,7 @@ video {
     position: fixed; /* Changed to fixed to ensure it floats */
     left: 0; /* Align it to the left */
     top: 95%; /* Vertical alignment */
-    transform: translateY(-50%); /* Adjust vertical centering offset */
+    transform: translateY(-50%); /* Adjust vertical offset */
     background-color: #0a0094;
     opacity: 0.7;  /* 70% opacity */
     width: 250; /* Set a width for the navbar */

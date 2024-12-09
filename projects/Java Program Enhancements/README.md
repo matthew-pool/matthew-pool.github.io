@@ -1,5 +1,5 @@
 ## Project Summary
-This project involved choosing a previously written program and enhancing it in various ways. I chose a program I wrote a couple of years ago at SNHU. I knew this program needed lots of work in order to provide a better user experience and a more secure, robust application. I ended up making quite a few changes in the areas of software engineering and design, run-time optimization, database implementation, and modularization. I go into more detail in my [Code Review Video](https://www.youtube.com/watch?v=heo30ZFu5Eg&ab_channel=alienhead) on YouTube. You should check it out!
+This project involved choosing a previously written program and enhancing it in various ways. I chose a program I wrote a couple of years ago at SNHU. I knew this program (v1.0) needed lots of work in order to provide a better user experience and a more secure, robust application. I ended up making quite a few changes in the areas of software engineering and design, run-time optimization, database implementation, and modularization. I go into more detail in my [Code Review Video](https://www.youtube.com/watch?v=heo30ZFu5Eg&ab_channel=alienhead) on YouTube. You should check it out!
 
 ### Rescue Animal Management System (Java)
 This is a simple text-based program written in Java that keeps track of rescue animals. 

@@ -1,13 +1,11 @@
-### TO RUN “Super Mario Bros” or “Breakout”:
-1.	Download ZIP
-2.	Extract ZIP (optional)
-3.	Open "RUN TO START" in project root directory
-
-* Super Mario Bros allows switching between a 2D (1st image) and 3D (2nd image) view.
-
-NOTE: Microsoft Visual C++ Redistributables or other dependencies may be required.
+### Super Mario Bros (C++/OpenGL)
+In this project, I created a classic scene from Nintendo's Super Mario Bros. on Nintendo Entertainment System (NES). I created all meshes/images seen here. Aside from the pipe, I coded all of the shapes and objects seen here. I also implemented 3D movement for the user. The user can navigate the 3D scene and switch between an orthogonal and projection view to provide either a 2D or 3D perspective, as seen below.
 
 ![Super Mario Bros](images/mario3.png)
 ![Super Mario Bros](images/mario1.png)
 ![Super Mario Bros](images/mario2.png)
-![Breakout](images/breakout1.png)
+
+### TO RUN:
+1.	Download project as a ZIP
+2.	Extract ZIP
+3.	Open "RUN TO START" in project root directory
