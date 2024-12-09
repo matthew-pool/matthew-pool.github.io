@@ -20,38 +20,25 @@ video {
     padding: 0;
 }
 
-/* Floating Navigation Styles */
-.floating-nav {
-    position: fixed;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
+/* Style the navbar */
+#navbar {
+    position: sticky;
+    top: 0;
+    overflow: hidden;
     background-color: #333;
-    padding: 10px;
-    border-radius: 0 8px 8px 0;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-}
-
-.floating-nav a {
+  }
+  
+  /* Navbar links */
+  #navbar a {
+    float: left;
     display: block;
-    color: white;
-    text-decoration: none;
-    margin: 10px 0;
-    padding: 10px 15px;
-    background-color: #444;
-    border-radius: 5px;
+    color: #f2f2f2;
     text-align: center;
-}
-
-.floating-nav a:hover {
-    background-color: #555;
-    cursor: pointer;
-}
-
-section {
-    margin: 100px;
-    padding: 20px;
-    background-color: #f4f4f4;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+    padding: 14px;
+    text-decoration: none;
+  }
+  
+  /* Page content */
+  .content {
+    padding: 16px;
+  }
