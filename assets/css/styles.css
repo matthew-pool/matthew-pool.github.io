@@ -21,24 +21,33 @@ video {
 }
 
 /* Style the navbar */
-#navbar {
-    position: sticky;
-    top: 0;
-    overflow: hidden;
+.navbar {
+    position: fixed; /* Changed to fixed to ensure it floats */
+    left: 0; /* Align it to the left */
+    top: 50%; /* Center it vertically */
+    transform: translateY(-50%); /* Adjust vertical centering */
     background-color: #333;
-  }
-  
-  /* Navbar links */
-  #navbar a {
-    float: left;
+    width: 200px; /* Set a width for the navbar */
+    padding: 10px; /* Some padding for spacing */
+    z-index: 100; /* Ensure it stays above other content */
+}
+
+/* Navbar links */
+.navbar a {
     display: block;
     color: #f2f2f2;
-    text-align: center;
+    text-align: left; /* Align text to the left */
     padding: 14px;
     text-decoration: none;
-  }
-  
-  /* Page content */
-  .content {
+    margin-bottom: 10px; /* Space between links */
+}
+
+/* Change link color on hover */
+.navbar a:hover {
+    background-color: #575757;
+}
+
+/* Page content */
+.content {
     padding: 16px;
-  }
+}
