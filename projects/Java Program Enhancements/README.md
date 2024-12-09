@@ -8,7 +8,7 @@ The user can also print out a list of dogs or monkeys or a list of all non-reser
 
 ![System menu](images/new11.png)<br>
 
-### Program Enhancements:
+### Program Enhancements (latest version: v4.0):
 Added documentation with JavaDocs:<br>
 ![Main class JavaDoc](images/new19.png)<br>
 ![Helper function JavaDoc](images/new20.png)<br>
