@@ -20,3 +20,17 @@ video {
     padding: 0;
 }
 
+.go-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    background-color: #007BFF;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.go-to-top:hover {
+    background-color: #0056b3;
+}
