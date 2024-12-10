@@ -8,7 +8,7 @@
 
 ## Architecture
 ### Introduction
-The admin site for Travlr Getaways consists of a client-based single-page application (SPA) web page that uses [Bootstrap CSS](https://getbootstrap.com) and [Angular](https://angular.dev), which provides reusable UI components and logic. The architecture, functionality, and testing of the SPA site can be better understood by the following information. 
+The admin site for Travlr Getaways consists of a Model-View-Controller (MVC) artchitecture with a client-based single-page application (SPA) web page that uses [Bootstrap CSS](https://getbootstrap.com) and [Angular](https://angular.dev), which provides reusable UI components and logic. The architecture, functionality, and testing of the SPA site can be better understood by the following information. 
 Angular vs Express Frameworks
 The customer-facing site consists of [Node.js](nodejs.org) used in conjunction with the [Express.js](https://expressjs.com) framework, which consists of HTML pages served from (and rendered in) the server, which utilizes [JavaScript](https://simple.wikipedia.org/wiki/JavaScript). The Express router manages server-side routing, while client-side routing is managed by RouterModule. Middleware is used for request handling, HTTP responses, and other functionality.
 The Angular-based admin-facing website consists of a modular architecture that includes routes, modules, services, and components. Components consist of [HTML](https://en.wikipedia.org/wiki/HTML), [CSS](https://en.wikipedia.org/wiki/CSS), and [TypeScript](https://www.typescriptlang.org/) files. TypeScript is a JavaScript superset that includes type safety to help catch data type errors at compile time.
