@@ -28,7 +28,7 @@ video {
 .navbar {
     position: fixed; /* Changed to fixed to ensure it floats */
     right: 0; /* Align it to the left */
-    top: 90%; /* Vertical alignment from top */
+    top: 89%; /* Vertical alignment from top */
     transform: translateY(-50%); /* Adjust vertical */
     background-color: #0a0094;
     opacity: 0.7;  /* 70% opacity */
