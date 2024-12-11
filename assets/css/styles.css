@@ -1,3 +1,9 @@
+/* Custom Google Roboto font for h1 and h2 */
+@font-face {
+    font-family: robotoFont;
+    src: url(https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap);
+}
+
 /* General settings */
 body {
     font-family: Arial, sans-serif;
@@ -7,12 +13,12 @@ body {
   }
 
 h1 {
-    font-family: "Roboto", sans-serif;
+    font-family: robotoFont;
     font-weight: 700;       /* Bold text */      
 }
 
 h2 {
-    font-family: "Roboto", sans-serif;
+    font-family: robotoFont;
     font-weight: 700;       /* Bold text */              
 }
 
