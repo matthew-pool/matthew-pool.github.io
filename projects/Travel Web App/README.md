@@ -50,15 +50,17 @@ This course has really answered a lot of questions I had regarding full stack so
 3. Download [travlr.zip](https://github.com/matthew-pool/matthew-pool.github.io/raw/refs/heads/main/projects/Travel%20Web%20App/travlr.zip) from current repo
 4. Unzip 'travlr.zip' on your local machine
 
-5. Open a Command Line Interface window in the /travlr subdirectory, and enter:
+5. Open a Command Line Interface window in the /'travlr' subdirectory of your unzipped folder, and enter:
+* npm rebuild
 * npm install
-* npm audit fix
-* npm start
+* npm start (click 'Allow' if security window appears)
 
-6. Open a new CLI window in the /travlr subdirectory, and enter:
+6. Open a new CLI window (Run as Administrator) in the /travlr subdirectory, and enter:
 * cd app_admin
 * npm install
-* npm audit fix
+* nvm install 22 (or latest node.js version)
+* nvm use 22 (or latest node.js version)
+* npm install -g @angular/cli
 * ng serve
 
 7. To view the (HTML) customer 'Home' page, navigate to:
