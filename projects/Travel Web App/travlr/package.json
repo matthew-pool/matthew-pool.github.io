@@ -20,7 +20,8 @@
     "mongoose": "^8.4.1",
     "morgan": "~1.9.1",
     "passport": "^0.7.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "travlr": "file:"
   },
   "description": "CS-465 Full Stack Development with MEAN",
   "main": "app.js",
