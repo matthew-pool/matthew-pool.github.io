@@ -7,7 +7,11 @@
 /* General settings */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #f4f4f4;  /* Light theme */
+    /* Dark Mode:
+    background-color: #121212;
+    color: #FFFFFF;
+    */
     margin: 20px;   /* Page margins */
     padding: 0;
   }
