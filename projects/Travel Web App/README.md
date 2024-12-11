@@ -47,7 +47,7 @@ This course has really answered a lot of questions I had regarding full stack so
 ## To Run
 1. Install (or update) [Node.js](http://nodejs.org) and included necessary tools
 2. Install [MongoDB](http://www.mongodb.com)
-3. Download [travlr.zip](https://github.com/matthew-pool/matthew-pool.github.io/blob/main/projects/Travel%20Web%20App/travlr.zip) from current repo
+3. Download [travlr.zip](https://github.com/matthew-pool/matthew-pool.github.io/raw/refs/heads/main/projects/Travel%20Web%20App/travlr.zip) from current repo
 4. Unzip 'travlr.zip' on your local machine
 
 5. Open a Command Line Interface window in the /travlr subdirectory, and enter:
