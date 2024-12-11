@@ -2,32 +2,30 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
-    margin: 20px;  /* Page margins */
+    margin: 20px;   /* Page margins */
     padding: 0;
   }
 
 h1 {
     font-family: "Roboto", sans-serif;
-    font-weight: 700;                 /* Bold text */
-    margin-bottom: 10px;              /* Adds spacing below the heading */
-    color: #333;                    /* Dark, accessible color */
+    font-weight: 700;       /* Bold text */
+    margin-bottom: 10px;              
 }
 
 h2 {
     font-family: "Roboto", sans-serif;
-    font-weight: 700;                 /* Bold text */
-    margin-bottom: 10px;              /* Adds spacing below the heading */
-    color: #333;                    /* Dark, accessible color */
+    font-weight: 700;       /* Bold text */
+    margin-bottom: 10px;              
 }
 
 /* Video settings */
 .video-container {
     width: 100%;
     max-width: 1280px;
-    height: auto;  /* Maintain aspect ratio */
+    height: auto;       /* Maintain aspect ratio */
     margin: 0 auto;
-    padding: 0;  /* Center horizontally */
-    overflow: hidden;  /* Prevents overflow if video exceeds container size */
+    padding: 0;         /* Center horizontally */
+    overflow: hidden;   /* Prevents overflow if video exceeds container size */
 }
 
 video {
@@ -41,15 +39,15 @@ video {
 
 /* Style navbar box */
 .navbar {
-    position: fixed; /* Changed to fixed to ensure it floats */
-    right: 0; /* Align it to the left */
-    top: 88%; /* Vertical alignment from top */
+    position: fixed;    /* Changed to fixed to ensure it floats */
+    right: 0;           /* Align it to the left */
+    top: 88%;           /* Vertical alignment from top */
     transform: translateY(-50%); /* Adjust vertical */
     background-color: #0a0094;
-    opacity: 0.7;  /* 70% opacity */
-    width: 250; /* Set a width for the navbar */
-    padding: 5px; /* Some padding for spacing */
-    z-index: 100; /* Ensure it stays above other content */
+    opacity: 0.7;   /* 70% opacity */
+    width: 250;     /* Set a width for the navbar */
+    padding: 5px;   /* Some padding for spacing */
+    z-index: 100;   /* Ensure it stays above other content */
 }
 
 /* Style navbar links */
