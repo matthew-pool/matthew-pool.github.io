@@ -70,7 +70,5 @@ This course has really answered a lot of questions I had regarding full stack so
 9. To view the admin SPA page, navigate to:
 * http://localhost:4200 <br><br>
 
-NOTE: Version 0.7 adds user authentication<br><br>
-
 Matthew Pool
 06/21/2024
