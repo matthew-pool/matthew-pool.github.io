@@ -41,7 +41,7 @@ video {
     padding: 0;
 }
 
-/* Style navbar box */
+/* Navbar settings */
 .navbar {
     position: fixed;    /* Changed to fixed to ensure it floats */
     right: 0;           /* Align it to the left */
@@ -64,20 +64,9 @@ video {
     margin-bottom: 0; /* Space between links */
 }
 
-/* Change link color on hover */
+/* Change highlight link color on hover */
 .navbar a:hover {
     background-color: #2000c2;
-}
-
-/* Light Mode */
-@media (prefers-color-scheme: light) {
-    body {
-        background-color: #f4f4f4;
-        color: black;
-    }
-    .navbar a {
-        color: #f2f2f2;
-    }
 }
 
 /* Dark Mode */
