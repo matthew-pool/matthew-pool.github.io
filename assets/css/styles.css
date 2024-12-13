@@ -4,17 +4,35 @@
     src: url(https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap);
 }
 
-/* General settings */
+/* Default theme */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;  /* Light theme */
-    /* Dark Mode:
-    background-color: #121212;
-    color: #FFFFFF;
-    */
-    margin: 20px;   /* Page margins */
+    background-color: #f4f4f4;
+    color: black;
+    margin: 20px;
     padding: 0;
   }
+
+/* Light Mode */
+@media (prefers-color-scheme: light) {
+    body {
+        background-color: #f4f4f4;
+        color: black;
+        margin: 20px;
+        padding: 0;
+    }
+}
+
+/* Dark Mode: */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1a1a1a;
+        color: #e2e0e0;
+        a {
+            color: lightblue;
+        }
+    }
+}
 
 p {
     font-size: 16px;
@@ -70,6 +88,13 @@ video {
 /* Change link color on hover */
 .navbar a:hover {
     background-color: #2000c2;
+}
+
+/* Dark mode navbar (white text) */
+@media (prefers-color-scheme: dark) {
+    .navbar a {
+        color: white;
+    }
 }
 
 /* Page content */
