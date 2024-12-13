@@ -13,27 +13,6 @@ body {
     padding: 0;
   }
 
-/* Light Mode */
-@media (prefers-color-scheme: light) {
-    body {
-        background-color: #f4f4f4;
-        color: black;
-        margin: 20px;
-        padding: 0;
-    }
-}
-
-/* Dark Mode: */
-@media (prefers-color-scheme: dark) {
-    body {
-        background-color: #1a1a1a;
-        color: #e2e0e0;
-        a {
-            color: lightblue;
-        }
-    }
-}
-
 p {
     font-size: 16px;
     line-height: 1.8;
@@ -90,9 +69,33 @@ video {
     background-color: #2000c2;
 }
 
-/* Dark mode navbar (white text) */
-@media (prefers-color-scheme: dark) {
+/* Light Mode */
+@media (prefers-color-scheme: light) {
+    body {
+        background-color: #f4f4f4;
+        color: black;
+    }
+    a {
+        color: black;
+    }
     .navbar a {
+        color: #f2f2f2;
+    }
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1a1a1a;
+        color: #e2e0e0;
+    }
+    a {
+        color: lightblue;
+    }
+    .navbar a {
+        color: white;
+    }
+    .navbar a:hover {
         color: white;
     }
 }
