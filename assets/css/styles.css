@@ -70,6 +70,8 @@ video {
 }
 
 /* Dark Mode */
+/*
+TODO: enable dark mode switch (this only works for Chrome)
 @media (prefers-color-scheme: dark) {
     body {
         background-color: #1a1a1a;
@@ -85,6 +87,7 @@ video {
         color: white;
     }
 }
+*/
 
 /* Page content */
 .content {
