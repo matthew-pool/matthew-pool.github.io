@@ -9,4 +9,4 @@ As part of an experiential learning opportunity for data analysis I took, I crea
 
 ### Certificate for Data Analytics:
 As part of my experience, I was able to receive this certificate from uCertify.
-![Data Analytics Certificate](Data Analysis data-analysis-cert.png)
+![Data Analytics Certificate](data-analysis-cert.png)
