@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="rescueAnimal.MainTest" time="0.129" tests="14" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="22"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Users\mathy\OneDrive\Documents\GitHubRepositories\github-page\matthew-pool.github.io\IT-145_RescueAnimal\rescue_animal_v2.0\target\test-classes;C:\Users\mathy\.m2\repository\org\junit\jupiter\junit-jupiter\5.11.3\junit-jupiter-5.11.3.jar;C:\Users\mathy\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.11.3\junit-jupiter-api-5.11.3.jar;C:\Users\mathy\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\mathy\.m2\repository\org\junit\platform\junit-platform-commons\1.11.3\junit-platform-commons-1.11.3.jar;C:\Users\mathy\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\mathy\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.11.3\junit-jupiter-params-5.11.3.jar;C:\Users\mathy\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.11.3\junit-jupiter-engine-5.11.3.jar;C:\Users\mathy\.m2\repository\org\junit\platform\junit-platform-engine\1.11.3\junit-platform-engine-1.11.3.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="America/Chicago"/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="java.vm.specification.version" value="22"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-22\bin"/>
+    <property name="sun.java.command" value="org.apache.maven.surefire.booter.ForkedBooter C:\Users\mathy\AppData\Local\Temp\surefire11899738590771643653 2024-11-14T09-42-50_247-jvmRun1 surefire-20241114094250548_1tmp surefire_0-20241114094250548_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="C:\Users\mathy\OneDrive\Documents\GitHubRepositories\github-page\matthew-pool.github.io\IT-145_RescueAnimal\rescue_animal_v2.0\target\test-classes;C:\Users\mathy\.m2\repository\org\junit\jupiter\junit-jupiter\5.11.3\junit-jupiter-5.11.3.jar;C:\Users\mathy\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.11.3\junit-jupiter-api-5.11.3.jar;C:\Users\mathy\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\mathy\.m2\repository\org\junit\platform\junit-platform-commons\1.11.3\junit-platform-commons-1.11.3.jar;C:\Users\mathy\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\mathy\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.11.3\junit-jupiter-params-5.11.3.jar;C:\Users\mathy\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.11.3\junit-jupiter-engine-5.11.3.jar;C:\Users\mathy\.m2\repository\org\junit\platform\junit-platform-engine\1.11.3\junit-platform-engine-1.11.3.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\mathy"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="jdk.module.path" value="C:\Users\mathy\OneDrive\Documents\GitHubRepositories\github-page\matthew-pool.github.io\IT-145_RescueAnimal\rescue_animal_v2.0\target\classes"/>
+    <property name="java.version.date" value="2024-04-16"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-22"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\Users\mathy\OneDrive\Documents\GitHubRepositories\github-page\matthew-pool.github.io\IT-145_RescueAnimal\rescue_animal_v2.0"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="C:\Users\mathy\.m2\repository\org\apache\maven\surefire\surefire-booter\3.5.2\surefire-booter-3.5.2.jar;C:\Users\mathy\.m2\repository\org\apache\maven\surefire\surefire-api\3.5.2\surefire-api-3.5.2.jar;C:\Users\mathy\.m2\repository\org\apache\maven\surefire\surefire-extensions-spi\3.5.2\surefire-extensions-spi-3.5.2.jar;C:\Users\mathy\.m2\repository\org\apache\maven\surefire\surefire-shared-utils\3.5.2\surefire-shared-utils-3.5.2.jar;C:\Users\mathy\.m2\repository\org\apache\maven\surefire\surefire-logger-api\3.5.2\surefire-logger-api-3.5.2.jar;C:\Users\mathy\OneDrive\Documents\GitHubRepositories\github-page\matthew-pool.github.io\IT-145_RescueAnimal\rescue_animal_v2.0\target\test-classes;C:\Users\mathy\.m2\repository\org\junit\jupiter\junit-jupiter\5.11.3\junit-jupiter-5.11.3.jar;C:\Users\mathy\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.11.3\junit-jupiter-api-5.11.3.jar;C:\Users\mathy\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\mathy\.m2\repository\org\junit\platform\junit-platform-commons\1.11.3\junit-platform-commons-1.11.3.jar;C:\Users\mathy\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\mathy\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.11.3\junit-jupiter-params-5.11.3.jar;C:\Users\mathy\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.11.3\junit-jupiter-engine-5.11.3.jar;C:\Users\mathy\.m2\repository\org\junit\platform\junit-platform-engine\1.11.3\junit-platform-engine-1.11.3.jar;C:\Users\mathy\.m2\repository\org\apache\maven\surefire\surefire-junit-platform\3.5.2\surefire-junit-platform-3.5.2.jar;C:\Users\mathy\.m2\repository\org\apache\maven\surefire\common-java5\3.5.2\common-java5-3.5.2.jar;C:\Users\mathy\.m2\repository\org\junit\platform\junit-platform-launcher\1.11.3\junit-platform-launcher-1.11.3.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="22.0.1+8-16"/>
+    <property name="user.name" value="mathy"/>
+    <property name="stdout.encoding" value="Cp1252"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="C:\Users\mathy\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\mathy\AppData\Local\Temp\"/>
+    <property name="java.version" value="22.0.1"/>
+    <property name="user.dir" value="C:\Users\mathy\OneDrive\Documents\GitHubRepositories\github-page\matthew-pool.github.io\IT-145_RescueAnimal\rescue_animal_v2.0"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-22\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Users\mathy\.nvm;C:\Users\mathy\AppData\Roaming\npm;C:\Program Files\Java\jdk-22\bin;C:\Program Files\Microsoft\jdk-11.0.23.9-hotspot\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\System32;C:\Windows;C:\Windows\System32\wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files\apache-maven-3.9.2\bin;C:\Program Files\apache-maven-3.9.2;C:\Program Files (x86)\GnuPG;C:\ProgramData\chocolatey\bin;C:\Program Files\MATLAB\R2023b\bin;C:\Program Files\Git\cmd;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files\CMake\bin;C:\Program Files (x86)\GnuPG\bin;C:\platform-tools;C:\Users\mathy\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Users\mathy\AppData\Roaming\nvm;C:\Users\mathy\AppData\Roaming\nvm\v10.23.0;C:\ffmpeg-2024-08-07\bin;C:\Program Files\PowerShell\7\;C:\Program Files\Java\jdk-22\bin;C:\Users\mathy\AppData\Local\Microsoft\WindowsApps;C:\Users\mathy\AppData\Local\GitHubDesktop\bin;C:\Users\mathy\AppData\Local\Programs\Microsoft VS Code\bin;C:\MinGW\bin;C:\apache-maven-3.9.4-bin\apache-maven-3.9.4\bin;C:\Program Files\Java\jdk-21\bin;C:\Program Files\JetBrains\PyCharm 2023.3.4\bin;;C:\Program Files\JetBrains\PyCharm Community Edition 2023.3.4\bin;;C:\Users\mathy\AppData\Local\Programs\mongosh\;C:\Program Files\MongoDB\Server\7.0\bin;C:\Program Files\heroku\bin;C:\git-filter-repo-main;C:\platform-tools;C:\Users\mathy\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\apache-maven\bin;;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2024.2.4\bin;;."/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="stderr.encoding" value="Cp1252"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="22.0.1+8-16"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="66.0"/>
+  </properties>
+  <testcase name="testGetAcquisitionCountry" classname="rescueAnimal.MainTest" time="0.007">
+    <system-out><![CDATA[Acquisition Country: ]]></system-out>
+  </testcase>
+  <testcase name="testEmptyInput" classname="rescueAnimal.MainTest" time="0.001"/>
+  <testcase name="testMenu" classname="rescueAnimal.MainTest" time="0.002">
+    <system-out><![CDATA[
+
+&amp#27;[4m&amp#27;[30m&amp#27;[47m				Rescue Animal Management System				&amp#27;[0m
+
+[1] Intake new dog
+[2] Intake new monkey
+[3] Reserve animal
+[4] Print list of dogs
+[5] Print list of monkeys
+[6] Print list of non-reserved animals
+[Q] Quit application
+
+&amp#27;[37mEnter a menu selection: &amp#27;[0m]]></system-out>
+  </testcase>
+  <testcase name="testIntakeNewMonkey" classname="rescueAnimal.MainTest" time="0.038">
+    <system-out><![CDATA[Monkey Name: &amp#27;[31mPlease enter a valid name: &amp#27;[0mSpecies: &amp#27;[31mOnly allowed species are capuchin, guenon, macaque, marmoset, squirrel monkey, or tamarin: &amp#27;[0mGender (male/female): Please enter a gender: &amp#27;[31mMale or female, please: &amp#27;[0mAge: &amp#27;[31mPlease enter a valid age: &amp#27;[0m&amp#27;[31mPlease enter a valid age: &amp#27;[0mWeight (lbs.): &amp#27;[31mPlease enter weight in pounds (lbs.): &amp#27;[0m&amp#27;[31mPlease enter a valid weight in pounds (lbs.): &amp#27;[0mAcquisition Date (MM-DD-YYYY): &amp#27;[31mPlease enter a date (MM-DD-YYYY): &amp#27;[0m&amp#27;[31mPlease enter the acquisition date (MM-DD-YYYY): &amp#27;[0mAcquisition Country: &amp#27;[31mPlease enter a country: &amp#27;[0mTraining Status (phase number, intake, in service, or farm): &amp#27;[31mPlease enter status (phase number, intake, in service, or farm): &amp#27;[0m&amp#27;[31mPlease enter status (examples: 'Phase 1', 'intake', 'in service', farm): &amp#27;[0mReserved (true or false): &amp#27;[31mPlease enter true or false: &amp#27;[0m&amp#27;[31mPlease enter true or false: &amp#27;[0mIn Service Country: &amp#27;[31mEnter the in service country: &amp#27;[0mTail Length (in.): &amp#27;[31mPlease enter the tail length in inches: &amp#27;[0m&amp#27;[31mPlease enter a valid tail length in inches: &amp#27;[0mHeight (in.): &amp#27;[31mPlease enter the height in inches (in.): &amp#27;[0m&amp#27;[31mPlease enter a valid height in inches (in.): &amp#27;[0mBody Length (in.): &amp#27;[31mPlease enter the body length in inches: &amp#27;[0m&amp#27;[31mPlease enter a valid body length in inches: &amp#27;[0m&amp#27;[33m
+Would you like to add this monkey (Y or N): &amp#27;[0m&amp#27;[33mWould you like to add this monkey (Y or N): &amp#27;[0m&amp#27;[33mWould you like to add this monkey (Y or N): &amp#27;[0m&amp#27;[36m
+Successfully added!&amp#27;[0m
+Monkey Name: &amp#27;[31mThis monkey already exists in the system.&amp#27;[0m
+Monkey Name: Species: Gender (male/female): Age: Weight (lbs.): Acquisition Date (MM-DD-YYYY): Acquisition Country: Training Status (phase number, intake, in service, or farm): Reserved (true or false): In Service Country: Tail Length (in.): Height (in.): Body Length (in.): &amp#27;[33m
+Would you like to add this monkey (Y or N): &amp#27;[0mMonkey Name: &amp#27;[31mPlease enter a valid name: &amp#27;[0mSpecies: Gender (male/female): Age: Weight (lbs.): Acquisition Date (MM-DD-YYYY): Acquisition Country: Training Status (phase number, intake, in service, or farm): Reserved (true or false): Tail Length (in.): Height (in.): Body Length (in.): &amp#27;[33m
+Would you like to add this monkey (Y or N): &amp#27;[0m&amp#27;[36m
+Successfully added!&amp#27;[0m
+]]></system-out>
+  </testcase>
+  <testcase name="testOptions456Q" classname="rescueAnimal.MainTest" time="0.031">
+    <system-out><![CDATA[
+&amp#27;[4m&amp#27;[30m&amp#27;[47mName                 Training Status      In Service Locations      Reserved  
+&amp#27;[0m
+Sophie               intake               United States             No        
+Crimson              1                    United States             No        
+Blueberry            in service           Canada                    Yes       
+
+&amp#27;[4m&amp#27;[30m&amp#27;[47mName                 Training Status      In Service Locations      Reserved  
+&amp#27;[0m
+Kimchi               intake               United States             No        
+Gizmo                Phase 1              United States             No        
+Sweet Pea            in service           Canada                    Yes       
+Jack                 in service           United States             No        
+Rover                farm                 n/a                       Yes       
+
+&amp#27;[4m&amp#27;[30m&amp#27;[47mName                 Training Status      In Service Locations      Reserved  
+&amp#27;[0m
+Sophie               intake               United States             No        
+Crimson              1                    United States             No        
+Kimchi               intake               United States             No        
+Gizmo                Phase 1              United States             No        
+Jack                 in service           United States             No        
+]]></system-out>
+  </testcase>
+  <testcase name="testGetAcquisitionDate" classname="rescueAnimal.MainTest" time="0.004">
+    <system-out><![CDATA[Acquisition Date (MM-DD-YYYY): Acquisition Date (MM-DD-YYYY): &amp#27;[31mPlease enter a date (MM-DD-YYYY): &amp#27;[0m&amp#27;[31mPlease enter the acquisition date (MM-DD-YYYY): &amp#27;[0m&amp#27;[31mPlease enter the acquisition date (MM-DD-YYYY): &amp#27;[0m&amp#27;[31mPlease enter the acquisition date (MM-DD-YYYY): &amp#27;[0m&amp#27;[31mPlease enter a valid acquisition date (MM-DD-YYYY): &amp#27;[0m&amp#27;[31mPlease enter a valid acquisition date (MM-DD-YYYY): &amp#27;[0m&amp#27;[31mPlease enter the acquisition date (MM-DD-YYYY): &amp#27;[0m&amp#27;[31mPlease enter a valid date (MM-DD-YYYY): &amp#27;[0m&amp#27;[31mPlease enter a valid date (MM-DD-YYYY): &amp#27;[0m&amp#27;[31mPlease enter a valid date (MM-DD-YYYY): &amp#27;[0m
+&amp#27;[31mPlease enter a valid acquisition date (MM-DD-YYYY): &amp#27;[0m]]></system-out>
+  </testcase>
+  <testcase name="testGetInServiceCountry" classname="rescueAnimal.MainTest" time="0.002">
+    <system-out><![CDATA[In Service Country: &amp#27;[31mEnter the in service country: &amp#27;[0m]]></system-out>
+  </testcase>
+  <testcase name="testIntakeNewDog" classname="rescueAnimal.MainTest" time="0.006">
+    <system-out><![CDATA[Dog Name: &amp#27;[31mPlease enter a valid name: &amp#27;[0mBreed: &amp#27;[31mPlease enter a dog breed: &amp#27;[0mGender (male/female): Please enter a gender: Age: &amp#27;[31mPlease enter a valid age: &amp#27;[0m&amp#27;[31mPlease enter a valid age: &amp#27;[0m&amp#27;[31mPlease enter a valid age: &amp#27;[0m&amp#27;[31mPlease enter a valid age: &amp#27;[0mWeight (lbs.): &amp#27;[31mPlease enter weight in pounds (lbs.): &amp#27;[0m&amp#27;[31mPlease enter a valid weight in pounds (lbs.): &amp#27;[0mAcquisition Date (MM-DD-YYYY): &amp#27;[31mPlease enter a date (MM-DD-YYYY): &amp#27;[0m&amp#27;[31mPlease enter the acquisition date (MM-DD-YYYY): &amp#27;[0mAcquisition Country: &amp#27;[31mPlease enter a country: &amp#27;[0mTraining Status (phase number, intake, in service, or farm): &amp#27;[31mPlease enter status (phase number, intake, in service, or farm): &amp#27;[0m&amp#27;[31mPlease enter status (examples: 'Phase 1', 'intake', 'in service', farm): &amp#27;[0mReserved (true or false): &amp#27;[31mPlease enter true or false: &amp#27;[0m&amp#27;[31mPlease enter true or false: &amp#27;[0mIn Service Country: &amp#27;[31mEnter the in service country: &amp#27;[0m&amp#27;[33m
+Would you like to add this dog (Y or N): &amp#27;[0m&amp#27;[33mWould you like to add this dog (Y or N): &amp#27;[0m&amp#27;[33mWould you like to add this dog (Y or N): &amp#27;[0m&amp#27;[36m
+Successfully added!&amp#27;[0m
+Dog Name: &amp#27;[31mThis dog already exists in the system.&amp#27;[0m
+Dog Name: Breed: Gender (male/female): Age: Weight (lbs.): Acquisition Date (MM-DD-YYYY): Acquisition Country: Training Status (phase number, intake, in service, or farm): Reserved (true or false): In Service Country: &amp#27;[33m
+Would you like to add this dog (Y or N): &amp#27;[0mDog Name: &amp#27;[31mPlease enter a valid name: &amp#27;[0mBreed: Gender (male/female): Age: Weight (lbs.): Acquisition Date (MM-DD-YYYY): Acquisition Country: Training Status (phase number, intake, in service, or farm): Reserved (true or false): &amp#27;[33m
+Would you like to add this dog (Y or N): &amp#27;[0m&amp#27;[36m
+Successfully added!&amp#27;[0m
+]]></system-out>
+  </testcase>
+  <testcase name="testReserveAnimal" classname="rescueAnimal.MainTest" time="0.003">
+    <system-out><![CDATA[Animal type to reserve (dog or monkey): &amp#27;[31mPlease enter a valid animal type (dog or monkey): &amp#27;[0mWhat country is the service needed: &amp#27;[31mPlease enter a valid country: &amp#27;[0m&amp#27;[33m
+Would you like to reserve this animal if available here (Y or N): &amp#27;[0m&amp#27;[33m
+Would you like to reserve this animal if available here (Y or N): &amp#27;[0m&amp#27;[31m
+No in service dogs for this country!&amp#27;[0m
+]]></system-out>
+  </testcase>
+  <testcase name="testGetTrainingStatus" classname="rescueAnimal.MainTest" time="0.002">
+    <system-out><![CDATA[Training Status (phase number, intake, in service, or farm): Training Status (phase number, intake, in service, or farm): &amp#27;[31mPlease enter status (phase number, intake, in service, or farm): &amp#27;[0m&amp#27;[31mPlease enter status (examples: 'Phase 1', 'intake', 'in service', farm): &amp#27;[0m&amp#27;[31mPlease enter status (examples: 'Phase 1', 'intake', 'in service', farm): &amp#27;[0m&amp#27;[31mPlease enter status (examples: 'Phase 1', 'intake', 'in service', farm): &amp#27;[0m&amp#27;[31mPlease enter status (examples: 'Phase 1', 'intake', 'in service', farm): &amp#27;[0m]]></system-out>
+  </testcase>
+  <testcase name="testGetReserved" classname="rescueAnimal.MainTest" time="0.002">
+    <system-out><![CDATA[Reserved (true or false): Reserved (true or false): &amp#27;[31mPlease enter true or false: &amp#27;[0m&amp#27;[31mPlease enter true or false: &amp#27;[0m&amp#27;[31mPlease enter true or false: &amp#27;[0m&amp#27;[31mPlease enter true or false: &amp#27;[0m&amp#27;[31mPlease enter true or false: &amp#27;[0m]]></system-out>
+  </testcase>
+  <testcase name="testGetGender" classname="rescueAnimal.MainTest" time="0.002">
+    <system-out><![CDATA[Gender (male/female): Gender (male/female): Please enter a gender: &amp#27;[31mMale or female, please: &amp#27;[0m&amp#27;[31mMale or female, please: &amp#27;[0m&amp#27;[31mMale or female, please: &amp#27;[0m&amp#27;[31mMale or female, please: &amp#27;[0m]]></system-out>
+  </testcase>
+  <testcase name="testGetAge" classname="rescueAnimal.MainTest" time="0.004">
+    <system-out><![CDATA[Age: Age: &amp#27;[31mPlease enter a valid age: &amp#27;[0m&amp#27;[31mPlease enter a valid age: &amp#27;[0m&amp#27;[31mPlease enter a valid age: &amp#27;[0m&amp#27;[31mPlease enter a valid age: &amp#27;[0m&amp#27;[31mPlease enter a valid age: &amp#27;[0m]]></system-out>
+  </testcase>
+  <testcase name="testGetWeight" classname="rescueAnimal.MainTest" time="0.002">
+    <system-out><![CDATA[Weight (lbs.): Weight (lbs.): &amp#27;[31mPlease enter weight in pounds (lbs.): &amp#27;[0m&amp#27;[31mPlease enter a valid weight in pounds (lbs.): &amp#27;[0m&amp#27;[31mPlease enter a valid weight in pounds (lbs.): &amp#27;[0m&amp#27;[31mPlease enter a valid weight in pounds (lbs.): &amp#27;[0m&amp#27;[31mPlease enter a valid weight in pounds (lbs.): &amp#27;[0m]]></system-out>
+  </testcase>
+</testsuite>
