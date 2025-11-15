@@ -56,6 +56,11 @@
 			display: block;
 			margin: 1em auto;
 		}
+
+		#refactor img {
+			margin-left: 0;
+			margin-right: auto;
+		}
 		
 		/* InventoryBuddy screenshot grid */
 		.buddy-screenshot-grid {
@@ -244,9 +249,9 @@
 		position: relative;
 		overflow: hidden;
 		width: 100%;
-		max-width: 1280px;  /* Keeps your max width */
-		margin: 20px auto;    /* This centers the container block */
-		padding-top: 56.25%; /* This creates a 16:9 aspect ratio */
+		max-width: 1280px;
+		margin: 20px auto;
+		padding-top: 56.25%;
 		}
 
 		.video-container iframe {
@@ -272,11 +277,6 @@
 			padding: 25px;
 			margin: 20px 0;
 		}
-
-		/* Custom Colors */
-			/* eggshell #f9f9f9
-			/* pastel salmon rgb(255, 167, 167)
-			/* pastel blue rgb(136, 211, 255)
 
 		/* Content Cards */
 		.content-card {
@@ -328,35 +328,30 @@
 			border: 1px solid #e5e7eb;
 		}
 
-		/* Optional: Add hover effect */
 		.image-card:hover {
 			box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 			transition: box-shadow 0.3s ease;
 		}
 
-		/* Ensure the screenshot-grid fits nicely inside */
 		.image-card .screenshot-grid {
 			margin: 0;
 		}
 
 		/* Flexbox */
 		.screenshot-grid {
-        	display: flex; /* Activates Flexbox */
-        	flex-wrap: wrap; /* Allows images to wrap to the next line */
-        	justify-content: center; /* Centers the images horizontally */
+        	display: flex;
+        	flex-wrap: wrap;
+        	justify-content: center;
     	}
 
-    	/* Selects all images in the grid EXCEPT the tablet.png */
     	.screenshot-grid img:not([src$="tablet.png"]) {
-        	/* "two images per line" & "about half the size" */
-        	width: 45%; /* Set to slightly less than 50% to allow for spacing */
+        	width: 45%;
         	max-width: 300px;
-        	height: auto; /* Maintains aspect ratio */
+        	height: auto;
         	margin: 10px;
-        	box-sizing: border-box; /* Ensures padding/margins are part of the width */
+        	box-sizing: border-box;
     	}
 
-    	/* Selects ONLY the tablet.png image */
     	.screenshot-grid img[src$="tablet.png"] {
         	width: 90%; 
         	max-width: 700px;
@@ -364,6 +359,74 @@
         	margin: 10px auto; 
         	display: block;
     	}
+
+		/* Bird styles */
+		.bird {
+			position: fixed;
+			z-index: 10000;
+			pointer-events: none;
+			background-color: transparent;
+			border-radius: 50%;
+			padding: 5px;
+			width: 60px;
+			height: 60px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			transition: none;
+		}
+
+		.bird.flying #leftWing {
+			animation: flapLeft 0.15s ease-in-out infinite;
+		}
+
+		.bird.flying #rightWing {
+			animation: flapRight 0.15s ease-in-out infinite;
+		}
+		
+		.bird.idle #leftWing {
+			animation: idleFlapLeft 2s ease-in-out infinite;
+		}
+
+		.bird.idle #rightWing {
+			animation: idleFlapRight 2s ease-in-out infinite;
+		}
+
+		@keyframes flapLeft {
+			0%, 100% {
+				d: path("M 12 20 Q 8 18 6 22");
+			}
+			50% {
+				d: path("M 12 20 Q 8 12 6 8");
+			}
+		}
+
+		@keyframes flapRight {
+			0%, 100% {
+				d: path("M 28 20 Q 32 18 34 22");
+			}
+			50% {
+				d: path("M 28 20 Q 32 12 34 8");
+			}
+		}
+		
+		@keyframes idleFlapLeft {
+			0%, 90%, 100% {
+				d: path("M 12 20 Q 8 18 6 22");
+			}
+			95% {
+				d: path("M 12 20 Q 8 12 6 8");
+			}
+		}
+
+		@keyframes idleFlapRight {
+			0%, 90%, 100% {
+				d: path("M 28 20 Q 32 18 34 22");
+			}
+			95% {
+				d: path("M 28 20 Q 32 12 34 8");
+			}
+		}
 	</style>
 </head>
 
@@ -374,6 +437,32 @@
 		<i><span style="font-size: 16px;">B.S. in Computer Science</span></i><br>
 		<a href="mailto:mathyou.me@gmail.com"><span style="font-size: 16px;">mathyou.me@gmail.com</span></a><br>
 		<a href="tel:+9035760223"><span style="font-size: 16px;">903-576-0223</span></a></p>
+	</div>
+
+	<!-- Bird SVG - must be before tabs -->
+	<div id="bird" class="bird">
+		<svg width="60" height="60" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+			<!-- Head -->
+			<circle cx="20" cy="12" r="6" fill="#DC143C" stroke="#8B0000" stroke-width="2"/>
+			<!-- Eye -->
+			<circle cx="22" cy="11" r="2" fill="#000"/>
+			<!-- Beak -->
+			<polygon points="25,12 29,11 25,10" fill="#FFA500" stroke="#8B0000" stroke-width="1"/>
+			<!-- Body -->
+			<ellipse cx="20" cy="22" rx="8" ry="10" fill="#DC143C" stroke="#8B0000" stroke-width="2"/>
+			<!-- Left wing -->
+			<path id="leftWing" d="M 12 20 Q 8 18 6 22" fill="#FF6347" stroke="#8B0000" stroke-width="2"/>
+			<!-- Right wing -->
+			<path id="rightWing" d="M 28 20 Q 32 18 34 22" fill="#FF6347" stroke="#8B0000" stroke-width="2"/>
+			<!-- Tail -->
+			<path id="tail" d="M 8 24 Q 4 26 2 30" fill="#DC143C" stroke="#8B0000" stroke-width="2"/>
+			<!-- Legs -->
+			<line x1="18" y1="32" x2="16" y2="36" stroke="#8B0000" stroke-width="1.5"/>
+			<line x1="22" y1="32" x2="24" y2="36" stroke="#8B0000" stroke-width="1.5"/>
+			<!-- Feet -->
+			<path d="M 16 36 L 14 36 L 15 37" fill="none" stroke="#FFA500" stroke-width="1"/>
+			<path d="M 24 36 L 26 36 L 25 37" fill="none" stroke="#FFA500" stroke-width="1"/>
+		</svg>
 	</div>
 
 	<!-- Tabs -->
@@ -568,7 +657,6 @@
 		
 		<hr>
 
-		</rh>
 		<img src="https://raw.githubusercontent.com/matthew-pool/matthew-pool.github.io/refs/heads/main/assets/images/data2.png" style="width: 100%; max-width: 1280px;" alt="Screenshot of the script's output line graph with positive-curved trend line">
 		
 		<h4>Project Files (GitHub): <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/projects/Data%20Analysis">View Here</a></h4>
@@ -691,62 +779,241 @@
 		<a href="tel:+9035760223">903-576-0223</a></p>
 	</div>
 
-	<!-- Bird SVG -->
-	<div id="bird" class="bird">
-		<svg width="60" height="60" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-			<!-- Body -->
-			<ellipse cx="20" cy="22" rx="8" ry="10" fill="#FFD700" stroke="#333" stroke-width="2"/>
-			<!-- Head -->
-			<circle cx="20" cy="12" r="6" fill="#FFD700" stroke="#333" stroke-width="2"/>
-			<!-- Eye -->
-			<circle cx="22" cy="11" r="2" fill="#333"/>
-			<!-- Beak -->
-			<polygon points="25,12 29,11 25,10" fill="#FF6347" stroke="#333" stroke-width="1"/>
-			<!-- Left wing -->
-			<path id="leftWing" d="M 12 20 Q 8 18 6 22" fill="#FFA500" stroke="#333" stroke-width="2"/>
-			<!-- Right wing -->
-			<path id="rightWing" d="M 28 20 Q 32 18 34 22" fill="#FFA500" stroke="#333" stroke-width="2"/>
-		</svg>
-	</div>
+<script>
+	// Bird animation logic
+	let birdHasFlown = false;
+	let isPositioned = false;
+	let isReady = false;
+	const bird = document.getElementById('bird');
 
-	<script>
-		function openTab(evt, tabName) {
-			// Hide all tab contents
-			const tabContents = document.getElementsByClassName('tab-content');
-			for (let i = 0; i < tabContents.length; i++) {
-				tabContents[i].classList.remove('active');
-			}
-
-			// Remove active class from all buttons
-			const tabButtons = document.getElementsByClassName('tab-button');
-			for (let i = 0; i < tabButtons.length; i++) {
-				tabButtons[i].classList.remove('active');
-			}
-
-			// Show the current tab and mark button as active
-			document.getElementById(tabName).classList.add('active');
-			evt.currentTarget.classList.add('active');
-
-			// Scroll to top when switching tabs
-			window.scrollTo(0, 0);
+	function openTab(evt, tabName) {
+		// Hide all tab contents
+		const tabContents = document.getElementsByClassName('tab-content');
+		for (let i = 0; i < tabContents.length; i++) {
+			tabContents[i].classList.remove('active');
 		}
 
-		// Bird animation logic
-		let birdHasFlown = false;
-		const bird = document.getElementById('bird');
+		// Remove active class from all buttons
+		const tabButtons = document.getElementsByClassName('tab-button');
+		for (let i = 0; i < tabButtons.length; i++) {
+			tabButtons[i].classList.remove('active');
+		}
 
-		window.addEventListener('scroll', function() {
-			if (!birdHasFlown && window.scrollY > 0) {
-				birdHasFlown = true;
-				// Get current position before switching to fixed
-				const rect = bird.getBoundingClientRect();
-				bird.style.left = rect.left + 'px';
-				bird.style.top = rect.top + 'px';
-				bird.style.right = 'auto';
-				bird.classList.add('flying');
+		// Show the current tab and mark button as active
+		document.getElementById(tabName).classList.add('active');
+		evt.currentTarget.classList.add('active');
+
+		// Scroll to top when switching tabs
+		window.scrollTo(0, 0);
+		
+		// Reset bird if switching away from home
+		if (tabName !== 'home') {
+			flyBirdBack();
+		}
+	}
+	
+	function flyBirdBack() {
+		if (!birdHasFlown) return; // Bird hasn't flown yet, nothing to reset
+		
+		// Add flying class for wing flapping during return
+		bird.classList.remove('idle');
+		bird.classList.add('flying');
+		
+		// Get current absolute position
+		const birdRect = bird.getBoundingClientRect();
+		const currentLeft = birdRect.left + window.scrollX;
+		const currentTop = birdRect.top + window.scrollY;
+		
+		// Get target absolute position (Refactor tab)
+		const refactorTab = document.querySelector('.tab-button:nth-child(3)');
+		if (!refactorTab) return;
+		
+		const rect = refactorTab.getBoundingClientRect();
+		const targetLeft = rect.left + window.scrollX + rect.width / 2 - 30;
+		const targetTop = rect.top + window.scrollY - 70;
+		
+		// Switch to absolute positioning for flight back
+		bird.style.position = 'absolute';
+		bird.style.left = currentLeft + 'px';
+		bird.style.top = currentTop + 'px';
+		
+		// Animate flight back
+		const duration = 1500; // 1.5 seconds for return flight
+		const startTime = performance.now();
+		
+		function animateReturn(currentTime) {
+			const elapsed = currentTime - startTime;
+			const progress = Math.min(elapsed / duration, 1);
+			const eased = 1 - Math.pow(1 - progress, 3); // Ease out cubic
+			
+			const x = currentLeft + ((targetLeft - currentLeft) * eased);
+			const y = currentTop + ((targetTop - currentTop) * eased);
+			const rotation = -45 + (45 * eased); // Rotate from -45 to 0
+			
+			bird.style.left = x + 'px';
+			bird.style.top = y + 'px';
+			bird.style.transform = `rotate(${rotation}deg)`;
+			
+			if (progress < 1) {
+				requestAnimationFrame(animateReturn);
+			} else {
+				// Return complete - stay at absolute position and add idle flapping
+				bird.classList.remove('flying');
+				bird.classList.add('idle'); // Add idle class for sporadic flapping
+				bird.style.transform = 'rotate(0deg)';
+				bird.style.position = 'absolute'; // Explicitly set to absolute
+				bird.style.left = targetLeft + 'px';
+				bird.style.top = targetTop + 'px';
+				birdHasFlown = false;
+				isReady = false;
+				
+				// Store the absolute position
+				bird.dataset.initialLeft = targetLeft;
+				bird.dataset.initialTop = targetTop;
+				
+				// Re-enable animation after delay
+				setTimeout(() => {
+					isReady = true;
+				}, 1000);
 			}
-		});
-	</script>
-	</body>
+		}
+		
+		requestAnimationFrame(animateReturn);
+	}
 
+	// Position bird on Refactor tab
+	function positionBird() {
+		// Only position if bird hasn't flown yet
+		if (birdHasFlown) return;
+		
+		const refactorTab = document.querySelector('.tab-button:nth-child(3)');
+		if (refactorTab) {
+			const rect = refactorTab.getBoundingClientRect();
+			const leftPos = rect.left + window.scrollX + rect.width / 2 - 30;
+			const topPos = rect.top + window.scrollY - 70;
+			
+			// Store initial absolute position for animation
+			bird.dataset.initialLeft = leftPos;
+			bird.dataset.initialTop = topPos;
+			
+			// Position the bird at absolute position (not fixed)
+			bird.style.left = leftPos + 'px';
+			bird.style.top = topPos + 'px';
+			bird.style.position = 'absolute'; // Changed from 'fixed' to 'absolute'
+			bird.style.zIndex = '10000';
+			
+			isPositioned = true;
+		}
+	}
+
+	// Position after delays
+	setTimeout(positionBird, 100);
+	setTimeout(positionBird, 500);
+	window.addEventListener('load', positionBird);
+	
+	// Mark as ready after a delay to prevent initial scroll events
+	setTimeout(() => {
+		isReady = true;
+	}, 1000);
+
+	window.addEventListener('scroll', function() {
+		// Only animate on home tab
+		const homeTab = document.getElementById('home');
+		const isHomeActive = homeTab && homeTab.classList.contains('active');
+		
+		if (!birdHasFlown && isPositioned && isReady && isHomeActive && window.scrollY > 0) {
+			birdHasFlown = true;
+			
+			// Add flying class for wing flapping
+			bird.classList.add('flying');
+			
+			// Convert absolute position to viewport coordinates for smooth animation
+			const absoluteLeft = parseFloat(bird.dataset.initialLeft);
+			const absoluteTop = parseFloat(bird.dataset.initialTop);
+			const startLeft = absoluteLeft - window.scrollX;
+			const startTop = absoluteTop - window.scrollY;
+			
+			// Switch to fixed positioning for the flight animation
+			bird.style.position = 'fixed';
+			bird.style.left = startLeft + 'px';
+			bird.style.top = startTop + 'px';
+			
+			// Find Flick logo position and calculate absolute position
+			const flickLogo = document.querySelector('.flick-logo');
+			let endLeft = absoluteLeft - 600;
+			let endTop = absoluteTop + 600;
+			
+			if (flickLogo) {
+				const flickRect = flickLogo.getBoundingClientRect();
+				// Calculate absolute position (viewport position + scroll offset)
+				endLeft = flickRect.left + window.scrollX + (flickRect.width / 2) - 30;
+				endTop = flickRect.top + window.scrollY - 40;
+			}
+			
+			// Animate using JavaScript
+			const duration = 2500; // 2.5 seconds
+			const startTime = performance.now();
+			
+			function animateBird(currentTime) {
+				const elapsed = currentTime - startTime;
+				const progress = Math.min(elapsed / duration, 1);
+				
+				// Animation path with upward flap then dive
+				let x, y, rotation;
+				if (progress < 0.15) {
+					// Flap upward
+					const flapProgress = progress / 0.15;
+					x = startLeft - (30 * flapProgress);
+					y = startTop - (80 * flapProgress);
+					rotation = -10 * flapProgress;
+				} else if (progress < 0.3) {
+					// Continue upward
+					const flapProgress = (progress - 0.15) / 0.15;
+					x = startLeft - 30 - (30 * flapProgress);
+					y = startTop - 80 - (20 * flapProgress);
+					rotation = -10 - (5 * flapProgress);
+				} else {
+					// Dive down to target (convert to viewport coordinates)
+					const diveProgress = (progress - 0.3) / 0.7;
+					const diveEased = diveProgress * diveProgress; // Accelerate
+					const startDiveX = startLeft - 60;
+					const startDiveY = startTop - 100;
+					// Convert endLeft/endTop from absolute to viewport coordinates
+					const viewportEndLeft = endLeft - window.scrollX;
+					const viewportEndTop = endTop - window.scrollY;
+					x = startDiveX + ((viewportEndLeft - startDiveX) * diveEased);
+					y = startDiveY + ((viewportEndTop - startDiveY) * diveEased);
+					rotation = -15 + (-30 * diveProgress);
+				}
+				
+				bird.style.left = x + 'px';
+				bird.style.top = y + 'px';
+				bird.style.transform = `rotate(${rotation}deg)`;
+				
+				if (progress < 1) {
+					requestAnimationFrame(animateBird);
+				} else {
+					// Animation complete - switch to absolute positioning and idle flapping
+					bird.classList.remove('flying');
+					bird.classList.add('idle');
+					bird.style.position = 'absolute';
+					bird.style.left = endLeft + 'px';
+					bird.style.top = endTop + 'px';
+					bird.style.transform = 'rotate(0deg)';
+				}
+			}
+			
+			requestAnimationFrame(animateBird);
+		}
+	});
+
+	// Reposition if window resized
+	window.addEventListener('resize', function() {
+		if (!birdHasFlown) {
+			positionBird();
+		}
+	});
+</script>
+
+</body>
 </html>
