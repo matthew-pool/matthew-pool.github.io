@@ -1,0 +1,593 @@
+/*
+	Project: Porfolio
+    File: assets/css/styles.css
+    @version: 1.1
+	@author: Matthew Pool
+	@updated: 2025-11-12
+*/
+
+@font-face {
+			font-family: robotoFont;
+			src: url(https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap);
+		}
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f4f4f4;
+			color: black;
+		}
+
+		p {
+			font-size: 16px;
+			line-height: 1.8;
+			margin-bottom: 1em;
+		}
+
+		h1 {
+			font-family: robotoFont;
+			text-align: center;
+			padding: 20px 0;
+			margin: 0;
+		}
+
+		h2 {
+			margin-top: 1.5em;
+			margin-bottom: 0.8em;
+		}
+
+		h3 {
+			margin-top: 1.2em;
+			margin-bottom: 0.6em;
+		}
+
+		h4 {
+			margin-top: 1em;
+			margin-bottom: 0.5em;
+		}
+
+	
+		img {
+			max-width: 100%;
+			height: auto;
+			display: block;
+			margin: 1em auto;
+		}
+
+		#refactor img {
+			margin-left: 0;
+			margin-right: auto;
+		}
+		
+		.ci-images {
+			margin: 1em auto;
+		}
+
+		.ci-images img {
+			margin: 0;
+		}
+
+		/* InventoryBuddy screenshot grid */
+		.buddy-screenshot-grid {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+
+		.buddy-screenshot-grid img {
+			width: 45%;
+			max-width: 300px;
+			height: auto;
+			margin: 10px;
+			box-sizing: border-box;
+		}
+
+	
+		/* Mario images - centered and same width */
+		.mario-image {
+			width: 80%;
+			max-width: 900px;
+			height: auto;
+			display: block;
+			margin: 1em auto;
+		}
+
+		hr {
+			margin: 2em 0;
+			border: none;
+			border-top: 1px solid #ccc;
+		}
+
+		a {
+			color: #0066cc;
+			text-decoration: none;
+		}
+
+		a:hover {
+			text-decoration: underline;
+		}
+
+		/* Tab Navigation */
+		.tab-container {
+			background-color: white;
+			box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+			position: sticky;
+			top: 0;
+			z-index: 1000;
+		}
+
+		.tab-nav {
+			display: flex;
+			justify-content: center;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		.tab-button {
+			flex: 1;
+			max-width: 300px;
+			padding: 18px 30px;
+			background-color: #e0e0e0;
+			border: none;
+			cursor: pointer;
+			font-size: 18px;
+			font-weight: 500;
+			transition: all 0.3s ease;
+			border-bottom: 3px solid transparent;
+		}
+
+		.tab-button:hover {
+			background-color: #d0d0d0;
+		}
+
+		.tab-button.active {
+			background-color: white;
+			border-bottom: 3px solid #0a0094;
+			color: #0a0094;
+		}
+
+		/* Tab Content */
+		.tab-content {
+			display: none;
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 30px 20px;
+			background-color: white;
+			min-height: calc(100vh - 150px);
+		}
+
+		.tab-content.active {
+			display: block;
+		}
+
+		/* Animated gradient keyframes */
+		@keyframes gradientShift {
+			0% {
+				background-position: 0% 50%;
+			}
+			50% {
+				background-position: 100% 50%;
+			}
+			100% {
+				background-position: 0% 50%;
+			}
+		}
+		
+		@keyframes glow {
+			0%, 100% {
+				box-shadow: 0 0 20px rgba(102, 126, 234, 0.4), 
+							0 0 40px rgba(118, 75, 162, 0.3),
+							0 0 60px rgba(240, 147, 251, 0.2);
+			}
+			50% {
+				box-shadow: 0 0 30px rgba(102, 126, 234, 0.6), 
+							0 0 60px rgba(118, 75, 162, 0.5),
+							0 0 90px rgba(240, 147, 251, 0.4);
+			}
+		}
+
+		/* Contact Card */
+		.contact-card {
+			background: linear-gradient(135deg, #667eea, #764ba2, #f093fb, #4facfe, #667eea);
+			background-size: 300% 300%;
+			animation: gradientShift 8s ease infinite, glow 3s ease-in-out infinite;
+			border: 4px solid rgba(255, 255, 255, 0.3);
+			border-radius: 16px;
+			padding: 30px;
+			margin: 20px;
+			text-align: center;
+			position: relative;
+		}
+		
+		.contact-card p {
+			color: white;
+			text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+			font-size: 20px;
+			line-height: normal;
+			margin: 5px 0;
+		}
+		
+		.contact-card b {
+			font-size: 22px;
+		}
+		
+		.contact-card i {
+			font-size: 16px;
+		}
+		
+		.contact-card a {
+			color: #f0f0f0;
+			font-weight: 500;
+			font-size: 16px;
+		}
+		
+		.contact-card a:hover {
+			color: white;
+			text-decoration: none;
+		}
+
+		/* Installation Notice */
+		.install-notice {
+			text-align: center;
+			margin: 15px 0;
+			font-size: 17px;
+			font-weight: 600;
+			color: #333;
+		}
+
+		.install-link {
+			position: relative;
+			color: #0066cc;
+			cursor: help;
+			text-decoration: underline;
+			font-weight: 700;
+		}
+
+		.install-tooltip {
+			visibility: hidden;
+			opacity: 0;
+			position: absolute;
+			bottom: 125%;
+			left: 50%;
+			transform: translateX(-50%);
+			background-color: #333;
+			color: white;
+			padding: 14px 18px;
+			border-radius: 8px;
+			width: 300px;
+			text-align: left;
+			font-size: 14px;
+			line-height: 1.6;
+			z-index: 1000;
+			transition: opacity 0.3s, visibility 0.3s;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+		}
+
+		.install-tooltip::after {
+			content: "";
+			position: absolute;
+			top: 100%;
+			left: 50%;
+			transform: translateX(-50%);
+			border: 8px solid transparent;
+			border-top-color: #333;
+		}
+
+		.install-link:hover .install-tooltip {
+			visibility: visible;
+			opacity: 1;
+		}
+		/* Flick Header */
+		.flick-card {
+			margin-bottom: 20px;
+		}
+
+		.flick-header {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			margin-bottom: 5px;
+		}
+
+		.flick-logo {
+			width: 64px;
+			height: 64px;
+			margin: 0;
+			flex-shrink: 0;
+		}
+
+		.flick-header h2 {
+			margin: 0;
+			line-height: 1;
+		}
+
+		/* Video Container */
+		.video-container {
+		position: relative;
+		overflow: hidden;
+		width: 100%;
+		max-width: 1280px;
+		margin: 20px auto;
+		padding-top: 56.25%;
+		}
+
+		.video-container iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		}
+
+		video {
+			width: 100%;
+			height: auto;
+			max-width: 100%;
+			max-height: 720px;
+		}
+		
+		/* Introduction */
+		.intro-card {
+			background-color: #ffffff;
+			border: 1px solid #ddd;
+			border-radius: 0px;
+			padding: 25px;
+			margin: 20px 0;
+		}
+
+		/* Introduction section list styling */
+		#home ul {
+			margin-left: 40px;
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+
+		#home ul li {
+			margin-bottom: 8px;
+		}
+
+		/* Content Cards */
+		.content-card {
+			background-color: #eee7e7;
+			border: 1px solid #ddd;
+			border-radius: 8px;
+			padding: 25px;
+			margin: 20px 0;
+		}
+
+		.content-card ul {
+			margin-left: 25px;
+		}
+
+		/* Footer Contact */
+		.footer-contact {
+			background-color: #f9f9f9;
+			border: 1px solid #ddd;
+			border-radius: 8px;
+			padding: 25px;
+			margin: 40px 0 20px 0;
+			text-align: center;
+		}
+
+		.footer-contact p {
+			font-size: 18px;
+			line-height: normal;
+			margin: 5px 0;
+		}
+
+		.footer-contact b {
+			font-size: 20px;
+		}
+
+		.footer-contact i {
+			font-size: 16px;
+		}
+
+		.footer-contact a {
+			font-size: 16px;
+		}
+
+		/* Wraps images */ 
+		.image-card {
+			background: #eee7e7;
+			border-radius: 12px;
+			padding: 24px;
+			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+			border: 1px solid #e5e7eb;
+		}
+
+		.image-card:hover {
+			box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+			transition: box-shadow 0.3s ease;
+		}
+
+		.image-card .screenshot-grid {
+			margin: 0;
+		}
+
+		/* Flexbox */
+		.screenshot-grid {
+        	display: flex;
+        	flex-wrap: wrap;
+        	justify-content: center;
+    	}
+
+    	.screenshot-grid img:not([src$="tablet.png"]) {
+        	width: 45%;
+        	max-width: 300px;
+        	height: auto;
+        	margin: 10px;
+        	box-sizing: border-box;
+    	}
+
+    	.screenshot-grid img[src$="tablet.png"] {
+        	width: 90%; 
+        	max-width: 700px;
+        	height: auto;
+        	margin: 10px auto; 
+        	display: block;
+    	}
+
+
+		/* Alt Download link styling */
+		.alt-download-link {
+			position: relative;
+			color: #0066cc;
+			text-decoration: underline;
+			font-weight: 700;
+			cursor: pointer;
+		}
+
+		.alt-download-link:hover {
+			text-decoration: underline;
+		}
+
+		/* Footer - Brushed Metallic Black */
+		.footer-metallic-black {
+			background: linear-gradient(90deg, #1a1a1a 0%, #242424 50%, #1a1a1a 100%);
+			border-radius: 8px;
+			padding: 30px;
+			margin: 20px 0;
+			text-align: center;
+			box-shadow: 
+				0 10px 30px rgba(0, 0, 0, 0.5),
+				inset 0 1px 0 rgba(255, 255, 255, 0.08);
+			position: relative;
+			overflow: hidden;
+		}
+
+		.footer-metallic-black::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-image: repeating-linear-gradient(
+				90deg,
+				transparent,
+				transparent 2px,
+				rgba(255, 255, 255, 0.02) 2px,
+				rgba(255, 255, 255, 0.02) 4px
+			);
+			pointer-events: none;
+		}
+
+		.footer-metallic-black::after {
+			content: '';
+			position: absolute;
+			top: -50%;
+			left: -50%;
+			width: 200%;
+			height: 200%;
+			background: linear-gradient(90deg, transparent 30%, rgba(255, 255, 255, 0.05) 50%, transparent 70%);
+			animation: shine-horizontal-metallic-2 8s infinite;
+		}
+
+		@keyframes shine-horizontal-metallic-2 {
+			0% { left: -100%; }
+			100% { left: 200%; }
+		}
+
+		.footer-metallic-black p {
+			position: relative;
+			z-index: 1;
+			color: #c0c0c0;
+			font-size: 18px;
+			line-height: normal;
+			margin: 5px 0;
+			text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+		}
+
+		.footer-metallic-black b {
+			font-size: 20px;
+		}
+
+		.footer-metallic-black i {
+			font-size: 16px;
+		}
+
+		.footer-metallic-black a {
+			color: #4db8ff;
+			text-decoration: none;
+			font-size: 16px;
+		}
+
+		.footer-metallic-black a:hover {
+			text-decoration: underline;
+		}
+
+		/*----------------------------------------------------------------*/
+		/* Birdie */
+		/*----------------------------------------------------------------*/
+		.bird {
+			position: fixed;
+			z-index: 10000;
+			pointer-events: none;
+			background-color: transparent;
+			border-radius: 50%;
+			padding: 5px;
+			width: 60px;
+			height: 60px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			transition: none;
+		}
+
+		.bird.flying #leftWing {
+			animation: flapLeft 0.15s ease-in-out infinite;
+		}
+
+		.bird.flying #rightWing {
+			animation: flapRight 0.15s ease-in-out infinite;
+		}
+		
+		.bird.idle #leftWing {
+			animation: idleFlapLeft 2s ease-in-out infinite;
+		}
+
+		.bird.idle #rightWing {
+			animation: idleFlapRight 2s ease-in-out infinite;
+		}
+
+		@keyframes flapLeft {
+			0%, 100% {
+				d: path("M 12 20 Q 8 18 6 22");
+			}
+			50% {
+				d: path("M 12 20 Q 8 12 6 8");
+			}
+		}
+
+		@keyframes flapRight {
+			0%, 100% {
+				d: path("M 28 20 Q 32 18 34 22");
+			}
+			50% {
+				d: path("M 28 20 Q 32 12 34 8");
+			}
+		}
+		
+		@keyframes idleFlapLeft {
+			0%, 90%, 100% {
+				d: path("M 12 20 Q 8 18 6 22");
+			}
+			95% {
+				d: path("M 12 20 Q 8 12 6 8");
+			}
+		}
+
+		@keyframes idleFlapRight {
+			0%, 90%, 100% {
+				d: path("M 28 20 Q 32 18 34 22");
+			}
+			95% {
+				d: path("M 28 20 Q 32 12 34 8");
+			}
+		}
