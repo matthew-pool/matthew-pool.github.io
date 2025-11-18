@@ -50,6 +50,7 @@
 			margin-bottom: 0.5em;
 		}
 
+	
 		img {
 			max-width: 100%;
 			height: auto;
@@ -62,6 +63,14 @@
 			margin-right: auto;
 		}
 		
+		.ci-images {
+			margin: 1em auto;
+		}
+
+		.ci-images img {
+			margin: 0;
+		}
+
 		/* InventoryBuddy screenshot grid */
 		.buddy-screenshot-grid {
 			display: flex;
@@ -77,6 +86,7 @@
 			box-sizing: border-box;
 		}
 
+	
 		/* Mario images - centered and same width */
 		.mario-image {
 			width: 80%;
@@ -220,6 +230,57 @@
 			text-decoration: none;
 		}
 
+		/* Installation Notice */
+		.install-notice {
+			text-align: center;
+			margin: 15px 0;
+			font-size: 17px;
+			font-weight: 600;
+			color: #333;
+		}
+
+		.install-link {
+			position: relative;
+			color: #0066cc;
+			cursor: help;
+			text-decoration: underline;
+			font-weight: 700;
+		}
+
+		.install-tooltip {
+			visibility: hidden;
+			opacity: 0;
+			position: absolute;
+			bottom: 125%;
+			left: 50%;
+			transform: translateX(-50%);
+			background-color: #333;
+			color: white;
+			padding: 14px 18px;
+			border-radius: 8px;
+			width: 300px;
+			text-align: left;
+			font-size: 14px;
+			line-height: 1.6;
+			z-index: 1000;
+			transition: opacity 0.3s, visibility 0.3s;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+		}
+
+		.install-tooltip::after {
+			content: "";
+			position: absolute;
+			top: 100%;
+			left: 50%;
+			transform: translateX(-50%);
+			border: 8px solid transparent;
+			border-top-color: #333;
+		}
+
+		.install-link:hover .install-tooltip {
+			visibility: visible;
+			opacity: 1;
+		}
 		/* Flick Header */
 		.flick-card {
 			margin-bottom: 20px;
@@ -276,6 +337,17 @@
 			border-radius: 0px;
 			padding: 25px;
 			margin: 20px 0;
+		}
+
+		/* Introduction section list styling */
+		#home ul {
+			margin-left: 40px;
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+
+		#home ul li {
+			margin-bottom: 8px;
 		}
 
 		/* Content Cards */
@@ -360,7 +432,98 @@
         	display: block;
     	}
 
-		/* Bird styles */
+
+		/* Alt Download link styling */
+		.alt-download-link {
+			position: relative;
+			color: #0066cc;
+			text-decoration: underline;
+			font-weight: 700;
+			cursor: pointer;
+		}
+
+		.alt-download-link:hover {
+			text-decoration: underline;
+		}
+
+		/* Footer - Brushed Metallic Black */
+		.footer-metallic-black {
+			background: linear-gradient(90deg, #1a1a1a 0%, #242424 50%, #1a1a1a 100%);
+			border-radius: 8px;
+			padding: 30px;
+			margin: 20px 0;
+			text-align: center;
+			box-shadow: 
+				0 10px 30px rgba(0, 0, 0, 0.5),
+				inset 0 1px 0 rgba(255, 255, 255, 0.08);
+			position: relative;
+			overflow: hidden;
+		}
+
+		.footer-metallic-black::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-image: repeating-linear-gradient(
+				90deg,
+				transparent,
+				transparent 2px,
+				rgba(255, 255, 255, 0.02) 2px,
+				rgba(255, 255, 255, 0.02) 4px
+			);
+			pointer-events: none;
+		}
+
+		.footer-metallic-black::after {
+			content: '';
+			position: absolute;
+			top: -50%;
+			left: -50%;
+			width: 200%;
+			height: 200%;
+			background: linear-gradient(90deg, transparent 30%, rgba(255, 255, 255, 0.05) 50%, transparent 70%);
+			animation: shine-horizontal-metallic-2 8s infinite;
+		}
+
+		@keyframes shine-horizontal-metallic-2 {
+			0% { left: -100%; }
+			100% { left: 200%; }
+		}
+
+		.footer-metallic-black p {
+			position: relative;
+			z-index: 1;
+			color: #c0c0c0;
+			font-size: 18px;
+			line-height: normal;
+			margin: 5px 0;
+			text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+		}
+
+		.footer-metallic-black b {
+			font-size: 20px;
+		}
+
+		.footer-metallic-black i {
+			font-size: 16px;
+		}
+
+		.footer-metallic-black a {
+			color: #4db8ff;
+			text-decoration: none;
+			font-size: 16px;
+		}
+
+		.footer-metallic-black a:hover {
+			text-decoration: underline;
+		}
+
+		/*----------------------------------------------------------------*/
+		/* Birdie */
+		/*----------------------------------------------------------------*/
 		.bird {
 			position: fixed;
 			z-index: 10000;
@@ -439,7 +602,7 @@
 		<a href="tel:+9035760223"><span style="font-size: 16px;">903-576-0223</span></a></p>
 	</div>
 
-	<!-- Bird SVG - must be before tabs -->
+	<!-- Bird SVG -->
 	<div id="bird" class="bird">
 		<svg width="60" height="60" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
 			<!-- Head -->
@@ -474,15 +637,25 @@
 		</div>
 	</div>
 
-	<!-- Home Tab -->
+	<!-- Home Tab ------------------------------------------------------------------------->
 	<div id="home" class="tab-content active">
 
 		<hr>
 
 		<h2>Introduction</h2>
-		<p>My dreams of becoming a "programmer" started when I was five years old, soon after first playing Super Mario Bros. on the Nintendo Entertainment System (NES). Throughout my Computer Science coursework at Southern New Hampshire University (SNHU), I have gained skills in software engineering and the software development lifecycle (SDLC), automated testing, and security best practices. I've discovered a passion for user experience (UX) design, and I've had the opportunity to delve into cloud development. 
-			I've love developing graphics applications in C++, particularly the Super Mario Bros. (Modern OpenGL) project I created, which has since sparked an interest in VR/AR development; however, I've also enjoyed fullstack development of web apps and mobile apps, too. I've absolutely loved working with machine learning (ML) and can't wait to see what breakthroughs come from it next. I have significantly improved my organizational and project management skills, and I have also greatly enhanced my ability to effectively communicate a wide range of concepts, both technical and non-technical. 
-			This ePortfolio provides a well-organized and user-friendly interface that allows potential employers and other professionals to learn more about me and explore some of my developmental projects.
+		<p>At age five, I fell in love with Super Mario Bros. on Nintendo (NES) and almost immediately wanted to be a programmer. 
+			As the first in my family to earn a four-year degree, I ended up completing my B.S. in Computer Science at SNHU with a <a href="assets/documents/transcript.pdf" target="_blank">3.9 GPA</a>
+			I gained experience in things like:
+			<ul>
+				<li>low-level programming in C/C++</li>
+				<li>fullstack web (and cloud) development with JavaScript</li>
+				<li>mobile and backend development with Java</li>
+				<li>machine learning with Python</li>
+			</ul>
+		</p>
+		<p> I recently engineered a video-streaming Android app (currently in closed testing) named "Flick", which is what the little cute birdie wanted to show you.
+				I can provide technical expertise, clear communication, and a positive attitude. 
+				Whether designing a graphical interface or engineering a complex piece of software, I have a passion for excellence and always give 100% at anything I do. And I'm ready to see what's next!
 		</p>
 		
 		<hr>
@@ -501,8 +674,8 @@
 		
 		<div class="app-description">
 			<h2>Synopsis</h2>
-			<p>Flick is a vertical scrolling video app, similar to TikTok with the added feature of easily finding videos that are significantly similar - all with a single sideways swipe. User feedback is given to the user visually and auditorily in order to educate the user on ways to use the app and to assist in the user's navigation, in order to provide the best user experience from the start. The user can "like" or "Dislike" a video by tapping the torch icon or poop icon (respectively). The video ID and the user's corresponding view time and like/dislike are uploaded to Firestore.</p>
-			<p>The main (vertical) video feed follows a cycle (after a brief warmup period) that serves videos that are most likely to have high view times (or likability) by the user. This is done by tokenizing the metadata from archive.org (where the videos are hosted) using a cosine similarity function that is based on the viewtime and like/dislike of each video. Random videos are still served to the user to allow the user to still "explore" other types of video content. The app prebuffers two upcoming videos, or just one upcoming video if a qualified "similar" video exists for the current index. The last video to be on is saved as a history index to go back to, in case the user "flicks" passed a video and want to go back.</p>
+			<p>Flick is a vertical video app in the style of TikTok with an added discovery feature: a single sideways swipe reveals videos with significant similarity to the current one. Visual and auditory feedback educates users on app functionality and navigation, ensuring an optimal experience from first launch. Users interact via fire (like) and poop (dislike) icons, with video ID, view duration, and preference data uploaded to Firestore.</p>
+			<p>After an initial warmup period, the vertical feed operates on an intelligent cycle that prioritizes videos predicted to generate high engagement. The recommendation engine tokenizes Archive.org metadata and employs cosine similarity calculations weighted by view time and like/dislike ratios. Random content is interspersed to facilitate content discovery beyond the algorithm. The app prebuffers two upcoming videos by default, reducing to one when a qualified similar video exists at the current index. A history index tracks the last-viewed video, enabling users to recover from accidental swipes.</p>
 		</div>
 
 		<hr>
@@ -521,45 +694,124 @@
 				<img src="assets/images/flick/tablet.png" alt="Flick on tablet">
 			</div>
 		</div>
+		<div class="video-container">
+            <iframe 
+                src="https://www.youtube.com/embed/uf4rDe_wInU" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
 
 		<hr>
 
 		<h2 style="margin-bottom: 10px;">Technologies</h2>
 		<div class="content-card" style="margin-top: 15px">
-			<p><strong>Architecture:</strong> MVVM with Jetpack Compose (UI)</p>
+			<p><strong>Architecture:</strong> MVVM with Jetpack Compose</p>
 			<p style="margin-top: -12px;"><strong>Design:</strong> Figma</p>
-			<p style="margin-top: -12px; margin-bottom: -2px;"><strong>Details:</strong></p>
-			<ul style="margin-left: 25px;">
-				<li>Kotlin (Programming Language)</li>
-				<li>ViewModel (State Management)</li>
-				<li>Flow & LiveData (Reactive Data & State Observation)</li>
-				<li>Coroutines (Asynchronous Programming)</li>
-				<li>Hilt (Dependency Injection)</li>
-				<li>DataStore (Local Storage)</li>
-				<li>Media3 ExoPlayer (Video Playback)</li>
-				<li>Retrofit (HTTPS Networking)</li>
-				<li>Moshi (JSON Serialization)</li>
-				<li>Coil (Image Loading)</li>
-				<li>Firebase (Firestore, Crashlytics)</li>
-				<li>MockK (Mocking for Kotlin)</li>
-				<li>JUnit 5 (Unit & Integration Testing)</li>
-				<li>Compose Test Rules (UI Testing)</li>
-				<li>Timber (Logging)</li>
-				<li>Jacoco (Test Coverage)</li>
-				<li>Snyk and OWASP Dependency Checker (CVE & Dependency Security)</li>
-				<li>Android Studio (Lint Static Analysis)</li>
-				<li>Android Studio Profiler (Debug App Performance)</li>
-				<li>archive.org (API / Scraping)</li>
-				<li>GitHub Actions (CI/CD)</li>
-				<li>Google Play Console (App Signing)</li>
+			<p style="margin-top: -12px; margin-bottom: -2px;"><strong>Stack Details:</strong></p>
+			
+			<p style="margin-left: 25px; margin-top: 12px; margin-bottom: 5px;"><strong>Core Technologies</strong></p>
+			<ul style="margin-left: 45px; margin-top: 0;">
+				<li>Kotlin (programming language)</li>
+				<li>Coroutines (asynchronous operations)</li>
+				<li>Hilt (dependency injection)</li>
+			</ul>
+			
+			<p style="margin-left: 25px; margin-top: 10px; margin-bottom: 5px;"><strong>State Management & Reactivity</strong></p>
+			<ul style="margin-left: 45px; margin-top: 0;">
+				<li>ViewModel (state management)</li>
+				<li>Flow (reactive streams)</li>
+				<li>LiveData (observable data)</li>
+				<li>DataStore (local persistence)</li>
+			</ul>
+			
+			<p style="margin-left: 25px; margin-top: 10px; margin-bottom: 5px;"><strong>Networking & Backend Services</strong></p>
+			<ul style="margin-left: 45px; margin-top: 0;">
+				<li>Retrofit (HTTP networking)</li>
+				<li>Moshi (JSON serialization)</li>
+				<li>Firebase Firestore (cloud database)</li>
+				<li>Firebase Crashlytics (error reporting)</li>
+				<li>Archive.org API (video content)</li>
+			</ul>
+			
+			<p style="margin-left: 25px; margin-top: 10px; margin-bottom: 5px;"><strong>Media & UI Resources</strong></p>
+			<ul style="margin-left: 45px; margin-top: 0;">
+				<li>Media3 ExoPlayer (video playback)</li>
+				<li>Coil (image loading)</li>
+			</ul>
+			
+			<p style="margin-left: 25px; margin-top: 10px; margin-bottom: 5px;"><strong>Testing & Coverage</strong></p>
+			<ul style="margin-left: 45px; margin-top: 0;">
+				<li>JUnit 5 (unit & integration tests)</li>
+				<li>MockK (mocking framework)</li>
+				<li>Espresso (UI testing)</li>
+				<li>Compose Test Rules (Compose UI testing)</li>
+				<li>Jacoco (test coverage analysis)</li>
+			</ul>
+			
+			<p style="margin-left: 25px; margin-top: 10px; margin-bottom: 5px;"><strong>Security & Code Quality</strong></p>
+			<ul style="margin-left: 45px; margin-top: 0;">
+				<li>Snyk (vulnerability scanning)</li>
+				<li>OWASP Dependency Checker (dependency security)</li>
+				<li>Android Studio Lint (static analysis)</li>
+			</ul>
+			
+			<p style="margin-left: 25px; margin-top: 10px; margin-bottom: 5px;"><strong>Build & DevOps</strong></p>
+			<ul style="margin-left: 45px; margin-top: 0;">
+				<li>Gradle (build automation)</li>
+				<li>Timber (logging)</li>
+				<li>Android Studio Profiler (performance monitoring)</li>
+				<li>GitHub Actions (continuous integration)</li>
+				<li>Google Play Console (app distribution)</li>
 			</ul>
 		</div>
 
 		<hr>
 
+		<h3>Continuous Integration (CI)</h2>
+		
+		<div class="ci-images">
+			<img src="assets/images/flick/ci1.png" alt="CI tests passed">
+			<img src="assets/images/flick/ci2.png" alt="CI tests completed">
+		</div>
+
+		<hr>
+
+		<!-- Google Play Store CTA -->
+		<div class="play-store-cta">
+            <div class="install-notice">
+                <a href="https://groups.google.com/g/appbuddy-flick" target="_blank" class="install-link">Request Download
+                    <span class="install-tooltip">
+                        <strong>Steps:</strong><br>
+						<ol>
+							<li>Click "Request Download" and wait to be approved</li>
+							<li>After approval, go back to this portfolio page</li>
+							<li>Click the Play Store image (below) to download</li>
+						</ol>
+                    </span>
+                </a>
+            </div>
+			<div class="play-store-content">
+				<a href="https://play.google.com/store/apps/details?id=com.appbuddy.flick" class="play-link">
+					<img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" class="play-badge">
+				</a>
+			</div>
+			<div class="install-notice">
+				<a href="https://play.google.com/apps/test/com.appbuddy.flick/8" class="alt-download-link">Alt Download</a>
+			</div>
+		</div>		
+	
+		<!-- Home Footer -->
+		<div class="footer-metallic-black">
+			<p><i>Try it out if you'd like! The link is literally right there!</i></p>
+			<p style="margin-top: 10px;"><b>Matthew Pool</b><br>
+			<a href="mailto:mathyou.me@gmail.com">mathyou.me@gmail.com</a><br>
+			<a href="tel:+9035760223">903-576-0223</a></p>
+		</div>
 	</div>
 
-	<!-- Projects Tab -->
+	<!-- Projects Tab ---------------------------------------------------------------------->
 	<div id="projects" class="tab-content">
 
 		<hr>
@@ -694,9 +946,17 @@
 		<h4>SDD: <a href="https://github.com/matthew-pool/matthew-pool.github.io/raw/refs/heads/main/assets/documents/System%20Design%20Document%20(SDD)%20%5Bv0.1%5D.pdf">Download</a></h4>
 		
 		<hr>
+
+		<!-- Projects Footer -->
+		<div class="footer-metallic-black">
+			<p><i>Phew. That was a lot to look over!</i> Aren't you tired? I am.</p>
+			<p style="margin-top: 10px;"><b>Matthew Pool</b><br>
+			<a href="mailto:mathyosu.me@gmail.com">mathyou.me@gmail.com</a><br>
+			<a href="tel:+9035760223">903-576-0223</a></p>
+		</div>
 	</div>
 
-	<!-- Refactor Tab -->
+	<!-- Refactor Tab -------------------------------------------------------------------->
 	<div id="refactor" class="tab-content">
 		
 		<hr>
@@ -769,14 +1029,13 @@
 
 		<hr>
 
-	</div>
-
-	<div class="footer-contact">
-		<p><i>Are you still here?!</i> Thank you so much for looking over my portfolio.</p>
-		<p style="margin-top: 7px;">Contact me anytime!</p>
-		<p style="margin-top: 10px;"><b>Matthew Pool</b><br>
-		<a href="mailto:mathyou.me@gmail.com">mathyou.me@gmail.com</a><br>
-		<a href="tel:+9035760223">903-576-0223</a></p>
+		<div class="footer-metallic-black">
+			<p><i>Are you still here?!</i> Thank you so much for looking over my portfolio.</p>
+			<p style="margin-top: 7px;">But in case I don't hear from you, good morning, good evening ,and good night!</p>
+			<p style="margin-top: 10px;"><b>Matthew Pool</b><br>
+			<a href="mailto:mathyou.me@gmail.com">mathyou.me@gmail.com</a><br>
+			<a href="tel:+9035760223">903-576-0223</a></p>
+		</div>
 	</div>
 
 <script>
@@ -947,7 +1206,7 @@
 				const flickRect = flickLogo.getBoundingClientRect();
 				// Calculate absolute position (viewport position + scroll offset)
 				endLeft = flickRect.left + window.scrollX + (flickRect.width / 2) - 30;
-				endTop = flickRect.top + window.scrollY - 40;
+				endTop = flickRect.top + window.scrollY - 28;
 			}
 			
 			// Animate using JavaScript
