@@ -65,7 +65,7 @@ Flick uses Firebase, a service provided by Google LLC. Firebase may collect addi
 
 If you have any questions about this Privacy Policy, please contact us at:
 
-mathyou.me@gmail.com
+appbuddy.flick@gmail.com
 
 ## Consent
 
