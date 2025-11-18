@@ -243,9 +243,21 @@
 		.install-link {
 			position: relative;
 			color: #0066cc;
-			cursor: help;
+			cursor: pointer;
 			text-decoration: underline;
 			font-weight: 700;
+		}
+
+		.play-store-content {
+			text-align: center;
+			margin: 20px 0;
+		}
+
+		.play-link {
+			position: relative;
+			display: inline-block;
+			text-decoration: none;
+			cursor: pointer;
 		}
 
 		.install-tooltip {
@@ -278,10 +290,12 @@
 			border-top-color: #333;
 		}
 
-		.install-link:hover .install-tooltip {
+		.install-link:hover .install-tooltip,
+		.play-link:hover .install-tooltip {
 			visibility: visible;
 			opacity: 1;
 		}
+
 		/* Flick Header */
 		.flick-card {
 			margin-bottom: 20px;
