@@ -72,6 +72,32 @@
 			margin: 0;
 		}
 
+		/* Removes default browser margins from the figure tag */
+		.screenshot-item {
+			margin: 0; 
+			display: flex;
+			flex-direction: column;
+			align-items: center; /* Centers the caption under the image */
+		}
+
+		/* Ensures the image stays responsive inside the figure */
+		.screenshot-item img {
+			width: 100%;
+			height: auto;
+			display: block;
+			border-radius: 8px; /* Optional: Adds rounded corners to images */
+			box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Optional: Adds a subtle shadow */
+		}
+
+		/* Styles the text caption */
+		.screenshot-item figcaption {
+			margin-top: 8px;
+			font-size: 14px;
+			color: #666;
+			text-align: center;
+			font-weight: 500;
+		}
+
 		/* InventoryBuddy screenshot grid */
 		.buddy-screenshot-grid {
 			display: flex;
@@ -87,7 +113,6 @@
 			box-sizing: border-box;
 		}
 
-	
 		/* Mario images - centered and same width */
 		.mario-image {
 			width: 80%;
@@ -424,7 +449,7 @@
 			margin: 0;
 		}
 
-		/* Flexbox */
+		/* Flexbox - Flick Screenshots */
 		.screenshot-grid {
         	display: flex;
         	flex-wrap: wrap;
@@ -432,11 +457,13 @@
     	}
 
     	.screenshot-grid img:not([src$="tablet.png"]) {
-        	width: 45%;
+        	width: 90%;
         	max-width: 300px;
         	height: auto;
         	margin: 10px;
         	box-sizing: border-box;
+			border-radius: 0;
+			box-shadow: none;
     	}
 
     	.screenshot-grid img[src$="tablet.png"] {
@@ -446,7 +473,6 @@
         	margin: 10px auto; 
         	display: block;
     	}
-
 
 		/* Alt Download link styling */
 		.alt-download-link {

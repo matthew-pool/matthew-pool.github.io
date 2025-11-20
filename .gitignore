@@ -9,3 +9,10 @@ NOTES.txt
 
 # Ignore log files
 *.log
+
+assets/videos/
+/videos
+videos/
+
+*.mov
+*.mp4
