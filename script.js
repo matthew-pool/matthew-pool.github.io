@@ -6,18 +6,6 @@
 	@updated: 2025-11-12
 */
 
-	// Reset everything on page load/refresh
-	window.addEventListener('beforeunload', function() {
-		// Scroll to top before page unloads
-		window.scrollTo(0, 0);
-	});
-
-	// Ensure we start at the top on load
-	if (history.scrollRestoration) {
-		history.scrollRestoration = 'manual';
-	}
-	window.scrollTo(0, 0);
-
 	// Bird animation logic
 	let birdHasFlown = false;
 	let isPositioned = false;
