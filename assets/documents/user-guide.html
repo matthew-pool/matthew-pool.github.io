@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flick — User Guide</title>
+    <style>
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --primary-color: #bb86fc;
+            --secondary-color: #03dac6;
+            --text-main: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --border-color: #333;
+            --font-main: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            --font-mono: 'Courier New', Courier, monospace;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: var(--bg-color); color: var(--text-main); font-family: var(--font-main); line-height: 1.6; }
+        
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+        
+        /* Header & Nav */
+        header { text-align: center; margin-bottom: 60px; position: relative; }
+        .nav-link {
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            border: 1px solid var(--secondary-color);
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover { background: rgba(3, 218, 198, 0.1); }
+        @media (max-width: 600px) {
+            .nav-link { position: static; display: block; margin-bottom: 20px; }
+        }
+
+        h1 { font-size: 2.5rem; border-bottom: 2px solid var(--primary-color); display: inline-block; padding-bottom: 10px; margin-bottom: 10px; color: #fff; }
+        h2 { font-size: 1.8rem; margin-top: 40px; color: var(--primary-color); margin-bottom: 1rem;}
+        h3 { font-size: 1.3rem; color: var(--secondary-color); margin-top: 25px; margin-bottom: 15px; }
+        p { margin-bottom: 1rem; color: var(--text-muted); }
+        
+        .intro-box { background-color: var(--card-bg); padding: 20px; border-left: 4px solid var(--primary-color); border-radius: 0 8px 8px 0; margin-bottom: 20px; }
+        .highlight { color: #fff; font-weight: 600; }
+
+        /* Gestures */
+        .gesture-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px; }
+        .gesture-card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; display: flex; align-items: flex-start; gap: 15px; transition: transform 0.2s ease; }
+        .gesture-card:hover { transform: translateY(-3px); border-color: var(--primary-color); }
+        .emoji-icon { font-size: 2rem; background: #2a2a2a; padding: 10px; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        
+        .tech-name { color: #fff; font-weight: 700; font-family: var(--font-mono); display: block; margin-bottom: 5px; }
+        .tech-list { list-style: none; }
+        .tech-item { background-color: var(--card-bg); margin-bottom: 10px; padding: 15px; border-radius: 6px; border-left: 3px solid var(--border-color); }
+
+        footer { text-align: center; margin-top: 80px; padding: 40px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <a href="flick_tech_ref.html" class="nav-link">View Technical Docs &rarr;</a>
+        <h1>Flick</h1>
+        <p style="font-size: 1.2rem; color: #fff;">User Guide</p>
+    </header>
+
+    <section>
+        <p>Welcome to Flick! This guide will help you get started with exploring the app.</p>
+
+        <h3>What is Flick?</h3>
+        <div class="intro-box">
+            <p>Flick is a vertical swiping video app designed for optimized, seamless video discovery. It provides a continuous stream of videos from the vast library of <span class="highlight">archive.org</span>. Flick intermittently feeds the user the most likely video to be enjoyed by that specific user, using metadata weights based on the user’s video likes, dislikes, and view times, all of which are uploaded to a backend cloud environment for analysis of the anonymized data.</p>
+        </div>
+
+        <p><em>"Sometimes when swiping through the never-ending abyss of videos on other apps, I find something that I become super interested in, and then it’s off to random town again."</em></p>
+        
+        <p>What makes Flick unique is its powerful <strong>sideways swipe feature</strong>, which lets you instantly find and explore videos that have a high similarity to the one you're currently watching. So travel through time to the 80s, 90s, and today to find some of the world’s most iconic video recordings in history. Just Flick!</p>
+
+        <h3>How to Navigate</h3>
+        <p>Navigating Flick is simple and intuitive, based on a few core gestures.</p>
+        
+        <div class="gesture-grid">
+            <div class="gesture-card">
+                <div class="emoji-icon">👆</div>
+                <div>
+                    <span class="tech-name">Swipe Up (Next Video)</span>
+                    Swipe up to move to the next video in the main feed. This is your primary way to discover new content.
+                </div>
+            </div>
+
+            <div class="gesture-card">
+                <div class="emoji-icon">👇</div>
+                <div>
+                    <span class="tech-name">Swipe Down (Previous Video)</span>
+                    Swiped up too fast? Swipe down to go back to the last video you were on in the main feed. (You can only go back one step).
+                </div>
+            </div>
+
+            <div class="gesture-card">
+                <div class="emoji-icon">👈</div>
+                <div>
+                    <span class="tech-name">Swipe Left (Find Similar)</span>
+                    If a video has a "sideways" candidate available, swipe left to enter a <strong>"sideways chain."</strong> This is a special feed of videos related to the one you started from.
+                </div>
+            </div>
+
+            <div class="gesture-card">
+                <div class="emoji-icon">👉</div>
+                <div>
+                    <span class="tech-name">Swipe Right (Back in Similar Feed)</span>
+                    While in a sideways chain, swipe right to go back to the previous video within that same chain.
+                </div>
+            </div>
+        </div>
+
+        <h3>Leaving a Sideways Chain</h3>
+        <p>When you're done exploring a sideways chain, you have two options:</p>
+        <ul class="tech-list">
+            <li class="tech-item">
+                <span class="tech-name">Swipe Down</span>
+                This destroys the sideways chain and takes you back to the exact video on the main feed where you first swiped left.
+            </li>
+            <li class="tech-item">
+                <span class="tech-name">Swipe Up</span>
+                This also destroys the chain but advances you to the next video in the main feed, right after the one that started the chain.
+            </li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Matthew Pool. All rights reserved.<br>Flick App Documentation.</p>
+    </footer>
+</div>
+
+</body>
+</html>
