@@ -1,5 +1,5 @@
 /*
-	Project: Porfolio
+	Project: Portfolio
     File: assets/js/script.css
     @version: 1.1
 	@author: Matthew Pool
