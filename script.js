@@ -1,9 +1,9 @@
 /*
 	Project: Portfolio
-    File: assets/js/script.css
-    @version: 1.1
+    File: script.js
+    @version: 1.2
 	@author: Matthew Pool
-	@updated: 2025-11-12
+	@updated: 2025-20-11
 */
 
 	// Bird animation logic
