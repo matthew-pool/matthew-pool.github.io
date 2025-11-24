@@ -11,8 +11,8 @@ A user-centered design was implemented that includes an easy-to-see user interfa
 ![pic6](images/Picture6.png)
 ![pic7](images/Picture7.png)
 ![pic8](images/Picture8.png)
-![pic9](images/Picture9.png)
 ![pic10](images/Picture10.png)
+![pic9](images/Picture9.png)
 
 After beginning the development of this mobile app, I focused on creating a modern MVVM (Model-View-ViewModel) architecture and a Repository pattern. I made sure to implement separation of concerns, asynchronous tasks, reactive and layered UIs, and other modern, robust techniques involving clean and modular code. To ensure code was functional, I statically and dynamically tested the code thoroughly and included try-catch blocks and log messages throughout, as well as considering null and edge cases. While debugging, these try-catch blocks make troubleshooting significantly easier and more effective, as you step through the code a line at a time. At one point, my app would crash immediately upon showing the Android splash screen, and implementing try-catch blocks, as well as custom (enum) error states, were used to overcome challenges like this. I made sure to keep the user at the center of design and development, and I provided the user with a multitude of toast message feedback, which I believe was well executed. The ViewModel class converts LiveData received from the Repository and is then observed by the Activity/Fragment, which supports separation of concerns and a reactive and layered UI, as recommended by Google (Android Developer, n.d.). I look forward to designing and building more innovative and interesting software applications on new and emerging platforms and devices. Thank you for reading!
 
