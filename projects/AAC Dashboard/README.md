@@ -11,14 +11,5 @@ This project utilizes a Model-View-Controller (MVC) software design pattern, usi
 ![pic](images/Picture7.png)
 ![pic](images/Picture8.png)
 
-### To run this web app:
-Must have Python and Jupyter installed 
-* Download and open the "Dash App.ipynb file in VSCode
-* Click "Run" button to the left of the cell block
-* Select "Install/enable suggested extensions: Python + Jupyter"
-* Click "Run" button again
-* Select "Jupyter Kernel..."
-* Select the Python environment to use
-* Install any missing modules using pip or another installation method
-* Select "Run" once again if needed
-* Navigate in your browser to [http://127.0.0.1/](http://127.0.0.1/)
+### Cannot Run: 
+* Server no longer available
