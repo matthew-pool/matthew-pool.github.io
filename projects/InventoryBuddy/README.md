@@ -5,8 +5,8 @@ A user-centered design was implemented that includes an easy-to-see user interfa
 
 ![pic1](images/Picture1.png)
 ![pic2](images/Picture2.png)
-![pic3](images/Picture3.png)
 ![pic4](images/Picture4.png)
+![pic3](images/Picture3.png)
 ![pic5](images/Picture5.png)
 ![pic6](images/Picture6.png)
 ![pic7](images/Picture7.png)
