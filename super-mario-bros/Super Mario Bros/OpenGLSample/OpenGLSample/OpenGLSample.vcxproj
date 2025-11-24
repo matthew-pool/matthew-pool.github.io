@@ -92,11 +92,12 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\Users\mathy\OneDrive\Documents\~coding_projects\CS330\Super Mario Bros %28OpenGL.cpp%29\Super Mario Bros %28OpenGL.cpp%29\OpenGLSample\OpenGLSample\include;C:\Users\mathy\OneDrive\Documents\~coding_projects\CS330\Super Mario Bros %28OpenGL.cpp%29\Super Mario Bros %28OpenGL.cpp%29\OpenGLSample\OpenGLSample\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32.lib;glu32.lib;%(AdditionalDependencies);%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Users\mathy\OneDrive\Documents\~coding_projects\CS330\Super Mario Bros %28OpenGL.cpp%29\Super Mario Bros %28OpenGL.cpp%29\OpenGLSample\OpenGLSample\include\GLEW\lib\Release\Win32;C:\Users\mathy\OneDrive\Documents\~coding_projects\CS330\Super Mario Bros %28OpenGL.cpp%29\Super Mario Bros %28OpenGL.cpp%29\OpenGLSample\OpenGLSample\include;C:\Users\mathy\OneDrive\Documents\~coding_projects\CS330\Super Mario Bros %28OpenGL.cpp%29\Super Mario Bros %28OpenGL.cpp%29\OpenGLSample\OpenGLSample\include;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32.lib;glu32.lib;gdi32.lib;user32.lib;shell32.lib;%(AdditionalDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\GitHubRepositories\matthew-pool.github.io\super-mario-bros\Super Mario Bros\OpenGLSample\OpenGLSample\include\GLFW\lib-vc2022;C:\GitHubRepositories\matthew-pool.github.io\super-mario-bros\Super Mario Bros\OpenGLSample\OpenGLSample\include\GLAD;C:\Users\mathy\OneDrive\Documents\~coding_projects\CS330\Super Mario Bros %28OpenGL.cpp%29\Super Mario Bros %28OpenGL.cpp%29\OpenGLSample\OpenGLSample\include;%(AdditionalLibraryDirectories);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -106,11 +107,12 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\Users\mathy\OneDrive\Documents\~coding_projects\CS330\Super Mario Bros %28OpenGL.cpp%29\Super Mario Bros %28OpenGL.cpp%29\OpenGLSample\OpenGLSample\include;</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Users\mathy\OneDrive\Documents\~coding_projects\CS330\Super Mario Bros %28OpenGL.cpp%29\Super Mario Bros %28OpenGL.cpp%29\OpenGLSample\OpenGLSample\include\GLEW\lib\Release\Win32;C:\Users\mathy\OneDrive\Documents\~coding_projects\CS330\Super Mario Bros %28OpenGL.cpp%29\Super Mario Bros %28OpenGL.cpp%29\OpenGLSample\OpenGLSample\include;</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32.lib;glu32.lib;gdi32.lib;user32.lib;shell32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\GitHubRepositories\matthew-pool.github.io\super-mario-bros\Super Mario Bros\OpenGLSample\OpenGLSample\include\GLFW\lib-vc2022;C:\GitHubRepositories\matthew-pool.github.io\super-mario-bros\Super Mario Bros\OpenGLSample\OpenGLSample\include\GLAD;;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -122,13 +124,14 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\Users\mathy\OneDrive\Documents\~coding_projects\CS330\Super Mario Bros %28OpenGL.cpp%29\Super Mario Bros %28OpenGL.cpp%29\OpenGLSample\OpenGLSample\include;C:\Users\mathy\OneDrive\Documents\~coding_projects\CS330\Super Mario Bros %28OpenGL.cpp%29\Super Mario Bros %28OpenGL.cpp%29\OpenGLSample\OpenGLSample\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32.lib;glu32.lib;$(CoreLibraryDependencies);%(AdditionalDependencies);%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Users\mathy\OneDrive\Documents\~coding_projects\CS330\Super Mario Bros %28OpenGL.cpp%29\Super Mario Bros %28OpenGL.cpp%29\OpenGLSample\OpenGLSample\include\GLEW\lib\Release\Win32;C:\Users\mathy\OneDrive\Documents\~coding_projects\CS330\Super Mario Bros %28OpenGL.cpp%29\Super Mario Bros %28OpenGL.cpp%29\OpenGLSample\OpenGLSample\include;C:\Users\mathy\OneDrive\Documents\~coding_projects\CS330\Super Mario Bros %28OpenGL.cpp%29\Super Mario Bros %28OpenGL.cpp%29\OpenGLSample\OpenGLSample\include;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32.lib;glu32.lib;gdi32.lib;user32.lib;shell32.lib;$(CoreLibraryDependencies);%(AdditionalDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\GitHubRepositories\matthew-pool.github.io\super-mario-bros\Super Mario Bros\OpenGLSample\OpenGLSample\include\GLFW\lib-vc2022;C:\GitHubRepositories\matthew-pool.github.io\super-mario-bros\Super Mario Bros\OpenGLSample\OpenGLSample\include\GLAD;C:\Users\mathy\OneDrive\Documents\~coding_projects\CS330\Super Mario Bros %28OpenGL.cpp%29\Super Mario Bros %28OpenGL.cpp%29\OpenGLSample\OpenGLSample\include;%(AdditionalLibraryDirectories);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -140,13 +143,14 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\Users\mathy\OneDrive\Documents\~coding_projects\CS330\Super Mario Bros %28OpenGL.cpp%29\Super Mario Bros %28OpenGL.cpp%29\OpenGLSample\OpenGLSample\include;</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Users\mathy\OneDrive\Documents\~coding_projects\CS330\Super Mario Bros %28OpenGL.cpp%29\Super Mario Bros %28OpenGL.cpp%29\OpenGLSample\OpenGLSample\include\GLEW\lib\Release\Win32;C:\Users\mathy\OneDrive\Documents\~coding_projects\CS330\Super Mario Bros %28OpenGL.cpp%29\Super Mario Bros %28OpenGL.cpp%29\OpenGLSample\OpenGLSample\include;</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32.lib;glu32.lib;gdi32.lib;user32.lib;shell32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\GitHubRepositories\matthew-pool.github.io\super-mario-bros\Super Mario Bros\OpenGLSample\OpenGLSample\include\GLFW\lib-vc2022;C:\GitHubRepositories\matthew-pool.github.io\super-mario-bros\Super Mario Bros\OpenGLSample\OpenGLSample\include\GLAD;;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
