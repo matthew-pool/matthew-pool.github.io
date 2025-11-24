@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\GitHubRepositories\\matthew-pool.github.io\\super-mario-bros\\Super Mario Bros\\OpenGLSample\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{22239802-6F08-4A9A-9FF6-DD4D2D7CB8BD}|OpenGLSample\\OpenGLSample.vcxproj|C:\\GitHubRepositories\\matthew-pool.github.io\\super-mario-bros\\Super Mario Bros\\OpenGLSample\\OpenGLSample\\camera.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{22239802-6F08-4A9A-9FF6-DD4D2D7CB8BD}|OpenGLSample\\OpenGLSample.vcxproj|solutionrelative:OpenGLSample\\camera.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22239802-6F08-4A9A-9FF6-DD4D2D7CB8BD}|OpenGLSample\\OpenGLSample.vcxproj|C:\\GitHubRepositories\\matthew-pool.github.io\\super-mario-bros\\Super Mario Bros\\OpenGLSample\\OpenGLSample\\super_mario_bros.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{22239802-6F08-4A9A-9FF6-DD4D2D7CB8BD}|OpenGLSample\\OpenGLSample.vcxproj|solutionrelative:OpenGLSample\\super_mario_bros.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "camera.h",
+              "DocumentMoniker": "C:\\GitHubRepositories\\matthew-pool.github.io\\super-mario-bros\\Super Mario Bros\\OpenGLSample\\OpenGLSample\\camera.h",
+              "RelativeDocumentMoniker": "OpenGLSample\\camera.h",
+              "ToolTip": "C:\\GitHubRepositories\\matthew-pool.github.io\\super-mario-bros\\Super Mario Bros\\OpenGLSample\\OpenGLSample\\camera.h",
+              "RelativeToolTip": "OpenGLSample\\camera.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-11-24T08:04:05.255Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "super_mario_bros.cpp",
+              "DocumentMoniker": "C:\\GitHubRepositories\\matthew-pool.github.io\\super-mario-bros\\Super Mario Bros\\OpenGLSample\\OpenGLSample\\super_mario_bros.cpp",
+              "RelativeDocumentMoniker": "OpenGLSample\\super_mario_bros.cpp",
+              "ToolTip": "C:\\GitHubRepositories\\matthew-pool.github.io\\super-mario-bros\\Super Mario Bros\\OpenGLSample\\OpenGLSample\\super_mario_bros.cpp",
+              "RelativeToolTip": "OpenGLSample\\super_mario_bros.cpp",
+              "ViewState": "AgIAADwAAAAAAAAAAAAAwAMAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-11-24T07:37:14.491Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
