@@ -20,3 +20,10 @@ References:
 Android Developer. (n.d.). Modern App Architecture. Google. https://developer.android.com/topic/architecture#modern-app-architecture. 
 WebAIM. (n.d.) Contrast Checker. https://webaim.org/resources/contrastchecker/. 
 World Wide Web Consortium (W3C). (n.d.). https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum. 
+
+
+#### To Run:
+1. Download APK
+2. Transfer to Android device (usb debugging mode active)
+3. Install
+4. Run
