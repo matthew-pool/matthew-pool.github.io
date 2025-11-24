@@ -6,6 +6,6 @@ In this project, I've recreated a classic scene from Nintendo's Super Mario Bros
 ![Super Mario Bros](images/mario2.png)
 
 ### TO RUN:
-1.	Download project as a ZIP
+1.	Download project ZIP
 2.	Extract ZIP
-3.	Open "RUN TO START" in project root directory
+3.	Run "SuperMarioBros.exe (shortcut)" in project root directory
