@@ -189,6 +189,39 @@
 			display: block;
 		}
 
+		/* Main Button Style */
+		.btn-try {
+		display: block;
+		width: fit-content;
+		margin: 20px auto;
+		padding: 10px 20px;
+		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+		color: white;
+		border-radius: 25px;
+		font-weight: bold;
+		box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+		transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+		/* IMPORTANT: These two lines remove the underline from the button text */
+		text-decoration: none !important; 
+		border-bottom: none; 
+		}
+
+		/* Ensure underline stays off when hovering */
+		.btn-try:hover {
+		text-decoration: none !important;
+		transform: translateY(-2px);
+		box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+		color: white;
+		}
+
+		/* Icon Style - Isolates the emoji from text styles */
+		.btn-icon {
+		display: inline-block; /* This breaks the text-decoration line */
+		text-decoration: none; 
+		margin-left: 5px; /* Adds the space here instead of in HTML for better control */
+		}
+
 		/* Navigation Gesture Cards - Dark Theme Section */
 		.gesture-grid {
 			display: grid;
