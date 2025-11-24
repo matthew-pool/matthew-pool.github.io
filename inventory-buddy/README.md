@@ -23,7 +23,6 @@ World Wide Web Consortium (W3C). (n.d.). https://www.w3.org/WAI/WCAG21/Understan
 
 
 #### To Run:
-1. Download APK
-2. Transfer to Android device (usb debugging mode active)
-3. Install
-4. Run
+1. Download APK on Android device
+2. Install
+3. Run
