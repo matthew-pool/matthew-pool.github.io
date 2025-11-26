@@ -1,16 +1,70 @@
 /*
 	Project: Portfolio
     File: script.js
-    @version: 1.2
 	@author: Matthew Pool
-	@updated: 2025-20-11
 */
+	/* Email */
+	function copyEmail(button) {
+		navigator.clipboard.writeText('mathyou.me@gmail.com').then(() => {
+			showToast(button);
+		});
+	}
+	
+	function showToast(button) {
+		// Find the toast container (parent span)
+		const container = button.parentElement.querySelector('.toast-container');
+		if (!container) return;
+		
+		// Remove existing toast if any
+		const existingToast = container.querySelector('.toast');
+		if (existingToast) {
+			existingToast.remove();
+		}
+		
+		// Create and show new toast
+		const toast = document.createElement('span');
+		toast.className = 'toast';
+		toast.textContent = 'copied';
+		
+		container.appendChild(toast);
+		
+		// Trigger animation
+		setTimeout(() => toast.classList.add('show'), 10);
+		
+		// Remove after 1 second
+		setTimeout(() => {
+			toast.classList.remove('show');
+			setTimeout(() => toast.remove(), 200);
+		}, 500);
+	}
 
 	// Bird animation logic
 	let birdHasFlown = false;
 	let isPositioned = false;
 	let isReady = false;
 	const bird = document.getElementById('bird');
+
+
+	// Dark mode toggle
+	const themeToggle = document.getElementById('themeToggle');
+	const body = document.body;
+
+	// Check for saved theme preference
+	const savedTheme = localStorage.getItem('theme');
+	if (savedTheme === 'dark') {
+		body.classList.add('dark-mode');
+	}
+
+	themeToggle.addEventListener('click', () => {
+		body.classList.toggle('dark-mode');
+		
+		// Save preference
+		if (body.classList.contains('dark-mode')) {
+			localStorage.setItem('theme', 'dark');
+		} else {
+			localStorage.setItem('theme', 'light');
+		}
+	});
 
 	function openTab(evt, tabName) {
 		// Hide all tab contents
