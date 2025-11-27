@@ -38,6 +38,24 @@
 		}, 500);
 	}
 
+	// Reset bird state on page load
+	window.addEventListener('load', function() {
+		birdHasFlown = false;
+		isPositioned = false;
+		isReady = false;
+		
+		// Reset bird classes
+		bird.classList.remove('flying', 'idle');
+		
+		// Reposition bird
+		positionBird();
+		
+		// Mark as ready after delay
+		setTimeout(() => {
+			isReady = true;
+		}, 1000);
+	});
+
 	// Bird animation logic
 	let birdHasFlown = false;
 	let isPositioned = false;
