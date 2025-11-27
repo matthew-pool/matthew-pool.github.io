@@ -82,6 +82,18 @@
 			border-color: #444;
 		}
 
+		body.dark-mode .tab-container {
+			background-color: #1a1a1a;
+		}
+
+		body.dark-mode .flick-card p {
+			color: #e0e0e0 !important;
+		}
+
+		body.dark-mode .screenshot-item figcaption {
+			color: #e0e0e0;
+		}
+
 		body.dark-mode hr {
 			border-top-color: #444;
 		}
@@ -185,13 +197,18 @@
 			margin-left: 0;
 			margin-right: auto;
 		}
-		
+
 		.ci-images {
 			margin: 1em auto;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
 		}
 
 		.ci-images img {
 			margin: 0;
+			width: 100%;
+			max-width: 1200px;
 		}
 
 		/* Removes default browser margins from the figure tag */
@@ -565,9 +582,13 @@
 			background: linear-gradient(135deg, #2a3a6e, #3a2651, #5a3a6a, #2a5a7e, #2a3a6e);
 			background-size: 300% 300%;
 			animation: gradientShift 8s ease infinite, glow 3s ease-in-out infinite;
-			border: 4px solid rgba(100, 100, 100, 0.5);
+			border: 4px solid rgba(255, 255, 255, 0.71);
 		}
 	
+		body.dark-mode .contact-card button svg {
+			stroke: rgba(255, 255, 255, 0.9);
+		}
+
 		.contact-card b {
 			font-size: 22px;
 		}
