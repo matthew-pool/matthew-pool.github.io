@@ -10,6 +10,15 @@
 		});
 	}
 	
+	/* Directions popup */
+	function showDirections() {
+		document.getElementById('directionsPopup').classList.add('show');
+	}
+
+	function hideDirections() {
+		document.getElementById('directionsPopup').classList.remove('show');
+	}
+
 	function showToast(button) {
 		// Find the toast container (parent span)
 		const container = button.parentElement.querySelector('.toast-container');
