@@ -259,30 +259,37 @@
 		<!-- Google Play Store CTA -->
 		<div class="play-store-cta">
 			<div class="play-store-content">
+				<h3>Try it now before the official release.</h3>
+				<a href="javascript:void(0);" class="directions-link" onclick="showDirections()">Directions</a>
+				<br>
 				<a href="https://groups.google.com/g/appbuddy-flick" class="play-link">
 					<img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" class="play-badge">
-					<span class="install-tooltip">
-						<strong><i>Try Flick!</i></strong><br>
-						<ol>
-							<li>From an <strong>Android device</strong>,<br>
-								click the <strong>Google Play</strong> image below
-							</li>
-							<li>Click <strong>Join</strong></li>
-							<li>Click <strong>Join Group</strong></li>
-							<li>Click the <strong>Google Play</strong> link in the group post</li>
-							<li>Click <strong>Install</strong></li>
-						</ol>
-					</span>
 				</a>
 			</div>
-		</div>	
+		</div>
+
+		<!-- Directions Popup -->
+		<div id="directionsPopup" class="directions-popup-overlay" onclick="hideDirections()">
+			<div class="directions-popup">
+				<strong><i>Try Flick!</i></strong><br>
+				<ol>
+					<li>From an <strong>Android device</strong>,<br>
+						tap the <strong>Google Play</strong> image below
+					</li>
+					<li>Tap <strong>Join</strong></li>
+					<li>Tap <strong>Join Group</strong></li>
+					<li>Tap the <strong>Google Play</strong> link in the group post</li>
+					<li>Tap <strong>Install</strong></li>
+				</ol>
+			</div>
+		</div>
 
 		<!-- Home Footer -->
 		<div class="footer-metallic-black">
-			<p><i>Try it out if you'd like! The link is literally right there! <br></i>Hover over the Google Play image for more info.</p>
+			<p><i>Try it out if you'd like! The link is literally right there! <br></i>Tap the "Directions" link for details.</p>
 			<p style="margin-top: 10px;"><b>Matthew Pool</b><br>
 			<span style="display: inline-block; position: relative;">
-				<a href="mailto:mathyou.me@gmail.com">mathyou.me@gmail.com</a>
+				<a href="mailto:mathyou.me@gmail.com"><span style="font-size: 16px;">mathyou.me@gmail.com</span></a>
 				<button onclick="copyEmail(this, 'light')" style="background: none; border: none; cursor: pointer; padding: 4px; display: inline-flex; align-items: center; opacity: 0.7; transition: opacity 0.2s; position: absolute; top: 50%; transform: translateY(-50%); margin-left: 4px;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
 					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.9)" stroke-width="2">
 						<rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
@@ -291,7 +298,7 @@
 				</button>
 				<span class="toast-container"></span>
 			</span><br>
-			<a href="tel:+9035760223">903-576-0223</a></p>
+			<a href="tel:+9035760223"><span style="font-size: 16px;">903-576-0223</span></a></p>
 		</div>
 	</div>
 	
@@ -457,10 +464,11 @@
 
 		<!-- Projects Footer -->
 		<div class="footer-metallic-black">
-			<p><i>Phew. That was a lot to look over!</i> Aren't you tired? <br>I am.</p>
+			<p><i>Phew. That was a lot to look over!</i><br>
+				<i>Aren't you tired?</i> I am.</p>
 			<p style="margin-top: 10px;"><b>Matthew Pool</b><br>
 			<span style="display: inline-block; position: relative;">
-				<a href="mailto:mathyou.me@gmail.com">mathyou.me@gmail.com</a>
+				<a href="mailto:mathyou.me@gmail.com"><span style="font-size: 16px;">mathyou.me@gmail.com</span></a>
 				<button onclick="copyEmail(this)" style="background: none; border: none; cursor: pointer; padding: 4px; display: inline-flex; align-items: center; opacity: 0.7; transition: opacity 0.2s; position: absolute; top: 50%; transform: translateY(-50%); margin-left: 4px;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
 					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.9)" stroke-width="2">
 						<rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
@@ -469,7 +477,7 @@
 				</button>
 				<span class="toast-container"></span>
 			</span><br>
-			<a href="tel:+9035760223">903-576-0223</a></p>
+			<a href="tel:+9035760223"><span style="font-size: 16px;">903-576-0223</span></a></p>
 		</div>
 	</div>
 
@@ -554,11 +562,11 @@
 
 		<!-- Refactor Footer -->
 		<div class="footer-metallic-black">
-			<p><i>Are you still here?! Thank you so much for looking over my portfolio.</i></p>
-			<p style="margin-top: 7px;">But in case I don't hear from you, good morning, good evening, and good night!</p>
+			<p><i>Are you still here?!</i> Thank you so much for looking over my portfolio.</p>
+			<p style="margin-top: 7px;">I give everything I am into everything I do. Give me a chance. You won't regret it.</p>
 			<p style="margin-top: 10px;"><b>Matthew Pool</b><br>
 			<span style="display: inline-block; position: relative;">
-				<a href="mailto:mathyou.me@gmail.com">mathyou.me@gmail.com</a>
+				<a href="mailto:mathyou.me@gmail.com"><span style="font-size: 16px;">mathyou.me@gmail.com</span></a>
 				<button onclick="copyEmail(this)" style="background: none; border: none; cursor: pointer; padding: 4px; display: inline-flex; align-items: center; opacity: 0.7; transition: opacity 0.2s; position: absolute; top: 50%; transform: translateY(-50%); margin-left: 4px;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
 					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.9)" stroke-width="2">
 						<rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
@@ -567,7 +575,7 @@
 				</button>
 				<span class="toast-container"></span>
 			</span><br>
-			<a href="tel:+9035760223">903-576-0223</a></p>
+			<a href="tel:+9035760223"><span style="font-size: 16px;">903-576-0223</span></a></p>
 		</div>
 	</div>
 
