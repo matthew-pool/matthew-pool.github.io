@@ -85,7 +85,8 @@
 		<h2>Introduction</h2>
 		<p>At age five, I fell in love with Super Mario Bros. on Nintendo (NES) and almost immediately wanted to be a programmer. 
 			As the first in my family to earn a four-year degree, I ended up completing my B.S. in Computer Science with a <a href="assets/documents/transcript.pdf" class="guide-link" target="_blank">3.9 GPA</a>.
-			I gained experience in things like:
+			<br>
+			Throughout my software development journey, I gained experience in things like:
 			<ul>
 				<li>graphics and low-level programming with C/C++</li>
 				<li>fullstack web (and cloud) development with HTML, CSS, JavaScript, and TypeScript</li>
@@ -95,7 +96,7 @@
 			</ul>
 		</p>
 		<p> I recently designed and engineered a video-streaming Android app (currently on a Google Play Store test track) named "Flick", which is what the little cute birdie wanted to show you.
-				I can provide technical expertise, clear communication, and a positive attitude. 
+				I can provide technical expertise, clear communication, and a positive attitude every day. 
 				Whether designing a graphical interface or engineering a complex piece of software, I have a passion for excellence and always give 100% at anything I do. And I'm ready to see what's next!
 		</p>
 		
@@ -115,8 +116,16 @@
 		
 		<div class="app-description">
 			<h2>Synopsis</h2>
-			<p>Flick is a vertical video app in the style of TikTok with an added discovery feature: a single sideways swipe reveals videos with significant similarity to the current one. Visual and auditory feedback educates users on app functionality and navigation, ensuring an optimal experience from first launch. Users interact via fire (like) and poop (dislike) icons, with video ID, view duration, and preference data uploaded to Firestore.</p>
-			<p>After an initial warmup period, the vertical feed operates on an intelligent cycle that prioritizes videos predicted to generate high engagement. The recommendation engine tokenizes Archive.org metadata and employs cosine similarity calculations weighted by view time and like/dislike ratios. Random content is interspersed to facilitate content discovery beyond the algorithm. The app prebuffers two upcoming videos by default, reducing to one when a qualified similar video exists at the current index. A history index tracks the last-viewed video, enabling users to recover from accidental swipes.</p>
+			<p><i>Flick</i> is a vertical video app similar in style to TikTok but with an added feature: a single sideways swipe reveals videos with significant similarity to the current video you are watching. 
+				Visual and auditory feedback educates users on app functionality and navigation, ensuring an optimal experience on the first launch. 
+				Users interact via fire (like) and poop (dislike) icons, with video ID, view duration, and preference data uploaded to Firestore.
+				The user can use basic gestures to increase playback speed or pause and unpause the video. 
+			</p>
+			<p>After an initial warmup period, the vertical feed operates on an intelligent cycle that prioritizes serving videos predicted to generate the highest engagement from that user. 
+				The recommendation engine tokenizes Archive.org metadata and employs cosine similarity calculations weighted by view time and like/dislike ratios. 
+				Random content is interspersed to facilitate content discovery beyond this algorithm. 
+				The app prebuffers two upcoming videos by default, reducing to one when a qualified similar video exists at the current index and needs to be preloaded. 
+				A history index tracks the last viewed video, enabling users to instantaneously recover from accidental swipes.</p>
 		</div>
 
 		<hr>
@@ -144,7 +153,7 @@
 				</figure>
 
 				<figure class="screenshot-item">
-					<figcaption>Static Effect</figcaption>
+					<figcaption>Static TV Effect</figcaption>
 					<img src="assets/images/flick/screen5.png" alt="TV static screen">
 				</figure>
 
@@ -159,7 +168,7 @@
 				</figure>
 
 				<figure class="screenshot-item">
-					<figcaption>Swipe Left Hint</figcaption>
+					<figcaption>Left Swipe Hint</figcaption>
 					<img src="assets/images/flick/screen12.png" alt="Left arrow hint">
 				</figure>
 
@@ -186,7 +195,7 @@
 		<div class="content-card" style="margin-top: 15px">
 			<p><strong>Architecture:</strong> MVVM with Jetpack Compose</p>
 			<p style="margin-top: -12px;"><strong>Design:</strong> Figma</p>
-			<p style="margin-top: -12px; margin-bottom: -2px;"><strong>Stack Details:</strong></p>
+			<p style="margin-top: -12px; margin-bottom: -2px;"><strong>Stack:</strong></p>
 			
 			<p style="margin-left: 25px; margin-top: 12px; margin-bottom: 5px;"><strong>Core Technologies</strong></p>
 			<ul style="margin-left: 45px; margin-top: 0;">
@@ -246,7 +255,7 @@
 
 		<hr>
 
-		<h3>Continuous Integration (CI)</h2>
+		<h2>Continuous Integration (CI)</h2>
 		<div class="image-card">
 			<div class="ci-images">
 				<img src="assets/images/flick/ci1.png" alt="CI tests passed">
@@ -286,7 +295,7 @@
 
 		<!-- Home Footer -->
 		<div class="footer-metallic-black">
-			<p><i>Try it out if you'd like! The link is literally right there! <br></i>Tap "Directions" for details.</p>
+			<p><i>Try it out! The link is literally right there! <br></i>Tap "Directions" for details.</p>
 			<p style="margin-top: 10px;"><b>Matthew Pool</b><br>
 			<span style="display: inline-block; position: relative;">
 				<a href="mailto:mathyou.me@gmail.com"><span style="font-size: 16px;">mathyou.me@gmail.com</span></a>
@@ -309,8 +318,8 @@
 
 		<h2>Super Mario Bros. (C++)</h2>
         <p>In this project, I recreated a classic scene from Nintendo's original Super Mario Bros. using OpenGL, GLFW, GLSL, and GLM.
-			I created a Phong lighting model with multiple light sources. I optimized rendering pipeline with VAO/VBO/EBO buffers.
-			I hardcoded all objects and (aside from the cylinder) all shapes. I	implemented shaders and created all meshes and textures.
+			I created a Phong lighting model with multiple light sources and optimized the rendering pipeline using VAO/VBO/EBO buffers.
+			I hardcoded all objects and (aside from the cylinder) all shapes. I	customized shaders and created all meshes and textures.
             Then, I positioned and scaled these resources in 3D space and integrated navigation with the option to switch between an orthogonal view and a standard perspective view.
         </p>
 
@@ -326,11 +335,10 @@
 
 		<hr>
 
-		<h2>InventoryBuddy (Android)</h2>
-		<p> I focused on creating a modern MVVM (Model-View-ViewModel) architecture with a repository pattern. 
-			InventoryBuddy allows users to build and keep a personal inventory of items they wish to track.			
-			The user can optionally enable SMS notifications to receive warnings when any of their items are running low.
-			I used industry-standard contrast ratios and color combinations to aid in accessibility and provide a positive user experience.
+		<h2>InventoryBuddy (Android Demo)</h2>
+		<p> InventoryBuddy allows users to build and maintain a personal digital inventory of items.			
+			The user can (optionally) enable SMS notifications to receive warnings when any of their items are running low.
+			I ensured that I used industry-standard contrast ratios and culturally-neutral color combinations to aid in accessibility and provide a more positive and inclusive user experience for anyone who tries the app.
 		</p>
 
 		<hr>
@@ -353,10 +361,10 @@
 		<hr>
 
 		<h2>Austin Animal Center - Dashboard (Python)</h2>
-		<p>This project utilized a Model-View-Controller (MVC) software design pattern, using a Dash dashboard, a MongoDB database, and Pandas for data manipulation. 
+		<p>This project utilized a Model-View-Controller (MVC) design pattern and used a (Dash) dashboard, MongoDB database, and Pandas for data manipulation. 
 			The dashboard is designed to interact with the Austin Animal Center (AAC) "animals" collection, which holds basic information about the cats and dogs that the AAC currently houses. 
 			This dashboard integrates with the MonogDB CRUD module I created, which abstracts away the tedious nature of connecting to a MongoDB database and executing basic CRUD (Create, Read, Update, Delete) operations. Unit testing was implemented using pytest.
-			The user can create new documents to insert into the "animals" collection of the AAC database, view documents in the database by using custom query filters, and update and delete documents based on matching queries.
+			The user can create new documents and insert them into the "animals" collection, view documents in the database by using custom query filters, or use matching queries to update and delete documents.
 		</p>
 
 		<hr>
@@ -372,8 +380,8 @@
 
 		<hr>
 
-		<h2>AWS Cloud Development</h2>
-		<p>Check out my 10 minute slideshow presentation video below to learn about cloud services and serverless functions.</p>
+		<h2>Cloud Development (AWS)</h2>
+		<p>Check out my 10 minute slideshow presentation video below to learn about cloud services and serverless functions with Amazon Web Services (AWS).</p>
 		
 		<div class="video-container">
 			<iframe 
@@ -387,7 +395,8 @@
 		<hr>
 
 		<h2>Travel Website Demo (HTML/CSS/TS)</h2>
-		<p>The admin site and customer-facing site were created using the Model-View-Controller (MVC) architecture and the MEAN (Mongo-Express-Angular-Node) stack, along with Bootstrap CSS and Handlebars, with API endpoints tested with Postman. The admin can add or edit various vacation packages from a single-page application (SPA), and the customer may view various packages and meals or read the latest blog posts on the site.</p>
+		<p>The admin site and customer-facing site were created using the MVC (Model-View-Controller) architecture and the MEAN (Mongo-Express-Angular-Node.js) stack, along with Bootstrap CSS and Handlebars. API endpoints were tested using Postman. 
+			The admin can add or edit various vacation packages from a single-page application (SPA), and the customer may view various packages and meals or read the latest blog posts on the site.</p>
 		
 		<hr>
 
@@ -404,7 +413,7 @@
 
 		<hr>
 
-		<h2>Data Analysis</h2>
+		<h2>Data Analysis (MySQL, SQL, NoSQL, MongoDB)</h2>
 		<h3>Data Analysis Certificate</h3>
 		<p>As part of an experiential learning opportunity I took advantage of, I was able to receive this certificate for data analytics from uCertify.</p>
 
@@ -424,12 +433,14 @@
 		<hr>
 
 		<h3>Machine Learning (Python)</h3>
-		<p>Working with a Deep Neural Network (DNN) model, I experimented with various hyperparameter values to find the optimal settings for image detection before reaching the point of diminishing returns in terms of visual quality vs. the resources needed.</p>
+		<p>Working with a Deep Neural Network (DNN) model, I experimented with various hyperparameter values to find the optimal settings for image detection before reaching the point of diminishing returns in terms of image recognition accuracy versus the amount of time and training data needed.</p>
 		<div class="image-card">
 			<img src="assets/images/ml1.png" alt="ML training summary output">
 			<img src="assets/images/ml2.png" alt="ML output statistics">
 		</div>
 		
+		<br>
+
 		<p>I also had the experience of optimizing a Deep Q-Learning (DQN) model for a gaming AI agent whose goal was to find the optimized path to its target. The report can be downloaded below.</p>
 		
 		<h4>Machine Learning (DQN) Report: <a href="assets/documents/Deep%20Q-Learning%20Network%20Report.pdf">Download</a></h4>
@@ -487,16 +498,20 @@
 		<hr>
 
 		<h2>Program Enhancements</h2>
-		<p>This school project required students to choose an application we wrote at the very beginning of our computer science program. The Java command-line program I chose looked like it could use some help (to put it politely).
-			This is a brief summary of the changes implemented in this poor,<strong><i> HOPELESS</i></strong> application.
-			None taken. No offense, Past Me. <br>But wait! Is there yet a shimmer of hope after all...</p>
+		<p>This school project required students to choose a piece of software that they wrote at the beginning of the computer science program and improve it.
+			I chose an old Java command-line program that I made in one of my first computer science class I had taken. I picked it because it looked like it could use a little help (to put it lightly).
+			This is a brief summary of the changes implemented in this poor,<strong><i> HOPELESS</i></strong> application.<br><br>
+			
+			None taken.<br>No offense, "Past Me". <br><br>
+			
+			But wait! Is there yet a shimmer of hope remaining after all...</p>
 			
 		<hr>
 
 		<h3>Project Details</h3>
 		<p>This is a text-based program that keeps track of certain rescue animals. 
-			The user can add new animals using their name and other attributes - but only to temporary storage. 
-			The user can also print out a list of dogs, monkeys or all non-reserved animals.
+			The user can add new animals using their names and other attributes but only to temporary storage. 
+			The user can also print out a list of dogs, monkeys, or all non-reserved animals.
 		</p>
 
 		<img src="assets/images/new11.png" alt="System menu">
@@ -507,8 +522,8 @@
 
 		<h3>Software Engineering & Design Enhancements</h3>
 		<p>I decided to implement input validation, error-checking, and JUnit testing, as well as JavaDocs and other basic refactoring. 
-			I implemented a more traditional user interface by customizing text colors and styles, as well as adding a standard header.
-			I have improved both the overall user experience and the robustness of the program. 
+			I created a more user-friendly interface by customizing the text colors and styles and adding ANSI escape codes to make headers so that the program is more visually appealing with clearer separation of the displayed elements.
+			I've improved both the overall user experience and the robustness of the program. 
 		</p>
 				
 		<h4>Added JavaDocs</h4>
@@ -535,21 +550,21 @@
 
 		<hr>
 
-		<h3>Database Enhancement</h3>
+		<h3>Database Enhancements</h3>
 		<p>I knew this program could really benefit from database implementation. This would allow saving records to persistent storage, instead of temporary memory that is lost when program execution terminates. To start, I created a database for dogs and a database for monkeys using hash maps with MapDB. I used the animal name as the key and the animal instance as the value. Any time the user adds an animal, the animal is added to both temporary memory and persistent storage. 
-			At initial program execution, the records in permanent storage are loaded into the in-program data structures to ensure fast access and efficiency. Now, the animal objects persist across program executions, and valuable information is not lost. Hooray!
+			At initial program execution, the records in permanent storage are loaded into the in-program data structures to ensure fast access and efficiency. Now, the animal data persists across program executions, and the program finally provides the user with real-world functionality.  Hooray!
 		</p>
 		
 		<h4>Added Persistent Storage:</h4>
 		<img src="assets/images/new18.png" alt="MapDB imports">
 		<img src="assets/images/new7.png" alt="MapDB and HTreeMap implementation">
 		
-		<h3>Data Structure & Algorithm Enhancement</h3>
-		<p>In terms of algorithmic efficiency and optimization, this program could use some minor tweaking. I ended up converting my main lists (dogList and monkeyList) from an ArrayList data type to a LinkedHashMap type. A LinkedHashMap uses key-value pairs and a doubly-linked list. This brings the worst-case time complexity down from O(n) to O(log n), where n is the number of animals in the list or map (respectively). In my new maps, I used the animal names as the keys and the associated animal instances as the values. I ended up using the entrySet method on the hash maps (dogMap and monkeyMap) to iterate through the values of each. 
+		<h3>Algorithmic Efficiency Enhancements</h3>
+		<p>In terms of algorithmic efficiency and optimization, this program could use some minor tweaking. I ended up converting my main lists (dogList and monkeyList) from an ArrayList data type to a LinkedHashMap type. A LinkedHashMap uses key-value pairs and a doubly-linked list, which brings the worst-case time complexity down from <i>O(n)</i> to <i>O(log n)</i>, where <i>n</i> is the number of animals in the list or map. In my new maps, I used the animal names as the keys and the associated animal instances as the values. I ended up using the entrySet method on the hash maps (dogMap and monkeyMap) to iterate through the values of each. 
 			I also took advantage of the forEach method with a lambda expression to easily print out various instance values.
 		</p>
 				
-		<h4>Optimized from O(n) down to O(log n) worst-case time complexity:</h4>
+		<h4>Optimized from <i>O(n)</i> down to <i>O(log n)</i> worst-case time complexity:</h4>
 		<img src="assets/images/new5.png" alt="LinkedHashMap declarations">
 		<img src="assets/images/new17.png" alt="Writing to the hash map">
 
@@ -563,7 +578,7 @@
 		<!-- Refactor Footer -->
 		<div class="footer-metallic-black">
 			<p><i>Are you still here?!</i> Thank you so much for looking over my portfolio.</p>
-			<p style="margin-top: 7px;">I give everything I am into everything I do. Give me a chance. You won't regret it.</p>
+			<p style="margin-top: 7px;">I give everything I am into everything I do. Give me a chance.<br>You won't regret it.</p>
 			<p style="margin-top: 10px;"><b>Matthew Pool</b><br>
 			<span style="display: inline-block; position: relative;">
 				<a href="mailto:mathyou.me@gmail.com"><span style="font-size: 16px;">mathyou.me@gmail.com</span></a>
