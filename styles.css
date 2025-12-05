@@ -8,6 +8,7 @@
 			src: url(https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap);
 		}
 
+		
 		* {
 			margin: 0;
 			padding: 0;
@@ -255,6 +256,53 @@
 			margin: 0;
 			width: 100%;
 			max-width: 1200px;
+		}
+
+		/* Container for the text and title inside the button */
+.badge-text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1;
+}
+
+/* The Button Itself */
+.web-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background-color: #000; /* Black background like Play Store */
+    border: 2px solid #a855f7; /* Purple border to match theme */
+    color: white;
+    padding: 8px 20px;
+    border-radius: 8px; /* Slightly rounded corners */
+    text-decoration: none;
+    transition: all 0.3s ease;
+    
+    /* Approximate size of a standard store badge */
+    min-width: 180px; 
+    height: 55px; 
+}
+
+		/* Hover Effects */
+		.web-badge:hover {
+			background-color: #2d1b4e; /* Dark purple background on hover */
+			transform: translateY(-2px);
+			box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4); /* Purple glow */
+			color: white;
+		}
+
+		/* Text Sizing */
+		.badge-small {
+			font-size: 0.7rem;
+			text-transform: uppercase;
+			opacity: 0.9;
+		}
+
+		.badge-large {
+			font-size: 1.2rem;
+			font-weight: bold;
+			font-family: sans-serif;
 		}
 
 		/* Removes default browser margins from the figure tag */
