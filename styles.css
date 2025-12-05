@@ -259,30 +259,30 @@
 		}
 
 		/* Container for the text and title inside the button */
-.badge-text-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    line-height: 1;
-}
+		.badge-text-container {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			line-height: 1;
+		}
 
-/* The Button Itself */
-.web-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    background-color: #000; /* Black background like Play Store */
-    border: 2px solid #a855f7; /* Purple border to match theme */
-    color: white;
-    padding: 8px 20px;
-    border-radius: 8px; /* Slightly rounded corners */
-    text-decoration: none;
-    transition: all 0.3s ease;
-    
-    /* Approximate size of a standard store badge */
-    min-width: 180px; 
-    height: 55px; 
-}
+		/* The Button Itself */
+		.web-badge {
+			display: inline-flex;
+			align-items: center;
+			gap: 12px;
+			background-color: #000; /* Black background like Play Store */
+			border: 2px solid #a855f7; /* Purple border to match theme */
+			color: white;
+			padding: 8px 20px;
+			border-radius: 8px; /* Slightly rounded corners */
+			text-decoration: none;
+			transition: all 0.3s ease;
+			
+			/* Approximate size of a standard store badge */
+			min-width: 180px; 
+			height: 55px; 
+		}
 
 		/* Hover Effects */
 		.web-badge:hover {
