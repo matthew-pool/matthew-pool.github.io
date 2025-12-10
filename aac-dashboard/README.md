@@ -12,4 +12,4 @@ This project utilizes a Model-View-Controller (MVC) software design pattern, usi
 ![pic](images/Picture8.png)
 
 ### Cannot Run: 
-* Server no longer available
+* No longer have server access
