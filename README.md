@@ -97,12 +97,15 @@ This portfolio and its contents may be downloaded and used for:
 - Reproduction or redistribution for business purposes
 - Using this code or content in professional products or services
 
-For any commercial use inquiries, contact me directly at the phone number or email listed below.
+For any commercial use inquiries, contact me at the phone number or email listed below.
 
-## 🔗 Quick Links*
-* 🌐 **Portfolio:** [matthew-pool.github.io](https://matthew-pool.github.io)
-* 📧 **Email:** [mathyou.me@gmail.com](mailto:mathyou.me@gmail.com)
-* 📱 **Phone:** [+1 (903) 576-0223](tel:+19035760223)
+## 🔗 Quick Links
+
+| | | |
+| :--- | :--- | :--- |
+| 🌐 | **Portfolio** | [matthew-pool.github.io](https://matthew-pool.github.io) |
+| 📧 | **Email** | [mathyou.me@gmail.com](mailto:mathyou.me@gmail.com) |
+| 📱 | **Phone** | [+1 (903) 576-0223](tel:+19035760223) |
 
 ---
 
