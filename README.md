@@ -81,11 +81,47 @@ matthew-pool.github.io/
 - Interactive gestures and visual feedback
 - Comprehensive test coverage with JUnit and Espresso
 
+## 🚀 Getting Started
+
+### Local Development
+
+1. **Download the repository**
+   ```bash
+   git clone https://github.com/matthew-pool/matthew-pool.github.io.git
+   cd matthew-pool.github.io
+   ```
+
+2. **Open in browser**
+   - Simply open `index.html` in your web browser
+   - Or use a local server for best results:
+   ```bash
+   # Using Python
+   python -m http.server 8000
+   
+   # Using Node.js
+   npx http-server
+   ```
+
+3. **View the site**
+   - Navigate to `http://localhost:8000` in your browser
+
 ## 📄 License
 
 © 2025 Matthew Pool. All Rights Reserved.
 
-This portfolio and all associated code, content, and assets are proprietary and confidential. No part of this repository may be reproduced, distributed, or used without explicit written permission from the author.
+**Personal and Educational Use Only**
+
+This portfolio and its contents may be downloaded and used for:
+- Personal learning and education
+- Academic purposes and study
+- Inspiration for your own projects
+
+**Prohibited Uses:**
+- Commercial or corporate use of any kind
+- Reproduction or redistribution for business purposes
+- Using this code or content in professional products or services
+
+For any commercial use inquiries, please contact me directly.
 
 ## 📧 Contact
 
