@@ -254,7 +254,7 @@
 				const flickRect = flickLogo.getBoundingClientRect();
 				// Calculate absolute position (viewport position + scroll offset)
 				endLeft = flickRect.left + window.scrollX + (flickRect.width / 2) - 30;
-				endTop = flickRect.top + window.scrollY - 28;
+				endTop = flickRect.top + window.scrollY - 36;
 			}
 			
 			// Animate using JavaScript
