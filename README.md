@@ -101,8 +101,8 @@ For any commercial use inquiries, contact me directly at the phone number or ema
 
 ## 🔗 Quick Links*
 * 🌐 **Portfolio:** [matthew-pool.github.io](https://matthew-pool.github.io)
-* 📱 **Phone:** [+1 (903) 576-0223](tel:+19035760223)
 * 📧 **Email:** [mathyou.me@gmail.com](mailto:mathyou.me@gmail.com)
+* 📱 **Phone:** [+1 (903) 576-0223](tel:+19035760223)
 
 ---
 
