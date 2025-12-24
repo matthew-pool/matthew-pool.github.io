@@ -101,11 +101,9 @@ For any commercial use inquiries, contact me at the phone number or email listed
 
 ## 🔗 Quick Links
 
-| | | |
-| :--- | :--- | :--- |
-| 🌐 | **Portfolio** | [matthew-pool.github.io](https://matthew-pool.github.io) |
-| 📧 | **Email** | [mathyou.me@gmail.com](mailto:mathyou.me@gmail.com) |
-| 📱 | **Phone** | [+1 (903) 576-0223](tel:+19035760223) |
+* 🌐 **Portfolio** &nbsp;&nbsp; [matthew-pool.github.io](https://matthew-pool.github.io)
+* 📧 **Email** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [mathyou.me@gmail.com](mailto:mathyou.me@gmail.com)
+* 📱 **Phone** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [+1 (903) 576-0223](tel:+19035760223)
 
 ---
 
