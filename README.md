@@ -4,9 +4,9 @@ A modern, interactive portfolio website showcasing software development projects
 
 ![Portfolio Banner](assets/images/flick/banner.png)
 
-## 🌟 Live Demo
+## 🌟 Portfolio
 
-Visit my portfolio for a more streamlined experience and see my new Android app "Flick": 
+Visit my portfolio website for a more streamlined experience and to see my new Android app, "Flick": 
 [matthew-pool.github.io](https://matthew-pool.github.io)
 
 ## 📋 Overview
@@ -82,29 +82,6 @@ matthew-pool.github.io/
 - Interactive gestures and visual feedback
 - Comprehensive test coverage with JUnit and Espresso
 
-## 🚀 Getting Started
-
-### Local Development
-
-1. **Download the repository**
-   ```bash
-   git clone https://github.com/matthew-pool/matthew-pool.github.io.git
-   cd matthew-pool.github.io
-   ```
-
-2. **Open in browser**
-   - Simply open `index.html` in your web browser
-   - Or use a local server for best results:
-   ```bash
-   # Using Python
-   python -m http.server 8000
-   
-   # Using Node.js
-   npx http-server
-   ```
-
-3. **View the site**
-   - Navigate to `http://localhost:8000` in your browser
 
 ## 📄 License
 
@@ -114,8 +91,8 @@ matthew-pool.github.io/
 
 This portfolio and its contents may be downloaded and used for:
 - Personal learning and education
-- Academic purposes and study
-- Inspiration for your own projects
+- Academic purposes
+- Employer/Employee hiring purposes
 
 **Prohibited Uses:**
 - Commercial or corporate use of any kind
@@ -127,15 +104,9 @@ For any commercial use inquiries, please contact me directly.
 ## 📧 Contact
 
 **Matthew Pool**
-- Email: mathyou.me@gmail.com
+- Phone: [+1 (903) 576-0223](tel:+19035760223)
+- Email: [mathyou.me@gmail.com](mailto:mathyou.me@gmail.com)
 - Portfolio: [matthew-pool.github.io](https://matthew-pool.github.io)
-
-## 🙏 Acknowledgments
-
-- Inspired by modern web design trends
-- Cardinal bird animation created with SVG
-- Google Play badge from Google Brand Resources
-- Font: Roboto from Google Fonts
 
 ---
 
