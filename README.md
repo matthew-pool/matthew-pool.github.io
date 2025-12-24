@@ -99,14 +99,12 @@ This portfolio and its contents may be downloaded and used for:
 
 For any commercial use inquiries, contact me directly at the phone number or email listed below.
 
-## <img src="https://cdn-icons-png.flaticon.com/512/606/606203.png" width="30"> Portfolio
-[![Portfolio](https://img.shields.io/badge/Portfolio-Matthew_Pool-orange?style=for-the-badge&logo=react)](https://matthew-pool.github.io)
+* 🌐 **Portfolio:** [matthew-pool.github.io](https://matthew-pool.github.io)
 
 ## 📬 Contact Me
 
-[![Phone](https://img.shields.io/badge/Phone-903--576--0223-green?style=for-the-badge&logo=whatsapp)](https://wa.me/19035760223)
-[![Email](https://img.shields.io/badge/Email-Contact%20Me-blue?style=for-the-badge&logo=gmail)](mailto:mathyou.me@gmail.com)
-
+* 📱 **Phone:** [+1 (903) 576-0223](tel:+19035760223)
+* 📧 **Email:** [mathyou.me@gmail.com](mailto:mathyou.me@gmail.com)
 
 ---
 
