@@ -6,7 +6,8 @@ A modern, interactive portfolio website showcasing software development projects
 
 ## 🌟 Live Demo
 
-Visit the live portfolio: [matthew-pool.github.io](https://matthew-pool.github.io)
+Visit my portfolio for a more streamlined experience and see my new Android app "Flick": 
+[matthew-pool.github.io](https://matthew-pool.github.io)
 
 ## 📋 Overview
 
