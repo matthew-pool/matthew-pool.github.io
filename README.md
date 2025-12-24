@@ -104,7 +104,7 @@ For any commercial use inquiries, please contact me directly.
 ## 📧 Contact
 
 **Matthew Pool**
-- Phone: [+1 (903) 576-0223](tel:+19035760223)
+- Phone: <a href="tel:+19035760223">+1 (903) 576-0223</a>
 - Email: [mathyou.me@gmail.com](mailto:mathyou.me@gmail.com)
 - Portfolio: [matthew-pool.github.io](https://matthew-pool.github.io)
 
