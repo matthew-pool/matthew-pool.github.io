@@ -1,8 +1,3 @@
-### Bachelor of Science in Computer Science (Dec 2024)
-
-Please check out my [portfolio](https://matthew-pool.github.io) for a more streamlined and interactive experience and to check out my new app "Flick".
-
-
 # Matthew Pool - Portfolio Website
 
 A modern, interactive portfolio website showcasing software development projects and technical expertise across mobile, web, and data science domains.
@@ -76,71 +71,6 @@ matthew-pool.github.io/
 └── README.md               # This file
 ```
 
-## 🚀 Getting Started
-
-### Local Development
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/matthew-pool/matthew-pool.github.io.git
-   cd matthew-pool.github.io
-   ```
-
-2. **Open in browser**
-   - Simply open `index.html` in your web browser
-   - Or use a local server for best results:
-   ```bash
-   # Using Python
-   python -m http.server 8000
-   
-   # Using Node.js
-   npx http-server
-   ```
-
-3. **View the site**
-   - Navigate to `http://localhost:8000` in your browser
-
-### Deployment
-
-This site is designed for GitHub Pages deployment:
-
-1. Push to the `main` branch
-2. Enable GitHub Pages in repository settings
-3. Select `main` branch as source
-4. Site will be live at `https://matthew-pool.github.io`
-
-## 🎨 Customization
-
-### Changing Theme Colors
-
-Edit the gradient colors in `styles.css`:
-
-```css
-.contact-card {
-    background: linear-gradient(135deg, #667eea, #764ba2, #f093fb, #4facfe, #667eea);
-}
-```
-
-### Modifying the Bird Animation
-
-Adjust bird flight parameters in `script.js`:
-
-```javascript
-const duration = 2500; // Flight duration in milliseconds
-endTop = flickRect.top + window.scrollY - 43; // Landing position
-```
-
-### Dark Mode Colors
-
-Update dark mode styles in `styles.css`:
-
-```css
-body.dark-mode {
-    background-color: #1a1a1a;
-    color: #e0e0e0;
-}
-```
-
 ## 📱 Featured Project: Flick
 
 **Flick** is a vertical video streaming Android app featuring:
@@ -151,21 +81,11 @@ body.dark-mode {
 - Interactive gestures and visual feedback
 - Comprehensive test coverage with JUnit and Espresso
 
-[Try Flick on Google Play Test Track](https://groups.google.com/g/appbuddy-flick)
-
-## 🤝 Contributing
-
-While this is a personal portfolio, suggestions and feedback are welcome:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/suggestion`)
-3. Commit your changes (`git commit -m 'Add suggestion'`)
-4. Push to the branch (`git push origin feature/suggestion`)
-5. Open a Pull Request
-
 ## 📄 License
 
-This project is open source and available under the [MIT License](LICENSE).
+© 2025 Matthew Pool. All Rights Reserved.
+
+This portfolio and all associated code, content, and assets are proprietary and confidential. No part of this repository may be reproduced, distributed, or used without explicit written permission from the author.
 
 ## 📧 Contact
 
