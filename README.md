@@ -6,8 +6,7 @@ A modern, interactive portfolio website showcasing software development projects
 
 ## 🌟 Portfolio
 
-Visit my portfolio website for a more streamlined experience and to see my new Android app, "Flick": 
-[matthew-pool.github.io](https://matthew-pool.github.io)
+Visit my portfolio website for a more streamlined experience and to see my new Android app, "Flick": [matthew-pool.github.io](https://matthew-pool.github.io)
 
 ## 📋 Overview
 
@@ -87,8 +86,7 @@ matthew-pool.github.io/
 
 © 2025 Matthew Pool. All Rights Reserved.
 
-**Personal and Educational Use Only**
-
+**Terms of Use**
 This portfolio and its contents may be downloaded and used for:
 - Personal learning and education
 - Academic purposes
@@ -99,7 +97,7 @@ This portfolio and its contents may be downloaded and used for:
 - Reproduction or redistribution for business purposes
 - Using this code or content in professional products or services
 
-For any commercial use inquiries, please contact me directly.
+For any commercial use inquiries, contact me directly at the phone number or email listed below.
 
 ## <img src="https://cdn-icons-png.flaticon.com/512/606/606203.png" width="30"> Portfolio
 [![Portfolio](https://img.shields.io/badge/Portfolio-Matthew_Pool-orange?style=for-the-badge&logo=react)](https://matthew-pool.github.io)
