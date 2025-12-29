@@ -19,10 +19,11 @@ This portfolio website features a clean, professional design with three main sec
 ## ✨ Key Features
 
 ### Interactive Elements
-- **Animated Bird**: A delightful cardinal animation that flies from the navigation to introduce featured projects
-- **Dark Mode Toggle**: Smooth theme switching with shimmer animation and persistent preference storage
+- **Animated Bird**: An attention-grabbing cardinal bird animation that redirects the user from the initial focal by flying down to the next significant focal point upon user scroll
+- **Dark Mode Toggle**: Smooth theme switching with shimmer animation and persistent preference storage (Try it out!)
 - **Responsive Design**: Fully optimized for desktop, tablet, and mobile viewing
 - **Tab Navigation**: Sticky tab bar for seamless content exploration
+- **Easy Links**: Links for contact info, viewing various repos, and downloading code and documents conveniently placed throughout
 
 ### Portfolio Highlights
 - Comprehensive project documentation with screenshots and demos
@@ -74,13 +75,11 @@ matthew-pool.github.io/
 ## 📱 Featured Project: Flick
 
 **Flick** is a vertical video streaming Android app featuring:
-- Intelligent recommendation engine using cosine similarity
-- Archive.org integration for vintage content
-- Firebase Firestore backend
-- Smooth video prebuffering
+- AI-powered recommendation engine based on user behavior
+- Archive.org API integration to provide users with free content
+- Firebase Firestore and Crashlytics implementation
+- Smooth video prebuffering for a zippy experience
 - Interactive gestures and visual feedback
-- Comprehensive test coverage with JUnit and Espresso
-
 
 ## 📄 License
 
@@ -106,7 +105,5 @@ For any commercial use inquiries, contact me at the phone number or email listed
 * 📱 **Phone** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [+1 (903) 576-0223](tel:+19035760223)
 
 ---
-
-**Note**: This portfolio showcases real projects developed during my Computer Science degree program and personal development journey. Each project demonstrates specific technical skills and problem-solving abilities. Feel free to explore the individual project repositories for detailed documentation and source code.
 
 *Made with ❤️ by Matthew Pool*
