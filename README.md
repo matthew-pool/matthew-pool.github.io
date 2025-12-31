@@ -19,7 +19,7 @@ This portfolio website features a clean, professional design with three main sec
 ## ✨ Key Features
 
 ### Interactive Elements
-- **Animated Bird**: An attention-grabbing cardinal bird animation that redirects the user from the initial focal by flying down to the next significant focal point upon user scroll
+- **Animated Bird**: SVG-created cardinal bird animation that redirects the user from the initial focal point by flying down to the next significant focal point upon user scroll
 - **Dark Mode Toggle**: Smooth theme switching with shimmer animation and persistent preference storage (Try it out!)
 - **Responsive Design**: Fully optimized for desktop, tablet, and mobile viewing
 - **Tab Navigation**: Sticky tab bar for seamless content exploration
@@ -29,7 +29,7 @@ This portfolio website features a clean, professional design with three main sec
 - Comprehensive project documentation with screenshots and demos
 - Live project links and GitHub repository access
 - Detailed technical stack breakdowns
-- CI/CD pipeline demonstrations
+- CI pipeline demonstrations
 - Interactive external projects (The Existence Paradox)
 
 ## 🛠️ Technologies Used
@@ -49,9 +49,9 @@ This portfolio website features a clean, professional design with three main sec
 
 ### Projects Showcased
 - **Mobile**: Kotlin, Android SDK, Jetpack Compose, MVVM Architecture
-- **Web**: TypeScript, React, Angular, Node.js, Express, HTML/CSS
+- **Web**: TypeScript, React, Angular, Node.js, Express, HTML, CSS, JS
 - **Backend**: Python, Java, MongoDB, MySQL, Firebase
-- **Graphics**: C++, OpenGL, GLSL, GLFW
+- **Graphics**: C++, OpenGL, GLSL, GLFW, Material Design, Figma
 - **Data Science**: Python, Pandas, NumPy, Matplotlib, Machine Learning
 
 ## 📁 Project Structure
