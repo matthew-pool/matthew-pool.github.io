@@ -92,11 +92,29 @@
 		}
 
 		body.dark-mode .screenshot-item figcaption {
-			color: #e0e0e0;
+			color: #ffffff;
 		}
 
 		body.dark-mode hr {
-			border-top-color: #444;
+			border-top-color: #ffffff;
+		}
+
+		/* Dark background for card containing Figma images (white text needs dark bg in both modes) */
+		.content-card:has(img[src*="figma-"]) {
+			background-color: #333333;
+		}
+
+		body.dark-mode .content-card:has(img[src*="figma-"]) {
+			background-color: #333333;
+		}
+
+		/* Dark background for card containing CI images in both light and dark mode */
+		.image-card:has(.ci-images) {
+			background-color: #010409;
+		}
+
+		body.dark-mode .image-card:has(.ci-images) {
+			background-color: #010409;
 		}
 
 		/* Theme Toggle */
@@ -271,25 +289,39 @@
 			display: inline-flex;
 			align-items: center;
 			gap: 12px;
-			background-color: #000; /* Black background like Play Store */
-			border: 2px solid #a855f7; /* Purple border to match theme */
-			color: white;
+			background-color: #000 !important; /* Black background like Play Store */
+			border: 2px solid #a855f7 !important; /* Purple border to match theme */
+			color: white !important;
 			padding: 8px 20px;
 			border-radius: 8px; /* Slightly rounded corners */
 			text-decoration: none;
 			transition: all 0.3s ease;
+			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 			
 			/* Approximate size of a standard store badge */
 			min-width: 180px; 
 			height: 55px; 
 		}
 
+		/* Ensure button looks the same in dark mode */
+		body.dark-mode .web-badge {
+			background-color: #000 !important;
+			border: 2px solid #a855f7 !important;
+			color: white !important;
+		}
+
 		/* Hover Effects */
 		.web-badge:hover {
-			background-color: #2d1b4e; /* Dark purple background on hover */
+			background-color: #2d1b4e !important; /* Dark purple background on hover */
 			transform: translateY(-2px);
-			box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4); /* Purple glow */
-			color: white;
+			box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4) !important; /* Purple glow */
+			color: white !important;
+		}
+
+		body.dark-mode .web-badge:hover {
+			background-color: #2d1b4e !important;
+			box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4) !important;
+			color: white !important;
 		}
 
 		/* Text Sizing */
@@ -372,7 +404,7 @@
 		.screenshot-item figcaption {
 			margin-top: 8px;
 			font-size: 14px;
-			color: #666;
+			color: #ffffff;
 			text-align: center;
 			font-weight: 500;
 		}
@@ -613,7 +645,7 @@
 		}
 
 		.tech-item {
-			background-color: #1e1e1e;
+			background-color: #333333;
 			margin-bottom: 10px;
 			padding: 15px;
 			border-radius: 6px;
@@ -865,6 +897,36 @@
 			margin: 5px 0;
 		}
 
+		/* Dark Info Card */
+		.dark-flick-header-card {
+			background-color: #010409;
+			border: 1px solid #a1a1a1;
+			border-radius: 8px;
+			padding: 25px;
+			margin: 20px 0;
+			color: #ffffff;
+		}
+
+		.dark-flick-header-card p {
+			color: #0f0f0f;
+		}
+
+		.dark-flick-header-card ul {
+			margin-left: 40px;
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+
+		.dark-flick-header-card ul li {
+			margin-bottom: 8px;
+			color: #ffffff;
+		}
+
+		body.dark-mode .dark-info-card {
+			background-color: #010409;
+			border-color: #30363d;
+		}
+		
 		.footer-contact b {
 			font-size: 20px;
 		}
@@ -879,7 +941,7 @@
 
 		/* Wraps images */ 
 		.image-card {
-			background: #eee7e7;
+			background: #262626;
 			border-radius: 12px;
 			padding: 24px;
 			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -893,6 +955,25 @@
 
 		.image-card .screenshot-grid {
 			margin: 0;
+		}
+
+		/* Project image cards - for Projects tab only */
+		.project-image-card {
+			background: #eee7e7;
+			border-radius: 12px;
+			padding: 24px;
+			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+			border: 1px solid #e5e7eb;
+		}
+
+		.project-image-card:hover {
+			box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+			transition: box-shadow 0.3s ease;
+		}
+
+		body.dark-mode .project-image-card {
+			background-color: #333333;
+			border-color: #444;
 		}
 
 		/* Flexbox - Flick Screenshots */
