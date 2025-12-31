@@ -19,11 +19,11 @@ This portfolio website features a clean, professional design with three main sec
 ## ✨ Key Features
 
 ### Interactive Elements
-- **Animated Bird**: SVG-created cardinal bird animation that redirects the user from the initial focal point by flying down to the next significant focal point upon user scroll
+- **Animated Bird**: SVG bird animation that redirects the user to the next significant focal point, upon user scroll
 - **Dark Mode Toggle**: Smooth theme switching with shimmer animation and persistent preference storage (Try it out!)
 - **Responsive Design**: Fully optimized for desktop, tablet, and mobile viewing
 - **Tab Navigation**: Sticky tab bar for seamless content exploration
-- **Easy Links**: Links for contact info, viewing various repos, and downloading code and documents conveniently placed throughout
+- **Easy Links**: Links for contact info, repos, and downloading code and documents conveniently placed throughout
 
 ### Portfolio Highlights
 - Comprehensive project documentation with screenshots and demos
@@ -65,7 +65,7 @@ matthew-pool.github.io/
 ├── inventory-buddy/        # Android inventory management demo app
 ├── java-enhancements/      # Refactored Java rescue animal tracking system
 ├── super-mario-bros/       # C++ OpenGL recreation of classic Nintendo scene
-├── travel-web-app/         # MEAN stack travel website with admin SPA
+├── travel-web-app/         # MEAN stack travel booking website with admin SPA
 ├── index.html              # Main portfolio webpage
 ├── script.js               # Interactive animations and bird flight logic
 ├── styles.css              # Responsive styling with dark mode support
@@ -102,7 +102,7 @@ For any commercial use inquiries, contact me at the phone number or email listed
 
 * 🌐 **Portfolio** &nbsp;&nbsp; [matthew-pool.github.io](https://matthew-pool.github.io)
 * 📧 **Email** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [mathyou.me@gmail.com](mailto:mathyou.me@gmail.com)
-* 📱 **Phone** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [+1 (903) 576-0223](tel:+19035760223)
+* 📱 **Phone** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [+1 (903) 576-0223](tel:+1 (903) 576-0223)
 
 ---
 
