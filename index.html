@@ -1,9 +1,9 @@
 <!--
 	Project: Portfolio
     File: index.html
-    @version: 1.6
+    @version: 1.7
 	@author: Matthew Pool
-	@updated: 2025-12-24
+	@updated: 2025-12-31
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -83,6 +83,7 @@
 		<hr>
 
 		<h2>Introduction</h2>
+
 		<p>At age five, I fell in love with Super Mario Bros. on Nintendo (NES) and almost immediately wanted to be a programmer. 
 			As the first in my family to earn a four-year degree, I ended up completing my B.S. in Computer Science with a <a href="assets/documents/transcript.pdf" class="guide-link" target="_blank">3.9 GPA</a>.
 			<br>
@@ -99,33 +100,36 @@
 				I can provide technical expertise, clear communication, and a positive attitude every day. 
 				Whether designing a graphical interface or engineering a complex piece of software, I have a passion for excellence and always give 100% at anything I do. And I'm ready to see what's next!
 		</p>
-		
+
 		<hr>
 
-		<div class="flick-card">
-			<div class="flick-header">
-				<img src="assets/images/flick/logo.svg" alt="Flick logo" class="flick-logo">
-				<h2>Flick (Android)</h2>
+		<div class="dark-flick-header-card">
+			<div class="flick-card">
+				<div class="flick-header">
+					<img src="assets/images/flick/logo.svg" alt="Flick logo" class="flick-logo">
+					<h2>Flick (Android)</h2>
+				</div>
+				<p style="margin-top: -20px; color: #c8c8c8; font-size: 16px; padding-left: 75px;">Engineer: Matthew Pool</p>
 			</div>
-			<p style="margin-top: -20px; color: #666; font-size: 16px; padding-left: 75px;">Engineer: Matthew Pool</p>
+			
+			<img src="assets/images/flick/banner.png" alt="Flick app banner" style="width: 100%; max-width: 1280px; margin: 20px 0;">
 		</div>
 		
-		<img src="assets/images/flick/banner.png" alt="Flick app banner" style="width: 100%; max-width: 1280px; margin: 20px 0;">
-
 		<hr>
 		
 		<div class="app-description">
 			<h2>Synopsis</h2>
-			<p><span style="color: #e84118; font-weight: 600; font-size: 16px; font-style: italic;">Flick</span> is a vertical video app similar in style to TikTok but with an added feature: a single sideways swipe reveals videos with significant similarity to the current video you are watching. 
-				Visual and auditory feedback educates users on app functionality and navigation, ensuring an optimal experience on the first launch. 
-				Users interact via fire (like) and poop (dislike) icons, with video ID, view duration, and preference data uploaded to Firestore.
-				The user can use basic gestures to increase playback speed or pause and unpause the video. 
-			</p>
-			<p>After an initial warmup period, the vertical feed operates on an intelligent cycle that prioritizes serving videos predicted to generate the highest engagement from that user. 
-				The recommendation engine tokenizes Archive.org metadata and employs cosine similarity calculations weighted by view time and like/dislike ratios. 
-				Random content is interspersed to facilitate content discovery beyond this algorithm. 
-				The app prebuffers two upcoming videos by default, reducing to one when a qualified similar video exists at the current index and needs to be preloaded. 
-				A history index tracks the last viewed video, enabling users to instantaneously recover from accidental swipes.</p>
+				<p><span style="color: #e84118; font-weight: 600; font-size: 16px; font-style: italic;">Flick</span> is a vertical video app similar in style to TikTok but with an added feature: a single sideways swipe reveals videos with significant similarity to the current video you are watching. 
+					Visual and auditory feedback educates users on app functionality and navigation, ensuring an optimal experience on the first launch. 
+					Users interact via fire (like) and poop (dislike) icons, with video ID, view duration, and preference data uploaded to Firestore.
+					The user can use basic gestures to increase playback speed or pause and unpause the video. 
+				</p>
+				<p>After an initial warmup period, the vertical feed operates on an intelligent cycle that prioritizes serving videos predicted to generate the highest engagement from that user. 
+					The recommendation engine tokenizes Archive.org metadata and employs cosine similarity calculations weighted by view time and like/dislike ratios. 
+					Random content is interspersed to facilitate content discovery beyond this algorithm. 
+					The app prebuffers two upcoming videos by default, reducing to one when a qualified similar video exists at the current index and needs to be preloaded. 
+					A history index tracks the last viewed video, enabling users to instantaneously recover from accidental swipes.
+				</p>
 		</div>
 
 		<hr>
@@ -193,7 +197,7 @@
 
 		<h2 style="margin-bottom: 10px;">Technologies</h2>
 		<p><strong>Architecture:</strong> MVVM + Jetpack Compose<br>
-			<strong>Design:</strong> Figma</p>
+			<strong>Design (v2.0):</strong> Figma</p>
 
 		<div class="content-card" style="margin-top: 15px">
 				<img src="assets/images/flick/figma-1.svg" alt="Figma design mockup - set 1" style="width: 100%; max-width: 1200px;">
@@ -329,7 +333,7 @@
 
 		<hr>
 
-		<div class="image-card">
+		<div class="project-image-card">
 			<img class="paradox-image" src="assets/images/paradox1.png" alt="User choice for the prompted question">
 		</div>
 
@@ -366,7 +370,7 @@
 
 		<hr>
 
-		<div class="image-card">
+		<div class="project-image-card">
 			<img class="mario-image" src="assets/images/mario3.png" alt="2D Super Mario Bros. scene with flagpole scene with steps and a pipe">
 			<img class="mario-image" src="assets/images/mario1.png" alt="3D Super Mario Bros. scene with flagpole scene with steps and a pipe">
 			<img class="mario-image" src="assets/images/mario2.png" alt="3D Super Mario Bros. scene with a Goomba sneaking around behind the steps">
@@ -384,7 +388,7 @@
 
 		<hr>
 
-		<div class="image-card">
+		<div class="project-image-card">
 			<div class="buddy-screenshot-grid">
 				<img src="assets/images/buddy1.png" alt="InventoryBuddy default login screen">
 				<img src="assets/images/buddy2.png" alt="Login screen with username and masked password">
@@ -410,7 +414,7 @@
 
 		<hr>
 
-		<div class="image-card">
+		<div class="project-image-card">
 			<img src="assets/images/aac1.png" alt="Spreadsheet showing first few database records">
 			<img src="assets/images/aac2.png" alt="Geolocation map showing the Austin, TX area">
 			<img src="assets/images/aac4.png" alt="Unit test results with all 16 tests passed" style="width: 700px; height: auto;">
@@ -441,7 +445,7 @@
 		
 		<hr>
 
-		<div class="image-card">
+		<div class="project-image-card">
 			<img src="assets/images/travel2.png" alt="Travel client website Travel tab" class="travel-no-scale">
 			<img src="assets/images/travel1.png" alt="Travel admin website to add and edit trips" class="travel-no-scale">
 			<div class="travel-images-row">
@@ -475,7 +479,7 @@
 
 		<h3>Machine Learning (Python)</h3>
 		<p>Working with a Deep Neural Network (DNN) model, I experimented with various hyperparameter values to find the optimal settings for image detection before reaching the point of diminishing returns in terms of image recognition accuracy versus the amount of time and training data needed.</p>
-		<div class="image-card">
+		<div class="project-image-card">
 			<img src="assets/images/ml1.png" alt="ML training summary output">
 			<img src="assets/images/ml2.png" alt="ML output statistics">
 		</div>
@@ -493,7 +497,7 @@
 		
 		<hr>
 
-		<div class="image-card">
+		<div class="project-image-card">
 			<img src="assets/images/stat1.png" alt="Null hypothesis, alternative hypothesis, and level of significance">
 			<img src="assets/images/stat2.png" alt="OLS Regression Results">
 			<img src="assets/images/stat3.png" alt="Scatterplot graph showing the correlation of 0.9072 between Elo and total number of wins, with a p-value of 0.0">
@@ -505,7 +509,7 @@
 
 		<h2>System Design</h2>
 		<p>This project involved designing a System Design Document (SDD), including system details and various UML diagrams.</p>
-		<div class="image-card">
+		<div class="project-image-card">
 			<img src="assets/images/system2.png" style="width: 100%; max-width: 1280px;" alt="UML Activity Diagram for log in/log out ">
 			<img src="assets/images/system3.png" style="width: 100%; max-width: 1280px;" alt="UML Sequence Diagram for contact us">
 		</div>
