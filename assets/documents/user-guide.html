@@ -37,12 +37,12 @@
         }
         .nav-link:hover { background: rgba(3, 218, 198, 0.1); }
         @media (max-width: 600px) {
-            .nav-link { position: static; display: block; margin-bottom: 20px; }
+            .nav-link { position: absolute; top: -30px; right: 20px; }
         }
 
         h1 { font-size: 2.5rem; border-bottom: 2px solid var(--primary-color); display: inline-block; padding-bottom: 10px; margin-bottom: 10px; color: #fff; }
         h2 { font-size: 1.8rem; margin-top: 40px; color: var(--primary-color); margin-bottom: 1rem;}
-        h3 { font-size: 1.3rem; color: var(--secondary-color); margin-top: 25px; margin-bottom: 15px; }
+        h3 { font-size: 1.3rem; color: var(--secondary-color); margin-top: 40px; margin-bottom: 15px; }
         p { margin-bottom: 1rem; color: var(--text-muted); }
         
         .intro-box { background-color: var(--card-bg); padding: 20px; border-left: 4px solid var(--primary-color); border-radius: 0 8px 8px 0; margin-bottom: 20px; }
@@ -77,12 +77,10 @@
             <p>Flick is a vertical swiping video app designed for optimized, seamless video discovery. It provides a continuous stream of videos from the vast library of <span class="highlight">archive.org</span>. Flick intermittently feeds the user the most likely video to be enjoyed by that specific user, using metadata weights based on the user’s video likes, dislikes, and view times, all of which are uploaded to a backend cloud environment for analysis of the anonymized data.</p>
         </div>
 
-        <p><em>"Sometimes when swiping through the never-ending abyss of videos on other apps, I find something that I become super interested in, and then it’s off to random town again."</em></p>
-        
-        <p>What makes Flick unique is its powerful <strong>sideways swipe feature</strong>, which lets you instantly find and explore videos that have a high similarity to the one you're currently watching. So travel through time to the 80s, 90s, and today to find some of the world’s most iconic video recordings in history. Just Flick!</p>
+        <p>What makes Flick unique is its powerful <strong>sideways swipe feature</strong>, which lets you instantly find and explore videos that have a high similarity to the one you're currently watching. Just Flick!</p>
 
-        <h3>How to Navigate</h3>
-        <p>Navigating Flick is simple and intuitive, based on a few core gestures.</p>
+        <h3>Navigation Gestures</h3>
+        <p>Navigating Flick is simple and intuitive, based on a few core swiping actions.</p>
         
         <div class="gesture-grid">
             <div class="gesture-card">
@@ -96,8 +94,8 @@
             <div class="gesture-card">
                 <div class="emoji-icon">👇</div>
                 <div>
-                    <span class="tech-name">Swipe Down (Previous Video)</span>
-                    Swiped up too fast? Swipe down to go back to the last video you were on in the main feed. (You can only go back one step).
+                    <span class="tech-name">Swipe Down (Previous)</span>
+                    Swiped up too fast? Swipe down to go back to the last video in the main feed (limited to one step back).
                 </div>
             </div>
 
@@ -105,15 +103,15 @@
                 <div class="emoji-icon">👈</div>
                 <div>
                     <span class="tech-name">Swipe Left (Find Similar)</span>
-                    If a video has a "sideways" candidate available, swipe left to enter a <strong>"sideways chain."</strong> This is a special feed of videos related to the one you started from.
+                    If a video has a "sideways" candidate, swipe left to enter a <strong>"sideways chain"</strong>—a specialized feed of related content.
                 </div>
             </div>
 
             <div class="gesture-card">
                 <div class="emoji-icon">👉</div>
                 <div>
-                    <span class="tech-name">Swipe Right (Feature Coming Soon)</span>
-                    "Music Mode" will be added in a future update. Swipe right to enter "Music Mode". Then, swipe up to go forward in the main music feed. Then, swipe right (again) to find similar music content, and swipe left to go back to "Video Mode".
+                    <span class="tech-name">Swipe Right (Future Feature)</span>
+                    Coming soon: "Music Mode." Swipe right to enter a dedicated music feed, and right again to find similar music content.
                 </div>
             </div>
         </div>
@@ -130,10 +128,52 @@
                 This also destroys the chain but advances you to the next video in the main feed, right after the one that started the chain.
             </li>
         </ul>
+
+        <h3>Playback Controls</h3>
+        <p>Take full control of your viewing experience with these tap and hold interactions.</p>
+        
+        <div class="gesture-grid">
+            <div class="gesture-card">
+                <div class="emoji-icon">⏯️</div>
+                <div>
+                    <span class="tech-name">Tap to Pause/Resume</span>
+                    Simply tap anywhere on the video player to pause the playback. Tap again to resume.
+                </div>
+            </div>
+
+            <div class="gesture-card">
+                <div class="emoji-icon">⏩</div>
+                <div>
+                    <span class="tech-name">Long Press for 2x Speed</span>
+                    Hold your finger down anywhere on the screen to instantly switch to 2x playback speed. Release to return to 1x speed.
+                </div>
+            </div>
+
+            <div class="gesture-card">
+                <div class="emoji-icon">🔘</div>
+                <div>
+                    <span class="tech-name">Seek Playback</span>
+                    Tap or drag the play bar at the bottom of the screen to seek to a specific point in the video.
+                </div>
+            </div>
+        </div>
+
+        <h3>Interactions & ML Input</h3>
+        <p>Help Flick get to know your taste by interacting with the video feed.</p>
+        <ul class="tech-list">
+            <li class="tech-item">
+                <span class="tech-name">🔥 Like Video</span>
+                Tap the **Fire icon** if you enjoy a video. This tells the ML algorithm to prioritize similar metadata in your future feed.
+            </li>
+            <li class="tech-item">
+                <span class="tech-name">💩 Dislike Video</span>
+                Tap the **Poop icon** to dislike a video. This helps Flick learn what to avoid showing you in the future.
+            </li>
+        </ul>
     </section>
 
     <footer>
-        <p>&copy; 2025 Matthew Pool. All rights reserved.<br>Flick App Documentation.</p>
+        <p>&copy; 2026 Matthew Pool. All rights reserved.<br>Flick App Documentation.</p>
     </footer>
 </div>
 
