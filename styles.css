@@ -642,11 +642,12 @@
 		}
 
 		body.dark-mode .gpa-link {
-			color: #ffd700; /* Dark mode: bright vibrant gold */
+			color: #66b3ff; /* Dark mode: bright vibrant gold */
+			text-decoration: none;
 		}
 
 		body.dark-mode .gpa-link:hover {
-			color: #ffed4e;
+			color: #99ccff;
 			text-decoration: underline;
 		}
 
