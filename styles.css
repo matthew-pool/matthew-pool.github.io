@@ -630,6 +630,38 @@
 			color: #99ccff;
 		}
 
+		/* GPA link */
+		.gpa-link {
+			color: #e3165b; /* Light mode */
+			text-decoration: none;
+		}
+
+		.gpa-link:hover {
+			color: #e4487c;
+			text-decoration: underline;
+		}
+
+		body.dark-mode .gpa-link {
+			color: #ffd700; /* Dark mode: bright vibrant gold */
+		}
+
+		body.dark-mode .gpa-link:hover {
+			color: #ffed4e;
+			text-decoration: underline;
+		}
+
+		/* Flick text - pink color matching resume */
+		.flick-text {
+			color: #e3165b; /* Light mode: magenta-pink (matches light resume) */
+			font-weight: 600;
+			font-size: 16px;
+			font-style: italic;
+		}
+
+		body.dark-mode .flick-text {
+			color: #ff6b9d; /* Dark mode: hot pink (matches dark resume) */
+		}
+
 		.tech-name {
 			color: #fff;
 			font-weight: 700;
