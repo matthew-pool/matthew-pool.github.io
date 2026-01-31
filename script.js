@@ -125,11 +125,11 @@ function flyBirdBack() {
     bird.classList.remove('idle', 'landed');
     bird.classList.add('flying');
 
-    // Get current position (bird should be in absolute positioning at Flick logo)
+    // Get current position
     const currentLeft = parseFloat(bird.style.left);
     const currentTop = parseFloat(bird.style.top);
 
-    // Get target absolute position (above Refactor tab, at bottom edge of contact header)
+    // Get target absolute position
     const refactorTab = document.querySelector('.tab-button:nth-child(3)');
     const contactHeader = document.querySelector('.contact-card');
     if (!refactorTab || !contactHeader) return;
@@ -137,14 +137,12 @@ function flyBirdBack() {
     const tabRect = refactorTab.getBoundingClientRect();
     const headerRect = contactHeader.getBoundingClientRect();
     const targetLeft = tabRect.left + window.scrollX + (tabRect.width / 2) - 30;
-    const targetTop = headerRect.bottom + window.scrollY - 58; // Bottom edge of contact card
+    const targetTop = headerRect.bottom + window.scrollY - 58; 
 
-    // Setup Quadratic Bezier Control Point
-    // We want the bird to fly UP high, then curve down.
+    // Setup Control Point (High Arc)
     const cpX = (currentLeft + targetLeft) / 2;
     const cpY = Math.min(currentTop, targetTop) - 300; 
 
-    // Duration set to 3.5 seconds
     const duration = 2500; 
     const startTime = performance.now();
 
@@ -152,36 +150,51 @@ function flyBirdBack() {
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
         
-        // Ease out cubic for smooth movement
+        // Ease out cubic
         const t = 1 - Math.pow(1 - progress, 3); 
         const invT = 1 - t;
 
-        // Quadratic Bezier Formula
+        // Quadratic Bezier Position
         const x = (invT * invT * currentLeft) + (2 * invT * t * cpX) + (t * t * targetLeft);
         const y = (invT * invT * currentTop) + (2 * invT * t * cpY) + (t * t * targetTop);
 
-        // Calculate rotation based on the derivative (tangent)
+        // Calculate Derivative (Tangent) for Rotation
         const dx = 2 * invT * (cpX - currentLeft) + 2 * t * (targetLeft - cpX);
         const dy = 2 * invT * (cpY - currentTop) + 2 * t * (targetTop - cpY);
-        const angle = Math.atan2(dy, dx) * (180 / Math.PI);
+        
+        // Basic Angle
+        let angle = Math.atan2(dy, dx) * (180 / Math.PI);
         
         // Determine facing direction
         const scaleX = (Math.abs(angle) > 90) ? -1 : 1;
         
-        // Calculate standard visual rotation
         let visualRotation = angle;
         if (scaleX === -1) {
             visualRotation = angle - 180;
+            if (visualRotation < -180) visualRotation += 360;
         }
 
-        // --- LANDING ROTATION CORRECTION ---
-        // As the bird gets close (last 15% of flight), rotate body back to upright (0deg)
-        if (progress > 0.85) {
-            const landingProgress = (progress - 0.85) / 0.15;
-            // Smoothly interpolate current calculated rotation to 0
-            // This prevents the bird from nose-diving into the perch
+        // --- STABILIZATION FIX ---
+        // 1. If we are moving DOWN (dy > 0), dampen the rotation significantly.
+        //    This prevents steep dives.
+        if (dy > 0) {
+             visualRotation = visualRotation * 0.3; 
+        }
+
+        // 2. Early Landing Preparation (The "Vertical" Fix)
+        //    Once we are 60% through the flight (past the peak), 
+        //    start forcing the bird to become upright (0 degrees).
+        if (progress > 0.6) {
+            const landingProgress = (progress - 0.6) / 0.4; // Normalize 0.6->1.0 to 0->1
+            
+            // Linearly interpolate whatever angle we have towards 0
+            // By the time progress hits 1.0, visualRotation will strictly be 0.
             visualRotation = visualRotation * (1 - landingProgress);
         }
+
+        // 3. Hard Safety Clamp
+        //    Never allow rotation past 25 degrees in either direction during return.
+        visualRotation = Math.max(-25, Math.min(25, visualRotation));
 
         bird.style.left = x + 'px';
         bird.style.top = y + 'px';
@@ -193,10 +206,13 @@ function flyBirdBack() {
             // Animation Complete
             bird.classList.remove('flying');
             bird.classList.add('landed');
-            bird.style.transform = 'scaleX(1) rotate(0deg)'; // Ensure perfect 0 on finish
+            
+            // Hard set to perfect position/rotation
+            bird.style.transform = 'scaleX(1) rotate(0deg)'; 
             bird.style.position = 'absolute';
             bird.style.left = targetLeft + 'px';
             bird.style.top = targetTop + 'px';
+            
             birdHasFlown = false;
             isReady = false;
 
