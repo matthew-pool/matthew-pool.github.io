@@ -1,7 +1,7 @@
 <!--
 	Project: Portfolio
     File: index.html
-    @version: 1.9.0
+    @version: 1.10.0
 	@author: Matthew Pool
 	@updated: 2026-01-13
 -->
@@ -11,10 +11,28 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Matthew Pool: Portfolio</title>
-	<link rel="stylesheet" href="styles.css?v=3">
+	
+	<!-- SEO Meta Tags -->
+	<meta name="description" content="Matthew Pool - Software Engineer specializing in Android development, full-stack web applications, UI/UX design, and machine learning. View my portfolio of mobile apps, web projects, and creative coding solutions.">
+	<meta name="keywords" content="software engineer, android developer, kotlin, react, typescript, portfolio, mobile app developer, UI/UX designer, full-stack developer, machine learning, web development">
+	<meta name="author" content="Matthew Pool">
+	
+	<!-- Open Graph Meta Tags -->
+	<meta property="og:title" content="Matthew Pool - Software Engineer & Product Designer">
+	<meta property="og:description" content="Software Engineer specializing in mobile apps, web development, and ML. B.S. in Computer Science with 3.99 GPA.">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://matthew-pool.github.io">
+	
+	<!-- Twitter Card Meta Tags -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="Matthew Pool - Software Engineer & Product Designer">
+	<meta name="twitter:description" content="Software Engineer specializing in mobile apps, web development, and ML.">
+	
+	<link rel="stylesheet" href="styles.css?v=4">
+
 </head>
 
-<body>
+<body class="dark-mode">
 	<!-- Header -->
 	<div class="contact-card">
 		<!-- Dark Mode Toggle -->
@@ -42,15 +60,28 @@
 		<a href="tel:+9035760223"><span style="font-size: 16px;">903-576-0223</span></a></p>
 	</div>
 
+	<!-- Hero Section -->
+	<div class="hero-section">
+		<div class="container">
+			<h1>Software Engineer | Product Designer</h1>
+			<p class="hero-subtitle">Let's build something better!</p>
+			
+			<div class="quick-links">
+				<a href="https://github.com/matthew-pool" target="_blank" class="quick-link">
+					<span>💻</span>
+					<span>GitHub Profile</span>
+				</a>
+				<a href="assets/documents/resume-light.pdf" class="quick-link" download>
+					<span>📄</span>
+					<span>Download Resume</span>
+				</a>
+			</div>
+		</div>
+	</div>
+
 	<!-- Bird SVG -->
 	<div id="bird" class="bird">
 		<svg width="60" height="60" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-			<!-- Head -->
-			<circle cx="20" cy="12" r="6" fill="#DC143C" stroke="#8B0000" stroke-width="2"/>
-			<!-- Eye -->
-			<circle cx="22" cy="11" r="2" fill="#000"/>
-			<!-- Beak -->
-			<polygon points="25,12 29,11 25,10" fill="#FFA500" stroke="#8B0000" stroke-width="1"/>
 			<!-- Body -->
 			<ellipse cx="20" cy="22" rx="8" ry="10" fill="#DC143C" stroke="#8B0000" stroke-width="2"/>
 			<!-- Left wing -->
@@ -65,6 +96,15 @@
 			<!-- Feet -->
 			<path d="M 16 36 L 14 36 L 15 37" fill="none" stroke="#FFA500" stroke-width="1"/>
 			<path d="M 24 36 L 26 36 L 25 37" fill="none" stroke="#FFA500" stroke-width="1"/>
+			<!-- Head group (can rotate independently) -->
+			<g id="birdHead" transform-origin="20 12">
+				<!-- Head -->
+				<circle cx="20" cy="12" r="6" fill="#DC143C" stroke="#8B0000" stroke-width="2"/>
+				<!-- Eye -->
+				<circle cx="22" cy="11" r="2" fill="#000"/>
+				<!-- Beak -->
+				<polygon points="25,12 29,11 25,10" fill="#FFA500" stroke="#8B0000" stroke-width="1"/>
+			</g>
 		</svg>
 	</div>
 
@@ -73,7 +113,7 @@
 		<div class="tab-nav">
 			<button class="tab-button active" onclick="openTab(event, 'home')">Home</button>
 			<button class="tab-button" onclick="openTab(event, 'projects')">Projects</button>
-			<button class="tab-button" onclick="openTab(event, 'refactor')">Refactor</button>
+			<button class="tab-button" onclick="openTab(event, 'refactor')">Case Study</button>
 		</div>
 	</div>
 
@@ -84,21 +124,10 @@
 
 		<h2>Introduction</h2>
 
-		<p>At age five, I fell in love with Super Mario Bros. on Nintendo (NES) and almost immediately wanted to be a programmer. 
-			As the first in my family to earn a four-year degree, I ended up completing my B.S. in Computer Science with a <a href="assets/documents/transcript.pdf" class="gpa-link" target="_blank">3.9 GPA</a>.
-			<br>
-			Throughout my software development journey, I gained experience in things like:
-			<ul>
-				<li>graphics and low-level programming with C/C++</li>
-				<li>fullstack web (and cloud) development with HTML, CSS, JavaScript, and TypeScript</li>
-				<li>mobile and backend development with Java</li>
-				<li>machine learning with Python and Jupyter</li>
-				<li>fullstack mobile app engineering with Kotlin</li>
-			</ul>
-		</p>
-		<p> I recently designed and engineered a video-streaming Android app (currently on a Google Play Store test track) named "Flick", which is what the little cute birdie wants to show you.
-				I can provide technical expertise, clear communication, and a positive attitude every day. 
-				Whether designing a graphical interface or engineering a complex piece of software, I have a passion for excellence and always give 100% at anything I do. And I'm ready to see what's next!
+		<p class="about-intro">
+			At age five, I fell in love with the game Super Mario Bros. on Nintendo (NES) and soon wanted to be a programmer. As the first in my family to earn a four-year degree, I completed my B.S. in Computer Science with a <a href="assets/documents/transcript.pdf" class="gpa-link" target="_blank">3.99 GPA</a>. 
+			<br><br>
+			I'm a versatile software engineer who bridges technical implementation with creative vision. From designing and shipping production Android apps to building full-stack web platforms, creating interactive 3D graphics and media, and developing ML-powered recommendation systems — I have proven experience of delivering precise, dynamic solutions across the entire development lifecycle. Whether it's mobile, web, data science, or interactive media, I bring the same commitment to quality, user experience, and innovation to every project.
 		</p>
 
 		<hr>
@@ -109,7 +138,7 @@
 					<img src="assets/images/flick/logo-alt.svg" alt="Flick logo" class="flick-logo">
 					<h2>Flick (Android)</h2>
 				</div>
-				<p style="margin-top: -20px; color: #c8c8c8; font-size: 16px; padding-left: 75px;">Engineer: Matthew Pool</p>
+				<p style="margin-top: -20px; color: #c8c8c8; font-size: 16px; padding-left: 75px;">Designer/Engineer: Matthew Pool</p>
 			</div>
 			
 			<img src="assets/images/flick/banner.png" alt="Flick app banner" style="width: 100%; max-width: 1280px; margin: 20px 0;">
@@ -325,7 +354,7 @@
 
 		<hr>
 
-		<h2>The Existence Paradox (TS/React)</h2>
+		<h2>The Existence Paradox v1.0.0 (TS/React)</h2>
 		<p>This app is a fun little philosophical and scientific exploration of the Origin of Existence. 
 			The information in this app should not be taken as fact and simply represents a thought experiment I did, as i am still learning myself.
 			Give it a go if it sounds interesting to you, and be sure to check out my other projects below!
@@ -537,12 +566,12 @@
 		</div>
 	</div>
 
-	<!-- Refactor Tab -------------------------------------------------------------------->
+	<!-- Case Study Tab -------------------------------------------------------------------->
 	<div id="refactor" class="tab-content">
 		
 		<hr>
 
-		<h2>Program Enhancements</h2>
+		<h2>Case Study</h2>
 		<p>This school project required students to choose a piece of software that they wrote at the beginning of the computer science program and improve it.
 			I chose an old Java command-line program that I made in one of my first computer science class I had taken. I picked it because it looked like it could use a little help (to put it lightly).
 			This is a brief summary of the changes implemented in this poor,<strong><i> HOPELESS</i></strong> application.<br><br>
