@@ -58,18 +58,22 @@ This portfolio website features a clean, professional design with three main sec
 
 ```
 matthew-pool.github.io/
-├── aac-dashboard/          # Python/MongoDB dashboard for Austin Animal Center
-├── assets/                 # Project screenshots, images, and PDF documentation
-├── data-analysis/          # Python data analysis and machine learning projects
-├── existence-paradox/      # TypeScript/React philosophical exploration app
-├── inventory-buddy/        # Android inventory management demo app
-├── java-enhancements/      # Refactored Java rescue animal tracking system
-├── super-mario-bros/       # C++ OpenGL recreation of classic Nintendo scene
-├── travel-web-app/         # MEAN stack travel booking website with admin SPA
-├── index.html              # Main portfolio webpage
-├── script.js               # Interactive animations and bird flight logic
-├── styles.css              # Responsive styling with dark mode support
-└── README.md               # This file
+├─ aac-dashboard/           # Python/MongoDB dashboard for Austin Animal Center
+├─ assets/                  # Project screenshots, images, and PDF documentation
+├─ data-analysis/           # Python data analysis of global temperature deviations
+├─ statistical-analysis/    # Statistical analysis and report regarding NBA stat correlations
+├─ database-administration/ # MySQL database creation and analyses
+├─ machine-learning         # ML model training, testing, and analyses
+├─ existence-paradox/       # TypeScript/React philosophical exploration app
+├─ inventory-buddy/         # Android inventory management demo app
+├─ product-design/          # UI/UX designs and architectural specifications
+├─ java-enhancements/       # Refactored Java rescue animal tracking system
+├─ super-mario-bros/        # C++ OpenGL recreation of classic Nintendo scene
+├─ travel-web-app/          # MEAN stack travel booking website with admin SPA
+├─ index.html               # Main portfolio webpage
+├─ script.js                # Interactive animations and bird flight logic
+├─ styles.css               # Responsive styling with dark mode support
+└─ README.md                # This file
 ```
 
 ## 📱 Featured Project: Flick
@@ -83,7 +87,7 @@ matthew-pool.github.io/
 
 ## 📄 License
 
-© 2025 Matthew Pool. All Rights Reserved.
+© 2026 Matthew Pool. All Rights Reserved.
 
 **Terms of Use**
 This portfolio and its contents may be downloaded and used for:
