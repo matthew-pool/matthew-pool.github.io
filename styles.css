@@ -1188,6 +1188,24 @@
 		display: none;
 	}
 
+	.details {
+		color: #666;
+		font-size: 14px;
+		font-weight: 600;
+		margin-bottom: 15px;
+		padding: 8px 15px;
+		background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+		border-left: 4px solid #667eea;
+		border-radius: 4px;
+		display: inline-block;
+	}
+
+	body.dark-mode .details {
+		color: #aaa;
+		background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
+		border-left-color: #a855f7;
+	}
+
 	/* Quick Links Section */
 	.quick-links {
 		display: flex;
@@ -1652,6 +1670,33 @@
 		}
 	}
 
+	/* Add to your portfolio's CSS file */
+	.erd-wrapper {
+		width: 100%;
+		max-width: 850px; /* Slightly wider than the diagram container */
+		margin: 20px auto; /* Centers the diagram */
+		border: 1px solid #eee; /* Optional: adds a border around the embed */
+		box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Optional: adds shadow */
+		overflow: hidden;
+		border-radius: 8px;
+	}
+
+	.erd-wrapper iframe {
+		width: 100%;
+		height: 650px; /* Needs to be tall enough to show the whole diagram without scrolling */
+		border: none;
+		display: block;
+	}
+
+	/* Optional: Adjust height for smaller screens if needed */
+	@media (max-width: 600px) {
+		.erd-wrapper iframe {
+			height: 500px; 
+			/* You might need to enable scrolling on the iframe if it gets cut off */
+			overflow: auto;
+		}
+	}
+
 	/* Flexbox - Flick Screenshots */
 	.screenshot-grid {
 		display: flex;
@@ -1764,8 +1809,6 @@
 	.footer-metallic-black a:hover {
 		text-decoration: underline;
 	}
-
-	/* Replace the entire Birdie section in your styles.css (starting around line 1280) with this: */
 
 	/*----------------------------------------------------------------*/
 	/* Birdie */

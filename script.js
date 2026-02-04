@@ -129,15 +129,15 @@ function flyBirdBack() {
     const currentLeft = parseFloat(bird.style.left);
     const currentTop = parseFloat(bird.style.top);
 
-    // Get target absolute position
+    // Get target absolute position (bottom of hero banner)
     const refactorTab = document.querySelector('.tab-button:nth-child(3)');
-    const contactHeader = document.querySelector('.contact-card');
-    if (!refactorTab || !contactHeader) return;
+    const heroSection = document.querySelector('.hero-section');
+    if (!refactorTab || !heroSection) return;
 
     const tabRect = refactorTab.getBoundingClientRect();
-    const headerRect = contactHeader.getBoundingClientRect();
+    const heroRect = heroSection.getBoundingClientRect();
     const targetLeft = tabRect.left + window.scrollX + (tabRect.width / 2) - 30;
-    const targetTop = headerRect.bottom + window.scrollY - 58; 
+    const targetTop = heroRect.bottom + window.scrollY - 51; 
 
     // Setup Control Point (High Arc)
     const cpX = (currentLeft + targetLeft) / 2;
@@ -230,20 +230,20 @@ function flyBirdBack() {
     requestAnimationFrame(animateReturn);
 }
 
-// Position bird above Refactor tab at bottom edge of contact header
+// Position bird above Refactor tab at bottom edge of hero banner
 function positionBird() {
     if (birdHasFlown) return;
 
     const refactorTab = document.querySelector('.tab-button:nth-child(3)');
-    const contactHeader = document.querySelector('.contact-card');
+    const heroSection = document.querySelector('.hero-section');
 
-    if (refactorTab && contactHeader) {
+    if (refactorTab && heroSection) {
         const tabRect = refactorTab.getBoundingClientRect();
-        const headerRect = contactHeader.getBoundingClientRect();
+        const heroRect = heroSection.getBoundingClientRect();
 
-        // Position horizontally centered on Refactor tab, vertically at bottom of contact card
+        // Position horizontally centered on Refactor tab, vertically at bottom of hero banner
         const leftPos = tabRect.left + window.scrollX + (tabRect.width / 2) - 30;
-        const topPos = headerRect.bottom + window.scrollY - 58;
+        const topPos = heroRect.bottom + window.scrollY - 51;
 
         bird.dataset.initialLeft = leftPos;
         bird.dataset.initialTop = topPos;
@@ -281,149 +281,162 @@ window.addEventListener('scroll', function() {
     const homeTab = document.getElementById('home');
     const isHomeActive = homeTab && homeTab.classList.contains('active');
 
-    if (!birdHasFlown && isPositioned && isReady && isHomeActive && window.scrollY > 0) {
-        birdHasFlown = true;
+    if (!birdHasFlown && isPositioned && isReady && isHomeActive) {
+        // Calculate if 1/3 of hero banner has scrolled off screen
+        const heroSection = document.querySelector('.hero-section');
+        if (!heroSection) return;
 
-        // Add flying class for wing flapping
-        bird.classList.remove('landed', 'idle');
-        bird.classList.add('flying');
+        const heroRect = heroSection.getBoundingClientRect();
+        const heroHeight = heroRect.height;
+        const heroTop = heroRect.top;
 
-        // Get current absolute position
-        const startLeft = parseFloat(bird.dataset.initialLeft);
-        const startTop = parseFloat(bird.dataset.initialTop);
+        // Trigger when 1/3 of the hero banner has scrolled past the top of viewport
+        const scrollThreshold = -heroHeight / 3;
 
-        // Find Flick logo position and calculate absolute position
-        const flickLogo = document.querySelector('.flick-logo');
-        let endLeft = startLeft - 600;
-        let endTop = startTop + 600;
+        if (heroTop <= scrollThreshold) {
+            birdHasFlown = true;
 
-        if (flickLogo) {
-            const flickRect = flickLogo.getBoundingClientRect();
-            // Calculate absolute position (viewport position + scroll offset)
-            endLeft = flickRect.left + window.scrollX + (flickRect.width / 2) - 30;
-            endTop = flickRect.top + window.scrollY - 36;
-        }
+            // Add flying class for wing flapping
+            bird.classList.remove('landed', 'idle');
+            bird.classList.add('flying');
 
-        // Animate using JavaScript - bird stays in absolute positioning throughout
-        const duration = 2800; // Slower duration for a deeper, more dramatic path
-        const startTime = performance.now();
+            // Get current absolute position
+            const startLeft = parseFloat(bird.dataset.initialLeft);
+            const startTop = parseFloat(bird.dataset.initialTop);
 
-        function animateBird(currentTime) {
-            const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / duration, 1);
+            // Find Flick logo position and calculate absolute position
+            const flickLogo = document.querySelector('.flick-logo');
+            let endLeft = startLeft - 600;
+            let endTop = startTop + 600;
 
-            let x, y, rotation, scaleX;
+            if (flickLogo) {
+                const flickRect = flickLogo.getBoundingClientRect();
+                // Calculate absolute position (viewport position + scroll offset)
+                endLeft = flickRect.left + window.scrollX + (flickRect.width / 2) - 30;
+                endTop = flickRect.top + window.scrollY - 36;
+            }
 
-            if (progress < 0.15) {
-                // ==========================================
-                // Phase 1: Takeoff (0% - 15%)
-                // ==========================================
-                const flapProgress = progress / 0.15;
-                // Move Up and slightly left
-                x = startLeft - (20 * flapProgress);
-                y = startTop - (80 * flapProgress);
+            // Animate using JavaScript - bird stays in absolute positioning throughout
+            const duration = 2800; // Slower duration for a deeper, more dramatic path
+            const startTime = performance.now();
 
-                // Flip to face left early
-                scaleX = flapProgress < 0.2 ? 1 : -1;
+            function animateBird(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
 
-                // Tilt beak up
-                rotation = -20 * flapProgress;
+                let x, y, rotation, scaleX;
 
-            } else {
-                // ==========================================
-                // Phase 2 & 3: Deep Dive + Curve Approach (15% - 100%)
-                // ==========================================
-                
-                // We normalize this part of the animation to 0.0 - 1.0
-                const flightProgress = (progress - 0.15) / 0.85;
-                
-                // Bezier Control Points for the "Deep Dive & Float" trajectory
-                // P0: Start of this phase (Up in the air)
-                const p0x = startLeft - 20;
-                const p0y = startTop - 80;
+                if (progress < 0.15) {
+                    // ==========================================
+                    // Phase 1: Takeoff (0% - 15%)
+                    // ==========================================
+                    const flapProgress = progress / 0.15;
+                    // Move Up and slightly left
+                    x = startLeft - (20 * flapProgress);
+                    y = startTop - (80 * flapProgress);
 
-                // P3: Destination (Flick Logo)
-                const p3x = endLeft;
-                const p3y = endTop;
+                    // Flip to face left early
+                    scaleX = flapProgress < 0.2 ? 1 : -1;
 
-                // P1: THE DEEP DIVE POINT
-                // We pull this WAY down to force the bird to dive deep.
-                // It is positioned left of the start, and 500px BELOW the start.
-                const p1x = startLeft - 50; 
-                const p1y = startTop + 500; 
+                    // Tilt beak up
+                    rotation = -20 * flapProgress;
 
-                // P2: THE FLOAT-IN POINT
-                // This control point is ABOVE the destination. 
-                // This causes the bird to curve UP from the deep dive, crest, 
-                // and then "float down" onto the logo without a sharp drop.
-                const p2x = endLeft - 100; // Approach from left
-                const p2y = endTop - 80;   // Approach from above
-
-                // Standard Cubic Bezier Formula
-                // B(t) = (1-t)³P0 + 3(1-t)²tP1 + 3(1-t)t²P2 + t³P3
-                const t = flightProgress;
-                const invT = 1 - t;
-
-                x = (Math.pow(invT, 3) * p0x) + 
-                    (3 * Math.pow(invT, 2) * t * p1x) + 
-                    (3 * invT * Math.pow(t, 2) * p2x) + 
-                    (Math.pow(t, 3) * p3x);
-
-                y = (Math.pow(invT, 3) * p0y) + 
-                    (3 * Math.pow(invT, 2) * t * p1y) + 
-                    (3 * invT * Math.pow(t, 2) * p2y) + 
-                    (Math.pow(t, 3) * p3y);
-
-                // Facing Left
-                scaleX = -1;
-
-                // ROTATION LOGIC
-                // We want: 
-                // 1. Dive down (90deg)
-                // 2. Swoop bottom (0deg - flat upside down or level)
-                // 3. Curve Up (-45deg)
-                // 4. Land Flat (0deg)
-                
-                if (flightProgress < 0.3) {
-                    // Diving down rapidly
-                    rotation = -20 + (110 * (flightProgress / 0.3)); // Rotates to ~90 (nose down)
-                } else if (flightProgress < 0.7) {
-                    // Bottom of curve, swooping up
-                    // Interpolate from 90 (down) to -30 (nose up)
-                    const curveP = (flightProgress - 0.3) / 0.4; 
-                    rotation = 90 - (120 * curveP); 
                 } else {
-                    // Final float approach
-                    // Interpolate from -30 (nose up) to 0 (flat landing)
-                    const landP = (flightProgress - 0.7) / 0.3;
-                    rotation = -30 + (30 * landP);
+                    // ==========================================
+                    // Phase 2 & 3: Deep Dive + Curve Approach (15% - 100%)
+                    // ==========================================
+                    
+                    // We normalize this part of the animation to 0.0 - 1.0
+                    const flightProgress = (progress - 0.15) / 0.85;
+                    
+                    // Bezier Control Points for the "Deep Dive & Float" trajectory
+                    // P0: Start of this phase (Up in the air)
+                    const p0x = startLeft - 20;
+                    const p0y = startTop - 80;
+
+                    // P3: Destination (Flick Logo)
+                    const p3x = endLeft;
+                    const p3y = endTop;
+
+                    // P1: THE DEEP DIVE POINT
+                    // We pull this WAY down to force the bird to dive deep.
+                    // It is positioned left of the start, and 500px BELOW the start.
+                    const p1x = startLeft - 50; 
+                    const p1y = startTop + 500; 
+
+                    // P2: THE FLOAT-IN POINT
+                    // This control point is ABOVE the destination. 
+                    // This causes the bird to curve UP from the deep dive, crest, 
+                    // and then "float down" onto the logo without a sharp drop.
+                    const p2x = endLeft - 100; // Approach from left
+                    const p2y = endTop - 80;   // Approach from above
+
+                    // Standard Cubic Bezier Formula
+                    // B(t) = (1-t)³P0 + 3(1-t)²tP1 + 3(1-t)t²P2 + t³P3
+                    const t = flightProgress;
+                    const invT = 1 - t;
+
+                    x = (Math.pow(invT, 3) * p0x) + 
+                        (3 * Math.pow(invT, 2) * t * p1x) + 
+                        (3 * invT * Math.pow(t, 2) * p2x) + 
+                        (Math.pow(t, 3) * p3x);
+
+                    y = (Math.pow(invT, 3) * p0y) + 
+                        (3 * Math.pow(invT, 2) * t * p1y) + 
+                        (3 * invT * Math.pow(t, 2) * p2y) + 
+                        (Math.pow(t, 3) * p3y);
+
+                    // Facing Left
+                    scaleX = -1;
+
+                    // ROTATION LOGIC
+                    // We want: 
+                    // 1. Dive down (90deg)
+                    // 2. Swoop bottom (0deg - flat upside down or level)
+                    // 3. Curve Up (-45deg)
+                    // 4. Land Flat (0deg)
+                    
+                    if (flightProgress < 0.3) {
+                        // Diving down rapidly
+                        rotation = -20 + (110 * (flightProgress / 0.3)); // Rotates to ~90 (nose down)
+                    } else if (flightProgress < 0.7) {
+                        // Bottom of curve, swooping up
+                        // Interpolate from 90 (down) to -30 (nose up)
+                        const curveP = (flightProgress - 0.3) / 0.4; 
+                        rotation = 90 - (120 * curveP); 
+                    } else {
+                        // Final float approach
+                        // Interpolate from -30 (nose up) to 0 (flat landing)
+                        const landP = (flightProgress - 0.7) / 0.3;
+                        rotation = -30 + (30 * landP);
+                    }
+                }
+
+                bird.style.left = x + 'px';
+                bird.style.top = y + 'px';
+                bird.style.transform = `scaleX(${scaleX}) rotate(${rotation}deg)`;
+
+                if (progress < 1) {
+                    requestAnimationFrame(animateBird);
+                } else {
+                    // Animation complete - Landed state
+                    bird.classList.remove('flying');
+                    bird.classList.add('landed');
+                    bird.style.position = 'absolute';
+                    bird.style.left = endLeft + 'px';
+                    bird.style.top = endTop + 'px';
+                    bird.style.transform = 'scaleX(-1) rotate(0deg)'; // Upright, facing LEFT
+
+                    // Transition from landed to idle animation
+                    setTimeout(() => {
+                        bird.classList.remove('landed');
+                        bird.classList.add('idle');
+                    }, 500);
                 }
             }
 
-            bird.style.left = x + 'px';
-            bird.style.top = y + 'px';
-            bird.style.transform = `scaleX(${scaleX}) rotate(${rotation}deg)`;
-
-            if (progress < 1) {
-                requestAnimationFrame(animateBird);
-            } else {
-                // Animation complete - Landed state
-                bird.classList.remove('flying');
-                bird.classList.add('landed');
-                bird.style.position = 'absolute';
-                bird.style.left = endLeft + 'px';
-                bird.style.top = endTop + 'px';
-                bird.style.transform = 'scaleX(-1) rotate(0deg)'; // Upright, facing LEFT
-
-                // Transition from landed to idle animation
-                setTimeout(() => {
-                    bird.classList.remove('landed');
-                    bird.classList.add('idle');
-                }, 500);
-            }
+            requestAnimationFrame(animateBird);
         }
-
-        requestAnimationFrame(animateBird);
     }
 });
 
@@ -433,3 +446,110 @@ window.addEventListener('resize', function() {
         positionBird();
     }
 });
+
+// Project filter functionality
+function filterProjects(category) {
+    // Update active button
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    filterButtons.forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+
+    // Filter project cards
+    const projectCards = document.querySelectorAll('.project-card');
+    projectCards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+
+    // Filter detailed project sections
+    const projectItems = document.querySelectorAll('.project-item');
+    projectItems.forEach(item => {
+        if (category === 'all' || item.dataset.category === category) {
+            item.classList.remove('hidden');
+        } else {
+            item.classList.add('hidden');
+        }
+    });
+}
+
+// Lightbox functionality
+let currentImageIndex = 0;
+let lightboxImages = [];
+
+function initLightbox() {
+    // Get all images that should open in lightbox
+    const clickableImages = document.querySelectorAll('.screenshot-grid img, .project-image-card img, .image-card img, .buddy-screenshot-grid img, .mario-image, .paradox-image');
+    
+    clickableImages.forEach((img, index) => {
+        img.style.cursor = 'pointer';
+        img.addEventListener('click', function(e) {
+            e.stopPropagation();
+            openLightbox(this, Array.from(clickableImages));
+        });
+    });
+}
+
+function openLightbox(clickedImg, allImages) {
+    lightboxImages = allImages;
+    currentImageIndex = lightboxImages.indexOf(clickedImg);
+    
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    
+    lightboxImg.src = clickedImg.src;
+    lightboxCaption.textContent = clickedImg.alt || '';
+    lightbox.classList.add('active');
+    
+    // Prevent body scroll when lightbox is open
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+function changeLightboxImage(direction) {
+    currentImageIndex += direction;
+    
+    if (currentImageIndex >= lightboxImages.length) {
+        currentImageIndex = 0;
+    } else if (currentImageIndex < 0) {
+        currentImageIndex = lightboxImages.length - 1;
+    }
+    
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    
+    lightboxImg.src = lightboxImages[currentImageIndex].src;
+    lightboxCaption.textContent = lightboxImages[currentImageIndex].alt || '';
+}
+
+// Close lightbox when clicking background
+document.getElementById('lightbox').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeLightbox();
+    }
+});
+
+// Keyboard navigation for lightbox
+document.addEventListener('keydown', function(e) {
+    const lightbox = document.getElementById('lightbox');
+    if (lightbox.classList.contains('active')) {
+        if (e.key === 'Escape') {
+            closeLightbox();
+        } else if (e.key === 'ArrowLeft') {
+            changeLightboxImage(-1);
+        } else if (e.key === 'ArrowRight') {
+            changeLightboxImage(1);
+        }
+    }
+});
+
+// Initialize lightbox when page loads
+window.addEventListener('load', initLightbox);
