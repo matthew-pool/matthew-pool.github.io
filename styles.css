@@ -1137,6 +1137,174 @@
 		color: #e0e0e0;
 	}
 
+
+/* ========================================
+   GRID-INTEGRATED PROJECT DETAILS
+   ======================================== */
+
+/* Make project cards clickable */
+.project-card {
+	cursor: pointer;
+	transition: transform 0.3s, box-shadow 0.3s, background-color 0.2s;
+}
+
+.project-card:active {
+	transform: translateY(-3px) scale(0.98);
+}
+
+/* Project details - spans full grid width, hidden by default */
+.project-details {
+	display: none;
+	grid-column: 1 / -1; /* Spans all columns in the grid */
+	background-color: #f9f9f9;
+	border-radius: 12px;
+	padding: 30px;
+	margin: 10px 0 20px 0;
+	box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+	animation: slideDown 0.3s ease-out;
+	order: 999; /* Will be repositioned by JavaScript */
+}
+
+body.dark-mode .project-details {
+	background-color: #1f1f1f;
+	box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+/* Show state */
+.project-details.show {
+	display: block;
+}
+
+/* Slide down animation */
+@keyframes slideDown {
+	from {
+		opacity: 0;
+		transform: translateY(-20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* Project grid - must support dynamic detail insertion */
+.project-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 30px;
+	margin: 30px 0;
+}
+
+/* Style the details content */
+.project-details h3 {
+	color: #2c3e50;
+	margin-top: 0;
+	margin-bottom: 15px;
+	font-size: 26px;
+}
+
+body.dark-mode .project-details h3 {
+	color: #e0e0e0;
+}
+
+.project-details .details {
+	margin-bottom: 20px;
+}
+
+.project-details ul {
+	margin-left: 25px;
+	margin-bottom: 20px;
+}
+
+.project-details ul li {
+	margin-bottom: 12px;
+	line-height: 1.6;
+}
+
+.project-details .project-links {
+	margin: 15px 0;
+}
+
+.project-details .project-image-card {
+	margin: 20px 0;
+}
+
+/* Horizontal rule in details */
+.project-details hr {
+	display: none; /* Not needed since details close */
+}
+
+/* Click indicator on cards */
+.project-card::after {
+	content: '▼ Click for details';
+	display: block;
+	text-align: center;
+	margin-top: 15px;
+	padding-top: 15px;
+	border-top: 1px solid #e0e0e0;
+	font-size: 12px;
+	color: #999;
+	font-weight: 600;
+	transition: color 0.3s;
+}
+
+body.dark-mode .project-card::after {
+	border-top-color: #444;
+	color: #666;
+}
+
+.project-card:hover::after {
+	color: #667eea;
+}
+
+body.dark-mode .project-card:hover::after {
+	color: #a855f7;
+}
+
+/* Active card indicator - when details are open */
+.project-card.active-card {
+	border: 2px solid #667eea;
+	box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+}
+
+body.dark-mode .project-card.active-card {
+	border-color: #a855f7;
+	box-shadow: 0 6px 20px rgba(168, 85, 247, 0.3);
+}
+
+/* Hide the old standalone project items */
+.project-item {
+	display: none !important;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+	.project-details {
+		padding: 20px;
+		margin: 10px 0 15px 0;
+	}
+	
+	.project-details h3 {
+		font-size: 22px;
+	}
+	
+	.project-grid {
+		grid-template-columns: 1fr; /* Single column on mobile */
+	}
+}
+
+@media (max-width: 480px) {
+	.project-details {
+		padding: 15px;
+	}
+	
+	.project-card::after {
+		font-size: 11px;
+		margin-top: 12px;
+		padding-top: 12px;
+	}
+}
+
 	/* Filter Buttons */
 	.project-filters {
 		display: flex;
@@ -1205,6 +1373,380 @@
 		background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
 		border-left-color: #a855f7;
 	}
+
+	/* ========================================
+   PROJECT MODAL POPUP STYLES
+   ======================================== */
+
+/* Modal Overlay */
+.project-modal {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.7);
+	backdrop-filter: blur(4px);
+	z-index: 10000;
+	overflow-y: auto;
+	animation: fadeIn 0.3s ease-out;
+}
+
+.project-modal.show {
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	padding: 40px 20px;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+/* Modal Content Container */
+.project-modal-body {
+	background-color: #ffffff;
+	border-radius: 16px;
+	padding: 40px;
+	max-width: 1000px;
+	width: 100%;
+	margin: 20px auto;
+	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+	position: relative;
+	animation: slideUp 0.3s ease-out;
+	max-height: calc(100vh - 80px);
+	overflow-y: auto;
+}
+
+body.dark-mode .project-modal-body {
+	background-color: #2a2a2a;
+	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+}
+
+@keyframes slideUp {
+	from {
+		transform: translateY(30px);
+		opacity: 0;
+	}
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+/* Close Button */
+.project-modal-close {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	background: none;
+	border: none;
+	font-size: 32px;
+	color: #666;
+	cursor: pointer;
+	padding: 5px 10px;
+	line-height: 1;
+	transition: all 0.2s;
+	border-radius: 4px;
+	z-index: 10;
+}
+
+.project-modal-close:hover {
+	color: #333;
+	background-color: rgba(0, 0, 0, 0.05);
+	transform: scale(1.1);
+}
+
+body.dark-mode .project-modal-close {
+	color: #aaa;
+}
+
+body.dark-mode .project-modal-close:hover {
+	color: #fff;
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Modal Content Styling */
+#project-modal-content h3 {
+	color: #2c3e50;
+	margin-top: 0;
+	margin-bottom: 20px;
+	font-size: 28px;
+	padding-right: 40px; /* Space for close button */
+}
+
+body.dark-mode #project-modal-content h3 {
+	color: #e0e0e0;
+}
+
+#project-modal-content .details {
+	color: #666;
+	font-size: 14px;
+	font-weight: 600;
+	margin-bottom: 20px;
+	padding: 10px 15px;
+	background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+	border-left: 4px solid #667eea;
+	border-radius: 4px;
+	display: inline-block;
+}
+
+body.dark-mode #project-modal-content .details {
+	color: #aaa;
+	background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
+	border-left-color: #a855f7;
+}
+
+#project-modal-content ul {
+	margin-left: 25px;
+	margin-bottom: 20px;
+}
+
+#project-modal-content ul li {
+	margin-bottom: 15px;
+	line-height: 1.8;
+}
+
+#project-modal-content .project-links {
+	margin: 20px 0;
+}
+
+#project-modal-content .project-links a {
+	display: inline-block;
+	margin-right: 15px;
+	margin-bottom: 10px;
+}
+
+#project-modal-content .project-image-card {
+	background: #f9f9f9;
+	border-radius: 12px;
+	padding: 20px;
+	margin: 20px 0;
+}
+
+body.dark-mode #project-modal-content .project-image-card {
+	background: #333;
+}
+
+#project-modal-content img {
+	max-width: 100%;
+	height: auto;
+	border-radius: 8px;
+	margin: 10px 0;
+}
+
+/* Scrollbar Styling for Modal */
+.project-modal-body::-webkit-scrollbar {
+	width: 10px;
+}
+
+.project-modal-body::-webkit-scrollbar-track {
+	background: #f1f1f1;
+	border-radius: 10px;
+}
+
+.project-modal-body::-webkit-scrollbar-thumb {
+	background: #888;
+	border-radius: 10px;
+}
+
+.project-modal-body::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
+
+body.dark-mode .project-modal-body::-webkit-scrollbar-track {
+	background: #1a1a1a;
+}
+
+body.dark-mode .project-modal-body::-webkit-scrollbar-thumb {
+	background: #555;
+}
+
+body.dark-mode .project-modal-body::-webkit-scrollbar-thumb:hover {
+	background: #777;
+}
+
+/* Project Cards - Update click indicator */
+.project-card {
+	cursor: pointer;
+	transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project-card::after {
+	content: '▶ Click to view details';
+	display: block;
+	text-align: center;
+	margin-top: 15px;
+	padding-top: 15px;
+	border-top: 1px solid #e0e0e0;
+	font-size: 12px;
+	color: #999;
+	font-weight: 600;
+	transition: color 0.3s;
+}
+
+body.dark-mode .project-card::after {
+	border-top-color: #444;
+	color: #666;
+}
+
+.project-card:hover::after {
+	color: #667eea;
+}
+
+body.dark-mode .project-card:hover::after {
+	color: #a855f7;
+}
+
+/* Hide original detail sections (they're cloned into modal) */
+.project-details {
+	display: none !important;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+	.project-modal.show {
+		padding: 20px 10px;
+		align-items: flex-start;
+	}
+	
+	.project-modal-body {
+		padding: 30px 20px;
+		margin: 10px auto;
+		max-height: calc(100vh - 40px);
+	}
+	
+	#project-modal-content h3 {
+		font-size: 24px;
+		padding-right: 35px;
+	}
+	
+	.project-modal-close {
+		top: 15px;
+		right: 15px;
+		font-size: 28px;
+	}
+}
+
+@media (max-width: 480px) {
+	.project-modal-body {
+		padding: 25px 15px;
+		border-radius: 12px;
+	}
+	
+	#project-modal-content h3 {
+		font-size: 22px;
+	}
+	
+	.project-modal-close {
+		top: 12px;
+		right: 12px;
+		font-size: 24px;
+	}
+	
+	.project-card::after {
+		font-size: 11px;
+	}
+}
+
+/* Fix for travel images in modal */
+#project-modal-content .travel-images-row {
+	display: flex;
+	justify-content: center;
+	gap: 15px;
+	margin: 15px 0;
+	flex-wrap: wrap;
+}
+
+#project-modal-content .travel-images-row img {
+	max-width: 48%;
+	margin: 0;
+}
+
+@media (max-width: 768px) {
+	#project-modal-content .travel-images-row {
+		flex-direction: column;
+	}
+	
+	#project-modal-content .travel-images-row img {
+		max-width: 100%;
+	}
+}
+
+/* Buddy screenshots in modal */
+#project-modal-content .buddy-screenshot-grid {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 15px;
+}
+
+#project-modal-content .buddy-screenshot-grid img {
+	width: 45%;
+	max-width: 280px;
+	margin: 0;
+}
+
+@media (max-width: 768px) {
+	#project-modal-content .buddy-screenshot-grid img {
+		width: 100%;
+		max-width: 350px;
+	}
+}
+
+/* Mario images in modal */
+#project-modal-content .mario-image {
+	width: 100%;
+	max-width: 800px;
+	display: block;
+	margin: 15px auto;
+}
+
+/* Paradox image in modal */
+#project-modal-content .paradox-image {
+	width: 100%;
+	max-width: 700px;
+	display: block;
+	margin: 15px auto;
+}
+
+/* Play store badge in modal */
+#project-modal-content .play-store-cta {
+	text-align: center;
+	margin: 30px 0;
+}
+
+/* Project content split layout in modal */
+#project-modal-content .project-content-split {
+	display: block;
+}
+
+#project-modal-content .project-visual {
+	margin-top: 20px;
+}
+
+#project-modal-content .project-visual img {
+	width: 100%;
+	margin: 15px 0;
+}
+
+#project-modal-content .caption {
+	text-align: center;
+	font-size: 0.85rem;
+	color: #666;
+	margin-top: 8px;
+	font-style: italic;
+}
+
+body.dark-mode #project-modal-content .caption {
+	color: #aaa;
+}
 
 	/* Quick Links Section */
 	.quick-links {
