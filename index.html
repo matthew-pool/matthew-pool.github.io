@@ -1,7 +1,7 @@
 <!--
 	Project: Portfolio
     File: index.html
-    @version: 1.11.0
+    @version: 1.12.0
 	@author: Matthew Pool
 	@updated: 2026-02-04
 -->
@@ -112,8 +112,8 @@
 	<div class="tab-container">
 		<div class="tab-nav">
 			<button class="tab-button active" onclick="openTab(event, 'home')">Home</button>
-			<button class="tab-button" onclick="openTab(event, 'projects')">More Projects</button> 
-			<button class="tab-button" onclick="openTab(event, 'refactor')">Project Refactor</button>
+			<button class="tab-button" onclick="openTab(event, 'projects')">Projects</button> 
+			<button class="tab-button" onclick="openTab(event, 'refactor')">Refactoring</button>
 		</div>
 	</div>
 
@@ -347,7 +347,7 @@
 		</div>
 	</div>
 	
-	<!-- Projects Tab ---------------------------------------------------------------------->
+<!-- Projects Tab ---------------------------------------------------------------------->
 	<div id="projects" class="tab-content">
 
 		<hr>
@@ -364,10 +364,11 @@
 			<button class="filter-btn" onclick="filterProjects('systems')">Systems & Design</button>
 		</div>
 
-		<!-- Project Cards -->
+		<!-- Project Cards Grid -->
 		<div class="project-grid">
+			
 			<!-- Graphics Projects -->
-			<div class="project-card" data-category="graphics">
+			<div class="project-card" data-category="graphics" onclick="openProjectModal('mario')">
 				<div class="project-card-image">
 					<img src="assets/images/mario1.png" alt="Super Mario Bros 1-1 Scene" loading="lazy">
 				</div>
@@ -384,7 +385,7 @@
 			</div>
 
 			<!-- Web Projects -->
-			<div class="project-card" data-category="web">
+			<div class="project-card" data-category="web" onclick="openProjectModal('paradox')">
 				<div class="project-card-image">
 					<img src="assets/images/paradox1.png" alt="The Existence Paradox App" loading="lazy">
 				</div>
@@ -399,7 +400,7 @@
 				</div>
 			</div>
 
-			<div class="project-card" data-category="web">
+			<div class="project-card" data-category="web" onclick="openProjectModal('travel')">
 				<div class="project-card-image">
 					<img src="assets/images/travel2.png" alt="Travel Platform" loading="lazy">
 				</div>
@@ -416,7 +417,7 @@
 			</div>
 
 			<!-- Mobile Projects -->
-			<div class="project-card" data-category="mobile">
+			<div class="project-card" data-category="mobile" onclick="openProjectModal('buddy')">
 				<div class="project-card-image">
 					<img src="assets/images/buddy1.png" alt="InventoryBuddy App" loading="lazy">
 				</div>
@@ -433,7 +434,7 @@
 			</div>
 
 			<!-- Data/ML Projects -->
-			<div class="project-card" data-category="data">
+			<div class="project-card" data-category="data" onclick="openProjectModal('aac')">
 				<div class="project-card-image">
 					<img src="assets/images/aac1.png" alt="Austin Animal Center Dashboard" loading="lazy">
 				</div>
@@ -449,9 +450,25 @@
 				</div>
 			</div>
 
-			<div class="project-card" data-category="data">
+			<div class="project-card" data-category="data" onclick="openProjectModal('ml')">
 				<div class="project-card-image">
-					<img src="assets/images/data2.png" alt="Data Analysis Visualization" loading="lazy">
+					<img src="assets/images/ml1.png" alt="ML modoel training and testing output" loading="lazy">
+				</div>
+				<div class="project-card-content">
+					<h3>Machine Learning</h3>
+					<p class="project-card-brief">Neural networks, deep Q-learning, and Markov decision processes</p>
+					<div class="project-card-tags">
+						<span class="project-card-tag">Python</span>
+						<span class="project-card-tag">TensorFlow</span>
+						<span class="project-card-tag">Scikit-Learn</span>
+						<span class="project-card-tag">NumPy</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="project-card" data-category="data" onclick="openProjectModal('data-analysis')">
+				<div class="project-card-image">
+					<img src="assets/images/data2.png" alt="NASA Climate Data Analysis" loading="lazy">
 				</div>
 				<div class="project-card-content">
 					<h3>NASA Climate Data Analysis</h3>
@@ -465,7 +482,7 @@
 				</div>
 			</div>
 
-			<div class="project-card" data-category="data">
+			<div class="project-card" data-category="data" onclick="openProjectModal('statistics')">
 				<div class="project-card-image">
 					<img src="assets/images/stat3.png" alt="Statistical Analysis" loading="lazy">
 				</div>
@@ -481,8 +498,53 @@
 				</div>
 			</div>
 
+			<div class="project-card" data-category="data" onclick="openProjectModal('economics')">
+				<div class="project-card-image">
+					<img src="assets/images/eco-1.png" alt="Economic Analysis" loading="lazy">
+				</div>
+				<div class="project-card-content">
+					<h3>Economic Analysis</h3>
+					<p class="project-card-brief">Data visualization and reporting on economic indicators</p>
+					<div class="project-card-tags">
+						<span class="project-card-tag">Data Viz</span>
+						<span class="project-card-tag">Economics</span>
+						<span class="project-card-tag">Research</span>
+					</div>
+				</div>
+			</div>
+
 			<!-- Systems & Design Projects -->
-			<div class="project-card" data-category="systems">
+			<div class="project-card" data-category="systems" onclick="openProjectModal('database')">
+				<div class="project-card-image">
+					<img src="assets/images/system2.png" alt="Database ERD" loading="lazy">
+				</div>
+				<div class="project-card-content">
+					<h3>Database Case Study</h3>
+					<p class="project-card-brief">MySQL database administration and ERD design</p>
+					<div class="project-card-tags">
+						<span class="project-card-tag">MySQL</span>
+						<span class="project-card-tag">Database</span>
+						<span class="project-card-tag">ERD</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="project-card" data-category="systems" onclick="openProjectModal('system-design')">
+				<div class="project-card-image">
+					<img src="assets/images/system2.png" alt="System Design Diagrams" loading="lazy">
+				</div>
+				<div class="project-card-content">
+					<h3>System Design & UML</h3>
+					<p class="project-card-brief">Comprehensive system design documentation with UML diagrams</p>
+					<div class="project-card-tags">
+						<span class="project-card-tag">UML</span>
+						<span class="project-card-tag">SDD</span>
+						<span class="project-card-tag">Architecture</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="project-card" data-category="systems" onclick="openProjectModal('security')">
 				<div class="project-card-image">
 					<img src="assets/images/security-1.png" alt="Security Audit" loading="lazy">
 				</div>
@@ -498,474 +560,68 @@
 				</div>
 			</div>
 
-			<div class="project-card" data-category="systems">
+			<div class="project-card" data-category="systems" onclick="openProjectModal('scrum')">
 				<div class="project-card-image">
-					<img src="assets/images/system2.png" alt="System Design Diagrams" loading="lazy">
+					<img src="assets/images/scrum-sdlc.png" alt="Scrum SDLC" loading="lazy">
 				</div>
 				<div class="project-card-content">
-					<h3>System Design & UML</h3>
-					<p class="project-card-brief">Comprehensive system design documentation with UML diagrams</p>
+					<h3>Agile & Scrum Leadership</h3>
+					<p class="project-card-brief">Scrum Master experience managing development teams</p>
 					<div class="project-card-tags">
-						<span class="project-card-tag">UML</span>
-						<span class="project-card-tag">SDD</span>
-						<span class="project-card-tag">Architecture</span>
-					</div>
-				</div>
-			</div>
-		</div>
-		
-		<!-- Project Details -->
-		
-		<!-- GRAPHICS PROJECTS -->
-		<div class="project-item" data-category="graphics">
-			<h3>Super Mario Bros. Scene Recreation</h3>
-			<div class="details">C++, OpenGL, GLSL, GLM</div>
-			<ul>
-				<li>Recreated classic Nintendo scene using <strong>custom OpenGL shaders</strong> and hand-coded 3D meshes without external modeling tools</li>
-				<li>Implemented <strong>Phong lighting model</strong> with multiple light sources and optimized rendering pipeline using VAO/VBO/EBO buffers</li>
-				<li>Developed dual-view camera system supporting both orthogonal and perspective projections with smooth navigation controls</li>
-			</ul>
-			<div class="project-links">
-				<a href="assets/documents/mario-design-decisions-doc.pdf">Design Decisions Document</a>
-			</div>
-
-			<div class="project-image-card">
-				<img class="mario-image" src="assets/images/mario3.png" alt="2D Super Mario Bros. scene with flagpole scene with steps and a pipe">
-				<img class="mario-image" src="assets/images/mario1.png" alt="3D Super Mario Bros. scene with flagpole scene with steps and a pipe">
-				<img class="mario-image" src="assets/images/mario2.png" alt="3D Super Mario Bros. scene with a Goomba sneaking around behind the steps">
-			</div>
-
-			<br>
-			
-			<div class="project-links">
-				<a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/super-mario-bros" target="_blank">💻 View Code</a>
-			</div>
-		
-			<hr>
-		</div>
-
-		<!-- WEB PROJECTS -->
-		<div class="project-item" data-category="web">
-			<h3>The Existence Paradox - Interactive Philosophy App (v1.0.0)</h3>
-			<div class="details">TypeScript, React, Responsive Design</div>
-			<ul>
-				<li>Built interactive web application exploring philosophical concepts through <strong>decision-tree navigation</strong> and dynamic content rendering</li>
-				<li>Implemented responsive design with <strong>modern React</strong> patterns ensuring optimal experience across desktop and mobile devices</li>
-			</ul>
-
-			<div class="project-image-card">
-				<img class="paradox-image" src="assets/images/paradox1.png" alt="User choice for the prompted question">
-			</div>
-
-			<div class="project-links">
-				<a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/aac-dashboard" target="_blank">💻 View Code</a>
-			</div>
-
-			<div class="play-store-cta" style="margin-top: 30px; margin-bottom: 30px;">
-				<div class="play-store-content">
-					<h3 style="margin-bottom: 15px;">The Existence Paradox</h3>
-					
-					<a href="./existence-paradox/" target="_blank" rel="noopener noreferrer" class="web-badge">
-						<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-							<path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
-							<path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
-							<path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
-							<path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
-						</svg>
-						
-						<div class="badge-text-container">
-							<span class="badge-small">Launch in</span>
-							<span class="badge-large">Browser</span>
-						</div>
-					</a>
-				</div>
-			</div>
-
-			<hr>
-		</div>
-
-		<div class="project-item" data-category="web">
-			<h3>Product Design</h3>
-
-			<div class="details">Eat Right! (Android & iOS)</div>
-			<ul>
-				<li><strong>Wireframe</strong></li>
-				<div class="project-image-card">
-					<img src="assets/images/product-design-eatright-wireframe.png" alt="Eat Right low-fidelity wireframe">
-				</div>
-
-				<li><strong>Documentation</strong></li>
-				<div class="project-links">
-					<a href="assets/document/eatright-interviews-personas.pdf">Interviews & Personas</a><br>
-					<a href="assets/documents/eatright-design-decisions-document.pdf">Design Decisions Document</a><br>
-					<a href="assets/document/eatright-prototype-paper.pdf">Prototype Documentation</a><br>
-				</div>
-			</ul>
-			
-			<hr>
-			
-			<div class="details">Kiva - MoneyMobile (Client mobile app & Admin web app)</div>
-			<ul>
-				<li><strong>Mockup</strong></li>
-				<div class="project-image-card">
-					<img src="assets/images/product-design-moneymobile-mockup.png" alt="MoneyMobile app high-fidelity mockup">
-				</div>
-
-				<li><strong>Documentation</strong></li>
-				<div class="project-links">
-					<a href="assets/documents/moneymobile-design-proposal-document.pdf">Design Proposal Document</a>
-				</div>
-			</ul>
-
-			<div class="project-links">
-				<a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/product-design" target="_blank">💻 View Code</a>
-			</div>
-
-			<hr>
-		</div>
-
-		<div class="project-item" data-category="web">
-			<h3>Full-Stack Travel Platform (Demo)</h3>
-			<div class="details">MEAN Stack (MongoDB, Express, Angular, Node.js), Bootstrap</div>
-			<ul>
-				<li>Developed <strong>dual-interface platform</strong> with admin SPA for content management and customer-facing site for browsing vacation packages</li>
-				<li>Implemented <strong>RESTful API architecture</strong> with comprehensive CRUD operations tested using Postman</li>
-				<li>Designed <strong>responsive interfaces</strong> using Bootstrap CSS with mobile-first approach and cross-browser compatibility</li>
-			</ul>
-
-			<div class="project-image-card">
-				<img src="assets/images/travel2.png" alt="Travel client website Travel tab" class="travel-no-scale">
-				<img src="assets/images/travel1.png" alt="Travel admin website to add and edit trips" class="travel-no-scale">
-				<div class="travel-images-row">
-					<img src="assets/images/travel3.png" alt="Default Add Trip dialog">
-					<img src="assets/images/travel4.png" alt="Filled out Edit Trip dialog">
-				</div>
-			</div>
-			
-			<div class="project-links">
-				<a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/travel-web-app" target="_blank">💻 View Code</a>
-			</div>
-
-			<hr>
-		</div>
-
-		<!-- MOBILE PROJECTS -->
-		<div class="project-item" data-category="mobile">
-			<h3>InventoryBuddy</h3>
-			<div class="details">Android, Java, SQLite, SMS Integration</div>
-			<ul>
-				<li>Built Android inventory management application with <strong>SMS notification system</strong> for low-stock alerts</li>
-				<li>Implemented accessibility-focused design using industry-standard contrast ratios and culturally-neutral color combinations</li>
-				<li>Designed database schema and implemented local data persistence using SQLite</li>
-			</ul>
-
-			<div class="project-image-card">
-				<div class="buddy-screenshot-grid">
-					<img src="assets/images/buddy1.png" alt="InventoryBuddy default login screen">
-					<img src="assets/images/buddy2.png" alt="Login screen with username and masked password">
-					<img src="assets/images/buddy4.png" alt="Account created toast">
-					<img src="assets/images/buddy3.png" alt="SMS access request">
-					<img src="assets/images/buddy5.png" alt="Empty inventory">
-					<img src="assets/images/buddy6.png" alt="Default add window">
-					<img src="assets/images/buddy7.png" alt="Two cans of beans being added">
-					<img src="assets/images/buddy10.png" alt="Delete item prompt">
-				</div>
-			</div>
-
-			<div class="project-links">
-				<a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/inventory-buddy" target="_blank">💻 View Code</a>
-			</div>
-
-			<hr>
-		</div>
-
-		<!-- DATA/ML PROJECTS -->
-		<div class="project-item" data-category="data">
-			<h3>Austin Animal Center Dashboard</h3>
-			<div class="details">Python, MongoDB, Dash, Pandas</div>
-			<ul>
-				<li>Created interactive data dashboard using <strong>MVC design pattern</strong> to visualize and analyze shelter animal data from MongoDB database</li>
-				<li>Developed custom <strong>Python CRUD module</strong> abstracting database operations with comprehensive unit test suite using pytest</li>
-				<li>Integrated geolocation mapping and dynamic filtering enabling shelter staff to identify animals meeting specific rescue criteria</li>
-			</ul>
-			
-			<div class="project-image-card">
-				<img src="assets/images/aac1.png" alt="Spreadsheet showing first few database records">
-				<img src="assets/images/aac2.png" alt="Geolocation map showing the Austin, TX area">
-				<img src="assets/images/aac4.png" alt="Unit test results with all 16 tests passed" style="width: 700px; height: auto;">
-				<img src="assets/images/aac3.png" alt="AAC database and pie chart of animal distribution">
-			</div>
-
-			<div class="project-links">
-				<a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/aac-dashboard" target="_blank">💻 View Code</a>
-			</div>
-
-			<hr>
-		</div>
-
-		<div class="project-item" data-category="data">
-			<h3>Machine Learning</h3>
-			<div class="details">Python, TensorFlow, Scikit-Learn, NumPy, Pandas, Matplotlib</div>
-			<ul>
-				<li>Optimized <strong>Convoluted Deep Neural Network (CDNN)</strong> model for image recognition, experimenting with hyperparameters to balance accuracy and training efficiency</li>
-				<div class="project-links">
-					<a href="assets/documents/cdnn-image-recognition.html" class="guide-link" target="_blank" rel="noopener noreferrer">CDNN Training & Testing</a>
-				</div>
-
-				<li>Developed <strong>Deep Q-Learning Network (DQN)</strong> to train a gaming AI agent for pathfinding optimization</li>
-				<div class="project-links">
-					<a href="assets/documents/dqn-report.pdf">DQN Report</a>
-					<a href="assets/documents/dqn-treasure-hunt.html" class="guide-link" target="_blank" rel="noopener noreferrer">DQN Training & Testing</a>
-				</div>
-
-				<li>Implemented <strong>Markov Decision Process (MDP)</strong> and designed the training algorithm to teach a ML model to play Hasbro's Connect 4</li>
-				<div class="project-links">
-					<a href="assets/documents/mdp-connect4.pdf">MDP Design Document</a>
-				</div>
-
-				<li>Explored ways <strong>artificial and biological intelligences</strong> compare</li>
-				<div class="project-links">
-					<a href="assets/documents/artificial-vs-biological.pdf">Comparing Intelligences</a>
-				</div>
-			</ul>
-					
-			<div class="project-links">
-				<a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/data-analysis" target="_blank">💻 View Code</a>
-			</div>
-
-			<hr>
-		</div>
-
-		<div class="project-item" data-category="data">
-			<h3>Data Analysis</h3>
-			<div class="details">Python, MySQL, SQL, MongoDB</div>
-			<ul>
-				<li>Created and interacted with various databases and datatypes</li>
-				<li>Developed Python script using <strong>pandas, matplotlib, numpy, and ploty</strong> to analyze a NASA dataset of global temperature deviations and graph a curved trend line for the plotted points</li>
-				<li>Earned <strong>Data Analytics Certificate</strong> from uCertify</li>
-			</ul>
-
-			<div class="project-image-card">
-				<img src="assets/images/data2.png" style="width: 100%; max-width: 1280px;" alt="Screenshot of the script's output line graph with positive-curved trend line">
-				<img src="assets/images/data1.png" style="width: 100%; max-width: 1280px;" alt="Certification for Data Analysis awarded to Matthew Pool">		
-			</div>
-
-			<div class="project-links">
-				<a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/data-analysis" target="_blank">💻 View Code</a>
-			</div>
-
-			<hr>
-		</div>
-
-		<div class="project-item" data-category="data">
-			<h3>Statistical Analysis</h3>
-			<div class="details">Python, SciPy, NumPy, Pandas, Matplotlib, Seaborn</div>
-
-			<ul>
-				<li>Performed statistical analysis on NBA Elo data using <strong>regression models</strong> to predict regular-season wins based on team metrics</li>
-			</ul>      
-
-			<div class="project-image-card">
-				<img src="assets/images/stat1.png" alt="Null hypothesis, alternative hypothesis, and level of significance">
-				<img src="assets/images/stat2.png" alt="OLS Regression Results">
-				<img src="assets/images/stat3.png" alt="Scatterplot graph showing the correlation of 0.9072 between Elo and total number of wins, with a p-value of 0.0">
-			</div>
-
-			<div class="project-links">
-				<a href="assets/documents/statistics-report.pdf">Project Summary Report</a><br>
-				<a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/statistical-analysis" target="_blank">💻 View Code</a>
-			</div>
-
-			<hr>
-		</div>
-
-		<div class="project-item" data-category="data">
-			<h3>Economic Analysis</h3>
-			<div class="details">Economic Data Visualization & Reporting</div>
-			<ul>
-				<li>Analyzed recent historical economic data (up to 2018 Q2) to create a report containing various diagrams and related factual information</li>	
-			</ul>
-
-			<div class="project-image-card">
-				<img src="assets/images/eco-1.png" alt="Unemployment Rates from July 2017 to June 2018">
-				<img src="assets/images/eco-2.png" alt="Consumer Price Index from June 2017 to June 2018">
-				<img src="assets/images/eco-3.png" alt="GDP Change from 2016 Q3 to 2018 Q2">
-				<img src="assets/images/eco-4.png" alt="US Inflation Rates from 2012 to 2017">
-				<img src="assets/images/eco-5.png" alt="Purchasing Managers' Index from August 2017 to July 2018">
-			</div>
-
-			<div class="project-links">
-				<a href="assets/documents/economic-analysis.pdf">Economic Analysis Report</a><br>
-				<a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/economic-analysis" target="_blank">💻 View Code</a>
-			</div>
-
-			<hr>
-		</div>
-
-		<!-- SYSTEMS & DESIGN PROJECTS -->
-		<div class="project-item" data-category="systems">
-			<h3>Database Case Study</h3>
-			<div class="details">MySQL</div>
-			<ul>
-				<li>Connected to MySQL server for database administration and analysis</li>
-			</ul>
-			
-			<iframe src="database-administration/database-erd.html" title="Quantigration Database ERD" style="width: 100%; height: 600px; border: none; overflow: hidden;"></iframe>
-			
-			<div class="project-links">
-				<a href="database-administration/database-analysis.zip" target="_blank">💻 Process Documentation</a>		
-			</div>
-
-			<hr>
-		</div>
-
-		<div class="project-item" data-category="systems">
-			<h3>System Design</h3>
-			<div class="details">UML, System Design Document (SDD)</div>
-			<ul>
-				<li>Designed a System Design Document (SDD), including system details and various UML diagrams</li>
-			</ul>
-
-			<div class="project-image-card">
-				<img src="assets/images/system2.png" style="width: 100%; max-width: 1280px;" alt="UML Activity Diagram for log in/log out ">
-				<img src="assets/images/system3.png" style="width: 100%; max-width: 1280px;" alt="UML Sequence Diagram for contact us">
-			</div>
-
-			<div class="project-links">
-				<a href="assets/documents/sdd.pdf">System Design Document (SDD)</a>
-			</div>
-
-			<hr>
-		</div>
-
-		<div class="project-item" data-category="systems">
-			<h3>Financial Security Audit & Remediation</h3>
-			<div class="details">Java, Spring Boot, OWASP ZAP, Cryptography (AES/SHA)</div>
-			
-			<div class="project-content-split">
-				<div class="project-text">
-					<ul>
-						<li><strong>Vulnerability Assessment:</strong> Audited a RESTful API using <strong>OWASP Dependency-Check</strong>, identifying critical flaws such as hardcoded credentials in <code>DocData.java</code> and potential SQL injection points.</li>
-						<li><strong>Remediation Engineering:</strong> Refactored the codebase to implement <strong>AES-256 encryption</strong> for data at rest and <strong>SHA-256 hashing</strong> for checksum verification.</li>
-						<li><strong>Secure Configuration:</strong> Enforced HTTPS/TLS on port 8443 and upgraded legacy Spring Boot dependencies to patch known CVEs (e.g., CVE-2022-22965).</li>
-						<li><strong>Compliance:</strong> Aligned software architecture with GDPR, SOX, and HIPAA standards by implementing proper access control and audit logging.</li>
-					</ul>
-					
-					<div class="project-links">
-						<a href="assets/documents/vulnerability-assessment-report.pdf" target="_blank" class="btn-primary">🛡️ Audit Report</a>
-						<a href="assets/documents/software-security-paper.pdf" target="_blank" class="btn-secondary">📄 Security Reflection</a>
-					</div>
-				</div>
-
-				<div class="project-visual">
-					<img src="assets/images/security-1.png" 
-						alt="Table of Security Vulnerabilities and Remediation Status" 
-						style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); border: 1px solid #ddd;">
-					
-					<p class="caption" style="text-align: center; font-size: 0.85rem; color: #666; margin-top: 5px;">
-						<em>Summary of findings from the Manual & Static Analysis phases</em>
-					</p>
-				</div>
-			</div>
-
-			<hr>
-		</div>
-
-		<div class="project-item" data-category="systems">
-			<h3>Agile Project Management & Scrum Leadership</h3>
-			<div class="details">Scrum Master, Jira, SDLC, User Stories, Team Leadership</div>
-			
-			<div class="project-content-split">
-				<div class="project-text">
-					<p><strong>The Role:</strong> As Scrum Master for the SNHU Travel App, I led the development team through a transition from Waterfall to Agile 
-					
-					<ul>
-						<li><strong>Strategic Pivot:</strong> Successfully managed a major scope change mid-development—shifting the product focus to "Detox and Wellness" and redesigning the GUI from a list view to a slideshow—without disrupting team velocity.</li>
-						<li><strong>Process Optimization:</strong> Utilized <strong>Jira</strong> for backlog grooming and tracking. Implemented "Planning Poker" for estimation, resulting in more accurate velocity forecasting and reduced technical debt.</li>
-						<li><strong>Team Coaching:</strong> Enforced the "Definition of Done" (DoD) and fostered a culture of transparency, effectively removing blockers identified during daily standups.</li>
-					</ul>
-					
-					<div class="project-links">
-						<a href="assets/documents/final-sprint-review-reflection.pdf" target="_blank" class="btn-primary">📊 View Sprint Retrospective (PDF)</a>
-						<a href="assets/documents/scrum-master-journal.pdf" target="_blank" class="btn-secondary">📝 Read Scrum Journal (PDF)</a>
-					</div>
-				</div>
-
-				<div class="project-visual">
-					<img src="assets/images/scrum-sdlc.png" 
-						alt="Scrum Software Development Lifecycle Diagram" 
-						style="width: 100%; border: 1px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); border: 1px solid #ddd;">
-					
-					<p class="caption" style="text-align: center; font-size: 0.85rem; color: #666; margin-top: 5px;">
-						<em>The Iterative Scrum Framework used for SNHU Travel App</em>
-					</p>
-				</div>
-				
-				<div class="project-links">
-					<a href="assets/documents/agile-scrum-presentation.pdf" target="_blank">Agile-Scrum Presentation (PDF)</a>
-				</div>
-			</div>
-
-			<hr>
-		</div>
-
-		<div class="project-item" data-category="systems">
-			<h3>Algorithmic Optimization</h3>
-			<div class="details">C++, Data Structures, Merge Sort, Big O Analysis</div>
-
-			<ul>
-				<li><strong>Custom Algorithm:</strong> Implemented a manual, recursive <strong>Merge Sort</strong> ($O(n \log n)$) to optimize sorting performance for large datasets, replacing a previous $O(n^2)$ Insertion Sort.</li>
-				<li><strong>Data Structures:</strong> Architected a system using <code>vector</code> of custom <code>Course</code> structs to handle dynamic data loading from CSV files.</li>
-				<li><strong>Memory Management:</strong> Managed object creation and vector resizing manually to ensure efficient memory usage during the file parsing phase.</li>
-			</ul>
-
-			<div class="project-image-card">
-				<img src="assets/images/algo-1.png" 
-					alt="C++ Code Snippet showing recursive Merge Sort implementation" 
-					style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
-				
-				<p class="caption" style="text-align: center; font-size: 0.85rem; color: #666; margin-top: 5px;">
-					<em>Snippet: Custom recursive Merge Sort implementation</em>
-				</p>
-			</div>
-
-			<div class="project-links">
-				<a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/algorithmic-optimization" target="_blank">💻 View Code</a>
-			</div>
-
-			<hr>
-		</div>
-
-		<div class="project-item" data-category="systems">
-			<h3>Unit Testing</h3>
-			<div class="details">Java, JUnit 5, Test-Driven Development (TDD), Maven</div>
-			
-			<div class="project-content-split">
-				<div class="project-text">
-					<p><strong>Overview:</strong> Developed a backend service module for scheduling system appointments, featuring strict data validation and in-memory data management.</p>
-					<ul>
-						<li><strong>Defensive Programming:</strong> Implemented robust validation logic to enforce business rules, such as rejecting appointments with past dates or null IDs .</li>
-						<li><strong>Automated Testing:</strong> Engineered a comprehensive <strong>JUnit 5</strong> test suite achieving high code coverage. Utilized <code>@BeforeEach</code> for test fixture setup and <code>assertThrows</code> to verify exception handling for invalid inputs.</li>
-						<li><strong>Edge Case Handling:</strong> Specifically targeted boundary conditions—testing maximum ID lengths, empty descriptions, and "Y2K" past-date scenarios to ensure system stability.</li>
-					</ul>
-					
-					<div class="project-visual">
-						<img src="assets/images/service-tests-1.png" 
-							alt="JUnit 5 Test Runner showing 100% passing tests" 
-							style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); border: 1px solid #ddd;">
-						
-						<p class="caption" style="text-align: center; font-size: 0.85rem; color: #666; margin-top: 5px;">
-							<em>100% Pass Rate: Verifying validation logic and exception handling</em>
-						</p>
-					</div>
-
-					<div class="project-links">
-						<a href="service-tests/service-tests.zip" target="_blank" rel="noopener noreferrer">Project Files (ZIP)</a>
+						<span class="project-card-tag">Scrum Master</span>
+						<span class="project-card-tag">Jira</span>
+						<span class="project-card-tag">SDLC</span>
+						<span class="project-card-tag">Leadership</span>
 					</div>
 				</div>
 			</div>
 
-			<hr>
+			<div class="project-card" data-category="systems" onclick="openProjectModal('algorithms')">
+				<div class="project-card-image">
+					<img src="assets/images/algo-1.png" alt="Algorithm Code" loading="lazy">
+				</div>
+				<div class="project-card-content">
+					<h3>Algorithmic Optimization</h3>
+					<p class="project-card-brief">Custom merge sort implementation with Big O analysis</p>
+					<div class="project-card-tags">
+						<span class="project-card-tag">C++</span>
+						<span class="project-card-tag">Algorithms</span>
+						<span class="project-card-tag">Data Structures</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="project-card" data-category="systems" onclick="openProjectModal('unit-testing')">
+				<div class="project-card-image">
+					<img src="assets/images/service-tests-1.png" alt="Unit Tests" loading="lazy">
+				</div>
+				<div class="project-card-content">
+					<h3>Unit Testing</h3>
+					<p class="project-card-brief">JUnit 5 test suite with comprehensive coverage</p>
+					<div class="project-card-tags">
+						<span class="project-card-tag">Java</span>
+						<span class="project-card-tag">JUnit 5</span>
+						<span class="project-card-tag">TDD</span>
+						<span class="project-card-tag">Maven</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="project-card" data-category="web" onclick="openProjectModal('product-design')">
+				<div class="project-card-image">
+					<img src="assets/images/product-design-eatright-wireframe.png" alt="Product Design" loading="lazy">
+				</div>
+				<div class="project-card-content">
+					<h3>Product Design</h3>
+					<p class="project-card-brief">Mobile and web app design with wireframes and mockups</p>
+					<div class="project-card-tags">
+						<span class="project-card-tag">UX Design</span>
+						<span class="project-card-tag">Wireframes</span>
+						<span class="project-card-tag">Mockups</span>
+					</div>
+				</div>
+			</div>
+
 		</div>
 
 		<!-- Projects Footer -->
@@ -987,8 +643,8 @@
 		</div>
 	</div>
 
-	<!-- Refactor Tab -------------------------------------------------------------------->
-	<div id="refactor" class="tab-content">
+<!-- Refactoring Tab -------------------------------------------------------------------->
+	<div id="refactoring" class="tab-content">
 		
 		<hr>
 
@@ -1070,7 +726,7 @@
 		
 		<hr>
 
-		<!-- Refactor Footer -->
+		<!-- Refactoring Footer -->
 		<div class="footer-metallic-black">
 			<p><i>Are you still here?!</i> Thank you so much for looking over my portfolio.</p>
 			<p style="margin-top: 7px;">I give everything I am into everything I do. Give me a chance.<br>You won't regret it.</p>
@@ -1086,6 +742,441 @@
 				<span class="toast-container"></span>
 			</span><br>
 			<a href="tel:+9035760223"><span style="font-size: 16px;">903-576-0223</span></a></p>
+		</div>
+	</div>
+
+	<!-- ========================================
+	     PROJECT MODAL POPUP
+	     ======================================== -->
+	<div id="project-modal" class="project-modal">
+		<div class="project-modal-body">
+			<button class="project-modal-close" onclick="closeProjectModal()" aria-label="Close">×</button>
+			<div id="project-modal-content">
+				<!-- Project details will be loaded here dynamically -->
+			</div>
+		</div>
+	</div>
+
+	<!-- ========================================
+	     HIDDEN PROJECT DETAILS
+	     (These are cloned into modal when clicked)
+	     ======================================== -->
+	
+	<!-- GRAPHICS PROJECTS -->
+	<div id="details-mario" class="project-details">
+		<h3>Super Mario Bros. Scene Recreation</h3>
+		<div class="details">C++, OpenGL, GLSL, GLM</div>
+		<ul>
+			<li>Recreated classic Nintendo scene using <strong>custom OpenGL shaders</strong> and hand-coded 3D meshes without external modeling tools</li>
+			<li>Implemented <strong>Phong lighting model</strong> with multiple light sources and optimized rendering pipeline using VAO/VBO/EBO buffers</li>
+			<li>Developed dual-view camera system supporting both orthogonal and perspective projections with smooth navigation controls</li>
+		</ul>
+		<div class="project-links">
+			<a href="assets/documents/mario-design-decisions-doc.pdf">Design Decisions Document</a>
+		</div>
+
+		<div class="project-image-card">
+			<img class="mario-image" src="assets/images/mario3.png" alt="2D Super Mario Bros. scene with flagpole scene with steps and a pipe">
+			<img class="mario-image" src="assets/images/mario1.png" alt="3D Super Mario Bros. scene with flagpole scene with steps and a pipe">
+			<img class="mario-image" src="assets/images/mario2.png" alt="3D Super Mario Bros. scene with a Goomba sneaking around behind the steps">
+		</div>
+
+		<br>
+		
+		<div class="project-links">
+			<a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/super-mario-bros" target="_blank">💻 View Code</a>
+		</div>
+	</div>
+
+	<!-- WEB PROJECTS -->
+	<div id="details-paradox" class="project-details">
+		<h3>The Existence Paradox - Interactive Philosophy App (v1.0.0)</h3>
+		<div class="details">TypeScript, React, Responsive Design</div>
+		<ul>
+			<li>Built interactive web application exploring philosophical concepts through <strong>decision-tree navigation</strong> and dynamic content rendering</li>
+			<li>Implemented responsive design with <strong>modern React</strong> patterns ensuring optimal experience across desktop and mobile devices</li>
+		</ul>
+
+		<div class="project-image-card">
+			<img class="paradox-image" src="assets/images/paradox1.png" alt="User choice for the prompted question">
+		</div>
+
+		<div class="project-links">
+			<a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/aac-dashboard" target="_blank">💻 View Code</a>
+		</div>
+
+		<div class="play-store-cta" style="margin-top: 30px; margin-bottom: 30px;">
+			<div class="play-store-content">
+				<h3 style="margin-bottom: 15px;">The Existence Paradox</h3>
+				
+				<a href="./existence-paradox/" target="_blank" rel="noopener noreferrer" class="web-badge">
+					<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
+						<path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
+						<path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
+						<path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
+					</svg>
+					
+					<div class="badge-text-container">
+						<span class="badge-small">Launch in</span>
+						<span class="badge-large">Browser</span>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<div id="details-product-design" class="project-details">
+		<h3>Product Design</h3>
+
+		<div class="details">Eat Right! (Android & iOS)</div>
+		<ul>
+			<li><strong>Wireframe</strong></li>
+			<div class="project-image-card">
+				<img src="assets/images/product-design-eatright-wireframe.png" alt="Eat Right low-fidelity wireframe">
+			</div>
+
+			<li><strong>Documentation</strong></li>
+			<div class="project-links">
+				<a href="assets/document/eatright-interviews-personas.pdf">Interviews & Personas</a><br>
+				<a href="assets/documents/eatright-design-decisions-document.pdf">Design Decisions Document</a><br>
+				<a href="assets/document/eatright-prototype-paper.pdf">Prototype Documentation</a><br>
+			</div>
+		</ul>
+		
+		<div class="details">Kiva - MoneyMobile (Client mobile app & Admin web app)</div>
+		<ul>
+			<li><strong>Mockup</strong></li>
+			<div class="project-image-card">
+				<img src="assets/images/product-design-moneymobile-mockup.png" alt="MoneyMobile app high-fidelity mockup">
+			</div>
+
+			<li><strong>Documentation</strong></li>
+			<div class="project-links">
+				<a href="assets/documents/moneymobile-design-proposal-document.pdf">Design Proposal Document</a>
+			</div>
+		</ul>
+
+		<div class="project-links">
+			<a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/product-design" target="_blank">💻 View Code</a>
+		</div>
+	</div>
+
+	<div id="details-travel" class="project-details">
+		<h3>Full-Stack Travel Platform (Demo)</h3>
+		<div class="details">MEAN Stack (MongoDB, Express, Angular, Node.js), Bootstrap</div>
+		<ul>
+			<li>Developed <strong>dual-interface platform</strong> with admin SPA for content management and customer-facing site for browsing vacation packages</li>
+			<li>Implemented <strong>RESTful API architecture</strong> with comprehensive CRUD operations tested using Postman</li>
+			<li>Designed <strong>responsive interfaces</strong> using Bootstrap CSS with mobile-first approach and cross-browser compatibility</li>
+		</ul>
+
+		<div class="project-image-card">
+			<img src="assets/images/travel2.png" alt="Travel client website Travel tab" class="travel-no-scale">
+			<img src="assets/images/travel1.png" alt="Travel admin website to add and edit trips" class="travel-no-scale">
+			<div class="travel-images-row">
+				<img src="assets/images/travel3.png" alt="Default Add Trip dialog">
+				<img src="assets/images/travel4.png" alt="Filled out Edit Trip dialog">
+			</div>
+		</div>
+		
+		<div class="project-links">
+			<a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/travel-web-app" target="_blank">💻 View Code</a>
+		</div>
+	</div>
+
+	<!-- MOBILE PROJECTS -->
+	<div id="details-buddy" class="project-details">
+		<h3>InventoryBuddy</h3>
+		<div class="details">Android, Java, SQLite, SMS Integration</div>
+		<ul>
+			<li>Built Android inventory management application with <strong>SMS notification system</strong> for low-stock alerts</li>
+			<li>Implemented accessibility-focused design using industry-standard contrast ratios and culturally-neutral color combinations</li>
+			<li>Designed database schema and implemented local data persistence using SQLite</li>
+		</ul>
+
+		<div class="project-image-card">
+			<div class="buddy-screenshot-grid">
+				<img src="assets/images/buddy1.png" alt="InventoryBuddy default login screen">
+				<img src="assets/images/buddy2.png" alt="Login screen with username and masked password">
+				<img src="assets/images/buddy4.png" alt="Account created toast">
+				<img src="assets/images/buddy3.png" alt="SMS access request">
+				<img src="assets/images/buddy5.png" alt="Empty inventory">
+				<img src="assets/images/buddy6.png" alt="Default add window">
+				<img src="assets/images/buddy7.png" alt="Two cans of beans being added">
+				<img src="assets/images/buddy10.png" alt="Delete item prompt">
+			</div>
+		</div>
+
+		<div class="project-links">
+			<a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/inventory-buddy" target="_blank">💻 View Code</a>
+		</div>
+	</div>
+
+	<!-- DATA/ML PROJECTS -->
+	<div id="details-aac" class="project-details">
+		<h3>Austin Animal Center Dashboard</h3>
+		<div class="details">Python, MongoDB, Dash, Pandas</div>
+		<ul>
+			<li>Created interactive data dashboard using <strong>MVC design pattern</strong> to visualize and analyze shelter animal data from MongoDB database</li>
+			<li>Developed custom <strong>Python CRUD module</strong> abstracting database operations with comprehensive unit test suite using pytest</li>
+			<li>Integrated geolocation mapping and dynamic filtering enabling shelter staff to identify animals meeting specific rescue criteria</li>
+		</ul>
+		
+		<div class="project-image-card">
+			<img src="assets/images/aac1.png" alt="Spreadsheet showing first few database records">
+			<img src="assets/images/aac2.png" alt="Geolocation map showing the Austin, TX area">
+			<img src="assets/images/aac4.png" alt="Unit test results with all 16 tests passed" style="width: 700px; height: auto;">
+			<img src="assets/images/aac3.png" alt="AAC database and pie chart of animal distribution">
+		</div>
+
+		<div class="project-links">
+			<a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/aac-dashboard" target="_blank">💻 View Code</a>
+		</div>
+	</div>
+
+	<div id="details-ml" class="project-details">
+		<h3>Machine Learning</h3>
+		<div class="details">Python, TensorFlow, Scikit-Learn, NumPy, Pandas, Matplotlib</div>
+		<ul>
+			<li>Optimized <strong>Convoluted Deep Neural Network (CDNN)</strong> model for image recognition, experimenting with hyperparameters to balance accuracy and training efficiency</li>
+			<div class="project-links">
+				<a href="assets/documents/cdnn-image-recognition.html" class="guide-link" target="_blank" rel="noopener noreferrer">CDNN Training & Testing</a>
+			</div>
+
+			<li>Developed <strong>Deep Q-Learning Network (DQN)</strong> to train a gaming AI agent for pathfinding optimization</li>
+			<div class="project-links">
+				<a href="assets/documents/dqn-report.pdf">DQN Report</a>
+				<a href="assets/documents/dqn-treasure-hunt.html" class="guide-link" target="_blank" rel="noopener noreferrer">DQN Training & Testing</a>
+			</div>
+
+			<li>Implemented <strong>Markov Decision Process (MDP)</strong> and designed the training algorithm to teach a ML model to play Hasbro's Connect 4</li>
+			<div class="project-links">
+				<a href="assets/documents/mdp-connect4.pdf">MDP Design Document</a>
+			</div>
+
+			<li>Explored ways <strong>artificial and biological intelligences</strong> compare</li>
+			<div class="project-links">
+				<a href="assets/documents/artificial-vs-biological.pdf">Comparing Intelligences</a>
+			</div>
+		</ul>
+				
+		<div class="project-links">
+			<a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/data-analysis" target="_blank">💻 View Code</a>
+		</div>
+	</div>
+
+	<div id="details-data-analysis" class="project-details">
+		<h3>Data Analysis</h3>
+		<div class="details">Python, MySQL, SQL, MongoDB</div>
+		<ul>
+			<li>Created and interacted with various databases and datatypes</li>
+			<li>Developed Python script using <strong>pandas, matplotlib, numpy, and ploty</strong> to analyze a NASA dataset of global temperature deviations and graph a curved trend line for the plotted points</li>
+			<li>Earned <strong>Data Analytics Certificate</strong> from uCertify</li>
+		</ul>
+
+		<div class="project-image-card">
+			<img src="assets/images/data2.png" style="width: 100%; max-width: 1280px;" alt="Screenshot of the script's output line graph with positive-curved trend line">
+			<img src="assets/images/data1.png" style="width: 100%; max-width: 1280px;" alt="Certification for Data Analysis awarded to Matthew Pool">		
+		</div>
+
+		<div class="project-links">
+			<a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/data-analysis" target="_blank">💻 View Code</a>
+		</div>
+	</div>
+
+	<div id="details-statistics" class="project-details">
+		<h3>Statistical Analysis</h3>
+		<div class="details">Python, SciPy, NumPy, Pandas, Matplotlib, Seaborn</div>
+
+		<ul>
+			<li>Performed statistical analysis on NBA Elo data using <strong>regression models</strong> to predict regular-season wins based on team metrics</li>
+		</ul>      
+
+		<div class="project-image-card">
+			<img src="assets/images/stat1.png" alt="Null hypothesis, alternative hypothesis, and level of significance">
+			<img src="assets/images/stat2.png" alt="OLS Regression Results">
+			<img src="assets/images/stat3.png" alt="Scatterplot graph showing the correlation of 0.9072 between Elo and total number of wins, with a p-value of 0.0">
+		</div>
+
+		<div class="project-links">
+			<a href="assets/documents/statistics-report.pdf">Project Summary Report</a><br>
+			<a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/statistical-analysis" target="_blank">💻 View Code</a>
+		</div>
+	</div>
+
+	<div id="details-economics" class="project-details">
+		<h3>Economic Analysis</h3>
+		<div class="details">Economic Data Visualization & Reporting</div>
+		<ul>
+			<li>Analyzed recent historical economic data (up to 2018 Q2) to create a report containing various diagrams and related factual information</li>	
+		</ul>
+
+		<div class="project-image-card">
+			<img src="assets/images/eco-1.png" alt="Unemployment Rates from July 2017 to June 2018">
+			<img src="assets/images/eco-2.png" alt="Consumer Price Index from June 2017 to June 2018">
+			<img src="assets/images/eco-3.png" alt="GDP Change from 2016 Q3 to 2018 Q2">
+			<img src="assets/images/eco-4.png" alt="US Inflation Rates from 2012 to 2017">
+			<img src="assets/images/eco-5.png" alt="Purchasing Managers' Index from August 2017 to July 2018">
+		</div>
+
+		<div class="project-links">
+			<a href="assets/documents/economic-analysis.pdf">Economic Analysis Report</a><br>
+			<a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/economic-analysis" target="_blank">💻 View Code</a>
+		</div>
+	</div>
+
+	<!-- SYSTEMS & DESIGN PROJECTS -->
+	<div id="details-database" class="project-details">
+		<h3>Database Case Study</h3>
+		<div class="details">MySQL</div>
+		<ul>
+			<li>Connected to MySQL server for database administration and analysis</li>
+		</ul>
+		
+		<iframe src="database-administration/database-erd.html" title="Quantigration Database ERD" style="width: 100%; height: 600px; border: none; overflow: hidden;"></iframe>
+		
+		<div class="project-links">
+			<a href="database-administration/database-analysis.zip" target="_blank">💻 Process Documentation</a>		
+		</div>
+	</div>
+
+	<div id="details-system-design" class="project-details">
+		<h3>System Design</h3>
+		<div class="details">UML, System Design Document (SDD)</div>
+		<ul>
+			<li>Designed a System Design Document (SDD), including system details and various UML diagrams</li>
+		</ul>
+
+		<div class="project-image-card">
+			<img src="assets/images/system2.png" style="width: 100%; max-width: 1280px;" alt="UML Activity Diagram for log in/log out ">
+			<img src="assets/images/system3.png" style="width: 100%; max-width: 1280px;" alt="UML Sequence Diagram for contact us">
+		</div>
+
+		<div class="project-links">
+			<a href="assets/documents/sdd.pdf">System Design Document (SDD)</a>
+		</div>
+	</div>
+
+	<div id="details-security" class="project-details">
+		<h3>Financial Security Audit & Remediation</h3>
+		<div class="details">Java, Spring Boot, OWASP ZAP, Cryptography (AES/SHA)</div>
+		
+		<div class="project-content-split">
+			<div class="project-text">
+				<ul>
+					<li><strong>Vulnerability Assessment:</strong> Audited a RESTful API using <strong>OWASP Dependency-Check</strong>, identifying critical flaws such as hardcoded credentials in <code>DocData.java</code> and potential SQL injection points.</li>
+					<li><strong>Remediation Engineering:</strong> Refactored the codebase to implement <strong>AES-256 encryption</strong> for data at rest and <strong>SHA-256 hashing</strong> for checksum verification.</li>
+					<li><strong>Secure Configuration:</strong> Enforced HTTPS/TLS on port 8443 and upgraded legacy Spring Boot dependencies to patch known CVEs (e.g., CVE-2022-22965).</li>
+					<li><strong>Compliance:</strong> Aligned software architecture with GDPR, SOX, and HIPAA standards by implementing proper access control and audit logging.</li>
+				</ul>
+				
+				<div class="project-links">
+					<a href="assets/documents/vulnerability-assessment-report.pdf" target="_blank" class="btn-primary">🛡️ Audit Report</a>
+					<a href="assets/documents/software-security-paper.pdf" target="_blank" class="btn-secondary">📄 Security Reflection</a>
+				</div>
+			</div>
+
+			<div class="project-visual">
+				<img src="assets/images/security-1.png" 
+					alt="Table of Security Vulnerabilities and Remediation Status" 
+					style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); border: 1px solid #ddd;">
+				
+				<p class="caption" style="text-align: center; font-size: 0.85rem; color: #666; margin-top: 5px;">
+					<em>Summary of findings from the Manual & Static Analysis phases</em>
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<div id="details-scrum" class="project-details">
+		<h3>Agile Project Management & Scrum Leadership</h3>
+		<div class="details">Scrum Master, Jira, SDLC, User Stories, Team Leadership</div>
+		
+		<div class="project-content-split">
+			<div class="project-text">
+				<p><strong>The Role:</strong> As Scrum Master for the SNHU Travel App, I led the development team through a transition from Waterfall to Agile</p>
+				
+				<ul>
+					<li><strong>Strategic Pivot:</strong> Successfully managed a major scope change mid-development—shifting the product focus to "Detox and Wellness" and redesigning the GUI from a list view to a slideshow—without disrupting team velocity.</li>
+					<li><strong>Process Optimization:</strong> Utilized <strong>Jira</strong> for backlog grooming and tracking. Implemented "Planning Poker" for estimation, resulting in more accurate velocity forecasting and reduced technical debt.</li>
+					<li><strong>Team Coaching:</strong> Enforced the "Definition of Done" (DoD) and fostered a culture of transparency, effectively removing blockers identified during daily standups.</li>
+				</ul>
+				
+				<div class="project-links">
+					<a href="assets/documents/final-sprint-review-reflection.pdf" target="_blank" class="btn-primary">📊 View Sprint Retrospective (PDF)</a>
+					<a href="assets/documents/scrum-master-journal.pdf" target="_blank" class="btn-secondary">📝 Read Scrum Journal (PDF)</a>
+				</div>
+			</div>
+
+			<div class="project-visual">
+				<img src="assets/images/scrum-sdlc.png" 
+					alt="Scrum Software Development Lifecycle Diagram" 
+					style="width: 100%; border: 1px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); border: 1px solid #ddd;">
+				
+				<p class="caption" style="text-align: center; font-size: 0.85rem; color: #666; margin-top: 5px;">
+					<em>The Iterative Scrum Framework used for SNHU Travel App</em>
+				</p>
+			</div>
+			
+			<div class="project-links">
+				<a href="assets/documents/agile-scrum-presentation.pdf" target="_blank">Agile-Scrum Presentation (PDF)</a>
+			</div>
+		</div>
+	</div>
+
+	<div id="details-algorithms" class="project-details">
+		<h3>Algorithmic Optimization</h3>
+		<div class="details">C++, Data Structures, Merge Sort, Big O Analysis</div>
+
+		<ul>
+			<li><strong>Custom Algorithm:</strong> Implemented a manual, recursive <strong>Merge Sort</strong> ($O(n \log n)$) to optimize sorting performance for large datasets, replacing a previous $O(n^2)$ Insertion Sort.</li>
+			<li><strong>Data Structures:</strong> Architected a system using <code>vector</code> of custom <code>Course</code> structs to handle dynamic data loading from CSV files.</li>
+			<li><strong>Memory Management:</strong> Managed object creation and vector resizing manually to ensure efficient memory usage during the file parsing phase.</li>
+		</ul>
+
+		<div class="project-image-card">
+			<img src="assets/images/algo-1.png" 
+				alt="C++ Code Snippet showing recursive Merge Sort implementation" 
+				style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+			
+			<p class="caption" style="text-align: center; font-size: 0.85rem; color: #666; margin-top: 5px;">
+				<em>Snippet: Custom recursive Merge Sort implementation</em>
+			</p>
+		</div>
+
+		<div class="project-links">
+			<a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/algorithmic-optimization" target="_blank">💻 View Code</a>
+		</div>
+	</div>
+
+	<div id="details-unit-testing" class="project-details">
+		<h3>Unit Testing</h3>
+		<div class="details">Java, JUnit 5, Test-Driven Development (TDD), Maven</div>
+		
+		<div class="project-content-split">
+			<div class="project-text">
+				<p><strong>Overview:</strong> Developed a backend service module for scheduling system appointments, featuring strict data validation and in-memory data management.</p>
+				<ul>
+					<li><strong>Defensive Programming:</strong> Implemented robust validation logic to enforce business rules, such as rejecting appointments with past dates or null IDs.</li>
+					<li><strong>Automated Testing:</strong> Engineered a comprehensive <strong>JUnit 5</strong> test suite achieving high code coverage. Utilized <code>@BeforeEach</code> for test fixture setup and <code>assertThrows</code> to verify exception handling for invalid inputs.</li>
+					<li><strong>Edge Case Handling:</strong> Specifically targeted boundary conditions—testing maximum ID lengths, empty descriptions, and "Y2K" past-date scenarios to ensure system stability.</li>
+				</ul>
+				
+				<div class="project-visual">
+					<img src="assets/images/service-tests-1.png" 
+						alt="JUnit 5 Test Runner showing 100% passing tests" 
+						style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); border: 1px solid #ddd;">
+					
+					<p class="caption" style="text-align: center; font-size: 0.85rem; color: #666; margin-top: 5px;">
+						<em>100% Pass Rate: Verifying validation logic and exception handling</em>
+					</p>
+				</div>
+
+				<div class="project-links">
+					<a href="service-tests/service-tests.zip" target="_blank" rel="noopener noreferrer">Project Files (ZIP)</a>
+				</div>
+			</div>
 		</div>
 	</div>
 
