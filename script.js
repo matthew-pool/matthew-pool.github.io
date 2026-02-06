@@ -118,7 +118,7 @@ function flyBirdBack() {
     const tabRect = refactorTab.getBoundingClientRect();
     const heroRect = heroSection.getBoundingClientRect();
     const targetLeft = tabRect.left + window.scrollX + (tabRect.width / 2) - 30;
-    const targetTop = heroRect.bottom + window.scrollY - 51; 
+    const targetTop = heroRect.bottom + window.scrollY - 48; 
 
     const cpX = (currentLeft + targetLeft) / 2;
     const cpY = Math.min(currentTop, targetTop) - 300; 
@@ -203,7 +203,7 @@ function positionBird() {
         const heroRect = heroSection.getBoundingClientRect();
 
         const leftPos = tabRect.left + window.scrollX + (tabRect.width / 2) - 30;
-        const topPos = heroRect.bottom + window.scrollY - 51;
+        const topPos = heroRect.bottom + window.scrollY - 48;
 
         bird.dataset.initialLeft = leftPos;
         bird.dataset.initialTop = topPos;
@@ -235,18 +235,20 @@ setTimeout(() => {
 window.addEventListener('scroll', function() {
     const homeTab = document.getElementById('home');
     const isHomeActive = homeTab && homeTab.classList.contains('active');
+    
+    // 1. Find the destination element
+    const flickLogo = document.querySelector('.flick-logo');
 
-    if (!birdHasFlown && isPositioned && isReady && isHomeActive) {
-        const heroSection = document.querySelector('.hero-section');
-        if (!heroSection) return;
+    // 2. Check if everything is valid before calculating positions
+    if (!birdHasFlown && isPositioned && isReady && isHomeActive && flickLogo) {
+        
+        // 3. Get the logo's position relative to the viewport
+        const rect = flickLogo.getBoundingClientRect();
+        
+        // 4. TRIGGER: When the top of the logo enters the bottom of the screen
+        // (rect.top represents the distance from the top of the viewport to the element)
+        if (rect.top < window.innerHeight) {
 
-        const heroRect = heroSection.getBoundingClientRect();
-        const heroHeight = heroRect.height;
-        const heroTop = heroRect.top;
-
-        const scrollThreshold = -heroHeight / 3;
-
-        if (heroTop <= scrollThreshold) {
             birdHasFlown = true;
 
             bird.classList.remove('landed', 'idle');
@@ -255,15 +257,11 @@ window.addEventListener('scroll', function() {
             const startLeft = parseFloat(bird.dataset.initialLeft);
             const startTop = parseFloat(bird.dataset.initialTop);
 
-            const flickLogo = document.querySelector('.flick-logo');
-            let endLeft = startLeft - 600;
-            let endTop = startTop + 600;
-
-            if (flickLogo) {
-                const flickRect = flickLogo.getBoundingClientRect();
-                endLeft = flickRect.left + window.scrollX + (flickRect.width / 2) - 30;
-                endTop = flickRect.top + window.scrollY - 36;
-            }
+            // Recalculate end positions based on the now-visible logo
+            // (This logic remains the same as your previous code)
+            const flickRect = flickLogo.getBoundingClientRect();
+            const endLeft = flickRect.left + window.scrollX + (flickRect.width / 2) - 30;
+            const endTop = flickRect.top + window.scrollY - 36;
 
             const duration = 2800;
             const startTime = performance.now();
