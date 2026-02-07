@@ -117,8 +117,8 @@ function flyBirdBack() {
 
     const tabRect = refactorTab.getBoundingClientRect();
     const heroRect = heroSection.getBoundingClientRect();
-    const targetLeft = tabRect.left + window.scrollX + (tabRect.width / 2) - 30;
-    const targetTop = heroRect.bottom + window.scrollY - 48; 
+    const targetLeft = tabRect.left + window.scrollX + (tabRect.width / 2) + 15;
+    const targetTop = heroRect.bottom + window.scrollY - 53; 
 
     const cpX = (currentLeft + targetLeft) / 2;
     const cpY = Math.min(currentTop, targetTop) - 300; 
@@ -202,8 +202,8 @@ function positionBird() {
         const tabRect = refactorTab.getBoundingClientRect();
         const heroRect = heroSection.getBoundingClientRect();
 
-        const leftPos = tabRect.left + window.scrollX + (tabRect.width / 2) - 30;
-        const topPos = heroRect.bottom + window.scrollY - 48;
+        const leftPos = tabRect.left + window.scrollX + (tabRect.width / 2) + 15;
+        const topPos = heroRect.bottom + window.scrollY - 53;
 
         bird.dataset.initialLeft = leftPos;
         bird.dataset.initialTop = topPos;
