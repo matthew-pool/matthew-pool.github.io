@@ -3,6 +3,20 @@
     File: styles.css
     @author: Matthew Pool
 */
+
+/* GLOBAL RESET: Removes default gaps and prevents horizontal scrolling */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; /* Crucial: cuts off any elements that stick out to the right */
+}
+
+/* Ensure all elements calculate width including their padding/borders */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 @font-face {
 	font-family: robotoFont;
 	src: url(https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap);
@@ -1099,6 +1113,9 @@ body.dark-mode .contact-card button svg {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     text-align: center;
+	margin-bottom: 0 !important;
+	padding-bottom: 0;
+	border-bottom: none;
     
     /* Flexbox Settings */
     display: flex;
@@ -1116,6 +1133,17 @@ body.dark-mode .contact-card button svg {
     min-height: auto; 
 }
 
+.hero-section + .shelf-container, .shelf-container:nth-of-type(2) {
+    max-width: 1000px !important;  
+	width: 90% !important;     
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 0 !important;
+	box-sizing: border-box;
+}
+
+
+
 /* Ensure content takes up available space */
 .hero-section .container {
     flex: 1; 
@@ -1130,6 +1158,33 @@ body.dark-mode .contact-card button svg {
     
     /* TIGHTENED: Small padding around the content block */
     padding: 20px 20px 15px 20px; 
+}
+
+/* =========================================
+   CENTERED STACK (Hero + Shelves)
+   ========================================= */
+
+/* 1. SHARED WIDTHS: Make Hero, Shelves, and Tech Bar match the Tabs */
+.contact-card,
+.hero-section,
+.shelf-container {
+    max-width: 1000px; /* Must match your tab container width */
+    width: 90%;        /* Mobile fallback */
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box;
+}
+
+/* 3. HERO: Remove vertical spacing */
+.hero-section {
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+    border-radius: 0;
+}
+
+/* 4. BOTTOM SHELF: Ensure it touches the hero */
+.hero-section + .shelf-container {
+    margin-top: 0 !important;
 }
 
 /* Specific H1 styling for Hero to override global defaults */
@@ -1157,7 +1212,7 @@ body.dark-mode .contact-card button svg {
     letter-spacing: 0.5px;
     
     /* Keep existing layout styles */
-    margin-bottom: 35px;
+    margin-bottom: 30px;
 }
 
 .hero-cta {
@@ -1165,7 +1220,7 @@ body.dark-mode .contact-card button svg {
 	gap: 20px;
 	justify-content: center;
 	flex-wrap: wrap;
-	margin-top: 30px;
+	margin-top: 35px;
 }
 
 body.dark-mode .hero-section {
@@ -1210,9 +1265,10 @@ body.dark-mode .hero-section {
 /* 3D Shelf Styling */
 .shelf-container {
 	position: relative;
+	margin-top: 0 !important;
 	height: 15px; /* Keeps it thin like the original gap */
 	width: 100%;
-	z-index: 99; /* Sits below the bird but above the page bg */
+	z-index: 2; /* Sits below the bird but above the page bg */
 	background-color: transparent;
 	display: flex;
 	flex-direction: column;
@@ -1224,8 +1280,7 @@ body.dark-mode .hero-section {
 	width: 100%;
 	background: linear-gradient(to bottom, #3a3a3a 0%, #1a1a1a 100%);
 	/* Perspective illusion */
-	transform: perspective(100px) rotateX(10deg);
-	transform-origin: bottom;
+	transform: none !important;
 	border-top: 1px solid rgba(255,255,255,0.1);
 	box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
 }
@@ -1239,6 +1294,28 @@ body.dark-mode .hero-section {
 	z-index: 100;
 }
 
+/* Ensure the top surface has the correct "Light" color (Standard Shelf Look) */
+.shelf-top {
+    /* Gradient: Lighter gray on top */
+    background: linear-gradient(to bottom, #3a3a3a 0%, #1a1a1a 100%) !important;
+}
+
+/* Ensure the front face has the correct "Dark" color */
+.shelf-front {
+    /* Gradient: Darker shadow on front */
+    background: linear-gradient(to bottom, #111 0%, #000 100%) !important;
+}
+
+/* Force inner shelf parts to be straight (no bevels) and full width */
+.shelf-top, 
+.shelf-front {
+    width: 100% !important;
+    border-left: 0 !important;
+    border-right: 0 !important;
+    transform: none !important; /* Removes the 3D perspective pinch */
+    box-sizing: border-box;
+}
+
 /* Light mode adjustments so it looks like a ledge in both themes */
 body:not(.dark-mode) .shelf-top {
 	background: linear-gradient(to bottom, #888 0%, #666 100%);
@@ -1249,15 +1326,28 @@ body:not(.dark-mode) .shelf-front {
 	background: linear-gradient(to bottom, #555 0%, #333 100%);
 }
 
+/* =========================================
+   UNIFIED SHELF STYLING (Identical Top & Bottom)
+   ========================================= */
+
+/* Target only the shelf below the contact card */
+.contact-card + .shelf-container {
+    opacity: 0.5 !important; /* 1.0 is solid, 0.0 is invisible. Adjust as needed. */
+    
+    /* Optional: If you want a "frosted glass" look, add this: */
+    /* backdrop-filter: blur(4px); */
+}
+
 /* Call-to-action text styling */
 .app-cta {
     text-align: center;
     font-size: 1.2rem;
     font-weight: 600;
-    margin: 35px 0 20px;
     color: #444;
     letter-spacing: -0.5px;
-	padding-top: 10px;
+	padding-top: 0 !important;
+	margin-top: 5px !important;
+	margin-bottom: 20px !important;
 }
 
 /* Gradient text effect for keywords */
@@ -2033,10 +2123,15 @@ body.dark-mode .about-intro {
 
 /* Tech Skills Bar - No longer Absolute */
 .tech-skills-bar {
-    position: relative; /* Changed from absolute */
+    position: relative;
     width: 100%;
     text-align: center;
-    padding: 15px 20px;
+    
+    /* CHANGED: Equal top/bottom padding centers the text and extends the bar height */
+    padding: 15px 20px; 
+    
+    margin-bottom: 0 !important;
+    line-height: 1;
     
     background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.8) 100%);
     color: rgba(255, 255, 255, 0.95);
@@ -2641,56 +2736,78 @@ body.dark-mode .footer-metallic-black a {
     color: #4db8ff;
 }
 
-/*----------------------------------------------------------------*/
-/* Birdie */
-/*----------------------------------------------------------------*/
+/* ---------------------------------------------------------------- */
+/* Birdie Animation Fix */
+/* ---------------------------------------------------------------- */
+
+/* 1. The Container (Moves around screen, but DOES NOT squash) */
 .bird {
-	position: fixed;
-	z-index: 10000;
-	pointer-events: none;
-	background-color: transparent;
-	border-radius: 50%;
-	padding: 5px;
-	width: 60px;
-	height: 60px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	transition: none; /* IMPORTANT: Keep this none so JS handles the path */
-	left: 65%;
-	top: 180px;
-	opacity: 0;
-	/* Only transition opacity and the reset properties, not the animation flight */
-	transition: opacity 0.3s ease-in-out; 
+    position: fixed;
+    z-index: 10000;
+    pointer-events: none;
+    width: 60px;
+    height: 60px;
+    left: 65%;
+    top: 180px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    /* IMPORTANT: Do NOT put squash animation here */
 }
 
-#bird svg {
-	filter: drop-shadow(0 2px 2px rgba(0,0,0,0.2));
-}
-
-.bird.flying #leftWing {
-	animation: flapLeft 0.15s ease-in-out infinite;
-}
-
-.bird.flying #rightWing {
-	animation: flapRight 0.15s ease-in-out infinite;
-}
-
-.bird.idle #leftWing {
-	animation: idleFlapLeft 2s ease-in-out infinite;
-}
-
-.bird.idle #rightWing {
-	animation: idleFlapRight 2s ease-in-out infinite;
-}
-
+/* --- Keep your existing flight animations below --- */
+#bird svg { filter: drop-shadow(0 2px 2px rgba(0,0,0,0.2)); }
+.bird.flying #leftWing { animation: flapLeft 0.15s ease-in-out infinite; }
+.bird.flying #rightWing { animation: flapRight 0.15s ease-in-out infinite; }
+.bird.idle #leftWing { animation: idleFlapLeft 2s ease-in-out infinite; }
+.bird.idle #rightWing { animation: idleFlapRight 2s ease-in-out infinite; }
 .bird.idle #birdHead {
-	animation: idleHeadTurn 4s ease-in-out infinite;
+    animation: idleHeadTurn 4s ease-in-out infinite;
+    
+    /* Center of the head circle (cx=20, cy=12) */
+    transform-origin: 20px 12px; 
+    
+    /* Ensures the coordinates are calculated relative to the SVG viewbox */
+    transform-box: view-box; 
 }
 
-/* Land Animation: Squash then settle */
-.bird.landed {
-	animation: squashStretch 0.5s ease-out forwards;
+/* Existing Keyframes for wings/head (Keep these as they were) */
+@keyframes flapLeft { 0%, 100% { d: path("M 12 20 Q 8 18 6 22"); } 50% { d: path("M 12 20 Q 8 12 6 8"); } }
+@keyframes flapRight { 0%, 100% { d: path("M 28 20 Q 32 18 34 22"); } 50% { d: path("M 28 20 Q 32 12 34 8"); } }
+@keyframes idleFlapLeft { 0%, 90%, 100% { d: path("M 12 20 Q 8 18 6 22"); } 95% { d: path("M 12 20 Q 8 12 6 8"); } }
+@keyframes idleFlapRight { 0%, 90%, 100% { d: path("M 28 20 Q 32 18 34 22"); } 95% { d: path("M 28 20 Q 32 12 34 8"); } }
+@keyframes idleHeadTurn { 
+    0%, 20% { transform: rotate(0deg) scaleX(1); }
+    25%, 35% { transform: rotate(20deg) scaleX(1); }
+    40%, 45% { transform: rotate(0deg) scaleX(1); }
+    50%, 60% { transform: rotate(-20deg) scaleX(-1); }
+    65%, 70% { transform: rotate(0deg) scaleX(1); }
+    75%, 80% { transform: rotate(-5deg) scaleX(1) translateY(-3px); }
+    85%, 100% { transform: rotate(0deg) scaleX(1); }
+}
+
+/* 2. The Upper Body (Squashes independently from legs) */
+.bird.landed #birdUpper {
+    animation: squashStretch 0.4s ease-out forwards;
+    transform-origin: 20px 32px; 
+}
+
+/* 3. The Squash Keyframes */
+@keyframes squashStretch {
+    0% { 
+        transform: scale(1, 1); 
+    }
+    40% { 
+        /* Squish down (Y < 1), Fatten up (X > 1) */
+        transform: scale(1.25, 0.75); 
+    }
+    60% { 
+        /* Bounce back up slightly (stretch) */
+        transform: scale(0.9, 1.1); 
+    }
+    100% { 
+        /* Return to normal */
+        transform: scale(1, 1); 
+    }    
 }
 
 @keyframes flapLeft {
@@ -2766,13 +2883,6 @@ body.dark-mode .footer-metallic-black a {
 	}
 }
 
-@keyframes squashStretch {
-	0% { transform: scale(1, 1); }
-	30% { transform: scale(1.2, 0.8); } /* Squash */
-	60% { transform: scale(0.9, 1.1); } /* Stretch */
-	100% { transform: scale(1, 1); }    /* Settle */
-}
-
 /* =========================================
    SPECIFIC IMAGE OVERRIDES
    ========================================= */
@@ -2794,4 +2904,58 @@ img[src*="new11.png"] {
     display: block !important;
     margin-left: auto !important;
     margin-right: auto !important;
+}
+
+/* =========================================
+   UNIVERSAL SHELF RESET (Makes both identical)
+   ========================================= */
+
+/* 1. Target ALL shelf containers */
+.shelf-container {
+    /* Match the Tabs width */
+    max-width: 1000px !important;
+    width: 90% !important;
+    
+    /* Center horizontally */
+    margin-left: auto !important;
+    margin-right: auto !important;
+    
+    /* RESET: No flipping, no filters, standard orientation */
+    transform: none !important; 
+    filter: none !important;
+    z-index: 1;
+    
+    /* Ensure stacking is Top-over-Front */
+    display: flex;
+    flex-direction: column;
+}
+
+/* 2. Top Surface (Light Gray) */
+.shelf-top {
+    width: 100% !important;
+    height: 10px !important;
+    border: none !important;
+    transform: none !important; /* Removes 3D pinch */
+    
+    /* Standard Light Gray Gradient */
+    background: linear-gradient(to bottom, #3a3a3a 0%, #1a1a1a 100%) !important;
+}
+
+/* 3. Front Face (Dark Black) */
+.shelf-front {
+    width: 100% !important;
+    height: 5px !important;
+    border: none !important;
+    transform: none !important;
+    
+    /* Standard Dark Shadow Gradient */
+    background: linear-gradient(to bottom, #111 0%, #000 100%) !important;
+}
+
+/* Optional: Light Mode Override */
+body:not(.dark-mode) .shelf-top {
+    background: linear-gradient(to bottom, #888 0%, #666 100%) !important;
+}
+body:not(.dark-mode) .shelf-front {
+    background: linear-gradient(to bottom, #555 0%, #333 100%) !important;
 }
