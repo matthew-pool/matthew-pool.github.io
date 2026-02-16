@@ -5,11 +5,18 @@
 */
 
 /* GLOBAL RESET: Removes default gaps and prevents horizontal scrolling */
-html, body {
+html {
     margin: 0;
     padding: 0;
     width: 100%;
-    overflow-x: hidden; /* Crucial: cuts off any elements that stick out to the right */
+    /* overflow-x: hidden;  <-- REMOVE THIS (This breaks sticky) */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; /* KEEP THIS (This is fine) */
 }
 
 /* Ensure all elements calculate width including their padding/borders */
@@ -537,8 +544,7 @@ body.dark-mode a:hover {
 
 /* Tab Navigation */
 .tab-container {
-	background-color: white;
-	box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+	background-color: f4f4f4;
 	position: sticky;
 	top: 0;
 	z-index: 1000;
@@ -876,7 +882,7 @@ body.dark-mode .flick-text {
 	animation: gradientShift 8s ease infinite, glow 3s ease-in-out infinite;
 	border: 4px solid rgba(255, 255, 255, 0.3);
 	border-radius: 16px;
-	padding: 30px;
+	padding: 15px;
 	margin: 20px;
 	text-align: center;
 	position: relative;
@@ -887,7 +893,7 @@ body.dark-mode .flick-text {
 	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 	font-size: 20px;
 	line-height: normal;
-	margin: 5px 0;
+	margin: 5px 0 7px 0; /* top right bottom left */
 }
 
 body.dark-mode .contact-card {
@@ -902,22 +908,69 @@ body.dark-mode .contact-card button svg {
 }
 
 .contact-card b {
-	font-size: 22px;
+    font-size: 22px;
+    font-weight: normal;  /* Removes the default bold heaviness */
+    letter-spacing: 4px;  /* Widens the spacing significantly */
+    text-transform: uppercase; /* Optional: This usually looks great with wide spacing */
 }
 
 .contact-card i {
 	font-size: 16px;
 }
 
+/* --- LIGHT MODE: Themed "Glass" Pills --- */
 .contact-card a {
-	color: #f0f0f0;
-	font-weight: 500;
-	font-size: 16px;
+    color: #66b3ff;
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    
+    /* Deep Purple/Indigo background */
+    background-color: rgba(40, 20, 60, 0.7); 
+    
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    
+    display: inline-block;
+    margin: 1px 0 1px 0;
+    padding: 2px 12px;
+    border-radius: 12px;
+    
+    text-shadow: none; 
+    transition: all 0.2s ease;
 }
 
 .contact-card a:hover {
-	color: white;
-	text-decoration: none;
+    background-color: rgba(60, 30, 90, 0.7); 
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #99ccff; 
+    transform: translateY(-1px);
+    text-decoration: underline;
+}
+
+/* --- DARK MODE OVERRIDE: Remove Pills but keep Animation --- */
+body.dark-mode .contact-card a {
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    
+    /* Must be inline-block for transform/lift to work */
+    display: inline-block; 
+    
+    /* Strong shadow for contrast */
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9); 
+}
+
+body.dark-mode .contact-card a:hover {
+    background-color: transparent;
+    color: #99ccff;
+    /* CHANGED: Added the lift animation */
+    transform: translateY(-1px); 
+    text-decoration: underline;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
 }
 
 /* Installation Notice */
@@ -1189,14 +1242,11 @@ body.dark-mode .contact-card button svg {
 
 /* Specific H1 styling for Hero to override global defaults */
 .hero-section h1 {
-    font-size: clamp(1.2rem, 3.5vw, 2.8rem);
+    font-size: clamp(1.2rem, 4.2vw, 3.2rem);  /* MIN, PREFERRED, MAX */
     font-family: robotoFont;
     text-align: center;
     font-weight: 100;
-    
-    /* TIGHTENED: Reduced top padding significantly (was 20px) */
-    padding: 10px 0 5px 0; 
-    
+    padding: 10px 0 5px 0;     
     margin: 0;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     letter-spacing: -0.02em; 
