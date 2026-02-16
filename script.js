@@ -79,6 +79,13 @@ themeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
     const currentTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
     localStorage.setItem('theme', currentTheme);
+    
+    // We use a tiny timeout to let the DOM reflow first
+    setTimeout(() => {
+        if (!birdHasFlown) {
+        positionBird();
+        }
+    }, 350);
 });
 
 function openTab(evt, tabName) {
