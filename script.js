@@ -45,6 +45,24 @@ function showToast(button) {
     }, 500);
 }
 
+function downloadResume(e) {
+  e.preventDefault();
+  const isDark = document.body.classList.contains("dark-mode");
+  window.open(
+    `assets/documents/${isDark ? "resume-dark.pdf" : "resume-light.pdf"}`,
+    "_blank",
+  );
+}
+
+function updateResumeLabel() {
+  const label = document.getElementById("resume-theme-label");
+  if (label) {
+    label.textContent = document.body.classList.contains("dark-mode")
+      ? "dark theme"
+      : "light theme";
+  }
+}
+
 // Bird animation variables
 let birdHasFlown = false;
 let isPositioned = false;
@@ -71,14 +89,20 @@ const themeToggle = document.getElementById('themeToggle');
 const body = document.body;
 
 const savedTheme = localStorage.getItem('theme');
-if (savedTheme === 'light') {
-    document.body.classList.remove('dark-mode');
+if (savedTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+} else if (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.body.classList.add('dark-mode');
 }
+
+updateResumeLabel();
 
 themeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
     const currentTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
     localStorage.setItem('theme', currentTheme);
+    
+    updateResumeLabel();
     
     // We use a tiny timeout to let the DOM reflow first
     setTimeout(() => {

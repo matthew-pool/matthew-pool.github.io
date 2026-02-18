@@ -29,7 +29,7 @@
 
 </head>
 
-<body class="dark-mode">
+<body>
     <div class="contact-card">
         <div class="theme-toggle-wrapper">
             <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
@@ -71,9 +71,12 @@
                     <span>💻</span>
                     <span>GitHub Profile</span>
                 </a>
-                <a href="assets/documents/resume.pdf" class="quick-link" download>
+                <a href="#" class="quick-link" id="resume-btn" onclick="downloadResume(event)">
                     <span>📄</span>
-                    <span>Download Resume</span>
+                    <span style="display:flex; flex-direction:column; align-items:center; gap:1px;">
+                        <span style="font-size:1em; font-weight:700; line-height:1.2;">Resume</span>
+                        <span id="resume-theme-label" style="font-size:0.65em; font-weight:400; opacity:0.75; line-height:1.2; color:white;">light theme</span>
+                    </span>
                 </a>
             </div>
         </div>
@@ -125,7 +128,7 @@
 		<br>
 		
         <h2 class="section-header">Overview</h2>
-        <p class="about-intro">I'm a Software Engineer and Product Designer with a B.S. in Computer Science (3.99 GPA, Summa Cum Laude) — and a background that spans both sides of the table: top-ranked outbound B2B sales for Fortune 500 clients, years in technical support, and a deep obsession with building software people actually love. I bridge engineering depth with clear, human communication to deliver solutions that are robust, accessible, and user-friendly across the full product lifecycle.</p>
+        <p class="about-intro">I'm a Software Engineer and Product Designer with a B.S. in Computer Science (<a href="assets/documents/transcript.pdf" target="_blank" rel="noopener noreferrer" class="gpa-link">3.99 GPA, Summa Cum Laude</a>), a background as a top-ranked outbound B2B/B2C sales representative for Fortune 500 clients, over 10 years of technical and customer support experience, and an obsession with creating innovative products people actually love. I bridge technological expertise with a user-centric mindset to deliver high-value solutions that are robust, accessible, and user-friendly across the full product lifecycle.</p>
 		<p class="app-cta">
 			Check out my <span class="gradient-text">Android app</span> below.
 		</p>
@@ -167,7 +170,7 @@
 
         <h2 style="padding-top: 10px;">Screenshots</h2>
         <div class="image-card">
-            <div class="screenshot-grid" target="_blank" rel="noopener noreferrer">
+            <div class="screenshot-grid">
                 <figure class="screenshot-item">
                     <figcaption>Custom Splash Screen</figcaption>
                     <img src="assets/images/flick/screen14.png" alt="Preparing app screen">
@@ -450,7 +453,7 @@
 
             <div class="project-card" data-category="data" onclick="openProjectModal('ml')">
                 <div class="project-card-image">
-                    <img src="assets/images/ml1.png" alt="ML modoel training and testing output" loading="lazy">
+                    <img src="assets/images/ml1.png" alt="ML model training and testing output" loading="lazy">
                 </div>
                 <div class="project-card-content">
                     <h3>Machine Learning</h3>
@@ -799,7 +802,7 @@
         </div>
 
         <div class="project-links">
-            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/aac-dashboard" target="_blank">💻 View Code</a>
+            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/existence-paradox" target="_blank">💻 View Code</a>
         </div>
 
         <div class="play-store-cta" style="margin-top: 30px; margin-bottom: 30px;">
@@ -835,9 +838,9 @@
 
             <li><strong>Documentation</strong></li>
             <div class="project-links">
-                <a href="assets/document/eatright-interviews-personas.pdf">Interviews & Personas</a><br>
+                <a href="assets/documents/eatright-interviews-personas.pdf">Interviews & Personas</a><br>
                 <a href="assets/documents/eatright-design-decisions-document.pdf">Design Decisions Document</a><br>
-                <a href="assets/document/eatright-prototype-paper.pdf">Prototype Documentation</a><br>
+                <a href="assets/documents/eatright-prototype-paper.pdf">Prototype Documentation</a><br>
             </div>
         </ul>
         
