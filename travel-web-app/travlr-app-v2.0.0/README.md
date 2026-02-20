@@ -1,4 +1,4 @@
-# README: Full-Stack Travel Platform (v2)
+# README: Full-Stack Travel Platform (v2.0.0)
 
 ## Table of Contents
 - [Architecture](#architecture)
