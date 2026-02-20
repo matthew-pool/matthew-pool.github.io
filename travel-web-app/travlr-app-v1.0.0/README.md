@@ -1,4 +1,5 @@
-﻿# README
+﻿# README: Full-Stack Travel Platform (v1.0.0)
+
 ## Table of Contents
 - [*Architecture*](#_architecture)
 - [*Functionality*](#_functionality)
