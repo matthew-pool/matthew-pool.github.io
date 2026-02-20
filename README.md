@@ -49,32 +49,38 @@ This portfolio website features a clean, professional design with three main sec
 
 ### Projects Showcased
 - **Mobile**: Kotlin, Android SDK, Jetpack Compose, MVVM Architecture
-- **Web**: TypeScript, React, Angular, Node.js, Express, HTML, CSS, JS
-- **Backend**: Python, Java, MongoDB, MySQL, Firebase
-- **Graphics**: C++, OpenGL, GLSL, GLFW, Material Design, Figma
-- **Data Science**: Python, Pandas, NumPy, Matplotlib, Machine Learning
+- **Web**: TypeScript, React, Angular, Node.js, Express, Tailwind CSS, Vite, HTML/CSS/JS
+- **Backend & Cloud**: Python, Java, Spring Boot, LoopBack API, AWS DynamoDB, MongoDB, MySQL, Firebase, Docker
+- **Testing & Security**: JUnit, pytest, Espresso, Selenium, OWASP, AES/SHA Cryptography
+- **Graphics & Design**: C++, OpenGL, GLSL, GLFW, Figma, UI/UX Design
+- **Data Science & AI**: Python, TensorFlow, Scikit-learn, Pandas, NumPy, Matplotlib
 
 ## 📁 Project Structure
 
-```
+```text
 matthew-pool.github.io/
-├─ aac-dashboard/           # Python/MongoDB dashboard for Austin Animal Center
-├─ assets/                  # Project screenshots, images, and PDF documentation
-├─ data-analysis/           # Python data analysis of global temperature deviations
-├─ statistical-analysis/    # Statistical analysis and report regarding NBA stat correlations
-├─ database-administration/ # MySQL database creation and analyses
-├─ machine-learning         # ML model training, testing, and analyses
-├─ existence-paradox/       # TypeScript/React philosophical exploration app
-├─ inventory-buddy/         # Android inventory management demo app
-├─ product-design/          # UI/UX designs and architectural specifications
-├─ java-enhancements/       # Refactored Java rescue animal tracking system
-├─ super-mario-bros/        # C++ OpenGL recreation of classic Nintendo scene
-├─ travel-web-app/          # MEAN stack travel booking website with admin SPA
-├─ index.html               # Main portfolio webpage
-├─ script.js                # Interactive animations and bird flight logic
-├─ styles.css               # Responsive styling with dark mode support
-└─ README.md                # This file
-```
+├─ aac-dashboard/            # Python/MongoDB dashboard for Austin Animal Center
+├─ agile-scrum/              # Agile methodology documentation and project artifacts
+├─ algorithmic-optimization/ # Data structures and algorithm performance tuning
+├─ assets/                   # Project screenshots, images, and PDF documentation
+├─ data-analysis/            # Python data analysis of global temperature deviations
+├─ database-administration/  # MySQL database creation and analyses
+├─ economic-analysis/        # Data analysis and modeling of economic indicators
+├─ existence-paradox/        # TypeScript/React philosophical exploration app
+├─ inventory-buddy/          # Android inventory management demo app
+├─ java-enhancements/        # Refactored Java rescue animal tracking system
+├─ machine-learning/         # ML model training, testing, and analyses
+├─ product-design/           # UI/UX designs and architectural specifications
+├─ service-tests/            # Automated software testing and quality assurance suites
+├─ software-security/        # Java REST API security audit and encryption implementation
+├─ statistical-analysis/     # Statistical analysis and report regarding NBA stat correlations
+├─ super-mario-bros/         # C++ OpenGL recreation of classic Nintendo scene
+├─ travel-web-app/           # MEAN stack travel booking website with admin SPA
+├─ index.html                # Main portfolio webpage
+├─ script.js                 # Interactive animations and bird flight logic
+├─ styles.css                # Responsive styling with dark mode support
+└─ README.md                 # This file
+
 
 ## 📱 Featured Project: Flick
 

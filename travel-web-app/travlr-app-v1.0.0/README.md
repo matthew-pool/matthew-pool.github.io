@@ -3,7 +3,6 @@
 - [*Architecture*](#_architecture)
 - [*Functionality*](#_functionality)
 - [*Testing*](#_testing)
-- [*User Interface*](#_user_interface)
 - [*Reflection*](#_reflection)
 
 [](#_reflection)
@@ -53,18 +52,6 @@ Software security has become a major concern in the modern world, but adding log
 With this in mind, it is possible that dependencies go out of date and new security vulnerabilities are uncovered. Staying up to date with best practices set forth by entities like [OWASP](https://owasp.org/) (Open Worldwide Application Security Project) and using industry-standard testing tools are crucial in software development. The Top 10 Web Application Security Risks created and maintained by OWASP (2021) shows vulnerabilities that may occur without proper security measures. These vulnerabilities include things like broken access controls, injection, insecure design and misconfiguration, among others. Unfortunately, not all security vulnerabilities can be mitigated via login authentication alone, so it is important to integrate multiple layers of security before final testing and deployment.
 
 The abundance of potential security risks makes thorough and robust testing that much more important; although, this may prove more difficult when working with various security mechanisms. Multiple user types and corresponding sessions will need to be managed. Bandwidth throttling, which is commonly implemented to prevent [DoS](https://www.cisa.gov/news-events/news/understanding-denial-service-attacks) (Denial of Service) attacks, can increase the duration tests take to complete. Token expirations will need to be considered for tests of longer durations. Manual management may need to be performed to log in and out of various accounts and to ensure all (or enough) scenarios and test cases are assessed appropriately and [CAPTCHAS](https://www.cloudflare.com/learning/bots/how-captchas-work/#:~:text=What%20is%20a%20CAPTCHA%3F,reCAPTCHA%20tests%20on%20the%20Internet.) and [MFA](https://en.wikipedia.org/wiki/Multi-factor_authentication) (multi-factor authentication) are properly handled. To test [HTTPS](https://en.wikipedia.org/wiki/HTTPS), [TLS](https://www.google.com/search?q=tls+wiki&oq=tls+wiki&gs_lcrp=EgZjaHJvbWUyDggAEEUYORhDGIAEGIoFMgoIARAAGAoYFhgeMgoIAhAAGA8YFhgeMggIAxAAGBYYHjIICAQQABgWGB4yCAgFEAAYFhgeMggIBhAAGBYYHjIICAcQABgWGB7SAQgxNjIzajBqNKgCALACAA&sourceid=chrome&ie=UTF-8) (or [SSL](https://en.wikipedia.org/wiki/SSL)) certificate will need managed as well. Keeping these things in mind and following industry-standard best-practices will help build a secure and robust web app!
-
-## <a name="_user_interface"></a>User Interface
-***Images***
-
-![A screenshot of a website&#x0A;&#x0A;Description automatically generated](Aspose.Words.003be65d-5257-4f34-b357-b0645ae076e9.001.png)
-
-<a name="_reflection"></a>	     ***![A coral reef with fish and text&#x0A;&#x0A;Description automatically generated](Aspose.Words.003be65d-5257-4f34-b357-b0645ae076e9.002.png)***
-
-![A screenshot of a phone&#x0A;&#x0A;Description automatically generated](Aspose.Words.003be65d-5257-4f34-b357-b0645ae076e9.003.png)		***![A screenshot of a phone&#x0A;&#x0A;Description automatically generated](Aspose.Words.003be65d-5257-4f34-b357-b0645ae076e9.004.png)***
-##
-
-
 
 ## Reflection
 This course has really answered a lot of questions I had regarding full stack software development. I have learned more about the [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) (Model-View-Controller) architecture, HTML, JS, and TypeScript. I have had the opportunity to incorporate [Git](https://www.git-scm.com/) CLI into the software development lifecycle. Throughout development of this web app, I gained experience working with various technologies, including Bootstrap CSS, Handlebars, Angular, Express.js, node.js, among others. It has been a satisfying experience getting to see this web app come together. Keep coding!
