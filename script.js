@@ -83,7 +83,6 @@ window.addEventListener('load', function() {
     }, 1000);
 });
 
-
 // Dark mode toggle
 const themeToggle = document.getElementById('themeToggle');
 const body = document.body;
