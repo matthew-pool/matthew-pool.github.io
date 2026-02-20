@@ -1,6 +1,6 @@
 <!-- 
-	Matthew Pool - Software Engineer Portfolio
-	Specializing in Android development, full-stack web applications, UI/UX design, and machine learning. 
+	Matthew Pool - Software Engineer & Product Designer Portfolio
+	Specializing in UI/UX, Android mobile development, full-stack web apps, AI/ML, Technical Sales
 	@updated 2026-02-17
 	@version 1.16.0
 -->
@@ -128,8 +128,9 @@
 		<br>
 		
         <h2 class="section-header">Overview</h2>
-        <p class="about-intro">I'm a Software Engineer and Product Designer with a B.S. in Computer Science (<a href="assets/documents/transcript.pdf" target="_blank" rel="noopener noreferrer" class="gpa-link">3.99 GPA, Summa Cum Laude</a>), a background as a top-ranked outbound B2B/B2C sales representative for Fortune 500 clients, over 10 years of technical and customer support experience, and an obsession with creating innovative products people actually love. I bridge technological expertise with a user-centric mindset to deliver high-value solutions that are robust, accessible, and user-friendly across the full product lifecycle.</p>
-		<p class="app-cta">
+        <p class="about-intro">I'm a Software Engineer and Product Designer with a B.S. in Computer Science (<a href="assets/documents/transcript.pdf" target="_blank" rel="noopener noreferrer" class="gpa-link">3.99 GPA, Summa Cum Laude</a>). My background includes 5 years in top-ranked outbound B2B/B2C sales for Fortune 500 clients, over 2 years of management experience, and 10+ years of combined customer service and technical support. I leverage this diverse foundation to bridge technological expertise with a user-centric mindset, delivering high-value solutions that are robust, accessible, and user-friendly across the full product lifecycle.</p>
+
+        <p class="app-cta">
 			Check out my <span class="gradient-text">Android app</span> below.
 		</p>
 
@@ -408,13 +409,16 @@
                     <img src="assets/images/travel2.png" alt="Travel Platform" loading="lazy">
                 </div>
                 <div class="project-card-content">
-                    <h3>Full-Stack Travel Platform</h3>
-                    <p class="project-card-brief">Dual-interface platform with admin SPA and customer site using MEAN stack</p>
+                    <h3>Full-Stack Travel Platform (PoC)</h3>
+                    <p class="project-card-brief">Dual-interface web app with a cloud-secured admin SPA, RESTful APIs, and database migration to AWS DynamoDB via Docker.</p>
                     <div class="project-card-tags">
-                        <span class="project-card-tag">MongoDB</span>
-                        <span class="project-card-tag">Express</span>
-                        <span class="project-card-tag">Angular</span>
-                        <span class="project-card-tag">Node.js</span>
+                        <span class="project-card-tag">MEAN Stack</span>
+                        <span class="project-card-tag">AWS DynamoDB</span>
+                        <span class="project-card-tag">Docker</span>
+                        <span class="project-card-tag">TS/JS</span>
+                        <span class="project-card-tag">Bootstrap</span>
+                        <span class="project-card-tag">Handlebars</span>
+                        <span class="project-card-tag">Postman</span>
                     </div>
                 </div>
             </div>
@@ -862,14 +866,25 @@
         </div>
     </div>
 
-    <div id="details-travel" class="project-details">
-        <h3>Full-Stack Travel Platform (Demo)</h3>
-        <div class="details">MEAN Stack (MongoDB, Express, Angular, Node.js), Bootstrap</div>
+<div id="details-travel" class="project-details">
+        <h3>Full-Stack Travel Platform (Proof of Concept)</h3>
+        
+        <div class="details">MEAN Stack</div>
+        <div class="details">AWS DynamoDB & Docker</div>
+        <div class="details">Mongoose & Passport/JWT</div>
+        <div class="details">Handlebars & Bootstrap</div>
+        <div class="details">Postman</div>
+        
         <ul>
-            <li>Developed <strong>dual-interface platform</strong> with admin SPA for content management and customer-facing site for browsing vacation packages</li>
-            <li>Implemented <strong>RESTful API architecture</strong> with comprehensive CRUD operations tested using Postman</li>
-            <li>Designed <strong>responsive interfaces</strong> using Bootstrap CSS with mobile-first approach and cross-browser compatibility</li>
+            <li><strong>Architecture & Templating:</strong> Developed a dual-interface platform featuring an Angular-based Single Page Application (SPA) for administrators and a customer-facing site utilizing Node.js, Express, Handlebars (HBS), and Bootstrap.</li>
+            <li><strong>API & Database:</strong> Engineered a robust RESTful API with Express.js, rigorously tested using Postman. Abstracted data interactions using Mongoose ODM to define strict schemas and handle MongoDB CRUD operations.</li>
+            <li><strong>Security & Authentication:</strong> Implemented secure cloud login for the admin SPA using JSON Web Tokens (JWT) and Passport.js, featuring custom cryptographic hashing and salting (pbkdf2Sync) for maximum credential protection.</li>
+            <li><strong>Cloud Migration:</strong> Containerized the application environment using Docker and successfully migrated the data layer from MongoDB to AWS DynamoDB.</li>
         </ul>
+
+        <div class="project-details">
+            <a href="assets/documents/travel-app-sdd.pdf">System Design Document</a><br>
+        </div>
 
         <div class="project-image-card">
             <img src="assets/images/travel2.png" alt="Travel client website Travel tab" class="travel-no-scale">
@@ -937,9 +952,9 @@
         <h3>Machine Learning</h3>
         <div class="details">Python, TensorFlow, Scikit-Learn, NumPy, Pandas, Matplotlib</div>
         <ul>
-            <li>Optimized <strong>Convoluted Deep Neural Network (CDNN)</strong> model for image recognition, experimenting with hyperparameters to balance accuracy and training efficiency</li>
+            <li>Optimized <strong>Convolutional Neural Network (CNN)</strong> model for image recognition, experimenting with hyperparameters to balance accuracy and training efficiency</li>
             <div class="project-links">
-                <a href="assets/documents/cdnn-image-recognition.html" class="guide-link" target="_blank" rel="noopener noreferrer">CDNN Training & Testing</a>
+                <a href="assets/documents/cnn-image-recognition.html" class="guide-link" target="_blank" rel="noopener noreferrer">CDNN Training & Testing</a>
             </div>
 
             <li>Developed <strong>Deep Q-Learning Network (DQN)</strong> to train a gaming AI agent for pathfinding optimization</li>
