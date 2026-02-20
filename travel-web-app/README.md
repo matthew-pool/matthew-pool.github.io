@@ -21,11 +21,11 @@ This repository is split into two distinct versions to highlight the architectur
 
 ## User Interface
 
-![Travel client website Travel tab](assets/images/travel2.png)
+![Travel client website Travel tab](../assets/images/travel2.png)
 
-![Travel admin website to add and edit trips](assets/images/travel1.png)
+![Travel admin website to add and edit trips](../assets/images/travel1.png)
 
-| ![Default Add Trip dialog](assets/images/travel3.png) | ![Filled out Edit Trip dialog](assets/images/travel4.png) |
+| ![Default Add Trip dialog](../assets/images/travel3.png) | ![Filled out Edit Trip dialog](../assets/images/travel4.png) |
 | :---: | :---: |
 
 ---
