@@ -64,8 +64,8 @@
         <div class="container">
             <h1>Software Engineer | Product Designer</h1>
             
-            <p class="hero-subtitle">Let's build something better!</p>
-            
+            <p class="hero-subtitle">Engineering from design to deployment</p>
+
             <div class="quick-links">
                 <a href="https://github.com/matthew-pool" target="_blank" class="quick-link">
                     <span>💻</span>
@@ -92,7 +92,7 @@
     </div>
 
 	<div id="bird" class="bird">
-		<svg width="60" height="60" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <svg width="60" height="60" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
 			<g id="legs">
 				<line x1="18" y1="32" x2="16" y2="36" stroke="#8B0000" stroke-width="1.5"/>
 				<line x1="22" y1="32" x2="24" y2="36" stroke="#8B0000" stroke-width="1.5"/>
@@ -128,8 +128,12 @@
 		<br>
 		
         <h2 class="section-header">Overview</h2>
-        <p class="about-intro">I'm a Software Engineer and Product Designer with a B.S. in Computer Science (<a href="assets/documents/transcript.pdf" target="_blank" rel="noopener noreferrer" class="gpa-link">3.99 GPA, Summa Cum Laude</a>). My background includes 5 years in top-ranked outbound B2B/B2C sales for Fortune 500 clients, over 2 years of management experience, and 10+ years of combined customer service and technical support. I leverage this diverse foundation to bridge technological expertise with a user-centric mindset, delivering high-value solutions that are robust, accessible, and user-friendly across the full product lifecycle.</p>
-
+        <div class="about-intro">
+            <p>I build things end-to-end — from Figma mockups to production deployments — and can even close the sale!</p>
+            <p>I bring a unique foundation to product engineering: a Summa Cum Laude B.S. in Computer Science         <a href="assets/documents/transcript.pdf" class="guide-link" style="text-align: center;" target="_blank" rel="noopener noreferrer">(3.99 GPA)</a>, paired with five years as a top-performing Fortune 500 sales agent and over a decade of customer service and technical support.</p>
+            <p>Because I have hit sales KPIs and sat on the front lines of customer support, I never lose sight of the business perspective. I bridge the gap between UI/UX design and technical implementation at every step of the product lifecycle, delivering accessible, high-ROI software that solves real user problems.</p>
+        </div>
+        
         <p class="app-cta">
 			Check out my <span class="gradient-text">Android app</span> below.
 		</p>
@@ -149,23 +153,16 @@
         <hr>
         
         <div class="app-description">
-            <h2>Synopsis</h2>
-            <p><span class="flick-text">Flick</span> is a vertical video app similar in style to TikTok but with an added feature: a single sideways swipe reveals videos with significant similarity to the current video you are watching.
-                Visual and auditory feedback educates users on app functionality and navigation, ensuring an optimal experience on the first launch. 
-                    Users interact via fire (like) and poop (dislike) icons, with video ID, view duration, and preference data uploaded to Firestore.
-                    The user can use basic gestures to increase playback speed or pause and unpause the video. 
-                </p>
-                <p>After an initial warmup period, the vertical feed operates on an intelligent cycle that prioritizes serving videos predicted to generate the highest engagement from that user. 
-                    The recommendation engine tokenizes Archive.org metadata and employs cosine similarity calculations weighted by view time and like/dislike ratios. 
-                    Random content is interspersed to facilitate content discovery beyond this algorithm. 
-                    The app prebuffers two upcoming videos by default, reducing to one when a qualified similar video exists at the current index and needs to be preloaded. 
-                    A history index tracks the last viewed video, enabling users to instantaneously recover from accidental swipes.
-                </p>
+            <h2>Synopsis & Engineering</h2>
+            <p><span class="flick-text">Flick</span> is a native Android streaming client built to provide an instant, vast content library without licensing hurdles by leveraging the Archive.org API. This architecture reduces backend content delivery costs to near-zero, ensuring high scalability and business viability.</p>
+            <p><strong>Architecture:</strong> I solo-engineered the entire stack (Kotlin + Jetpack Compose) and built a custom recommendation engine from scratch. The app tokenizes video metadata and weighs it against user interaction signals (view time, likes/dislikes) stored in Firestore to create dynamic user profile vectors.</p>
+            <p><strong>Algorithm:</strong> I implemented cosine similarity to calculate the distance between the user's profile and available content. The main vertical feed uses an "exploration vs. exploitation" strategy, mixing high-confidence matches with random high-percentile videos to prevent echo chambers.</p>
+            <p><strong>UI/UX:</strong> The UI features a dual-axis navigation system driven by this ML algorithm. A vertical swipe continues the mixed feed, while a horizontal swipe instantly branches into a "nearest neighbor" playlist, finding videos with the highest cosine similarity to the current video.</p>
         </div>
 
 		<br>
 
-        <a href="assets/documents/user-guide.html" class="guide-link" style="text-align: center;" target="_blank" rel="noopener noreferrer">Flick User Guide</a>
+        <a href="assets/documents/user-guide.html" class="guide-link" style="text-align: center;" target="_blank" rel="noopener noreferrer">User Guide (Flick)</a>
 
         <hr>
 
@@ -362,17 +359,44 @@
         <h2 class="section-header">More Projects</h2>
 
         <div class="project-filters">
-            <button class="filter-btn active" onclick="filterProjects('all')">All Projects</button>
-            <button class="filter-btn" onclick="filterProjects('mobile')">Mobile</button>
-            <button class="filter-btn" onclick="filterProjects('web')">Web</button>
-            <button class="filter-btn" onclick="filterProjects('graphics')">Graphics</button>
-            <button class="filter-btn" onclick="filterProjects('data')">Data/ML</button>
-            <button class="filter-btn" onclick="filterProjects('systems')">Systems & Design</button>
+            <button class="filter-btn active" onclick="filterProjects('all', event)">All Projects</button>
+            <button class="filter-btn" onclick="filterProjects('mobile', event)">Mobile</button>
+            <button class="filter-btn" onclick="filterProjects('web', event)">Web</button>
+            <button class="filter-btn" onclick="filterProjects('graphics', event)">Graphics</button>
+            <button class="filter-btn" onclick="filterProjects('data', event)">Data/ML</button>
+            <button class="filter-btn" onclick="filterProjects('systems', event)">Systems &amp; Design</button>
         </div>
 
         <div class="project-grid">
             
-            <div class="project-card" data-category="graphics" onclick="openProjectModal('mario')">
+            <div class="project-card" data-category="web"
+                onclick="openProjectModal('portfolio-site')"
+                tabindex="0"
+                role="button"
+                aria-label="This Portfolio — click to view details"
+                onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('portfolio-site')}">
+                <div class="project-card-image">
+                    <img src="assets/images/portfolio.png" alt="Portfolio website design" loading="lazy">
+                </div>
+                <div class="project-card-content">
+                    <h3>(This) Portfolio</h3>
+                    <p class="project-card-brief">Fully hand-coded responsive portfolio site featuring dark mode, animated SVG bird, tab navigation, modal system, lightbox, and CI/CD via GitHub Actions.</p>
+                    <div class="project-card-tags">
+                        <span class="project-card-tag">HTML5</span>
+                        <span class="project-card-tag">CSS3</span>
+                        <span class="project-card-tag">JavaScript</span>
+                        <span class="project-card-tag">Responsive</span>
+                        <span class="project-card-tag">GitHub Pages</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="graphics" 
+                 onclick="openProjectModal('mario')"
+                 tabindex="0"
+                 role="button"
+                 aria-label="Super Mario Bros. — click to view details"
+                 onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('mario')}">
                 <div class="project-card-image">
                     <img src="assets/images/mario1.png" alt="Super Mario Bros 1-1 Scene" loading="lazy">
                 </div>
@@ -388,13 +412,18 @@
                 </div>
             </div>
 
-            <div class="project-card" data-category="web" onclick="openProjectModal('paradox')">
+            <div class="project-card" data-category="web" 
+                 onclick="openProjectModal('paradox')"
+                 tabindex="0"
+                 role="button"
+                 aria-label="The Existence Paradox — click to view details"
+                 onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('paradox')}">
                 <div class="project-card-image">
                     <img src="assets/images/paradox1.png" alt="The Existence Paradox App" loading="lazy">
                 </div>
                 <div class="project-card-content">
                     <h3>The Existence Paradox</h3>
-                    <p class="project-card-brief">Interactive philosophy app with decision-tree navigation and responsive design</p>
+                    <p class="project-card-brief">Interactive philosophy app featuring dynamic state management and complex decision-tree navigation.</p>
                     <div class="project-card-tags">
                         <span class="project-card-tag">TypeScript</span>
                         <span class="project-card-tag">React</span>
@@ -404,7 +433,12 @@
                 </div>
             </div>
 
-            <div class="project-card" data-category="web" onclick="openProjectModal('travel')">
+            <div class="project-card" data-category="web" 
+                 onclick="openProjectModal('travel')"
+                 tabindex="0"
+                 role="button"
+                 aria-label="Full-Stack Travel Platform — click to view details"
+                 onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('travel')}">
                 <div class="project-card-image">
                     <img src="assets/images/travel2.png" alt="Travel Platform" loading="lazy">
                 </div>
@@ -423,9 +457,14 @@
                 </div>
             </div>
 
-            <div class="project-card" data-category="mobile" onclick="openProjectModal('buddy')">
+            <div class="project-card" data-category="mobile" 
+                 onclick="openProjectModal('buddy')"
+                 tabindex="0"
+                 role="button"
+                 aria-label="InventoryBuddy — click to view details"
+                 onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('buddy')}">
                 <div class="project-card-image">
-                    <img src="assets/images/buddy6.png" alt="InventoryBuddy App" loading="lazy">
+                    <img src="assets/images/buddy3.png" alt="InventoryBuddy App" loading="lazy">
                 </div>
                 <div class="project-card-content">
                     <h3>InventoryBuddy</h3>
@@ -439,7 +478,12 @@
                 </div>
             </div>
 
-            <div class="project-card" data-category="data" onclick="openProjectModal('aac')">
+            <div class="project-card" data-category="data" 
+                 onclick="openProjectModal('aac')"
+                 tabindex="0"
+                 role="button"
+                 aria-label="Austin Animal Center Dashboard — click to view details"
+                 onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('aac')}">
                 <div class="project-card-image">
                     <img src="assets/images/aac1.png" alt="Austin Animal Center Dashboard" loading="lazy">
                 </div>
@@ -455,7 +499,12 @@
                 </div>
             </div>
 
-            <div class="project-card" data-category="data" onclick="openProjectModal('ml')">
+            <div class="project-card" data-category="data" 
+                 onclick="openProjectModal('ml')"
+                 tabindex="0"
+                 role="button"
+                 aria-label="Machine Learning — click to view details"
+                 onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('ml')}">
                 <div class="project-card-image">
                     <img src="assets/images/ml1.png" alt="ML model training and testing output" loading="lazy">
                 </div>
@@ -471,7 +520,12 @@
                 </div>
             </div>
 
-            <div class="project-card" data-category="data" onclick="openProjectModal('data-analysis')">
+            <div class="project-card" data-category="data" 
+                 onclick="openProjectModal('data-analysis')"
+                 tabindex="0"
+                 role="button"
+                 aria-label="NASA Climate Data Analysis — click to view details"
+                 onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('data-analysis')}">
                 <div class="project-card-image">
                     <img src="assets/images/data2.png" alt="NASA Climate Data Analysis" loading="lazy">
                 </div>
@@ -487,7 +541,12 @@
                 </div>
             </div>
 
-            <div class="project-card" data-category="data" onclick="openProjectModal('statistics')">
+            <div class="project-card" data-category="data" 
+                 onclick="openProjectModal('statistics')"
+                 tabindex="0"
+                 role="button"
+                 aria-label="NBA Statistical Analysis — click to view details"
+                 onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('statistics')}">
                 <div class="project-card-image">
                     <img src="assets/images/stat3.png" alt="Statistical Analysis" loading="lazy">
                 </div>
@@ -503,7 +562,12 @@
                 </div>
             </div>
 
-            <div class="project-card" data-category="data" onclick="openProjectModal('economics')">
+            <div class="project-card" data-category="data" 
+                 onclick="openProjectModal('economics')"
+                 tabindex="0"
+                 role="button"
+                 aria-label="Economic Analysis — click to view details"
+                 onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('economics')}">
                 <div class="project-card-image">
                     <img src="assets/images/eco-3.png" alt="Economic Analysis" loading="lazy">
                 </div>
@@ -518,7 +582,12 @@
                 </div>
             </div>
 
-            <div class="project-card" data-category="systems" onclick="openProjectModal('database')">
+            <div class="project-card" data-category="systems" 
+                 onclick="openProjectModal('database')"
+                 tabindex="0"
+                 role="button"
+                 aria-label="Database Case Study — click to view details"
+                 onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('database')}">
                 <div class="project-card-image">
                     <figure>
                         <img src="assets/images/database-erd.png" alt="Database ERD" loading="lazy">
@@ -536,7 +605,12 @@
                 </div>
             </div>
 
-            <div class="project-card" data-category="systems" onclick="openProjectModal('system-design')">
+            <div class="project-card" data-category="systems" 
+                 onclick="openProjectModal('system-design')"
+                 tabindex="0"
+                 role="button"
+                 aria-label="System Design & UML — click to view details"
+                 onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('system-design')}">
                 <div class="project-card-image">
                     <img src="assets/images/system2.png" alt="System Design Diagrams" loading="lazy">
                 </div>
@@ -551,7 +625,12 @@
                 </div>
             </div>
 
-            <div class="project-card" data-category="systems" onclick="openProjectModal('security')">
+            <div class="project-card" data-category="systems" 
+                 onclick="openProjectModal('security')"
+                 tabindex="0"
+                 role="button"
+                 aria-label="Security Audit & Remediation — click to view details"
+                 onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('security')}">
                 <div class="project-card-image">
                     <img src="assets/images/security-1.png" alt="Security Audit" loading="lazy">
                 </div>
@@ -567,7 +646,12 @@
                 </div>
             </div>
 
-            <div class="project-card" data-category="systems" onclick="openProjectModal('scrum')">
+            <div class="project-card" data-category="systems" 
+                 onclick="openProjectModal('scrum')"
+                 tabindex="0"
+                 role="button"
+                 aria-label="Agile & Scrum Leadership — click to view details"
+                 onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('scrum')}">
                 <div class="project-card-image">
                     <img src="assets/images/scrum-sdlc.png" alt="Scrum SDLC" loading="lazy">
                 </div>
@@ -583,7 +667,12 @@
                 </div>
             </div>
 
-            <div class="project-card" data-category="systems" onclick="openProjectModal('algorithms')">
+            <div class="project-card" data-category="systems" 
+                 onclick="openProjectModal('algorithms')"
+                 tabindex="0"
+                 role="button"
+                 aria-label="Algorithmic Optimization — click to view details"
+                 onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('algorithms')}">
                 <div class="project-card-image">
                     <img src="assets/images/algo-1.png" alt="Algorithm Code" loading="lazy">
                 </div>
@@ -598,7 +687,12 @@
                 </div>
             </div>
 
-            <div class="project-card" data-category="systems" onclick="openProjectModal('unit-testing')">
+            <div class="project-card" data-category="systems" 
+                 onclick="openProjectModal('unit-testing')"
+                 tabindex="0"
+                 role="button"
+                 aria-label="Unit Testing — click to view details"
+                 onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('unit-testing')}">
                 <div class="project-card-image">
                     <img src="assets/images/service-tests-1.png" alt="Unit Tests" loading="lazy">
                 </div>
@@ -614,7 +708,12 @@
                 </div>
             </div>
 
-            <div class="project-card" data-category="web" onclick="openProjectModal('product-design')">
+            <div class="project-card" data-category="mobile" 
+                onclick="openProjectModal('product-design')"
+                tabindex="0"
+                role="button"
+                aria-label="Product Design — click to view details"
+                onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('product-design')}">
                 <div class="project-card-image">
                     <img src="assets/images/product-design-moneymobile-mockup.png" alt="Product Design" loading="lazy">
                 </div>
@@ -629,6 +728,12 @@
                 </div>
             </div>
 
+        </div>
+
+        <div class="content-card" style="margin-bottom: 30px; border-top: 4px solid #3498db;">
+            <h3 style="margin-top: 0;">The Bottom Line</h3>
+            <p>Early-stage companies and fast-paced teams require engineers who understand the entire product lifecycle, not just a single silo. I build things end-to-end, and my background in hitting KPIs as a top-performing Fortune 500 sales agent means I never lose sight of the business perspective.</p>
+            <p>I can design the UI in Figma, architect the ML engine, build the automated CI/CD pipeline, and pitch the final product to a user. Having proven my resourcefulness by building a custom Android platform with near-zero infrastructure costs — and literally building a 2-room house from raw materials — I am fully equipped to ship high-ROI software from day one.</p>
         </div>
 
         <div class="footer-metallic-black">
@@ -768,6 +873,26 @@
         </div>
     </div>
 
+    <div id="details-portfolio-site" class="project-details">
+        <h3>This Portfolio — matthew-pool.github.io</h3>
+        <div class="details">HTML5 · CSS3 · Vanilla JavaScript · GitHub Pages · GitHub Actions</div>
+
+        <ul>
+            <li><strong>Zero Dependencies:</strong> Built entirely from scratch without any frontend framework — pure HTML, CSS, and Vanilla JS. Every component is hand-authored.</li>
+            <li><strong>Animated SVG Bird:</strong> A custom animated cardinal perches on the shelf and flies to the Flick logo on scroll, using a cubic Bézier curve path calculated in JS via <code>requestAnimationFrame</code>. Features idle head-turns, squash-and-stretch landing physics, and a return flight when navigating away from the Home tab.</li>
+            <li><strong>Design System:</strong> Fully themeable dark/dark mode using CSS custom properties, with preference persisted in <code>localStorage</code> and system preference detection on first visit.</li>
+            <li><strong>Modal & Lightbox:</strong> Custom project-detail modal popup system and a full lightbox image viewer with keyboard navigation — no libraries.</li>
+            <li><strong>Responsive Layout:</strong> Fluid grid and flexbox layout with comprehensive breakpoints targeting mobile, tablet, and desktop viewports.</li>
+            <li><strong>CI/CD:</strong> Deployed automatically to GitHub Pages via GitHub Actions on every push to <code>main</code>.</li>
+            <li><strong>Performance & Accessibility:</strong> Semantic HTML5, ARIA roles, lazy-loaded images, and keyboard-navigable interactive elements throughout.</li>
+        </ul>
+
+        <div class="project-links">
+            <a href="https://github.com/matthew-pool/matthew-pool.github.io" target="_blank">💻 View Source on GitHub</a>
+            <a href="https://matthew-pool.github.io" target="_blank" class="guide-link">🌐 Visit Live Site</a>
+        </div>
+    </div>
+
     <div id="details-mario" class="project-details">
         <h3>Super Mario Bros. Scene Recreation</h3>
         <div class="details">C++, OpenGL, GLSL, GLM</div>
@@ -866,25 +991,21 @@
         </div>
     </div>
 
-<div id="details-travel" class="project-details">
+    <div id="details-travel" class="project-details">
         <h3>Full-Stack Travel Platform (Proof of Concept)</h3>
         
-        <div class="details">MEAN Stack</div>
-        <div class="details">AWS DynamoDB & Docker</div>
-        <div class="details">Mongoose & Passport/JWT</div>
-        <div class="details">Handlebars & Bootstrap</div>
-        <div class="details">Postman</div>
+        <div class="details">Angular & TypeScript</div>
+        <div class="details">Node.js & LoopBack API</div>
+        <div class="details">Docker & Docker Compose</div>
+        <div class="details">MongoDB to AWS DynamoDB</div>
+        <div class="details">RxJS & Postman</div>
         
         <ul>
-            <li><strong>Architecture & Templating:</strong> Developed a dual-interface platform featuring an Angular-based Single Page Application (SPA) for administrators and a customer-facing site utilizing Node.js, Express, Handlebars (HBS), and Bootstrap.</li>
-            <li><strong>API & Database:</strong> Engineered a robust RESTful API with Express.js, rigorously tested using Postman. Abstracted data interactions using Mongoose ODM to define strict schemas and handle MongoDB CRUD operations.</li>
-            <li><strong>Security & Authentication:</strong> Implemented secure cloud login for the admin SPA using JSON Web Tokens (JWT) and Passport.js, featuring custom cryptographic hashing and salting (pbkdf2Sync) for maximum credential protection.</li>
-            <li><strong>Cloud Migration:</strong> Containerized the application environment using Docker and successfully migrated the data layer from MongoDB to AWS DynamoDB.</li>
+            <li><strong>Architecture & Frontend:</strong> Transitioned from a server-rendered Handlebars site to a modern Single Page Application (SPA) using Angular, TypeScript, and RxJS for reactive state management.</li>
+            <li><strong>API Development:</strong> Refactored the backend utilizing the LoopBack API framework, automatically generating a strongly-typed Angular SDK to handle secure RESTful communications.</li>
+            <li><strong>Security & Authentication:</strong> Implemented secure cloud login and session management for the admin portal utilizing JSON Web Tokens (JWT) and LoopBackAuth.</li>
+            <li><strong>DevOps & Cloud Migration:</strong> Containerized the multi-tier application environment using Docker and Docker Compose, successfully orchestrating a database migration from MongoDB to AWS DynamoDB.</li>
         </ul>
-
-        <div class="project-details">
-            <a href="assets/documents/travel-app-sdd.pdf">System Design Document</a><br>
-        </div>
 
         <div class="project-image-card">
             <img src="assets/images/travel2.png" alt="Travel client website Travel tab" class="travel-no-scale">
@@ -1191,6 +1312,17 @@
                     <a href="service-tests/service-tests.zip" target="_blank" rel="noopener noreferrer">Project Files (ZIP)</a>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- LIGHTBOX (add just above <script src="script.js">) -->
+    <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+        <div class="lightbox-content">
+            <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close image viewer">×</button>
+            <img id="lightbox-img" src="" alt="">
+            <button class="lightbox-nav lightbox-prev" onclick="changeLightboxImage(-1)" aria-label="Previous image">&#8249;</button>
+            <button class="lightbox-nav lightbox-next" onclick="changeLightboxImage(1)" aria-label="Next image">&#8250;</button>
+            <div id="lightbox-caption" class="lightbox-caption"></div>
         </div>
     </div>
 
