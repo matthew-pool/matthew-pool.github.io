@@ -11,13 +11,7 @@ This repository is split into two distinct versions to highlight the architectur
 
 *Please navigate to the respective `v1.0.0` or `v2.0.0` directories and read their individual `README.md` files for detailed documentation on architecture, functionality, and testing.*
 
-## User Interface
-
-*The front-end design and user experience remain consistent across both versions of the application.*
-
 ***Images***
-
-## User Interface
 
 ## User Interface
 

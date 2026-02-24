@@ -8,9 +8,9 @@
 
 /* Email */
 function copyEmail(button) {
-    navigator.clipboard.writeText('mathyou.me@gmail.com').then(() => {
-        showToast(button);
-    });
+  navigator.clipboard.writeText("mathyou.me@gmail.com").then(() => {
+    showToast(button);
+  });
 }
 
 /* Directions popup */
@@ -384,19 +384,19 @@ window.addEventListener('resize', function() {
 });
 
 // Project filter functionality
-function filterProjects(category) {
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    filterButtons.forEach(btn => btn.classList.remove('active'));
-    event.target.classList.add('active');
+function filterProjects(category, event) {
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  filterButtons.forEach((btn) => btn.classList.remove("active"));
+  event.currentTarget.classList.add("active");
 
-    const projectCards = document.querySelectorAll('.project-card');
-    projectCards.forEach(card => {
-        if (category === 'all' || card.dataset.category === category) {
-            card.style.display = 'block';
-        } else {
-            card.style.display = 'none';
-        }
-    });
+  const projectCards = document.querySelectorAll(".project-card");
+  projectCards.forEach((card) => {
+    if (category === "all" || card.dataset.category === category) {
+      card.style.display = "block";
+    } else {
+      card.style.display = "none";
+    }
+  });
 }
 
 // ========================================
