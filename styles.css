@@ -3004,3 +3004,93 @@ body:not(.dark-mode) .shelf-top {
 body:not(.dark-mode) .shelf-front {
     background: linear-gradient(to bottom, #555 0%, #333 100%) !important;
 }
+
+/* ── Bird tooltip ── */
+.bird-tooltip {
+    position: absolute;
+    bottom: 68px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(20, 20, 20, 0.88);
+    color: #fff;
+    font-size: 12px;
+    font-family: inherit;
+    white-space: nowrap;
+    padding: 5px 11px;
+    border-radius: 20px;
+    border: 1px solid rgba(220, 20, 60, 0.4);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 10001;
+}
+
+.bird-tooltip.visible {
+    opacity: 1;
+}
+
+.bird-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: rgba(20, 20, 20, 0.88);
+}
+
+/* ── Home skills strip ── */
+.home-skills-strip {
+    margin: 24px 0 10px;
+    padding: 16px 20px;
+    background: rgba(0,0,0,0.04);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 10px;
+}
+
+body.dark-mode .home-skills-strip {
+    background: rgba(255,255,255,0.04);
+    border-color: rgba(255,255,255,0.08);
+}
+
+.home-skills-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
+.home-skills-row:last-child {
+    margin-bottom: 0;
+}
+
+.home-skills-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: #888;
+    min-width: 90px;
+    flex-shrink: 0;
+}
+
+body.dark-mode .home-skills-label {
+    color: #666;
+}
+
+.home-skill-tag {
+    display: inline-block;
+    font-size: 12px;
+    padding: 3px 9px;
+    border-radius: 4px;
+    background: rgba(102, 126, 234, 0.1);
+    border: 1px solid rgba(102, 126, 234, 0.2);
+    color: #555;
+}
+
+body.dark-mode .home-skill-tag {
+    background: rgba(102, 126, 234, 0.12);
+    border-color: rgba(102, 126, 234, 0.25);
+    color: #aaa;
+}

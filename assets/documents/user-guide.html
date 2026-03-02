@@ -58,6 +58,111 @@
         .tech-list { list-style: none; }
         .tech-item { background-color: var(--card-bg); margin-bottom: 10px; padding: 15px; border-radius: 6px; border-left: 3px solid var(--border-color); }
 
+        /* Pause screen mockup */
+        .pause-mockup {
+            background: #0a0a0a;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            max-width: 320px;
+            margin: 24px auto;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+            position: relative;
+            aspect-ratio: 9/16;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+        .pause-mockup-video {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(160deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .pause-icon-large {
+            font-size: 3rem;
+            opacity: 0.5;
+        }
+        .pause-mockup-overlay {
+            position: relative;
+            z-index: 2;
+            padding: 16px;
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
+        }
+        .pause-time-display {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: #fff;
+            font-family: var(--font-mono);
+            margin-bottom: 6px;
+        }
+        .pause-scrub-bar {
+            width: 100%;
+            height: 4px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 2px;
+            position: relative;
+            margin-bottom: 14px;
+        }
+        .pause-scrub-fill {
+            width: 38%;
+            height: 100%;
+            background: var(--primary-color);
+            border-radius: 2px;
+            position: relative;
+        }
+        .pause-scrub-fill::after {
+            content: '';
+            position: absolute;
+            right: -5px;
+            top: -4px;
+            width: 12px;
+            height: 12px;
+            background: #fff;
+            border-radius: 50%;
+        }
+        .pause-hidden-row {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            opacity: 0.18;
+            font-size: 1.4rem;
+            margin-bottom: 4px;
+            text-decoration: line-through;
+            filter: grayscale(1);
+        }
+        .pause-label {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            text-align: center;
+            margin-top: 8px;
+            font-style: italic;
+        }
+        .shown-badge, .hidden-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 99px;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+        .shown-badge { background: rgba(3,218,198,0.15); color: var(--secondary-color); border: 1px solid var(--secondary-color); }
+        .hidden-badge { background: rgba(255,80,80,0.1); color: #ff6b6b; border: 1px solid #ff6b6b; }
+
+        .note-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--secondary-color);
+            border-radius: 0 8px 8px 0;
+            padding: 16px 20px;
+            margin-top: 20px;
+        }
+        .note-box p { margin: 0; font-size: 0.9rem; }
+
         footer { text-align: center; margin-top: 80px; padding: 40px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.8rem; }
     </style>
 </head>
@@ -74,7 +179,7 @@
 
         <h3>What is Flick?</h3>
         <div class="intro-box">
-            <p>Flick is a vertical swiping video app designed for optimized, seamless video discovery. It provides a continuous stream of videos from the vast library of <span class="highlight">archive.org</span>. Flick intermittently feeds the user the most likely video to be enjoyed by that specific user, using metadata weights based on the user’s video likes, dislikes, and view times, all of which are uploaded to a backend cloud environment for analysis of the anonymized data.</p>
+            <p>Flick is a vertical swiping video app designed for optimized, seamless video discovery. It provides a continuous stream of videos from the vast library of <span class="highlight">archive.org</span>. Flick intermittently feeds the user the most likely video to be enjoyed by that specific user, using metadata weights based on the user's video likes, dislikes, and view times, all of which are uploaded to a backend cloud environment for analysis of the anonymized data.</p>
         </div>
 
         <p>What makes Flick unique is its powerful <strong>sideways swipe feature</strong>, which lets you instantly find and explore videos that have a high similarity to the one you're currently watching. Just Flick!</p>
@@ -137,7 +242,7 @@
                 <div class="emoji-icon">⏯️</div>
                 <div>
                     <span class="tech-name">Tap to Pause/Resume</span>
-                    Simply tap anywhere on the video player to pause the playback. Tap again to resume.
+                    Simply tap anywhere on the video player to pause the playback. Tap again to resume. See below for what is shown and hidden during pause.
                 </div>
             </div>
 
@@ -158,18 +263,52 @@
             </div>
         </div>
 
-        <h3>Interactions & ML Input</h3>
-        <p>Help Flick get to know your taste by interacting with the video feed.</p>
+        <h3>Pause Screen</h3>
+        <p>When you pause a video, Flick switches to a clean, focused view so you can check your position in the video without distractions. Here is exactly what changes on screen:</p>
+
+        <p class="pause-label">Paused state — like/dislike buttons hidden, time stamps and scrub bar visible.</p>
+
+        <ul class="tech-list" style="margin-top: 20px;">
+            <li class="tech-item">
+                <span class="tech-name">Current Time &amp; Total Duration <span class="shown-badge">SHOWN</span></span>
+                The elapsed playback time and the video's total duration are displayed above the scrub bar, so you can immediately see where you are in the video.
+            </li>
+            <li class="tech-item">
+                <span class="tech-name">Scrub Bar <span class="shown-badge">SHOWN</span></span>
+                The scrub bar remains visible and fully interactive while paused. You can tap or drag it to jump to any point in the video before resuming.
+            </li>
+            <li class="tech-item">
+                <span class="tech-name">Like / Dislike Buttons &amp; Labels <span class="hidden-badge">HIDDEN</span></span>
+                The 🔥 Like and 💩 Dislike buttons, along with any associated text or UI labels, are hidden from the screen while a video is paused. They reappear automatically as soon as you tap to resume playback.
+            </li>
+        </ul>
+
+        <div class="note-box">
+            <p>💡 <strong>Tip:</strong> While paused you can still drag the scrub bar to any position. The video will resume from that new position the moment you tap to unpause.</p>
+        </div>
+
+        <h3>Instant Playback &amp; Background Preloading</h3>
+        <p>Flick preloads the next video in the background while you're watching the current one. This means that the moment you swipe up to the next video, playback begins immediately — no buffering, no waiting. The same preloading applies within a sideways chain, so related content is always ready the instant you swipe to it.</p>
+
+        <h3>Interactions &amp; ML Input</h3>
+        <p>Help Flick get to know your taste by interacting with the video feed. Your engagement is used to continuously refine your personal feed.</p>
         <ul class="tech-list">
             <li class="tech-item">
                 <span class="tech-name">🔥 Like Video</span>
-                Tap the **Fire icon** if you enjoy a video. This tells the ML algorithm to prioritize similar metadata in your future feed.
+                Tap the <strong>Fire icon</strong> if you enjoy a video. This tells the ML algorithm to prioritize similar metadata in your future feed.
             </li>
             <li class="tech-item">
                 <span class="tech-name">💩 Dislike Video</span>
-                Tap the **Poop icon** to dislike a video. This helps Flick learn what to avoid showing you in the future.
+                Tap the <strong>Poop icon</strong> to dislike a video. This helps Flick learn what to avoid showing you in the future.
+            </li>
+            <li class="tech-item">
+                <span class="tech-name">⏱️ View Time</span>
+                In addition to explicit likes and dislikes, Flick tracks how long you watch each video. Longer view times signal genuine interest and influence your feed just like a like does — so even if you forget to tap the fire, Flick is paying attention.
             </li>
         </ul>
+
+        <h3>Privacy &amp; Your Data</h3>
+        <p>All interaction data — likes, dislikes, and view times — is uploaded to a secure backend cloud environment. Data is <span class="highlight">fully anonymized</span> before analysis, meaning it is never tied to any personally identifiable information. It is used solely to improve the accuracy of your personal feed recommendations.</p>
     </section>
 
     <footer>
