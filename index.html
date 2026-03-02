@@ -1,5 +1,11 @@
 <!-- 
 	Matthew Pool - Software Engineer & Product Designer Portfolio
+	Specializing in UI/UX, Android mobile development, full-stack web apps, AI/ML, B2B/B2C Sales & Support
+	@updated 2026-02-27
+	@version 1.17.0
+-->
+<!-- 
+	Matthew Pool - Software Engineer & Product Designer Portfolio
 	Specializing in UI/UX, Android mobile development, full-stack web apps, AI/ML, Technical Sales
 	@updated 2026-02-17
 	@version 1.16.0
@@ -20,6 +26,7 @@
     <meta property="og:description" content="Software Engineer specializing in mobile apps, web development, and ML. B.S. in Computer Science with 3.99 GPA.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://matthew-pool.github.io">
+    <meta property="og:image" content="https://matthew-pool.github.io/assets/images/og-image.png">
     
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Matthew Pool - Software Engineer & Product Designer">
@@ -43,7 +50,7 @@
         <p><b>Matthew Pool</b><br>
 		<span style="font-size: 15px; color: rgba(255, 255, 255, 0.95); font-weight: 500; text-shadow: 0 1px 2px rgba(0,0,0,0.2);">B.S. in Computer Science</span><br>
 		<span style="display: inline-block; position: relative;">
-	            <a href="mailto:mathyou.me@gmail.com" target="_blank"><span style="font-size: 16px;">mathyou.me@gmail.com</span></a>
+	            <a href="/cdn-cgi/l/email-protection#c5a8a4b1adbcaab0eba8a085a2a8a4aca9eba6aaa8" target="_blank" rel="noopener noreferrer"><span style="font-size: 16px;"><span class="__cf_email__" data-cfemail="88e5e9fce0f1e7fda6e5edc8efe5e9e1e4a6ebe7e5">[email&#160;protected]</span></span></a>
             <button onclick="copyEmail(this)" style="background: none; border: none; cursor: pointer; padding: 4px; display: inline-flex; align-items: center; opacity: 0.7; transition: opacity 0.2s; position: absolute; top: 50%; transform: translateY(-50%); margin-left: 4px;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
@@ -67,9 +74,13 @@
             <p class="hero-subtitle">Engineering from design to deployment</p>
 
             <div class="quick-links">
-                <a href="https://github.com/matthew-pool" target="_blank" class="quick-link">
+                <a href="https://github.com/matthew-pool" target="_blank" rel="noopener noreferrer" class="quick-link">
                     <span>💻</span>
                     <span>GitHub Profile</span>
+                </a>
+                <a href="https://linkedin.com/in/matthewpool" target="_blank" rel="noopener noreferrer" class="quick-link">
+                    <span>💼</span>
+                    <span>LinkedIn</span>
                 </a>
                 <a href="#" class="quick-link" id="resume-btn" onclick="downloadResume(event)">
                     <span>📄</span>
@@ -92,6 +103,7 @@
     </div>
 
 	<div id="bird" class="bird">
+        <div id="bird-tooltip" class="bird-tooltip">Meet the cardinal 👋</div>
         <svg width="60" height="60" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
 			<g id="legs">
 				<line x1="18" y1="32" x2="16" y2="36" stroke="#8B0000" stroke-width="1.5"/>
@@ -119,7 +131,7 @@
         <div class="tab-nav">
             <button class="tab-button active" onclick="openTab(event, 'home')">Home</button>
             <button class="tab-button" onclick="openTab(event, 'projects')">Projects</button> 
-            <button class="tab-button" onclick="openTab(event, 'refactoring')">Refactoring</button>
+            <button class="tab-button" onclick="openTab(event, 'refactoring')">Code Samples</button>
         </div>
     </div>
 
@@ -134,6 +146,30 @@
             <p>Because I have hit sales KPIs and sat on the front lines of customer support, I never lose sight of the business perspective. I bridge the gap between UI/UX design and technical implementation at every step of the product lifecycle, delivering accessible, high-ROI software that solves real user problems.</p>
         </div>
         
+
+        <div class="home-skills-strip">
+            <div class="home-skills-row">
+                <span class="home-skills-label">Languages</span>
+                <span class="home-skill-tag">Kotlin</span><span class="home-skill-tag">Python</span><span class="home-skill-tag">TypeScript</span><span class="home-skill-tag">Java</span><span class="home-skill-tag">C++</span><span class="home-skill-tag">SQL</span><span class="home-skill-tag">JavaScript</span><span class="home-skill-tag">C#</span>
+            </div>
+            <div class="home-skills-row">
+                <span class="home-skills-label">Mobile / UI</span>
+                <span class="home-skill-tag">Android SDK</span><span class="home-skill-tag">Jetpack Compose</span><span class="home-skill-tag">Material Design 3</span><span class="home-skill-tag">Figma</span><span class="home-skill-tag">MVVM</span><span class="home-skill-tag">Hilt</span>
+            </div>
+            <div class="home-skills-row">
+                <span class="home-skills-label">Web</span>
+                <span class="home-skill-tag">React</span><span class="home-skill-tag">Angular</span><span class="home-skill-tag">Node.js</span><span class="home-skill-tag">Express</span><span class="home-skill-tag">LoopBack</span><span class="home-skill-tag">Tailwind</span><span class="home-skill-tag">Spring Boot</span>
+            </div>
+            <div class="home-skills-row">
+                <span class="home-skills-label">Data / ML</span>
+                <span class="home-skill-tag">TensorFlow</span><span class="home-skill-tag">scikit-learn</span><span class="home-skill-tag">Pandas</span><span class="home-skill-tag">NumPy</span><span class="home-skill-tag">CNN</span><span class="home-skill-tag">DQN</span>
+            </div>
+            <div class="home-skills-row">
+                <span class="home-skills-label">DevOps / DB</span>
+                <span class="home-skill-tag">Docker</span><span class="home-skill-tag">GitHub Actions</span><span class="home-skill-tag">AWS</span><span class="home-skill-tag">Firebase</span><span class="home-skill-tag">MongoDB</span><span class="home-skill-tag">MySQL</span><span class="home-skill-tag">DynamoDB</span>
+            </div>
+        </div>
+
         <p class="app-cta">
 			Check out my <span class="gradient-text">Android app</span> below.
 		</p>
@@ -350,7 +386,7 @@
             <i>Tap "Directions" for details.</i></p>
             <p style="margin-top: 10px;"><b>Matthew Pool</b><br>
             <span style="display: inline-block; position: relative;">
-                <a href="mailto:mathyou.me@gmail.com"><span style="font-size: 16px;">mathyou.me@gmail.com</span></a>
+                <a href="/cdn-cgi/l/email-protection#9df0fce9f5e4f2e8b3f0f8ddfaf0fcf4f1b3fef2f0"><span style="font-size: 16px;"><span class="__cf_email__" data-cfemail="d0bdb1a4b8a9bfa5febdb590b7bdb1b9bcfeb3bfbd">[email&#160;protected]</span></span></a>
                 <button onclick="copyEmail(this, 'light')" style="background: none; border: none; cursor: pointer; padding: 4px; display: inline-flex; align-items: center; opacity: 0.7; transition: opacity 0.2s; position: absolute; top: 50%; transform: translateY(-50%); margin-left: 4px;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.9)" stroke-width="2">
                         <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
@@ -750,7 +786,7 @@
                 <i>Aren't you tired?</i> I am.</p>
             <p style="margin-top: 10px;"><b>Matthew Pool</b><br>
             <span style="display: inline-block; position: relative;">
-                <a href="mailto:mathyou.me@gmail.com"><span style="font-size: 16px;">mathyou.me@gmail.com</span></a>
+                <a href="/cdn-cgi/l/email-protection#2845495c4051475d06454d684f45494144064b4745"><span style="font-size: 16px;"><span class="__cf_email__" data-cfemail="e68b87928e9f8993c88b83a6818b878f8ac885898b">[email&#160;protected]</span></span></a>
                 <button onclick="copyEmail(this)" style="background: none; border: none; cursor: pointer; padding: 4px; display: inline-flex; align-items: center; opacity: 0.7; transition: opacity 0.2s; position: absolute; top: 50%; transform: translateY(-50%); margin-left: 4px;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.9)" stroke-width="2">
                         <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
@@ -861,7 +897,7 @@
             <br>
             <p style="margin-top: 10px;"><b>Matthew Pool</b><br>
             <span style="display: inline-block; position: relative;">
-                <a href="mailto:mathyou.me@gmail.com"><span style="font-size: 16px;">mathyou.me@gmail.com</span></a>
+                <a href="/cdn-cgi/l/email-protection#1a777b6e7263756f34777f5a7d777b737634797577"><span style="font-size: 16px;"><span class="__cf_email__" data-cfemail="7f121e0b1706100a51121a3f18121e1613511c1012">[email&#160;protected]</span></span></a>
                 <button onclick="copyEmail(this)" style="background: none; border: none; cursor: pointer; padding: 4px; display: inline-flex; align-items: center; opacity: 0.7; transition: opacity 0.2s; position: absolute; top: 50%; transform: translateY(-50%); margin-left: 4px;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.9)" stroke-width="2">
                         <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
@@ -897,8 +933,8 @@
         </ul>
 
         <div class="project-links">
-            <a href="https://github.com/matthew-pool/matthew-pool.github.io" target="_blank">💻 View Source on GitHub</a>
-            <a href="https://matthew-pool.github.io" target="_blank" class="guide-link">🌐 Visit Live Site</a>
+            <a href="https://github.com/matthew-pool/matthew-pool.github.io" target="_blank" rel="noopener noreferrer">💻 View Source on GitHub</a>
+            <a href="https://matthew-pool.github.io" target="_blank" class="guide-link" rel="noopener noreferrer">🌐 Visit Live Site</a>
         </div>
     </div>
 
@@ -923,7 +959,7 @@
         <br>
         
         <div class="project-links">
-            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/super-mario-bros" target="_blank">💻 View Code</a>
+            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/super-mario-bros" target="_blank" rel="noopener noreferrer">💻 View Code</a>
         </div>
     </div>
 
@@ -940,7 +976,7 @@
         </div>
 
         <div class="project-links">
-            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/existence-paradox" target="_blank">💻 View Code</a>
+            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/existence-paradox" target="_blank" rel="noopener noreferrer">💻 View Code</a>
         </div>
 
         <div class="play-store-cta" style="margin-top: 30px; margin-bottom: 30px;">
@@ -996,7 +1032,7 @@
         </ul>
 
         <div class="project-links">
-            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/product-design" target="_blank">💻 View Code</a>
+            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/product-design" target="_blank" rel="noopener noreferrer">💻 View Code</a>
         </div>
     </div>
 
@@ -1026,7 +1062,7 @@
         </div>
         
         <div class="project-links">
-            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/travel-web-app" target="_blank">💻 View Code</a>
+            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/travel-web-app" target="_blank" rel="noopener noreferrer">💻 View Code</a>
         </div>
     </div>
 
@@ -1053,7 +1089,7 @@
         </div>
 
         <div class="project-links">
-            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/inventory-buddy" target="_blank">💻 View Code</a>
+            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/inventory-buddy" target="_blank" rel="noopener noreferrer">💻 View Code</a>
         </div>
     </div>
 
@@ -1074,7 +1110,7 @@
         </div>
 
         <div class="project-links">
-            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/aac-dashboard" target="_blank">💻 View Code</a>
+            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/aac-dashboard" target="_blank" rel="noopener noreferrer">💻 View Code</a>
         </div>
     </div>
 
@@ -1105,7 +1141,7 @@
         </ul>
                 
         <div class="project-links">
-            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/data-analysis" target="_blank">💻 View Code</a>
+            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/data-analysis" target="_blank" rel="noopener noreferrer">💻 View Code</a>
         </div>
     </div>
 
@@ -1124,7 +1160,7 @@
         </div>
 
         <div class="project-links">
-            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/data-analysis" target="_blank">💻 View Code</a>
+            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/data-analysis" target="_blank" rel="noopener noreferrer">💻 View Code</a>
         </div>
     </div>
 
@@ -1144,7 +1180,7 @@
 
         <div class="project-links">
             <a href="assets/documents/statistics-report.pdf">Project Summary Report</a><br>
-            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/statistical-analysis" target="_blank">💻 View Code</a>
+            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/statistical-analysis" target="_blank" rel="noopener noreferrer">💻 View Code</a>
         </div>
     </div>
 
@@ -1165,7 +1201,7 @@
 
         <div class="project-links">
             <a href="assets/documents/economic-analysis.pdf">Economic Analysis Report</a><br>
-            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/economic-analysis" target="_blank">💻 View Code</a>
+            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/economic-analysis" target="_blank" rel="noopener noreferrer">💻 View Code</a>
         </div>
     </div>
 
@@ -1181,7 +1217,7 @@
         <iframe src="assets/images/database-erd.png" title="Quantigration Database ERD" style="width: 100%; height: 600px; border: none; overflow: hidden;"></iframe>
         
         <div class="project-links">
-            <a href="database-administration/database-analysis.zip" target="_blank">💻 Process Documentation</a>        
+            <a href="database-administration/database-analysis.zip" target="_blank" rel="noopener noreferrer">💻 Process Documentation</a>        
         </div>
     </div>
 
@@ -1216,8 +1252,8 @@
                 </ul>
                 
                 <div class="project-links">
-                    <a href="assets/documents/vulnerability-assessment-report.pdf" target="_blank" class="btn-primary">🛡️ Audit Report</a>
-                    <a href="assets/documents/software-security-paper.pdf" target="_blank" class="btn-secondary">📄 Security Reflection</a>
+                    <a href="assets/documents/vulnerability-assessment-report.pdf" target="_blank" class="btn-primary" rel="noopener noreferrer">🛡️ Audit Report</a>
+                    <a href="assets/documents/software-security-paper.pdf" target="_blank" class="btn-secondary" rel="noopener noreferrer">📄 Security Reflection</a>
                 </div>
             </div>
 
@@ -1248,8 +1284,8 @@
                 </ul>
                 
                 <div class="project-links">
-                    <a href="assets/documents/final-sprint-review-reflection.pdf" target="_blank" class="btn-primary">📊 View Sprint Retrospective (PDF)</a>
-                    <a href="assets/documents/scrum-master-journal.pdf" target="_blank" class="btn-secondary">📝 Read Scrum Journal (PDF)</a>
+                    <a href="assets/documents/final-sprint-review-reflection.pdf" target="_blank" class="btn-primary" rel="noopener noreferrer">📊 View Sprint Retrospective (PDF)</a>
+                    <a href="assets/documents/scrum-master-journal.pdf" target="_blank" class="btn-secondary" rel="noopener noreferrer">📝 Read Scrum Journal (PDF)</a>
                 </div>
             </div>
 
@@ -1264,7 +1300,7 @@
             </div>
             
             <div class="project-links">
-                <a href="assets/documents/agile-scrum-presentation.pdf" target="_blank">Agile-Scrum Presentation (PDF)</a>
+                <a href="assets/documents/agile-scrum-presentation.pdf" target="_blank" rel="noopener noreferrer">Agile-Scrum Presentation (PDF)</a>
             </div>
         </div>
     </div>
@@ -1290,7 +1326,7 @@
         </div>
 
         <div class="project-links">
-            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/algorithmic-optimization" target="_blank">💻 View Code</a>
+            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/algorithmic-optimization" target="_blank" rel="noopener noreferrer">💻 View Code</a>
         </div>
     </div>
 
