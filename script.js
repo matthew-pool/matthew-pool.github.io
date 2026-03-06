@@ -203,15 +203,17 @@ function positionBird(isResize = false) {
   // Dynamically calculate the lock point from the bird's actual viewport position
   // Lock just before the bird's head hits the top of the viewport
   const stickyZone = document.querySelector(".sticky-header-zone");
-  if (stickyZone) {
-    const stickyRect = stickyZone.getBoundingClientRect();
-    // Bird's position measured from the TOP of the sticky zone (not viewport)
-    const birdOffsetInZone = bannerRect.bottom - 53 - stickyRect.top;
-    // Cap so zone can never fully scroll off before locking
-    const maxLock = stickyZone.offsetHeight - 60;
-    STICKY_LOCK_PX = Math.max(0, Math.min(birdOffsetInZone - 10, maxLock));
-    // Don't reset sticky zone top on resize — mobile address bar hide/show
-    // fires resize events and causes the zone to visually jump mid-scroll.
+  const bannerContainerEl = document.querySelector(".portfolio-banner-container");
+  if (stickyZone && bannerContainerEl) {
+    const bannerHeight = bannerContainerEl.offsetHeight;
+    const isMobile = window.innerWidth < 768;
+
+    // Mobile: hide the full banner before locking (banner is short,
+    //   so the old -53px offset left the subtitle text still visible)
+    // Desktop: leave a ~53px strip at the bottom (the "Design • Develop • Deploy"
+    //   text) visible when locked — same as the original behavior
+    STICKY_LOCK_PX = isMobile ? bannerHeight : Math.max(0, bannerHeight - 64);
+
     if (!isResize) {
       stickyZone.style.top = `-${STICKY_LOCK_PX}px`;
     }
