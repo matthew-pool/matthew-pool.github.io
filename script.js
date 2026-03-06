@@ -70,19 +70,17 @@ function syncBirdToScroll() {
   if (!bird || birdHasFlown) return;
 
   if (isPositioned) {
-    // Re-pin bird to shelf using live banner position.
-    // bannerRect.bottom is viewport-relative. Adding scrollY converts to
-    // document coordinates. When shelf sticks, bannerRect.bottom is constant
-    // so bird's doc position increases with scrollY → viewport pos stays fixed. ✓
+    // On other tabs the bird is static — don't touch it
+    const homeTab = document.getElementById("home");
+    if (!homeTab || !homeTab.classList.contains("active")) return;
+
     const bannerEl = document.querySelector(".portfolio-banner-container");
     if (!bannerEl) return;
     const bannerRect = bannerEl.getBoundingClientRect();
     bird.style.top = bannerRect.bottom + window.scrollY - 53 + "px";
-    bird.style.setProperty("--scroll-offset", "0px");
     return;
   }
 
-  // Not yet landed: bird is fixed, nudge it up with the banner
   const offset = Math.min(window.scrollY, STICKY_LOCK_PX);
   bird.style.setProperty("--scroll-offset", `-${offset}px`);
 }
