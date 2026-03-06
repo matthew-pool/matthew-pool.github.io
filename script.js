@@ -178,7 +178,7 @@ function openTab(evt, tabName) {
 
 let STICKY_LOCK_PX = 170; // will be overwritten dynamically
 
-function positionBird() {
+function positionBird(isResize = false) {
   if (birdHasFlown) return;
 
   const refactorTab = document.querySelector(".tab-button:nth-child(3)");
@@ -210,7 +210,11 @@ function positionBird() {
     // Cap so zone can never fully scroll off before locking
     const maxLock = stickyZone.offsetHeight - 60;
     STICKY_LOCK_PX = Math.max(0, Math.min(birdOffsetInZone - 10, maxLock));
-    stickyZone.style.top = `-${STICKY_LOCK_PX}px`;
+    // Don't reset sticky zone top on resize — mobile address bar hide/show
+    // fires resize events and causes the zone to visually jump mid-scroll.
+    if (!isResize) {
+      stickyZone.style.top = `-${STICKY_LOCK_PX}px`;
+    }
   }
 
   setTimeout(() => {
@@ -438,7 +442,7 @@ window.addEventListener("scroll", function () {
 
 window.addEventListener("resize", function () {
   if (!birdHasFlown) {
-    positionBird();
+    positionBird(true); // isResize=true: reposition bird but don't shift sticky zone
   }
 });
 
