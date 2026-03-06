@@ -1,8 +1,8 @@
 <!-- 
 	Matthew Pool - Software Engineer & Product Designer Portfolio
 	Specializing in UI/UX, Android mobile development, full-stack web apps, AI/ML, B2B/B2C Sales & Support
-	@updated 2026-03-04
-	@version 1.18.0
+	@updated 2026-03-06
+	@version 1.19.0
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -87,17 +87,27 @@
     </div>
     -->
 
-    <header class="portfolio-banner-container">
-        <img 
-            src="./assets/images/banner-expanded.png" 
-            alt="Matthew Pool - Software Engineer and Product Designer" 
-            class="portfolio-banner"
-        />
-    </header>
+    <div class="sticky-header-zone">
+        <header class="portfolio-banner-container">
+            <img 
+                src="./assets/images/banner-expanded.png" 
+                alt="Matthew Pool - Software Engineer and Product Designer" 
+                class="portfolio-banner"
+            />
+        </header>
 
-    <div class="shelf-container">
-        <div class="shelf-top"></div>
-        <div class="shelf-front"></div>
+        <div class="shelf-container">
+            <div class="shelf-top"></div>
+            <div class="shelf-front"></div>
+        </div>
+
+        <div class="tab-container">
+            <div class="tab-nav">
+                <button class="tab-button active" onclick="openTab(event, 'home')">Home</button>
+                <button class="tab-button" onclick="openTab(event, 'projects')">Projects</button> 
+                <button class="tab-button" onclick="openTab(event, 'refactoring')">Code Samples</button>
+            </div>
+        </div>
     </div>
 
 	<div id="bird" class="bird">
@@ -125,26 +135,18 @@
 		</svg>
 	</div>
 
-    <div class="tab-container">
-        <div class="tab-nav">
-            <button class="tab-button active" onclick="openTab(event, 'home')">Home</button>
-            <button class="tab-button" onclick="openTab(event, 'projects')">Projects</button> 
-            <button class="tab-button" onclick="openTab(event, 'refactoring')">Code Samples</button>
-        </div>
-    </div>
-
     <div id="home" class="tab-content active">
 
 		<br>
 		
         <h2 class="section-header">Overview</h2>
         <div class="about-intro">
-            <p>I build things end-to-end — from Figma mockups to production deployments — and can even close the sale!</p>
-            <p>I bring a unique foundation to product engineering: a Summa Cum Laude B.S. in Computer Science         <a href="assets/documents/transcript.pdf" class="guide-link" style="text-align: center;" target="_blank" rel="noopener noreferrer">(3.99 GPA)</a>, paired with five years as a top-performing Fortune 500 sales agent and over a decade of customer service and technical support.</p>
+            <p>I build things end-to-end — from Figma mockups to production deployments — and can even close the sale! 
+                I bring a unique foundation to product engineering: a Summa Cum Laude B.S. in Computer Science         <a href="assets/documents/transcript.pdf" class="guide-link" style="text-align: center;" target="_blank" rel="noopener noreferrer">(3.99 GPA)</a>, paired with five years as a top-performing Fortune 500 sales agent and over a decade of customer service and technical support.</p>
             <p>Because I have hit sales KPIs and sat on the front lines of customer support, I never lose sight of the business perspective. I bridge the gap between UI/UX design and technical implementation at every step of the product lifecycle, delivering accessible, high-ROI software that solves real user problems.</p>
         </div>
         
-
+        <p class="skills-eyebrow">Technical Skills</p>
         <div class="home-skills-strip">
             <div class="home-skills-row">
                 <span class="home-skills-label">Languages</span>
@@ -422,7 +424,7 @@
                 aria-label="This Portfolio — click to view details"
                 onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('portfolio-site')}">
                 <div class="project-card-image">
-                    <img src="assets/images/portfolio.png" alt="Portfolio website design" loading="lazy">
+                    <img src="assets/images/portfolio-screenshot-dark.png" alt="Portfolio website design" loading="lazy">
                 </div>
                 <div class="project-card-content">
                     <h3>(This) Portfolio</h3>

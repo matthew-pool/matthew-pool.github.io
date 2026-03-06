@@ -9,14 +9,13 @@ html {
     margin: 0;
     padding: 0;
     width: 100%;
-    /* overflow-x: hidden;  <-- REMOVE THIS (This breaks sticky) */
 }
 
 body {
     margin: 0;
     padding: 0;
     width: 100%;
-    overflow-x: hidden; /* KEEP THIS (This is fine) */
+    overflow-x: clip;
 }
 
 /* Ensure all elements calculate width including their padding/borders */
@@ -111,12 +110,44 @@ body.dark-mode .tab-button.active {
     color: #c4aaff;
 }
 
+.sticky-header-zone {
+    position: sticky;
+    top: -170px;  /* ← STICK POINT: the zone locks when its top edge hits 0 (top of viewport).
+                  The toggle position(fixed) doesn't change — but once the banner is frozen at top:0,
+                  the "Design • Develop • Deploy" text is always at the same visual height,
+                  and the toggle's top:X px will land near it.
+                  If you want the toggle to appear higher/lower on the frozen banner,
+                  adjust the toggle's top value, not this one. */
+    z-index: 1000;
+}
+
+/* Tab container no longer needs its own sticky */
 .tab-container {
     background-color: #1a1440;
+    position: static;
+    z-index: auto;
 }
 
 body.dark-mode .tab-container {
     background-color: #12103a;
+}
+
+/* Skills eyebrow label — stronger contrast */
+.skills-eyebrow {
+    color: #444;
+}
+
+body.dark-mode .skills-eyebrow {
+    color: #bbb;
+}
+
+/* Skills row labels — stronger contrast */
+.home-skills-label {
+    color: #333;
+}
+
+body.dark-mode .home-skills-label {
+    color: #bbb;
 }
 
 body.dark-mode .flick-card p {
@@ -211,10 +242,20 @@ body.dark-mode .spec-value {
 
 /* Theme Toggle */
 .theme-toggle-wrapper {
-	position: absolute;
-	top: 20px;
-	left: 20px;
-	z-index: 10;
+    position: fixed;
+	top: 10px;  /* ← STARTING TOGGLE POSITION: distance from top of viewport on page load.
+						Increase to move down, decrease to move up.
+						~82px centers it with the GitHub/LinkedIn/Resume buttons. */
+	left: 16px;
+    z-index: 10000;
+}
+
+@media (max-width: 768px) {
+    .theme-toggle-wrapper { top: 118px; }   /* ← tablet */
+}
+
+@media (max-width: 600px) {
+    .theme-toggle-wrapper { top: 150px; }   /* ← mobile */
 }
 
 .theme-toggle {
@@ -558,14 +599,6 @@ body.dark-mode a {
 
 body.dark-mode a:hover {
 	color: #99ccff;
-}
-
-/* Tab Navigation */
-.tab-container {
-	background-color: f4f4f4;
-	position: sticky;
-	top: 0;
-	z-index: 1000;
 }
 
 /* Limit text width for better readability without shrinking the whole container */
@@ -2404,15 +2437,7 @@ body.dark-mode .dark-info-card {
 /* =========================================
    UNIFIED HEADER — business card proportions
    ========================================= */
-
-/* Toggle — fixed top-left, outside the card */
-.theme-toggle-wrapper {
-    position: fixed;
-    top: 16px;
-    left: 16px;
-    z-index: 10000;
-}
-
+   
 /* Business card: standard 3.5:2 ratio, centered, modest width */
 .unified-header {
     display: flex;
@@ -2754,6 +2779,12 @@ body.dark-mode .project-image-card {
 		margin: 0 auto;
 	}
 
+	.flick-card > p {
+        margin-top: 6px !important;
+        padding-left: 0 !important;
+        text-align: center;
+    }
+
 	.screenshot-grid {
 		grid-template-columns: 1fr;
 	}
@@ -2872,7 +2903,7 @@ body.dark-mode .project-image-card {
 
 @media (max-width: 600px) {
     .unified-header {
-        margin-top: 56px; /* push below the fixed toggle */
+        margin-top: 56px; /* ← pushes header card below the fixed toggle position on small screens */
     }
 
     .unified-header-inner {
@@ -3109,7 +3140,6 @@ body.dark-mode .footer-metallic-black a {
     top: 180px;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
-    /* IMPORTANT: Do NOT put squash animation here */
 }
 
 /* --- Keep your existing flight animations below --- */
@@ -3369,10 +3399,12 @@ body.dark-mode .home-skills-strip {
 
 .home-skills-row {
     display: flex;
-    align-items: center;
     flex-wrap: wrap;
+    align-items: flex-start;
     gap: 6px;
     margin-bottom: 8px;
+    position: relative;
+    padding-left: 96px; /* label width (90px) + gap (6px) = all tags share this indent */
 }
 
 .home-skills-row:last-child {
@@ -3380,16 +3412,33 @@ body.dark-mode .home-skills-strip {
 }
 
 .home-skills-label {
+    position: absolute;
+    left: 0;
+    top: 4px; /* nudge to visually align with first tag row */
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.8px;
     text-transform: uppercase;
-    color: #888;
-    min-width: 90px;
+    color: #555;
     flex-shrink: 0;
 }
 
 body.dark-mode .home-skills-label {
+    color: #999;
+}
+
+.skills-eyebrow {
+    text-align: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #333;
+    margin-top: 28px !important;
+    margin-bottom: 6px !important;
+}
+
+body.dark-mode .skills-eyebrow {
     color: #666;
 }
 

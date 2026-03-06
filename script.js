@@ -63,6 +63,32 @@ label.textContent = document.body.classList.contains("dark-mode")
   }
 }
 
+const STICKY_LOCK_PX = 170; // must match the abs value of sticky-header-zone top
+
+function syncBirdToScroll() {
+  const bird = document.getElementById("bird");
+  if (!bird || birdHasFlown) return;
+
+  if (isPositioned) {
+    // Re-pin bird to shelf using live banner position.
+    // bannerRect.bottom is viewport-relative. Adding scrollY converts to
+    // document coordinates. When shelf sticks, bannerRect.bottom is constant
+    // so bird's doc position increases with scrollY → viewport pos stays fixed. ✓
+    const bannerEl = document.querySelector(".portfolio-banner-container");
+    if (!bannerEl) return;
+    const bannerRect = bannerEl.getBoundingClientRect();
+    bird.style.top = bannerRect.bottom + window.scrollY - 53 + "px";
+    bird.style.setProperty("--scroll-offset", "0px");
+    return;
+  }
+
+  // Not yet landed: bird is fixed, nudge it up with the banner
+  const offset = Math.min(window.scrollY, STICKY_LOCK_PX);
+  bird.style.setProperty("--scroll-offset", `-${offset}px`);
+}
+
+window.addEventListener("scroll", syncBirdToScroll, { passive: true });
+
 // Bird animation variables
 let birdHasFlown = false;
 let isPositioned = false;
@@ -183,6 +209,7 @@ function positionBird() {
     }, 500);
 
     isPositioned = true;
+    bird.style.setProperty("--scroll-offset", "0px"); // ← clear any pre-land offset
   }
 }
 
@@ -301,7 +328,7 @@ window.addEventListener("scroll", function () {
     // (rect.top represents the distance from the top of the viewport to the element)
     if (rect.top < window.innerHeight) {
       birdHasFlown = true;
-
+      bird.style.setProperty("--scroll-offset", "0px"); // ← add this
       bird.classList.remove("landed", "idle");
       bird.classList.add("flying");
 
