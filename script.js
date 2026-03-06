@@ -321,6 +321,16 @@ function flyBirdBack() {
 
 setTimeout(positionBird, 100);
 setTimeout(positionBird, 500);
+
+const bannerImg = document.querySelector(".portfolio-banner");
+if (bannerImg) {
+  if (bannerImg.complete) {
+    positionBird();
+  } else {
+    bannerImg.addEventListener("load", () => positionBird());
+  }
+}
+
 window.addEventListener("load", positionBird);
 
 setTimeout(() => {
