@@ -9,7 +9,6 @@ html {
     margin: 0;
     padding: 0;
     width: 100%;
-	overflow-x: hidden;
 }
 
 body {
@@ -33,6 +32,7 @@ body {
 	font-family: Arial, sans-serif;
 	background-color: #f4f4f4;
 	color: black;
+	overflow-anchor: none;
 }
 
 p {
@@ -2655,8 +2655,8 @@ body.dark-mode .quick-links-bar .quick-link:hover {
    ========================================= */
 
 .portfolio-banner-container {
-    width: 100vw;
-    margin-left: calc(-50vw + 50%); /* pulls edge-to-edge regardless of parent */
+    width: 100%;
+    margin-left: 0;
     overflow: hidden;
     line-height: 0;
     margin-top: 0;
