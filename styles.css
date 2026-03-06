@@ -78,22 +78,45 @@ body.dark-mode .tab-content {
 	background-color: #2a2a2a;
 }
 
+.tab-button {
+    background-color: #1a1440;
+    color: rgba(200, 190, 255, 0.75);
+    border-bottom: 3px solid transparent;
+}
+
+.tab-button:hover {
+    background-color: #221a52;
+    color: rgba(220, 210, 255, 0.9);
+}
+
+.tab-button.active {
+    background-color: #0e0d2a;
+    border-bottom: 3px solid #7c5cfc;
+    color: #b39dff;
+}
+
 body.dark-mode .tab-button {
-	background-color: #3a3a3a;
-	color: #e0e0e0;
+    background-color: #12103a;
+    color: rgba(180, 170, 230, 0.7);
 }
 
 body.dark-mode .tab-button:hover {
-	background-color: #4a4a4a;
+    background-color: #1a1750;
+    color: rgba(210, 200, 255, 0.9);
 }
 
 body.dark-mode .tab-button.active {
-	background-color: #2a2a2a;
-	color: #667eea;
+    background-color: #0a0920;
+    border-bottom-color: #9d7dff;
+    color: #c4aaff;
+}
+
+.tab-container {
+    background-color: #1a1440;
 }
 
 body.dark-mode .tab-container {
-	background-color: #1a1a1a;
+    background-color: #12103a;
 }
 
 body.dark-mode .flick-card p {
@@ -1208,6 +1231,62 @@ body.dark-mode .contact-card a:hover {
     padding: 20px 20px 15px 20px; 
 }
 
+.banner {
+  aspect-ratio: 4 / 1;
+  background: linear-gradient(to right, #051428, #4a1c00);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif; /* or your preferred modern font */
+  text-align: center;
+  padding: 2rem;
+}
+
+/* Base styling for the main title */
+.banner-title {
+  font-size: 3rem; /* Adjust based on your layout */
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+/* Gradient text magic */
+.text-blue-gradient {
+  background: linear-gradient(to right, #6ab8f7, #1e70d6);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.text-orange-gradient {
+  background: linear-gradient(to right, #f79d45, #d65c00);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.divider {
+  color: white;
+  margin: 0 10px;
+}
+
+/* Subtitle styling */
+.banner-subtitle {
+  color: white;
+  font-weight: 300; /* Thin font */
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Footer text styling */
+.banner-footer {
+  background: linear-gradient(to bottom, #ffffff, #a0a0a0);
+  -webkit-background-clip: text;
+  color: transparent;
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 0.3em; /* Adds horizontal space between letters */
+  text-transform: uppercase;
+}
+
 /* =========================================
    CENTERED STACK (Hero + Shelves)
    ========================================= */
@@ -2303,6 +2382,211 @@ body.dark-mode .dark-info-card {
 	border-color: #30363d;
 }
 
+/* =========================================
+   HEADER OUTER WRAPPER
+   ========================================= */
+
+.header-outer {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    max-width: 700px;
+    width: 90%;
+    margin: 24px auto 0;
+}
+
+/* Override the old absolute positioning when toggle is inside header-outer */
+.header-outer .theme-toggle-wrapper {
+    position: static;
+    flex-shrink: 0;
+}
+
+/* =========================================
+   UNIFIED HEADER — business card proportions
+   ========================================= */
+
+/* Toggle — fixed top-left, outside the card */
+.theme-toggle-wrapper {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 10000;
+}
+
+/* Business card: standard 3.5:2 ratio, centered, modest width */
+.unified-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+
+    width: min(700px, 95%);
+    margin: 24px auto 0;
+    padding: 14px 28px;
+    box-sizing: border-box;
+
+    background: linear-gradient(135deg, #1a2560, #2e1760, #4a1280, #1a3570, #1a2560);
+    background-size: 300% 300%;
+    animation: gradientShift 8s ease infinite, glow 3s ease-in-out infinite;
+    border: 2px solid rgba(120, 100, 220, 0.5);
+    border-radius: 12px;
+}
+
+.unified-header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.uh-name b {
+    font-size: 15px;
+    font-weight: normal;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    white-space: nowrap;
+}
+
+.uh-divider {
+    color: rgba(160, 130, 255, 0.5);
+    font-size: 18px;
+    font-weight: 300;
+    user-select: none;
+}
+
+.uh-email, .uh-phone {
+    position: relative;
+    white-space: nowrap;
+}
+
+/* Also update the quick-links-bar to match the new wider width */
+.quick-links-bar {
+    width: min(700px, 95%);
+}
+
+.unified-header p {
+    color: white;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    font-size: 15px;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.unified-header b {
+    font-size: 17px;
+    font-weight: normal;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.unified-header a {
+    color: #a8c8ff;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    background-color: rgba(20, 10, 60, 0.6);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(140, 100, 255, 0.3);
+    display: inline-block;
+    margin: 1px 0;
+    padding: 1px 10px;
+    border-radius: 10px;
+    text-shadow: none;
+    transition: all 0.2s ease;
+}
+
+.unified-header a:hover {
+    background-color: rgba(50, 20, 120, 0.7);
+    border-color: rgba(160, 120, 255, 0.6);
+    color: #cce0ff;
+    transform: translateY(-1px);
+    text-decoration: underline;
+}
+
+body.dark-mode .unified-header {
+    background: linear-gradient(135deg, #111840, #1e0f40, #2e0a50, #111f40, #111840);
+    background-size: 300% 300%;
+    border: 2px solid rgba(140, 100, 255, 0.6);
+}
+
+/* Buttons bar */
+.quick-links-bar {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    width: 360px;
+    margin: 10px auto 20px;
+    flex-wrap: wrap;
+}
+
+.quick-links-bar .quick-link {
+    padding: 6px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    min-width: 88px;
+    text-align: center;
+    justify-content: center;
+    gap: 0;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #2e1f7a 0%, #4a1280 100%);
+    color: rgba(255, 255, 255, 0.92);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.3s;
+    border: 1px solid rgba(140, 100, 255, 0.35);
+}
+
+.quick-links-bar .quick-link:hover {
+    background: linear-gradient(135deg, #3d2a99 0%, #5e1a99 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(80, 20, 160, 0.4);
+    text-decoration: none;
+    color: white;
+}
+
+body.dark-mode .quick-links-bar .quick-link {
+    background: linear-gradient(135deg, #1e1450 0%, #30085a 100%);
+    border-color: rgba(160, 120, 255, 0.4);
+}
+
+body.dark-mode .quick-links-bar .quick-link:hover {
+    background: linear-gradient(135deg, #2a1a6e 0%, #420a7a 100%);
+    box-shadow: 0 6px 16px rgba(100, 40, 200, 0.5);
+}
+
+@media (max-width: 480px) {
+    .unified-header,
+    .quick-links-bar {
+        width: 90%;
+    }
+}
+
+/* =========================================
+   BANNER — full bleed, no width cap
+   ========================================= */
+
+.portfolio-banner-container {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%); /* pulls edge-to-edge regardless of parent */
+    overflow: hidden;
+    line-height: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.portfolio-banner {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+}
+
 .footer-contact b {
 	font-size: 20px;
 }
@@ -2958,8 +3242,8 @@ img[src*="new11.png"] {
 /* 1. Target ALL shelf containers */
 .shelf-container {
     /* Match the Tabs width */
-    max-width: 1000px !important;
-    width: 90% !important;
+	width: 100% !important;
+	max-width: 1000px !important;
     
     /* Center horizontally */
     margin-left: auto !important;
@@ -2977,6 +3261,7 @@ img[src*="new11.png"] {
 
 /* 2. Top Surface (Light Gray) */
 .shelf-top {
+	padding-top: 10px !important; /* Adds thickness to the top surface */
     width: 100% !important;
     height: 10px !important;
     border: none !important;

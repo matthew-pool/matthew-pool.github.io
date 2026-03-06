@@ -61,6 +61,20 @@ function updateResumeLabel() {
       ? "dark theme"
       : "light theme";
   }
+  const toggleLabel = document.querySelector(".theme-toggle .toggle-label");
+  const toggleIcon = document.querySelector(
+    ".theme-toggle .toggle-icon-inline",
+  );
+  if (toggleLabel)
+    toggleLabel.textContent = document.body.classList.contains("dark-mode")
+      ? "Dark"
+      : "Light";
+  if (toggleIcon) {
+    toggleIcon.textContent = document.body.classList.contains("dark-mode")
+      ? "🌙"
+      : "☀️";
+    toggleIcon.className = `toggle-icon-inline ${document.body.classList.contains("dark-mode") ? "moon-icon" : "sun-icon"}`;
+  }
 }
 
 // Bird animation variables
@@ -154,6 +168,38 @@ function openTab(evt, tabName) {
   }
 }
 
+function positionBird() {
+  if (birdHasFlown) return;
+
+  const refactorTab = document.querySelector(".tab-button:nth-child(3)");
+  const bannerEl = document.querySelector(".portfolio-banner-container");
+
+  if (refactorTab && bannerEl) {
+    const tabRect = refactorTab.getBoundingClientRect();
+    const bannerRect = bannerEl.getBoundingClientRect();
+
+    const leftPos = tabRect.left + window.scrollX + tabRect.width / 2 + 15;
+    const topPos = bannerRect.bottom + window.scrollY - 53;
+
+    bird.dataset.initialLeft = leftPos;
+    bird.dataset.initialTop = topPos;
+
+    bird.style.left = leftPos + "px";
+    bird.style.top = topPos + "px";
+    bird.style.position = "absolute";
+    bird.style.opacity = "1";
+
+    bird.classList.add("landed");
+
+    setTimeout(() => {
+      bird.classList.remove("landed");
+      bird.classList.add("idle");
+    }, 500);
+
+    isPositioned = true;
+  }
+}
+
 function flyBirdBack() {
   if (!birdHasFlown) return;
 
@@ -164,13 +210,13 @@ function flyBirdBack() {
   const currentTop = parseFloat(bird.style.top);
 
   const refactorTab = document.querySelector(".tab-button:nth-child(3)");
-  const heroSection = document.querySelector(".hero-section");
-  if (!refactorTab || !heroSection) return;
+  const bannerEl = document.querySelector(".portfolio-banner-container");
+  if (!refactorTab || !bannerEl) return;
 
   const tabRect = refactorTab.getBoundingClientRect();
-  const heroRect = heroSection.getBoundingClientRect();
+  const bannerRect = bannerEl.getBoundingClientRect();
   const targetLeft = tabRect.left + window.scrollX + tabRect.width / 2 + 15;
-  const targetTop = heroRect.bottom + window.scrollY - 53;
+  const targetTop = bannerRect.bottom + window.scrollY - 53;
 
   const cpX = (currentLeft + targetLeft) / 2;
   const cpY = Math.min(currentTop, targetTop) - 300;
@@ -243,38 +289,6 @@ function flyBirdBack() {
   }
 
   requestAnimationFrame(animateReturn);
-}
-
-function positionBird() {
-  if (birdHasFlown) return;
-
-  const refactorTab = document.querySelector(".tab-button:nth-child(3)");
-  const heroSection = document.querySelector(".hero-section");
-
-  if (refactorTab && heroSection) {
-    const tabRect = refactorTab.getBoundingClientRect();
-    const heroRect = heroSection.getBoundingClientRect();
-
-    const leftPos = tabRect.left + window.scrollX + tabRect.width / 2 + 15;
-    const topPos = heroRect.bottom + window.scrollY - 53;
-
-    bird.dataset.initialLeft = leftPos;
-    bird.dataset.initialTop = topPos;
-
-    bird.style.left = leftPos + "px";
-    bird.style.top = topPos + "px";
-    bird.style.position = "absolute";
-    bird.style.opacity = "1";
-
-    bird.classList.add("landed");
-
-    setTimeout(() => {
-      bird.classList.remove("landed");
-      bird.classList.add("idle");
-    }, 500);
-
-    isPositioned = true;
-  }
 }
 
 setTimeout(positionBird, 100);

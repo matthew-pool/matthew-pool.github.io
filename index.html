@@ -1,8 +1,8 @@
 <!-- 
 	Matthew Pool - Software Engineer & Product Designer Portfolio
 	Specializing in UI/UX, Android mobile development, full-stack web apps, AI/ML, B2B/B2C Sales & Support
-	@updated 2026-02-27
-	@version 1.17.0
+	@updated 2026-03-04
+	@version 1.18.0
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -31,67 +31,69 @@
 </head>
 
 <body>
-    <div class="contact-card">
-        <div class="theme-toggle-wrapper">
-            <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
-                <span class="toggle-track">
-                    <span class="toggle-thumb"></span>
-                    <span class="toggle-icon sun">☀️</span>
-                    <span class="toggle-icon moon">🌙</span>
-                </span>
-            </button>
-        </div>
-        <p><b>Matthew Pool</b><br>
-        <span style="font-size: 15px; color: rgba(255, 255, 255, 0.95); font-weight: 500; text-shadow: 0 1px 2px rgba(0,0,0,0.2);">B.S. in Computer Science</span><br>
-        <span style="display: inline-block; position: relative;">
-    
-            <a href="mailto:mathyou.me@gmail.com" target="_blank" rel="noopener noreferrer" style="font-size: 16px;">mathyou.me@gmail.com</a>
-        
-            <button onclick="copyEmail(this)" style="background: none; border: none; cursor: pointer; padding: 4px; display: inline-flex; align-items: center; opacity: 0.7; transition: opacity 0.2s; position: absolute; top: 50%; transform: translateY(-50%); margin-left: 4px;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                </svg>
-            </button>
-            <span class="toast-container"></span>
-        </span><br>
-        <a href="tel:+19035760223"><span style="font-size: 16px;">903-576-0223</span></a></p>
- </div>
-
-    <div class="shelf-container">
-        <div class="shelf-top"></div>
-        <div class="shelf-front"></div>
+    <div class="theme-toggle-wrapper">
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+            <span class="toggle-track">
+                <span class="toggle-thumb"></span>
+                <span class="toggle-icon sun">☀️</span>
+                <span class="toggle-icon moon">🌙</span>
+            </span>
+        </button>
     </div>
-	
-    <div class="hero-section">
-        <div class="container">
-            <h1>Software Engineer | Product Designer</h1>
-            
-            <p class="hero-subtitle">Engineering from design to deployment</p>
 
-            <div class="quick-links">
-                <a href="https://github.com/matthew-pool" target="_blank" rel="noopener noreferrer" class="quick-link">
-                    <span>💻</span>
-                    <span>GitHub Profile</span>
-                </a>
-                <a href="https://linkedin.com/in/matthewpool" target="_blank" rel="noopener noreferrer" class="quick-link">
-                    <span>💼</span>
-                    <span>LinkedIn</span>
-                </a>
-                <a href="#" class="quick-link" id="resume-btn" onclick="downloadResume(event)">
-                    <span>📄</span>
-                    <span style="display:flex; flex-direction:column; align-items:center; gap:1px;">
-                        <span style="font-size:1em; font-weight:700; line-height:1.2;">Resume</span>
-                        <span id="resume-theme-label" style="font-size:0.65em; font-weight:400; opacity:0.75; line-height:1.2; color:white;">light theme</span>
-                    </span>
-                </a>
-            </div>
-        </div>
-
-        <div class="tech-skills-bar">
-            <i>UI/UX | Native Mobile | Full-Stack Web | AI/ML | B2B/B2C</i>
+    <div class="unified-header">
+        <div class="unified-header-inner">
+            <span class="uh-name"><b>Matthew Pool</b></span>
+            <span class="uh-divider">|</span>
+            <span class="uh-email" style="position:relative;">
+                <a href="mailto:mathyou.me@gmail.com">mathyou.me@gmail.com</a>
+                <button onclick="copyEmail(this)" style="background:none; border:none; cursor:pointer; padding:4px; display:inline-flex; align-items:center; opacity:0.7; transition:opacity 0.2s; position:absolute; top:50%; transform:translateY(-50%); margin-left:4px;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                </button>
+                <span class="toast-container"></span>
+            </span>
+            <span class="uh-divider">|</span>
+            <span class="uh-phone"><a href="tel:+19035760223">903-576-0223</a></span>
         </div>
     </div>
+
+    <div class="quick-links-bar">
+        <a href="https://github.com/matthew-pool" target="_blank" rel="noopener noreferrer" class="quick-link">GitHub</a>
+        <a href="https://linkedin.com/in/matthewpool" target="_blank" rel="noopener noreferrer" class="quick-link">LinkedIn</a>
+        <a href="#" class="quick-link" id="resume-btn" onclick="downloadResume(event)">
+            <span style="display:flex; flex-direction:column; align-items:center; gap:1px;">
+                <span style="font-size:1em; font-weight:700; line-height:1.2;">Resume</span>
+                <span id="resume-theme-label" style="font-size:0.65em; font-weight:400; opacity:0.75; line-height:1.2;">light theme</span>
+            </span>
+        </a>
+    </div>
+
+    <!-- Alt Banner
+    <div class="banner">
+        <h1 class="banner-title">
+        <span class="text-blue-gradient">Software Engineer</span> 
+        <span class="divider">|</span> 
+        <span class="text-orange-gradient">Product Designer</span>
+        </h1>
+    <p class="banner-subtitle">
+        UI/UX &middot; Native Mobile &middot; Full-Stack Web &middot; Machine Learning &middot; B2B/B2C
+    </p>
+    <p class="banner-footer">
+        Design &middot; Develop &middot; Deploy
+    </p>
+    </div>
+    -->
+
+    <header class="portfolio-banner-container">
+        <img 
+            src="./assets/images/banner-expanded.png" 
+            alt="Matthew Pool - Software Engineer and Product Designer" 
+            class="portfolio-banner"
+        />
+    </header>
 
     <div class="shelf-container">
         <div class="shelf-top"></div>
@@ -99,7 +101,7 @@
     </div>
 
 	<div id="bird" class="bird">
-        <div id="bird-tooltip" class="bird-tooltip">Meet the cardinal 👋</div>
+        <div id="bird-tooltip" class="bird-tooltip">Tweet Tweet</div>
         <svg width="60" height="60" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
 			<g id="legs">
 				<line x1="18" y1="32" x2="16" y2="36" stroke="#8B0000" stroke-width="1.5"/>
