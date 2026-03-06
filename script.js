@@ -206,13 +206,11 @@ function positionBird(isResize = false) {
   const bannerContainerEl = document.querySelector(".portfolio-banner-container");
   if (stickyZone && bannerContainerEl) {
     const bannerHeight = bannerContainerEl.offsetHeight;
-    const isMobile = window.innerWidth < 768;
 
-    // Mobile: hide the full banner before locking (banner is short,
-    //   so the old -53px offset left the subtitle text still visible)
-    // Desktop: leave a ~53px strip at the bottom (the "Design • Develop • Deploy"
-    //   text) visible when locked — same as the original behavior
-    STICKY_LOCK_PX = isMobile ? bannerHeight : Math.max(0, bannerHeight - 64);
+    // Lock when the shelf reaches the top of the viewport.
+    // Using a fixed percentage of the banner height ensures the visual
+    // lock point is identical regardless of viewport width.
+    STICKY_LOCK_PX = Math.round(bannerHeight * 0.65);
 
     if (!isResize) {
       stickyZone.style.top = `-${STICKY_LOCK_PX}px`;
