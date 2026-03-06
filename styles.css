@@ -2870,6 +2870,27 @@ body.dark-mode .project-image-card {
 	}
 }
 
+@media (max-width: 600px) {
+    .unified-header {
+        margin-top: 56px; /* push below the fixed toggle */
+    }
+
+    .unified-header-inner {
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .uh-divider {
+        display: none;
+    }
+
+    .uh-email,
+    .uh-phone {
+        white-space: nowrap;
+    }
+}
+
 /* Add to your portfolio's CSS file */
 .erd-wrapper {
 	width: 100%;
