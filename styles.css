@@ -306,6 +306,13 @@ body.dark-mode .spec-value {
     }
 }
 
+@media (max-width: 600px) {
+    .theme-toggle-wrapper {
+        transform: scale(0.7);
+        transform-origin: top left;
+    }
+}
+
 .theme-toggle {
 	background: none;
 	border: none;
