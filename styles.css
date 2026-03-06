@@ -276,6 +276,36 @@ body.dark-mode .spec-value {
     .toggle-icon.moon { right: 4px; }
 }
 
+@media (max-width: 600px) {
+    .toggle-track {
+        width: 52px;
+        height: 24px;
+        border-radius: 12px;
+        padding: 3px;
+    }
+
+    .toggle-thumb {
+        width: 18px;
+        height: 18px;
+    }
+
+    body.dark-mode .toggle-thumb {
+        transform: translateX(28px);
+    }
+
+    .toggle-icon {
+        font-size: 11px;
+    }
+
+    .toggle-icon.sun {
+        left: 5px;
+    }
+
+    .toggle-icon.moon {
+        right: 4px;
+    }
+}
+
 .theme-toggle {
 	background: none;
 	border: none;
