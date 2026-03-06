@@ -2464,7 +2464,10 @@ body.dark-mode .dark-info-card {
     white-space: nowrap;
 }
 
-/* Also update the quick-links-bar to match the new wider width */
+.uh-email {
+    padding-right: 26px;
+}
+
 .quick-links-bar {
     width: min(700px, 95%);
 }
@@ -2696,6 +2699,11 @@ body.dark-mode .project-image-card {
 		width: 100%;
 		max-width: 300px;
 		justify-content: center;
+	}
+
+	.quick-links-bar .quick-link {
+		width: auto;
+		max-width: none;
 	}
 
 	.tab-nav {

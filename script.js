@@ -57,23 +57,9 @@ function downloadResume(e) {
 function updateResumeLabel() {
   const label = document.getElementById("resume-theme-label");
   if (label) {
-    label.textContent = document.body.classList.contains("dark-mode")
-      ? "dark theme"
-      : "light theme";
-  }
-  const toggleLabel = document.querySelector(".theme-toggle .toggle-label");
-  const toggleIcon = document.querySelector(
-    ".theme-toggle .toggle-icon-inline",
-  );
-  if (toggleLabel)
-    toggleLabel.textContent = document.body.classList.contains("dark-mode")
-      ? "Dark"
-      : "Light";
-  if (toggleIcon) {
-    toggleIcon.textContent = document.body.classList.contains("dark-mode")
-      ? "🌙"
-      : "☀️";
-    toggleIcon.className = `toggle-icon-inline ${document.body.classList.contains("dark-mode") ? "moon-icon" : "sun-icon"}`;
+label.textContent = document.body.classList.contains("dark-mode")
+  ? "DARK"
+  : "LIGHT";
   }
 }
 
