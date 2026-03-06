@@ -63,8 +63,6 @@ label.textContent = document.body.classList.contains("dark-mode")
   }
 }
 
-const STICKY_LOCK_PX = 170; // must match the abs value of sticky-header-zone top
-
 function syncBirdToScroll() {
   const bird = document.getElementById("bird");
   if (!bird || birdHasFlown) return;
@@ -178,37 +176,50 @@ function openTab(evt, tabName) {
   }
 }
 
+let STICKY_LOCK_PX = 170; // will be overwritten dynamically
+
 function positionBird() {
   if (birdHasFlown) return;
 
   const refactorTab = document.querySelector(".tab-button:nth-child(3)");
   const bannerEl = document.querySelector(".portfolio-banner-container");
+  if (!refactorTab || !bannerEl) return;
 
-  if (refactorTab && bannerEl) {
-    const tabRect = refactorTab.getBoundingClientRect();
-    const bannerRect = bannerEl.getBoundingClientRect();
+  const tabRect = refactorTab.getBoundingClientRect();
+  const bannerRect = bannerEl.getBoundingClientRect();
 
-    const leftPos = tabRect.left + window.scrollX + tabRect.width / 2 + 15;
-    const topPos = bannerRect.bottom + window.scrollY - 53;
+  const leftPos = tabRect.left + window.scrollX + tabRect.width / 2 + 15;
+  const topPos = bannerRect.bottom + window.scrollY - 53;
 
-    bird.dataset.initialLeft = leftPos;
-    bird.dataset.initialTop = topPos;
+  bird.dataset.initialLeft = leftPos;
+  bird.dataset.initialTop = topPos;
 
-    bird.style.left = leftPos + "px";
-    bird.style.top = topPos + "px";
-    bird.style.position = "absolute";
-    bird.style.opacity = "1";
+  bird.style.left = leftPos + "px";
+  bird.style.top = topPos + "px";
+  bird.style.position = "absolute";
+  bird.style.opacity = "1";
+  bird.classList.add("landed");
 
-    bird.classList.add("landed");
-
-    setTimeout(() => {
-      bird.classList.remove("landed");
-      bird.classList.add("idle");
-    }, 500);
-
-    isPositioned = true;
-    bird.style.setProperty("--scroll-offset", "0px"); // ← clear any pre-land offset
+  // Dynamically calculate the lock point from the bird's actual viewport position
+  // Lock just before the bird's head hits the top of the viewport
+  const stickyZone = document.querySelector(".sticky-header-zone");
+  if (stickyZone) {
+    const stickyRect = stickyZone.getBoundingClientRect();
+    // Bird's position measured from the TOP of the sticky zone (not viewport)
+    const birdOffsetInZone = bannerRect.bottom - 53 - stickyRect.top;
+    // Cap so zone can never fully scroll off before locking
+    const maxLock = stickyZone.offsetHeight - 60;
+    STICKY_LOCK_PX = Math.max(0, Math.min(birdOffsetInZone - 10, maxLock));
+    stickyZone.style.top = `-${STICKY_LOCK_PX}px`;
   }
+
+  setTimeout(() => {
+    bird.classList.remove("landed");
+    bird.classList.add("idle");
+  }, 500);
+
+  isPositioned = true;
+  bird.style.setProperty("--scroll-offset", "0px");
 }
 
 function flyBirdBack() {
