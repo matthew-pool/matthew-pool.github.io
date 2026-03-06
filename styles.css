@@ -9,13 +9,13 @@ html {
     margin: 0;
     padding: 0;
     width: 100%;
+	overflow-x: hidden;
 }
 
 body {
     margin: 0;
     padding: 0;
     width: 100%;
-    overflow-x: hidden;
 }
 
 /* Ensure all elements calculate width including their padding/borders */
@@ -3195,6 +3195,7 @@ body.dark-mode .footer-metallic-black a {
     top: 180px;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
+	contain: layout style;
 }
 
 /* --- Keep your existing flight animations below --- */
