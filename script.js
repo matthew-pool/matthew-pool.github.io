@@ -64,15 +64,13 @@ let birdHasFlown = false;
 let birdOnFlick = false;
 let isPositioned = false;
 let isReady = false;
-let _flightRafId = null; // ← tracks the active flight/return animation frame
+let _flightRafId = null;
 
 const bird = document.getElementById("bird");
 const birdTooltip = document.getElementById("bird-tooltip");
 
 // ─────────────────────────────────────────────────────────────
 // CANCEL any in-progress flight animation
-// Call before positionBird on resize so the loop can't overwrite
-// the freshly-set coordinates after it finishes.
 // ─────────────────────────────────────────────────────────────
 function cancelFlight() {
   if (_flightRafId !== null) {
@@ -86,9 +84,17 @@ function cancelFlight() {
 
 // ─────────────────────────────────────────────────────────────
 // TOOLTIP HELPERS
+//
+// position:fixed is set directly in JS here so it can never be
+// overridden by a competing CSS rule (e.g. the original styles.css
+// .bird-tooltip rule which has position:absolute). This guarantees
+// the bubble stays anchored to the viewport and never scrolls.
 // ─────────────────────────────────────────────────────────────
 function positionTooltip() {
   if (!birdTooltip || !bird) return;
+
+  // Enforce fixed positioning in JS — beats any CSS specificity
+  birdTooltip.style.position = "fixed";
 
   const birdRect = bird.getBoundingClientRect();
   birdTooltip.style.top = Math.max(4, birdRect.top - 44) + "px";
@@ -115,6 +121,20 @@ function hideBirdTooltip() {
   if (!birdTooltip) return;
   birdTooltip.classList.remove("visible");
 }
+
+// Keep tooltip locked to bird's viewport position while scrolling.
+// position:fixed can be broken by CSS transforms on ancestor elements
+// (e.g. the sticky header). Repositioning on every scroll frame is
+// the only fully reliable solution.
+window.addEventListener(
+  "scroll",
+  () => {
+    if (birdTooltip && birdTooltip.classList.contains("visible")) {
+      positionTooltip();
+    }
+  },
+  { passive: true },
+);
 
 // ─────────────────────────────────────────────────────────────
 // PAGE LOAD
@@ -255,7 +275,7 @@ if (_bannerImg) {
 }
 
 // ─────────────────────────────────────────────────────────────
-// RESIZE — cancel any active flight, then snap bird to shelf
+// RESIZE — cancel flight, reset state, snap bird to shelf
 // ─────────────────────────────────────────────────────────────
 let _resizeTimer;
 window.addEventListener(
@@ -263,16 +283,13 @@ window.addEventListener(
   () => {
     clearTimeout(_resizeTimer);
     _resizeTimer = setTimeout(() => {
-      // 1. Kill any in-progress animation immediately
       cancelFlight();
 
-      // 2. Reset all flight state
       birdHasFlown = false;
       birdOnFlick = false;
       isReady = false;
       hideBirdTooltip();
 
-      // 3. Recalculate sticky lock, then snap bird once layout settles
       updateStickyLock();
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
