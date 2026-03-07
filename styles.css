@@ -112,12 +112,7 @@ body.dark-mode .tab-button.active {
 
 .sticky-header-zone {
     position: sticky;
-    top: -170px;  /* ← STICK POINT: the zone locks when its top edge hits 0 (top of viewport).
-                  The toggle position(fixed) doesn't change — but once the banner is frozen at top:0,
-                  the "Design • Develop • Deploy" text is always at the same visual height,
-                  and the toggle's top:X px will land near it.
-                  If you want the toggle to appear higher/lower on the frozen banner,
-                  adjust the toggle's top value, not this one. */
+    top: -9999px;  /* JS always overwrites this; large negative = never locks early */
     z-index: 1000;
 }
 
@@ -243,37 +238,11 @@ body.dark-mode .spec-value {
 /* Theme Toggle */
 .theme-toggle-wrapper {
     position: fixed;
-	top: 10px;  /* ← STARTING TOGGLE POSITION: distance from top of viewport on page load.
+	top: 5px;  /* ← STARTING TOGGLE POSITION: distance from top of viewport on page load.
 						Increase to move down, decrease to move up.
 						~82px centers it with the GitHub/LinkedIn/Resume buttons. */
 	left: 16px;
     z-index: 10000;
-}
-
-/* Remove or replace these two blocks: */
-@media (max-width: 768px) {
-    .theme-toggle-wrapper { top: 16px; }   /* back to top-left */
-}
-
-@media (max-width: 600px) {
-    .theme-toggle-wrapper { top: 16px; left: 16px; }
-
-    /* Smaller toggle proportions for narrow screens */
-    .toggle-track {
-        width: 56px;
-        height: 26px;
-        border-radius: 13px;
-    }
-    .toggle-thumb {
-        width: 18px;
-        height: 18px;
-    }
-    body.dark-mode .toggle-thumb {
-        transform: translateX(30px);
-    }
-    .toggle-icon { font-size: 12px; }
-    .toggle-icon.sun { left: 6px; }
-    .toggle-icon.moon { right: 4px; }
 }
 
 @media (max-width: 600px) {
