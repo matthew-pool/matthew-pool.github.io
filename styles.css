@@ -300,18 +300,18 @@ body.dark-mode .spec-value {
 }
 
 .toggle-track {
-	display: flex;
-	align-items: center;
-	position: relative;
-	width: 80px;
-	height: 36px;
-	background: rgba(255, 255, 255, 0.5);
-	border-radius: 18px;
-	padding: 4px;
-	backdrop-filter: blur(10px);
-	border: 2px solid rgba(255, 255, 255, 0.7);
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-	transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 72px;            /* ← 80 → 72 */
+    height: 30px;           /* ← 36 → 30 */
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 15px;    /* ← 18 → 15 */
+    padding: 4px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
 }
 
 .theme-toggle:hover .toggle-track {
@@ -322,8 +322,8 @@ body.dark-mode .spec-value {
 
 .toggle-thumb {
 	position: absolute;
-	width: 28px;
-	height: 28px;
+	width: 22px;
+	height: 22px;
 	background: rgba(41, 41, 41, 0.683);
 	border-radius: 50%;
 	transition: transform 0.3s ease, background-color 0.3s ease;
@@ -335,7 +335,7 @@ body.dark-mode .spec-value {
 
 /* Dark Mode: Moon is selected */
 body.dark-mode .toggle-thumb {
-	transform: translateX(44px);
+	transform: translateX(42px);
 	background: #a855f7; /* Matching your accent purple */
 	box-shadow: 0 0 10px rgba(168, 85, 247, 0.5); /* Adds a subtle glow */
 }
@@ -2925,9 +2925,9 @@ body.dark-mode .project-image-card {
 	}
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .unified-header {
-        margin-top: 56px; /* ← pushes header card below the fixed toggle position on small screens */
+        margin-top: 50px; /* ← pushes header card below the fixed toggle position on small screens */
     }
 
     .unified-header-inner {
