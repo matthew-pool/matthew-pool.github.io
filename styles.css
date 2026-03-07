@@ -2929,21 +2929,6 @@ body.dark-mode .project-image-card {
     .unified-header {
         margin-top: 50px; /* ← pushes header card below the fixed toggle position on small screens */
     }
-
-    .unified-header-inner {
-        flex-direction: column;
-        align-items: center;
-        gap: 5px;
-    }
-
-    .uh-divider {
-        display: none;
-    }
-
-    .uh-email,
-    .uh-phone {
-        white-space: nowrap;
-    }
 }
 
 /* Add to your portfolio's CSS file */
@@ -3155,7 +3140,7 @@ body.dark-mode .footer-metallic-black a {
 
 /* 1. The Container (Moves around screen, but DOES NOT squash) */
 .bird {
-    position: fixed;
+    position: absolute;   /* was: fixed */
     z-index: 10000;
     pointer-events: none;
     width: 60px;
@@ -3164,7 +3149,7 @@ body.dark-mode .footer-metallic-black a {
     top: 180px;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
-	contain: layout style;
+    contain: layout style;
 }
 
 /* --- Keep your existing flight animations below --- */
@@ -3406,6 +3391,22 @@ body:not(.dark-mode) .shelf-front {
     transform: translateX(-50%);
     border: 5px solid transparent;
     border-top-color: rgba(20, 20, 20, 0.88);
+}
+
+.bird-tooltip.flipped {
+    bottom: 68px;
+    top: auto;
+    left: 50%;
+    transform: translateX(-100%) scaleX(-1);
+}
+.bird-tooltip.flipped::after {
+    top: 100%;
+    bottom: auto;
+    left: auto;
+    right: 10px;
+    transform: none;
+    border-top-color: rgba(20, 20, 20, 0.88);
+    border-bottom-color: transparent;
 }
 
 /* ── Home skills strip ── */
