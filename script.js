@@ -61,14 +61,70 @@ function updateResumeLabel() {
 
 // Bird animation variables
 let birdHasFlown = false;
+let birdOnFlick = false;
 let isPositioned = false;
 let isReady = false;
+let _flightRafId = null; // ← tracks the active flight/return animation frame
+
 const bird = document.getElementById("bird");
 const birdTooltip = document.getElementById("bird-tooltip");
 
-// Reset bird state on page load
+// ─────────────────────────────────────────────────────────────
+// CANCEL any in-progress flight animation
+// Call before positionBird on resize so the loop can't overwrite
+// the freshly-set coordinates after it finishes.
+// ─────────────────────────────────────────────────────────────
+function cancelFlight() {
+  if (_flightRafId !== null) {
+    cancelAnimationFrame(_flightRafId);
+    _flightRafId = null;
+  }
+  bird.classList.remove("flying", "landed");
+  bird.classList.add("idle");
+  bird.style.transform = "scaleX(1) rotate(0deg)";
+}
+
+// ─────────────────────────────────────────────────────────────
+// TOOLTIP HELPERS
+// ─────────────────────────────────────────────────────────────
+function positionTooltip() {
+  if (!birdTooltip || !bird) return;
+
+  const birdRect = bird.getBoundingClientRect();
+  birdTooltip.style.top = Math.max(4, birdRect.top - 44) + "px";
+  birdTooltip.style.bottom = "auto";
+
+  if (birdOnFlick) {
+    birdTooltip.style.left = birdRect.left + "px";
+    birdTooltip.style.right = "auto";
+    birdTooltip.classList.add("flipped");
+  } else {
+    birdTooltip.style.right = window.innerWidth - birdRect.right + "px";
+    birdTooltip.style.left = "auto";
+    birdTooltip.classList.remove("flipped");
+  }
+}
+
+function showBirdTooltip() {
+  if (!birdTooltip || bird.classList.contains("flying")) return;
+  positionTooltip();
+  birdTooltip.classList.add("visible");
+}
+
+function hideBirdTooltip() {
+  if (!birdTooltip) return;
+  birdTooltip.classList.remove("visible");
+}
+
+// ─────────────────────────────────────────────────────────────
+// PAGE LOAD
+// ─────────────────────────────────────────────────────────────
 window.addEventListener("load", function () {
+  if (birdTooltip) document.body.appendChild(birdTooltip);
+  document.body.appendChild(bird);
+
   birdHasFlown = false;
+  birdOnFlick = false;
   isPositioned = false;
   isReady = false;
 
@@ -81,29 +137,21 @@ window.addEventListener("load", function () {
 
   if (birdTooltip) {
     setTimeout(() => {
-      if (!bird.classList.contains("flying")) {
-        birdTooltip.classList.add("visible");
-        setTimeout(() => birdTooltip.classList.remove("visible"), 2500);
-      }
+      showBirdTooltip();
+      setTimeout(hideBirdTooltip, 2500);
     }, 1800);
 
     setInterval(() => {
       if (bird.classList.contains("flying")) return;
-      birdTooltip.classList.add("visible");
-      setTimeout(() => birdTooltip.classList.remove("visible"), 2500);
+      showBirdTooltip();
+      setTimeout(hideBirdTooltip, 2500);
     }, 7000);
-
-    bird.addEventListener("mouseenter", () => {
-      if (!bird.classList.contains("flying"))
-        birdTooltip.classList.add("visible");
-    });
-    bird.addEventListener("mouseleave", () =>
-      birdTooltip.classList.remove("visible"),
-    );
   }
 });
 
-// Dark mode toggle
+// ─────────────────────────────────────────────────────────────
+// DARK MODE TOGGLE
+// ─────────────────────────────────────────────────────────────
 const themeToggle = document.getElementById("themeToggle");
 
 const savedTheme = localStorage.getItem("theme");
@@ -131,6 +179,9 @@ themeToggle.addEventListener("click", () => {
   }, 350);
 });
 
+// ─────────────────────────────────────────────────────────────
+// TAB SWITCHING
+// ─────────────────────────────────────────────────────────────
 function openTab(evt, tabName) {
   const tabContents = document.getElementsByClassName("tab-content");
   for (let i = 0; i < tabContents.length; i++) {
@@ -151,7 +202,7 @@ function openTab(evt, tabName) {
   }
 
   if (!birdHasFlown) {
-    requestAnimationFrame(() => positionBird(true));
+    requestAnimationFrame(() => positionBird());
   }
 }
 
@@ -203,15 +254,35 @@ if (_bannerImg) {
   }
 }
 
+// ─────────────────────────────────────────────────────────────
+// RESIZE — cancel any active flight, then snap bird to shelf
+// ─────────────────────────────────────────────────────────────
 let _resizeTimer;
 window.addEventListener(
   "resize",
   () => {
     clearTimeout(_resizeTimer);
     _resizeTimer = setTimeout(() => {
+      // 1. Kill any in-progress animation immediately
+      cancelFlight();
+
+      // 2. Reset all flight state
+      birdHasFlown = false;
+      birdOnFlick = false;
+      isReady = false;
+      hideBirdTooltip();
+
+      // 3. Recalculate sticky lock, then snap bird once layout settles
       updateStickyLock();
-      if (!birdHasFlown) positionBird(true);
-    }, 66);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          positionBird(true);
+          setTimeout(() => {
+            isReady = true;
+          }, 500);
+        });
+      });
+    }, 150);
   },
   { passive: true },
 );
@@ -220,38 +291,32 @@ window.addEventListener("load", updateStickyLock);
 
 // ─────────────────────────────────────────────────────────────
 // BIRD POSITIONING
-//
-// The bird uses position:absolute (document coordinates), NOT
-// position:fixed. This is the same approach as the Flick-logo
-// bird, which never jitters.
-//
-// Why it works:
-//   • Pre-lock: the sticky zone scrolls like a normal element.
-//     The bird (absolute) scrolls at the same rate — perfect
-//     tracking with zero JavaScript per frame.
-//   • At lock-point: the bird takes off. We never need to track
-//     the shelf post-lock because the bird is airborne.
-//   • No rAF loop, no scroll-event repositioning, no timing race
-//     with the browser's sticky resolution.
 // ─────────────────────────────────────────────────────────────
-function positionBird(isResize = false) {
-  if (birdHasFlown) return;
-
+function getBirdDocCoords() {
   const bottomShelf = document.querySelectorAll(".shelf-container")[1];
-  const tabContainer = document.querySelector(".tab-container");
-  if (!bottomShelf || !tabContainer) return;
+  if (!bottomShelf) return null;
 
   const shelfRect = bottomShelf.getBoundingClientRect();
-  const tabRect = tabContainer.getBoundingClientRect();
+  const BIRD_WIDTH = 60;
+  const RIGHT_MARGIN = 4;
 
-  // Convert viewport coordinates → document coordinates.
-  // With position:absolute (child of <body>), left/top are document coords.
-  const docLeft = tabRect.right + window.scrollX - 65;
-  const docTop = shelfRect.top + window.scrollY - 50;
+  return {
+    left: shelfRect.right + window.scrollX - BIRD_WIDTH - RIGHT_MARGIN,
+    top: shelfRect.top + window.scrollY - BIRD_WIDTH + 10,
+  };
+}
 
+function positionBird(force = false) {
+  if (birdHasFlown && !force) return;
+
+  const coords = getBirdDocCoords();
+  if (!coords) return;
+
+  bird.classList.remove("flying", "idle", "landed");
+  bird.style.transform = "scaleX(1) rotate(0deg)";
   bird.style.position = "absolute";
-  bird.style.left = docLeft + "px";
-  bird.style.top = docTop + "px";
+  bird.style.left = coords.left + "px";
+  bird.style.top = coords.top + "px";
   bird.style.opacity = "1";
   bird.classList.add("landed");
 
@@ -263,30 +328,26 @@ function positionBird(isResize = false) {
   isPositioned = true;
 }
 
+// ─────────────────────────────────────────────────────────────
+// RETURN FLIGHT
+// ─────────────────────────────────────────────────────────────
 function flyBirdBack() {
   if (!birdHasFlown) return;
 
-  if (birdTooltip) {
-    birdTooltip.classList.remove("visible");
-    birdTooltip.classList.remove("flipped");
-  }
+  hideBirdTooltip();
+  birdOnFlick = false;
+
   bird.classList.remove("idle", "landed");
   bird.classList.add("flying");
 
   const currentLeft = parseFloat(bird.style.left);
   const currentTop = parseFloat(bird.style.top);
 
-  const bottomShelf = document.querySelectorAll(".shelf-container")[1];
-  const tabContainer = document.querySelector(".tab-container");
-  if (!bottomShelf || !tabContainer) return;
+  const coords = getBirdDocCoords();
+  if (!coords) return;
 
-  const shelfRect = bottomShelf.getBoundingClientRect();
-  const tabContainerRect = tabContainer.getBoundingClientRect();
-
-  // Target is document coordinates (bird will be position:absolute)
-  const targetLeft = tabContainerRect.right + window.scrollX - 65;
-  const targetTop = shelfRect.top + window.scrollY - 50;
-
+  const targetLeft = coords.left;
+  const targetTop = coords.top;
   const cpX = (currentLeft + targetLeft) / 2;
   const cpY = Math.min(currentTop, targetTop) - 300;
 
@@ -323,15 +384,13 @@ function flyBirdBack() {
     bird.style.transform = `scaleX(${scaleX}) rotate(${visualRotation}deg)`;
 
     if (progress < 1) {
-      requestAnimationFrame(animateReturn);
+      _flightRafId = requestAnimationFrame(animateReturn);
     } else {
+      _flightRafId = null;
       bird.classList.remove("flying");
       bird.classList.add("landed");
-      if (birdTooltip) birdTooltip.classList.remove("flipped");
 
       bird.style.transform = "scaleX(1) rotate(0deg)";
-
-      // Land at document coordinates (position:absolute — same as Flick bird)
       bird.style.position = "absolute";
       bird.style.left = targetLeft + "px";
       bird.style.top = targetTop + "px";
@@ -350,9 +409,12 @@ function flyBirdBack() {
     }
   }
 
-  requestAnimationFrame(animateReturn);
+  _flightRafId = requestAnimationFrame(animateReturn);
 }
 
+// ─────────────────────────────────────────────────────────────
+// INITIAL POSITIONING
+// ─────────────────────────────────────────────────────────────
 setTimeout(positionBird, 100);
 setTimeout(positionBird, 500);
 
@@ -371,7 +433,7 @@ setTimeout(() => {
 }, 1000);
 
 // ─────────────────────────────────────────────────────────────
-// FLIGHT TRIGGER — fires once when user scrolls past lock point
+// OUTBOUND FLIGHT TRIGGER
 // ─────────────────────────────────────────────────────────────
 window.addEventListener(
   "scroll",
@@ -383,13 +445,11 @@ window.addEventListener(
     if (!birdHasFlown && isPositioned && isReady && isHomeActive && flickLogo) {
       if (window.scrollY >= STICKY_LOCK_PX) {
         birdHasFlown = true;
+        hideBirdTooltip();
 
-        if (birdTooltip) birdTooltip.classList.remove("visible");
         bird.classList.remove("landed", "idle");
         bird.classList.add("flying");
 
-        // Bird is already position:absolute in document coordinates.
-        // Read its current document position directly from style.
         const startLeft = parseFloat(bird.style.left);
         const startTop = parseFloat(bird.style.top);
 
@@ -449,8 +509,9 @@ window.addEventListener(
           bird.style.transform = `scaleX(${scaleX}) rotate(${rotation}deg)`;
 
           if (progress < 1) {
-            requestAnimationFrame(animateBird);
+            _flightRafId = requestAnimationFrame(animateBird);
           } else {
+            _flightRafId = null;
             bird.classList.remove("flying");
             bird.classList.add("landed");
             bird.style.position = "absolute";
@@ -461,19 +522,21 @@ window.addEventListener(
             setTimeout(() => {
               bird.classList.remove("landed");
               bird.classList.add("idle");
-              if (birdTooltip) birdTooltip.classList.add("flipped");
+              birdOnFlick = true;
             }, 500);
           }
         }
 
-        requestAnimationFrame(animateBird);
+        _flightRafId = requestAnimationFrame(animateBird);
       }
     }
   },
   { passive: true },
 );
 
-// Project filter functionality
+// ========================================
+// PROJECT FILTER
+// ========================================
 function filterProjects(category, event) {
   const filterButtons = document.querySelectorAll(".filter-btn");
   filterButtons.forEach((btn) => btn.classList.remove("active"));
@@ -528,7 +591,9 @@ document.addEventListener("keydown", function (e) {
   if (e.key === "Escape") closeProjectModal();
 });
 
-// Lightbox functionality
+// ========================================
+// LIGHTBOX
+// ========================================
 let currentImageIndex = 0;
 let lightboxImages = [];
 

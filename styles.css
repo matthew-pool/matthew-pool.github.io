@@ -3135,23 +3135,8 @@ body.dark-mode .footer-metallic-black a {
 }
 
 /* ---------------------------------------------------------------- */
-/* Birdie Animation Fix */
+/* Birdie Animation */
 /* ---------------------------------------------------------------- */
-
-/* 1. The Container (Moves around screen, but DOES NOT squash) */
-.bird {
-    position: absolute;   /* was: fixed */
-    z-index: 10000;
-    pointer-events: none;
-    width: 60px;
-    height: 60px;
-    left: 65%;
-    top: 180px;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    contain: layout style;
-}
-
 /* --- Keep your existing flight animations below --- */
 #bird svg { filter: drop-shadow(0 2px 2px rgba(0,0,0,0.2)); }
 .bird.flying #leftWing { animation: flapLeft 0.15s ease-in-out infinite; }
@@ -3166,6 +3151,76 @@ body.dark-mode .footer-metallic-black a {
     
     /* Ensures the coordinates are calculated relative to the SVG viewbox */
     transform-box: view-box; 
+}
+
+/* ─────────────────────────────────────────────────────────────
+   .bird — position:fixed → position:absolute
+   The bird now lives in document coordinates so it scrolls with
+   the page naturally, no per-frame JS repositioning needed.
+   ───────────────────────────────────────────────────────────── */
+	/* Bird: position:absolute, scrolls naturally with the page */
+.bird {
+    position: absolute;
+    z-index: 10000;
+    pointer-events: none;
+    width: 60px;
+    height: 60px;
+    left: 65%;        /* overwritten immediately by JS */
+    top: 180px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    contain: layout style;
+}
+
+/* ── Tooltip ───────────────────────────────────────────────────
+   Now a sibling of #bird (reparented by JS), never inside the
+   bird's transform hierarchy. position:fixed lets JS place it
+   precisely in viewport space using getBoundingClientRect().    */
+.bird-tooltip {
+    position: fixed;
+    /* top / left / right set entirely by JS — no default offsets */
+    top: 0;
+    left: auto;
+    right: 0;
+    bottom: auto;
+    transform: none;
+
+    background: rgba(20, 20, 20, 0.88);
+    color: #fff;
+    font-size: 12px;
+    font-family: inherit;
+    white-space: nowrap;
+    padding: 5px 11px;
+    border-radius: 20px;
+    border: 1px solid rgba(220, 20, 60, 0.4);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 10001;
+}
+
+.bird-tooltip.visible {
+    opacity: 1;
+}
+
+/* Arrow — default: bird on RIGHT side of page, tooltip extends LEFT.
+   Arrow sits on the right side of the tooltip, pointing down. */
+.bird-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    right: 14px;
+    left: auto;
+    transform: none;
+    border: 5px solid transparent;
+    border-top-color: rgba(20, 20, 20, 0.88);
+}
+
+/* Flipped: bird on LEFT side of page (Flick tile), tooltip extends RIGHT.
+   Arrow moves to the left side of the tooltip, still pointing down. */
+.bird-tooltip.flipped::after {
+    left: 14px;
+    right: auto;
 }
 
 /* Existing Keyframes for wings/head (Keep these as they were) */
@@ -3357,56 +3412,6 @@ body:not(.dark-mode) .shelf-top {
 }
 body:not(.dark-mode) .shelf-front {
     background: linear-gradient(to bottom, #555 0%, #333 100%) !important;
-}
-
-/* ── Bird tooltip ── */
-.bird-tooltip {
-    position: absolute;
-    bottom: 68px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(20, 20, 20, 0.88);
-    color: #fff;
-    font-size: 12px;
-    font-family: inherit;
-    white-space: nowrap;
-    padding: 5px 11px;
-    border-radius: 20px;
-    border: 1px solid rgba(220, 20, 60, 0.4);
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    z-index: 10001;
-}
-
-.bird-tooltip.visible {
-    opacity: 1;
-}
-
-.bird-tooltip::after {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    border: 5px solid transparent;
-    border-top-color: rgba(20, 20, 20, 0.88);
-}
-
-.bird-tooltip.flipped {
-    bottom: 68px;
-    top: auto;
-    left: 50%;
-    transform: translateX(-100%) scaleX(-1);
-}
-.bird-tooltip.flipped::after {
-    top: 100%;
-    bottom: auto;
-    left: auto;
-    right: 10px;
-    transform: none;
-    border-top-color: rgba(20, 20, 20, 0.88);
-    border-bottom-color: transparent;
 }
 
 /* ── Home skills strip ── */
