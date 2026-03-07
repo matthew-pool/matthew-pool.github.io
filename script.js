@@ -57,9 +57,9 @@ function downloadResume(e) {
 function updateResumeLabel() {
   const label = document.getElementById("resume-theme-label");
   if (label) {
-label.textContent = document.body.classList.contains("dark-mode")
-  ? "DARK"
-  : "LIGHT";
+    label.textContent = document.body.classList.contains("dark-mode")
+      ? "DARK"
+      : "LIGHT";
   }
 }
 
@@ -68,7 +68,6 @@ function syncBirdToScroll() {
   if (!bird || birdHasFlown) return;
 
   if (isPositioned) {
-    // On other tabs the bird is static — don't touch it
     const homeTab = document.getElementById("home");
     if (!homeTab || !homeTab.classList.contains("active")) return;
 
@@ -104,7 +103,6 @@ window.addEventListener("load", function () {
     isReady = true;
   }, 1000);
 
-  // Show bird tooltip briefly on first landing
   const birdTooltip = document.getElementById("bird-tooltip");
   if (birdTooltip) {
     setTimeout(() => {
@@ -112,7 +110,6 @@ window.addEventListener("load", function () {
       setTimeout(() => birdTooltip.classList.remove("visible"), 3500);
     }, 1800);
 
-    // Re-show on hover (bird pointer-events are none, so hook onto scroll stop / idle)
     bird.addEventListener("mouseenter", () =>
       birdTooltip.classList.add("visible"),
     );
@@ -147,7 +144,6 @@ themeToggle.addEventListener("click", () => {
 
   updateResumeLabel();
 
-  // We use a tiny timeout to let the DOM reflow first
   setTimeout(() => {
     if (!birdHasFlown) {
       positionBird();
@@ -176,8 +172,94 @@ function openTab(evt, tabName) {
   }
 }
 
-let STICKY_LOCK_PX = 170; // will be overwritten dynamically
+// ─────────────────────────────────────────────────────────────
+// STICKY LOCK + TOGGLE ALIGNMENT
+// Both the zone top and toggle top derive from the same rendered
+// banner height so they always agree at every viewport width.
+// ─────────────────────────────────────────────────────────────
+const BANNER_SHOW_FRACTION = 0.34; // bottom N% of banner stays visible when locked
+let STICKY_LOCK_PX = 170; // overwritten on every updateStickyLock call
 
+function updateStickyLock() {
+  // Double-RAF: first RAF enters the rendering pipeline;
+  // second RAF fires after the browser completes layout so that
+  // getBoundingClientRect reflects the true dimensions for the
+  // current viewport — this is the key fix for cross-size consistency.
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      const stickyZone = document.querySelector(".sticky-header-zone");
+      const bannerContainer = document.querySelector(
+        ".portfolio-banner-container",
+      );
+      const toggleWrapper = document.querySelector(".theme-toggle-wrapper");
+
+      if (!stickyZone || !bannerContainer) return;
+
+      // getBoundingClientRect gives accurate post-layout height at any
+      // viewport width, unlike offsetHeight which can lag on resize.
+      const bannerHeight = bannerContainer.getBoundingClientRect().height;
+
+      if (bannerHeight <= 0) {
+        // Not yet painted — retry shortly
+        setTimeout(updateStickyLock, 50);
+        return;
+      }
+
+      const visibleStrip = bannerHeight * BANNER_SHOW_FRACTION;
+      STICKY_LOCK_PX = Math.round(bannerHeight - visibleStrip);
+
+      // A negative `top` on position:sticky means "allow the element to
+      // scroll STICKY_LOCK_PX pixels above the viewport before locking".
+      // Result: bottom 25% of banner + shelf + tabs stay pinned.
+      stickyZone.style.top = `-${STICKY_LOCK_PX}px`;
+
+      // Centre the toggle vertically within the visible banner strip
+      if (toggleWrapper) {
+        const toggleHeight = toggleWrapper.getBoundingClientRect().height || 36;
+        const toggleTop = Math.max(
+          4,
+          Math.round((visibleStrip - toggleHeight) / 2),
+        );
+        toggleWrapper.style.top = `${toggleTop}px`;
+      }
+    });
+  });
+}
+
+// ── Trigger 1: image load (handles cached AND network-loaded images) ──────────
+const _bannerImg = document.querySelector(".portfolio-banner");
+if (_bannerImg) {
+  if (_bannerImg.complete && _bannerImg.naturalHeight > 0) {
+    // Image already decoded from cache — run immediately
+    updateStickyLock();
+  } else {
+    // Wait for the image to finish loading over the network
+    _bannerImg.addEventListener("load", updateStickyLock);
+  }
+}
+
+// ── Trigger 2: window resize — debounced, covers ALL viewport changes ─────────
+// Using window resize instead of ResizeObserver on the img element ensures we
+// recalculate AFTER the browser has reflowed the image to its new dimensions.
+let _resizeTimer;
+window.addEventListener(
+  "resize",
+  () => {
+    clearTimeout(_resizeTimer);
+    _resizeTimer = setTimeout(() => {
+      updateStickyLock();
+      if (!birdHasFlown) positionBird(true);
+    }, 66); // ~1 frame at 15 fps — responsive without layout thrashing
+  },
+  { passive: true },
+);
+
+// ── Trigger 3: full page load — catches anything the above might miss ─────────
+window.addEventListener("load", updateStickyLock);
+
+// ─────────────────────────────────────────────────────────────
+// BIRD POSITIONING
+// ─────────────────────────────────────────────────────────────
 function positionBird(isResize = false) {
   if (birdHasFlown) return;
 
@@ -199,23 +281,6 @@ function positionBird(isResize = false) {
   bird.style.position = "absolute";
   bird.style.opacity = "1";
   bird.classList.add("landed");
-
-  // Dynamically calculate the lock point from the bird's actual viewport position
-  // Lock just before the bird's head hits the top of the viewport
-  const stickyZone = document.querySelector(".sticky-header-zone");
-  const bannerContainerEl = document.querySelector(".portfolio-banner-container");
-  if (stickyZone && bannerContainerEl) {
-    const bannerHeight = bannerContainerEl.offsetHeight;
-
-    // Lock when the shelf reaches the top of the viewport.
-    // Using a fixed percentage of the banner height ensures the visual
-    // lock point is identical regardless of viewport width.
-    STICKY_LOCK_PX = Math.round(bannerHeight * 0.65);
-
-    if (!isResize) {
-      stickyZone.style.top = `-${STICKY_LOCK_PX}px`;
-    }
-  }
 
   setTimeout(() => {
     bird.classList.remove("landed");
@@ -339,27 +404,20 @@ window.addEventListener("scroll", function () {
   const homeTab = document.getElementById("home");
   const isHomeActive = homeTab && homeTab.classList.contains("active");
 
-  // 1. Find the destination element
   const flickLogo = document.querySelector(".flick-logo");
 
-  // 2. Check if everything is valid before calculating positions
   if (!birdHasFlown && isPositioned && isReady && isHomeActive && flickLogo) {
-    // 3. Get the logo's position relative to the viewport
     const rect = flickLogo.getBoundingClientRect();
 
-    // 4. TRIGGER: When the top of the logo enters the bottom of the screen
-    // (rect.top represents the distance from the top of the viewport to the element)
     if (rect.top < window.innerHeight) {
       birdHasFlown = true;
-      bird.style.setProperty("--scroll-offset", "0px"); // ← add this
+      bird.style.setProperty("--scroll-offset", "0px");
       bird.classList.remove("landed", "idle");
       bird.classList.add("flying");
 
       const startLeft = parseFloat(bird.dataset.initialLeft);
       const startTop = parseFloat(bird.dataset.initialTop);
 
-      // Recalculate end positions based on the now-visible logo
-      // (This logic remains the same as your previous code)
       const flickRect = flickLogo.getBoundingClientRect();
       const endLeft =
         flickRect.left + window.scrollX + flickRect.width / 2 - 30;
@@ -450,12 +508,6 @@ window.addEventListener("scroll", function () {
   }
 });
 
-window.addEventListener("resize", function () {
-  if (!birdHasFlown) {
-    positionBird(true); // isResize=true: reposition bird but don't shift sticky zone
-  }
-});
-
 // Project filter functionality
 function filterProjects(category, event) {
   const filterButtons = document.querySelectorAll(".filter-btn");
@@ -483,56 +535,35 @@ function openProjectModal(projectId) {
 
   if (!modal || !modalContent || !detailsElement) return;
 
-  // Clone the details content into the modal
   modalContent.innerHTML = detailsElement.innerHTML;
-
-  // Show the modal
   modal.classList.add("show");
-
-  // Prevent body scroll
   document.body.style.overflow = "hidden";
 }
 
 function closeProjectModal() {
   const modal = document.getElementById("project-modal");
-
   if (!modal) return;
-
-  // Hide the modal
   modal.classList.remove("show");
-
-  // Restore body scroll
   document.body.style.overflow = "";
 }
 
-// Close modal when clicking anywhere EXCEPT links or buttons
 const modal = document.getElementById("project-modal");
 if (modal) {
   modal.addEventListener("click", function (e) {
-    // 1. Check if the click was on (or inside) a link or button
     const isInteractive = e.target.closest("a") || e.target.closest("button");
-
-    // 2. If it is interactive, do nothing (let the link/button work)
-    if (isInteractive) {
-      return;
-    }
-
-    // 3. Otherwise (text, images, background), close the modal
+    if (isInteractive) return;
     closeProjectModal();
   });
 }
 
-// Close modal when clicking the dark overlay (background)
 document
   .getElementById("project-modal")
   .addEventListener("click", function (e) {
-    // 'this' refers to the #project-modal container
     if (e.target === this) {
       closeProjectModal();
     }
   });
 
-// Close modal with Escape key
 document.addEventListener("keydown", function (e) {
   if (e.key === "Escape") {
     closeProjectModal();
@@ -568,7 +599,6 @@ function openLightbox(clickedImg, allImages) {
   lightboxImg.src = clickedImg.src;
   lightboxCaption.textContent = clickedImg.alt || "";
   lightbox.classList.add("active");
-
   document.body.style.overflow = "hidden";
 }
 
