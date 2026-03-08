@@ -1,9 +1,11 @@
 <!-- 
-	Matthew Pool - Software Engineer & Product Designer Portfolio
-	Specializing in UI/UX, Android mobile development, full-stack web apps, AI/ML, B2B/B2C Sales & Support
-	@updated 2026-03-07
-	@version 1.20.2
+    @project Portfolio
+    @author Matthew Pool
+    @filename index.html
+    @updated 2026-03-07
+    @version 1.20.3
 -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,8 +39,20 @@
         <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
             <span class="toggle-track">
                 <span class="toggle-thumb"></span>
-                <span class="toggle-icon sun">☀️</span>
-                <span class="toggle-icon moon">🌙</span>
+                <svg class="toggle-icon sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg class="toggle-icon moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
             </span>
         </button>
     </div>
@@ -72,22 +86,6 @@
             </span>
         </a>
     </div>
-
-    <!-- Alt Banner
-    <div class="banner">
-        <h1 class="banner-title">
-        <span class="text-blue-gradient">Software Engineer</span> 
-        <span class="divider">|</span> 
-        <span class="text-orange-gradient">Product Designer</span>
-        </h1>
-    <p class="banner-subtitle">
-        UI/UX &middot; Native Mobile &middot; Full-Stack Web &middot; Machine Learning &middot; B2B/B2C
-    </p>
-    <p class="banner-footer">
-        Design &middot; Develop &middot; Deploy
-    </p>
-    </div>
-    -->
 
     <div class="sticky-header-zone">
         <header class="portfolio-banner-container">
@@ -153,40 +151,6 @@
                 Because I have hit sales KPIs and sat on the front lines of customer support, I never lose sight of the business perspective. I bridge the gap between UI/UX design and technical implementation at every step of the product lifecycle, delivering accessible, high-ROI software that solves real user problems.</p>
         </div>
         
-        <!-- OPTIONAL
-        <p class="skills-eyebrow">Technical Skills</p>
-        <div class="home-skills-strip">
-            <div class="home-skills-row">
-                <span class="home-skills-label">Languages</span>
-                <span class="home-skill-tag">Kotlin</span><span class="home-skill-tag">Python</span><span class="home-skill-tag">TypeScript</span><span class="home-skill-tag">Java</span><span class="home-skill-tag">C++</span><span class="home-skill-tag">SQL</span><span class="home-skill-tag">JavaScript</span><span class="home-skill-tag">C#</span>
-            </div>
-            <div class="home-skills-row">
-                <span class="home-skills-label">Mobile / UI</span>
-                <span class="home-skill-tag">Android SDK</span><span class="home-skill-tag">Jetpack Compose</span><span class="home-skill-tag">Material Design 3</span><span class="home-skill-tag">Figma</span><span class="home-skill-tag">MVVM</span><span class="home-skill-tag">Hilt</span><span class="home-skill-tag">Coroutines</span><span class="home-skill-tag">REST APIs</span>
-            </div>
-            <div class="home-skills-row">
-                <span class="home-skills-label">Web</span>
-                <span class="home-skill-tag">React</span><span class="home-skill-tag">Angular</span><span class="home-skill-tag">Node.js</span><span class="home-skill-tag">Express</span><span class="home-skill-tag">LoopBack</span><span class="home-skill-tag">Tailwind</span><span class="home-skill-tag">Spring Boot</span><span class="home-skill-tag">HTML5</span><span class="home-skill-tag">CSS3</span><span class="home-skill-tag">RxJS</span><span class="home-skill-tag">Bootstrap</span><span class="home-skill-tag">Vite</span>
-            </div>
-            <div class="home-skills-row">
-                <span class="home-skills-label">Graphics</span>
-                <span class="home-skill-tag">OpenGL</span><span class="home-skill-tag">GLSL</span><span class="home-skill-tag">Unity</span><span class="home-skill-tag">Adobe Creative Suite</span>
-            </div>
-            <div class="home-skills-row">
-                <span class="home-skills-label">Databases</span>
-                <span class="home-skill-tag">AWS</span><span class="home-skill-tag">Firebase</span><span class="home-skill-tag">MongoDB</span><span class="home-skill-tag">MySQL</span><span class="home-skill-tag">DynamoDB</span><span class="home-skill-tag">Mongoose</span>
-            </div>
-            <div class="home-skills-row">
-                <span class="home-skills-label">Data / ML</span>
-                <span class="home-skill-tag">TensorFlow</span><span class="home-skill-tag">scikit-learn</span><span class="home-skill-tag">Pandas</span><span class="home-skill-tag">NumPy</span><span class="home-skill-tag">CNN</span><span class="home-skill-tag">DQN</span><span class="home-skill-tag">Matplolib</span><span class="home-skill-tag">DNN</span><span class="home-skill-tag">Reinforcement Learning</span>
-            </div>
-            <div class="home-skills-row">
-                <span class="home-skills-label">DevOps</span>
-                <span class="home-skill-tag">Docker</span><span class="home-skill-tag">GitHub Actions (CI/CD)</span><span class="home-skill-tag">Maven</span><span class="home-skill-tag">Gradle</span><span class="home-skill-tag">Mongoose</span><span class="home-skill-tag">OWASP</span><span class="home-skill-tag">Snyk</span>
-            </div>
-        </div>
-        -->
-
         <p class="app-cta">
 			Check out my <span class="gradient-text">Android app</span> below.
 		</p>
@@ -215,7 +179,16 @@
 
 		<br>
 
-        <a href="assets/documents/user-guide.html" class="guide-link" style="text-align: center;" target="_blank" rel="noopener noreferrer">User Guide</a>
+        <div class="project-links" style="justify-content: center;">
+            <a href="assets/documents/user-guide.html" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                View User Guide
+            </a>
+        </div>
 
         <hr>
 
@@ -402,20 +375,23 @@
             <i>Try it out! The link is literally right there!</i>
             <br>
             <i>Tap "Directions" for details.</i></p>
-            <p style="margin-top: 10px;"><b>Matthew Pool</b><br>
-            <span style="display: inline-block; position: relative;">
-                
-                <a href="mailto:mathyou.me@gmail.com" style="font-size: 16px;">mathyou.me@gmail.com</a>
-                
-                <button onclick="copyEmail(this, 'light')" style="background: none; border: none; cursor: pointer; padding: 4px; display: inline-flex; align-items: center; opacity: 0.7; transition: opacity 0.2s; position: absolute; top: 50%; transform: translateY(-50%); margin-left: 4px;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.9)" stroke-width="2">
-                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                    </svg>
-                </button>
-                <span class="toast-container"></span>
-            </span><br>
-            <a href="tel:+19035760223"><span style="font-size: 16px;">903-576-0223</span></a></p>
+            
+            <div class="unified-header-inner" style="margin-top: 20px;">
+                <span class="uh-name"><b>Matthew Pool</b></span>
+                <span class="uh-divider">|</span>
+                <span class="uh-email" style="position:relative; display: inline-flex; align-items: center; padding-right: 28px;">
+                    <a href="mailto:mathyou.me@gmail.com">mathyou.me@gmail.com</a>
+                    <button onclick="copyEmail(this, 'light')" style="background: none; border: none; cursor: pointer; padding: 4px; display: inline-flex; align-items: center; opacity: 0.7; transition: opacity 0.2s; position: absolute; right: 0; top: 50%; transform: translateY(-50%);" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.9)" stroke-width="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                    </button>
+                    <span class="toast-container"></span>
+                </span>
+                <span class="uh-divider">|</span>
+                <span class="uh-phone"><a href="tel:+19035760223">903-576-0223</a></span>
+            </div>
         </div>
     </div>
     
@@ -441,7 +417,7 @@
                 aria-label="This Portfolio — click to view details"
                 onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('portfolio-site')}">
                 <div class="project-card-image">
-                    <img src="assets/images/portfolio-screenshot-dark.png" alt="Portfolio website design" loading="lazy">
+                    <img src="assets/images/portfolio-dark.png" alt="Portfolio website design" loading="lazy">
                 </div>
                 <div class="project-card-content">
                     <h3>(This) Portfolio</h3>
@@ -804,20 +780,23 @@
         <div class="footer-metallic-black">
             <p><i>Phew. That was a lot to look over!</i><br>
                 <i>Aren't you tired?</i> I am.</p>
-            <p style="margin-top: 10px;"><b>Matthew Pool</b><br>
-            <span style="display: inline-block; position: relative;">
-                    
-                    <a href="mailto:mathyou.me@gmail.com" style="font-size: 16px;">mathyou.me@gmail.com</a>
-                    
-                    <button onclick="copyEmail(this, 'light')" style="background: none; border: none; cursor: pointer; padding: 4px; display: inline-flex; align-items: center; opacity: 0.7; transition: opacity 0.2s; position: absolute; top: 50%; transform: translateY(-50%); margin-left: 4px;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
+            
+            <div class="unified-header-inner" style="margin-top: 20px;">
+                <span class="uh-name"><b>Matthew Pool</b></span>
+                <span class="uh-divider">|</span>
+                <span class="uh-email" style="position:relative; display: inline-flex; align-items: center; padding-right: 28px;">
+                    <a href="mailto:mathyou.me@gmail.com">mathyou.me@gmail.com</a>
+                    <button onclick="copyEmail(this, 'light')" style="background: none; border: none; cursor: pointer; padding: 4px; display: inline-flex; align-items: center; opacity: 0.7; transition: opacity 0.2s; position: absolute; right: 0; top: 50%; transform: translateY(-50%);" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.9)" stroke-width="2">
                             <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                             <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                         </svg>
                     </button>
                     <span class="toast-container"></span>
-                </span><br>
-                <a href="tel:+9035760223"><span style="font-size: 16px;">903-576-0223</span></a></p>
+                </span>
+                <span class="uh-divider">|</span>
+                <span class="uh-phone"><a href="tel:+19035760223">903-576-0223</a></span>
+            </div>
         </div>
     </div>
 
@@ -842,8 +821,15 @@
                 <img src="assets/images/new11.png" alt="System menu of the legacy application">
             </div>
 
-            <div style="text-align: center; margin-top: 20px;">
-                <a href="java-enhancements/rescue_animal.zip" class="btn-secondary" style="color: #333; border-color: #ccc;" download>Download Source Code (ZIP)</a>
+            <div class="project-links" style="justify-content: center; margin-top: 20px;">
+                <a href="java-enhancements/rescue_animal.zip" class="theme-action-btn" download>
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Download Source Code
+                </a>
             </div>
         </div>
         
@@ -907,7 +893,15 @@
         <hr>
 
         <p style="text-align: center;">Meh, that's a little better I guess 😐</p>
-        <h4 style="text-align: center;">Project Files (GitHub): <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/java-enhancements" target="_blank" rel="noopener noreferrer">View Here</a></h4>
+        
+        <div class="project-links" style="justify-content: center; margin-top: 20px;">
+            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/java-enhancements" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                View Source Code
+            </a>
+        </div>
         
         <hr>
 
@@ -916,21 +910,23 @@
             <p style="margin-top: 7px;">I give everything I am into everything I do. Give me a chance.
             <br>
             You won't regret it!</p>
-            <br>
-            <p style="margin-top: 10px;"><b>Matthew Pool</b><br>
-            <span style="display: inline-block; position: relative;">
-                    
-                    <a href="mailto:mathyou.me@gmail.com" style="font-size: 16px;">mathyou.me@gmail.com</a>
-                    
-                    <button onclick="copyEmail(this, 'light')" style="background: none; border: none; cursor: pointer; padding: 4px; display: inline-flex; align-items: center; opacity: 0.7; transition: opacity 0.2s; position: absolute; top: 50%; transform: translateY(-50%); margin-left: 4px;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
+            
+            <div class="unified-header-inner" style="margin-top: 25px;">
+                <span class="uh-name"><b>Matthew Pool</b></span>
+                <span class="uh-divider">|</span>
+                <span class="uh-email" style="position:relative; display: inline-flex; align-items: center; padding-right: 28px;">
+                    <a href="mailto:mathyou.me@gmail.com">mathyou.me@gmail.com</a>
+                    <button onclick="copyEmail(this, 'light')" style="background: none; border: none; cursor: pointer; padding: 4px; display: inline-flex; align-items: center; opacity: 0.7; transition: opacity 0.2s; position: absolute; right: 0; top: 50%; transform: translateY(-50%);" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.9)" stroke-width="2">
                             <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                             <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                         </svg>
                     </button>
                     <span class="toast-container"></span>
-                </span><br>
-            <a href="tel:+9035760223"><span style="font-size: 16px;">903-576-0223</span></a></p>
+                </span>
+                <span class="uh-divider">|</span>
+                <span class="uh-phone"><a href="tel:+19035760223">903-576-0223</a></span>
+            </div>
         </div>
     </div>
 
@@ -956,9 +952,16 @@
             <li><strong>Performance & Accessibility:</strong> Semantic HTML5, ARIA roles, lazy-loaded images, and keyboard-navigable interactive elements throughout.</li>
         </ul>
 
+        <div class="project-image-card">
+            <img src="assets/images/portfolio-light.png" alt="Light mode view of the portfolio">
+        </div>
         <div class="project-links">
-            <a href="https://github.com/matthew-pool/matthew-pool.github.io" target="_blank" rel="noopener noreferrer">💻 View Source on GitHub</a>
-            <a href="https://matthew-pool.github.io" target="_blank" class="guide-link" rel="noopener noreferrer">🌐 Visit Live Site</a>
+            <a href="https://github.com/matthew-pool/matthew-pool.github.io" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                View Source Code
+            </a>
         </div>
     </div>
 
@@ -971,7 +974,14 @@
             <li>Developed dual-view camera system supporting both orthogonal and perspective projections with smooth navigation controls</li>
         </ul>
         <div class="project-links">
-            <a href="assets/documents/mario-design-decisions-doc.pdf">Design Decisions Document</a>
+            <a href="assets/documents/mario-design-decisions-doc.pdf" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                View Design Document
+            </a>
         </div>
 
         <div class="project-image-card">
@@ -983,7 +993,12 @@
         <br>
         
         <div class="project-links">
-            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/super-mario-bros" target="_blank" rel="noopener noreferrer">💻 View Code</a>
+            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/super-mario-bros" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                View Source Code
+            </a>
         </div>
     </div>
 
@@ -1000,7 +1015,12 @@
         </div>
 
         <div class="project-links">
-            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/existence-paradox" target="_blank" rel="noopener noreferrer">💻 View Code</a>
+            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/existence-paradox" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                View Source Code
+            </a>
         </div>
 
         <div class="play-store-cta" style="margin-top: 30px; margin-bottom: 30px;">
@@ -1036,9 +1056,30 @@
 
             <li><strong>Documentation</strong></li>
             <div class="project-links">
-                <a href="assets/documents/eatright-interviews-personas.pdf">Interviews & Personas</a><br>
-                <a href="assets/documents/eatright-design-decisions-document.pdf">Design Decisions Document</a><br>
-                <a href="assets/documents/eatright-prototype-paper.pdf">Prototype Documentation</a><br>
+                <a href="assets/documents/eatright-interviews-personas.pdf" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    View Interviews & Personas
+                </a>
+                <a href="assets/documents/eatright-design-decisions-document.pdf" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    View Design Document
+                </a>
+                <a href="assets/documents/eatright-prototype-paper.pdf" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    View Prototype Docs
+                </a>
             </div>
         </ul>
         
@@ -1051,12 +1092,24 @@
 
             <li><strong>Documentation</strong></li>
             <div class="project-links">
-                <a href="assets/documents/moneymobile-design-proposal-document.pdf">Design Proposal Document</a>
+                <a href="assets/documents/moneymobile-design-proposal-document.pdf" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    View Design Proposal
+                </a>
             </div>
         </ul>
 
         <div class="project-links">
-            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/product-design" target="_blank" rel="noopener noreferrer">💻 View Code</a>
+            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/product-design" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                View Source Code
+            </a>
         </div>
     </div>
 
@@ -1086,7 +1139,12 @@
         </div>
         
         <div class="project-links">
-            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/travel-web-app" target="_blank" rel="noopener noreferrer">💻 View Code</a>
+            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/travel-web-app" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                View Source Code
+            </a>
         </div>
     </div>
 
@@ -1113,7 +1171,12 @@
         </div>
 
         <div class="project-links">
-            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/inventory-buddy" target="_blank" rel="noopener noreferrer">💻 View Code</a>
+            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/inventory-buddy" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                View Source Code
+            </a>
         </div>
     </div>
 
@@ -1134,7 +1197,12 @@
         </div>
 
         <div class="project-links">
-            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/aac-dashboard" target="_blank" rel="noopener noreferrer">💻 View Code</a>
+            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/aac-dashboard" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                View Source Code
+            </a>
         </div>
     </div>
 
@@ -1144,28 +1212,68 @@
         <ul>
             <li>Optimized <strong>Convolutional Neural Network (CNN)</strong> model for image recognition, experimenting with hyperparameters to balance accuracy and training efficiency</li>
             <div class="project-links">
-                <a href="assets/documents/cnn-image-recognition.html" class="guide-link" target="_blank" rel="noopener noreferrer">CDNN Training & Testing</a>
+                <a href="assets/documents/cnn-image-recognition.html" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    View Training & Testing
+                </a>
             </div>
 
             <li>Developed <strong>Deep Q-Learning Network (DQN)</strong> to train a gaming AI agent for pathfinding optimization</li>
             <div class="project-links">
-                <a href="assets/documents/dqn-report.pdf">DQN Report</a>
-                <a href="assets/documents/dqn-treasure-hunt.html" class="guide-link" target="_blank" rel="noopener noreferrer">DQN Training & Testing</a>
+                <a href="assets/documents/dqn-report.pdf" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    View DQN Report
+                </a>
+                <a href="assets/documents/dqn-treasure-hunt.html" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    View Training & Testing
+                </a>
             </div>
 
             <li>Implemented <strong>Markov Decision Process (MDP)</strong> and designed the training algorithm to teach a ML model to play Hasbro's Connect 4</li>
             <div class="project-links">
-                <a href="assets/documents/mdp-connect4.pdf">MDP Design Document</a>
+                <a href="assets/documents/mdp-connect4.pdf" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    View Design Document
+                </a>
             </div>
 
             <li>Explored ways <strong>artificial and biological intelligences</strong> compare</li>
             <div class="project-links">
-                <a href="assets/documents/artificial-vs-biological.pdf">Comparing Intelligences</a>
+                <a href="assets/documents/artificial-vs-biological.pdf" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    View Research Paper
+                </a>
             </div>
         </ul>
-                
+        <br>
         <div class="project-links">
-            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/data-analysis" target="_blank" rel="noopener noreferrer">💻 View Code</a>
+            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/data-analysis" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                View Source Code
+            </a>
         </div>
     </div>
 
@@ -1180,11 +1288,16 @@
 
         <div class="project-image-card">
             <img src="assets/images/data2.png" style="width: 100%; max-width: 1280px;" alt="Screenshot of the script's output line graph with positive-curved trend line">
-            <img src="assets/images/data1.png" style="width: 100%; max-width: 1280px;" alt="Certification for Data Analysis awarded to Matthew Pool">       
+            <img src="assets/images/data1.png" style="width: 100%; max-width: 1280px;" alt="Certification for Data Analysis awarded to Matthew Pool">        
         </div>
 
         <div class="project-links">
-            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/data-analysis" target="_blank" rel="noopener noreferrer">💻 View Code</a>
+            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/data-analysis" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                View Source Code
+            </a>
         </div>
     </div>
 
@@ -1203,8 +1316,20 @@
         </div>
 
         <div class="project-links">
-            <a href="assets/documents/statistics-report.pdf">Project Summary Report</a><br>
-            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/statistical-analysis" target="_blank" rel="noopener noreferrer">💻 View Code</a>
+            <a href="assets/documents/statistics-report.pdf" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                View Summary Report
+            </a>
+            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/statistical-analysis" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                View Source Code
+            </a>
         </div>
     </div>
 
@@ -1212,7 +1337,7 @@
         <h3>Economic Analysis</h3>
         <div class="details">Economic Data Visualization & Reporting</div>
         <ul>
-            <li>Analyzed recent historical economic data (up to 2018 Q2) to create a report containing various diagrams and related factual information</li>    
+            <li>Analyzed recent historical economic data (up to 2018 Q2) to create a report containing various diagrams and related factual information</li>   
         </ul>
 
         <div class="project-image-card">
@@ -1224,8 +1349,20 @@
         </div>
 
         <div class="project-links">
-            <a href="assets/documents/economic-analysis.pdf">Economic Analysis Report</a><br>
-            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/economic-analysis" target="_blank" rel="noopener noreferrer">💻 View Code</a>
+            <a href="assets/documents/economic-analysis.pdf" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                View Analysis Report
+            </a>
+            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/economic-analysis" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                View Source Code
+            </a>
         </div>
     </div>
 
@@ -1241,7 +1378,14 @@
         <iframe src="assets/images/database-erd.png" title="Quantigration Database ERD" style="width: 100%; height: 600px; border: none; overflow: hidden;"></iframe>
         
         <div class="project-links">
-            <a href="database-administration/database-analysis.zip" target="_blank" rel="noopener noreferrer">💻 Process Documentation</a>        
+            <a href="database-administration/database-analysis.zip" class="theme-action-btn" target="_blank" rel="noopener noreferrer" download>
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download Process Docs
+            </a>        
         </div>
     </div>
 
@@ -1258,7 +1402,14 @@
         </div>
 
         <div class="project-links">
-            <a href="assets/documents/sdd.pdf">System Design Document (SDD)</a>
+            <a href="assets/documents/sdd.pdf" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                View Design Document
+            </a>
         </div>
     </div>
 
@@ -1276,8 +1427,22 @@
                 </ul>
                 
                 <div class="project-links">
-                    <a href="assets/documents/vulnerability-assessment-report.pdf" target="_blank" class="btn-primary" rel="noopener noreferrer">🛡️ Audit Report</a>
-                    <a href="assets/documents/software-security-paper.pdf" target="_blank" class="btn-secondary" rel="noopener noreferrer">📄 Security Reflection</a>
+                    <a href="assets/documents/vulnerability-assessment-report.pdf" target="_blank" class="theme-action-btn" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        View Audit Report
+                    </a>
+                    <a href="assets/documents/software-security-paper.pdf" target="_blank" class="theme-action-btn" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        View Security Reflection
+                    </a>
                 </div>
             </div>
 
@@ -1308,8 +1473,30 @@
                 </ul>
                 
                 <div class="project-links">
-                    <a href="assets/documents/final-sprint-review-reflection.pdf" target="_blank" class="btn-primary" rel="noopener noreferrer">📊 View Sprint Retrospective (PDF)</a>
-                    <a href="assets/documents/scrum-master-journal.pdf" target="_blank" class="btn-secondary" rel="noopener noreferrer">📝 Read Scrum Journal (PDF)</a>
+                    <a href="assets/documents/final-sprint-review-reflection.pdf" target="_blank" class="theme-action-btn" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        View Sprint Retrospective
+                    </a>
+                    <a href="assets/documents/scrum-master-journal.pdf" target="_blank" class="theme-action-btn" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        View Scrum Journal
+                    </a>
+                    <a href="assets/documents/agile-scrum-presentation.pdf" target="_blank" class="theme-action-btn" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        View Presentation
+                    </a>
                 </div>
             </div>
 
@@ -1321,10 +1508,6 @@
                 <p class="caption" style="text-align: center; font-size: 0.85rem; color: #666; margin-top: 5px;">
                     <em>The Iterative Scrum Framework used for SNHU Travel App</em>
                 </p>
-            </div>
-            
-            <div class="project-links">
-                <a href="assets/documents/agile-scrum-presentation.pdf" target="_blank" rel="noopener noreferrer">Agile-Scrum Presentation (PDF)</a>
             </div>
         </div>
     </div>
@@ -1350,7 +1533,12 @@
         </div>
 
         <div class="project-links">
-            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/algorithmic-optimization" target="_blank" rel="noopener noreferrer">💻 View Code</a>
+            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/algorithmic-optimization" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                View Source Code
+            </a>
         </div>
     </div>
 
@@ -1378,13 +1566,19 @@
                 </div>
 
                 <div class="project-links">
-                    <a href="service-tests/service-tests.zip" target="_blank" rel="noopener noreferrer">Project Files (ZIP)</a>
+                    <a href="service-tests/service-tests.zip" class="theme-action-btn" target="_blank" rel="noopener noreferrer" download>
+                        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Download Source Code
+                    </a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- LIGHTBOX (add just above <script src="script.js">) -->
     <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
         <div class="lightbox-content">
             <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close image viewer">×</button>

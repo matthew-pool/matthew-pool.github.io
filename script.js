@@ -90,23 +90,33 @@ function cancelFlight() {
 // .bird-tooltip rule which has position:absolute). This guarantees
 // the bubble stays anchored to the viewport and never scrolls.
 // ─────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────
+// TOOLTIP HELPERS
+//
+// We use position:absolute in the CSS so the tooltip scrolls with the page.
+// The JS calculates position based on the bird's bounding box PLUS
+// the current scroll offset, ensuring it sticks to the document perfectly.
+// ─────────────────────────────────────────────────────────────
 function positionTooltip() {
   if (!birdTooltip || !bird) return;
 
-  // Enforce fixed positioning in JS — beats any CSS specificity
-  birdTooltip.style.position = "fixed";
-
   const birdRect = bird.getBoundingClientRect();
-  birdTooltip.style.top = Math.max(4, birdRect.top - 44) + "px";
+  
+  // Calculate top relative to the whole document, not just the viewport
+  // Math.max ensures it doesn't clip off the very top of the page
+  birdTooltip.style.top = Math.max(4, birdRect.top + window.scrollY - 44) + "px";
   birdTooltip.style.bottom = "auto";
 
   if (birdOnFlick) {
-    birdTooltip.style.left = birdRect.left + "px";
+    // Flipped mode (bird is on the left, tooltip points right)
+    birdTooltip.style.left = (birdRect.left + window.scrollX) + "px";
     birdTooltip.style.right = "auto";
     birdTooltip.classList.add("flipped");
   } else {
-    birdTooltip.style.right = window.innerWidth - birdRect.right + "px";
-    birdTooltip.style.left = "auto";
+    // Normal mode (bird is on the right, tooltip points left)
+    // We calculate from the left to avoid resizing issues with "right" constraints
+    birdTooltip.style.left = (birdRect.left + window.scrollX - 70) + "px"; // 70px offset pushes it to the left of the bird
+    birdTooltip.style.right = "auto";
     birdTooltip.classList.remove("flipped");
   }
 }
@@ -121,20 +131,6 @@ function hideBirdTooltip() {
   if (!birdTooltip) return;
   birdTooltip.classList.remove("visible");
 }
-
-// Keep tooltip locked to bird's viewport position while scrolling.
-// position:fixed can be broken by CSS transforms on ancestor elements
-// (e.g. the sticky header). Repositioning on every scroll frame is
-// the only fully reliable solution.
-window.addEventListener(
-  "scroll",
-  () => {
-    if (birdTooltip && birdTooltip.classList.contains("visible")) {
-      positionTooltip();
-    }
-  },
-  { passive: true },
-);
 
 // ─────────────────────────────────────────────────────────────
 // PAGE LOAD
@@ -323,17 +319,36 @@ function getBirdDocCoords() {
   };
 }
 
+// NEW: Keeps the bird perfectly pinned to the shelf whether it's scrolling or sticky
+function updateRestingBirdPosition() {
+  const bottomShelf = document.querySelectorAll(".shelf-container")[1];
+  if (!bottomShelf) return;
+
+  if (window.scrollY >= STICKY_LOCK_PX) {
+    // Shelf is locked (sticky). Pin bird to the screen!
+    const shelfRect = bottomShelf.getBoundingClientRect();
+    bird.style.position = "fixed";
+    bird.style.top = (shelfRect.top - 50) + "px"; // 60px width - 10px offset
+    bird.style.left = (shelfRect.right - 64) + "px"; // 60px width + 4px margin
+  } else {
+    // Normal scrolling. Pin bird to the document!
+    const coords = getBirdDocCoords();
+    if (coords) {
+      bird.style.position = "absolute";
+      bird.style.top = coords.top + "px";
+      bird.style.left = coords.left + "px";
+    }
+  }
+}
+
 function positionBird(force = false) {
   if (birdHasFlown && !force) return;
 
-  const coords = getBirdDocCoords();
-  if (!coords) return;
-
   bird.classList.remove("flying", "idle", "landed");
   bird.style.transform = "scaleX(1) rotate(0deg)";
-  bird.style.position = "absolute";
-  bird.style.left = coords.left + "px";
-  bird.style.top = coords.top + "px";
+  
+  updateRestingBirdPosition(); // Applies the correct placement logic
+
   bird.style.opacity = "1";
   bird.classList.add("landed");
 
@@ -357,6 +372,9 @@ function flyBirdBack() {
   bird.classList.remove("idle", "landed");
   bird.classList.add("flying");
 
+  // Force absolute positioning during the flight animation
+  bird.style.position = "absolute";
+
   const currentLeft = parseFloat(bird.style.left);
   const currentTop = parseFloat(bird.style.top);
 
@@ -378,8 +396,7 @@ function flyBirdBack() {
     const t = 1 - Math.pow(1 - progress, 3);
     const invT = 1 - t;
 
-    const x =
-      invT * invT * currentLeft + 2 * invT * t * cpX + t * t * targetLeft;
+    const x = invT * invT * currentLeft + 2 * invT * t * cpX + t * t * targetLeft;
     const y = invT * invT * currentTop + 2 * invT * t * cpY + t * t * targetTop;
 
     const dx = 2 * invT * (cpX - currentLeft) + 2 * t * (targetLeft - cpX);
@@ -407,12 +424,10 @@ function flyBirdBack() {
       bird.classList.remove("flying");
       bird.classList.add("landed");
 
-      bird.style.transform = "scaleX(1) rotate(0deg)";
-      bird.style.position = "absolute";
-      bird.style.left = targetLeft + "px";
-      bird.style.top = targetTop + "px";
+      birdHasFlown = false; 
+      updateRestingBirdPosition(); // Instantly snap to the correct shelf state (sticky or absolute)
 
-      birdHasFlown = false;
+      bird.style.transform = "scaleX(1) rotate(0deg)";
       isReady = false;
 
       setTimeout(() => {
@@ -450,7 +465,7 @@ setTimeout(() => {
 }, 1000);
 
 // ─────────────────────────────────────────────────────────────
-// OUTBOUND FLIGHT TRIGGER
+// OUTBOUND FLIGHT TRIGGER & STICKY TRACKING
 // ─────────────────────────────────────────────────────────────
 window.addEventListener(
   "scroll",
@@ -459,20 +474,25 @@ window.addEventListener(
     const isHomeActive = homeTab && homeTab.classList.contains("active");
     const flickLogo = document.querySelector(".flick-logo");
 
-    if (!birdHasFlown && isPositioned && isReady && isHomeActive && flickLogo) {
-      if (window.scrollY >= STICKY_LOCK_PX) {
+    if (!birdHasFlown && isPositioned && isReady) {
+      if (isHomeActive && flickLogo && window.scrollY >= STICKY_LOCK_PX) {
+        // TRIGGER FLIGHT (If on Home Tab)
         birdHasFlown = true;
         hideBirdTooltip();
 
         bird.classList.remove("landed", "idle");
         bird.classList.add("flying");
+        
+        // Force absolute positioning during the flight animation
+        bird.style.position = "absolute";
 
-        const startLeft = parseFloat(bird.style.left);
-        const startTop = parseFloat(bird.style.top);
+        // Convert starting position to absolute document coordinates so it flows cleanly
+        const birdRect = bird.getBoundingClientRect();
+        const startLeft = birdRect.left + window.scrollX;
+        const startTop = birdRect.top + window.scrollY;
 
         const flickRect = flickLogo.getBoundingClientRect();
-        const endLeft =
-          flickRect.left + window.scrollX + flickRect.width / 2 - 30;
+        const endLeft = flickRect.left + window.scrollX + flickRect.width / 2 - 30;
         const endTop = flickRect.top + window.scrollY - 36;
 
         const duration = 2800;
@@ -545,6 +565,9 @@ window.addEventListener(
         }
 
         _flightRafId = requestAnimationFrame(animateBird);
+      } else {
+        // KEEP BIRD ON SHELF (If on Projects/Code Samples tab)
+        updateRestingBirdPosition();
       }
     }
   },
