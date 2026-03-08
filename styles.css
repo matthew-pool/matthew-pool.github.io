@@ -77,15 +77,16 @@ body.dark-mode .tab-content {
 	background-color: #2a2a2a;
 }
 
+/* LIGHT MODE TABS */
 .tab-button {
     background-color: #1a1440;
-    color: rgba(200, 190, 255, 0.75);
+    color: #555555; /* Clean, highly readable dark gray for light mode */
     border-bottom: 3px solid transparent;
 }
 
 .tab-button:hover {
     background-color: #221a52;
-    color: rgba(220, 210, 255, 0.9);
+    color: #222222; /* Darkens slightly on hover */
 }
 
 .tab-button.active {
@@ -94,14 +95,15 @@ body.dark-mode .tab-content {
     color: #b39dff;
 }
 
+/* DARK MODE TABS */
 body.dark-mode .tab-button {
     background-color: #12103a;
-    color: rgba(180, 170, 230, 0.7);
+    color: #cccccc; /* Bright, crisp light gray for dark mode */
 }
 
 body.dark-mode .tab-button:hover {
     background-color: #1a1750;
-    color: rgba(210, 200, 255, 0.9);
+    color: #ffffff; /* Pure white on hover */
 }
 
 body.dark-mode .tab-button.active {
@@ -238,9 +240,7 @@ body.dark-mode .spec-value {
 /* Theme Toggle */
 .theme-toggle-wrapper {
     position: fixed;
-	top: 5px;  /* ← STARTING TOGGLE POSITION: distance from top of viewport on page load.
-						Increase to move down, decrease to move up.
-						~82px centers it with the GitHub/LinkedIn/Resume buttons. */
+	top: 5px;  
 	left: 16px;
     z-index: 10000;
 }
@@ -260,18 +260,6 @@ body.dark-mode .spec-value {
 
     body.dark-mode .toggle-thumb {
         transform: translateX(28px);
-    }
-
-    .toggle-icon {
-        font-size: 11px;
-    }
-
-    .toggle-icon.sun {
-        left: 5px;
-    }
-
-    .toggle-icon.moon {
-        right: 4px;
     }
 }
 
@@ -303,10 +291,10 @@ body.dark-mode .spec-value {
     display: flex;
     align-items: center;
     position: relative;
-    width: 72px;            /* ← 80 → 72 */
-    height: 30px;           /* ← 36 → 30 */
+    width: 72px;            
+    height: 30px;           
     background: rgba(255, 255, 255, 0.5);
-    border-radius: 15px;    /* ← 18 → 15 */
+    border-radius: 15px;    
     padding: 4px;
     backdrop-filter: blur(10px);
     border: 2px solid rgba(255, 255, 255, 0.7);
@@ -330,47 +318,52 @@ body.dark-mode .spec-value {
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 	left: 4px;
 	z-index: 1;
-	background: #ffcc00; /* Bright Sun Gold */
+	background: #ffcc00; 
 }
 
 /* Dark Mode: Moon is selected */
 body.dark-mode .toggle-thumb {
 	transform: translateX(42px);
-	background: #a855f7; /* Matching your accent purple */
-	box-shadow: 0 0 10px rgba(168, 85, 247, 0.5); /* Adds a subtle glow */
+	background: #a855f7; 
+	box-shadow: 0 0 10px rgba(168, 85, 247, 0.5); 
 }
 
 /* Ensure the icons look good on top of the colored thumb */
 .toggle-icon {
-	z-index: 2;
-	font-size: 16px;
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-	transition: opacity 0.3s ease;
-	pointer-events: none;
+    z-index: 2;
+    width: 14px; /* Scaled perfectly for the 22px thumb */
+    height: 14px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+    color: #ffffff; /* Sets the stroke color for the SVGs */
 }
 
+/* Precise centering math */
 .toggle-icon.sun {
-	left: 8px;
-	opacity: 1;
+    left: 9px;
+    opacity: 1;
 }
 
 .toggle-icon.moon {
-	right: 6px;
-	opacity: 0.4;
+    right: 9px;
+    opacity: 0.4;
 }
 
 /* Light Mode: Sun is active */
 body:not(.dark-mode) .toggle-icon.sun {
-	transform: translateY(-50%) scale(1.2);
-	opacity: 1;
+    color: #333333; /* Dark icon on the bright yellow sun thumb */
+    transform: translateY(-50%) scale(1.1);
+    opacity: 1;
 }
 
 /* Dark Mode: Moon is active */
 body.dark-mode .toggle-icon.moon {
-	transform: translateY(-50%) scale(1.2);
-	opacity: 1;
+    color: #ffffff; /* White icon on the purple moon thumb */
+    transform: translateY(-50%) scale(1.1);
+    opacity: 1;
 }
 
 /* Directions popup */
@@ -457,16 +450,15 @@ img {
 	display: inline-flex;
 	align-items: center;
 	gap: 12px;
-	background-color: #000 !important; /* Black background like Play Store */
-	border: 2px solid #a855f7 !important; /* Purple border to match theme */
+	background-color: #000 !important; 
+	border: 2px solid #a855f7 !important; 
 	color: white !important;
 	padding: 8px 20px;
-	border-radius: 8px; /* Slightly rounded corners */
+	border-radius: 8px; 
 	text-decoration: none;
 	transition: all 0.3s ease;
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 	
-	/* Approximate size of a standard store badge */
 	min-width: 180px; 
 	height: 55px; 
 }
@@ -480,9 +472,9 @@ body.dark-mode .web-badge {
 
 /* Hover Effects */
 .web-badge:hover {
-	background-color: #2d1b4e !important; /* Dark purple background on hover */
+	background-color: #2d1b4e !important; 
 	transform: translateY(-2px);
-	box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4) !important; /* Purple glow */
+	box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4) !important; 
 	color: white !important;
 }
 
@@ -505,12 +497,29 @@ body.dark-mode .web-badge:hover {
 	font-family: sans-serif;
 }
 
+/* Subtle, on-brand glow for the Play Store badge on hover */
+.play-link .play-badge {
+    transition: transform 0.3s ease, filter 0.3s ease;
+    border-radius: 8px; 
+}
+
+/* Light Mode: Stronger, deeper colors so it pops against white/gray backgrounds */
+.play-link:hover .play-badge {
+    transform: translateY(-2px);
+    filter: drop-shadow(0 8px 16px rgba(102, 126, 234, 0.7)) drop-shadow(0 0 22px rgba(118, 75, 162, 0.6));
+}
+
+/* Dark Mode: Brighter, pastel colors to pop against dark backgrounds */
+body.dark-mode .play-link:hover .play-badge {
+    filter: drop-shadow(0 6px 16px rgba(168, 85, 247, 0.5)) drop-shadow(0 0 22px rgba(216, 180, 254, 0.4));
+}
+
 /* Removes default browser margins from the figure tag */
 .screenshot-item {
 	margin: 0; 
 	display: flex;
 	flex-direction: column;
-	align-items: center; /* Centers the caption over the image */
+	align-items: center; 
 }
 
 /* Ensures the image stays responsive inside the figure */
@@ -518,8 +527,8 @@ body.dark-mode .web-badge:hover {
 	width: 100%;
 	height: auto;
 	display: block;
-	border-radius: 8px; /* Optional: Adds rounded corners to images */
-	box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Optional: Adds a subtle shadow */
+	border-radius: 8px; 
+	box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
 }
 
 /* Travel images - no scaling */
@@ -605,7 +614,7 @@ hr {
 	margin: 2em 0;
 	border: none;
 	height: 1px;
-	background: linear-gradient(to right, transparent, rgba(0,0,0,0.1), transparent); /* Subtle fade line */
+	background: linear-gradient(to right, transparent, rgba(0,0,0,0.1), transparent); 
 }
 
 a {
@@ -691,9 +700,8 @@ body.dark-mode hr {
 /* Keep the cards wide though, so images stay large */
 .content-card, 
 .image-card, 
-.dark-flick-header-card,
-.footer-metallic-black {
-	max-width: 1000px; /* Or 100% depending on preference */
+.dark-flick-header-card {
+	max-width: 1000px; 
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -703,7 +711,7 @@ body.dark-mode hr {
 	justify-content: center;
 	max-width: 1000px;
 	margin: 0 auto;
-	width: 100%; /* Ensures it fills space on smaller screens */
+	width: 100%; 
 }
 
 .tab-button {
@@ -755,13 +763,10 @@ body.dark-mode hr {
 	font-weight: bold;
 	box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 	transition: transform 0.2s ease, box-shadow 0.2s ease;
-	
-	/* IMPORTANT: These two lines remove the underline from the button text */
 	text-decoration: none !important; 
 	border-bottom: none; 
 }
 
-/* Ensure underline stays off when hovering */
 .btn-try:hover {
 	text-decoration: none !important;
 	transform: translateY(-2px);
@@ -769,14 +774,14 @@ body.dark-mode hr {
 	color: white;
 }
 
-/* Icon Style - Isolates the emoji from text styles */
+/* Icon Style */
 .btn-icon {
-	display: inline-block; /* This breaks the text-decoration line */
+	display: inline-block; 
 	text-decoration: none; 
-	margin-left: 5px; /* Adds the space here instead of in HTML for better control */
+	margin-left: 5px; 
 }
 
-/* Navigation Gesture Cards - Dark Theme Section */
+/* Navigation Gesture Cards */
 .gesture-grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -811,7 +816,6 @@ body.dark-mode hr {
 	border-color: #bb86fc;
 }
 				
-/* Wrapper for Leaving a Sideways Chain section */
 .sideways-chain-section {
 	background: #202020;
 	border-radius: 12px;
@@ -850,7 +854,6 @@ body.dark-mode hr {
 	font-weight: bold;
 }
 
-/* Optional: Change color when hovering */
 .guide-link:hover {
 	color: #0052a3;
 	text-decoration: underline;
@@ -866,7 +869,7 @@ body.dark-mode .guide-link:hover {
 
 /* GPA link */
 .gpa-link {
-	color: #e3165b; /* Light mode */
+	color: #e3165b;
 	text-decoration: none;
 }
 
@@ -876,7 +879,7 @@ body.dark-mode .guide-link:hover {
 }
 
 body.dark-mode .gpa-link {
-	color: #66b3ff; /* Dark mode: bright vibrant gold */
+	color: #66b3ff; 
 	text-decoration: none;
 }
 
@@ -887,14 +890,14 @@ body.dark-mode .gpa-link:hover {
 
 /* Flick text - pink color matching resume */
 .flick-text {
-	color: #e3165b; /* Light mode: magenta-pink (matches light resume) */
+	color: #e3165b; 
 	font-weight: 600;
 	font-size: 16px;
 	font-style: italic;
 }
 
 body.dark-mode .flick-text {
-	color: #ff6b9d; /* Dark mode: hot pink (matches dark resume) */
+	color: #ff6b9d; 
 }
 
 .tech-name {
@@ -968,7 +971,7 @@ body.dark-mode .flick-text {
 	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 	font-size: 20px;
 	line-height: normal;
-	margin: 5px 0 7px 0; /* top right bottom left */
+	margin: 5px 0 7px 0; 
 }
 
 body.dark-mode .contact-card {
@@ -984,9 +987,9 @@ body.dark-mode .contact-card button svg {
 
 .contact-card b {
     font-size: 22px;
-    font-weight: normal;  /* Removes the default bold heaviness */
-    letter-spacing: 4px;  /* Widens the spacing significantly */
-    text-transform: uppercase; /* Optional: This usually looks great with wide spacing */
+    font-weight: normal; 
+    letter-spacing: 4px;  
+    text-transform: uppercase; 
 }
 
 .contact-card i {
@@ -999,19 +1002,14 @@ body.dark-mode .contact-card button svg {
     font-weight: 700;
     font-size: 16px;
     text-decoration: none;
-    
-    /* Deep Purple/Indigo background */
     background-color: rgba(40, 20, 60, 0.7); 
-    
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    
     display: inline-block;
     margin: 1px 0 1px 0;
     padding: 2px 12px;
     border-radius: 12px;
-    
     text-shadow: none; 
     transition: all 0.2s ease;
 }
@@ -1031,18 +1029,13 @@ body.dark-mode .contact-card a {
     margin: 0;
     border: none;
     border-radius: 0;
-    
-    /* Must be inline-block for transform/lift to work */
     display: inline-block; 
-    
-    /* Strong shadow for contrast */
     text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9); 
 }
 
 body.dark-mode .contact-card a:hover {
     background-color: transparent;
     color: #99ccff;
-    /* CHANGED: Added the lift animation */
     transform: translateY(-1px); 
     text-decoration: underline;
     text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
@@ -1244,20 +1237,12 @@ body.dark-mode .contact-card a:hover {
 	margin-bottom: 0 !important;
 	padding-bottom: 0;
 	border-bottom: none;
-    
-    /* Flexbox Settings */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    
-    /* TIGHTENED: Zero top padding. 
-       The h1 has a bit of its own padding, so we don't need extra here. */
     padding: 0; 
-    
     margin: -20px -20px 40px -20px;
     position: relative; 
-    
-    /* TIGHTENED: Removed min-height so it shrinks to fit content */
     min-height: auto; 
 }
 
@@ -1270,8 +1255,6 @@ body.dark-mode .contact-card a:hover {
 	box-sizing: border-box;
 }
 
-
-
 /* Ensure content takes up available space */
 .hero-section .container {
     flex: 1; 
@@ -1279,12 +1262,9 @@ body.dark-mode .contact-card a:hover {
     flex-direction: column;
     justify-content: center; 
     align-items: center;
-    
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    
-    /* TIGHTENED: Small padding around the content block */
     padding: 20px 20px 15px 20px; 
 }
 
@@ -1295,19 +1275,17 @@ body.dark-mode .contact-card a:hover {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: 'Inter', sans-serif; /* or your preferred modern font */
+  font-family: 'Inter', sans-serif; 
   text-align: center;
   padding: 2rem;
 }
 
-/* Base styling for the main title */
 .banner-title {
-  font-size: 3rem; /* Adjust based on your layout */
+  font-size: 3rem; 
   font-weight: 700;
   margin-bottom: 0.5rem;
 }
 
-/* Gradient text magic */
 .text-blue-gradient {
   background: linear-gradient(to right, #6ab8f7, #1e70d6);
   -webkit-background-clip: text;
@@ -1325,55 +1303,48 @@ body.dark-mode .contact-card a:hover {
   margin: 0 10px;
 }
 
-/* Subtitle styling */
 .banner-subtitle {
   color: white;
-  font-weight: 300; /* Thin font */
+  font-weight: 300; 
   font-size: 1.25rem;
   margin-bottom: 1.5rem;
 }
 
-/* Footer text styling */
 .banner-footer {
   background: linear-gradient(to bottom, #ffffff, #a0a0a0);
   -webkit-background-clip: text;
   color: transparent;
   font-weight: 600;
   font-size: 1.1rem;
-  letter-spacing: 0.3em; /* Adds horizontal space between letters */
+  letter-spacing: 0.3em; 
   text-transform: uppercase;
 }
 
 /* =========================================
    CENTERED STACK (Hero + Shelves)
    ========================================= */
-
-/* 1. SHARED WIDTHS: Make Hero, Shelves, and Tech Bar match the Tabs */
 .contact-card,
 .hero-section,
 .shelf-container {
-    max-width: 1000px; /* Must match your tab container width */
-    width: 90%;        /* Mobile fallback */
+    max-width: 1000px; 
+    width: 90%;        
     margin-left: auto !important;
     margin-right: auto !important;
     box-sizing: border-box;
 }
 
-/* 3. HERO: Remove vertical spacing */
 .hero-section {
     margin-bottom: 0 !important;
     margin-top: 0 !important;
     border-radius: 0;
 }
 
-/* 4. BOTTOM SHELF: Ensure it touches the hero */
 .hero-section + .shelf-container {
     margin-top: 0 !important;
 }
 
-/* Specific H1 styling for Hero to override global defaults */
 .hero-section h1 {
-    font-size: clamp(1.2rem, 4.2vw, 3.2rem);  /* MIN, PREFERRED, MAX */
+    font-size: clamp(1.2rem, 4.2vw, 3.2rem);  
     font-family: robotoFont;
     text-align: center;
     font-weight: 100;
@@ -1385,14 +1356,11 @@ body.dark-mode .contact-card a:hover {
 }
 
 .hero-subtitle {
-    /* CHANGED: Lighter weight and italicized "zinger" style */
     font-size: 24px;
     font-weight: 300; 
     font-style: italic;
     opacity: 0.9;
     letter-spacing: 0.5px;
-    
-    /* Keep existing layout styles */
     margin-bottom: 30px;
 }
 
@@ -1447,57 +1415,48 @@ body.dark-mode .hero-section {
 .shelf-container {
 	position: relative;
 	margin-top: 0 !important;
-	height: 15px; /* Keeps it thin like the original gap */
+	height: 15px; 
 	width: 100%;
-	z-index: 2; /* Sits below the bird but above the page bg */
+	z-index: 2; 
 	background-color: transparent;
 	display: flex;
 	flex-direction: column;
 }
 
-/* The top surface the bird stands on */
 .shelf-top {
 	height: 10px;
 	width: 100%;
 	background: linear-gradient(to bottom, #3a3a3a 0%, #1a1a1a 100%);
-	/* Perspective illusion */
 	transform: none !important;
 	border-top: 1px solid rgba(255,255,255,0.1);
 	box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
 }
 
-/* The front face (the edge) */
 .shelf-front {
 	height: 5px;
 	width: 100%;
 	background: linear-gradient(to bottom, #111 0%, #000 100%);
-	box-shadow: 0 5px 10px rgba(0,0,0,0.5); /* Drop shadow onto the tabs */
+	box-shadow: 0 5px 10px rgba(0,0,0,0.5); 
 	z-index: 100;
 }
 
-/* Ensure the top surface has the correct "Light" color (Standard Shelf Look) */
 .shelf-top {
-    /* Gradient: Lighter gray on top */
     background: linear-gradient(to bottom, #3a3a3a 0%, #1a1a1a 100%) !important;
 }
 
-/* Ensure the front face has the correct "Dark" color */
 .shelf-front {
-    /* Gradient: Darker shadow on front */
     background: linear-gradient(to bottom, #111 0%, #000 100%) !important;
 }
 
-/* Force inner shelf parts to be straight (no bevels) and full width */
 .shelf-top, 
 .shelf-front {
     width: 100% !important;
     border-left: 0 !important;
     border-right: 0 !important;
-    transform: none !important; /* Removes the 3D perspective pinch */
+    transform: none !important; 
     box-sizing: border-box;
 }
 
-/* Light mode adjustments so it looks like a ledge in both themes */
 body:not(.dark-mode) .shelf-top {
 	background: linear-gradient(to bottom, #888 0%, #666 100%);
 	border-top: 1px solid rgba(255,255,255,0.4);
@@ -1507,19 +1466,10 @@ body:not(.dark-mode) .shelf-front {
 	background: linear-gradient(to bottom, #555 0%, #333 100%);
 }
 
-/* =========================================
-   UNIFIED SHELF STYLING (Identical Top & Bottom)
-   ========================================= */
-
-/* Target only the shelf below the contact card */
 .contact-card + .shelf-container {
-    opacity: 0.5 !important; /* 1.0 is solid, 0.0 is invisible. Adjust as needed. */
-    
-    /* Optional: If you want a "frosted glass" look, add this: */
-    /* backdrop-filter: blur(4px); */
+    opacity: 0.5 !important; 
 }
 
-/* Call-to-action text styling */
 .app-cta {
     text-align: center;
     font-size: 1.2rem;
@@ -1531,7 +1481,6 @@ body:not(.dark-mode) .shelf-front {
 	margin-bottom: 20px !important;
 }
 
-/* Gradient text effect for keywords */
 .gradient-text {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     -webkit-background-clip: text;
@@ -1540,13 +1489,11 @@ body:not(.dark-mode) .shelf-front {
     font-weight: 800;
 }
 
-/* Dark Mode Adjustments */
 body.dark-mode .app-cta {
     color: #ccc;
 }
 
 body.dark-mode .gradient-text {
-    /* Lighter/Brighter gradient for dark backgrounds */
     background: linear-gradient(135deg, #a855f7 0%, #d8b4fe 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -1636,12 +1583,9 @@ body.dark-mode .project-card-tag {
 	color: #e0e0e0;
 }
 
-
 /* ========================================
 GRID-INTEGRATED PROJECT DETAILS
 ======================================== */
-
-/* Make project cards clickable */
 .project-card {
 	cursor: pointer;
 	transition: transform 0.3s, box-shadow 0.3s, background-color 0.2s;
@@ -1651,17 +1595,16 @@ GRID-INTEGRATED PROJECT DETAILS
 	transform: translateY(-3px) scale(0.98);
 }
 
-/* Project details - spans full grid width, hidden by default */
 .project-details {
 	display: none;
-	grid-column: 1 / -1; /* Spans all columns in the grid */
+	grid-column: 1 / -1; 
 	background-color: #f9f9f9;
 	border-radius: 12px;
 	padding: 30px;
 	margin: 10px 0 20px 0;
 	box-shadow: 0 4px 20px rgba(0,0,0,0.15);
 	animation: slideDown 0.3s ease-out;
-	order: 999; /* Will be repositioned by JavaScript */
+	order: 999; 
 }
 
 body.dark-mode .project-details {
@@ -1669,12 +1612,10 @@ body.dark-mode .project-details {
 	box-shadow: 0 4px 20px rgba(0,0,0,0.4);
 }
 
-/* Show state */
 .project-details.show {
 	display: block;
 }
 
-/* Slide down animation */
 @keyframes slideDown {
 	from {
 		opacity: 0;
@@ -1686,7 +1627,6 @@ body.dark-mode .project-details {
 	}
 }
 
-/* Project grid - must support dynamic detail insertion */
 .project-grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -1694,7 +1634,6 @@ body.dark-mode .project-details {
 	margin: 30px 0;
 }
 
-/* Style the details content */
 .project-details h3 {
 	color: #2c3e50;
 	margin-top: 0;
@@ -1720,20 +1659,14 @@ body.dark-mode .project-details h3 {
 	line-height: 1.6;
 }
 
-.project-details .project-links {
-	margin: 15px 0;
-}
-
 .project-details .project-image-card {
 	margin: 20px 0;
 }
 
-/* Horizontal rule in details */
 .project-details hr {
-	display: none; /* Not needed since details close */
+	display: none; 
 }
 
-/* Click indicator on cards */
 .project-card::after {
 	content: '▼ Click for details';
 	display: block;
@@ -1760,7 +1693,6 @@ body.dark-mode .project-card:hover::after {
 	color: #a855f7;
 }
 
-/* Active card indicator - when details are open */
 .project-card.active-card {
 	border: 2px solid #667eea;
 	box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
@@ -1771,7 +1703,6 @@ body.dark-mode .project-card.active-card {
 	box-shadow: 0 6px 20px rgba(168, 85, 247, 0.3);
 }
 
-/* Hide the old standalone project items */
 .project-item {
 	display: none !important;
 }
@@ -1780,13 +1711,12 @@ body.dark-mode .project-card,
 body.dark-mode .content-card,
 body.dark-mode .image-card,
 body.dark-mode .dark-flick-header-card {
-	background-color: #262626; /* Unifies everything to this nicer dark grey */
+	background-color: #262626; 
 	border-color: #404040;
 	box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5);
 	color: #e0e0e0;
 }
 
-/* Mobile responsiveness */
 @media (max-width: 768px) {
 	.project-details {
 		padding: 20px;
@@ -1798,7 +1728,7 @@ body.dark-mode .dark-flick-header-card {
 	}
 	
 	.project-grid {
-		grid-template-columns: 1fr; /* Single column on mobile */
+		grid-template-columns: 1fr; 
 	}
 }
 
@@ -1814,80 +1744,79 @@ body.dark-mode .dark-flick-header-card {
 	}
 }
 
-	/* Filter Buttons */
-	.project-filters {
-		display: flex;
-		gap: 15px;
-		justify-content: center;
-		flex-wrap: wrap;
-		margin: 30px 0;
-	}
+/* Filter Buttons */
+.project-filters {
+	display: flex;
+	gap: 15px;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin: 30px 0;
+}
 
-	.filter-btn {
-		background: #e0e0e0;
-		border: none;
-		padding: 10px 25px;
-		border-radius: 25px;
-		font-size: 14px;
-		font-weight: 600;
-		cursor: pointer;
-		transition: all 0.3s;
-	}
+.filter-btn {
+	background: #e0e0e0;
+	border: none;
+	padding: 10px 25px;
+	border-radius: 25px;
+	font-size: 14px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.3s;
+}
 
-	.filter-btn:hover {
-		background: #d0d0d0;
-	}
+.filter-btn:hover {
+	background: #d0d0d0;
+}
 
-	.filter-btn.active {
-		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-		color: white;
-	}
+.filter-btn.active {
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	color: white;
+}
 
-	body.dark-mode .filter-btn {
-		background: #3a3a3a;
-		color: #e0e0e0;
-	}
+body.dark-mode .filter-btn {
+	background: #3a3a3a;
+	color: #e0e0e0;
+}
 
-	body.dark-mode .filter-btn:hover {
-		background: #4a4a4a;
-	}
+body.dark-mode .filter-btn:hover {
+	background: #4a4a4a;
+}
 
-	body.dark-mode .filter-btn.active {
-		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-		color: white;
-	}
+body.dark-mode .filter-btn.active {
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	color: white;
+}
 
-	.project-item {
-		margin-bottom: 40px;
-	}
+.project-item {
+	margin-bottom: 40px;
+}
 
-	.project-item.hidden {
-		display: none;
-	}
+.project-item.hidden {
+	display: none;
+}
 
-	.details {
-		color: #666;
-		font-size: 14px;
-		font-weight: 600;
-		margin-bottom: 15px;
-		padding: 8px 15px;
-		background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
-		border-left: 4px solid #667eea;
-		border-radius: 4px;
-		display: inline-block;
-	}
+.details {
+	color: #666;
+	font-size: 14px;
+	font-weight: 600;
+	margin-bottom: 15px;
+	padding: 8px 15px;
+	background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+	border-left: 4px solid #667eea;
+	border-radius: 4px;
+	display: inline-block;
+}
 
-	body.dark-mode .details {
-		color: #aaa;
-		background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
-		border-left-color: #a855f7;
-	}
+body.dark-mode .details {
+	color: #aaa;
+	background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
+	border-left-color: #a855f7;
+}
 
-	/* ========================================
+/* ========================================
 PROJECT MODAL POPUP STYLES
 ======================================== */
 
-/* Modal Overlay */
 .project-modal {
 	display: none;
 	position: fixed;
@@ -1918,7 +1847,6 @@ PROJECT MODAL POPUP STYLES
 	}
 }
 
-/* Modal Content Container */
 .project-modal-body {
 	background-color: #ffffff;
 	border-radius: 16px;
@@ -1949,7 +1877,6 @@ body.dark-mode .project-modal-body {
     }
 }
 
-/* Close Button */
 .project-modal-close {
     position: absolute;
     top: 20px;
@@ -1981,13 +1908,12 @@ body.dark-mode .project-modal-close:hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Modal Content Styling */
 #project-modal-content h3 {
     color: #2c3e50;
     margin-top: 0;
     margin-bottom: 20px;
     font-size: 28px;
-    padding-right: 40px; /* Space for close button */
+    padding-right: 40px; 
 }
 
 body.dark-mode #project-modal-content h3 {
@@ -2022,16 +1948,6 @@ body.dark-mode #project-modal-content .details {
     line-height: 1.8;
 }
 
-#project-modal-content .project-links {
-    margin: 20px 0;
-}
-
-#project-modal-content .project-links a {
-    display: inline-block;
-    margin-right: 15px;
-    margin-bottom: 10px;
-}
-
 #project-modal-content .project-image-card {
     background: #f9f9f9;
     border-radius: 12px;
@@ -2050,7 +1966,6 @@ body.dark-mode #project-modal-content .project-image-card {
     margin: 10px 0;
 }
 
-/* Scrollbar Styling for Modal */
 .project-modal-body::-webkit-scrollbar {
     width: 10px;
 }
@@ -2081,7 +1996,6 @@ body.dark-mode .project-modal-body::-webkit-scrollbar-thumb:hover {
     background: #777;
 }
 
-/* Project Cards - Update click indicator */
 .project-card {
     cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s;
@@ -2113,12 +2027,10 @@ body.dark-mode .project-card:hover::after {
     color: #a855f7;
 }
 
-/* Hide original detail sections (they're cloned into modal) */
 .project-details {
     display: none !important;
 }
 
-/* Mobile Responsiveness */
 @media (max-width: 768px) {
     .project-modal.show {
         padding: 20px 10px;
@@ -2164,7 +2076,6 @@ body.dark-mode .project-card:hover::after {
     }
 }
 
-/* Fix for travel images in modal */
 #project-modal-content .travel-images-row {
     display: flex;
     justify-content: center;
@@ -2188,7 +2099,6 @@ body.dark-mode .project-card:hover::after {
     }
 }
 
-/* Buddy screenshots in modal */
 #project-modal-content .buddy-screenshot-grid {
     display: flex;
     flex-wrap: wrap;
@@ -2209,7 +2119,6 @@ body.dark-mode .project-card:hover::after {
     }
 }
 
-/* Mario images in modal */
 #project-modal-content .mario-image {
     width: 100%;
     max-width: 800px;
@@ -2217,7 +2126,6 @@ body.dark-mode .project-card:hover::after {
     margin: 15px auto;
 }
 
-/* Paradox image in modal */
 #project-modal-content .paradox-image {
     width: 100%;
     max-width: 700px;
@@ -2225,13 +2133,11 @@ body.dark-mode .project-card:hover::after {
     margin: 15px auto;
 }
 
-/* Play store badge in modal */
 #project-modal-content .play-store-cta {
     text-align: center;
     margin: 30px 0;
 }
 
-/* Project content split layout in modal */
 #project-modal-content .project-content-split {
     display: block;
 }
@@ -2290,7 +2196,6 @@ body.dark-mode .quick-link {
 	background: linear-gradient(135deg, #4a5a8e 0%, #5a3b71 100%);
 }
 
-/* About Section Enhancement */
 .about-intro {
 	font-size: 18px;
 	line-height: 1.8;
@@ -2302,21 +2207,15 @@ body.dark-mode .about-intro {
 	color: #ccc;
 }
 
-/* Tech Skills Bar - No longer Absolute */
 .tech-skills-bar {
     position: relative;
     width: 100%;
     text-align: center;
-    
-    /* CHANGED: Equal top/bottom padding centers the text and extends the bar height */
     padding: 15px 20px; 
-    
     margin-bottom: 0 !important;
     line-height: 1;
-    
     background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.8) 100%);
     color: rgba(255, 255, 255, 0.95);
-    
     font-size: 1rem;
     font-weight: 500;
     letter-spacing: 1px;
@@ -2325,7 +2224,6 @@ body.dark-mode .about-intro {
     z-index: 10;
 }
 
-/* Mobile Adjustment */
 @media (max-width: 768px) {
     .hero-section {
         padding: 0; 
@@ -2348,7 +2246,6 @@ body.dark-mode .about-intro {
 	}
 }
 
-/* Video Container */
 .video-container {
 position: relative;
 overflow: hidden;
@@ -2373,7 +2270,6 @@ video {
 	max-height: 720px;
 }
 
-/* Introduction */
 .intro-card {
 	background-color: #ffffff;
 	border: 1px solid #ddd;
@@ -2382,7 +2278,6 @@ video {
 	margin: 20px 0;
 }
 
-/* Introduction section list styling */
 #home ul {
 	margin-left: 40px;
 	margin-top: 10px;
@@ -2393,7 +2288,6 @@ video {
 	margin-bottom: 8px;
 }
 
-/* Footer Contact */
 .footer-contact {
 	background-color: #f9f9f9;
 	border: 1px solid #ddd;
@@ -2409,7 +2303,6 @@ video {
 	margin: 5px 0;
 }
 
-/* Dark Info Card */
 .dark-flick-header-card {
 	background-color: #010409;
 	border: 1px solid #a1a1a1;
@@ -2452,7 +2345,6 @@ body.dark-mode .dark-info-card {
     margin: 24px auto 0;
 }
 
-/* Override the old absolute positioning when toggle is inside header-outer */
 .header-outer .theme-toggle-wrapper {
     position: static;
     flex-shrink: 0;
@@ -2461,20 +2353,16 @@ body.dark-mode .dark-info-card {
 /* =========================================
    UNIFIED HEADER — business card proportions
    ========================================= */
-   
-/* Business card: standard 3.5:2 ratio, centered, modest width */
 .unified-header {
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     position: relative;
-
     width: min(700px, 95%);
     margin: 24px auto 0;
     padding: 14px 28px;
     box-sizing: border-box;
-
     background: linear-gradient(135deg, #1a2560, #2e1760, #4a1280, #1a3570, #1a2560);
     background-size: 300% 300%;
     animation: gradientShift 8s ease infinite, glow 3s ease-in-out infinite;
@@ -2566,7 +2454,6 @@ body.dark-mode .unified-header {
     border: 2px solid rgba(140, 100, 255, 0.6);
 }
 
-/* Buttons bar */
 .quick-links-bar {
     display: flex;
     justify-content: center;
@@ -2655,7 +2542,6 @@ body.dark-mode .quick-links-bar .quick-link:hover {
 	margin: 0;
 }
 
-/* Project image cards - for Projects tab only */
 .project-image-card {
 	background: #eee7e7;
 	border-radius: 12px;
@@ -2674,7 +2560,6 @@ body.dark-mode .project-image-card {
 	border-color: #444;
 }
 
-/* Comprehensive Media Queries */
 @media (max-width: 1200px) {
 	.tab-content {
 		padding: 30px 15px;
@@ -2920,45 +2805,38 @@ body.dark-mode .project-image-card {
 		font-size: 14px;
 	}
 
-	.footer-metallic-black {
-		padding: 20px 15px;
-	}
 }
 
 @media (max-width: 768px) {
     .unified-header {
-        margin-top: 50px; /* ← pushes header card below the fixed toggle position on small screens */
+        margin-top: 50px; 
     }
 }
 
-/* Add to your portfolio's CSS file */
 .erd-wrapper {
 	width: 100%;
-	max-width: 850px; /* Slightly wider than the diagram container */
-	margin: 20px auto; /* Centers the diagram */
-	border: 1px solid #eee; /* Optional: adds a border around the embed */
-	box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Optional: adds shadow */
+	max-width: 850px; 
+	margin: 20px auto; 
+	border: 1px solid #eee; 
+	box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
 	overflow: hidden;
 	border-radius: 8px;
 }
 
 .erd-wrapper iframe {
 	width: 100%;
-	height: 650px; /* Needs to be tall enough to show the whole diagram without scrolling */
+	height: 650px; 
 	border: none;
 	display: block;
 }
 
-/* Optional: Adjust height for smaller screens if needed */
 @media (max-width: 600px) {
 	.erd-wrapper iframe {
 		height: 500px; 
-		/* You might need to enable scrolling on the iframe if it gets cut off */
 		overflow: auto;
 	}
 }
 
-/* Flexbox - Flick Screenshots */
 .screenshot-grid {
 	display: flex;
 	flex-wrap: wrap;
@@ -2988,32 +2866,26 @@ body.dark-mode .project-image-card {
 	flex-wrap: wrap;
 	justify-content: center;
 	gap: 20px;
-	align-items: flex-start; /* CRITICAL: Prevents images from stretching/distorting */
+	align-items: flex-start; 
 	margin-top: 15px;
 	margin-bottom: 20px;
 }
 
 .code-gallery img {
-	/* Allow code snippets to be wider than phone screenshots */
 	max-width: 100%; 
 	width: auto;     
-	height: auto;    /* Preserves original aspect ratio */
-	
-	/* Optional: Limit height so tall images don't take up the whole screen */
+	height: auto;    
 	max-height: 600px; 
-	
 	border-radius: 8px;
 	box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 	border: 1px solid rgba(0,0,0,0.1);
 }
 
-/* Dark mode adjustment for the border */
 body.dark-mode .code-gallery img {
 	border-color: rgba(255,255,255,0.1);
 	box-shadow: 0 4px 10px rgba(0,0,0,0.4);
 }
 
-/* Alt Download link styling */
 .alt-download-link {
 	position: relative;
 	color: #0066cc;
@@ -3026,118 +2898,148 @@ body.dark-mode .code-gallery img {
 	text-decoration: underline;
 }
 
-/* Footer - Metallic Style (Adaptive) */
+/* =========================================
+   HEADER-THEMED FOOTER
+   ========================================= */
 .footer-metallic-black {
-    /* Light Mode: Brushed Steel (Darker Silver) */
-    background: linear-gradient(90deg, #cccccc 0%, #e6e6e6 50%, #cccccc 100%);
-    border-radius: 8px;
+    background: linear-gradient(135deg, #1a2560, #2e1760, #4a1280, #1a3570, #1a2560);
+    background-size: 300% 300%;
+    animation: gradientShift 8s ease infinite, glow 3s ease-in-out infinite;
+    border: 2px solid rgba(120, 100, 220, 0.5);
+    border-radius: 12px;
     padding: 30px;
-    margin: 20px 0;
+    margin: 20px auto;
     text-align: center;
-    box-shadow: 
-        0 10px 30px rgba(0, 0, 0, 0.15),
-        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    max-width: 1000px;
     position: relative;
     overflow: hidden;
-    transition: background 0.3s ease;
 }
 
-/* Shine animation container */
-.footer-metallic-black::before {
-    content: '';
-    position: absolute;
-    top: 0; 
-    left: 0; 
-    right: 0; 
-    bottom: 0;
-    /* Stronger texture for the darker steel look */
-    background-image: repeating-linear-gradient(
-        90deg,
-        transparent,
-        transparent 2px,
-        rgba(0, 0, 0, 0.05) 2px,
-        rgba(0, 0, 0, 0.05) 4px
-    );
-    pointer-events: none;
-}
-
-/* Moving shine effect */
-.footer-metallic-black::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(90deg, transparent 30%, rgba(255, 255, 255, 0.5) 50%, transparent 70%);
-    animation: shine-horizontal-metallic-2 8s infinite;
-}
-
-@keyframes shine-horizontal-metallic-2 {
-    0% { left: -100%; }
-    100% { left: 200%; }
-}
-
-/* Light Mode Text */
 .footer-metallic-black p {
-    position: relative;
-    z-index: 1;
-    color: #333; /* Darker text for better contrast on gray */
-    font-size: 18px;
-    line-height: normal;
-    margin: 5px 0;
-    /* Strong white shadow creates an "engraved" look on metal */
-    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.7); 
-}
-
-.footer-metallic-black b { font-size: 20px; }
-.footer-metallic-black i { font-size: 16px; }
-
-/* Light Mode Link Color */
-.footer-metallic-black a {
-    color: #0056b3; /* Slightly darker blue for contrast */
-    text-decoration: none;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.4);
     font-size: 16px;
+    line-height: 1.7;
+    margin: 5px 0;
+    z-index: 1;
+    position: relative;
 }
-.footer-metallic-black a:hover { text-decoration: underline; }
 
-/* =========================================
-   DARK MODE OVERRIDES (Restores Metallic Black)
-   ========================================= */
+/* High-contrast links for the footer (Matches Header Pill Style) */
+.footer-metallic-black a {
+    color: #a8c8ff;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    background-color: rgba(20, 10, 60, 0.6);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(140, 100, 255, 0.3);
+    display: inline-block;
+    margin: 1px 0;
+    padding: 1px 10px;
+    border-radius: 10px;
+    text-shadow: none;
+    transition: all 0.2s ease;
+}
+
+.footer-metallic-black a:hover {
+    background-color: rgba(50, 20, 120, 0.7);
+    border-color: rgba(160, 120, 255, 0.6);
+    color: #cce0ff;
+    transform: translateY(-1px);
+    text-decoration: underline;
+}
+
+/* Dark Mode Overrides (Removes pill background, keeps bright text + shadow) */
+body.dark-mode .footer-metallic-black a {
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    color: #99ccff;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9); 
+}
+
+body.dark-mode .footer-metallic-black a:hover {
+    background-color: transparent;
+    color: #cce0ff;
+    transform: translateY(-1px); 
+    text-decoration: underline;
+}
+
 body.dark-mode .footer-metallic-black {
-    background: linear-gradient(90deg, #1a1a1a 0%, #242424 50%, #1a1a1a 100%);
-    box-shadow: 
-        0 10px 30px rgba(0, 0, 0, 0.5),
-        inset 0 1px 0 rgba(255, 255, 255, 0.08);
-}
-
-body.dark-mode .footer-metallic-black::before {
-    background-image: repeating-linear-gradient(
-        90deg,
-        transparent,
-        transparent 2px,
-        rgba(255, 255, 255, 0.02) 2px,
-        rgba(255, 255, 255, 0.02) 4px
-    );
-}
-
-body.dark-mode .footer-metallic-black::after {
-    background: linear-gradient(90deg, transparent 30%, rgba(255, 255, 255, 0.05) 50%, transparent 70%);
+    background: linear-gradient(135deg, #111840, #1e0f40, #2e0a50, #111f40, #111840);
+    border: 2px solid rgba(140, 100, 255, 0.6);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 body.dark-mode .footer-metallic-black p {
-    color: #c0c0c0; 
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); 
+    color: #e0e0e0;
 }
 
-body.dark-mode .footer-metallic-black a {
-    color: #4db8ff;
+/* =========================================
+   THEME-CENTRIC ACTION BUTTONS (GitHub, Downloads, Docs)
+   ========================================= */
+.project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.theme-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none !important;
+    transition: all 0.3s ease;
+    
+    color: #667eea;
+    background: rgba(102, 126, 234, 0.08);
+    border: 1px solid rgba(102, 126, 234, 0.3);
+}
+
+.theme-action-btn svg {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    fill: none;
+    transition: transform 0.3s ease;
+}
+
+.theme-action-btn:hover {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #ffffff;
+    border-color: transparent;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(102, 126, 234, 0.3);
+}
+
+.theme-action-btn:hover svg {
+    transform: scale(1.1);
+}
+
+body.dark-mode .theme-action-btn {
+    color: #c4aaff;
+    background: rgba(168, 85, 247, 0.1);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+body.dark-mode .theme-action-btn:hover {
+    background: linear-gradient(135deg, #a855f7 0%, #d8b4fe 100%);
+    color: #1a1a1a;
+    box-shadow: 0 6px 16px rgba(168, 85, 247, 0.3);
 }
 
 /* ---------------------------------------------------------------- */
 /* Birdie Animation */
 /* ---------------------------------------------------------------- */
-/* --- Keep your existing flight animations below --- */
 #bird svg { filter: drop-shadow(0 2px 2px rgba(0,0,0,0.2)); }
 .bird.flying #leftWing { animation: flapLeft 0.15s ease-in-out infinite; }
 .bird.flying #rightWing { animation: flapRight 0.15s ease-in-out infinite; }
@@ -3145,39 +3047,25 @@ body.dark-mode .footer-metallic-black a {
 .bird.idle #rightWing { animation: idleFlapRight 2s ease-in-out infinite; }
 .bird.idle #birdHead {
     animation: idleHeadTurn 4s ease-in-out infinite;
-    
-    /* Center of the head circle (cx=20, cy=12) */
     transform-origin: 20px 12px; 
-    
-    /* Ensures the coordinates are calculated relative to the SVG viewbox */
     transform-box: view-box; 
 }
 
-/* ─────────────────────────────────────────────────────────────
-   .bird — position:fixed → position:absolute
-   The bird now lives in document coordinates so it scrolls with
-   the page naturally, no per-frame JS repositioning needed.
-   ───────────────────────────────────────────────────────────── */
-	/* Bird: position:absolute, scrolls naturally with the page */
 .bird {
     position: absolute;
     z-index: 10000;
     pointer-events: none;
     width: 60px;
     height: 60px;
-    left: 65%;        /* overwritten immediately by JS */
+    left: 65%;        
     top: 180px;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
     contain: layout style;
 }
 
-/* ── Tooltip ───────────────────────────────────────────────────
-   Now a sibling of #bird (reparented by JS), never inside the
-   bird's transform hierarchy. position:fixed lets JS place it
-   precisely in viewport space using getBoundingClientRect().    */
 .bird-tooltip {
-    position: fixed;
+    position: absolute; /* <-- CHANGED from fixed to absolute */
     /* top / left / right set entirely by JS — no default offsets */
     top: 0;
     left: auto;
@@ -3203,8 +3091,6 @@ body.dark-mode .footer-metallic-black a {
     opacity: 1;
 }
 
-/* Arrow — default: bird on RIGHT side of page, tooltip extends LEFT.
-   Arrow sits on the right side of the tooltip, pointing down. */
 .bird-tooltip::after {
     content: '';
     position: absolute;
@@ -3216,14 +3102,11 @@ body.dark-mode .footer-metallic-black a {
     border-top-color: rgba(20, 20, 20, 0.88);
 }
 
-/* Flipped: bird on LEFT side of page (Flick tile), tooltip extends RIGHT.
-   Arrow moves to the left side of the tooltip, still pointing down. */
 .bird-tooltip.flipped::after {
     left: 14px;
     right: auto;
 }
 
-/* Existing Keyframes for wings/head (Keep these as they were) */
 @keyframes flapLeft { 0%, 100% { d: path("M 12 20 Q 8 18 6 22"); } 50% { d: path("M 12 20 Q 8 12 6 8"); } }
 @keyframes flapRight { 0%, 100% { d: path("M 28 20 Q 32 18 34 22"); } 50% { d: path("M 28 20 Q 32 12 34 8"); } }
 @keyframes idleFlapLeft { 0%, 90%, 100% { d: path("M 12 20 Q 8 18 6 22"); } 95% { d: path("M 12 20 Q 8 12 6 8"); } }
@@ -3238,253 +3121,58 @@ body.dark-mode .footer-metallic-black a {
     85%, 100% { transform: rotate(0deg) scaleX(1); }
 }
 
-/* 2. The Upper Body (Squashes independently from legs) */
 .bird.landed #birdUpper {
     animation: squashStretch 0.4s ease-out forwards;
     transform-origin: 20px 32px; 
 }
 
-/* 3. The Squash Keyframes */
 @keyframes squashStretch {
-    0% { 
-        transform: scale(1, 1); 
-    }
-    40% { 
-        /* Squish down (Y < 1), Fatten up (X > 1) */
-        transform: scale(1.25, 0.75); 
-    }
-    60% { 
-        /* Bounce back up slightly (stretch) */
-        transform: scale(0.9, 1.1); 
-    }
-    100% { 
-        /* Return to normal */
-        transform: scale(1, 1); 
-    }    
-}
-
-@keyframes flapLeft {
-	0%, 100% {
-		d: path("M 12 20 Q 8 18 6 22");
-	}
-	50% {
-		d: path("M 12 20 Q 8 12 6 8");
-	}
-}
-
-@keyframes flapRight {
-	0%, 100% {
-		d: path("M 28 20 Q 32 18 34 22");
-	}
-	50% {
-		d: path("M 28 20 Q 32 12 34 8");
-	}
-}
-
-@keyframes idleFlapLeft {
-	0%, 90%, 100% {
-		d: path("M 12 20 Q 8 18 6 22");
-	}
-	95% {
-		d: path("M 12 20 Q 8 12 6 8");
-	}
-}
-
-@keyframes idleFlapRight {
-	0%, 90%, 100% {
-		d: path("M 28 20 Q 32 18 34 22");
-	}
-	95% {
-		d: path("M 28 20 Q 32 12 34 8");
-	}
-}
-
-@keyframes idleHeadTurn {
-	/* Rest */
-	0%, 20% {
-		transform: rotate(0deg) scaleX(1);
-	}
-	
-	/* Slowly look right and hold */
-	25%, 35% {
-		transform: rotate(20deg) scaleX(1);
-	}
-	
-	/* Return to center */
-	40%, 45% {
-		transform: rotate(0deg) scaleX(1);
-	}
-	
-	/* Slowly look left (flip head) and hold */
-	50%, 60% {
-		transform: rotate(-20deg) scaleX(-1);
-	}
-	
-	/* Return to center */
-	65%, 70% {
-		transform: rotate(0deg) scaleX(1);
-	}
-	
-	/* Look up slightly */
-	75%, 80% {
-		transform: rotate(-5deg) scaleX(1) translateY(-3px);
-	}
-	
-	/* Return to center and rest */
-	85%, 100% {
-		transform: rotate(0deg) scaleX(1);
-	}
+    0% { transform: scale(1, 1); }
+    40% { transform: scale(1.25, 0.75); }
+    60% { transform: scale(0.9, 1.1); }
+    100% { transform: scale(1, 1); }   
 }
 
 /* =========================================
-   SPECIFIC IMAGE OVERRIDES
+   DARK MODE ELEVATION & DEPTH CORRECTIONS
    ========================================= */
 
-/* 1. Curve the Flick Banner */
-img[src*="flick/banner.png"] {
-    border-radius: 0;
-	border-color: black;
-	border-width: 5px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2); /* Optional: adds nice depth */
+/* 1. Base Container (Level 1 Elevation) */
+body.dark-mode .tab-content {
+    background-color: #202020; 
 }
 
-/* 2. Curve AND Center the Refactoring Menu Image (new11.png) */
-img[src*="new11.png"] {
-    border-radius: 0;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    
-    /* FORCE CENTERING: Overrides the "#refactoring img" left-align rule */
-    display: block !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
+/* 2. Floating Content Cards (Level 2 Elevation) */
+body.dark-mode .project-card,
+body.dark-mode .content-card,
+body.dark-mode .image-card {
+    background-color: #2c2c2c; 
+    border-color: #444;
+    box-shadow: 0 10px 40px -10px rgba(0,0,0,0.6); 
+    color: #e0e0e0;
+}
+
+/* 3. Recessed / "Terminal" Cards (Fixing the #010409 Black Holes) */
+body.dark-mode .dark-flick-header-card,
+body.dark-mode .dark-info-card,
+body.dark-mode .image-card:has(.ci-images),
+body.dark-mode .content-card:has(img[src*="figma-"]) {
+    background-color: #181818 !important; 
+    border-color: #333 !important;
+    box-shadow: inset 0 4px 12px rgba(0,0,0,0.4) !important; 
 }
 
 /* =========================================
-   UNIVERSAL SHELF RESET (Makes both identical)
+   MOBILE CONTACT STACKING (Header & Footer)
    ========================================= */
-
-/* 1. Target ALL shelf containers */
-.shelf-container {
-    /* Match the Tabs width */
-	width: 100% !important;
-	max-width: 1000px !important;
+@media (max-width: 768px) {
+    .unified-header-inner {
+        flex-direction: column;
+        gap: 12px;
+    }
     
-    /* Center horizontally */
-    margin-left: auto !important;
-    margin-right: auto !important;
-    
-    /* RESET: No flipping, no filters, standard orientation */
-    transform: none !important; 
-    filter: none !important;
-    z-index: 1;
-    
-    /* Ensure stacking is Top-over-Front */
-    display: flex;
-    flex-direction: column;
-}
-
-/* 2. Top Surface (Light Gray) */
-.shelf-top {
-	padding-top: 10px !important; /* Adds thickness to the top surface */
-    width: 100% !important;
-    height: 10px !important;
-    border: none !important;
-    transform: none !important; /* Removes 3D pinch */
-    
-    /* Standard Light Gray Gradient */
-    background: linear-gradient(to bottom, #3a3a3a 0%, #1a1a1a 100%) !important;
-}
-
-/* 3. Front Face (Dark Black) */
-.shelf-front {
-    width: 100% !important;
-    height: 5px !important;
-    border: none !important;
-    transform: none !important;
-    
-    /* Standard Dark Shadow Gradient */
-    background: linear-gradient(to bottom, #111 0%, #000 100%) !important;
-}
-
-/* Optional: Light Mode Override */
-body:not(.dark-mode) .shelf-top {
-    background: linear-gradient(to bottom, #888 0%, #666 100%) !important;
-}
-body:not(.dark-mode) .shelf-front {
-    background: linear-gradient(to bottom, #555 0%, #333 100%) !important;
-}
-
-/* ── Home skills strip ── */
-.home-skills-strip {
-    margin: 24px 0 10px;
-    padding: 16px 20px;
-    background: rgba(0,0,0,0.04);
-    border: 1px solid rgba(0,0,0,0.08);
-    border-radius: 10px;
-}
-
-body.dark-mode .home-skills-strip {
-    background: rgba(255,255,255,0.04);
-    border-color: rgba(255,255,255,0.08);
-}
-
-.home-skills-row {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    gap: 6px;
-    margin-bottom: 8px;
-    position: relative;
-    padding-left: 96px; /* label width (90px) + gap (6px) = all tags share this indent */
-}
-
-.home-skills-row:last-child {
-    margin-bottom: 0;
-}
-
-.home-skills-label {
-    position: absolute;
-    left: 0;
-    top: 4px; /* nudge to visually align with first tag row */
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.8px;
-    text-transform: uppercase;
-    color: #555;
-    flex-shrink: 0;
-}
-
-body.dark-mode .home-skills-label {
-    color: #999;
-}
-
-.skills-eyebrow {
-    text-align: center;
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: #333;
-    margin-top: 28px !important;
-    margin-bottom: 6px !important;
-}
-
-body.dark-mode .skills-eyebrow {
-    color: #666;
-}
-
-.home-skill-tag {
-    display: inline-block;
-    font-size: 12px;
-    padding: 3px 9px;
-    border-radius: 4px;
-    background: rgba(102, 126, 234, 0.1);
-    border: 1px solid rgba(102, 126, 234, 0.2);
-    color: #555;
-}
-
-body.dark-mode .home-skill-tag {
-    background: rgba(102, 126, 234, 0.12);
-    border-color: rgba(102, 126, 234, 0.25);
-    color: #aaa;
+    /* Hide the vertical dividers when stacked to prevent "orphans" */
+    .unified-header-inner .uh-divider {
+        display: none;
+    }
 }
