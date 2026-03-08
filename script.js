@@ -595,13 +595,30 @@ function filterProjects(category, event) {
 // PROJECT DETAILS MODAL POPUP
 // ========================================
 
+// ========================================
+// PROJECT DETAILS MODAL POPUP
+// ========================================
+
 function openProjectModal(projectId) {
   const modal = document.getElementById("project-modal");
   const modalContent = document.getElementById("project-modal-content");
   const detailsElement = document.getElementById(`details-${projectId}`);
+  
   if (!modal || !modalContent || !detailsElement) return;
 
+  // 1. Inject the new content
   modalContent.innerHTML = detailsElement.innerHTML;
+  
+  // 2. Find the exact container that holds the scrollbar
+  const modalBody = modal.querySelector('.project-modal-body');
+  
+  // 3. Reset the scroll positions back to the top
+  modal.scrollTop = 0; 
+  if (modalBody) {
+      modalBody.scrollTop = 0; 
+  }
+
+  // 4. Show the modal
   modal.classList.add("show");
   document.body.style.overflow = "hidden";
 }
