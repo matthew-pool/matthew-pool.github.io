@@ -59,7 +59,7 @@
 
     <div class="unified-header">
         <div class="unified-header-inner">
-            <span class="uh-name"><b>Matthew Pool</b></span>
+            <h1 class="uh-name" style="margin: 0; font-size: inherit; font-weight: normal;"><b>Matthew Pool</b></h1>
             <span class="uh-divider">|</span>
             <span class="uh-email" style="position:relative;">
                 <a href="mailto:mathyou.me@gmail.com">mathyou.me@gmail.com</a>
@@ -140,797 +140,799 @@
 		</svg>
 	</div>
 
-    <div id="home" class="tab-content active">
+    <main>
+        <div id="home" class="tab-content active">
 
-		<br>
-		
-        <h2 class="section-header">Overview</h2>
-        <div class="about-intro">
-            <p>I build things end-to-end — from Figma mockups to production deployments — and can even close the sale! 
-                I bring a unique foundation to product engineering: a Summa Cum Laude B.S. in Computer Science         <a href="assets/documents/transcript.pdf" class="guide-link" style="text-align: center;" target="_blank" rel="noopener noreferrer">(3.99 GPA)</a>, paired with five years as a top-performing Fortune 500 sales agent and over a decade of customer service and technical support. 
-                Because I have hit sales KPIs and sat on the front lines of customer support, I never lose sight of the business perspective. I bridge the gap between UI/UX design and technical implementation at every step of the product lifecycle, delivering accessible, high-ROI software that solves real user problems.</p>
-        </div>
-        
-        <p class="app-cta">
-			Check out my <span class="gradient-text">Android app</span> below.
-		</p>
-
-        <div class="dark-flick-header-card">
-            <div class="flick-card">
-                <div class="flick-header">
-                    <img src="assets/images/flick/logo-alt.svg" alt="Flick logo" class="flick-logo">
-                    <h2>Flick (Android)</h2>
-                </div>
-                <p style="margin-top: -20px; color: #c8c8c8; font-size: 16px; padding-left: 75px;"><i>Designer/Engineer: Matthew Pool</i></p>
-            </div>
-            
-            <img src="assets/images/flick/banner.png" alt="Flick app banner" style="width: 100%; max-width: 1280px; margin: 20px 0; border: 2px solid #c8c8c8;">
-        </div>
-        
-        <hr>
-        
-        <div class="app-description">
-            <h2>Synopsis & Engineering</h2>
-            <p><span class="flick-text">Flick</span> is a native Android streaming client built to provide an instant, vast content library without licensing hurdles by leveraging the Archive.org API. This architecture reduces backend content delivery costs to near-zero, ensuring high scalability and business viability.</p>
-            <p><strong>Architecture:</strong> I solo-engineered the entire stack (Kotlin + Jetpack Compose) and built a custom recommendation engine from scratch. The app tokenizes video metadata and weighs it against user interaction signals (view time, likes/dislikes) stored in Firestore to create dynamic user profile vectors.</p>
-            <p><strong>Algorithm:</strong> I implemented cosine similarity to calculate the distance between the user's profile and available content. The main vertical feed uses an "exploration vs. exploitation" strategy, mixing high-confidence matches with random high-percentile videos to prevent echo chambers.</p>
-            <p><strong>UI/UX:</strong> The UI features a dual-axis navigation system driven by this ML algorithm. A vertical swipe continues the mixed feed, while a horizontal swipe instantly branches into a "nearest neighbor" playlist, finding videos with the highest cosine similarity to the current video.</p>
-        </div>
-
-		<br>
-
-        <div class="project-links" style="justify-content: center;">
-            <a href="assets/documents/user-guide.html" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                    <polyline points="7 10 12 15 17 10"></polyline>
-                    <line x1="12" y1="15" x2="12" y2="3"></line>
-                </svg>
-                View User Guide
-            </a>
-        </div>
-
-        <hr>
-
-        <h2 style="padding-top: 10px;">Screenshots</h2>
-        <div class="image-card">
-            <div class="screenshot-grid">
-                <figure class="screenshot-item">
-                    <figcaption>Custom Splash Screen</figcaption>
-                    <img src="assets/images/flick/screen14.png" alt="Preparing app screen">
-                </figure>
-
-                <figure class="screenshot-item">
-                    <figcaption>Initial Loading</figcaption>
-                    <img src="assets/images/flick/screen4.png" alt="Traveling back in time screen">
-                </figure>
-
-                <figure class="screenshot-item">
-                    <figcaption>Swipe Up Hint</figcaption>
-                    <img src="assets/images/flick/screen1.png" alt="Up arrow hint">
-                </figure>
-
-                <figure class="screenshot-item">
-                    <figcaption>Static TV Effect</figcaption>
-                    <img src="assets/images/flick/screen5.png" alt="TV static screen">
-                </figure>
-
-                <figure class="screenshot-item">
-                    <figcaption>Like Interaction</figcaption>
-                    <img src="assets/images/flick/screen7.png" alt="Alf video liked">
-                </figure>
-
-                <figure class="screenshot-item">
-                    <figcaption>Dislike Interaction</figcaption>
-                    <img src="assets/images/flick/screen8.png" alt="Video disliked">
-                </figure>
-
-                <figure class="screenshot-item">
-                    <figcaption>Left Swipe Hint</figcaption>
-                    <img src="assets/images/flick/screen12.png" alt="Left arrow hint">
-                </figure>
-
-                <figure class="screenshot-item">
-                    <figcaption>End Dialog</figcaption>
-                    <img src="assets/images/flick/screen10.png" alt="Thank you dialog">
-                </figure>
-
-                <figure class="screenshot-item">
-                    <figcaption>Custom Debug Tool</figcaption>
-                    <img src="assets/images/flick/screen11.png" alt="Similar video screen">
-                </figure>
-
-                <figure class="screenshot-item">
-                    <figcaption>Tablet/Fold View</figcaption>
-                    <img src="assets/images/flick/tablet.png" alt="Flick on tablet">
-                </figure>
-            </div>
-        </div>
-
-        <h2 style="margin-bottom: 16px;">Technologies</h2>
-		<div class="tech-specs-container">
-			<div class="tech-spec-item">
-				<span class="spec-label">Design (v2.0.0)</span>
-				<span class="spec-value">Figma</span>
-			</div>
-			<div class="tech-spec-item">
-				<span class="spec-label">Architecture</span>
-				<span class="spec-value">MVVM + Jetpack Compose</span>
-			</div>
-		</div>
-
-		<div class="content-card" style="margin-top: 15px">
-                <img src="assets/images/flick/figma-1.svg" alt="Figma design mockup - set 1" style="width: 100%; max-width: 1200px;">
-                <img src="assets/images/flick/figma-2.svg" alt="Figma design mockup - set 2" style="width: 100%; max-width: 1200px;">
-        </div>
-
-        <div class="content-card" style="margin-top: 15px">         
-            <p style="margin-left: 25px; margin-top: 12px; margin-bottom: 5px; font-size: 19px;"><strong>Core Technologies</strong></p>
-            <ul style="margin-left: 45px; margin-top: 0;">
-                <li>Kotlin (programming language)</li>
-                <li>Coroutines (asynchronous operations)</li>
-                <li>Hilt (dependency injection)</li>
-            </ul>
-            
-            <p style="margin-left: 25px; margin-top: 10px; margin-bottom: 5px; font-size: 19px; padding-top: 5px;"><strong>State Management & Reactivity</strong></p>
-            <ul style="margin-left: 45px; margin-top: 0;">
-                <li>ViewModel (state management)</li>
-                <li>Flow (reactive streams)</li>
-                <li>LiveData (observable data)</li>
-                <li>DataStore (local persistence)</li>
-            </ul>
-            
-            <p style="margin-left: 25px; margin-top: 10px; margin-bottom: 5px; font-size: 19px; padding-top: 5px;"><strong>State Management & Reactivity</strong></p>
-            <ul style="margin-left: 45px; margin-top: 0;">
-                <li> Observer Pattern</li>
-                <li>Object Pool</li>
-                <li>Factory Pattern</li>
-                <li>Strategy Pattern</li>
-                <li>State Pattern</li>
-            </ul>
-            
-            <p style="margin-left: 25px; margin-top: 10px; margin-bottom: 5px; font-size: 19px; padding-top: 5px;"><strong>Networking & Backend Services</strong></p>
-            <ul style="margin-left: 45px; margin-top: 0;">
-                <li>Retrofit (HTTP networking)</li>
-                <li>Moshi (JSON serialization)</li>
-                <li>Firebase Firestore (cloud database)</li>
-                <li>Firebase Crashlytics (error reporting)</li>
-                <li>Archive.org API (video content)</li>
-            </ul>
-            
-            <p style="margin-left: 25px; margin-top: 10px; margin-bottom: 5px; font-size: 19px; padding-top: 5px;"><strong>Media & UI Resources</strong></p>
-            <ul style="margin-left: 45px; margin-top: 0;">
-                <li>Media3 ExoPlayer (video playback)</li>
-                <li>Coil (image loading)</li>
-            </ul>
-            
-            <p style="margin-left: 25px; margin-top: 10px; margin-bottom: 5px; font-size: 19px; padding-top: 5px;"><strong>Testing & Coverage</strong></p>
-            <ul style="margin-left: 45px; margin-top: 0;">
-                <li>JUnit 5 (unit & integration tests)</li>
-                <li>MockK (mocking framework)</li>
-                <li>Espresso (UI testing)</li>
-                <li>Roboelectric (Android testing framework)</li>
-                <li>Compose Test Rules (Compose UI testing)</li>
-                <li>Jacoco (test coverage analysis)</li>
-            </ul>
-            
-            <p style="margin-left: 25px; margin-top: 10px; margin-bottom: 5px; font-size: 19px; padding-top: 5px;"><strong>Security & Code Quality</strong></p>
-            <ul style="margin-left: 45px; margin-top: 0;">
-                <li>Snyk (vulnerability scanning)</li>
-                <li>OWASP Dependency Checker (dependency security)</li>
-                <li>Android Studio Lint (static analysis)</li>
-            </ul>
-            
-            <p style="margin-left: 25px; margin-top: 10px; margin-bottom: 5px; font-size: 19px; padding-top: 5px;"><strong>Build & DevOps</strong></p>
-            <ul style="margin-left: 45px; margin-top: 0;">
-                <li>Gradle (build automation)</li>
-                <li>Timber (logging)</li>
-                <li>Android Studio Profiler (performance monitoring)</li>
-                <li>GitHub Actions (continuous integration)</li>
-                <li>Google Play Console (app distribution)</li>
-            </ul>
-        </div>
-
-        <hr>
-
-        <h2>CI/CD</h2>
-        <div class="image-card">
-            <div class="ci-images">
-                <img src="assets/images/flick/ci1.png" alt="CI tests passed">
-                <img src="assets/images/flick/ci2.png" alt="CI tests completed">
-            </div>
-        </div>
-
-		<br>
-
-        <div class="play-store-cta">
-            <div class="play-store-content">
-                <h3>Try it now before the official release.</h3>
-                <a href="javascript:void(0);" class="directions-link" onclick="showDirections()">Directions</a>
-                <br>
-                <a href="https://groups.google.com/g/appbuddy-flick" class="play-link">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" class="play-badge">
-                </a>
-            </div>
-        </div>
-
-        <div id="directionsPopup" class="directions-popup-overlay" onclick="hideDirections()">
-            <div class="directions-popup">
-                <strong><i>Try Flick!</i></strong><br>
-                <ol>
-                    <li>From an <strong>Android device</strong>,<br>
-                        tap the <strong>Google Play</strong> image below
-                    </li>
-                    <Li><strong>Sign in</strong> (if needed)</Li>
-                    <li>Tap <strong>Join</strong></li>
-                    <li>Tap <strong>Join Group</strong></li>
-                    <li>Tap the <strong>Google Play</strong> link in the group post</li>
-                    <li>Tap <strong>Install</strong></li>
-                </ol>
-            </div>
-        </div>
-
-        <div class="footer-metallic-black">
-            <p style="margin: 7px;">
-            <i>Try it out! The link is literally right there!</i>
             <br>
-            <i>Tap "Directions" for details.</i></p>
             
-            <div class="unified-header-inner" style="margin-top: 20px;">
-                <span class="uh-name"><b>Matthew Pool</b></span>
-                <span class="uh-divider">|</span>
-                <span class="uh-email" style="position:relative; display: inline-flex; align-items: center; padding-right: 28px;">
-                    <a href="mailto:mathyou.me@gmail.com">mathyou.me@gmail.com</a>
-                    <button onclick="copyEmail(this, 'light')" style="background: none; border: none; cursor: pointer; padding: 4px; display: inline-flex; align-items: center; opacity: 0.7; transition: opacity 0.2s; position: absolute; right: 0; top: 50%; transform: translateY(-50%);" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.9)" stroke-width="2">
-                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                        </svg>
-                    </button>
-                    <span class="toast-container"></span>
-                </span>
-                <span class="uh-divider">|</span>
-                <span class="uh-phone"><a href="tel:+19035760223">903-576-0223</a></span>
+            <h2 class="section-header">Overview</h2>
+            <div class="about-intro">
+                <p>I build things end-to-end — from Figma mockups to production deployments — and can even close the sale! 
+                    I bring a unique foundation to product engineering: a Summa Cum Laude B.S. in Computer Science         <a href="assets/documents/transcript.pdf" class="guide-link" style="text-align: center;" target="_blank" rel="noopener noreferrer">(3.99 GPA)</a>, paired with five years as a top-performing Fortune 500 sales agent and over a decade of customer service and technical support. 
+                    Because I have hit sales KPIs and sat on the front lines of customer support, I never lose sight of the business perspective. I bridge the gap between UI/UX design and technical implementation at every step of the product lifecycle, delivering accessible, high-ROI software that solves real user problems.</p>
             </div>
-        </div>
-    </div>
-    
-	<div id="projects" class="tab-content">
-		<br>
-        <h2 class="section-header">Projects</h2>
-
-        <div class="project-filters">
-            <button class="filter-btn active" onclick="filterProjects('all', event)">All Projects</button>
-            <button class="filter-btn" onclick="filterProjects('mobile', event)">Mobile</button>
-            <button class="filter-btn" onclick="filterProjects('web', event)">Web</button>
-            <button class="filter-btn" onclick="filterProjects('graphics', event)">Graphics</button>
-            <button class="filter-btn" onclick="filterProjects('data', event)">Data/ML</button>
-            <button class="filter-btn" onclick="filterProjects('systems', event)">Systems &amp; Design</button>
-        </div>
-
-        <div class="project-grid">
             
-            <div class="project-card" data-category="web"
-                onclick="openProjectModal('portfolio-site')"
-                tabindex="0"
-                role="button"
-                aria-label="This Portfolio — click to view details"
-                onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('portfolio-site')}">
-                <div class="project-card-image">
-                    <img src="assets/images/portfolio-dark.png" alt="Portfolio website design" loading="lazy">
-                </div>
-                <div class="project-card-content">
-                    <h3>(This) Portfolio</h3>
-                    <p class="project-card-brief">Fully hand-coded responsive portfolio site featuring dark mode, animated SVG bird, tab navigation, modal system, lightbox, and CI/CD via GitHub Actions.</p>
-                    <div class="project-card-tags">
-                        <span class="project-card-tag">HTML5</span>
-                        <span class="project-card-tag">CSS3</span>
-                        <span class="project-card-tag">JavaScript</span>
-                        <span class="project-card-tag">Responsive</span>
-                        <span class="project-card-tag">GitHub Pages</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="graphics" 
-                 onclick="openProjectModal('mario')"
-                 tabindex="0"
-                 role="button"
-                 aria-label="Super Mario Bros. — click to view details"
-                 onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('mario')}">
-                <div class="project-card-image">
-                    <img src="assets/images/mario1.png" alt="Super Mario Bros 1-1 Scene" loading="lazy">
-                </div>
-                <div class="project-card-content">
-                    <h3>Super Mario Bros.</h3>
-                    <p class="project-card-brief">3D scene recreation with custom shaders, Phong lighting, and hand-coded meshes</p>
-                    <div class="project-card-tags">
-                        <span class="project-card-tag">C++</span>
-                        <span class="project-card-tag">OpenGL</span>
-                        <span class="project-card-tag">GLSL</span>
-                        <span class="project-card-tag">GLM</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="web" 
-                 onclick="openProjectModal('paradox')"
-                 tabindex="0"
-                 role="button"
-                 aria-label="The Existence Paradox — click to view details"
-                 onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('paradox')}">
-                <div class="project-card-image">
-                    <img src="assets/images/paradox1.png" alt="The Existence Paradox App" loading="lazy">
-                </div>
-                <div class="project-card-content">
-                    <h3>The Existence Paradox</h3>
-                    <p class="project-card-brief">Interactive philosophy app featuring dynamic state management and complex decision-tree navigation.</p>
-                    <div class="project-card-tags">
-                        <span class="project-card-tag">TypeScript</span>
-                        <span class="project-card-tag">React</span>
-                        <span class="project-card-tag">Tailwind CSS</span>
-                        <span class="project-card-tag">Vite</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="web" 
-                 onclick="openProjectModal('travel')"
-                 tabindex="0"
-                 role="button"
-                 aria-label="Full-Stack Travel Platform — click to view details"
-                 onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('travel')}">
-                <div class="project-card-image">
-                    <img src="assets/images/travel2.png" alt="Travel Platform" loading="lazy">
-                </div>
-                <div class="project-card-content">
-                    <h3>Full-Stack Travel Platform (PoC)</h3>
-                    <p class="project-card-brief">Dual-interface web app with a cloud-secured admin SPA, RESTful APIs, and database migration to AWS DynamoDB via Docker.</p>
-                    <div class="project-card-tags">
-                        <span class="project-card-tag">MEAN Stack</span>
-                        <span class="project-card-tag">AWS DynamoDB</span>
-                        <span class="project-card-tag">Docker</span>
-                        <span class="project-card-tag">TS/JS</span>
-                        <span class="project-card-tag">Bootstrap</span>
-                        <span class="project-card-tag">Handlebars</span>
-                        <span class="project-card-tag">Postman</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="mobile" 
-                 onclick="openProjectModal('buddy')"
-                 tabindex="0"
-                 role="button"
-                 aria-label="InventoryBuddy — click to view details"
-                 onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('buddy')}">
-                <div class="project-card-image">
-                    <img src="assets/images/buddy3.png" alt="InventoryBuddy App" loading="lazy">
-                </div>
-                <div class="project-card-content">
-                    <h3>InventoryBuddy</h3>
-                    <p class="project-card-brief">Android inventory management with SMS notifications and local SQLite database</p>
-                    <div class="project-card-tags">
-                        <span class="project-card-tag">Android</span>
-                        <span class="project-card-tag">Java</span>
-                        <span class="project-card-tag">SQLite</span>
-                        <span class="project-card-tag">SMS</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="web" 
-                 onclick="openProjectModal('aac')"
-                 tabindex="0"
-                 role="button"
-                 aria-label="Austin Animal Center Dashboard — click to view details"
-                 onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('aac')}">
-                <div class="project-card-image">
-                    <img src="assets/images/aac1.png" alt="Austin Animal Center Dashboard" loading="lazy">
-                </div>
-                <div class="project-card-content">
-                    <h3>Austin Animal Center Dashboard</h3>
-                    <p class="project-card-brief">Interactive data dashboard with MongoDB integration and geolocation mapping</p>
-                    <div class="project-card-tags">
-                        <span class="project-card-tag">Python</span>
-                        <span class="project-card-tag">MongoDB</span>
-                        <span class="project-card-tag">Dash</span>
-                        <span class="project-card-tag">Pandas</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="data" 
-                 onclick="openProjectModal('ml')"
-                 tabindex="0"
-                 role="button"
-                 aria-label="Machine Learning — click to view details"
-                 onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('ml')}">
-                <div class="project-card-image">
-                    <img src="assets/images/ml1.png" alt="ML model training and testing output" loading="lazy">
-                </div>
-                <div class="project-card-content">
-                    <h3>Machine Learning</h3>
-                    <p class="project-card-brief">Neural networks, deep Q-learning, and Markov decision processes</p>
-                    <div class="project-card-tags">
-                        <span class="project-card-tag">Python</span>
-                        <span class="project-card-tag">TensorFlow</span>
-                        <span class="project-card-tag">Scikit-Learn</span>
-                        <span class="project-card-tag">NumPy</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="data" 
-                 onclick="openProjectModal('data-analysis')"
-                 tabindex="0"
-                 role="button"
-                 aria-label="NASA Climate Data Analysis — click to view details"
-                 onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('data-analysis')}">
-                <div class="project-card-image">
-                    <img src="assets/images/data2.png" alt="NASA Climate Data Analysis" loading="lazy">
-                </div>
-                <div class="project-card-content">
-                    <h3>NASA Climate Data Analysis</h3>
-                    <p class="project-card-brief">Temperature deviation analysis with curved trend line visualization</p>
-                    <div class="project-card-tags">
-                        <span class="project-card-tag">Python</span>
-                        <span class="project-card-tag">Pandas</span>
-                        <span class="project-card-tag">Matplotlib</span>
-                        <span class="project-card-tag">NumPy</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="data" 
-                 onclick="openProjectModal('statistics')"
-                 tabindex="0"
-                 role="button"
-                 aria-label="NBA Statistical Analysis — click to view details"
-                 onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('statistics')}">
-                <div class="project-card-image">
-                    <img src="assets/images/stat3.png" alt="Statistical Analysis" loading="lazy">
-                </div>
-                <div class="project-card-content">
-                    <h3>NBA Statistical Analysis</h3>
-                    <p class="project-card-brief">Regression modeling to predict regular-season wins from team metrics</p>
-                    <div class="project-card-tags">
-                        <span class="project-card-tag">Python</span>
-                        <span class="project-card-tag">SciPy</span>
-                        <span class="project-card-tag">Pandas</span>
-                        <span class="project-card-tag">Seaborn</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="data" 
-                 onclick="openProjectModal('economics')"
-                 tabindex="0"
-                 role="button"
-                 aria-label="Economic Analysis — click to view details"
-                 onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('economics')}">
-                <div class="project-card-image">
-                    <img src="assets/images/eco-3.png" alt="Economic Analysis" loading="lazy">
-                </div>
-                <div class="project-card-content">
-                    <h3>Economic Analysis</h3>
-                    <p class="project-card-brief">Data visualization and reporting on economic indicators</p>
-                    <div class="project-card-tags">
-                        <span class="project-card-tag">Data Viz</span>
-                        <span class="project-card-tag">Economics</span>
-                        <span class="project-card-tag">Research</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="systems" 
-                 onclick="openProjectModal('database')"
-                 tabindex="0"
-                 role="button"
-                 aria-label="Database Case Study — click to view details"
-                 onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('database')}">
-                <div class="project-card-image">
-                    <figure>
-                        <img src="assets/images/database-erd.png" alt="Database ERD" loading="lazy">
-                        <figcaption>Created ERD (Entity Relationship Diagram) based on the database requirements</figcaption>
-                    </figure>
-                </div>
-                <div class="project-card-content">
-                    <h3>Database Case Study</h3>
-                    <p class="project-card-brief">MySQL database administration and ERD design</p>
-                    <div class="project-card-tags">
-                        <span class="project-card-tag">MySQL</span>
-                        <span class="project-card-tag">Database Administration</span>
-                        <span class="project-card-tag">Entity Relationship Diagram</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="systems" 
-                 onclick="openProjectModal('system-design')"
-                 tabindex="0"
-                 role="button"
-                 aria-label="System Design & UML — click to view details"
-                 onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('system-design')}">
-                <div class="project-card-image">
-                    <img src="assets/images/system2.png" alt="System Design Diagrams" loading="lazy">
-                </div>
-                <div class="project-card-content">
-                    <h3>System Design & UML</h3>
-                    <p class="project-card-brief">Comprehensive system design documentation with UML diagrams</p>
-                    <div class="project-card-tags">
-                        <span class="project-card-tag">UML</span>
-                        <span class="project-card-tag">SDD</span>
-                        <span class="project-card-tag">Architecture</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="systems" 
-                 onclick="openProjectModal('security')"
-                 tabindex="0"
-                 role="button"
-                 aria-label="Security Audit & Remediation — click to view details"
-                 onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('security')}">
-                <div class="project-card-image">
-                    <img src="assets/images/security-1.png" alt="Security Audit" loading="lazy">
-                </div>
-                <div class="project-card-content">
-                    <h3>Security Audit & Remediation</h3>
-                    <p class="project-card-brief">Financial software vulnerability assessment with OWASP compliance</p>
-                    <div class="project-card-tags">
-                        <span class="project-card-tag">Java</span>
-                        <span class="project-card-tag">Spring Boot</span>
-                        <span class="project-card-tag">OWASP</span>
-                        <span class="project-card-tag">Cryptography</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="systems" 
-                 onclick="openProjectModal('scrum')"
-                 tabindex="0"
-                 role="button"
-                 aria-label="Agile & Scrum Leadership — click to view details"
-                 onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('scrum')}">
-                <div class="project-card-image">
-                    <img src="assets/images/scrum-sdlc.png" alt="Scrum SDLC" loading="lazy">
-                </div>
-                <div class="project-card-content">
-                    <h3>Agile & Scrum Leadership</h3>
-                    <p class="project-card-brief">Scrum Master experience managing development teams</p>
-                    <div class="project-card-tags">
-                        <span class="project-card-tag">Scrum Master</span>
-                        <span class="project-card-tag">Jira</span>
-                        <span class="project-card-tag">SDLC</span>
-                        <span class="project-card-tag">Leadership</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="systems" 
-                 onclick="openProjectModal('algorithms')"
-                 tabindex="0"
-                 role="button"
-                 aria-label="Algorithmic Optimization — click to view details"
-                 onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('algorithms')}">
-                <div class="project-card-image">
-                    <img src="assets/images/algo-1.png" alt="Algorithm Code" loading="lazy">
-                </div>
-                <div class="project-card-content">
-                    <h3>Algorithmic Optimization</h3>
-                    <p class="project-card-brief">Custom merge sort implementation with Big O analysis</p>
-                    <div class="project-card-tags">
-                        <span class="project-card-tag">C++</span>
-                        <span class="project-card-tag">Algorithms</span>
-                        <span class="project-card-tag">Data Structures</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="systems" 
-                 onclick="openProjectModal('unit-testing')"
-                 tabindex="0"
-                 role="button"
-                 aria-label="Unit Testing — click to view details"
-                 onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('unit-testing')}">
-                <div class="project-card-image">
-                    <img src="assets/images/service-tests-1.png" alt="Unit Tests" loading="lazy">
-                </div>
-                <div class="project-card-content">
-                    <h3>Unit Testing</h3>
-                    <p class="project-card-brief">JUnit 5 test suite with comprehensive coverage</p>
-                    <div class="project-card-tags">
-                        <span class="project-card-tag">Java</span>
-                        <span class="project-card-tag">JUnit 5</span>
-                        <span class="project-card-tag">TDD</span>
-                        <span class="project-card-tag">Maven</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="mobile" 
-                onclick="openProjectModal('product-design')"
-                tabindex="0"
-                role="button"
-                aria-label="Product Design — click to view details"
-                onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('product-design')}">
-                <div class="project-card-image">
-                    <img src="assets/images/product-design-moneymobile-mockup.png" alt="Product Design" loading="lazy">
-                </div>
-                <div class="project-card-content">
-                    <h3>Product Design</h3>
-                    <p class="project-card-brief">Mobile and web app design with wireframes and mockups</p>
-                    <div class="project-card-tags">
-                        <span class="project-card-tag">UX Design</span>
-                        <span class="project-card-tag">Wireframes</span>
-                        <span class="project-card-tag">Mockups</span>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="content-card" style="margin-bottom: 30px; border-top: 4px solid #3498db;">
-            <h3 style="margin-top: 0;">The Bottom Line</h3>
-            <p>Early-stage companies and fast-paced teams require engineers who understand the entire product lifecycle, not just a single silo. I build things end-to-end, and my background in hitting KPIs as a top-performing Fortune 500 sales agent means I never lose sight of the business perspective.</p>
-            <p>I can design the UI in Figma, architect the ML engine, build the automated CI/CD pipeline, and pitch the final product to a user. Having proven my resourcefulness by building a custom Android platform with near-zero infrastructure costs, I am fully equipped to ship high-ROI software from day one.</p>
-        </div>
-
-        <div class="footer-metallic-black">
-            <p><i>Phew. That was a lot to look over!</i><br>
-                <i>Aren't you tired?</i> I am.</p>
-            
-            <div class="unified-header-inner" style="margin-top: 20px;">
-                <span class="uh-name"><b>Matthew Pool</b></span>
-                <span class="uh-divider">|</span>
-                <span class="uh-email" style="position:relative; display: inline-flex; align-items: center; padding-right: 28px;">
-                    <a href="mailto:mathyou.me@gmail.com">mathyou.me@gmail.com</a>
-                    <button onclick="copyEmail(this, 'light')" style="background: none; border: none; cursor: pointer; padding: 4px; display: inline-flex; align-items: center; opacity: 0.7; transition: opacity 0.2s; position: absolute; right: 0; top: 50%; transform: translateY(-50%);" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.9)" stroke-width="2">
-                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                        </svg>
-                    </button>
-                    <span class="toast-container"></span>
-                </span>
-                <span class="uh-divider">|</span>
-                <span class="uh-phone"><a href="tel:+19035760223">903-576-0223</a></span>
-            </div>
-        </div>
-    </div>
-
-	<div id="refactoring" class="tab-content">
-		<br>
-        <h2 class="section-header">Refactoring: Rescue Animal System</h2>
-        <p class="lead">This project involved taking a legacy Java command-line application - originally written early in my CS degree - and modernizing it with industry-standard practices.</p>
-        
-        <div class="content-card" style="border-left: 5px solid #ff6b6b;">
-            <h3 style="margin-top: 0;">Challenge: Modernizing a Legacy Application</h3>
-            <p>
-                The original software was a fragile command-line tool for tracking rescue animals. It lacked persistence, had no input validation, and used inefficient data structures.
-                <br><br>
-                This is a brief summary of the changes implemented in this poor, <strong><i>HOPELESS</i></strong> application.
-                <br><br>
-                <em>None taken.<br>No offense, "Past Me".</em>
-                <br><br>
-                But wait! Is there yet a shimmer of hope remaining after all...
+            <p class="app-cta">
+                Check out my <span class="gradient-text">Android app</span> below.
             </p>
-        
-            <div class="image-card" style="margin: 20px 0;">
-                <img src="assets/images/new11.png" alt="System menu of the legacy application">
+
+            <div class="dark-flick-header-card">
+                <div class="flick-card">
+                    <div class="flick-header">
+                        <img src="assets/images/flick/logo-alt.svg" alt="Flick logo" class="flick-logo">
+                        <h2>Flick (Android)</h2>
+                    </div>
+                    <p style="margin-top: -20px; color: #c8c8c8; font-size: 16px; padding-left: 75px;"><i>Designer/Engineer: Matthew Pool</i></p>
+                </div>
+                
+                <img src="assets/images/flick/banner.png" alt="Flick app banner" style="width: 100%; max-width: 1280px; margin: 20px 0; border: 2px solid #c8c8c8;">
+            </div>
+            
+            <hr>
+            
+            <div class="app-description">
+                <h2>Synopsis & Engineering</h2>
+                <p><span class="flick-text">Flick</span> is a native Android streaming client built to provide an instant, vast content library without licensing hurdles by leveraging the Archive.org API. This architecture reduces backend content delivery costs to near-zero, ensuring high scalability and business viability.</p>
+                <p><strong>Architecture:</strong> I solo-engineered the entire stack (Kotlin + Jetpack Compose) and built a custom recommendation engine from scratch. The app tokenizes video metadata and weighs it against user interaction signals (view time, likes/dislikes) stored in Firestore to create dynamic user profile vectors.</p>
+                <p><strong>Algorithm:</strong> I implemented cosine similarity to calculate the distance between the user's profile and available content. The main vertical feed uses an "exploration vs. exploitation" strategy, mixing high-confidence matches with random high-percentile videos to prevent echo chambers.</p>
+                <p><strong>UI/UX:</strong> The UI features a dual-axis navigation system driven by this ML algorithm. A vertical swipe continues the mixed feed, while a horizontal swipe instantly branches into a "nearest neighbor" playlist, finding videos with the highest cosine similarity to the current video.</p>
             </div>
 
-            <div class="project-links" style="justify-content: center; margin-top: 20px;">
-                <a href="java-enhancements/rescue_animal.zip" class="theme-action-btn" download>
+            <br>
+
+            <div class="project-links" style="justify-content: center;">
+                <a href="assets/documents/user-guide.html" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
                     <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                         <polyline points="7 10 12 15 17 10"></polyline>
                         <line x1="12" y1="15" x2="12" y2="3"></line>
                     </svg>
-                    Download Source Code
+                    View User Guide
                 </a>
+            </div>
+
+            <hr>
+
+            <h2 style="padding-top: 10px;">Screenshots</h2>
+            <div class="image-card">
+                <div class="screenshot-grid">
+                    <figure class="screenshot-item">
+                        <figcaption>Custom Splash Screen</figcaption>
+                        <img src="assets/images/flick/screen14.png" alt="Preparing app screen">
+                    </figure>
+
+                    <figure class="screenshot-item">
+                        <figcaption>Initial Loading</figcaption>
+                        <img src="assets/images/flick/screen4.png" alt="Traveling back in time screen">
+                    </figure>
+
+                    <figure class="screenshot-item">
+                        <figcaption>Swipe Up Hint</figcaption>
+                        <img src="assets/images/flick/screen1.png" alt="Up arrow hint">
+                    </figure>
+
+                    <figure class="screenshot-item">
+                        <figcaption>Static TV Effect</figcaption>
+                        <img src="assets/images/flick/screen5.png" alt="TV static screen">
+                    </figure>
+
+                    <figure class="screenshot-item">
+                        <figcaption>Like Interaction</figcaption>
+                        <img src="assets/images/flick/screen7.png" alt="Alf video liked">
+                    </figure>
+
+                    <figure class="screenshot-item">
+                        <figcaption>Dislike Interaction</figcaption>
+                        <img src="assets/images/flick/screen8.png" alt="Video disliked">
+                    </figure>
+
+                    <figure class="screenshot-item">
+                        <figcaption>Left Swipe Hint</figcaption>
+                        <img src="assets/images/flick/screen12.png" alt="Left arrow hint">
+                    </figure>
+
+                    <figure class="screenshot-item">
+                        <figcaption>End Dialog</figcaption>
+                        <img src="assets/images/flick/screen10.png" alt="Thank you dialog">
+                    </figure>
+
+                    <figure class="screenshot-item">
+                        <figcaption>Custom Debug Tool</figcaption>
+                        <img src="assets/images/flick/screen11.png" alt="Similar video screen">
+                    </figure>
+
+                    <figure class="screenshot-item">
+                        <figcaption>Tablet/Fold View</figcaption>
+                        <img src="assets/images/flick/tablet.png" alt="Flick on tablet">
+                    </figure>
+                </div>
+            </div>
+
+            <h2 style="margin-bottom: 16px;">Technologies</h2>
+            <div class="tech-specs-container">
+                <div class="tech-spec-item">
+                    <span class="spec-label">Design (v2.0.0)</span>
+                    <span class="spec-value">Figma</span>
+                </div>
+                <div class="tech-spec-item">
+                    <span class="spec-label">Architecture</span>
+                    <span class="spec-value">MVVM + Jetpack Compose</span>
+                </div>
+            </div>
+
+            <div class="content-card" style="margin-top: 15px">
+                    <img src="assets/images/flick/figma-1.svg" alt="Figma design mockup - set 1" style="width: 100%; max-width: 1200px;">
+                    <img src="assets/images/flick/figma-2.svg" alt="Figma design mockup - set 2" style="width: 100%; max-width: 1200px;">
+            </div>
+
+            <div class="content-card" style="margin-top: 15px">         
+                <p style="margin-left: 25px; margin-top: 12px; margin-bottom: 5px; font-size: 19px;"><strong>Core Technologies</strong></p>
+                <ul style="margin-left: 45px; margin-top: 0;">
+                    <li>Kotlin (programming language)</li>
+                    <li>Coroutines (asynchronous operations)</li>
+                    <li>Hilt (dependency injection)</li>
+                </ul>
+                
+                <p style="margin-left: 25px; margin-top: 10px; margin-bottom: 5px; font-size: 19px; padding-top: 5px;"><strong>State Management & Reactivity</strong></p>
+                <ul style="margin-left: 45px; margin-top: 0;">
+                    <li>ViewModel (state management)</li>
+                    <li>Flow (reactive streams)</li>
+                    <li>LiveData (observable data)</li>
+                    <li>DataStore (local persistence)</li>
+                </ul>
+                
+                <p style="margin-left: 25px; margin-top: 10px; margin-bottom: 5px; font-size: 19px; padding-top: 5px;"><strong>State Management & Reactivity</strong></p>
+                <ul style="margin-left: 45px; margin-top: 0;">
+                    <li> Observer Pattern</li>
+                    <li>Object Pool</li>
+                    <li>Factory Pattern</li>
+                    <li>Strategy Pattern</li>
+                    <li>State Pattern</li>
+                </ul>
+                
+                <p style="margin-left: 25px; margin-top: 10px; margin-bottom: 5px; font-size: 19px; padding-top: 5px;"><strong>Networking & Backend Services</strong></p>
+                <ul style="margin-left: 45px; margin-top: 0;">
+                    <li>Retrofit (HTTP networking)</li>
+                    <li>Moshi (JSON serialization)</li>
+                    <li>Firebase Firestore (cloud database)</li>
+                    <li>Firebase Crashlytics (error reporting)</li>
+                    <li>Archive.org API (video content)</li>
+                </ul>
+                
+                <p style="margin-left: 25px; margin-top: 10px; margin-bottom: 5px; font-size: 19px; padding-top: 5px;"><strong>Media & UI Resources</strong></p>
+                <ul style="margin-left: 45px; margin-top: 0;">
+                    <li>Media3 ExoPlayer (video playback)</li>
+                    <li>Coil (image loading)</li>
+                </ul>
+                
+                <p style="margin-left: 25px; margin-top: 10px; margin-bottom: 5px; font-size: 19px; padding-top: 5px;"><strong>Testing & Coverage</strong></p>
+                <ul style="margin-left: 45px; margin-top: 0;">
+                    <li>JUnit 5 (unit & integration tests)</li>
+                    <li>MockK (mocking framework)</li>
+                    <li>Espresso (UI testing)</li>
+                    <li>Roboelectric (Android testing framework)</li>
+                    <li>Compose Test Rules (Compose UI testing)</li>
+                    <li>Jacoco (test coverage analysis)</li>
+                </ul>
+                
+                <p style="margin-left: 25px; margin-top: 10px; margin-bottom: 5px; font-size: 19px; padding-top: 5px;"><strong>Security & Code Quality</strong></p>
+                <ul style="margin-left: 45px; margin-top: 0;">
+                    <li>Snyk (vulnerability scanning)</li>
+                    <li>OWASP Dependency Checker (dependency security)</li>
+                    <li>Android Studio Lint (static analysis)</li>
+                </ul>
+                
+                <p style="margin-left: 25px; margin-top: 10px; margin-bottom: 5px; font-size: 19px; padding-top: 5px;"><strong>Build & DevOps</strong></p>
+                <ul style="margin-left: 45px; margin-top: 0;">
+                    <li>Gradle (build automation)</li>
+                    <li>Timber (logging)</li>
+                    <li>Android Studio Profiler (performance monitoring)</li>
+                    <li>GitHub Actions (continuous integration)</li>
+                    <li>Google Play Console (app distribution)</li>
+                </ul>
+            </div>
+
+            <hr>
+
+            <h2>CI/CD</h2>
+            <div class="image-card">
+                <div class="ci-images">
+                    <img src="assets/images/flick/ci1.png" alt="CI tests passed">
+                    <img src="assets/images/flick/ci2.png" alt="CI tests completed">
+                </div>
+            </div>
+
+            <br>
+
+            <div class="play-store-cta">
+                <div class="play-store-content">
+                    <h3>Try it now before the official release.</h3>
+                    <a href="javascript:void(0);" class="directions-link" onclick="showDirections()">Directions</a>
+                    <br>
+                    <a href="https://groups.google.com/g/appbuddy-flick" class="play-link">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" class="play-badge">
+                    </a>
+                </div>
+            </div>
+
+            <div id="directionsPopup" class="directions-popup-overlay" onclick="hideDirections()">
+                <div class="directions-popup">
+                    <strong><i>Try Flick!</i></strong><br>
+                    <ol>
+                        <li>From an <strong>Android device</strong>,<br>
+                            tap the <strong>Google Play</strong> image below
+                        </li>
+                        <Li><strong>Sign in</strong> (if needed)</Li>
+                        <li>Tap <strong>Join</strong></li>
+                        <li>Tap <strong>Join Group</strong></li>
+                        <li>Tap the <strong>Google Play</strong> link in the group post</li>
+                        <li>Tap <strong>Install</strong></li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="footer-metallic-black">
+                <p style="margin: 7px;">
+                <i>Try it out! The link is literally right there!</i>
+                <br>
+                <i>Tap "Directions" for details.</i></p>
+                
+                <div class="unified-header-inner" style="margin-top: 20px;">
+                    <span class="uh-name"><b>Matthew Pool</b></span>
+                    <span class="uh-divider">|</span>
+                    <span class="uh-email" style="position:relative; display: inline-flex; align-items: center; padding-right: 28px;">
+                        <a href="mailto:mathyou.me@gmail.com">mathyou.me@gmail.com</a>
+                        <button onclick="copyEmail(this, 'light')" style="background: none; border: none; cursor: pointer; padding: 4px; display: inline-flex; align-items: center; opacity: 0.7; transition: opacity 0.2s; position: absolute; right: 0; top: 50%; transform: translateY(-50%);" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.9)" stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                        </button>
+                        <span class="toast-container"></span>
+                    </span>
+                    <span class="uh-divider">|</span>
+                    <span class="uh-phone"><a href="tel:+19035760223">903-576-0223</a></span>
+                </div>
             </div>
         </div>
         
-        <div class="content-card">
-            <h3 style="margin-top: 0;">1. Architecture & Software Quality</h3>
-            <p>I transitioned the codebase to a Maven build pipeline and established a defensive programming strategy with comprehensive JUnit testing.</p>
+        <div id="projects" class="tab-content">
+            <br>
+            <h2 class="section-header">Projects</h2>
 
-            <h4>Converted to Maven Framework</h4>
-            <div class="code-gallery">
-                <img src="assets/images/new2.png" alt="Maven project architecture">
-                <img src="assets/images/new4.png" alt="Maven pom.xml file">
+            <div class="project-filters">
+                <button class="filter-btn active" onclick="filterProjects('all', event)">All Projects</button>
+                <button class="filter-btn" onclick="filterProjects('mobile', event)">Mobile</button>
+                <button class="filter-btn" onclick="filterProjects('web', event)">Web</button>
+                <button class="filter-btn" onclick="filterProjects('graphics', event)">Graphics</button>
+                <button class="filter-btn" onclick="filterProjects('data', event)">Data/ML</button>
+                <button class="filter-btn" onclick="filterProjects('systems', event)">Systems &amp; Design</button>
             </div>
 
-            <h4>Implemented JUnit Testing</h4>
-            <div class="code-gallery">
-                <img src="assets/images/new1.png" alt="JUnit test coverage">
-                <img src="assets/images/new3.png" alt="JUnit test results">
+            <div class="project-grid">
+                
+                <div class="project-card" data-category="web"
+                    onclick="openProjectModal('portfolio-site')"
+                    tabindex="0"
+                    role="button"
+                    aria-label="This Portfolio — click to view details"
+                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('portfolio-site')}">
+                    <div class="project-card-image">
+                        <img src="assets/images/portfolio-dark.png" alt="Portfolio website design" loading="lazy">
+                    </div>
+                    <div class="project-card-content">
+                        <h3>(This) Portfolio</h3>
+                        <p class="project-card-brief">Fully hand-coded responsive portfolio site featuring dark mode, animated SVG bird, tab navigation, modal system, lightbox, and CI/CD via GitHub Actions.</p>
+                        <div class="project-card-tags">
+                            <span class="project-card-tag">HTML5</span>
+                            <span class="project-card-tag">CSS3</span>
+                            <span class="project-card-tag">JavaScript</span>
+                            <span class="project-card-tag">Responsive</span>
+                            <span class="project-card-tag">GitHub Pages</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="graphics" 
+                    onclick="openProjectModal('mario')"
+                    tabindex="0"
+                    role="button"
+                    aria-label="Super Mario Bros. — click to view details"
+                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('mario')}">
+                    <div class="project-card-image">
+                        <img src="assets/images/mario1.png" alt="Super Mario Bros 1-1 Scene" loading="lazy">
+                    </div>
+                    <div class="project-card-content">
+                        <h3>Super Mario Bros.</h3>
+                        <p class="project-card-brief">3D scene recreation with custom shaders, Phong lighting, and hand-coded meshes</p>
+                        <div class="project-card-tags">
+                            <span class="project-card-tag">C++</span>
+                            <span class="project-card-tag">OpenGL</span>
+                            <span class="project-card-tag">GLSL</span>
+                            <span class="project-card-tag">GLM</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="web" 
+                    onclick="openProjectModal('paradox')"
+                    tabindex="0"
+                    role="button"
+                    aria-label="The Existence Paradox — click to view details"
+                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('paradox')}">
+                    <div class="project-card-image">
+                        <img src="assets/images/paradox1.png" alt="The Existence Paradox App" loading="lazy">
+                    </div>
+                    <div class="project-card-content">
+                        <h3>The Existence Paradox</h3>
+                        <p class="project-card-brief">Interactive philosophy app featuring dynamic state management and complex decision-tree navigation.</p>
+                        <div class="project-card-tags">
+                            <span class="project-card-tag">TypeScript</span>
+                            <span class="project-card-tag">React</span>
+                            <span class="project-card-tag">Tailwind CSS</span>
+                            <span class="project-card-tag">Vite</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="web" 
+                    onclick="openProjectModal('travel')"
+                    tabindex="0"
+                    role="button"
+                    aria-label="Full-Stack Travel Platform — click to view details"
+                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('travel')}">
+                    <div class="project-card-image">
+                        <img src="assets/images/travel2.png" alt="Travel Platform" loading="lazy">
+                    </div>
+                    <div class="project-card-content">
+                        <h3>Full-Stack Travel Platform (PoC)</h3>
+                        <p class="project-card-brief">Dual-interface web app with a cloud-secured admin SPA, RESTful APIs, and database migration to AWS DynamoDB via Docker.</p>
+                        <div class="project-card-tags">
+                            <span class="project-card-tag">MEAN Stack</span>
+                            <span class="project-card-tag">AWS DynamoDB</span>
+                            <span class="project-card-tag">Docker</span>
+                            <span class="project-card-tag">TS/JS</span>
+                            <span class="project-card-tag">Bootstrap</span>
+                            <span class="project-card-tag">Handlebars</span>
+                            <span class="project-card-tag">Postman</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="mobile" 
+                    onclick="openProjectModal('buddy')"
+                    tabindex="0"
+                    role="button"
+                    aria-label="InventoryBuddy — click to view details"
+                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('buddy')}">
+                    <div class="project-card-image">
+                        <img src="assets/images/buddy3.png" alt="InventoryBuddy App" loading="lazy">
+                    </div>
+                    <div class="project-card-content">
+                        <h3>InventoryBuddy</h3>
+                        <p class="project-card-brief">Android inventory management with SMS notifications and local SQLite database</p>
+                        <div class="project-card-tags">
+                            <span class="project-card-tag">Android</span>
+                            <span class="project-card-tag">Java</span>
+                            <span class="project-card-tag">SQLite</span>
+                            <span class="project-card-tag">SMS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="web" 
+                    onclick="openProjectModal('aac')"
+                    tabindex="0"
+                    role="button"
+                    aria-label="Austin Animal Center Dashboard — click to view details"
+                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('aac')}">
+                    <div class="project-card-image">
+                        <img src="assets/images/aac1.png" alt="Austin Animal Center Dashboard" loading="lazy">
+                    </div>
+                    <div class="project-card-content">
+                        <h3>Austin Animal Center Dashboard</h3>
+                        <p class="project-card-brief">Interactive data dashboard with MongoDB integration and geolocation mapping</p>
+                        <div class="project-card-tags">
+                            <span class="project-card-tag">Python</span>
+                            <span class="project-card-tag">MongoDB</span>
+                            <span class="project-card-tag">Dash</span>
+                            <span class="project-card-tag">Pandas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="data" 
+                    onclick="openProjectModal('ml')"
+                    tabindex="0"
+                    role="button"
+                    aria-label="Machine Learning — click to view details"
+                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('ml')}">
+                    <div class="project-card-image">
+                        <img src="assets/images/ml1.png" alt="ML model training and testing output" loading="lazy">
+                    </div>
+                    <div class="project-card-content">
+                        <h3>Machine Learning</h3>
+                        <p class="project-card-brief">Neural networks, deep Q-learning, and Markov decision processes</p>
+                        <div class="project-card-tags">
+                            <span class="project-card-tag">Python</span>
+                            <span class="project-card-tag">TensorFlow</span>
+                            <span class="project-card-tag">Scikit-Learn</span>
+                            <span class="project-card-tag">NumPy</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="data" 
+                    onclick="openProjectModal('data-analysis')"
+                    tabindex="0"
+                    role="button"
+                    aria-label="NASA Climate Data Analysis — click to view details"
+                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('data-analysis')}">
+                    <div class="project-card-image">
+                        <img src="assets/images/data2.png" alt="NASA Climate Data Analysis" loading="lazy">
+                    </div>
+                    <div class="project-card-content">
+                        <h3>NASA Climate Data Analysis</h3>
+                        <p class="project-card-brief">Temperature deviation analysis with curved trend line visualization</p>
+                        <div class="project-card-tags">
+                            <span class="project-card-tag">Python</span>
+                            <span class="project-card-tag">Pandas</span>
+                            <span class="project-card-tag">Matplotlib</span>
+                            <span class="project-card-tag">NumPy</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="data" 
+                    onclick="openProjectModal('statistics')"
+                    tabindex="0"
+                    role="button"
+                    aria-label="NBA Statistical Analysis — click to view details"
+                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('statistics')}">
+                    <div class="project-card-image">
+                        <img src="assets/images/stat3.png" alt="Statistical Analysis" loading="lazy">
+                    </div>
+                    <div class="project-card-content">
+                        <h3>NBA Statistical Analysis</h3>
+                        <p class="project-card-brief">Regression modeling to predict regular-season wins from team metrics</p>
+                        <div class="project-card-tags">
+                            <span class="project-card-tag">Python</span>
+                            <span class="project-card-tag">SciPy</span>
+                            <span class="project-card-tag">Pandas</span>
+                            <span class="project-card-tag">Seaborn</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="data" 
+                    onclick="openProjectModal('economics')"
+                    tabindex="0"
+                    role="button"
+                    aria-label="Economic Analysis — click to view details"
+                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('economics')}">
+                    <div class="project-card-image">
+                        <img src="assets/images/eco-3.png" alt="Economic Analysis" loading="lazy">
+                    </div>
+                    <div class="project-card-content">
+                        <h3>Economic Analysis</h3>
+                        <p class="project-card-brief">Data visualization and reporting on economic indicators</p>
+                        <div class="project-card-tags">
+                            <span class="project-card-tag">Data Viz</span>
+                            <span class="project-card-tag">Economics</span>
+                            <span class="project-card-tag">Research</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="systems" 
+                    onclick="openProjectModal('database')"
+                    tabindex="0"
+                    role="button"
+                    aria-label="Database Case Study — click to view details"
+                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('database')}">
+                    <div class="project-card-image">
+                        <figure>
+                            <img src="assets/images/database-erd.png" alt="Database ERD" loading="lazy">
+                            <figcaption>Created ERD (Entity Relationship Diagram) based on the database requirements</figcaption>
+                        </figure>
+                    </div>
+                    <div class="project-card-content">
+                        <h3>Database Case Study</h3>
+                        <p class="project-card-brief">MySQL database administration and ERD design</p>
+                        <div class="project-card-tags">
+                            <span class="project-card-tag">MySQL</span>
+                            <span class="project-card-tag">Database Administration</span>
+                            <span class="project-card-tag">Entity Relationship Diagram</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="systems" 
+                    onclick="openProjectModal('system-design')"
+                    tabindex="0"
+                    role="button"
+                    aria-label="System Design & UML — click to view details"
+                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('system-design')}">
+                    <div class="project-card-image">
+                        <img src="assets/images/system2.png" alt="System Design Diagrams" loading="lazy">
+                    </div>
+                    <div class="project-card-content">
+                        <h3>System Design & UML</h3>
+                        <p class="project-card-brief">Comprehensive system design documentation with UML diagrams</p>
+                        <div class="project-card-tags">
+                            <span class="project-card-tag">UML</span>
+                            <span class="project-card-tag">SDD</span>
+                            <span class="project-card-tag">Architecture</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="systems" 
+                    onclick="openProjectModal('security')"
+                    tabindex="0"
+                    role="button"
+                    aria-label="Security Audit & Remediation — click to view details"
+                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('security')}">
+                    <div class="project-card-image">
+                        <img src="assets/images/security-1.png" alt="Security Audit" loading="lazy">
+                    </div>
+                    <div class="project-card-content">
+                        <h3>Security Audit & Remediation</h3>
+                        <p class="project-card-brief">Financial software vulnerability assessment with OWASP compliance</p>
+                        <div class="project-card-tags">
+                            <span class="project-card-tag">Java</span>
+                            <span class="project-card-tag">Spring Boot</span>
+                            <span class="project-card-tag">OWASP</span>
+                            <span class="project-card-tag">Cryptography</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="systems" 
+                    onclick="openProjectModal('scrum')"
+                    tabindex="0"
+                    role="button"
+                    aria-label="Agile & Scrum Leadership — click to view details"
+                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('scrum')}">
+                    <div class="project-card-image">
+                        <img src="assets/images/scrum-sdlc.png" alt="Scrum SDLC" loading="lazy">
+                    </div>
+                    <div class="project-card-content">
+                        <h3>Agile & Scrum Leadership</h3>
+                        <p class="project-card-brief">Scrum Master experience managing development teams</p>
+                        <div class="project-card-tags">
+                            <span class="project-card-tag">Scrum Master</span>
+                            <span class="project-card-tag">Jira</span>
+                            <span class="project-card-tag">SDLC</span>
+                            <span class="project-card-tag">Leadership</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="systems" 
+                    onclick="openProjectModal('algorithms')"
+                    tabindex="0"
+                    role="button"
+                    aria-label="Algorithmic Optimization — click to view details"
+                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('algorithms')}">
+                    <div class="project-card-image">
+                        <img src="assets/images/algo-1.png" alt="Algorithm Code" loading="lazy">
+                    </div>
+                    <div class="project-card-content">
+                        <h3>Algorithmic Optimization</h3>
+                        <p class="project-card-brief">Custom merge sort implementation with Big O analysis</p>
+                        <div class="project-card-tags">
+                            <span class="project-card-tag">C++</span>
+                            <span class="project-card-tag">Algorithms</span>
+                            <span class="project-card-tag">Data Structures</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="systems" 
+                    onclick="openProjectModal('unit-testing')"
+                    tabindex="0"
+                    role="button"
+                    aria-label="Unit Testing — click to view details"
+                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('unit-testing')}">
+                    <div class="project-card-image">
+                        <img src="assets/images/service-tests-1.png" alt="Unit Tests" loading="lazy">
+                    </div>
+                    <div class="project-card-content">
+                        <h3>Unit Testing</h3>
+                        <p class="project-card-brief">JUnit 5 test suite with comprehensive coverage</p>
+                        <div class="project-card-tags">
+                            <span class="project-card-tag">Java</span>
+                            <span class="project-card-tag">JUnit 5</span>
+                            <span class="project-card-tag">TDD</span>
+                            <span class="project-card-tag">Maven</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="mobile" 
+                    onclick="openProjectModal('product-design')"
+                    tabindex="0"
+                    role="button"
+                    aria-label="Product Design — click to view details"
+                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('product-design')}">
+                    <div class="project-card-image">
+                        <img src="assets/images/product-design-moneymobile-mockup.png" alt="Product Design" loading="lazy">
+                    </div>
+                    <div class="project-card-content">
+                        <h3>Product Design</h3>
+                        <p class="project-card-brief">Mobile and web app design with wireframes and mockups</p>
+                        <div class="project-card-tags">
+                            <span class="project-card-tag">UX Design</span>
+                            <span class="project-card-tag">Wireframes</span>
+                            <span class="project-card-tag">Mockups</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="content-card" style="margin-bottom: 30px; border-top: 4px solid #3498db;">
+                <h3 style="margin-top: 0;">The Bottom Line</h3>
+                <p>Early-stage companies and fast-paced teams require engineers who understand the entire product lifecycle, not just a single silo. I build things end-to-end, and my background in hitting KPIs as a top-performing Fortune 500 sales agent means I never lose sight of the business perspective.</p>
+                <p>I can design the UI in Figma, architect the ML engine, build the automated CI/CD pipeline, and pitch the final product to a user. Having proven my resourcefulness by building a custom Android platform with near-zero infrastructure costs, I am fully equipped to ship high-ROI software from day one.</p>
+            </div>
+
+            <div class="footer-metallic-black">
+                <p><i>Phew. That was a lot to look over!</i><br>
+                    <i>Aren't you tired?</i> I am.</p>
+                
+                <div class="unified-header-inner" style="margin-top: 20px;">
+                    <span class="uh-name"><b>Matthew Pool</b></span>
+                    <span class="uh-divider">|</span>
+                    <span class="uh-email" style="position:relative; display: inline-flex; align-items: center; padding-right: 28px;">
+                        <a href="mailto:mathyou.me@gmail.com">mathyou.me@gmail.com</a>
+                        <button onclick="copyEmail(this, 'light')" style="background: none; border: none; cursor: pointer; padding: 4px; display: inline-flex; align-items: center; opacity: 0.7; transition: opacity 0.2s; position: absolute; right: 0; top: 50%; transform: translateY(-50%);" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.9)" stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                        </button>
+                        <span class="toast-container"></span>
+                    </span>
+                    <span class="uh-divider">|</span>
+                    <span class="uh-phone"><a href="tel:+19035760223">903-576-0223</a></span>
+                </div>
+            </div>
+        </div>
+
+        <div id="refactoring" class="tab-content">
+            <br>
+            <h2 class="section-header">Refactoring: Rescue Animal System</h2>
+            <p class="lead">This project involved taking a legacy Java command-line application - originally written early in my CS degree - and modernizing it with industry-standard practices.</p>
+            
+            <div class="content-card" style="border-left: 5px solid #ff6b6b;">
+                <h3 style="margin-top: 0;">Challenge: Modernizing a Legacy Application</h3>
+                <p>
+                    The original software was a fragile command-line tool for tracking rescue animals. It lacked persistence, had no input validation, and used inefficient data structures.
+                    <br><br>
+                    This is a brief summary of the changes implemented in this poor, <strong><i>HOPELESS</i></strong> application.
+                    <br><br>
+                    <em>None taken.<br>No offense, "Past Me".</em>
+                    <br><br>
+                    But wait! Is there yet a shimmer of hope remaining after all...
+                </p>
+            
+                <div class="image-card" style="margin: 20px 0;">
+                    <img src="assets/images/new11.png" alt="System menu of the legacy application">
+                </div>
+
+                <div class="project-links" style="justify-content: center; margin-top: 20px;">
+                    <a href="java-enhancements/rescue_animal.zip" class="theme-action-btn" download>
+                        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Download Source Code
+                    </a>
+                </div>
             </div>
             
-            <h4>Added JavaDocs & Validation</h4>
-            <div class="code-gallery">
-                <img src="assets/images/new19.png" alt="Main class JavaDoc">
-                <img src="assets/images/new9.png" alt="Error-handling">
+            <div class="content-card">
+                <h3 style="margin-top: 0;">1. Architecture & Software Quality</h3>
+                <p>I transitioned the codebase to a Maven build pipeline and established a defensive programming strategy with comprehensive JUnit testing.</p>
+
+                <h4>Converted to Maven Framework</h4>
+                <div class="code-gallery">
+                    <img src="assets/images/new2.png" alt="Maven project architecture">
+                    <img src="assets/images/new4.png" alt="Maven pom.xml file">
+                </div>
+
+                <h4>Implemented JUnit Testing</h4>
+                <div class="code-gallery">
+                    <img src="assets/images/new1.png" alt="JUnit test coverage">
+                    <img src="assets/images/new3.png" alt="JUnit test results">
+                </div>
+                
+                <h4>Added JavaDocs & Validation</h4>
+                <div class="code-gallery">
+                    <img src="assets/images/new19.png" alt="Main class JavaDoc">
+                    <img src="assets/images/new9.png" alt="Error-handling">
+                </div>
+
+                <div class="content-card">
+                    <h3 style="margin-top: 0;">2. User Interface Enhancements</h3>
+                    <p>I improved the CLI experience by implementing ANSI escape codes for colored output and clearer visual hierarchy.</p>
+                    
+                    <div class="code-gallery">
+                        <img src="assets/images/new6.png" alt="ANSI escape code declarations">
+                        <img src="assets/images/new10.png" alt="Various formatting">
+                    </div>
+                    <div class="code-gallery">
+                        <img src="assets/images/new12.png" alt="List output">
+                        <img src="assets/images/new14.png" alt="Quitting system">
+                    </div>
+                </div>
             </div>
 
             <div class="content-card">
-                <h3 style="margin-top: 0;">2. User Interface Enhancements</h3>
-                <p>I improved the CLI experience by implementing ANSI escape codes for colored output and clearer visual hierarchy.</p>
+                <h3 style="margin-top: 0;">3. Data & Algorithmic Efficiency</h3>
+                
+                <h4>Database Enhancements</h4>
+                <p>I replaced volatile memory storage with MapDB to enable local persistence, ensuring data survives between program executions.</p>
                 
                 <div class="code-gallery">
-                    <img src="assets/images/new6.png" alt="ANSI escape code declarations">
-                    <img src="assets/images/new10.png" alt="Various formatting">
+                    <img src="assets/images/new18.png" alt="MapDB imports">
+                    <img src="assets/images/new7.png" alt="MapDB implementation">
                 </div>
+                
+                <h4>Algorithmic Optimization</h4>
+                <p>Converted linear ArrayList lookups to HashMaps, improving retrieval time complexity from <i>O(n)</i> to <i>O(1)</i> (or O(log n) depending on collision handling).</p>
+                
                 <div class="code-gallery">
-                    <img src="assets/images/new12.png" alt="List output">
-                    <img src="assets/images/new14.png" alt="Quitting system">
+                    <img src="assets/images/new5.png" alt="LinkedHashMap declarations">
+                    <img src="assets/images/new17.png" alt="Writing to the hash map">
+                </div>
+            </div>
+
+            <hr>
+
+            <p style="text-align: center;">Meh, that's a little better I guess 😐</p>
+            
+            <div class="project-links" style="justify-content: center; margin-top: 20px;">
+                <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/java-enhancements" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                    View Source Code
+                </a>
+            </div>
+            
+            <hr>
+
+            <div class="footer-metallic-black">
+                <p><i>Are you still here?!</i> Thank you so much for looking over my portfolio.</p>
+                <p style="margin-top: 7px;">I give everything I am into everything I do. Give me a chance.
+                <br>
+                You won't regret it!</p>
+                
+                <div class="unified-header-inner" style="margin-top: 25px;">
+                    <span class="uh-name"><b>Matthew Pool</b></span>
+                    <span class="uh-divider">|</span>
+                    <span class="uh-email" style="position:relative; display: inline-flex; align-items: center; padding-right: 28px;">
+                        <a href="mailto:mathyou.me@gmail.com">mathyou.me@gmail.com</a>
+                        <button onclick="copyEmail(this, 'light')" style="background: none; border: none; cursor: pointer; padding: 4px; display: inline-flex; align-items: center; opacity: 0.7; transition: opacity 0.2s; position: absolute; right: 0; top: 50%; transform: translateY(-50%);" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.9)" stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                        </button>
+                        <span class="toast-container"></span>
+                    </span>
+                    <span class="uh-divider">|</span>
+                    <span class="uh-phone"><a href="tel:+19035760223">903-576-0223</a></span>
                 </div>
             </div>
         </div>
+    </main>
 
-        <div class="content-card">
-            <h3 style="margin-top: 0;">3. Data & Algorithmic Efficiency</h3>
-            
-            <h4>Database Enhancements</h4>
-            <p>I replaced volatile memory storage with MapDB to enable local persistence, ensuring data survives between program executions.</p>
-            
-            <div class="code-gallery">
-                <img src="assets/images/new18.png" alt="MapDB imports">
-                <img src="assets/images/new7.png" alt="MapDB implementation">
-            </div>
-            
-            <h4>Algorithmic Optimization</h4>
-            <p>Converted linear ArrayList lookups to HashMaps, improving retrieval time complexity from <i>O(n)</i> to <i>O(1)</i> (or O(log n) depending on collision handling).</p>
-            
-            <div class="code-gallery">
-                <img src="assets/images/new5.png" alt="LinkedHashMap declarations">
-                <img src="assets/images/new17.png" alt="Writing to the hash map">
-            </div>
-        </div>
-
-        <hr>
-
-        <p style="text-align: center;">Meh, that's a little better I guess 😐</p>
-        
-        <div class="project-links" style="justify-content: center; margin-top: 20px;">
-            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/java-enhancements" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                </svg>
-                View Source Code
-            </a>
-        </div>
-        
-        <hr>
-
-        <div class="footer-metallic-black">
-            <p><i>Are you still here?!</i> Thank you so much for looking over my portfolio.</p>
-            <p style="margin-top: 7px;">I give everything I am into everything I do. Give me a chance.
-            <br>
-            You won't regret it!</p>
-            
-            <div class="unified-header-inner" style="margin-top: 25px;">
-                <span class="uh-name"><b>Matthew Pool</b></span>
-                <span class="uh-divider">|</span>
-                <span class="uh-email" style="position:relative; display: inline-flex; align-items: center; padding-right: 28px;">
-                    <a href="mailto:mathyou.me@gmail.com">mathyou.me@gmail.com</a>
-                    <button onclick="copyEmail(this, 'light')" style="background: none; border: none; cursor: pointer; padding: 4px; display: inline-flex; align-items: center; opacity: 0.7; transition: opacity 0.2s; position: absolute; right: 0; top: 50%; transform: translateY(-50%);" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.9)" stroke-width="2">
-                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                        </svg>
-                    </button>
-                    <span class="toast-container"></span>
-                </span>
-                <span class="uh-divider">|</span>
-                <span class="uh-phone"><a href="tel:+19035760223">903-576-0223</a></span>
-            </div>
-        </div>
-    </div>
-
-<div id="project-modal" class="project-modal">
+    <div id="project-modal" class="project-modal">
         <div class="project-modal-body">
             <button class="project-modal-close" onclick="closeProjectModal()" aria-label="Close">×</button>
             <div id="project-modal-content">
@@ -1587,7 +1589,7 @@
             <img id="lightbox-img" src="" alt="">
             <button class="lightbox-nav lightbox-prev" onclick="changeLightboxImage(-1)" aria-label="Previous image">&#8249;</button>
             <button class="lightbox-nav lightbox-next" onclick="changeLightboxImage(1)" aria-label="Next image">&#8250;</button>
-            <div id="lightbox-caption" class="lightbox-caption"></div>
+            <div id="lightbox-caption" class="lightbox-caption" aria-live="polite"></div>
         </div>
     </div>
 

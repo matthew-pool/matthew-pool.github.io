@@ -897,7 +897,7 @@ body.dark-mode .gpa-link:hover {
 }
 
 body.dark-mode .flick-text {
-	color: #ff6b9d; 
+	color: #9B1721; 
 }
 
 .tech-name {
@@ -1522,6 +1522,20 @@ body.dark-mode .gradient-text {
 .project-card:hover, .content-card:hover, .image-card:hover {
 	transform: translateY(-5px);
 	box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.project-card:focus-visible, 
+.tab-button:focus-visible, 
+.quick-link:focus-visible {
+    outline: 3px solid #667eea;
+    outline-offset: 4px;
+    border-radius: 12px;
+}
+
+body.dark-mode .project-card:focus-visible, 
+body.dark-mode .tab-button:focus-visible, 
+body.dark-mode .quick-link:focus-visible {
+    outline-color: #a855f7;
 }
 
 .project-card-image {

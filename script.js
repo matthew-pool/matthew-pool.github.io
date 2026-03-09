@@ -101,21 +101,21 @@ function positionTooltip() {
   if (!birdTooltip || !bird) return;
 
   const birdRect = bird.getBoundingClientRect();
-  
+
   // Calculate top relative to the whole document, not just the viewport
-  // Math.max ensures it doesn't clip off the very top of the page
-  birdTooltip.style.top = Math.max(4, birdRect.top + window.scrollY - 44) + "px";
+  birdTooltip.style.top =
+    Math.max(4, birdRect.top + window.scrollY - 44) + "px";
   birdTooltip.style.bottom = "auto";
 
   if (birdOnFlick) {
     // Flipped mode (bird is on the left, tooltip points right)
-    birdTooltip.style.left = (birdRect.left + window.scrollX) + "px";
+    birdTooltip.style.left = birdRect.left + window.scrollX + "px";
     birdTooltip.style.right = "auto";
     birdTooltip.classList.add("flipped");
   } else {
-    // Normal mode (bird is on the right, tooltip points left)
-    // We calculate from the left to avoid resizing issues with "right" constraints
-    birdTooltip.style.left = (birdRect.left + window.scrollX - 70) + "px"; // 70px offset pushes it to the left of the bird
+    // Normal mode (bird is at starting position, tooltip directly above)
+    // Adjusted from -70 to -40 to align the arrow perfectly with the bird's head
+    birdTooltip.style.left = birdRect.left + window.scrollX - 40 + "px";
     birdTooltip.style.right = "auto";
     birdTooltip.classList.remove("flipped");
   }
