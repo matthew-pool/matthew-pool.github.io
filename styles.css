@@ -3120,6 +3120,17 @@ body.dark-mode .theme-action-btn:hover {
     75%, 80% { transform: rotate(-5deg) scaleX(1) translateY(-3px); }
     85%, 100% { transform: rotate(0deg) scaleX(1); }
 }
+@keyframes idleTailFlip { 
+    0%, 45% { transform: scaleX(1); }
+    50%, 60% { transform: scaleX(-1); }
+    65%, 100% { transform: scaleX(1); }
+}
+
+.bird.idle #tail {
+    animation: idleTailFlip 4s ease-in-out infinite;
+    transform-origin: 20px 24px; /* Centers the flip on the bird's X-axis */
+    transform-box: view-box;
+}
 
 .bird.landed #birdUpper {
     animation: squashStretch 0.4s ease-out forwards;
