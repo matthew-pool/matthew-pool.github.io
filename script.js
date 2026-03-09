@@ -274,9 +274,15 @@ if (_bannerImg) {
 // RESIZE — cancel flight, reset state, snap bird to shelf
 // ─────────────────────────────────────────────────────────────
 let _resizeTimer;
+let _lastWindowWidth = window.innerWidth; // Track the initial width
+
 window.addEventListener(
   "resize",
   () => {
+    // Ignore resize events caused by the mobile address bar hiding/showing
+    if (window.innerWidth === _lastWindowWidth) return;
+    _lastWindowWidth = window.innerWidth; // Update width for future checks
+
     clearTimeout(_resizeTimer);
     _resizeTimer = setTimeout(() => {
       cancelFlight();
