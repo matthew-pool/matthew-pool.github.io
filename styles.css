@@ -2393,6 +2393,10 @@ body.dark-mode .dark-info-card {
     width: 100%;
 }
 
+.uh-name {
+    padding: 0; /* This removes the global h1 padding */
+}
+
 .uh-name b {
     font-size: 15px;
     font-weight: normal;
@@ -3187,13 +3191,13 @@ body.dark-mode .content-card:has(img[src*="figma-"]) {
     box-shadow: inset 0 4px 12px rgba(0,0,0,0.4) !important; 
 }
 
-/* =========================================
+/* ============================= ============
    MOBILE CONTACT STACKING (Header & Footer)
    ========================================= */
 @media (max-width: 768px) {
     .unified-header-inner {
         flex-direction: column;
-        gap: 12px;
+        gap: 4px;
     }
     
     /* Hide the vertical dividers when stacked to prevent "orphans" */
