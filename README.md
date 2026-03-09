@@ -2,8 +2,6 @@
 
 A modern, interactive portfolio website showcasing software development projects and technical expertise across mobile, web, and data science domains.
 
-![Portfolio Banner](assets/images/flick/banner.png)
-
 ## 🌟 Portfolio
 
 Visit my portfolio website for a more streamlined experience and to see my new Android app, "Flick": [matthew-pool.github.io](https://matthew-pool.github.io)
