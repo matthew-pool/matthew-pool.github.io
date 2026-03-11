@@ -1,0 +1,14 @@
+# IDE folders
+.idea/
+.vs/
+
+# Python leftovers
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+
+# Analysis tool cache
+.mypy_cache/
+.ruff_cache/

@@ -1,0 +1,128 @@
+{
+  "items": {
+    "map": {
+      "name": "map",
+      "desc": "A damp, crude map outlining the cave system."
+    },
+    "compass": { "name": "compass", "desc": "A reliable magnetic compass." },
+    "shroom": {
+      "name": "shroom",
+      "desc": "An acidic alien mushroom with vivid colors."
+    },
+    "gun": { "name": "gun", "desc": "A high-tech wormhole blaster." },
+    "key": { "name": "key", "desc": "A heavy, rusty iron key." },
+    "fish": { "name": "fish", "desc": "A weird, glowing pink fish." },
+    "scripture": {
+      "name": "scripture",
+      "desc": "An ancient text containing alien scripture."
+    },
+    "poop": { "name": "poop", "desc": "Incredibly smelly alien worm poop." },
+    "alien worm": { "name": "alien worm", "desc": "A hideous creature!" }
+  },
+  "rooms": {
+    "cavern": {
+      "name": "cavern",
+      "coords": [0, 8],
+      "item_id": "map",
+      "desc": "You awaken on the cold, hard ground - your clothes soaking wet. You feel sluggish... and disoriented.\n\"Where the Hell am I?\" you think to yourself in a haze.\n\nAs your senses begin to return, you realize you're lying in an almost pitch-black, unfamiliar\nplace and have no idea how you got there.\n\n\"Help!\" you scream. \"Help! Hel-\"You stop yourself as confusion quickly turns into primal fear.\n\nYou jump onto your feet, with paralyzing dread resonating throughout your entire body.\n\nHaving been born with a keen sense of cardinal direction, you instinctively shift focus to the north.\n\nYou notice a small, dark passageway. Your head instantly responds - \"Run.\"",
+      "alt_desc": "You are back in the damp cavern where you first woke up.\nYou see a small, dark passageway to the North...",
+      "exits": { "north": "entryway" }
+    },
+    "entryway": {
+      "name": "entryway",
+      "coords": [0, 6],
+      "item_id": "compass",
+      "desc": "A massive junction. The path to the South leads back to the cavern.\nTo the West you see a path full of leaves and vines.\nTo the East you see a big stainless steel door.",
+      "exits": { "south": "cavern", "west": "garden", "east": "freezer" },
+      "locked_paths": {
+        "east": {
+          "req_item": "shroom",
+          "msg": "The stainless steel door to the East is rusted shut. If only you had some kind of acidic alien flora...",
+          "success_msg": "You squeeze the acidic SHROOM over the hinges. The rust dissolves and the heavy door opens!"
+        }
+      }
+    },
+    "garden": {
+      "name": "garden",
+      "coords": [-2, 6],
+      "item_id": "shroom",
+      "desc": "Weird alien mushrooms growing everywhere! The vivid colors! All the different species.\nIt's truly magnificent. Maybe I should pick up just one for the road.\nThere are paths branching off to the West and North.",
+      "exits": { "east": "entryway", "west": "mud_pit", "north": "pink_pond" },
+      "locked_paths": {
+        "north": {
+          "req_item": "gun",
+          "msg": "A wall of thick, pulsating vines blocks the path north to the pond. They look too tough to cut.",
+          "success_msg": "You use the GUN to blast a smoldering hole straight through the thick vines! The path is clear."
+        }
+      }
+    },
+    "mud_pit": {
+      "name": "mud_pit",
+      "coords": [-4, 6],
+      "desc": "You trudge into a disgusting, thick mud pit. The smell is awful.\nIt's a complete dead end, and now your shoes are ruined.",
+      "exits": { "east": "garden" }
+    },
+    "freezer": {
+      "name": "freezer",
+      "coords": [2, 6],
+      "desc": "So cold. And dark. What is this place? Oh my God. Are those... human corpses?!\nThere's a sign that says \"Fresh Earthling Meat\".\nThere are exits leading East and North. I'd better keep moving...",
+      "exits": { "west": "entryway", "east": "storage", "north": "laboratory" }
+    },
+    "storage": {
+      "name": "storage",
+      "coords": [4, 6],
+      "item_id": "key",
+      "desc": "A cold, sterile storage closet. Most of the shelves are completely bare.\nIt's a dead end.",
+      "exits": { "west": "freezer" }
+    },
+    "pink_pond": {
+      "name": "pink_pond",
+      "coords": [-2, 4],
+      "item_id": "fish",
+      "desc": "I've never seen water like this before! That fish! What is that?!\nI could surely make some delicious fish paste out of one of those!\nA path to the North continues, but a heavy iron gate blocks the way.",
+      "exits": { "south": "garden", "north": "graveyard" },
+      "locked_paths": {
+        "north": {
+          "req_item": "key",
+          "msg": "A heavy iron gate blocks the path North. It has a rusty keyhole.",
+          "success_msg": "You inserted the KEY and turned it. The heavy iron gate creaks open!"
+        }
+      }
+    },
+    "laboratory": {
+      "name": "laboratory",
+      "coords": [2, 4],
+      "item_id": "gun",
+      "desc": "You walk into some sort of science lab. Beakers and flasks and things everywhere.\nA half-human, half-worm thing. Disgusting.\nBut such intricate gadgets and gizmos hang on the wall.\nThere's a door to the North, but a massive, pulsating bio-plant is blocking it.",
+      "exits": { "south": "freezer", "north": "dump" },
+      "locked_paths": {
+        "north": {
+          "req_item": "fish",
+          "msg": "A hungry, mutated plant covers the door to the North. It snaps its jaws at you.",
+          "success_msg": "You toss the alien FISH to the mutant plant. It eats it happily and moves out of the way!\nYou run."
+        }
+      }
+    },
+    "graveyard": {
+      "name": "graveyard",
+      "coords": [-2, 2],
+      "item_id": "scripture",
+      "desc": "Looks like things have been buried down here.\nWhat is that? It's some kind of ancient text.\nIt says 'If you've collected all eight, then Heaven awaits. Otherwise, you're worm food.'\nHmm. Weird. An eerie tunnel continues North.",
+      "exits": { "south": "pink_pond", "north": "worm_incubation_chamber" }
+    },
+    "dump": {
+      "name": "dump",
+      "coords": [2, 2],
+      "item_id": "poop",
+      "desc": "That smell! What is that awful, rancid scent? Wait... I'd recognize that smell anywhere.\nIt's poop. And not just any poop. Alien. Worm. Poop. Of course!\nA sign on the wall reads, \"You're getting worm-er.\" A poop pun.\nI'm too tired for puns. In fact... I'm pooped. A tunnel leads North.",
+      "exits": { "south": "laboratory", "north": "worm_incubation_chamber" }
+    },
+    "worm_incubation_chamber": {
+      "name": "worm_incubation_chamber",
+      "coords": [0, 0],
+      "item_id": "alien worm",
+      "desc": "Boss room.",
+      "exits": {}
+    }
+  }
+}
