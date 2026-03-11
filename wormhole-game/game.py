@@ -795,6 +795,12 @@ class Game:
             return
 
         target = " ".join(args)
+
+        # Add this block to intercept "use map"
+        if target == "map":
+            self.handle_map([])  # Send an empty list since handle_map doesn't need args
+            return
+
         room = self.rooms[self.player.current_room]
 
         if not self.player.has_item(target):
