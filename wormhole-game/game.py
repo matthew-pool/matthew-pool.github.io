@@ -579,7 +579,7 @@ class Game:
                     "You pull out your wormhole blaster, filling it with fish paste and warm worm poo.",
                     "You start firing, disintegrating the alien worm into a splatter of slime.",
                     "The ground starts giving away as more wormholes appear! You quickly fire at the ground.",
-                    "A cosmological wormhole manifests, and you leap! Guess you are a little worm-er after all.",
+                    "A cosmological wormhole manifests, and you leap! Guess you were a little worm-er after all.",
                 ]
 
                 # 2. Typewriter with NO extra vertical space between lines

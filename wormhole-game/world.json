@@ -24,7 +24,7 @@
       "name": "cavern",
       "coords": [0, 8],
       "item_id": "map",
-      "desc": "You awaken on the cold, hard ground - your clothes soaking wet. You feel sluggish... and disoriented.\n\"Where the Hell am I?\" you think to yourself in a haze.\n\nAs your senses begin to return, you realize you're lying in an almost pitch-black, unfamiliar\nplace and have no idea how you got there.\n\n\"Help!\" you scream. \"Help! Hel-\"You stop yourself as confusion quickly turns into primal fear.\n\nYou jump onto your feet, with paralyzing dread resonating throughout your entire body.\n\nHaving been born with a keen sense of cardinal direction, you instinctively shift focus to the north.\n\nYou notice a small, dark passageway. Your head instantly responds - \"Run.\"",
+      "desc": "You awaken on the cold, hard ground - your clothes soaking wet. You feel sluggish... and disoriented.\n\"Where the Hell am I?\" you think to yourself in a haze.\n\nAs your senses begin to return, you realize you're lying in an almost pitch-black, unfamiliar.\nplace and have no idea how you got there.\n\n\"Help!\" you scream. \"Help! Hel-\" You stop yourself as confusion quickly turns into primal fear.\n\nYou jump onto your feet, with paralyzing dread resonating throughout your entire body.\n\nHaving been born with a keen sense of cardinal direction, you instinctively shift focus to the north.\n\nYou notice a small, dark passageway. Your head instantly responds - Run.",
       "alt_desc": "You are back in the damp cavern where you first woke up.\nYou see a small, dark passageway to the North...",
       "exits": { "north": "entryway" }
     },
@@ -107,7 +107,7 @@
       "name": "graveyard",
       "coords": [-2, 2],
       "item_id": "scripture",
-      "desc": "Looks like things have been buried down here.\nWhat is that? It's some kind of ancient text.\nIt says 'If you've collected all eight, then Heaven awaits. Otherwise, you're worm food.'\nHmm. Weird. An eerie tunnel continues North.",
+      "desc": "Looks like things have been buried down here.\nWhat is that? It's some kind of ancient text.\nIt says, 'If you've collected more than seven, then straight ahead lies Heaven. Otherwise, you're worm food.'\nHmm. Weird. An eerie tunnel continues North.",
       "exits": { "south": "pink_pond", "north": "worm_incubation_chamber" }
     },
     "dump": {
