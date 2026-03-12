@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wormhole</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=VT323&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<script type="text/javascript" src="https://download.playfab.com/PlayFabClientApi.js"></script>
+
+<style>
+  :root {
+    --green:      #00ff41;
+    --green-dim:  #00aa2b;
+    --green-dark: #003d10;
+    --yellow:     #f0e040;
+    --cyan:       #00e5ff;
+    --red:        #ff3333;
+    --magenta:    #ff44cc;
+    --white:      #e8e8e8;
+    --gray:       #555566;
+    --bg:         #030a04;
+    --panel:      #061007;
+    --border:     #0d2e10;
+    --glow:       0 0 8px rgba(0,255,65,.6), 0 0 22px rgba(0,255,65,.15);
+    --glow-dim:   0 0 4px rgba(0,255,65,.3);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    height: 100%;
+    background: var(--bg);
+    color: var(--green);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 15px;
+    overflow: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 2px,
+      rgba(0,0,0,.10) 2px, rgba(0,0,0,.10) 4px
+    );
+    pointer-events: none; z-index: 999;
+  }
+  body::after {
+    content: '';
+    position: fixed; inset: 0;
+    background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.75) 100%);
+    pointer-events: none; z-index: 998;
+  }
+
+  .screen { display: none; height: 100vh; width: 100vw; }
+  .screen.active { display: flex; }
+
+  /* ── TITLE ── */
+  #title-screen {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: flicker 9s infinite;
+  }
+  @keyframes flicker { 0%,94%,96%,100%{opacity:1} 95%{opacity:.82} }
+  .title-main {
+    font-family: 'VT323', monospace;
+    font-size: clamp(32px, 6vw, 68px);
+    color: var(--magenta);
+    text-shadow: 0 0 14px rgba(255,68,204,.8), 0 0 36px rgba(255,68,204,.25);
+    letter-spacing: .18em; text-align: center; line-height: 1;
+  }
+  .title-sub {
+    font-family: 'VT323', monospace; font-size: 21px;
+    color: var(--green-dim); letter-spacing: .3em; text-align: center; margin-top: 5px;
+  }
+.title-divider {
+    width: min(640px, 88vw); border: none;
+    border-top: 1px solid var(--border); 
+    margin: 16px 0 4px; /* Changed from '16px 0' to pull the author text tighter */
+  }
+  .title-author {
+    font-family: 'VT323', monospace; 
+    font-size: 15px; /* Reduced size (was 20px) */
+    color: var(--yellow); text-shadow: 0 0 8px rgba(240,224,64,.5);
+    letter-spacing: .1em; text-align: center;
+  }
+  .title-blink {
+    font-family: 'VT323', monospace; font-size: 26px;
+    color: var(--white); letter-spacing: .08em; margin-top: 30px;
+    animation: blink 1.1s step-end infinite; text-align: center;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+  .title-cmds { 
+    font-size: 14px; 
+    color: var(--white); /* Much lighter */
+    position: absolute;  /* Pin to the bottom */
+    bottom: 25px; 
+    width: 100%;
+    text-align: center; 
+  }
+
+  /* ── GAME SCREEN ── */
+  #game-screen { flex-direction: column; height: 100vh; overflow: hidden; }
+
+  /* Status bar — 2 rows */
+  #status-bar {
+    flex-shrink: 0;
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+    padding: 4px 14px 4px;
+  }
+  .sb-row {
+    display: flex; align-items: baseline;
+    font-size: 13px; line-height: 1.5;
+  }
+  .sb-row1 { justify-content: space-between; }
+  .sb-label { color: var(--cyan); margin-right: 5px; white-space: nowrap; }
+  #sb-loc { color: var(--white); }
+  #sb-inv {
+    color: var(--yellow); flex: 1;
+    /* allow wrapping for full 8-item inventory */
+    white-space: normal; word-break: break-word;
+  }
+  #timer {
+    font-family: 'VT323', monospace; font-size: 20px;
+    color: var(--green); text-shadow: var(--glow-dim);
+    white-space: nowrap; line-height: 1;
+  }
+
+  /* Scrollable description area — takes all remaining vertical space */
+  #desc {
+    flex: 1;
+    overflow-y: auto;
+    padding: 12px 16px 8px;
+    min-height: 0;
+    scroll-behavior: smooth;
+  }
+  #desc::-webkit-scrollbar { width: 5px; }
+  #desc::-webkit-scrollbar-track { background: var(--bg); }
+  #desc::-webkit-scrollbar-thumb { background: var(--green-dark); border-radius: 3px; }
+
+  /* Fixed bottom panel */
+  #bottom-panel {
+    flex-shrink: 0;
+    background: var(--panel);
+    border-top: 1px solid var(--border);
+  }
+  /* Input row */
+  #input-area {
+    padding: 6px 13px;
+    display: flex; align-items: center; gap: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+#input-prompt { color: var(--green); font-size: 18px; font-weight: bold; text-shadow: var(--glow-dim); }
+  #input-field {
+    flex: 1; background: transparent; border: none; outline: none;
+    color: var(--green); font-family: 'Share Tech Mono', monospace;
+    font-size: 18px; caret-color: var(--green);
+  }
+  #input-field::placeholder { color: var(--gray); }
+  .cmd-bar {
+    font-size: 14px; color: var(--white); /* Increased size, brighter color */
+    padding: 4px 14px 6px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .cmd-bar span { color: var(--yellow); } /* Highlight 'Commands:' in yellow */
+
+  /* Text line classes */
+  .ln { transition: color 0.4s ease; } /* Adds the smooth fade effect */
+  .dimmed { color: #333333 !important; text-shadow: none !important; } /* Very dark gray */
+  .ln { line-height: 1.55; white-space: pre-wrap; word-break: break-word; margin-bottom: 1px; }
+  .c-green   { color: var(--green); }
+  .c-yellow  { color: var(--yellow); }
+  .c-cyan    { color: var(--cyan); }
+  .c-red     { color: var(--red); }
+  .c-white   { color: var(--white); }
+  .c-gray    { color: var(--gray); }
+  .c-sep     { color: var(--green-dark); }
+
+  /* Map overlay */
+  #map-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,.93); z-index: 200;
+    align-items: center; justify-content: center;
+    flex-direction: column; gap: 14px;
+  }
+  #map-overlay.open { display: flex; }
+  #map-box {
+    font-family: 'Share Tech Mono', monospace; font-size: 14px; line-height: 1.65;
+    color: var(--green); background: var(--panel); border: 1px solid var(--green-dark);
+    padding: 18px 24px; max-width: 95vw; overflow: auto; box-shadow: var(--glow);
+  }
+  .map-title {
+    font-family: 'VT323', monospace; font-size: 28px; color: var(--cyan);
+    text-align: center; letter-spacing: .2em; margin-bottom: 6px;
+  }
+  #map-hint { font-size: 13px; color: var(--cyan); letter-spacing: .1em; animation: blink 1.2s step-end infinite; }
+
+  /* End screen */
+  #end-screen {
+    flex-direction: column; align-items: center; justify-content: center;
+    padding: 24px 20px; text-align: center; overflow-y: auto; gap: 0;
+  }
+  .end-story { max-width: 700px; margin-bottom: 20px; }
+  .end-line {
+    font-family: 'VT323', monospace; font-size: 22px; color: var(--white);
+    line-height: 1.7; opacity: 0; transform: translateY(6px);
+    transition: opacity .55s ease, transform .55s ease;
+  }
+  .end-line.show { opacity: 1; transform: none; }
+  .end-result {
+    font-family: 'VT323', monospace; font-size: 46px; letter-spacing: .15em;
+    margin: 10px 0 4px; opacity: 0; transition: opacity .8s ease;
+  }
+  .end-result.show { opacity: 1; }
+  .end-result.win  { color: var(--green); text-shadow: var(--glow); }
+  .end-result.lose { color: var(--red); text-shadow: 0 0 14px rgba(255,51,51,.7); }
+  .end-time {
+    font-family: 'VT323', monospace; font-size: 26px; color: var(--cyan);
+    opacity: 0; transition: opacity .8s ease; margin-bottom: 16px;
+  }
+  .end-time.show { opacity: 1; }
+  #hs-banner {
+    font-family: 'VT323', monospace; font-size: 22px; color: var(--yellow);
+    text-shadow: 0 0 8px rgba(240,224,64,.5); letter-spacing: .1em;
+    margin-bottom: 8px; opacity: 0; transition: opacity .8s ease;
+  }
+  #hs-banner.show { opacity: 1; }
+  #name-form {
+    display: flex; align-items: center; gap: 8px; margin-bottom: 16px;
+    opacity: 0; transition: opacity .8s ease;
+  }
+  #name-form.show { opacity: 1; }
+  #name-input {
+    background: var(--panel); border: 1px solid var(--green-dark);
+    color: var(--green); font-family: 'Share Tech Mono', monospace;
+    font-size: 15px; padding: 5px 10px; outline: none; caret-color: var(--green); width: 190px;
+  }
+  #name-input:focus { border-color: var(--green); box-shadow: var(--glow-dim); }
+  #leaderboard { min-width: 320px; margin-bottom: 18px; opacity: 0; transition: opacity .8s ease; }
+  #leaderboard.show { opacity: 1; }
+  .lb-title {
+    font-family: 'VT323', monospace; font-size: 22px; color: var(--yellow);
+    letter-spacing: .2em; border-bottom: 1px solid var(--border);
+    padding-bottom: 4px; margin-bottom: 5px;
+  }
+  .lb-row { font-size: 14px; display: flex; gap: 10px; padding: 2px 0; border-bottom: 1px solid var(--border); }
+  .lb-rank { color: var(--cyan); width: 22px; flex-shrink: 0; }
+  .lb-name { color: var(--white); flex: 1; text-align: left; }
+  .lb-time { color: var(--green); width: 48px; text-align: right; }
+  .lb-you .lb-name, .lb-you .lb-time { color: var(--yellow); }
+  #end-actions { display: flex; gap: 14px; opacity: 0; transition: opacity .8s ease; }
+  #end-actions.show { opacity: 1; }
+  .btn {
+    font-family: 'VT323', monospace; font-size: 21px; letter-spacing: .1em;
+    padding: 3px 20px; background: transparent; border: 1px solid currentColor;
+    cursor: pointer; transition: background .18s, color .18s;
+  }
+  .btn-g { color: var(--green); }
+  .btn-g:hover { background: var(--green); color: var(--bg); }
+  .btn-r { color: var(--red); }
+  .btn-r:hover { background: var(--red); color: var(--bg); }
+</style>
+</head>
+<body>
+
+<!-- TITLE -->
+<div id="title-screen" class="screen active">
+  <div class="title-main">W O R M H O L E</div>
+  <div class="title-sub">A TEXT ADVENTURE GAME</div>
+  <hr class="title-divider">
+  <div class="title-author">Created by Matthew Pool</div>
+  <div class="title-blink">Press &lt;ENTER&gt; to start</div>
+  <div class="title-cmds">go (dir) &nbsp;|&nbsp; get (item) &nbsp;|&nbsp; use (item) &nbsp;|&nbsp; map &nbsp;|&nbsp; help &nbsp;|&nbsp; exit</div>
+</div>
+
+<!-- GAME -->
+<div id="game-screen" class="screen">
+  <div id="status-bar">
+    <div class="sb-row sb-row1">
+      <div><span class="sb-label">LOCATION:</span><span id="sb-loc"> —</span></div>
+      <div id="timer">00:00</div>
+    </div>
+    <div class="sb-row">
+      <span class="sb-label">INVENTORY:</span><span id="sb-inv"> Empty</span>
+    </div>
+  </div>
+    
+  <div id="desc"></div>
+  
+  <div id="bottom-panel">
+    <div id="input-area">
+      <span id="input-prompt">&gt;</span>
+      <input id="input-field" type="text" autocomplete="off" spellcheck="false" placeholder="What do you do?">
+    </div>
+    <div class="cmd-bar"><span>Commands:</span> [ go (dir) | get (item) | use (item) | map | help | exit ]</div>
+  </div>
+</div>
+
+<!-- MAP OVERLAY -->
+<div id="map-overlay">
+  <div id="map-box">
+    <div class="map-title">— MAP —</div>
+    <div id="map-content"></div>
+  </div>
+  <div id="map-hint">[ Press ENTER or ESC to close the map... ]</div>
+</div>
+
+<!-- END SCREEN -->
+<div id="end-screen" class="screen">
+  <div class="end-story" id="end-story"></div>
+  <div class="end-result" id="end-result"></div>
+  <div class="end-time" id="end-time"></div>
+  <div id="hs-banner">*** NEW TOP 5 HIGH SCORE! ***</div>
+  <div id="name-form">
+    <input id="name-input" type="text" maxlength="15" placeholder="Enter your name..." autocomplete="off">
+    <button class="btn btn-g" id="name-submit">SUBMIT</button>
+  </div>
+  <div id="leaderboard">
+    <div class="lb-title">LEADERBOARD</div>
+    <div id="lb-rows"></div>
+  </div>
+  <div id="end-actions">
+    <button class="btn btn-g" id="btn-again">PLAY AGAIN</button>
+    <button class="btn btn-r" id="btn-quit">QUIT</button>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════
+// WORLD DATA
+// ═══════════════════════════════════════════════
+const WORLD = {
+  items: {
+    "map":        { name:"map",        desc:"A damp, crude map outlining the cave system." },
+    "compass":    { name:"compass",    desc:"A reliable magnetic compass." },
+    "shroom":     { name:"shroom",     desc:"An acidic alien mushroom with vivid colors." },
+    "gun":        { name:"gun",        desc:"A high-tech wormhole blaster." },
+    "key":        { name:"key",        desc:"A heavy, rusty iron key." },
+    "fish":       { name:"fish",       desc:"A weird, glowing pink fish." },
+    "scripture":  { name:"scripture",  desc:"An ancient text containing alien scripture." },
+    "poop":       { name:"poop",       desc:"Incredibly smelly alien worm poop." },
+    "alien worm": { name:"alien worm", desc:"A hideous creature!" }
+  },
+  rooms: {
+  cavern: {
+      name:"cavern", coords:[0,8], item_id:"map",
+      desc:`You awaken on the cold, hard ground - your clothes soaking wet. You feel sluggish... and disoriented.\n\u00A0\n"Where the Hell am I?" you think to yourself in a haze.\n\u00A0\nAs your senses begin to return, you realize you're lying in an almost pitch-black, unfamiliar\nplace and have no idea how you got there.\n\u00A0\n"Help!" you scream. "Help! Hel-" You stop yourself as confusion quickly turns into primal fear.\n\u00A0\nYou jump onto your feet, with paralyzing dread resonating throughout your entire body.\n\u00A0\nHaving been born with a keen sense of cardinal direction, you instinctively shift focus to the north.\n\u00A0\nYou notice a small, dark passageway. Your head instantly responds - Run.`,
+      alt_desc:`You are back in the damp cavern where you first woke up.\nYou see a small, dark passageway to the North...`,
+      exits:{ north:"entryway" }, locked_paths:{}
+    },
+    entryway: {
+      name:"entryway", coords:[0,6], item_id:"compass",
+      desc:`A massive junction. The path to the South leads back to the cavern.\nTo the West you see a path full of leaves and vines.\nTo the East you see a big stainless steel door.`,
+      exits:{ south:"cavern", west:"garden", east:"freezer" },
+      locked_paths:{
+        east:{ req_item:"shroom",
+          msg:"The stainless steel door to the East is rusted shut. If only you had some kind of acidic alien flora...",
+          success_msg:"You squeeze the acidic SHROOM over the hinges. The rust dissolves and the heavy door opens!" }
+      }
+    },
+    garden: {
+      name:"garden", coords:[-2,6], item_id:"shroom",
+      desc:`Weird alien mushrooms growing everywhere! The vivid colors! All the different species.\nIt's truly magnificent. Maybe I should pick up just one for the road.\nThere are paths branching off to the West and North.`,
+      exits:{ east:"entryway", west:"mud_pit", north:"pink_pond" },
+      locked_paths:{
+        north:{ req_item:"gun",
+          msg:"A wall of thick, pulsating vines blocks the path north to the pond. They look too tough to cut.",
+          success_msg:"You use the GUN to blast a smoldering hole straight through the thick vines! The path is clear." }
+      }
+    },
+    mud_pit: {
+      name:"mud_pit", coords:[-4,6],
+      desc:`You trudge into a disgusting, thick mud pit. The smell is awful.\nIt's a complete dead end, and now your shoes are ruined.`,
+      exits:{ east:"garden" }, locked_paths:{}
+    },
+    freezer: {
+      name:"freezer", coords:[2,6],
+      desc:`So cold. And dark. What is this place? Oh my God. Are those... human corpses?!\nThere's a sign that says "Fresh Earthling Meat".\nThere are exits leading East and North. I'd better keep moving...`,
+      exits:{ west:"entryway", east:"storage", north:"laboratory" }, locked_paths:{}
+    },
+    storage: {
+      name:"storage", coords:[4,6], item_id:"key",
+      desc:`A cold, sterile storage closet. Most of the shelves are completely bare.\nIt's a dead end.`,
+      exits:{ west:"freezer" }, locked_paths:{}
+    },
+    pink_pond: {
+      name:"pink_pond", coords:[-2,4], item_id:"fish",
+      desc:`I've never seen water like this before! That fish! What is that?!\nI could surely make some delicious fish paste out of one of those!\nA path to the North continues, but a heavy iron gate blocks the way.`,
+      exits:{ south:"garden", north:"graveyard" },
+      locked_paths:{
+        north:{ req_item:"key",
+          msg:"A heavy iron gate blocks the path North. It has a rusty keyhole.",
+          success_msg:"You inserted the KEY and turned it. The heavy iron gate creaks open!" }
+      }
+    },
+    laboratory: {
+      name:"laboratory", coords:[2,4], item_id:"gun",
+      desc:`You walk into some sort of science lab. Beakers and flasks and things everywhere.\nA half-human, half-worm thing. Disgusting.\nBut such intricate gadgets and gizmos hang on the wall.\nThere's a door to the North, but a massive, pulsating bio-plant is blocking it.`,
+      exits:{ south:"freezer", north:"dump" },
+      locked_paths:{
+        north:{ req_item:"fish",
+          msg:"A hungry, mutated plant covers the door to the North. It snaps its jaws at you.",
+          success_msg:"You toss the alien FISH to the mutant plant. It eats it happily and moves out of the way!\nYou run." }
+      }
+    },
+    graveyard: {
+      name:"graveyard", coords:[-2,2], item_id:"scripture",
+      desc:`Looks like things have been buried down here.\nWhat is that? It's some kind of ancient text.\nIt says 'If you've collected more than seven, then straight ahead lies Heaven. Otherwise, you're worm food.'\nHmm. Weird. An eerie tunnel continues North.`,
+      exits:{ south:"pink_pond", north:"worm_incubation_chamber" }, locked_paths:{}
+    },
+    dump: {
+      name:"dump", coords:[2,2], item_id:"poop",
+      desc:`That smell! What is that awful, rancid scent? Wait... I'd recognize that smell anywhere.\nIt's poop. And not just any poop. Alien. Worm. Poop. Of course!\nA sign on the wall reads, "You're getting worm-er." A poop pun.\nI'm too tired for puns. In fact... I'm pooped. A tunnel leads North.`,
+      exits:{ south:"laboratory", north:"worm_incubation_chamber" }, locked_paths:{}
+    },
+    worm_incubation_chamber: {
+      name:"worm_incubation_chamber", coords:[0,0], item_id:"alien worm",
+      desc:"Boss room.", exits:{}, locked_paths:{}
+    }
+  }
+};
+
+// ═══════════════════════════════════════════════
+// CONSTANTS
+// ═══════════════════════════════════════════════
+const STOP_WORDS  = new Set(["the","a","an","to","at","my","some"]);
+const DIR_ALIAS   = { up:"north", down:"south", right:"east", left:"west" };
+const VALID_DIRS  = new Set(["north","south","east","west"]);
+const BOSS_ROOM   = "worm_incubation_chamber";
+const TOTAL_ITEMS = 8;
+const MOVE_DELAY  = 700;  // ms "You decide to go..." shows before transition
+
+// ═══════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════
+let G = {};
+let timerID = null;
+let twSkip    = false;
+let twRunning = false;
+let timerPausedElapsed = 0;
+
+function initState() {
+  const rooms = {};
+  for (const [k, r] of Object.entries(WORLD.rooms)) {
+    rooms[k] = {
+      ...r,
+      item: r.item_id ? { ...WORLD.items[r.item_id] } : null,
+      locked_paths: JSON.parse(JSON.stringify(r.locked_paths || {})),
+      unlocked_paths: [],
+      visited: false, revisited: false,
+    };
+  }
+  G = {
+    rooms,
+    player: { currentRoom:"cavern", previousRoom:null, inventory:[], itemsCollected:0, sillyCount:0 },
+    startTime: null, isRunning: false, inputLocked: false,
+  };
+}
+
+// ═══════════════════════════════════════════════
+// LEADERBOARD
+// ═══════════════════════════════════════════════
+// ═══════════════════════════════════════════════
+// PLAYFAB LEADERBOARD API
+// ═══════════════════════════════════════════════
+PlayFab.settings.titleId = "1D075"; // Your Title ID
+
+let playFabId = null;
+let cachedLB = [];
+
+function getCustomId() {
+  let id = localStorage.getItem("wh_uid");
+  if (!id) {
+    id = "uid_" + Math.random().toString(36).substr(2, 9) + Date.now();
+    localStorage.setItem("wh_uid", id);
+  }
+  return id;
+}
+
+function loginPlayFab() {
+  return new Promise(resolve => {
+    const request = { TitleId: PlayFab.settings.titleId, CustomId: getCustomId(), CreateAccount: true };
+    PlayFabClientSDK.LoginWithCustomID(request, (res, err) => {
+      if (res) playFabId = res.data.PlayFabId;
+      resolve();
+    });
+  });
+}
+
+function updatePlayerName(name) {
+  return new Promise(resolve => {
+    PlayFabClientSDK.UpdateUserTitleDisplayName({ DisplayName: name }, () => resolve());
+  });
+}
+
+function saveLB(elapsedSec) {
+  return new Promise(resolve => {
+    const ms = Math.floor(elapsedSec * 1000); 
+    PlayFabClientSDK.UpdatePlayerStatistics({ Statistics: [{ StatisticName: "ClearTime", Value: ms }] }, () => resolve());
+  });
+}
+
+function loadLB() {
+  return new Promise(resolve => {
+    const request = { StatisticName: "ClearTime", StartPosition: 0, MaxResultsCount: 5 };
+    PlayFabClientSDK.GetLeaderboard(request, (res, err) => {
+      if (res && res.data.Leaderboard) {
+        const lb = res.data.Leaderboard.map(entry => ({
+          name: entry.DisplayName || "Anonymous",
+          t: entry.StatValue / 1000 
+        }));
+        resolve(lb);
+      } else { resolve([]); }
+    });
+  });
+}
+
+async function initPlayFab() {
+  await loginPlayFab();
+  cachedLB = await loadLB();
+}
+
+// ═══════════════════════════════════════════════
+// TIMER
+// ═══════════════════════════════════════════════
+function startTimer()  { timerPausedElapsed=0; G.startTime=performance.now(); timerID=setInterval(tickTimer,1000); tickTimer(); }
+function stopTimer()   { clearInterval(timerID); timerID=null; }
+function pauseTimer()  { if(!timerID)return; timerPausedElapsed=getElapsed(); clearInterval(timerID); timerID=null; }
+function resumeTimer() { if(timerID)return; G.startTime=performance.now()-timerPausedElapsed*1000; timerID=setInterval(tickTimer,1000); tickTimer(); }
+function getElapsed()  { return (performance.now()-G.startTime)/1000; }
+function fmt(s)        { const m=Math.floor(s/60),ss=Math.floor(s%60); return `${String(m).padStart(2,'0')}:${String(ss).padStart(2,'0')}`; }
+function tickTimer() { 
+const best = cachedLB.length ? fmt(cachedLB[0].t) : "--:--"; 
+  document.getElementById("timer").textContent=`⏱ ${fmt(getElapsed())}  |  Best: ${best}`; 
+}
+
+// ═══════════════════════════════════════════════
+// OUTPUT — all text goes into #desc
+// ═══════════════════════════════════════════════
+const descEl = document.getElementById("desc");
+
+function clearDesc() { descEl.innerHTML = ""; }
+
+function print(text, cls="c-green") {
+  String(text).split("\n").forEach(line => {
+    const d = document.createElement("div");
+    d.className = `ln ${cls}`;
+    d.textContent = line;
+    descEl.appendChild(d);
+  });
+  descEl.scrollTop = descEl.scrollHeight;
+}
+
+function printH(html, cls="c-green") {
+  const d = document.createElement("div");
+  d.className = `ln ${cls}`;
+  d.innerHTML = html;
+  descEl.appendChild(d);
+  descEl.scrollTop = descEl.scrollHeight;
+}
+
+function printBlank() { print("\u00A0"); }
+
+// Typewriter — press ENTER to flush instantly
+function typewriter(text, speed=20, cls="c-white") {
+  return new Promise(resolve => {
+    twSkip = false; twRunning = true;
+    
+    // Lock typing, clear input
+    const inputField = document.getElementById("input-field");
+    if (inputField) {
+      inputField.readOnly = true;
+      inputField.value = "";
+    }
+
+    const lines = String(text).split("\n");
+    let li=0, ci=0, el=null;
+
+    function flush() {
+      if (el) { el.textContent += lines[li].slice(ci); li++; el=null; }
+      while (li < lines.length) {
+        const d = document.createElement("div");
+        d.className = `ln ${cls}`;
+        d.textContent = lines[li];
+        descEl.appendChild(d);
+        li++;
+      }
+      descEl.scrollTop = descEl.scrollHeight;
+      twSkip=false; twRunning=false; 
+      
+      // Unlock typing
+      if (inputField && !G.inputLocked) inputField.readOnly = false;
+      resolve();
+    }
+
+    function next() {
+      if (twSkip) { flush(); return; }
+      if (li >= lines.length) { 
+        twSkip=false; twRunning=false; 
+        if (inputField && !G.inputLocked) inputField.readOnly = false;
+        resolve(); 
+        return; 
+      }
+      if (!el) { el=document.createElement("div"); el.className=`ln ${cls}`; descEl.appendChild(el); }
+      const line = lines[li];
+      if (ci < line.length) {
+        el.textContent += line[ci++];
+        descEl.scrollTop = descEl.scrollHeight;
+        setTimeout(next, speed);
+      } else { el=null; ci=0; li++; setTimeout(next, speed*2); }
+    }
+    next();
+  });
+}
+
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+// ═══════════════════════════════════════════════
+// ITEM BAR (fixed, updated in-place)
+// ═══════════════════════════════════════════════
+function updateItemBar() {
+  const room = G.rooms[G.player.currentRoom];
+  const bar  = document.getElementById("item-bar");
+  if (room.item && room.item.name !== "alien worm") {
+    bar.innerHTML = `[*] You see a(n) <span style="color:var(--yellow)">${room.item.name.toUpperCase()}</span> here.`;
+  } else {
+    bar.innerHTML = `<span class="c-gray">[*] No items here.</span>`;
+  }
+}
+
+// ═══════════════════════════════════════════════
+// STATUS BAR
+// ═══════════════════════════════════════════════
+function titleCase(s) { return s.replace(/\b\w/g, c=>c.toUpperCase()); }
+
+function updateSB() {
+  const p = G.player, room = G.rooms[p.currentRoom];
+  document.getElementById("sb-loc").textContent =
+    " " + room.name.replace(/_/g," ").replace(/\b\w/g,c=>c.toUpperCase());
+  document.getElementById("sb-inv").textContent = p.inventory.length
+    ? " " + titleCase(p.inventory.map(i=>i.name).join(", "))
+    : " Empty";
+}
+
+// ═══════════════════════════════════════════════
+// SHOW ROOM — clears desc, writes description, updates bars
+// ═══════════════════════════════════════════════
+async function showRoom() {
+  const p = G.player, room = G.rooms[p.currentRoom];
+  const justArrived = p.currentRoom !== p.previousRoom;
+
+  updateSB();
+  clearDesc(); // Clear previous room text
+
+  // Set revisited flag 
+  if (justArrived && room.visited) room.revisited = true;
+
+  let txt, doTW = false;
+  if (!room.visited) {
+    txt  = room.desc;
+    doTW = true;
+    room.visited = true;
+  } else if (!room.revisited) {
+    txt = room.desc;
+  } else if (justArrived) {
+    const roomTitle = room.name.replace(/_/g," ").replace(/\b\w/g,c=>c.toUpperCase());
+    txt = (room.item || room.alt_desc !== room.desc)
+      ? (room.alt_desc || room.desc)
+      : `You are back in the ${roomTitle}. You've already cleared this area out.`;
+  } else {
+    txt = (room.alt_desc || room.desc).replace("You are back in","You are still in");
+  }
+
+// Type or print the main room description
+  if (doTW) await typewriter(txt, 20, "c-white");
+  else      print(txt, "c-white");
+
+  // Force a guaranteed blank row of space
+  print("\u00A0");
+  
+  // Create a targeted div for the item text
+  const itemDiv = document.createElement("div");
+  itemDiv.id = "current-room-item";
+  if (room.item && room.item.name !== "alien worm") {
+    itemDiv.className = "ln";
+    itemDiv.innerHTML = `[*] You see a(n) <span style="color:var(--yellow)">${room.item.name.toUpperCase()}</span> here.`;
+  } else {
+    itemDiv.className = "ln c-gray";
+    itemDiv.innerHTML = `[*] No items are seen here.`;
+  }
+  descEl.appendChild(itemDiv);
+  descEl.scrollTop = descEl.scrollHeight;
+}
+
+// ═══════════════════════════════════════════════
+// INPUT CONTROL & FOCUS
+// ═══════════════════════════════════════════════
+// NEVER disable the input field — it must stay focusable at all times.
+// G.inputLocked just prevents commands from being dispatched.
+function lockInput(on) {
+  G.inputLocked = on;
+  if (!on) focusInput();
+}
+function focusInput() {
+  const f = document.getElementById("input-field");
+  if (f) f.focus();
+}
+
+// Resolves on the next Enter keypress
+function waitForEnter() {
+  return new Promise(resolve => {
+    function onKey(e) {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        e.stopPropagation(); 
+        // Remove capturing listener
+        document.removeEventListener("keydown", onKey, true);
+        resolve();
+      }
+    }
+    // Add capturing listener
+    document.addEventListener("keydown", onKey, true);
+  });
+}
+
+// ═══════════════════════════════════════════════
+// APPEND HELPERS — never clear desc, just add below
+// ═══════════════════════════════════════════════
+
+// Append a short message, add a blank space above it, and clear it after a short delay
+function appendMsg(printFn, delay = 1200) {
+  const startCount = descEl.childNodes.length;
+  
+  printBlank();
+  printFn();
+  
+  const endCount = descEl.childNodes.length;
+  const nodesToRemove = [];
+  
+  // Track specifically the nodes we just added
+  for (let i = startCount; i < endCount; i++) {
+    nodesToRemove.push(descEl.childNodes[i]);
+  }
+  
+  descEl.scrollTop = descEl.scrollHeight;
+
+  // Auto clear them after delay
+  setTimeout(() => {
+    nodesToRemove.forEach(node => {
+      // Ensure the node still exists in this container (user didn't move to a new room)
+      if (node.parentNode === descEl) {
+        descEl.removeChild(node);
+      }
+    });
+  }, delay);
+}
+
+// Append an important message + blinking prompt, lock input, and wait for Enter
+async function appendMsgWaitEnter(printFn) {
+  printBlank();
+  printFn();
+  printBlank();
+  
+  const promptEl = document.createElement("div");
+  promptEl.className = "ln c-cyan";
+  promptEl.innerHTML = `<span style="animation:blink 1.1s step-end infinite">Press &lt;ENTER&gt; to continue...</span>`;
+  descEl.appendChild(promptEl);
+  descEl.scrollTop = descEl.scrollHeight;
+
+  // PHYSICALLY LOCK INPUT: Prevent user from typing in the command line
+  const inputField = document.getElementById("input-field");
+  if (inputField) {
+    inputField.readOnly = true;
+    inputField.value = ""; // Clear anything they started typing
+    inputField.blur();     // Remove active cursor
+  }
+
+  G.inputLocked = true;
+  await waitForEnter();
+  G.inputLocked = false;
+
+  // UNLOCK INPUT
+  if (inputField) {
+    inputField.readOnly = false;
+  }
+
+  // Remove "Press ENTER" prompt + blank line before it
+  if (promptEl.parentNode) descEl.removeChild(promptEl);
+  const prev = descEl.lastElementChild;
+  if (prev && prev.textContent === "") descEl.removeChild(prev);
+
+  focusInput();
+}
+
+// ═══════════════════════════════════════════════
+// MAP
+// ═══════════════════════════════════════════════
+function buildMap() {
+  const rooms=G.rooms, p=G.player;
+  const hasCompass = p.inventory.some(i=>i.name==="compass");
+  const coords = Object.values(rooms).map(r=>r.coords);
+  const minX=Math.min(...coords.map(c=>c[0])), maxX=Math.max(...coords.map(c=>c[0]));
+  const minY=Math.min(...coords.map(c=>c[1])), maxY=Math.max(...coords.map(c=>c[1]));
+
+  // Scale multiplies the coordinate gap between rooms
+  const SCALE = 2; 
+  const minX_s = minX * SCALE, maxX_s = maxX * SCALE;
+  const minY_s = minY * SCALE, maxY_s = maxY * SCALE;
+  const cols = maxX_s - minX_s + 1;
+  const rows_ = maxY_s - minY_s + 1;
+  
+  // Using 7 spaces to accommodate node brackets properly
+  const grid = Array.from({length: rows_}, () => Array(cols).fill("       "));
+  const drawn=new Set();
+
+  for (const [name,room] of Object.entries(rooms)) {
+    for (const [,target] of Object.entries(room.exits)) {
+      const pid=[name,target].sort().join("|");
+      if (drawn.has(pid)) continue; drawn.add(pid);
+      const tr=rooms[target]; if(!tr)continue;
+
+      const x1 = (room.coords[0] * SCALE) - minX_s;
+      const y1 = (room.coords[1] * SCALE) - minY_s;
+      const x2 = (tr.coords[0] * SCALE) - minX_s;
+      const y2 = (tr.coords[1] * SCALE) - minY_s;
+
+      const dx = Math.sign(x2 - x1);
+      const dy = Math.sign(y2 - y1);
+
+      let cx = x1 + dx;
+      let cy = y1 + dy;
+      while(cx !== x2 || cy !== y2) {
+         if (dy === 0) grid[cy][cx] = "-------";
+         else if (dx === 0) grid[cy][cx] = "   |   ";
+         else {
+            const c = (x2-x1)*(y2-y1);
+            grid[cy][cx] = c > 0 ? "   \\   " : "   /   ";
+         }
+         cx += dx;
+         cy += dy;
+      }
+    }
+  }
+
+  // --- Force a vertical line above the top-left and top-right rooms ---
+  if (rooms["graveyard"]) {
+    const gx = (rooms["graveyard"].coords[0] * SCALE) - minX_s;
+    const gy = (rooms["graveyard"].coords[1] * SCALE) - minY_s;
+    grid[gy - 1][gx] = "   |   "; 
+  }
+  if (rooms["dump"]) {
+    const gx = (rooms["dump"].coords[0] * SCALE) - minX_s;
+    const gy = (rooms["dump"].coords[1] * SCALE) - minY_s;
+    grid[gy - 1][gx] = "   |   ";
+  }
+  // ------------------------------------------------------------------------
+
+  // Existing node drawing loop...
+  for (const [name,room] of Object.entries(rooms)) {
+    // RESTORED VARIABLES HERE:
+    const gx = (room.coords[0] * SCALE) - minX_s;
+    const gy = (room.coords[1] * SCALE) - minY_s;
+    
+    const isBoss=name===BOSS_ROOM, isCur=name===p.currentRoom;
+    let node;
+    // Nodes wrapped in padded spaces to center nicely with 7-character pathways
+    if      (isBoss&&hasCompass&&isCur) node=` &lt;<span style="color:var(--red)"> X </span>&gt; `;
+    else if (isBoss&&hasCompass)        node=` &lt;<span style="color:var(--red)"> ? </span>&gt; `;
+    else if (isCur)                     node=` [<span style="color:var(--green)"> X </span>] `;
+    else if (room.visited)              node=` [<span style="color:var(--yellow)"> O </span>] `;
+    else                                node=" [   ] ";
+    grid[gy][gx]=node;
+  }
+  
+  let mapHTML="";
+  for (const row of grid) mapHTML+=row.join("")+"\n";
+  const legend=hasCompass
+    ?`[<span style="color:var(--green)"> X </span>] You &nbsp;|&nbsp; [<span style="color:var(--yellow)"> O </span>] Visited &nbsp;|&nbsp; &lt;<span style="color:var(--red)"> ? </span>&gt; Unknown Signal`
+    :`[<span style="color:var(--green)"> X </span>] You &nbsp;|&nbsp; [<span style="color:var(--yellow)"> O </span>] Visited &nbsp;|&nbsp; [   ] Unknown`;
+  document.getElementById("map-content").innerHTML=
+    `<pre style="font-family:'Share Tech Mono',monospace;font-size:14px;line-height:1.7">${mapHTML}</pre>`+
+    `<div style="font-size:12px;color:var(--gray);margin-top:6px">${legend}</div>`;
+}
+
+function openMap() {
+  buildMap();
+  document.getElementById("map-overlay").classList.add("open");
+  
+  const inputField = document.getElementById("input-field");
+  if (inputField) inputField.blur();
+
+  setTimeout(() => {
+    function closeMap(e) {
+      if (e.key!=="Enter"&&e.key!=="Escape") return;
+      e.preventDefault();
+      e.stopPropagation();
+      document.getElementById("map-overlay").classList.remove("open");
+      
+      // Remove the capturing listener
+      document.removeEventListener("keydown", closeMap, true); 
+      focusInput(); 
+    }
+    
+    // The 'true' argument forces the document to capture the Enter key 
+    // BEFORE the input box gets a chance to swallow it!
+    document.addEventListener("keydown", closeMap, true);
+  }, 10);
+}
+
+// ═══════════════════════════════════════════════
+// SILLY RESPONSE  (verbatim from Python, cycles 0-3-0)
+// ═══════════════════════════════════════════════
+async function sillyResponse(target, action) {
+  const count = G.player.sillyCount;
+  appendMsg(() => {
+    if (action==="go"||action==="get") {
+      if      (count===0) print("You can't really do that, silly...","c-yellow");
+      else if (count===1) print(`We would go ${target} if we could...`,"c-yellow");
+      else if (count===2) print(`Bruh. Stop. You can't go ${target}!`,"c-yellow");
+      else                print("Huh?","c-yellow");
+    } else { print("I don't understand what you're trying to do.","c-yellow"); }
+  });
+  G.player.sillyCount = (G.player.sillyCount+1)%4;
+}
+
+// ═══════════════════════════════════════════════
+// COMMANDS
+// ═══════════════════════════════════════════════
+async function cmdGo(args) {
+  if (!args.length) { appendMsg(()=>print("Go where?","c-yellow")); return; }
+  const orig=args[0], dir=DIR_ALIAS[orig]||orig;
+  const room=G.rooms[G.player.currentRoom];
+
+  if (VALID_DIRS.has(dir)&&room.exits[dir]) {
+    // Locked? Show message and wait for Enter
+// Locked? Show message, keep it on screen, wait for Enter to unlock input
+    if (room.locked_paths[dir]&&!room.unlocked_paths.includes(dir)) {
+      // Remove any existing obstacle texts first so they don't stack up
+      document.querySelectorAll('.obstacle-msg').forEach(el => el.remove());
+
+      printBlank();
+      const obs = document.createElement("div");
+      obs.className = "ln c-red obstacle-msg";
+      obs.textContent = room.locked_paths[dir].msg;
+      descEl.appendChild(obs);
+      
+      const promptEl = document.createElement("div");
+      promptEl.className = "ln c-cyan";
+      promptEl.innerHTML = `<span style="animation:blink 1.1s step-end infinite">Press &lt;ENTER&gt; to continue...</span>`;
+      descEl.appendChild(promptEl);
+      descEl.scrollTop = descEl.scrollHeight;
+
+      // Lock input
+      const inputField = document.getElementById("input-field");
+      if (inputField) { inputField.readOnly = true; inputField.value = ""; inputField.blur(); }
+      G.inputLocked = true;
+      
+      await waitForEnter();
+      
+      // Unlock input, remove the prompt, but LEAVE the red text
+      G.inputLocked = false;
+      if (inputField) inputField.readOnly = false;
+      if (promptEl.parentNode) descEl.removeChild(promptEl);
+      
+      focusInput();
+      return;
+    }
+    // Valid move — show "going..." appended below desc, then transition
+    appendMsg(()=>print(`You decide to go ${dir.charAt(0).toUpperCase()+dir.slice(1)}...`,"c-green"));
+    lockInput(true);
+    await sleep(MOVE_DELAY);
+    lockInput(false);
+
+    G.player.previousRoom = G.player.currentRoom;
+    G.player.currentRoom  = room.exits[dir];
+    G.player.sillyCount   = 0;
+
+    if (G.player.currentRoom===BOSS_ROOM) {
+      stopTimer();
+      const elapsed=getElapsed();
+      if (G.player.itemsCollected===TOTAL_ITEMS) await triggerWin(elapsed);
+      else                                        await triggerLoss(false);
+      return;
+    }
+    await showRoom();   // clears desc and shows new room
+    focusInput();
+  } else {
+    await sillyResponse(orig,"go");
+  }
+}
+
+async function cmdGet(args) {
+  if (!args.length) { appendMsg(()=>print("Get what?","c-yellow")); return; }
+  const target=args.join(" "), room=G.rooms[G.player.currentRoom];
+  
+  if (room.item && target === room.item.name) {
+    G.player.inventory.push({...room.item});
+    G.player.itemsCollected++;
+    room.item = null;
+    G.player.sillyCount = 0;
+    updateSB();
+    
+    appendMsg(()=>printH(`<span style="color:var(--yellow)">${target.toUpperCase()}</span> retrieved!`), 1200);
+
+    // Grab the current item text element
+    const itemDiv = document.getElementById("current-room-item");
+    
+    // Delay the change until the "retrieved" notification disappears
+    setTimeout(() => {
+      // Only change it if the player hasn't already moved to a different room
+      if (itemDiv && itemDiv.parentNode === descEl) {
+        itemDiv.className = "ln c-gray";
+        itemDiv.innerHTML = `[*] No items are seen here.`;
+      }
+    }, 1200);
+    
+  } else {
+    await sillyResponse(target,"get");
+  }
+}
+
+async function cmdUse(args) {
+  if (!args.length) { appendMsg(()=>print("Use what?","c-yellow")); return; }
+  const target=args.join(" ");
+  const p=G.player, room=G.rooms[p.currentRoom];
+
+  // "use map" → open map overlay
+  if (target==="map") {
+    if (!p.inventory.some(i=>i.name==="map")) {
+      appendMsg(()=>print("You don't have a map to look at!","c-red")); return;
+    }
+    openMap(); // Instant open! No more setTimeout needed since event bubbling is fixed.
+    return;
+  }
+
+  if (!p.inventory.some(i=>i.name===target)) {
+    appendMsg(()=>print(`You don't have a '${target}' in your inventory!`,"c-red")); return;
+  }
+
+  let used=false;
+  for (const [dir,lock] of Object.entries(room.locked_paths)) {
+    if (lock.req_item===target&&!room.unlocked_paths.includes(dir)) {
+      room.unlocked_paths.push(dir);
+      used=true;
+      
+      // Remove the red obstacle text instantly
+      document.querySelectorAll('.obstacle-msg').forEach(el => el.remove());
+
+      // Show the green mitigation text, and clear it automatically after 2.5 seconds
+      appendMsg(() => print(lock.success_msg, "c-green"), 2500);
+      break;
+    }
+  }
+  
+  if (!used) { 
+    appendMsg(()=>print(`You can't use the '${target}' here.`,"c-red")); 
+  }
+}  
+
+async function cmdMap() {
+  if (!G.player.inventory.some(i=>i.name==="map")) {
+    appendMsg(()=>print("You don't have a map to look at!","c-red")); return;
+  }
+  openMap(); 
+}
+
+async function cmdHelp() {
+  pauseTimer();
+  
+  // Save the exact current state of the text log
+  const previousHTML = descEl.innerHTML;
+  
+  clearDesc();
+  print("--- HELP MENU ---","c-cyan");
+  printBlank();
+  print("To Move:   'go (direction)'  (Example: go north)","c-white");
+  print("Get Item:  'get (item)'      (Example: get light)","c-white");
+  print("Use Item:  'use (item)'      (Example: use key)","c-white");
+  print("View Map:  'map'             (Shows the dungeon layout)","c-white");
+  print("Help:      'help'            (Shows this menu)","c-white");
+  print("Quit:      'exit'            (Ends the game)","c-white");
+  printBlank();
+  print("  Directions: north, south, east, west  (or up/down/left/right)","c-gray");
+  printBlank();
+  printH(`<span style="color:var(--cyan);animation:blink 1.1s step-end infinite">Press &lt;ENTER&gt; to close...</span>`);
+
+  const inputField = document.getElementById("input-field");
+  if (inputField) {
+    inputField.readOnly = true;
+    inputField.value = "";
+    inputField.blur();
+  }
+
+  G.inputLocked = true;
+  await waitForEnter();
+  G.inputLocked = false;
+
+  if (inputField) {
+    inputField.readOnly = false;
+  }
+
+  // Restore the exact text log you were looking at before typing 'help'
+  descEl.innerHTML = previousHTML;
+  descEl.scrollTop = descEl.scrollHeight;
+
+  resumeTimer();
+  focusInput();
+}
+
+async function cmdExit() {
+  // Grab all existing text lines and dim them
+  const oldNodes = Array.from(descEl.children);
+  oldNodes.forEach(n => n.classList.add("dimmed"));
+
+  // Track where the new prompt starts so we can delete it later
+  const promptStart = descEl.childNodes.length;
+  
+  printBlank();
+  print("Are you sure (Y/N)?", "c-yellow");
+  
+  const field = document.getElementById("input-field");
+  field.placeholder = "y / n";
+  field.value = "";
+  
+  G.inputLocked = true;
+  await sleep(10);
+  
+  await new Promise(resolve => {
+    function onKey(e) {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        e.stopPropagation();
+        document.removeEventListener("keydown", onKey, true);
+        resolve();
+      }
+    }
+    document.addEventListener("keydown", onKey, true);
+  });
+  
+  const v = field.value.trim().toLowerCase();
+  field.value = "";
+  field.placeholder = "What do you do?";
+  G.inputLocked = false;
+  
+  if (v === "y") {
+    stopTimer(); 
+    G.isRunning = false;
+    await triggerLoss(true); 
+  } else {
+    // 1. Remove the "Are you sure..." text
+    while(descEl.childNodes.length > promptStart) {
+      descEl.removeChild(descEl.lastChild);
+    }
+    
+    // 2. Fade the original text back to normal
+    oldNodes.forEach(n => n.classList.remove("dimmed"));
+    
+    // 3. Show the mitigation text (appendMsg handles clearing it automatically!)
+    appendMsg(() => print("You decide to hold on a little bit longer...", "c-green"));
+    focusInput();
+  }
+}
+
+// ═══════════════════════════════════════════════
+// INPUT PARSING
+// ═══════════════════════════════════════════════
+async function parseInput(raw) {
+  if (!raw.trim()) return; // Simply ignore empty Enter presses
+  const words=raw.toLowerCase().trim().split(/\s+/).filter(w=>!STOP_WORDS.has(w));
+  if (!words.length) return; // Ignore words that are just stop words
+  
+  const cmd=words[0], args=words.slice(1);
+  switch(cmd) {
+    case "go":   await cmdGo(args);   break;
+    case "get":  await cmdGet(args);  break;
+    case "use":  await cmdUse(args);  break;
+    case "map":  await cmdMap();      break;
+    case "help": await cmdHelp();     break;
+    case "exit":
+    case "quit": cmdExit();           break;
+    default: appendMsg(()=>print("What now?","c-yellow"));
+  }
+  focusInput();
+}
+
+// ═══════════════════════════════════════════════
+// WIN
+// ═══════════════════════════════════════════════
+async function triggerWin(elapsed) {
+  G.isRunning=false; G.inputLocked=true; showScreen("end-screen");
+  const stEl=document.getElementById("end-story");
+  const lines=[
+    "A giant, hideous alien worm creature erupts from the ground below you.",
+    "You pull out your wormhole blaster, filling it with fish paste and warm worm poo.",
+    "You start firing, disintegrating the alien worm into a splatter of slime.",
+    "The ground starts giving away as more wormholes appear! You quickly fire at the ground.",
+    "A cosmological wormhole manifests, and you leap! Guess you are a little worm-er after all.",
+  ];
+  for (const line of lines) {
+    const el=document.createElement("div"); el.className="end-line"; el.textContent=line;
+    stEl.appendChild(el); await sleep(80); el.classList.add("show"); await sleep(700);
+  }
+  await sleep(400);
+  const rEl=document.getElementById("end-result");
+  rEl.textContent="Aw man... You win, bruh!"; rEl.className="end-result win show";
+  await sleep(300);
+  const tEl=document.getElementById("end-time");
+  tEl.textContent=`Clear Time: ${fmt(elapsed)}`; tEl.classList.add("show");
+  await sleep(400);
+  
+  // --- CLOUD LEADERBOARD LOGIC ---
+  cachedLB = await loadLB(); // Fetch latest from cloud
+  
+  if (cachedLB.length < 5 || elapsed < cachedLB[cachedLB.length-1]?.t || !cachedLB.length) {
+    const banner=document.getElementById("hs-banner"),form=document.getElementById("name-form"),inp=document.getElementById("name-input");
+    banner.classList.add("show"); await sleep(300); form.classList.add("show"); inp.focus();
+    
+    await new Promise(resolve=>{
+    async function submit(){
+        const btn = document.getElementById("name-submit");
+        if (btn.disabled) return; // <-- NEW: Prevents double-submissions!
+
+        let name = inp.value.trim().slice(0,15) || "Anonymous";
+        
+        // Show a loading cue since cloud saving takes a moment
+        btn.textContent = "SAVING..."; btn.disabled = true;
+        
+        await updatePlayerName(name);
+        await saveLB(elapsed);
+        cachedLB = await loadLB(); // Refresh to get their new global rank!
+        
+        form.style.display="none"; banner.style.display="none"; 
+        btn.textContent = "SUBMIT"; btn.disabled = false;
+        resolve();
+      }
+      document.getElementById("name-submit").onclick=submit;
+      inp.addEventListener("keydown",e=>{if(e.key==="Enter" && form.style.display!=="none")submit();});
+    });
+  }
+  
+  const finalName = document.getElementById("name-input").value.trim().slice(0,15) || "Anonymous";
+  await showLeaderboard(cachedLB, finalName);
+}
+
+// ═══════════════════════════════════════════════
+// LOSE
+// ═══════════════════════════════════════════════
+async function triggerLoss(isQuit) {
+  G.isRunning=false; G.inputLocked=true; showScreen("end-screen");
+  const stEl=document.getElementById("end-story");
+  
+  if (!isQuit) {
+    const lines = [
+      "A giant, hideous alien worm creature erupts from the ground below you.",
+      "Looks like you're worm food..."
+    ];
+    
+    for (const line of lines) {
+      const lDiv = document.createElement("div");
+      lDiv.className = "end-line show";
+      lDiv.style.color = "var(--red)"; 
+      stEl.appendChild(lDiv);
+      
+      for (const char of line) {
+        lDiv.textContent += char;
+        await sleep(35); 
+      }
+      await sleep(600); 
+    }
+    
+    await sleep(800);
+    stEl.appendChild(document.createElement("br"));
+    const oof = document.createElement("div"); 
+    oof.className = "end-line show"; 
+    oof.style.color = "var(--red)";
+    oof.textContent = "Oof.";
+    stEl.appendChild(oof); 
+    
+    await sleep(1300);
+    const rEl=document.getElementById("end-result");
+    rEl.textContent="GAME OVER"; rEl.className="end-result lose show";
+  } else {
+    // NEW QUIT SEQUENCE
+    const lDiv = document.createElement("div");
+    lDiv.className = "end-line show";
+    lDiv.style.color = "var(--red)";
+    stEl.appendChild(lDiv);
+    
+    const txt = "You succumb to the fear and desperation and end your journey suddenly...";
+    for (const char of txt) {
+      lDiv.textContent += char;
+      await sleep(35);
+    }
+    
+    stEl.appendChild(document.createElement("br"));
+    
+    // Blinking Enter prompt
+    const promptEl = document.createElement("div");
+    promptEl.className = "end-line show c-cyan";
+    promptEl.innerHTML = `<span style="animation:blink 1.1s step-end infinite">Press &lt;ENTER&gt; to continue...</span>`;
+    stEl.appendChild(promptEl);
+    
+    await waitForEnter();
+    
+    // Fade out text quickly
+    stEl.style.transition = "opacity 0.4s ease";
+    stEl.style.opacity = "0";
+    await sleep(450);
+    
+    const rEl=document.getElementById("end-result");
+    rEl.textContent="JOURNEY ENDED"; rEl.className="end-result lose show";
+  }
+  
+  await sleep(800);
+  cachedLB = await loadLB(); // Pull latest scores from cloud
+  await showLeaderboard(cachedLB, null);
+}
+
+async function showLeaderboard(lb,highlight) {
+  await sleep(200);
+  const wrap=document.getElementById("leaderboard"), rows=document.getElementById("lb-rows");
+  rows.innerHTML="";
+  if (!lb.length) {
+    const d=document.createElement("div"); d.className="lb-row"; d.style.color="var(--gray)";
+    d.textContent="No times recorded yet. Be the first!"; rows.appendChild(d);
+  } else {
+    lb.slice(0,5).forEach((e,i)=>{
+      const row=document.createElement("div");
+      row.className="lb-row"+(e.name===highlight?" lb-you":"");
+      row.innerHTML=`<span class="lb-rank">${i+1}.</span><span class="lb-name">${e.name}</span><span class="lb-time">${fmt(e.t)}</span>`;
+      rows.appendChild(row);
+    });
+  }
+  wrap.classList.add("show"); await sleep(400);
+  document.getElementById("end-actions").classList.add("show");
+}
+
+// ═══════════════════════════════════════════════
+// SCREEN
+// ═══════════════════════════════════════════════
+function showScreen(id) {
+  document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+}
+
+// ═══════════════════════════════════════════════
+// START
+// ═══════════════════════════════════════════════
+async function startGame() {
+  try {
+    if (!playFabId) await initPlayFab(); // Try to connect to the cloud
+  } catch (e) {
+    console.warn("Leaderboard offline or blocked. Playing locally.");
+  }
+  
+  initState(); clearDesc();
+  ["end-story","end-result","end-time","hs-banner","name-form","leaderboard","end-actions"].forEach(id=>{
+    const el=document.getElementById(id);
+    el.classList.remove("show"); el.style.display="";
+    if (id==="end-story") { el.innerHTML=""; el.style.opacity="1"; }
+    if (id==="end-result"){el.textContent="";el.className="end-result";}
+    if (id==="end-time")  {el.textContent="";el.className="end-time";}
+  });
+  document.getElementById("name-input").value="";
+  document.getElementById("lb-rows").innerHTML="";
+  showScreen("game-screen");
+  G.inputLocked=false; startTimer(); G.isRunning=true;
+  
+  focusInput(); // Force focus BEFORE the first room starts typing
+  await showRoom();
+}
+
+// ═══════════════════════════════════════════════
+// EVENTS
+// ═══════════════════════════════════════════════
+
+// Title → Enter to start
+document.addEventListener("keydown", e=>{
+  if (document.getElementById("title-screen").classList.contains("active")&&e.key==="Enter") startGame();
+});
+
+// Game input
+// - If typewriter is running: Enter flushes it (does NOT also dispatch a command)
+// - If G.inputLocked: Enter is swallowed (a document-level listener handles it)
+// - Otherwise: dispatch parseInput
+document.getElementById("input-field").addEventListener("keydown", async e=>{
+  if (e.key!=="Enter") return;
+  e.preventDefault();
+  e.stopPropagation(); // <-- This is the magic line that fixes the Map & Help menu!
+
+  if (twRunning) {
+    // Flush typewriter instantly; don't treat as a command
+    twSkip=true;
+    document.getElementById("input-field").value="";
+    return;
+  }
+  
+  if (G.inputLocked) return; 
+  
+  const val=document.getElementById("input-field").value;
+  document.getElementById("input-field").value="";
+  await parseInput(val);
+  focusInput();
+});
+
+// Click anywhere in the game area → instantly restore focus to input
+document.addEventListener("click", () => {
+  if (document.getElementById("game-screen").classList.contains("active")) {
+    focusInput();
+  }
+});
+
+document.getElementById("btn-again").addEventListener("click", startGame);
+document.getElementById("btn-quit").addEventListener("click", ()=>showScreen("title-screen"));
+</script>
+</body>
+</html>

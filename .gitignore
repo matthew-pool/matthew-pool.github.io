@@ -1,20 +1,27 @@
 # IMPORTANT!!! Before committing and pushing, run "git rm --cached <file_name>"
 
-# Ignore directories
+# Directories
 # EXAMPLE: build/
 
-# Ignore files
+# Documents
 *NOTES*.txt
 NOTES.txt
+/doc.docx
 
-# Ignore log files
+# Log files
 *.log
 
+# Videos
 assets/videos/
 /videos
 videos/
-
 *.mov
 *.mp4
 
+# Ignore Node modules
 node_modules/
+
+# Microsoft PlayFab namespace (Game Leaderboard)
+*/wormhole-game/playfab-namespace.png
+*/wormhole-game/playfab-titleid.txt
+*/wormhole-game/playfab-api.png
