@@ -25,3 +25,31 @@ node_modules/
 */wormhole-game/playfab-namespace.png
 */wormhole-game/playfab-titleid.txt
 */wormhole-game/playfab-api.png
+*/wormhole-game/playfab*.*
+
+# IDE folders
+.idea/
+.vs/
+
+# Python leftovers
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+*.pyc
+*.pyo
+*.pyd
+
+# Analysis tool cache
+.mypy_cache/
+.ruff_cache/
+
+# Build artifacts
+build/
+dist/
+*.spec
+
+# Other Files
+*.flake8
+*.bat
