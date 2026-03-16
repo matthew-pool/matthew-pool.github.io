@@ -1,7 +1,11 @@
-Matty,4.647451400756836
-Matthewwwww,5.243812322616577
-matty watty,5.482099771499634
-Earthworm Jimmy,60.0
-Boggy Bubba,75.80516546134949
+Earthworm Jim,60.00
 Matthew Pool,91.80511546134949
-Edgar the Conqueror Worm,111.92873566
+Colossal Shai-Hulud,93.345678
+Michael “Sandworm” Keaton,99.109283
+Alaskan Bull Worm,101.876543
+Future Slurm Queen,220.87634
+Graboid Bacon,260.00
+Edgar the Conqueror Worm,666.66
+Slimey the Grouch,801.564645
+David the Bowie Worm,1000.00
+You’re Getting Worm-er,9999.999
