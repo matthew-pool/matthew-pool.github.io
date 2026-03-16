@@ -24,15 +24,16 @@
       "name": "cavern",
       "coords": [0, 8],
       "item_id": "map",
-      "desc": "You awaken on the cold, hard ground - your clothes soaking wet. You feel sluggish.. and disoriented.\n\"Where the Hell am I?\" you think to yourself in a haze.\n\nAs your senses begin to return, you realize you're lying in an almost pitch-black, unfamiliar.\nplace and have no idea how you got there.\n\n\"Help!\" you scream. \"Help! Hel-\" You stop yourself as confusion quickly turns into primal fear.\n\nYou jump onto your feet, with paralyzing dread resonating throughout your entire body.\n\nBorn with a keen sense of cardinal direction, you instinctively shift focus to the north.\n\nYou notice a small, dark passageway. Your head instantly responds - Run.",
-      "alt_desc": "You are back in the damp cavern where you first woke up.\nYou see a small, dark passageway to the north...",
+      "desc": "You awaken on the cold, hard ground - your clothes soaking wet. You feel sluggish.. and disoriented.\n\"Where the Hell am I?\" you think to yourself in a haze.\n\nAs your senses begin to return, you realize you're lying in an almost pitch-black, unfamiliar.\nplace and have no idea how you got there.\n\n\"Help!\" you scream. \"Help! Hel-\" You stop yourself as confusion quickly turns into primal fear.\n\nYou jump onto your feet, with paralyzing dread resonating throughout your entire body.\n\nYou notice a small, dimly lit passageway up ahead. Your head instantly responds - Run.",
+      "alt_desc": "You are back in the damp cavern where you first woke up.\nThe only way out is to the north.",
       "exits": { "north": "entryway" }
     },
+  
     "entryway": {
       "name": "entryway",
       "coords": [0, 6],
       "item_id": "compass",
-      "desc": "A massive junction. The path to the south leads back to the cavern.\nTo the west you see a path full of leaves and vines.\nTo the east you see a big stainless steel door.",
+      "desc": "Which way do I go?\n\nThe path to the south leads back to the cavern.\nTo the west you see a path full of leaves and vines.\nTo the east you see a big stainless steel door.",
       "exits": { "south": "cavern", "west": "garden", "east": "freezer" },
       "locked_paths": {
         "east": {
@@ -42,7 +43,7 @@
         }
       }
     },
-    "garden": {
+      "garden": {
       "name": "garden",
       "coords": [-2, 6],
       "item_id": "shroom",
