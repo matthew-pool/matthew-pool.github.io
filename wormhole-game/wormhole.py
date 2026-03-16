@@ -1,9 +1,9 @@
 # Wormhole: A Text Adventure Game
 # @author Matthew Pool
 # @usage Educational and Portfolio purposes only. Do not copy or distribute.
-# filename wormhole.py
+# @filename wormhole.py
 # @updated 2026-03-16
-# @version 1.46.0
+# @version 1.46.4
 
 import sys
 import json
@@ -262,11 +262,15 @@ class Game:
         """Loads and sorts the leaderboard from a local text file."""
         leaderboard = []
         try:
-            with open("leaderboard.txt", "r") as f:
+            # ADDED: encoding="utf-8"
+            with open("leaderboard.txt", "r", encoding="utf-8") as f:
                 for line in f:
-                    parts = line.strip().split(",")
+                    parts = line.strip().rsplit(",", 1)
                     if len(parts) == 2:
-                        leaderboard.append((parts[0], float(parts[1])))
+                        try:
+                            leaderboard.append((parts[0], float(parts[1])))
+                        except ValueError:
+                            pass
         except FileNotFoundError:
             pass
 
@@ -274,7 +278,8 @@ class Game:
 
     def save_leaderboard(self, leaderboard: List[Tuple[str, float]]) -> None:
         """Saves the top 10 times to a local text file."""
-        with open("leaderboard.txt", "w") as f:
+        # ADDED: encoding="utf-8"
+        with open("leaderboard.txt", "w", encoding="utf-8") as f:
             for entry in leaderboard[:10]:
                 f.write(f"{entry[0]},{entry[1]}\n")
 
@@ -290,17 +295,62 @@ class Game:
 
         return f"Time: {mins:02d}:{secs:02d} | Best: --:--"
 
-    def _live_timer(self) -> None:
-        """Background thread that safely updates the timer in the window title bar."""
-        while True:
-            sleep(1)
-            if self.is_running and getattr(self, "display_timer", False):
-                timer_str = self.get_timer_string()
-                title_str = f"Wormhole - {timer_str}"
+    def _live_background_task(self) -> None:
+        """Background thread that safely updates the timer and the pulsing UI LED."""
+        # Custom gradient of red shades for the rapid pulsing effect
+        reds = [
+            (100, 0, 0), (150, 0, 0), (200, 0, 0), (255, 0, 0),
+            (255, 100, 100), (255, 0, 0), (200, 0, 0), (150, 0, 0)
+        ]
+        led_idx = 0
+        ticks = 0
 
-                with self.io_lock:
+        while True:
+            sleep(0.1) # Run at a blistering 10 ticks-per-second
+            if not self.is_running:
+                break
+
+            with self.io_lock:
+                # Update LED every 1 tick (0.1s)
+                if getattr(self, "display_timer", False) and getattr(self, "led_active", False):
+                    title_len = getattr(self, "current_title_length", 0)
+                    center_len = getattr(self, "center_length", 37) # dynamic fallback
+                    if title_len > 0:
+                        # Dynamically calculate the target column based on LIVE terminal width
+                        live_width = self.config.ui_width
+                        spaces = max(1, (live_width - center_len) // 2 - title_len) 
+                        dynamic_col = title_len + spaces + 1 # +1 because * is the very first character
+
+                        r, g, b = reds[led_idx]
+                        led_idx = (led_idx + 1) % len(reds)
+                        color = f"\033[38;2;{r};{g};{b}m"
+                        
+                        # Save cursor, jump to live LED coordinate, draw, restore cursor
+                        sys.stdout.write(f"\0337\033[2;{dynamic_col}H{color}*\0338")
+
+                # Update Window Timer every 10 ticks (1.0s)
+                if ticks % 10 == 0 and getattr(self, "display_timer", False):
+                    timer_str = self.get_timer_string()
+                    title_str = f"Wormhole - {timer_str}"
                     sys.stdout.write(f"\033]0;{title_str}\007")
-                    sys.stdout.flush()
+
+                sys.stdout.flush()
+            ticks += 1
+
+    def reset_session(self) -> None:
+        """Resets the world and player state for a new playthrough."""
+        self.items: Dict[str, Item] = {}
+        self.rooms: Dict[str, Room] = {}
+        self.build_world("world.json")
+        self.player = Player(start_room="cavern")
+        self.is_running: bool = True
+        self.current_run = None
+        self.start_time: float = time()
+
+        # Target the new combined background task
+        if not hasattr(self, "bg_thread") or not self.bg_thread.is_alive():
+            self.bg_thread = threading.Thread(target=self._live_background_task, daemon=True)
+            self.bg_thread.start()
 
     def display_leaderboard(
         self,
@@ -311,10 +361,10 @@ class Game:
         width = self.config.ui_width
 
         ascii_art = [
-            r"  _                    _           _                        _ ",
-            r" | |                  | |         | |                      | |",
-            r" | |   ___  __ _    __| | ___ _ __| |__   ___   __ _ _ __ __| |",
-            r" | |  / _ \/ _` |  / _` |/ _ \ '__| '_ \ / _ \ / _` | '__/ _` |",
+            r"  _                      _           _                         _ ",
+            r" | |                    | |         | |                       | |",
+            r" | |     ___  __ _    __| | ___ _ __| |__   ___   __ _ _ __ __| |",
+            r" | |    / _ \/ _` |  / _` |/ _ \ '__| '_ \ / _ \ / _` | '__/ _` |",
             r" | |___|  __/ (_| | | (_| |  __/ |  | |_) | (_) | (_| | | | (_| |",
             r" \_____/\___|\__,_|  \__,_|\___|_|  |_.__/ \___/ \__,_|_|  \__,_|",
         ]
@@ -324,7 +374,7 @@ class Game:
         for line in ascii_art:
             print(f"{self.config.yellow}{line.center(width)}{self.config.reset}")
 
-        # --- NEW: Explicit Top 10 Header ---
+        # --- Explicit Top 10 Header ---
         print(f"{self.config.cyan}{'--- TOP 10 SCORES ---'.center(width)}{self.config.reset}")
         print("-" * width)
         # -----------------------------------
@@ -344,7 +394,9 @@ class Game:
 
                 # Use a dash for rank if they are displaying outside the top 10
                 rank = f"{i+1}." if i < 10 else "-"
-                row = f"{rank:<3} {name:<25} {m:02d}:{s:02d}"
+                
+                # CHANGED: {name:<25} is now {name:<29}
+                row = f"{rank:<3} {name:<29} {m:02d}:{s:02d}"
 
                 # Flash the row if it exactly matches the current run
                 if current_run and name == current_run[0] and t == current_run[1]:
@@ -361,6 +413,7 @@ class Game:
     # -------------------------------------------------------------------------
     def clear(self) -> None:
         """Instantly clears the screen without causing a terminal strobe/flicker."""
+        self.led_active = False # Safely turn off the LED thread while the screen is wiping
         sys.stdout.write("\033[H\033[J")
         sys.stdout.flush()
 
@@ -721,88 +774,154 @@ class Game:
         self.flush_input()
 
     def show_dimmed_status(self) -> None:
-        """Redraws the current room UI in dark gray to simulate the background fading out."""
-        self.clear()
+        """Fades the entire UI from its original colors to dark gray simultaneously."""
+        self.led_active = False
         room = self.rooms[self.player.current_room]
         width = self.config.ui_width
+
+        # --- 1. REBUILD THE ORIGINAL COLOREVED UI ---
+        lines = []
+        c_dg = self.config.dark_gray
+        c_cy = self.config.cyan
+        c_res = self.config.reset
+        
+        # Border
+        lines.append(f"{c_dg}{'=' * width}{c_res}")
+        
+        # Location & Exits
         title = room.name.replace("_", " ").title()
+        plain_left = f" LOCATION:  {title}"
+        colored_left = f"{c_cy} LOCATION:{c_res}  {title}"
+        
+        plain_center = "* EXITS:  [ N ]  [ S ]  [ E ]  [ W ]"
+        spaces = max(1, (width - len(plain_center)) // 2 - len(plain_left))
         
         has_compass = self.player.has_item("compass")
-
-        # Build Exit String first to share the line with Location
-        directions = ["north", "south", "east", "west"]
-        labels = ["N", "S", "E", "W"]
-        parts = []
-        gray_parts = []
-
-        for dir, label in zip(directions, labels):
-            gray_parts.append(f"{self.config.dark_gray}[ {label} ]{self.config.reset}")
-
-            if dir in room.exits:
-                if dir in room.locked_paths and dir not in room.unlocked_paths:
-                    if dir in room.discovered_locks:
-                        parts.append(f"{self.config.red}[ {label} ]{self.config.reset}")
-                    else:
-                        parts.append(f"{self.config.green}[ {label} ]{self.config.reset}")
-                else:
-                    parts.append(f"{self.config.green}[ {label} ]{self.config.reset}")
-            else:
-                parts.append(f"{self.config.dark_gray}[ {label} ]{self.config.reset}")
-
-        # --- LED LOGIC ---
-        led_on = f"{self.config.dark_gray}[{self.config.reset} {self.config.blink}{self.config.red}*{self.config.reset} {self.config.dark_gray}]{self.config.reset}"
-        led_off = f"{self.config.dark_gray}[   ]{self.config.reset}"
-
         if has_compass:
-            parts.append(led_on)
-            gray_parts.append(led_on)
+            parts = []
+            for dir_name, label in zip(["north", "south", "east", "west"], ["N", "S", "E", "W"]):
+                if dir_name in room.exits:
+                    if dir_name in room.locked_paths and dir_name not in room.unlocked_paths:
+                        if dir_name in room.discovered_locks:
+                            parts.append(f"{self.config.red}[ {label} ]{c_res}")
+                        else:
+                            parts.append(f"{self.config.green}[ {label} ]{c_res}")
+                    else:
+                        parts.append(f"{self.config.green}[ {label} ]{c_res}")
+                else:
+                    parts.append(f"{c_dg}[ {label} ]{c_res}")
+            
+            colored_center = f"{self.config.red}*{c_res} {c_cy}EXITS:{c_res}  {'  '.join(parts)}"
+            lines.append(colored_left + (" " * spaces) + colored_center)
         else:
-            parts.append(led_off)
-            gray_parts.append(led_off)
+            lines.append(colored_left)
 
-        exits_str = "  ".join(parts)
-        gray_exits_str = "  ".join(gray_parts)
-
-        colored_left = f"{self.config.cyan} LOCATION:{self.config.reset}  {title}"
-        plain_left = f" LOCATION:  {title}"
-
-        colored_center = f"{self.config.cyan}EXITS:{self.config.reset}  {exits_str}"
-        gray_center = f"{self.config.cyan}EXITS:{self.config.reset}  {gray_exits_str}"
-        plain_center = "EXITS:  [ N ]  [ S ]  [ E ]  [ W ]  [ * ]"
-
-        # Calculate spaces to center the exit text perfectly
-        spaces_between = max(1, (width - len(plain_center)) // 2 - len(plain_left))
-
+        # Inventory
         inv_display = (
             ", ".join(item.name for item in self.player.inventory).title()
-            if self.player.inventory
-            else "Empty"
+            if self.player.inventory else "Empty"
         )
-        print(f" INVENTORY: {inv_display}")
-
-        # Bottom header line and centered commands
-        print("=" * width)
-        print()
-        print(self.config.plain_commands.center(width))
-        print("\n")
-
-        print(self.format_text_colors(getattr(self, 'last_printed_desc', room.desc)))
-
-        print()
-        print(self.config.red + "-" * width + self.config.reset)
-
+        lines.append(f"{c_cy} INVENTORY:{c_res} {inv_display}")
+        
+        # Header Bottom
+        lines.append(f"{c_dg}{'=' * width}{c_res}")
+        lines.append("")
+        
+        # Commands
+        offset = len(self.config.commands) - len(self.config.plain_commands)
+        lines.append(self.config.commands.center(width + offset))
+        lines.append("")
+        
+        # Description
+        raw_desc = getattr(self, 'last_printed_desc', room.desc)
+        colored_desc = self.format_text_colors(raw_desc)
+        for line in colored_desc.split('\n'):
+            lines.append(line)
+            
+        lines.append("")
+        
+        # Item Box
+        lines.append(f"{self.config.red}{'-' * width}{c_res}")
         if room.item and room.item.name != "alien worm":
-            item_msg = f"[*] You see a(n) {room.item.name.upper()} here."
-
-            # --- Add the hint if they haven't picked anything up yet ---
+            item_msg = f"[*] You see a(n) {self.config.yellow}{room.item.name.upper()}{c_res} here."
             if self.player.items_collected == 0:
                 item_msg += " Maybe you should get that."
-
-            print(item_msg)
         else:
-            print("[*] There are no items to pick up here.")
+            item_msg = "[*] There are no items to pick up here."
+        lines.append(item_msg)
+        lines.append(f"{self.config.red}{'-' * width}{c_res}")
 
-        print(self.config.red + "-" * width + self.config.reset)
+        full_text = "\n".join(lines)
+
+        # --- 2. PARSE INTO CHARACTERS AND STARTING RGB VALUES ---
+        color_map = {
+            self.config.green: (0, 255, 0),
+            self.config.yellow: (255, 255, 0),
+            self.config.cyan: (0, 255, 255),
+            self.config.magenta: (255, 0, 255),
+            self.config.red: (255, 0, 0),
+            self.config.white: (255, 255, 255),
+            self.config.dark_gray: (100, 100, 100),
+            self.config.reset: (255, 255, 255)
+        }
+
+        chars = []
+        current_rgb = (255, 255, 255)
+        
+        ansi_regex = re.compile(r'(\033\[[0-9;]*m)')
+        tokens = ansi_regex.split(full_text)
+        
+        for token in tokens:
+            if not token: continue
+            if token.startswith('\033'):
+                if token in color_map:
+                    current_rgb = color_map[token]
+            else:
+                for c in token:
+                    chars.append({'c': c, 'start_rgb': current_rgb})
+
+        # --- 3. ANIMATE THE FADE TO GRAY ---
+        target_rgb = (90, 90, 90)  # The final dark gray color
+        steps = 20                 # Number of frames in the animation
+        
+        with self.io_lock:
+            sys.stdout.write("\033[?25l")  # Hide cursor
+            sys.stdout.flush()
+
+        for step in range(steps + 1):
+            ratio = step / steps
+            frame_str = ""
+            
+            for char_dict in chars:
+                c = char_dict['c']
+                if c == '\n':
+                    frame_str += "\033[K\n"
+                    continue
+                if c == ' ':
+                    frame_str += c
+                    continue
+                    
+                sr, sg, sb = char_dict['start_rgb']
+                tr, tg, tb = target_rgb
+                
+                # Interpolate from start color to target gray based on the current step
+                r = int(sr + (tr - sr) * ratio)
+                g = int(sg + (tg - sg) * ratio)
+                b = int(sb + (tb - sb) * ratio)
+                
+                frame_str += f"\033[38;2;{r};{g};{b}m{c}"
+                
+            with self.io_lock:
+                sys.stdout.write("\033[H")  # Jump to top left
+                sys.stdout.write(frame_str + "\033[0m\033[K\n")
+                sys.stdout.write("\033[J")  # Clear the prompt/inputs below the UI
+                sys.stdout.flush()
+                
+            sleep(0.04)  # Framerate of the fade
+
+        with self.io_lock:
+            sys.stdout.write("\033[?25h")  # Bring the cursor back
+            sys.stdout.flush()
 
     def typewriter(self, text: str, speed: Optional[float] = None) -> None:
         speed = speed or self.config.text_speed
@@ -1029,7 +1148,7 @@ class Game:
         print("\n" * 2)
         
         # Use the pulsing exit for the title screen
-        self.show_pulsing_exit(prompt_msg, color_mode="white")
+        self.show_flashing_prompt(prompt_msg)
 
         # --- FADE OUT SEQUENCE ---
         sys.stdout.write("\033[?25l")
@@ -1224,11 +1343,11 @@ class Game:
 
         print("\n")
         
-        # Use the pulsing exit method with the new spaced pattern
+        # Use the white pulsing method to match the map screen
         self.show_pulsing_exit("P R E S S  < E N T E R >  T O  C L O S E", color_mode="white")
-        
+
     def handle_debug(self, args: List[str]) -> None:
-        # Failsafe: Act like the command doesn't exist if DEBUG_MODE is False
+        # Failsafe: Act like the command doesnt exist if DEBUG_MODE is False
         if not getattr(self.config, "DEBUG_MODE", False):
             self.handle_silly_response("debug", action="other")
             return
@@ -1240,11 +1359,9 @@ class Game:
                 print("  debug 2 : Boss Room (Loss - 0 items)")
                 print("  debug 3 : Boss Room (Win - 8 items)")
                 print("-" * width)
-
-                prompt_msg = "Press <ENTER> to close"
-                self.wait_for_enter(
-                    f"\n{self.config.red}{prompt_msg.center(width)}{self.config.reset}\n"
-                )
+                print()
+                
+                self.show_pulsing_exit("P R E S S  < E N T E R >  T O  C L O S E")
                 return
 
         choice = args[0]
@@ -1346,10 +1463,11 @@ class Game:
                     self.flush_input()
                     self.set_console_echo(True)
                     try:
-                        player_name = input(f"{pad}Enter your name: ").strip()[:15]
+                        # CHANGED: [:15] is now [:27]
+                        player_name = input(f"{pad}Enter your name: ").strip()[:27]
                     finally:
                         self.set_console_echo(False)
-                        
+
                     if not player_name:
                         player_name = "Anonymous"
                         
@@ -1360,8 +1478,8 @@ class Game:
 
                 # Set unified exit flow logic here
                 self.current_run = current_run
-                prompt_msg = "Press <ENTER> to continue"
-                self.wait_for_enter(f"\n{self.config.white}{prompt_msg.center(width)}{self.config.reset}\n")
+                print()
+                self.show_pulsing_exit("P R E S S  < E N T E R >")
 
                 self.is_running = False
                 return
@@ -1387,16 +1505,13 @@ class Game:
                 )
 
                 print("\n")
-
                 sleep(self.config.medium_sleep)
                 
                 # Set unified exit flow logic here
-                prompt_msg = "Press <ENTER> to continue"
-                self.wait_for_enter(f"{self.config.white}{prompt_msg.center(width)}{self.config.reset}\n")
-
-                elapsed_time = time() - self.start_time
-                self.current_run = ("Current Run", elapsed_time)
-
+                print()
+                self.show_pulsing_exit("P R E S S  < E N T E R >")
+                
+                self.current_run = None
                 self.is_running = False
                 return
 
@@ -1426,29 +1541,34 @@ class Game:
             else:
                 parts.append(f"{self.config.dark_gray}[ {label} ]{self.config.reset}")
 
-        # --- LED LOGIC ---
-        led_on = f"{self.config.dark_gray}[{self.config.reset} {self.config.blink}{self.config.red}*{self.config.reset} {self.config.dark_gray}]{self.config.reset}"
-        led_off = f"{self.config.dark_gray}[   ]{self.config.reset}"
-
-        if has_compass:
-            parts.append(led_on)
-            gray_parts.append(led_on)
-        else:
-            parts.append(led_off)
-            gray_parts.append(led_off)
-
         exits_str = "  ".join(parts)
         gray_exits_str = "  ".join(gray_parts)
+
+        # --- NEW: UI Header Layout & LED Logic ---
+        led_off = " "
+        
+        # We start the "on" state with a generic red color, but the background thread will overwrite it instantly
+        led_on = f"{self.config.red}*{self.config.reset}"
+
+        if has_compass:
+            colored_center = f"{led_on} {self.config.cyan}EXITS:{self.config.reset}  {exits_str}"
+            gray_center = f"{led_on} {self.config.cyan}EXITS:{self.config.reset}  {gray_exits_str}"
+            self.led_active = True
+        else:
+            colored_center = f"{led_off} {self.config.cyan}EXITS:{self.config.reset}  {exits_str}"
+            gray_center = f"{led_off} {self.config.cyan}EXITS:{self.config.reset}  {gray_exits_str}"
+            self.led_active = False
 
         colored_left = f"{self.config.cyan} LOCATION:{self.config.reset}  {title}"
         plain_left = f" LOCATION:  {title}"
 
-        colored_center = f"{self.config.cyan}EXITS:{self.config.reset}  {exits_str}"
-        gray_center = f"{self.config.cyan}EXITS:{self.config.reset}  {gray_exits_str}"
-        plain_center = "EXITS:  [ N ]  [ S ]  [ E ]  [ W ]  [ * ]"
-
-        # Calculate spaces to center the exit text perfectly
+        plain_center = "* EXITS:  [ N ]  [ S ]  [ E ]  [ W ]"
         spaces_between = max(1, (width - len(plain_center)) // 2 - len(plain_left))
+        
+        # Save the exact metrics for the background thread to target
+        self.current_title_length = len(plain_left)
+        self.center_length = len(plain_center)
+
         print("=" * width)
 
         # --- Hide exits globally if no compass, otherwise show them ---
@@ -1613,7 +1733,7 @@ class Game:
         elif len(args) >= 2 and args[:2] == ["back", "down"]:
             raw_dir = "back down"
         else:
-            raw_dir = " ".join(args)  # <--- Captures the full phrase for handle_silly_response
+            raw_dir = " ".join(args)  # Captures the full phrase for handle_silly_response
 
         has_compass = self.player.has_item("compass")
 
@@ -1631,18 +1751,14 @@ class Game:
         width = self.config.ui_width
 
         if not has_compass and display_dir in cardinals:
-            # FIX: Left-aligned as requested
             formatted_msg = f"{self.config.white}You have no idea which way {self.config.yellow}{display_dir}{self.config.white} is!{self.config.reset}"
             print(f"\n{formatted_msg}")
             sleep(self.config.medium_sleep)
             return
 
         if has_compass and display_dir in relatives:
-            base_msg = "You have a reliable compass now! You should use cardinal directions."
-            formatted_msg = f"{self.config.white}{base_msg}{self.config.reset}"
-            offset = len(formatted_msg) - len(base_msg)
-            
-            print(f"\n{formatted_msg.center(width + offset)}")
+            formatted_msg = f"{self.config.white}You have a reliable compass now! You should use cardinal directions.{self.config.reset}"
+            print(f"\n{formatted_msg}")
             sleep(self.config.long_sleep)
             return
 
@@ -1675,6 +1791,7 @@ class Game:
                     sleep(self.config.slow_sleep)
                     return
             # -------------------------------------
+
             if internal_dir in room.locked_paths and internal_dir not in room.unlocked_paths:
                 if internal_dir not in room.discovered_locks:
                     room.discovered_locks.append(internal_dir)
@@ -1688,7 +1805,7 @@ class Game:
                 print(f"\n{formatted_msg.center(width + offset)}")
                 print() 
                 
-                self.show_pulsing_exit("Press <ENTER> to continue")
+                self.show_pulsing_exit("P R E S S  < E N T E R >")
 
             else:
                 print(f"\n{self.config.white}You decide to go {self.config.yellow}{display_dir}{self.config.white}...{self.config.reset}")
@@ -1697,7 +1814,7 @@ class Game:
                 self.player.silly_count = 0
 
         else:
-            self.handle_silly_response(display_dir, action="go")
+            self.handle_silly_response(raw_dir, action="go")  # Passed the raw_dir!
 
     def handle_get(self, args: List[str]) -> None:
         if not args:
@@ -1744,7 +1861,7 @@ class Game:
             print() # Add a little spacing below the map
             
             # Use the pulsing exit method
-            self.show_pulsing_exit("Press <ENTER> to close")
+            self.show_pulsing_exit("P R E S S  < E N T E R >  T O  C L O S E", color_mode="white")
             return
 
         used_successfully = False
@@ -1765,16 +1882,13 @@ class Game:
                 print() # Add a blank line for spacing
                 
                 # Use the pulsing exit method without the ellipses
-                self.show_pulsing_exit("Press <ENTER> to continue")
+                self.show_pulsing_exit("P R E S S  < E N T E R >")
                 break
 
         if not used_successfully:
             # FIX: Ensure outer white color and reset are encapsulated for clean centering
-            base_msg = f"You can't use the {raw_target} here."
             formatted_msg = f"{self.config.white}You can't use the {self.config.yellow}{raw_target}{self.config.white} here.{self.config.reset}"
-            offset = len(formatted_msg) - len(base_msg)
-            
-            print(f"\n{formatted_msg.center(width + offset)}")
+            print(f"\n{formatted_msg}")
             sleep(self.config.medium_sleep)
 
     def handle_help(self, args: List[str]) -> None:
@@ -1825,13 +1939,10 @@ class Game:
             print("\n\n")
 
             # Set unified exit flow logic here
-            prompt_msg = "Press <ENTER> to continue"
-            self.wait_for_enter(
-                f"{self.config.red}{prompt_msg.center(width)}{self.config.reset}"
-            )
+            self.show_pulsing_exit("P R E S S  < E N T E R >")
 
-            elapsed_time = time() - self.start_time
-            self.current_run = ("Current Run", elapsed_time)
+            # --- CHANGED: Set to None instead of tracking the losing time ---
+            self.current_run = None
             
             self.is_running = False
             return
@@ -1839,8 +1950,8 @@ class Game:
         else:
             # Perfectly center the cancellation text
             width = self.config.ui_width
-            base_msg = "You decide to hold on a little bit longer..."
-            formatted_msg = f"{self.config.green}{base_msg}{self.config.reset}"
+            base_msg = "You decide ending it all just isn't worth it and continue on."
+            formatted_msg = f"{self.config.white}{base_msg}{self.config.reset}"
             offset = len(formatted_msg) - len(base_msg)
             
             print(f"\n{formatted_msg.center(width + offset)}")
