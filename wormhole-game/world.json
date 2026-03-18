@@ -4,16 +4,15 @@
       "name": "map",
       "desc": "A damp, crude map outlining the cave system."
     },
-    "compass": { "name": "compass", "desc": "A reliable magnetic compass." },
+    "compass": { "name": "compass", "desc": "A high-tech digital compass." },
     "shroom": {
       "name": "shroom",
       "desc": "An acidic alien mushroom with vivid colors."
     },
-    "gun": { "name": "gun", "desc": "A high-tech wormhole blaster." },
+    "gun": { "name": "gun", "desc": "A high-tech wormhole blaster made of glass." },
     "key": { "name": "key", "desc": "A heavy, rusty iron key." },
     "fish": { "name": "fish", "desc": "A weird, glowing pink fish." },
-    "scripture": {
-      "name": "scripture",
+    "scripture": { "name": "scripture",
       "desc": "An ancient text containing alien scripture."
     },
     "poop": { "name": "poop", "desc": "Incredibly smelly alien worm poop." },
@@ -24,7 +23,7 @@
       "name": "cavern",
       "coords": [0, 8],
       "item_id": "map",
-      "desc": "You awaken on the cold, hard ground - your clothes soaking wet. You feel sluggish.. and disoriented.\n\"Where the Hell am I?\" you think to yourself in a haze.\n\nAs your senses begin to return, you realize you're lying in an almost pitch-black, unfamiliar.\nplace and have no idea how you got there.\n\n\"Help!\" you scream. \"Help! Hel-\" You stop yourself as confusion quickly turns into primal fear.\n\nYou jump onto your feet, with paralyzing dread resonating throughout your entire body.\n\nYou notice a small, dimly lit passageway up ahead. Your head instantly responds - Run.",
+      "desc": "You awaken on the cold, hard ground - your clothes soaking wet. You feel sluggish.. and disoriented.\n\n\"Where the Hell am I?\" you think to yourself in a haze.\n\nAs your senses begin to return, you realize you're lying in an almost pitch-black, unfamiliar place and have no idea how you got there.\n\n\"Help!\" you scream. \"Help! Hel-\" You stop yourself as confusion quickly turns into primal fear.\n\nYou jump onto your feet and paralyzing dread starts resonating throughout your entire body.\n\nYou notice a small, dimly lit passageway up ahead. Your head instantly responds - Run.",
       "alt_desc": "You are back in the damp cavern where you first woke up.\nThe only way out is to the north.",
       "exits": { "north": "entryway" }
     },
@@ -38,7 +37,7 @@
       "locked_paths": {
         "east": {
           "req_item": "shroom",
-          "msg": "The stainless steel door to the east is rusted shut. If only you had some kind of acidic alien flora...",
+          "msg": "The stainless steel door to the east is rusted shut. If only you had something to get through it...",
           "success_msg": "You squeeze the acidic SHROOM over the hinges. The rust dissolves and the heavy door opens!"
         }
       }
@@ -52,7 +51,7 @@
       "locked_paths": {
         "north": {
           "req_item": "gun",
-          "msg": "A wall of thick, pulsating vines blocks the path north to the pond. They look too tough to cut.",
+          "msg": "A wall of thick, pulsating vines that are many feet in diamter blocks the path north to the pond. They're wait too thick to cut \"I'm gonna need something that packs a punch.\"",
           "success_msg": "You use the GUN to blast a smoldering hole straight through the thick vines! The path is clear."
         }
       }

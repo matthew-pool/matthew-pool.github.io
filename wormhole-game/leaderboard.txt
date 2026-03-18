@@ -1,11 +1,10 @@
-Earthworm Jim,60.00
+Anonymous,5.0049285888671875
+Earthworm Jim,60.0
 Matthew Pool,91.80511546134949
 Colossal Shai-Hulud,93.345678
 Michael “Sandworm” Keaton,99.109283
 Alaskan Bull Worm,101.876543
+Bob,217.50067234039307
 Future Slurm Queen,220.87634
-Graboid Bacon,260.00
+Graboid Bacon,260.0
 Edgar the Conqueror Worm,666.66
-Slimey the Grouch,801.564645
-David the Bowie Worm,1000.00
-You’re Getting Worm-er,9999.999
