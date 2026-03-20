@@ -1,23 +1,17 @@
 {
   "items": {
-    "map": {
-      "name": "map",
-      "desc": "A damp, crude map outlining the cave system."
-    },
-    "compass": { "name": "compass", "desc": "A high-tech digital compass." },
-    "shroom": {
-      "name": "shroom",
-      "desc": "An acidic alien mushroom with vivid colors."
-    },
-    "gun": { "name": "gun", "desc": "A high-tech wormhole blaster made of glass." },
-    "key": { "name": "key", "desc": "A heavy, rusty iron key." },
-    "fish": { "name": "fish", "desc": "A weird, glowing pink fish." },
-    "scripture": { "name": "scripture",
-      "desc": "An ancient text containing alien scripture."
-    },
-    "poop": { "name": "poop", "desc": "Incredibly smelly alien worm poop." },
-    "alien worm": { "name": "alien worm", "desc": "A hideous creature!" }
+    "map":        { "name": "map",        "desc": "An electronic map with digital compass compatibility." },
+    "compass":    { "name": "compass",    "desc": "A high-tech digital compass." },
+    "shroom":     { "name": "shroom",     "desc": "An acidic alien mushroom with vivid colors." },
+    "gun":        { "name": "gun",        "desc": "A high-tech wormhole blaster made of glass." },
+    "key":        { "name": "key",        "desc": "A heavy, rusty iron key." },
+    "fish":       { "name": "fish",       "desc": "A weird, glowing pink fish." },
+    "scripture":  { "name": "scripture",  "desc": "An ancient text containing alien scripture." },
+    "poop":       { "name": "poop",       "desc": "Incredibly smelly alien worm poop." },
+    "alien worm": { "name": "alien worm", "desc": "A hideous creature!" },
+    "goggles":    { "name": "goggles",    "desc": "Military grade night-vision GOGGLES." }
   },
+
   "rooms": {
     "cavern": {
       "name": "cavern",
@@ -51,14 +45,15 @@
       "locked_paths": {
         "north": {
           "req_item": "gun",
-          "msg": "A wall of thick, pulsating vines that are many feet in diamter blocks the path north to the pond. They're wait too thick to cut \"I'm gonna need something that packs a punch.\"",
-          "success_msg": "You use the GUN to blast a smoldering hole straight through the thick vines! The path is clear."
+          "msg": "A wall of thick, pulsating vines that are many feet in diamter blocks the path north to the pond.\nThey're way too thick to cut. \"You're gonna need something that packs a punch.\"",
+          "success_msg": "You use the GUN to blast a smoldering hole straight through the thick vines!\nThe path is clear."
         }
       }
     },
     "mud_pit": {
       "name": "mud_pit",
       "coords": [-4, 6],
+      "item_id": "goggles",
       "desc": "You trudge into a disgusting, thick mud pit. The smell is awful.\nIt's a complete dead end, and now your shoes are ruined.",
       "exits": { "east": "garden" }
     },
@@ -72,7 +67,8 @@
       "name": "storage",
       "coords": [4, 6],
       "item_id": "key",
-      "desc": "A cold, sterile storage closet. Most of the shelves are completely bare.\nIt's a dead end.",
+      "is_dark": true,
+      "desc": "A large all-white storage room with shelves. Most of the shelves just contain old junk: a yellow-haired bobble head with the number '101' printed on his jumpsuit (or 'her's' - I shouldn't assume). jumpsuit. Cute. They should put that in a video game.\nAnd a dismantled Roomba! Such ancient Boomer technology lulz.\nWhat else is here?",
       "exits": { "west": "freezer" }
     },
     "pink_pond": {
@@ -85,7 +81,7 @@
         "north": {
           "req_item": "key",
           "msg": "A heavy iron gate blocks the path north. It has a rusty keyhole.",
-          "success_msg": "You inserted the KEY and turned it. The heavy iron gate creaks open!"
+          "success_msg": "You insert the KEY and turn it. The heavy iron gate creaks open!"
         }
       }
     },
@@ -99,7 +95,7 @@
         "north": {
           "req_item": "fish",
           "msg": "A hungry, mutated plant covers the door to the north. It snaps its jaws at you.",
-          "success_msg": "You toss the alien FISH to the mutant plant. It eats it happily and moves out of the way!\nYou run."
+          "success_msg": "You toss the alien FISH to the mutant plant. It eats it happily and soon becomes dormant.\nYou run."
         }
       }
     },

@@ -2,8 +2,8 @@
 # @author Matthew Pool
 # @usage Educational and Portfolio purposes only. Do not copy or distribute.
 # @filename wormhole.py
-# @updated 2026-03-18
-# @version 1.49.11
+# @updated 2026-03-19
+# @version 1.52.0
 
 import sys
 import json
@@ -58,17 +58,21 @@ class GameConfig:
     dark_gray: str = "\033[90m"
     light_gray: str = "\033[37m"
     pink_purple: str = "\033[38;5;207m" 
+    light_blue: str = "\033[38;2;100;150;255m"
     blink: str = "\033[5m"
     reset: str = "\033[0m"
 
     # Darker ANSI Color Codes for the Title Screen
-    dark_cyan: str = "\033[36m"             
-    dark_yellow: str = "\033[33m"           
+    dark_cyan: str = "\033[36m"              
+    dark_yellow: str = "\033[33m"            
     dark_pink_purple: str = "\033[38;5;127m"
+    
+    # Fallout Style Color
+    fallout_green: str = "\033[38;2;57;255;20m"
 
     @property
     def ui_width(self) -> int:
-        return shutil.get_terminal_size(fallback=(101, 20)).columns
+        return shutil.get_terminal_size(fallback=(101, 20)).columns - 1
 
     @property
     def plain_commands(self) -> str:
@@ -79,18 +83,19 @@ class GameConfig:
         d = self.dark_gray
         r = self.reset
         y = self.yellow
-        c = self.cyan
-        return f"{c}Commands:{r} {c}[{r} go {y}direction{r} {d}|{r} get {y}item{r} {d}|{r} use {y}item{r} {d}|{r} help {d}|{r} exit {c}]{r}"
+        p = self.pink_purple
+        b = self.light_blue
+        return f"{b}Commands:{r} {p}[{r} go {y}direction{r} {d}|{r} get {y}item{r} {d}|{r} use {y}item{r} {d}|{r} help {d}|{r} exit {p}]{r}"
 
     @property
     def dark_commands(self) -> str:
         d = self.dark_gray
         r = self.reset
         y = self.yellow
-        c = self.cyan
-        return f"{c}Commands:{r} {c}[{r} go {y}direction{r} {d}|{r} get {y}item{r} {d}|{r} use {y}item{r} {d}|{r} help {d}|{r} exit {c}]{r}"   
-
-
+        p = self.pink_purple
+        b = self.light_blue
+        return f"{b}Commands:{r} {p}[{r} go {y}direction{r} {d}|{r} get {y}item{r} {d}|{r} use {y}item{r} {d}|{r} help {d}|{r} exit {p}]{r}"
+    
 # -------------------------------------------------------------------------
 # CLASSES
 # -------------------------------------------------------------------------
@@ -106,7 +111,10 @@ class Player:
         self.items_collected: int = 0
         self.current_room: str = start_room
         self.previous_room: Optional[str] = None
-        self.silly_count: int = 0
+        self.action_silly_count: int = 0
+        self.other_silly_count: int = 0
+        self.goggles_on: bool = False
+        self.goggles_prep_shown: bool = False
 
     def has_item(self, item_name: str) -> bool:
         return any(item.name == item_name for item in self.inventory)
@@ -134,6 +142,7 @@ class Room:
         item: Optional[Item] = None,
         exits: Optional[Dict] = None,
         locked_paths: Optional[Dict] = None,
+        is_dark: bool = False,
     ):
         self.name: str = name
         self.x: int = x
@@ -147,6 +156,7 @@ class Room:
         self.locked_paths: Dict[str, Dict[str, str]] = locked_paths or {}
         self.unlocked_paths: List[str] = []
         self.discovered_locks: List[str] = []
+        self.is_dark: bool = is_dark
 
 
 class Game:
@@ -156,6 +166,7 @@ class Game:
         self.io_lock = threading.Lock()
         self.ui_line_count = 0
         self.prompt_needs_full_draw = True
+        self.tesla_text = f"{self.config.fallout_green}T E S L A - 2 0 5 0{self.config.reset}"
         atexit.register(self.restore_console)
 
         self.set_console_icon("wormhole.ico")
@@ -237,6 +248,7 @@ class Game:
                 item=room_item,
                 exits=room_data.get("exits"),
                 locked_paths=room_data.get("locked_paths"),
+                is_dark=room_data.get("is_dark", False),
             )
 
     # -------------------------------------------------------------------------
@@ -300,19 +312,28 @@ class Game:
                         sys.stdout.flush()
 
             with self.io_lock:
-                if getattr(self, "display_timer", False) and getattr(self, "led_active", False):
-                    title_len = getattr(self, "current_title_length", 0)
-                    center_len = getattr(self, "center_length", 37)
-                    if title_len > 0:
-                        live_width = self.config.ui_width
-                        spaces = max(1, (live_width - center_len) // 2 - title_len) 
-                        dynamic_col = title_len + spaces + 1
-
+                if getattr(self, "display_timer", False):
+                    led_mode = getattr(self, "led_mode", "none")
+                    
+                    if led_mode in ["main", "map"]:
                         r, g, b = reds[led_idx]
                         led_idx = (led_idx + 1) % len(reds)
                         color = f"\033[38;2;{r};{g};{b}m"
                         
-                        sys.stdout.write(f"\0337\033[2;{dynamic_col}H{color}*\0338")
+                        if led_mode == "main":
+                            title_len = getattr(self, "current_title_length", 0)
+                            center_len = getattr(self, "center_length", 37)
+                            if title_len > 0:
+                                live_width = self.config.ui_width
+                                spaces = max(1, (live_width - center_len) // 2 - title_len) 
+                                dynamic_col = title_len + spaces + 1
+                                sys.stdout.write(f"\0337\033[2;{dynamic_col}H{color}*\0338")
+                                
+                        elif led_mode == "map":
+                            map_col = getattr(self, "map_led_col", 0)
+                            if map_col > 0:
+                                # The map's LOCATION text is statically generated exactly on row 13
+                                sys.stdout.write(f"\0337\033[13;{map_col}H{color}*\0338")
 
                 if ticks % 10 == 0 and getattr(self, "display_timer", False):
                     timer_str = self.get_timer_string()
@@ -333,6 +354,7 @@ class Game:
         self.current_run = None
         self.start_time: float = time()
         self.last_width = self.config.ui_width
+        self.corner_visited = False
 
         if not hasattr(self, "bg_thread") or not self.bg_thread.is_alive():
             self.bg_thread = threading.Thread(target=self._live_background_task, daemon=True)
@@ -346,8 +368,8 @@ class Game:
         width = self.config.ui_width
 
         ascii_art = [
-            r"  _                      _           _                         _ ",
-            r" | |                    | |         | |                       | |",
+            r"  _                        _           _                        _ ",
+            r" | |                      | |         | |                      | |",
             r" | |   ___  __ _    __| | ___ _ __| |__   ___   __ _ _ __ __| |",
             r" | |  / _ \/ _` |  / _` |/ _ \ '__| '_ \ / _ \ / _` | '__/ _` |",
             r" | |___|  __/ (_| | | (_| |  __/ |  | |_) | (_) | (_| | | | (_| |",
@@ -400,8 +422,8 @@ class Game:
         return '\n'.join(lines)
 
     def clear(self) -> None:
-        self.led_active = False
-        sys.stdout.write("\033[H\033[J")
+        self.led_mode = "none"
+        sys.stdout.write("\033[2J\033[3J\033[H")
         sys.stdout.flush()
         
     def get_gradient_separator(self, width: int, fade_ratio: float = 1.0) -> str:
@@ -418,6 +440,17 @@ class Game:
                 r = int((150 - 100 * local_ratio) * fade_ratio)
                 g = int((50 + 50 * local_ratio) * fade_ratio)
                 b = int(255 * fade_ratio)
+            sep += f"\033[38;2;{r};{g};{b}m-"
+        return sep + self.config.reset
+
+
+    def get_synth_separator(self, width: int) -> str:
+        sep = ""
+        for i in range(width):
+            ratio = i / max(1, width - 1)
+            r = int(255 * (1 - ratio))
+            g = int(50 * ratio)
+            b = 255
             sep += f"\033[38;2;{r};{g};{b}m-"
         return sep + self.config.reset
 
@@ -494,9 +527,9 @@ class Game:
         keywords = [
             "north", "south", "east", "west", "left", "right", "up", "down",
             "up ahead", "back down", "back up ahead",
-            "compass", "map", "shroom", "gun", "key", "fish", "scripture", "poop",
+            "compass", "map", "shroom", "gun", "key", "fish", "scripture", "poop", "pooped", "goggles",
             "wormhole blaster", "fish paste", "worm poo", "wormhole",
-            "alien worm creature", "alien worm", "wormy creatures"
+            "alien worm", "wormy creatures", "hell"
         ]
         keywords.sort(key=len, reverse=True)
         
@@ -506,14 +539,28 @@ class Game:
             word = match.group(0)
             lw = word.lower()
             
-            if lw == "up":
-                start_idx = match.start()
-                prefix = text[max(0, start_idx - 10):start_idx].lower()
-                if "woke " in prefix or "pick " in prefix or "crawling " in prefix:
+            start_idx = match.start()
+            prefix = text[max(0, start_idx - 15):start_idx].lower()
+            
+            if lw == "up" and any(p in prefix for p in ["woke ", "pick ", "crawling "]):
+                return word
+            if lw == "down" and any(p in prefix for p in ["oozing ", "look ", "scarf "]):
+                return word
+            if lw == "right" and "dissolve " in prefix:
+                return word
+                
+            if lw == "hell":
+                if "mumble" in text.lower():
                     return word
-                    
-            if lw in ["alien worm creature", "alien worm", "wormy creatures"]:
+                color = f"{self.config.blink}\033[38;2;255;69;0m" # Fiery red-orange + blink
+            elif lw in ["alien worm creature", "alien worm", "wormy creatures"]:
+                if lw == "alien worm" and "disintegrating " in prefix:
+                    return word
                 color = self.config.red
+            elif lw == "wormhole":
+                if "cosmological " in prefix:
+                    return f"{self.config.cyan}{word}{self.config.white}"
+                color = self.config.yellow
             else:
                 color = self.config.yellow
                 
@@ -730,7 +777,8 @@ class Game:
         self.flush_input()
 
         if room.item and room.item.name != "alien worm":
-            part1 = "[*] You see a(n) "
+            article = "an" if room.item.name[0].lower() in "aeiou" else "a"
+            part1 = f"[*] You see {article} "
             item_name = room.item.name.upper()
             part2 = " here."
             if self.player.items_collected == 0:
@@ -740,15 +788,15 @@ class Game:
             item_name = ""
             part2 = ""
 
+        # Only 3 blank lines to perfectly allocate space for the 3-line box
         self._out()
-        self._out() # Blank line of space above gradient
         self._out()
         self._out()
         sys.stdout.flush()
 
         sys.stdout.write("\033[?25l")
         sys.stdout.flush()
-
+         
         for val in range(0, 256, 6):
             if WINDOWS and msvcrt.kbhit():
                 break
@@ -789,28 +837,29 @@ class Game:
         self.flush_input()
 
     def show_dimmed_status(self) -> None:
-        self.led_active = False
+        self.led_mode = "none"
         room = self.rooms[self.player.current_room]
         width = self.config.ui_width
 
         lines = []
         c_dg = self.config.dark_gray
-        c_cy = self.config.cyan
+        c_p = self.config.pink_purple
         c_res = self.config.reset
         
-        lines.append(f"{c_dg}{'=' * width}{c_res}")
+        # Use our new synthwave separator here
+        lines.append(self.get_synth_separator(width))
         
         title = room.name.replace("_", " ").title()
         plain_left = f" LOCATION:  {title}"
-        colored_left = f"{c_cy} LOCATION:{c_res}  {title}"
+        colored_left = f"{c_p} LOCATION:{c_res}  {title}"
         
-        plain_center = "* EXITS:  [ N ]  [ S ]  [ E ]  [ W ]"
+        plain_center = "* EXITS:  [ W ]  [ N ]  [ S ]  [ E ]"
         spaces = max(1, (width - len(plain_center)) // 2 - len(plain_left))
         
         has_compass = self.player.has_item("compass")
         if has_compass:
             parts = []
-            for dir_name, label in zip(["north", "south", "east", "west"], ["N", "S", "E", "W"]):
+            for dir_name, label in zip(["west", "north", "south", "east"], ["W", "N", "S", "E"]):
                 if dir_name in room.exits:
                     if dir_name in room.locked_paths and dir_name not in room.unlocked_paths:
                         if dir_name in room.discovered_locks:
@@ -822,7 +871,7 @@ class Game:
                 else:
                     parts.append(f"{c_dg}[ {label} ]{c_res}")
             
-            colored_center = f"{self.config.red}*{c_res} {c_cy}EXITS:{c_res}  {'  '.join(parts)}"
+            colored_center = f"{self.config.red}*{c_res} {c_p}EXITS:{c_res}  {'  '.join(parts)}"
             lines.append(colored_left + (" " * spaces) + colored_center)
         else:
             lines.append(colored_left)
@@ -831,32 +880,37 @@ class Game:
             ", ".join(item.name for item in self.player.inventory).title()
             if self.player.inventory else "Empty"
         )
-        lines.append(f"{c_cy} INVENTORY:{c_res} {inv_display}")
+        lines.append(f"{c_p} INVENTORY:{c_res} {inv_display}")
         
-        lines.append(f"{c_dg}{'=' * width}{c_res}")
+        # And use the synthwave separator here
+        lines.append(self.get_synth_separator(width))
         lines.append("")
         
         offset = len(self.config.commands) - len(self.config.plain_commands)
         lines.append(self.config.commands.center(width + offset))
         lines.append("")
-        
+                
         raw_desc = getattr(self, 'last_printed_desc', room.desc)
         wrapped_desc = self.wrap_text(raw_desc, width)
         colored_desc = self.format_text_colors(wrapped_desc)
         for line in colored_desc.split('\n'):
             lines.append(line)
             
-        lines.append("")
-        lines.append("") # Blank line of space above gradient
-        
         sep_str = self.get_gradient_separator(width)
         lines.append(sep_str.strip())
-        if room.item and room.item.name != "alien worm":
-            item_msg = f"[*] You see a(n) {self.config.yellow}{room.item.name.upper()}{c_res} here."
+        
+        item_visible = room.item and room.item.name != "alien worm"
+        if room.name == "storage" and not getattr(self.player, "goggles_on", False):
+            item_visible = False
+
+        if item_visible:
+            article = "an" if room.item.name[0].lower() in "aeiou" else "a"
+            item_msg = f"[*] You see {article} {self.config.yellow}{room.item.name.upper()}{c_res} here."
             if self.player.items_collected == 0:
                 item_msg += " Maybe you should get that."
         else:
             item_msg = "[*] There are no items to pick up here."
+            
         lines.append(item_msg)
         lines.append(sep_str.strip())
 
@@ -870,7 +924,8 @@ class Game:
             self.config.red: (255, 0, 0),
             self.config.white: (255, 255, 255),
             self.config.dark_gray: (100, 100, 100),
-            self.config.reset: (255, 255, 255)
+            self.config.reset: (255, 255, 255),
+            self.config.pink_purple: (255, 95, 255) # Added to smoothly fade out the new synthwave accents
         }
 
         chars = []
@@ -963,6 +1018,12 @@ class Game:
             if token.startswith('\033'):
                 if token in color_map:
                     current_rgb = color_map[token]
+                elif token.startswith("\033[38;2;"):
+                    try:
+                        parts = token.replace("\033[38;2;", "").replace("m", "").split(";")
+                        current_rgb = (int(parts[0]), int(parts[1]), int(parts[2]))
+                    except ValueError:
+                        pass
             else:
                 for c in token:
                     chars.append({'c': c, 'rgb': current_rgb})
@@ -1043,7 +1104,7 @@ class Game:
             sys.stdout.flush()
 
         self.flush_input()
-                
+
     def wait_for_enter(self, prompt: str) -> None:
         self.flush_input()
         print(prompt, end="", flush=True)
@@ -1210,6 +1271,8 @@ class Game:
     def draw_map(self) -> None:
         self.display_timer = True
         has_compass = self.player.has_item("compass")
+        
+        print(self.tesla_text)
 
         min_x = min(r.x for r in self.rooms.values())
         max_x = max(r.x for r in self.rooms.values())
@@ -1230,7 +1293,11 @@ class Game:
             grid.append(row_list)
 
         def format_node(room_name: str) -> str:
-            if room_name == "worm_incubation_chamber" and has_compass:
+            # Hide all markers if the player doesn't have the compass
+            if not has_compass:
+                return "[ ]"
+
+            if room_name == "worm_incubation_chamber":
                 if self.player.current_room == room_name:
                     return f"<{self.config.red}X{self.config.reset}>"
                 return f"<{self.config.red}?{self.config.reset}>"
@@ -1273,16 +1340,16 @@ class Game:
                     char = " | " if col_width == 3 else "|"
                 else:
                     if (target.x - room.x) * (target.y - room.y) > 0:
-                        char = " ↖ " if col_width == 3 else "↖"
+                        char = " \u2196 " if col_width == 3 else "\u2196" # ↖
                     else:
-                        char = " ↗ " if col_width == 3 else "↗"
+                        char = " \u2197 " if col_width == 3 else "\u2197" # ↗
 
                 grid[gmy][gmx] = char
 
         width = self.config.ui_width
         
         map_art = [
-            r" __  __             ",
+            r" __  __                ",
             r"|  \/  | __ _ _ __  ",
             r"| |\/| |/ _` | '_ \ ",
             r"| |  | | (_| | |_) |",
@@ -1290,9 +1357,46 @@ class Game:
             r"             |_|    "
         ]
 
+        # Taller arrow art
+        arrow_art = [
+            r"  ^  ",
+            r" / \ ",
+            r"  |  ",
+            r"  |  ",
+            r"  |  ",
+            r"  N  "
+        ]
+
         print()
-        for line in map_art:
-            print(f"{self.config.cyan}{line.center(width)}{self.config.reset}")
+        # Print them on the exact same lines to align them vertically 
+        for m_line, a_line in zip(map_art, arrow_art):
+            map_start = (width - len(m_line)) // 2
+            map_str = (" " * map_start) + m_line
+            # Calculate dynamic padding to push the arrow to the far right with a 2-character margin
+            pad_len = width - len(map_str) - len(a_line) - 2
+            pad = " " * max(0, pad_len)
+            print(f"{self.config.pink_purple}{map_str}{self.config.reset}{pad}{self.config.yellow}{a_line}{self.config.reset}")
+        print()
+
+        # Display current room name and spacer aesthetically
+        if has_compass:
+            loc_name = self.rooms[self.player.current_room].name.replace("_", " ").title()
+            # Removed the ANSI blink code here so the background thread can handle the smooth pulse
+            star = "* " 
+            loc_str = f"{star}LOCATION: {self.config.green}{loc_name}{self.config.reset}"
+            plain_len = len("* LOCATION: ") + len(loc_name)
+            
+            self.led_mode = "map"
+            self.map_led_col = ((width - plain_len) // 2) + 1 # +1 for 1-based ANSI columns
+        else:
+            loc_str = "  LOCATION: Unknown"
+            plain_len = len(loc_str)
+            self.led_mode = "none"
+
+        pad = " " * ((width - plain_len) // 2)
+        print(self.get_synth_separator(width))
+        print(f"{pad}{loc_str}")
+        print(self.get_synth_separator(width))
         print()
 
         visible_row_width = ((cols + 1) // 2) * 3 + (cols // 2) * 1
@@ -1302,28 +1406,28 @@ class Game:
             print(" " * margin + "".join(row))
 
         print()
-        print("=" * width)
+        # Swapped "===" footer for the synthwave theme line
+        print(self.get_synth_separator(width))
 
+        # Update legend dynamically based on compass ownership
         if has_compass:
             legend = f"Legend: [{self.config.green}X{self.config.reset}] You are here | [{self.config.yellow}*{self.config.reset}] Visited | <{self.config.red}?{self.config.reset}> Unknown Signal"
             print(legend.center(width + 27))
         else:
-            legend = f"Legend: [{self.config.green}X{self.config.reset}] You are here | [{self.config.yellow}*{self.config.reset}] Visited | [ ] Unknown"
-            print(legend.center(width + 18))
+            legend = f"Legend: [ ] Unknown Map Sector"
+            print(legend.center(width))
 
     def help_menu(self) -> None:
         self.display_timer = False
+        self.clear()
         
-        with self.io_lock:
-            sys.stdout.write("\033[H")
-            sys.stdout.flush()
-            
+        print(self.tesla_text)
         width = self.config.ui_width
 
         help_art = [
             r" _   _      _       ",
-            r"| | | | ___| |___   ",
-            r"| |_| |/ _ \ | '_ \ ",
+            r"| | | | ___| |____  ",
+            r"| |_| |/ _ \ |  _ \ ",
             r"|  _  |  __/ | |_) |",
             r"|_| |_|\___|_| .__/ ",
             r"             |_|    "
@@ -1331,34 +1435,29 @@ class Game:
 
         self._out()
         for line in help_art:
-            self._out(f"{self.config.cyan}{line.center(width)}{self.config.reset}")
+            self._out(f"{self.config.pink_purple}{line.center(width)}{self.config.reset}")
         self._out()
-
-        plain_help_lines = [
-            "To Move:       go  direction   Example: go  north, go up",
-            "Get Item:      get item        Example: get light",
-            "Use Item:      use item        Example: use key",
-            "Help:          help            Shows this menu",
-            "Quit:          exit            Ends the game",
-        ]
 
         w = self.config.white
         lg = self.config.light_gray
         y = self.config.yellow
         
         formatted_help_lines = [
-            f"{lg}To Move:       {w}go  {y}direction   {lg}Example: {w}go {y} north{w}, go {y}up",
+            f"{lg}To Move:       {w}go  {y}direction   {lg}Example: {w}go {y}north{w}, go {y}up",
             f"{lg}Get Item:      {w}get {y}item        {lg}Example: {w}get {y}light",
             f"{lg}Use Item:      {w}use {y}item        {lg}Example: {w}use {y}key",
             f"{lg}Help:          {w}help            {lg}Shows this menu",
             f"{lg}Quit:          {w}exit            {lg}Ends the game",
         ]
 
-        max_line_len = max(len(line) for line in plain_help_lines)
-        left_padding = " " * ((width - max_line_len) // 2)
+        # Calculate exact length of the longest string to perfectly center the block
+        longest_plain_line_len = 55 
+        left_padding = " " * max(0, (width - longest_plain_line_len) // 2)
 
+        self._out(self.get_synth_separator(width))
         for line in formatted_help_lines:
             self._out(f"{left_padding}{line}{self.config.reset}")
+        self._out(self.get_synth_separator(width))
 
         self._out()
         
@@ -1367,7 +1466,7 @@ class Game:
             sys.stdout.flush()
             
         self.show_pulsing_exit("P R E S S  < E N T E R >  T O  C L O S E", color_mode="white")
-
+        
     def handle_debug(self, args: List[str]) -> None:
         if not getattr(self.config, "DEBUG_MODE", False):
             self.handle_silly_response("debug", action="other")
@@ -1415,9 +1514,9 @@ class Game:
 
         else:
             self.transient_notify("Invalid debug trigger.", self.config.quick_sleep)
-
+        
     def show_status(self, resize=False) -> None:
-        self.led_active = False
+        self.led_mode = "none"
         self.ui_line_count = 0
         
         with self.io_lock:
@@ -1433,7 +1532,7 @@ class Game:
         if room.name == "worm_incubation_chamber":
             self.display_timer = False
 
-            if self.player.items_collected == 8:
+            if self.player.items_collected >= 8:
                 elapsed_time = time() - self.start_time
                 mins, secs = divmod(int(elapsed_time), 60)
 
@@ -1444,50 +1543,65 @@ class Game:
                 sys.stdout.flush()
 
                 win_art = [
-                    r"  ____ ___  _   _  ____ ____      _ _____ ____  _ ",
-                    r" / ___/ _ \| \ | |/ ___|  _ \    / \_   _/ ___|| |",
+                    r"  ____ ___  _   _  ____ ____     _ _____ ____  _ ",
+                    r" / ___/ _ \| \ | |/ ___|  _ \   / \_   _/ ___|| |",
                     r"| |  | | | |  \| | |  _| |_) |  / _ \| | \___ \| |",
                     r"| |__| |_| | |\  | |_| |  _ <  / ___ \ |  ___) |_|",
                     r" \____\___/|_| \_|\____|_| \_\/_/   \_\| |____/(_)"
                 ]
+
+                block_1_lines = [
+                    "A giant, hideous alien worm creature - with elongated, razor-sharp fangs in its gaping, fleshy mouth - erupts from the ground beneath you, letting out a piercing, high-pitched screech that chills you to the bone.",
+                    "You pull out your wormhole blaster and load it with fish paste and warm worm poo, creating a bioactive, glowing alien mush.",
+                    "As the creature starts slithering towards you at high velocity, you open fire, disintegrating the alien worm into a splatter of thick, slimy goo and guts.",
+                    "The ground rumbles and gives way as more wormholes appear and countless more wormy creatures emerge!",
+                    "You aim your blaster at the ground and squeeze the cold, steel trigger.",
+                    "A cosmological wormhole manifests, and you leap inside!",
+                    "A stream of vibrant colored lights and geometric shapes, along with unfamiliar sounds and feelings, floods your surroundings.",
+                    "You pass out."
+                ]
+
+                # Splitting Block 2 into two parts to prevent terminal scroll duplicating lines
+                block_2_lines = [
+                    "When you awaken, you find yourself back in the cold, damp cavern where you first started - thick goo oozing down your face and clothes.",
+                    "An eerie silence fills the air. You hear yourself breathe - short, quick, panicked breaths.",
+                    "\"Why the Hell am I back here?\" you mumble under your breath, frantically scanning your surroundings.",
+                    "\"Why the Hell am I back here?!\" you yell, a concoction of saliva and still-warm goo spraying from your lips with each syllable you speak.",
+                    "Something touches your leg. You look down to see hundreds - if not thousands - of tiny, foreign-looking alien worms crawling up your calves."
+                ]
+                
+                block_3_lines = [
+                    "The tiny creatures begin biting your bare skin. You drop your blaster and watch it shatter on the ground below. Your skin burns as the acidic juices from their little, sharp-toothed mouths dissolve right through your flesh - deep into your bones.",
+                    "Your body drops to the ground. You scarf down the rest of the dripping, smelly shroom and thick, pungeant fish paste from your inventory, in hopes of lightening the severity of the situation. Because that shit hurts, bruh!",
+                    "It doesn't help. But things do seem a bit more colorful and vibrant I guess. The worms are melting now! I'm melting now! Are worms conscious? It's like the universe is one big living organism and we're just the medium in which it interacts with itself.",
+                    "FOCUS!",
+                    "The ground beneath you begins to rumble, as your terror peaks and reality starts to blur. You know that sound. You know what's coming, and now you know there's no escape. And now... you're tripping balls!",
+                    "You're worm food."
+                ]
+                
+                rip_art = [
+                    r"  _____    ___   ___  ",
+                    r" |  __ \  |_ _| |  _ \ ",
+                    r" | |__) |  | |  | |_) |",
+                    r" |  _  /   | |  |  __/ ",
+                    r" | | \ \  |___| | |    ",
+                    r" |_|  \_\       |_|    "
+                ]
+
+                # Render Congrats Art at the top
                 print("\n\n")
                 for line in win_art:
                     print(f"{self.config.green}{line.center(width)}{self.config.reset}")
                 print("\n\n")
 
-                block_1_lines = [
-                    "A giant, hideous alien worm creature—with elongated, razor-sharp fangs in its gaping, fleshy mouth—erupts from the ground beneath you, letting out a piercing, high-pitched screech that chills you to the bone.",
-                    "You pull out your wormhole blaster and load it with fish paste and warm worm poo, creating a bioactive, glowing alien mush.",
-                    "As the creature starts slithering towards you at high velocity, you open fire, disintegrating the alien worm into a splatter of thick, slimy goo and guts.",
-                    "The ground rumbles and gives way as more wormholes appear and countless more wormy creatures emerge!",
-                    "You aim your blaster at the ground and squeeze the cold, metallic trigger.",
-                    "A cosmological wormhole manifests, and you leap inside!",
-                    "A stream of vibrant colored lights and geometric shapes, along with unfamiliar sounds, floods your surroundings.",
-                    "You pass out."
-                ]
-
-                block_2_lines = [
-                    "When you awaken, you find yourself back in the cold, damp cavern where you first started—thick goo oozing down your face and clothes.",
-                    "An eerie silence fills the air. You hear yourself breathe: short, quick, panicked breaths.",
-                    "\"Why the hell am I back here?\" you mumble under your breath, frantically looking around.",
-                    "\"Why the hell am I back here?!\" you yell, a concoction of saliva and still-warm goo spraying from your lips with every syllable.",
-                    "You look down to see hundreds, if not thousands, of tiny, foreign-looking worms crawling up your legs.",
-                    "The tiny creatures begin biting your bare skin. You drop your blaster, watching it shatter on the ground below. Your skin burns as the acidic juices from their little mouths dissolve right through your flesh—deep into your bones.",
-                    "Your body drops to the ground. You scarf down the shroom from your inventory in hopes of relieving the pain and escaping the severity of the situation.",
-                    "It doesnt work. The ground beneath you begins to rumble, and your terror peaks. You know that sound. You know what's coming, and now you know there's no escape.",
-                    "You're worm food."
-                ]
-
                 # Run Block 1
                 for line in block_1_lines:
-                    is_centered = line.strip() == "You pass out."
-                    if is_centered:
+                    if line.strip() == "You pass out.":
                         centered_line = line.strip().center(width)
                         colored_line = self.format_text_colors(centered_line)
                     else:
                         wrapped_line = self.wrap_text(line, width)
                         colored_line = self.format_text_colors(wrapped_line)
-                    
                     self.typewriter(colored_line, speed=0.03)
                     print()
 
@@ -1497,6 +1611,7 @@ class Game:
                 sys.stdout.write("\033[?25l")
                 sys.stdout.flush()
                 
+                # Render Congrats Art at the top for Block 2
                 print("\n\n")
                 for line in win_art:
                     print(f"{self.config.green}{line.center(width)}{self.config.reset}")
@@ -1504,10 +1619,41 @@ class Game:
 
                 # Run Block 2
                 for line in block_2_lines:
-                    is_centered = line.strip() == "You're worm food."
+                    wrapped_line = self.wrap_text(line, width)
+                    colored_line = self.format_text_colors(wrapped_line)
+                    self.typewriter(colored_line, speed=0.03)
+                    print()
+                    
+                self.show_pulsing_exit("P R E S S  < E N T E R >", color_mode="white")
+
+                sys.stdout.write("\033[H\033[J")
+                sys.stdout.write("\033[?25l")
+                sys.stdout.flush()
+                
+                # Render Congrats Art at the top for Block 3 (Will swap to R.I.P.)
+                print("\n\n")
+                for line in win_art:
+                    print(f"{self.config.green}{line.center(width)}{self.config.reset}")
+                print("\n\n")
+
+                # Run Block 3
+                for line in block_3_lines:
+                    is_centered = line.strip() in ["FOCUS!", "You're worm food."]
                     if is_centered:
                         centered_line = line.strip().center(width)
-                        colored_line = self.format_text_colors(centered_line)
+                        if line.strip() == "You're worm food.":
+                            colored_line = f"{self.config.red}{centered_line}{self.config.reset}"
+                            
+                            # Swap art to R.I.P.
+                            sys.stdout.write("\0337") # Save Cursor
+                            sys.stdout.write("\033[3;1H") # Absolute positioning to ASCII art row mapping
+                            for rip_line in rip_art:
+                                sys.stdout.write(f"\033[2K{self.config.red}{rip_line.center(width)}{self.config.reset}\n")
+                            sys.stdout.write("\0338") # Restore Cursor 
+                            sys.stdout.flush()
+                            
+                        else:
+                            colored_line = self.format_text_colors(centered_line)
                     else:
                         wrapped_line = self.wrap_text(line, width)
                         colored_line = self.format_text_colors(wrapped_line)
@@ -1592,15 +1738,14 @@ class Game:
                 )
                 print(f"{self.config.red}{msg2.center(width)}{self.config.reset}")
 
-                sleep(self.config.slow_sleep)
+                sleep(self.config.medium_sleep)
 
-                print()
+                print("\n\n")
                 print(
-                    f"{self.config.red}{'GAME OVER'.center(width)}{self.config.reset}"
+                    f"{self.config.red}{'G A M E  O V E R'.center(width)}{self.config.reset}"
                 )
 
-                print("\n")
-                sleep(self.config.medium_sleep)
+                sleep(self.config.quick_sleep)
                 
                 print()
                 self.show_pulsing_exit("P R E S S  < E N T E R >", color_mode="white")
@@ -1613,8 +1758,8 @@ class Game:
 
         has_compass = self.player.has_item("compass")
 
-        directions = ["north", "south", "east", "west"]
-        labels = ["N", "S", "E", "W"]
+        directions = ["west", "north", "south", "east"]
+        labels = ["W", "N", "S", "E"]
         parts = []
         gray_parts = []
 
@@ -1639,24 +1784,25 @@ class Game:
         led_on = f"{self.config.red}*{self.config.reset}"
 
         if has_compass:
-            colored_center = f"{led_on} {self.config.cyan}EXITS:{self.config.reset}  {exits_str}"
-            gray_center = f"{led_on} {self.config.cyan}EXITS:{self.config.reset}  {gray_exits_str}"
-            self.led_active = True
+            colored_center = f"{led_on} {self.config.pink_purple}EXITS:{self.config.reset}  {exits_str}"
+            gray_center = f"{led_off} {self.config.pink_purple}EXITS:{self.config.reset}  {gray_exits_str}"
+            self.led_mode = "main"
         else:
-            colored_center = f"{led_off} {self.config.cyan}EXITS:{self.config.reset}  {exits_str}"
-            gray_center = f"{led_off} {self.config.cyan}EXITS:{self.config.reset}  {gray_exits_str}"
-            self.led_active = False
-
-        colored_left = f"{self.config.cyan} LOCATION:{self.config.reset}  {title}"
+            colored_center = f"{led_off} {self.config.pink_purple}EXITS:{self.config.reset}  {exits_str}"
+            gray_center = f"{led_off} {self.config.pink_purple}EXITS:{self.config.reset}  {gray_exits_str}"
+            self.led_mode = "none"
+            
+        colored_left = f"{self.config.pink_purple} LOCATION:{self.config.reset}  {title}"
         plain_left = f" LOCATION:  {title}"
 
-        plain_center = "* EXITS:  [ N ]  [ S ]  [ E ]  [ W ]"
+        plain_center = "* EXITS:  [ W ]  [ N ]  [ S ]  [ E ]"
         spaces_between = max(1, (width - len(plain_center)) // 2 - len(plain_left))
         
         self.current_title_length = len(plain_left)
         self.center_length = len(plain_center)
 
-        self._out("=" * width)
+        # Swapped "===" for our smooth synthwave line
+        self._out(self.get_synth_separator(width))
 
         if not has_compass:
             self._out(colored_left)
@@ -1670,9 +1816,9 @@ class Game:
             if self.player.inventory
             else "Empty"
         )
-        self._out(f"{self.config.cyan} INVENTORY:{self.config.reset} {inv_display}")
+        self._out(f"{self.config.pink_purple} INVENTORY:{self.config.reset} {inv_display}")
 
-        self._out("=" * width)
+        self._out(self.get_synth_separator(width))
         self._out()
         offset = len(self.config.commands) - len(self.config.plain_commands)
         self._out(self.config.commands.center(width + offset))
@@ -1684,6 +1830,10 @@ class Game:
 
         active_desc = room.desc
         active_alt_desc = room.alt_desc
+
+        if room.name == "storage" and not getattr(self.player, "goggles_on", False):
+            active_desc = "Completely pitch-black area..."
+            active_alt_desc = active_desc
 
         if room.name == "entryway" and not has_compass:
             active_desc = active_desc.replace("west", "left").replace("east", "right").replace("The path to the south", "The path down")
@@ -1736,15 +1886,20 @@ class Game:
 
         self.last_printed_desc = desc_to_print
 
+        temp_item = room.item
+        if room.name == "storage" and not getattr(self.player, "goggles_on", False):
+            room.item = None
+
+        # When printing the item box non-animated, remove the extra vertical space
         if used_typewriter:
-            self.fade_item_box(room)
+            if room.name != "storage" or getattr(self.player, "goggles_on", False):
+                self.fade_item_box(room)
         else:
-            self._out()
-            self._out() # Blank line of space above gradient
             self._out(self.get_gradient_separator(width).strip())
 
             if room.item and room.item.name != "alien worm":
-                item_msg = f"[*] You see a(n) {self.config.yellow}{room.item.name.upper()}{self.config.reset} here."
+                article = "an" if room.item.name[0].lower() in "aeiou" else "a"
+                item_msg = f"[*] You see {article} {self.config.yellow}{room.item.name.upper()}{self.config.reset} here."
 
                 if self.player.items_collected == 0:
                     item_msg += " Maybe you should get that."
@@ -1755,8 +1910,9 @@ class Game:
 
             self._out(self.get_gradient_separator(width).strip())
 
+        room.item = temp_item
+
         if used_typewriter and has_compass:
-            # Let the player see the gray exits for a brief moment before activating them
             sleep(0.3)
             lines_up = self.ui_line_count - 1
             with self.io_lock:
@@ -1765,37 +1921,73 @@ class Game:
                 sys.stdout.write(f"\033[{lines_up}B\r")
                 sys.stdout.flush()
 
+        if just_arrived and room.name == "storage" and not getattr(self.player, "goggles_on", False):
+            print("\n")
+            umm_nope_str = "Umm... Nope!"
+            pad_len = (width - len(umm_nope_str)) // 2
+            pad = " " * pad_len
+            
+            with self.io_lock:
+                sys.stdout.write(f"\r{pad}{self.config.red}Umm")
+                sys.stdout.flush()
+            sleep(0.5)
+            
+            for _ in range(3):
+                with self.io_lock:
+                    sys.stdout.write(".")
+                    sys.stdout.flush()
+                sleep(0.5)
+                
+            with self.io_lock:
+                sys.stdout.write(" Nope!" + self.config.reset + "\n")
+                sys.stdout.flush()
+                
+            print()
+            self.show_pulsing_exit("P R E S S  < E N T E R >", color_mode="white")
+
         self.prompt_needs_full_draw = True
 
     # -------------------------------------------------------------------------
     # COMMAND HANDLERS
     # -------------------------------------------------------------------------
     def handle_silly_response(self, target: str, action: str) -> None:
-        count = self.player.silly_count
         msg = ""
-        if action == "go" or action == "get":
+        colored_target = f"{self.config.yellow}{target}{self.config.white}" if target else ""
+
+        if action in ["go", "get", "use"] and target:
+            count = self.player.action_silly_count
             if count == 0:
-                msg = "You can't really do that, silly..."
+                msg = f"{self.config.white}You can't {action} {colored_target}, silly pants.{self.config.reset}"
             elif count == 1:
-                msg = f"We would {action} {target} if we could..."
-            elif count == 2:
-                msg = f"Bruh. Stop. You can't {action} {target}!"
+                msg = f"{self.config.white}We would {action} {colored_target} if we could.{self.config.reset}"
             else:
-                self.help_menu()
-                self.needs_redraw = True 
+                msg = f"{self.config.white}Bruh. Please stop. We can't {action} {colored_target}.{self.config.reset}"
+            self.player.action_silly_count += 1
+            if self.player.action_silly_count >= 3:
+                self.player.action_silly_count = 0
         else:
-            msg = "I don't understand what you're trying to do."
+            count = self.player.other_silly_count
+            if count == 0:
+                msg = f"{self.config.white}I don't understand what you're trying to say.{self.config.reset}"
+            elif count == 1:
+                msg = f"{self.config.white}Still don't know what you want.{self.config.reset}"
+            else:
+                msg = f"{self.config.white}Bro. Stop. You're not making sense.{self.config.reset}"
+            self.player.other_silly_count += 1
+            if self.player.other_silly_count >= 3:
+                self.player.other_silly_count = 0
 
         if msg:
             self.transient_notify(msg)
             self.needs_redraw = False
 
-        self.player.silly_count = (self.player.silly_count + 1) % 4
-
     def normalize_item_name(self, target: str) -> str:
         aliases = {
-            "damp map": "map",
-            "crude map": "map",
+            "get help": "help",
+            "open help": "help",
+            "use help": "help",
+            "what do I do": "help",
+            "help me": "help",
             "digital compass": "compass",
             "magnetic compass": "compass",
             "alien mushroom": "shroom",
@@ -1815,11 +2007,17 @@ class Game:
             "worm poop": "poop",
             "alien poop": "poop",
             "alien worm poop": "poop",
-            "worm": "alien worm"
+            "worm": "alien worm",
+            "night vision goggles": "goggles",
+            "night-vision goggles": "goggles",
+            "vision goggles": "goggles"
         }
         return aliases.get(target, target)
 
     def handle_go(self, args: List[str]) -> None:
+        # Reset the other counter since this is a valid command prefix
+        self.player.other_silly_count = 0
+        
         if not args:
             self.transient_notify("Go where?", self.config.quick_sleep)
             self.needs_redraw = False
@@ -1894,19 +2092,54 @@ class Game:
                 self.typewriter(colored_msg, speed=0.03)
                 print() 
                 
-                sleep(1.0)
+                self.show_pulsing_exit("P R E S S  < E N T E R >", color_mode="white")
                 self.needs_redraw = True 
 
             else:
+                target_room = room.exits[internal_dir]
+                target_room_obj = self.rooms[target_room]
+
+                # --- DYNAMIC CORNER ROOM SWAP ---
+                # Force the first visited corner room to be the Graveyard (Scripture)
+                if target_room in ["graveyard", "dump"] and not getattr(self, "corner_visited", False):
+                    self.corner_visited = True
+                    if target_room == "dump":
+                        # They reached the Dump side first, so we swap their contents in memory!
+                        dump_room = self.rooms["dump"]
+                        grave_room = self.rooms["graveyard"]
+                        
+                        dump_room.name, grave_room.name = grave_room.name, dump_room.name
+                        dump_room.desc, grave_room.desc = grave_room.desc, dump_room.desc
+                        dump_room.alt_desc, grave_room.alt_desc = grave_room.alt_desc, dump_room.alt_desc
+                        dump_room.item, grave_room.item = grave_room.item, dump_room.item
+                # --------------------------------
+                
+                if target_room == "storage" and self.player.has_item("goggles") and not getattr(self.player, "goggles_on", False) and not getattr(self.player, "goggles_prep_shown", False):
+                    self.player.goggles_prep_shown = True
+                    self.clear()
+                    print("\n\n\n")
+                    msg = "I feel a little more prepared this time."
+                    print(f"{self.config.green}{msg.center(width)}{self.config.reset}\n\n")
+                    self.show_pulsing_exit("P R E S S  < E N T E R >", color_mode="white")
+                    
+                    self.transient_notify(f"You decide to go {display_dir}...", self.config.medium_sleep)
+                    self.player.current_room = target_room
+                    self.player.action_silly_count = 0
+                    self.needs_redraw = True
+                    return
+
                 self.transient_notify(f"You decide to go {display_dir}...", self.config.medium_sleep)
-                self.player.current_room = room.exits[internal_dir]
-                self.player.silly_count = 0
+                self.player.current_room = target_room
+                self.player.action_silly_count = 0
                 self.needs_redraw = True
 
         else:
             self.handle_silly_response(raw_dir, action="go")
 
     def handle_get(self, args: List[str]) -> None:
+        # Reset the other counter since this is a valid command prefix
+        self.player.other_silly_count = 0
+        
         if not args:
             self.transient_notify("Get what?", self.config.quick_sleep)
             self.needs_redraw = False
@@ -1921,12 +2154,15 @@ class Game:
             self.player.inventory.append(room.item)
             self.player.items_collected += 1
             room.item = None
-            self.player.silly_count = 0
+            self.player.action_silly_count = 0
             self.needs_redraw = True
         else:
             self.handle_silly_response(raw_target, action="get")
 
     def handle_use(self, args: List[str]) -> None:
+        # Reset the other counter since this is a valid command prefix
+        self.player.other_silly_count = 0
+        
         if not args:
             self.transient_notify("Use what?", self.config.quick_sleep)
             self.needs_redraw = False
@@ -1952,6 +2188,37 @@ class Game:
             self.needs_redraw = True
             return
 
+        if target == "goggles":
+            if room.name == "storage":
+                self.clear()
+                print("\n\n\n")
+                
+                plain_msg = "You slide the military-grade digital night-vision GOGGLES over your blood-shot eyes. You feel cool. Real cool. Suddenly you can see."
+                wrapped_plain = self.wrap_text(plain_msg, self.config.ui_width)
+                centered_lines = []
+                for line in wrapped_plain.split("\n"):
+                    pad_len = (self.config.ui_width - len(line)) // 2
+                    pad = " " * max(0, pad_len)
+                    line_colored = line.replace("GOGGLES", f"{self.config.yellow}GOGGLES{self.config.white}")
+                    centered_lines.append(f"{pad}{self.config.white}{line_colored}{self.config.reset}")
+                    
+                final_msg = "\n".join(centered_lines)
+                
+                self.typewriter(final_msg, speed=0.03)
+                print("\n\n")
+                
+                self.show_pulsing_exit("P R E S S  < E N T E R >", color_mode="white")
+                
+                self.player.goggles_on = True
+                room.visited = False  # So it typewrites the new description
+                self.needs_redraw = True
+                self.player.action_silly_count = 0
+                
+            else:
+                self.transient_notify("You put the goggles on. Everything looks green. You take them off.", self.config.medium_sleep)
+                self.needs_redraw = False
+            return
+
         used_successfully = False
         width = self.config.ui_width
 
@@ -1964,7 +2231,12 @@ class Game:
                 centered_lines = []
                 for line in wrapped_msg.split('\n'):
                     centered_lines.append(line.center(width))
-                colored_msg = f"{self.config.green}{chr(10).join(centered_lines)}{self.config.reset}"
+                
+                joined_msg = chr(10).join(centered_lines)
+                
+                pattern = re.compile(re.escape(target), re.IGNORECASE)
+                colored_content = pattern.sub(lambda m: f"{self.config.yellow}{m.group(0)}{self.config.white}", joined_msg)
+                colored_msg = f"{self.config.white}{colored_content}{self.config.reset}"
 
                 sys.stdout.write("\n")
                 self.typewriter(colored_msg, speed=0.03)
@@ -1973,7 +2245,9 @@ class Game:
                 room.unlocked_paths.append(direction)
                 used_successfully = True
 
-                sleep(1.0)
+                self.show_pulsing_exit("P R E S S  < E N T E R >", color_mode="white")
+                
+                self.player.action_silly_count = 0
                 self.needs_redraw = True
                 break
 
@@ -2024,7 +2298,7 @@ class Game:
 
             print("\n\n")
 
-            self.show_pulsing_exit("P R E S S  < E N T E R >", color_mode="white")
+            self.show_pulsing_exit("P R E S S  < E N T E R >", color_mode="red")
 
             self.current_run = None
             
@@ -2060,14 +2334,20 @@ class Game:
             self.waiting_for_input = False
             self.set_console_echo(False)
 
+        # --- ALIAS INTERCEPTION ---
+        map_aliases = ["look at map", "pull out map", "access map", "open map"]
+        for alias in map_aliases:
+            if raw_input.startswith(alias):
+                raw_input = raw_input.replace(alias, "use map", 1)
+                break
+        # ------------------------------
+
         words = [word for word in raw_input.split() if word not in self.config.stop_words]
 
         if not words:
-            self.help_menu()
-            self.display_timer = True
-            self.needs_redraw = True
+            self.handle_silly_response("", "empty")
             return
-
+            
         command = words[0]
         args = words[1:]
 
@@ -2075,6 +2355,7 @@ class Game:
         if handler:
             handler(args)
         else:
+            self.player.action_silly_count = 0  # Reset action count on a totally invalid command
             self.handle_silly_response(" ".join(args), command)
 
 
