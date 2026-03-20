@@ -6,5 +6,5 @@ Michael “Sandworm” Keaton,99.109283
 Alaskan Bull Worm,101.876543
 Bob,217.50067234039307
 Future Slurm Queen,220.87634
+matt,247.7702238559723
 Graboid Bacon,260.0
-Edgar the Conqueror Worm,666.66
