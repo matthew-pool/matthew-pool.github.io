@@ -644,6 +644,21 @@ if (modal) {
   });
 }
 
+// Wormhole Disclaimer Popup Controls
+function showWormholeDisclaimer() {
+    const popup = document.getElementById("wormholeDisclaimerPopup");
+    if (popup) {
+        popup.classList.add("show");
+    }
+}
+
+function hideWormholeDisclaimer() {
+    const popup = document.getElementById("wormholeDisclaimerPopup");
+    if (popup) {
+        popup.classList.remove("show");
+    }
+}
+
 document
   .getElementById("project-modal")
   .addEventListener("click", function (e) {

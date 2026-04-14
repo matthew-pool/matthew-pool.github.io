@@ -1058,7 +1058,7 @@ body.dark-mode .contact-card a:hover {
 	font-weight: 700;
 }
 
-.play-store-content {
+.play-cta-content {
 	text-align: center;
 	margin: 20px 0;
 }
@@ -2147,7 +2147,7 @@ body.dark-mode .project-card:hover::after {
     margin: 15px auto;
 }
 
-#project-modal-content .play-store-cta {
+#project-modal-content .launch-cta {
     text-align: center;
     margin: 30px 0;
 }
@@ -3071,7 +3071,7 @@ body.dark-mode .theme-action-btn:hover {
 
 .bird {
     position: absolute;
-    z-index: 10000;
+    z-index: 9900;
     pointer-events: none;
     width: 60px;
     height: 60px;
@@ -3102,7 +3102,7 @@ body.dark-mode .theme-action-btn:hover {
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.4s ease;
-    z-index: 10001;
+    z-index: 9901;
 }
 
 .bird-tooltip.visible {

@@ -1,10 +1,10 @@
-<!-- 
-    @project Portfolio
+/*
+    @project Portfolio Website
     @author Matthew Pool
     @filename index.html
-    @updated 2026-03-09
-    @version 1.20.5
--->
+    @updated 2026-04-14
+    @version 1.22.7
+*/
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +15,7 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='100%' height='100%' fill='%233498db' rx='10'/><text x='50%' y='50%' dy='.35em' fill='white' font-family='sans-serif' font-weight='bold' font-size='40' text-anchor='middle'>M</text></svg>">
     
     <meta name="description" content="Matthew Pool - Software Engineer specializing in Android development, full-stack web applications, UI/UX design, and machine learning. View my portfolio of mobile apps, web projects, and creative coding solutions.">
-    <meta name="keywords" content="software engineer, android developer, kotlin, react, typescript, portfolio, mobile app developer, UI/UX designer, full-stack developer, machine learning, web development">
+    <meta name="keywords" content="software engineer, android developer, java, kotlin, react, typescript, portfolio, mobile app developer, UI/UX designer, full-stack developer, machine learning, web development, game development, event-driven architecture">
     <meta name="author" content="Matthew Pool">
     
     <meta property="og:title" content="Matthew Pool - Software Engineer & Product Designer">
@@ -147,11 +147,9 @@
             
             <h2 class="section-header">Overview</h2>
             <div class="about-intro">
-                <p>I build things end-to-end — from Figma mockups to production deployments — and can even close the sale! 
-                    I bring a unique foundation to product engineering: a Summa Cum Laude B.S. in Computer Science         <a href="assets/documents/transcript.pdf" class="guide-link" style="text-align: center;" target="_blank" rel="noopener noreferrer">(3.99 GPA)</a>, paired with five years as a top-performing Fortune 500 sales agent and over a decade of customer service and technical support. 
-                    Because I have hit sales KPIs and sat on the front lines of customer support, I never lose sight of the business perspective. I bridge the gap between UI/UX design and technical implementation at every step of the product lifecycle, delivering accessible, high-ROI software that solves real user problems.</p>
+                <p>I build software end-to-end, bridging the gap between UI/UX design and technical implementation to deliver accessible, scalable solutions. Backed by a Summa Cum Laude B.S. in Computer Science <a href="assets/documents/transcript.pdf" class="guide-link" style="text-align: center;" target="_blank" rel="noopener noreferrer">(3.99 GPA)</a> and over a decade of technical support experience, I approach engineering with a deep understanding of the user. My work is rooted in adaptability and building systems from the ground up. You can see this in the object-oriented Python engine I built for "Wormhole", the native Android machine-learning architecture of "Flick", and even in my personal life, where I applied that same resourcefulness to construct a home from salvaged materials. Because I have spent years on the front lines of customer support, I never lose sight of the business perspective, focusing always on solving practical problems and shipping real value.</p>
             </div>
-            
+
             <p class="app-cta">
                 Check out my <span class="gradient-text">Android app</span> below.
             </p>
@@ -344,8 +342,8 @@
 
             <br>
 
-            <div class="play-store-cta">
-                <div class="play-store-content">
+            <div class="launch-cta" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                <div class="launch-cta-content" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
                     <h3>Try it now before the official release.</h3>
                     <a href="javascript:void(0);" class="directions-link" onclick="showDirections()">Directions</a>
                     <br>
@@ -427,8 +425,30 @@
                             <span class="project-card-tag">HTML5</span>
                             <span class="project-card-tag">CSS3</span>
                             <span class="project-card-tag">JavaScript</span>
+                            <span class="project-card-tag">SVG Animation</span>
                             <span class="project-card-tag">Responsive</span>
-                            <span class="project-card-tag">GitHub Pages</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="graphics" 
+                    onclick="openProjectModal('wormhole')"
+                    tabindex="0"
+                    role="button"
+                    aria-label="Wormhole Text Adventure — click to view details"
+                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('wormhole')}">
+                    <div class="project-card-image">
+                        <img src="assets/images/wormhole-1.png" alt="Wormhole Text Adventure Thumbnail" loading="lazy">
+                    </div>
+                    <div class="project-card-content">
+                        <h3>Wormhole Text Adventure</h3>
+                        <p class="project-card-brief">An immersive, terminal-based sci-fi text adventure featuring dynamic ANSI rendering, multithreading, and a real-time interactive map.</p>
+                        <div class="project-card-tags">
+                            <span class="project-card-tag">Python</span>
+                            <span class="project-card-tag">Multithreading</span>
+                            <span class="project-card-tag">CLI / ANSI</span>
+                            <span class="project-card-tag">JSON</span>
                         </div>
                     </div>
                 </div>
@@ -967,6 +987,65 @@
         </div>
     </div>
 
+    <div id="details-wormhole" class="project-details">
+    <h3>Wormhole Text Adventure</h3>
+    <div class="details">Python · Game Development · Multithreading · Event-Driven Architecture</div>
+        <ul>
+            <li><strong>Custom Engine:</strong> Built a robust, object-oriented text adventure engine entirely in Python featuring dynamic typewriter effects and a sophisticated command parser.</li>
+            <li><strong>Asynchronous UI:</strong> Utilized multithreading to handle live UI updates, including real-time timers, pulsing prompts, and a live-updating ASCII map without blocking user input.</li>
+            <li><strong>Event-Driven State:</strong> Implemented a flexible, event-driven narrative system to seamlessly manage complex story triggers, conditional paths, and state changes.</li>
+        </ul>
+
+        <div class="project-image-card">
+            <div class="screenshot-grid">
+                <figure class="screenshot-item">
+                    <figcaption>Core Gameplay</figcaption>
+                    <img src="assets/images/wormhole-2.png" alt="Core Gameplay & Typewriter UI">
+                </figure>
+                <figure class="screenshot-item">
+                    <figcaption>Live Map Screen</figcaption>
+                    <img src="assets/images/wormhole-3.png" alt="Live Interactive Map Screen">
+                </figure>
+                <figure class="screenshot-item">
+                    <figcaption>Player Leaderboard</figcaption>
+                    <img src="assets/images/wormhole-4.png" alt="Leaderboard & High Scores">
+                </figure>
+                <figure class="screenshot-item">
+                    <figcaption>Custom Debug Tool</figcaption>
+                    <img src="assets/images/wormhole-5.png" alt="Custom Debug Tool Interface">
+                </figure>
+            </div>
+        </div>
+
+        <br>
+        
+        <!-- TODO: ->
+        <div class="launch-cta" style="margin-top: 30px; margin-bottom: 30px; display: flex; flex-direction: column; align-items: center; text-align: center;">
+            <div class="launch-cta-content" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                <h3 style="margin-bottom: 15px;">Wormhole Text Adventure</h3>
+                
+                <a href="./wormhole/" target="_blank" rel="noopener noreferrer" class="web-badge">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
+                        <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
+                        <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
+                        <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
+                    </svg>
+                    
+                    <div class="badge-text-container">
+                        <span class="badge-small">Launch in</span>
+                        <span class="badge-large">Browser</span>
+                    </div>
+                </a>
+                
+                <br>
+                <a href="javascript:void(0);" class="directions-link" style="margin-top: 15px; font-size: 0.9em; text-decoration: underline; color: #3498db;" onclick="showWormholeDisclaimer(); event.stopPropagation();">Disclaimer</a>
+            </div>
+        </div>
+    </div>
+    
+    <br>
+    
     <div id="details-mario" class="project-details">
         <h3>Super Mario Bros. Scene Recreation</h3>
         <div class="details">C++, OpenGL, GLSL, GLM</div>
@@ -1016,17 +1095,8 @@
             <img class="paradox-image" src="assets/images/paradox1.png" alt="User choice for the prompted question">
         </div>
 
-        <div class="project-links">
-            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/existence-paradox" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                </svg>
-                View Source Code
-            </a>
-        </div>
-
-        <div class="play-store-cta" style="margin-top: 30px; margin-bottom: 30px;">
-            <div class="play-store-content">
+        <div class="launch-cta" style="margin-top: 30px; margin-bottom: 30px;">
+            <div class="launch-cta-content">
                 <h3 style="margin-bottom: 15px;">The Existence Paradox</h3>
                 
                 <a href="./existence-paradox/" target="_blank" rel="noopener noreferrer" class="web-badge">
@@ -1309,7 +1379,7 @@
 
         <ul>
             <li>Performed statistical analysis on NBA Elo data using <strong>regression models</strong> to predict regular-season wins based on team metrics</li>
-        </ul>       
+        </ul>        
 
         <div class="project-image-card">
             <img src="assets/images/stat1.png" alt="Null hypothesis, alternative hypothesis, and level of significance">
@@ -1580,6 +1650,15 @@
                     </a>
                 </div>
             </div>
+        </div>
+    </div>
+    
+    <div id="wormholeDisclaimerPopup" class="directions-popup-overlay" style="z-index: 10005;" onclick="hideWormholeDisclaimer()">
+        <div class="directions-popup">
+            <strong><i>Disclaimer: Wormhole</i></strong><br><br>
+            <p style="margin: 0; font-size: 0.9em; opacity: 0.9; line-height: 1.5; text-align: left;">
+                <em>Wormhole</em> is a work of fiction and is currently unrated. Any resemblance to actual persons, entities, or events is purely coincidental. References to real-world brands or products are used strictly for parody. This project is provided "as is" for educational and employment evaluation purposes only. The live leaderboard stores user-submitted display names; no personally identifiable information is collected.
+            </p>
         </div>
     </div>
 
