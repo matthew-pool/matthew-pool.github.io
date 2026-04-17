@@ -581,7 +581,7 @@ body.dark-mode .play-link:hover .play-badge {
 .screenshot-item figcaption {
 	margin-top: 8px;
 	font-size: 14px;
-	color: #ffffff;
+	color: #333;
 	text-align: center;
 	font-weight: 500;
 }
@@ -3011,16 +3011,18 @@ body.dark-mode .footer-metallic-black p {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 8px 20px;
+    padding: 10px 22px; /* Slightly increased padding for prominence */
     border-radius: 25px;
-    font-size: 14px;
+    font-size: 14.5px; /* Bumped up just a touch */
     font-weight: 600;
     text-decoration: none !important;
     transition: all 0.3s ease;
     
-    color: #667eea;
-    background: rgba(102, 126, 234, 0.08);
-    border: 1px solid rgba(102, 126, 234, 0.3);
+    /* Prominent Light Mode Styling */
+    color: #ffffff;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: 1px solid transparent;
+    box-shadow: 0 4px 10px rgba(102, 126, 234, 0.25);
 }
 
 .theme-action-btn svg {
@@ -3032,21 +3034,21 @@ body.dark-mode .footer-metallic-black p {
 }
 
 .theme-action-btn:hover {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: #ffffff;
-    border-color: transparent;
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 6px 16px rgba(102, 126, 234, 0.45);
+    color: #ffffff;
 }
 
 .theme-action-btn:hover svg {
     transform: scale(1.1);
 }
 
+/* Dark Mode (Kept exactly as it was) */
 body.dark-mode .theme-action-btn {
     color: #c4aaff;
     background: rgba(168, 85, 247, 0.1);
     border: 1px solid rgba(168, 85, 247, 0.3);
+    box-shadow: none; /* Removes the light mode shadow */
 }
 
 body.dark-mode .theme-action-btn:hover {

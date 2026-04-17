@@ -615,18 +615,23 @@ function openProjectModal(projectId) {
   // 1. Inject the new content
   modalContent.innerHTML = detailsElement.innerHTML;
   
-  // 2. Find the exact container that holds the scrollbar
-  const modalBody = modal.querySelector('.project-modal-body');
-  
-  // 3. Reset the scroll positions back to the top
-  modal.scrollTop = 0; 
-  if (modalBody) {
-      modalBody.scrollTop = 0; 
-  }
-
-  // 4. Show the modal
+  // 2. Show the modal FIRST so the browser calculates its dimensions
   modal.classList.add("show");
   document.body.style.overflow = "hidden";
+  
+  // 3. Find the exact container that holds the scrollbar
+  const modalBody = modal.querySelector('.project-modal-body');
+  
+  // 4. Reset the scroll positions back to the top AFTER it is visible
+  // We use requestAnimationFrame to ensure the DOM has updated the display state
+  requestAnimationFrame(() => {
+      modal.scrollTop = 0; 
+      if (modalBody) {
+          modalBody.scrollTop = 0; 
+      }
+      // Reset the content container as well, just to be safe
+      modalContent.scrollTop = 0;
+  });
 }
 
 function closeProjectModal() {
