@@ -3,7 +3,7 @@
     @author Matthew Pool
     @filename index.html
     @updated 2026-04-17
-    @version 1.22.11
+    @version 1.22.12
 -->
 
 <!DOCTYPE html>
@@ -525,23 +525,42 @@
                     </div>
                 </div>
 
-                <div class="project-card" data-category="mobile" 
-                    onclick="openProjectModal('buddy')"
+<div class="project-card" data-category="mobile" 
+                    onclick="openProjectModal('product-design-eatright')"
                     tabindex="0"
                     role="button"
-                    aria-label="InventoryBuddy — click to view details"
-                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('buddy')}">
+                    aria-label="Eat Right! — click to view details"
+                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('product-design-eatright')}">
                     <div class="project-card-image">
-                        <img src="assets/images/buddy3.png" alt="InventoryBuddy App" loading="lazy">
+                        <img src="assets/images/product-design-eatright-wireframe.png" alt="Eat Right! Product Design" loading="lazy">
                     </div>
                     <div class="project-card-content">
-                        <h3>InventoryBuddy</h3>
-                        <p class="project-card-brief">Android inventory management with SMS notifications and local SQLite database</p>
+                        <h3>Eat Right!</h3>
+                        <p class="project-card-brief">Mobile app wireframes and product design documentation including interviews and personas.</p>
                         <div class="project-card-tags">
-                            <span class="project-card-tag">Android</span>
-                            <span class="project-card-tag">Java</span>
-                            <span class="project-card-tag">SQLite</span>
-                            <span class="project-card-tag">SMS</span>
+                            <span class="project-card-tag">UX Design</span>
+                            <span class="project-card-tag">Wireframes</span>
+                            <span class="project-card-tag">Prototyping</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="mobile" 
+                    onclick="openProjectModal('product-design-moneymobile')"
+                    tabindex="0"
+                    role="button"
+                    aria-label="MoneyMobile — click to view details"
+                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('product-design-moneymobile')}">
+                    <div class="project-card-image">
+                        <img src="assets/images/product-design-moneymobile-mockup.png" alt="MoneyMobile Product Design" loading="lazy">
+                    </div>
+                    <div class="project-card-content">
+                        <h3>MoneyMobile</h3>
+                        <p class="project-card-brief">High-fidelity mockups and design proposals for client mobile and admin web apps.</p>
+                        <div class="project-card-tags">
+                            <span class="project-card-tag">UX Design</span>
+                            <span class="project-card-tag">Mockups</span>
+                            <span class="project-card-tag">Web/Mobile</span>
                         </div>
                     </div>
                 </div>
@@ -775,27 +794,6 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="project-card" data-category="mobile" 
-                    onclick="openProjectModal('product-design')"
-                    tabindex="0"
-                    role="button"
-                    aria-label="Product Design — click to view details"
-                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('product-design')}">
-                    <div class="project-card-image">
-                        <img src="assets/images/product-design-moneymobile-mockup.png" alt="Product Design" loading="lazy">
-                    </div>
-                    <div class="project-card-content">
-                        <h3>Product Design</h3>
-                        <p class="project-card-brief">Mobile and web app design with wireframes and mockups</p>
-                        <div class="project-card-tags">
-                            <span class="project-card-tag">UX Design</span>
-                            <span class="project-card-tag">Wireframes</span>
-                            <span class="project-card-tag">Mockups</span>
-                        </div>
-                    </div>
-                </div>
-
             </div>
 
             <div class="content-card" style="margin-bottom: 30px; border-top: 4px solid #3498db;">
@@ -1124,64 +1122,80 @@
         </div>
     </div>
 
-    <div id="details-product-design" class="project-details">
-        <h3>Product Design</h3>
-
-        <div class="details">Eat Right! (Android & iOS)</div>
-        <ul>
-            <li><strong>Wireframe</strong></li>
-            <div class="project-image-card">
-                <img src="assets/images/product-design-eatright-wireframe.png" alt="Eat Right low-fidelity wireframe">
-            </div>
-
-            <li><strong>Documentation</strong></li>
-            <div class="project-links">
-                <a href="assets/documents/eatright-interviews-personas.pdf" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
-                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                        <polyline points="7 10 12 15 17 10"></polyline>
-                        <line x1="12" y1="15" x2="12" y2="3"></line>
-                    </svg>
-                    View Interviews & Personas
-                </a>
-                <a href="assets/documents/eatright-design-decisions-document.pdf" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
-                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                        <polyline points="7 10 12 15 17 10"></polyline>
-                        <line x1="12" y1="15" x2="12" y2="3"></line>
-                    </svg>
-                    View Design Document
-                </a>
-                <a href="assets/documents/eatright-prototype-paper.pdf" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
-                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                        <polyline points="7 10 12 15 17 10"></polyline>
-                        <line x1="12" y1="15" x2="12" y2="3"></line>
-                    </svg>
-                    View Prototype Docs
-                </a>
-            </div>
-        </ul>
+    <div id="details-eatright" class="project-details">
+        <h3>Eat Right!</h3>
+        <div class="details">Cross-Platform Design</div>
         
-        <div class="details">Kiva - MoneyMobile (Client mobile app & Admin web app)</div>
         <ul>
-            <li><strong>Mockup</strong></li>
-            <div class="project-image-card">
-                <img src="assets/images/product-design-moneymobile-mockup.png" alt="MoneyMobile app high-fidelity mockup">
-            </div>
-
-            <li><strong>Documentation</strong></li>
-            <div class="project-links">
-                <a href="assets/documents/moneymobile-design-proposal-document.pdf" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
-                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                        <polyline points="7 10 12 15 17 10"></polyline>
-                        <line x1="12" y1="15" x2="12" y2="3"></line>
-                    </svg>
-                    View Design Proposal
-                </a>
-            </div>
+            <li>Conducted user interviews and developed targeted user personas to establish core product requirements and address pain points.</li>
+            <li>Created low-fidelity wireframes and interactive prototypes to define the cross-platform user experience and navigation flow.</li>
+            <li>Authored comprehensive design documentation outlining critical UI/UX decisions and product strategy.</li>
         </ul>
+
+        <div class="project-links">
+            <a href="assets/documents/eatright-interviews-personas.pdf" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                View Interviews & Personas
+            </a>
+            <a href="assets/documents/eatright-design-decisions-document.pdf" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                View Design Document
+            </a>
+            <a href="assets/documents/eatright-prototype-paper.pdf" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                View Prototype Docs
+            </a>
+        </div>
+
+        <div class="project-image-card">
+            <img src="assets/images/product-design-eatright-wireframe.png" alt="Eat Right low-fidelity wireframe">
+        </div>
+        
+        <div class="project-links">
+            <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/product-design" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                View Source Code
+            </a>
+        </div>
+    </div>
+
+    <div id="details-moneymobile" class="project-details">
+        <h3>Kiva MoneyMobile</h3>
+        <div class="details">Client mobile app & Admin web app</div>
+        
+        <ul>
+            <li>Designed high-fidelity mockups for a dual-interface ecosystem, encompassing a client-facing mobile application and an administrative web dashboard.</li>
+            <li>Developed a comprehensive design proposal outlining the user flow, product strategy, and visual identity.</li>
+        </ul>
+
+        <div class="project-links">
+            <a href="assets/documents/moneymobile-design-proposal-document.pdf" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                View Design Proposal
+            </a>
+        </div>
+
+        <div class="project-image-card">
+            <img src="assets/images/product-design-moneymobile-mockup.png" alt="MoneyMobile app high-fidelity mockup">
+        </div>
 
         <div class="project-links">
             <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/product-design" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
@@ -1466,7 +1480,7 @@
                     <polyline points="7 10 12 15 17 10"></polyline>
                     <line x1="12" y1="15" x2="12" y2="3"></line>
                 </svg>
-                Download Process Docs
+                Download Process Docs (ZIP)
             </a>        
         </div>
     </div>
@@ -1647,14 +1661,12 @@
                     </p>
                 </div>
 
-                <div class="project-links">
-                    <a href="service-tests/service-tests.zip" class="theme-action-btn" target="_blank" rel="noopener noreferrer" download>
+                <div class="project-links" style="justify-content: center; margin-top: 20px;">
+                    <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/service-tests" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
                         <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                            <polyline points="7 10 12 15 17 10"></polyline>
-                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                         </svg>
-                        Download Source Code
+                        View Source Code
                     </a>
                 </div>
             </div>
