@@ -3,7 +3,7 @@
     @author Matthew Pool
     @filename index.html
     @updated 2026-04-17
-    @version 1.22.12
+    @version 1.22.13
 -->
 
 <!DOCTYPE html>
@@ -406,7 +406,7 @@
 
             <div class="project-filters">
                 <button class="filter-btn active" onclick="filterProjects('all', event)">All Projects</button>
-                <button class="filter-btn" onclick="filterProjects('mobile', event)">Mobile</button>
+                <button class="filter-btn" onclick="filterProjects('design', event)">Mobile</button>
                 <button class="filter-btn" onclick="filterProjects('web', event)">Web</button>
                 <button class="filter-btn" onclick="filterProjects('graphics', event)">Graphics</button>
                 <button class="filter-btn" onclick="filterProjects('data', event)">Data/ML</button>
@@ -525,17 +525,17 @@
                     </div>
                 </div>
 
-<div class="project-card" data-category="mobile" 
-                    onclick="openProjectModal('product-design-eatright')"
+                <div class="project-card" data-category="design" 
+                    onclick="openProjectModal('eatright')"
                     tabindex="0"
                     role="button"
-                    aria-label="Eat Right! — click to view details"
-                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('product-design-eatright')}">
-                    <div class="project-card-image">
+                    aria-label="Product Design: Eat Right! — click to view details"
+                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('eatright')}">
+                        <div class="project-card-image">
                         <img src="assets/images/product-design-eatright-wireframe.png" alt="Eat Right! Product Design" loading="lazy">
                     </div>
                     <div class="project-card-content">
-                        <h3>Eat Right!</h3>
+                        <h3>Product Design: Eat Right!</h3>
                         <p class="project-card-brief">Mobile app wireframes and product design documentation including interviews and personas.</p>
                         <div class="project-card-tags">
                             <span class="project-card-tag">UX Design</span>
@@ -545,17 +545,17 @@
                     </div>
                 </div>
 
-                <div class="project-card" data-category="mobile" 
-                    onclick="openProjectModal('product-design-moneymobile')"
+                <div class="project-card" data-category="design" 
+                    onclick="openProjectModal('moneymobile')"
                     tabindex="0"
                     role="button"
-                    aria-label="MoneyMobile — click to view details"
-                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('product-design-moneymobile')}">
+                    aria-label="Product Design: MoneyMobile — click to view details"
+                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('moneymobile')}">
                     <div class="project-card-image">
                         <img src="assets/images/product-design-moneymobile-mockup.png" alt="MoneyMobile Product Design" loading="lazy">
                     </div>
                     <div class="project-card-content">
-                        <h3>MoneyMobile</h3>
+                        <h3>Product Design: MoneyMobile</h3>
                         <p class="project-card-brief">High-fidelity mockups and design proposals for client mobile and admin web apps.</p>
                         <div class="project-card-tags">
                             <span class="project-card-tag">UX Design</span>
