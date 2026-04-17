@@ -2,8 +2,8 @@
     @project Portfolio Website
     @author Matthew Pool
     @filename index.html
-    @updated 2026-04-14
-    @version 1.22.7
+    @updated 2026-04-17
+    @version 1.22.10
 -->
 
 <!DOCTYPE html>
@@ -179,13 +179,19 @@
             <br>
 
             <div class="project-links" style="justify-content: center;">
-                <a href="assets/documents/user-guide.html" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
+                <a href="assets/documents/flick-user-guide.pdf" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
                     <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                         <polyline points="7 10 12 15 17 10"></polyline>
                         <line x1="12" y1="15" x2="12" y2="3"></line>
                     </svg>
-                    View User Guide
+                    User Guide
+                </a>
+                <a href="assets/documents/flick-security-summary.pdf" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                    Security Summary
                 </a>
             </div>
 
@@ -416,7 +422,7 @@
                     aria-label="This Portfolio — click to view details"
                     onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('portfolio-site')}">
                     <div class="project-card-image">
-                        <img src="assets/images/portfolio-dark.png" alt="Portfolio website design" loading="lazy">
+                        <img src="assets/images/portfolio-light.png" alt="Portfolio website design" loading="lazy">
                     </div>
                     <div class="project-card-content">
                         <h3>(This) Portfolio</h3>
@@ -442,7 +448,7 @@
                         <img src="assets/images/wormhole-1.png" alt="Wormhole Text Adventure Thumbnail" loading="lazy">
                     </div>
                     <div class="project-card-content">
-                        <h3>Wormhole Text Adventure</h3>
+                        <h3>Wormhole - A Text Adventure Game</h3>
                         <p class="project-card-brief">An immersive, terminal-based sci-fi text adventure featuring dynamic ANSI rendering, multithreading, and a real-time interactive map.</p>
                         <div class="project-card-tags">
                             <span class="project-card-tag">Python</span>
@@ -975,7 +981,7 @@
         </ul>
 
         <div class="project-image-card">
-            <img src="assets/images/portfolio-light.png" alt="Light mode view of the portfolio">
+            <img src="assets/images/portfolio-dark.png" alt="Light mode view of the portfolio">
         </div>
         <div class="project-links">
             <a href="https://github.com/matthew-pool/matthew-pool.github.io" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
@@ -1015,11 +1021,14 @@
                     <img src="assets/images/wormhole-5.png" alt="Custom Debug Tool Interface">
                 </figure>
             </div>
+            <p style="text-align: center; font-style: italic; margin-top: 30px; font-weight: 600; color: #667eea;">
+                Demo coming soon!
+            </p>
         </div>
 
         <br>
         
-        <!-- TODO: ->
+        <!-- TODO:Wormhole CTA
         <div class="launch-cta" style="margin-top: 30px; margin-bottom: 30px; display: flex; flex-direction: column; align-items: center; text-align: center;">
             <div class="launch-cta-content" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
                 <h3 style="margin-bottom: 15px;">Wormhole Text Adventure</h3>
@@ -1042,6 +1051,7 @@
                 <a href="javascript:void(0);" class="directions-link" style="margin-top: 15px; font-size: 0.9em; text-decoration: underline; color: #3498db;" onclick="showWormholeDisclaimer(); event.stopPropagation();">Disclaimer</a>
             </div>
         </div>
+        -->
     </div>
     
     <br>
@@ -1096,9 +1106,7 @@
         </div>
 
         <div class="launch-cta" style="margin-top: 30px; margin-bottom: 30px;">
-            <div class="launch-cta-content">
-                <h3 style="margin-bottom: 15px;">The Existence Paradox</h3>
-                
+            <div class="launch-cta-content">             
                 <a href="./existence-paradox/" target="_blank" rel="noopener noreferrer" class="web-badge">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
@@ -1284,7 +1292,7 @@
         <ul>
             <li>Optimized <strong>Convolutional Neural Network (CNN)</strong> model for image recognition, experimenting with hyperparameters to balance accuracy and training efficiency</li>
             <div class="project-links">
-                <a href="assets/documents/cnn-image-recognition.html" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
+                <a href="assets/documents/cnn-image-recognition.pdf" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
                     <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                         <polyline points="7 10 12 15 17 10"></polyline>
@@ -1304,7 +1312,7 @@
                     </svg>
                     View DQN Report
                 </a>
-                <a href="assets/documents/dqn-treasure-hunt.html" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
+                <a href="assets/documents/dqn-treasure-hunt.pdf" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
                     <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                         <polyline points="7 10 12 15 17 10"></polyline>
