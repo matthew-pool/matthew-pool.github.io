@@ -64,7 +64,7 @@
             <span class="uh-divider">|</span>
             <span class="uh-email" style="position:relative;">
                 <a href="mailto:mathyou.me@gmail.com">mathyou.me@gmail.com</a>
-                <button onclick="copyEmail(this)" style="background:none; border:none; cursor:pointer; padding:4px; display:inline-flex; align-items:center; opacity:0.7; transition:opacity 0.2s; position:absolute; top:50%; transform:translateY(-50%); margin-left:4px;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
+                <button onclick="copyEmail(this)" aria-label="Copy email address" style="background:none; border:none; cursor:pointer; padding:4px; display:inline-flex; align-items:center; opacity:0.7; transition:opacity 0.2s; position:absolute; top:50%; transform:translateY(-50%); margin-left:4px;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2">
                         <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                         <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
@@ -104,9 +104,9 @@
 
         <div class="tab-container">
             <div class="tab-nav">
-                <button class="tab-button active" onclick="openTab(event, 'home')">Home</button>
-                <button class="tab-button" onclick="openTab(event, 'projects')">Projects</button> 
-                <button class="tab-button" onclick="openTab(event, 'refactoring')">Code Samples</button>
+                <button class="tab-button active" aria-label="Home tab" onclick="openTab(event, 'home')">Home</button>
+                <button class="tab-button" aria-label="Projects tab" onclick="openTab(event, 'projects')">Projects</button> 
+                <button class="tab-button" aria-label="Code Samples tab" onclick="openTab(event, 'refactoring')">Code Samples</button>
             </div>
         </div>
 
@@ -116,7 +116,7 @@
         </div>
     </div>
 
-	<div id="bird" class="bird">
+	<div id="bird" class="bird" aria-label="Interactive animated bird" role="button" tabindex="0">
         <div id="bird-tooltip" class="bird-tooltip">Tweet Tweet</div>
         <svg width="60" height="60" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
 			<g id="legs">
@@ -148,7 +148,7 @@
             
             <h2 class="section-header">Overview</h2>
             <div class="about-intro">
-                <p>I build software end-to-end, bridging the gap between UI/UX design and technical implementation to deliver accessible, scalable solutions. Backed by a Summa Cum Laude B.S. in Computer Science <a href="assets/documents/transcript.pdf" class="guide-link" style="text-align: center;" target="_blank" rel="noopener noreferrer">(3.99 GPA)</a> and over a decade of technical support experience, I approach engineering with a deep understanding of the user. My work is rooted in adaptability and building systems from the ground up. You can see this in the object-oriented Python engine I built for "Wormhole", the native Android machine-learning architecture of "Flick", and even in my personal life, where I applied that same resourcefulness to construct a home from salvaged materials. Because I have spent years on the front lines of customer support, I never lose sight of the business perspective, focusing always on solving practical problems and shipping real value.</p>
+                <p>I build software end-to-end, bridging the gap between UI/UX design and technical implementation to deliver accessible, scalable solutions. Backed by a Summa Cum Laude B.S. in Computer Science <a href="assets/documents/transcript.pdf" class="guide-link" style="text-align: center;" target="_blank" rel="noopener noreferrer">(3.99 GPA)</a> and over a decade of technical support experience, I approach engineering with a deep understanding of the user. My work is rooted in adaptability and building systems from the ground up. You can see this in the object-oriented Python engine I built for "Wormhole", the native Android machine-learning architecture of "Flick", and even in my personal life, where I applied that same resourcefulness to construct a home from salvaged materials. <strong>To maximize my output and velocity, I actively leverage generative AI toolchains to rapidly iterate on UI assets, handle boilerplate, and scale my end-to-end development.</strong> I also leverage generative AI toolchains to accelerate this end-to-end development, rapidly iterating on high-fidelity UI assets and boilerplate code to scale my solo output. Because I have spent years on the front lines of customer support, I never lose sight of the business perspective, focusing always on solving practical problems and shipping real value.</p>
             </div>
 
             <p class="app-cta">
@@ -158,13 +158,12 @@
             <div class="dark-flick-header-card">
                 <div class="flick-card">
                     <div class="flick-header">
-                        <img src="assets/images/flick/logo-alt.svg" alt="Flick logo" class="flick-logo">
+                        <img src="assets/images/flick/logo-alt.svg" alt="Flick logo" class="flick-logo" loading="lazy" aria-label="Flick logo showing an old neon-tube light in the shape of an F">
                         <h2>Flick (Android)</h2>
                     </div>
                     <p style="margin-top: -20px; color: #c8c8c8; font-size: 16px; padding-left: 75px;"><i>Designer/Engineer: Matthew Pool</i></p>
                 </div>
-                
-                <img src="assets/images/flick/banner.png" alt="Flick app banner" style="width: 100%; max-width: 1280px; margin: 20px 0; border: 2px solid #c8c8c8;">
+                <img src="assets/images/flick/banner.png" alt="Flick app banner" style="width: 100%; max-width: 1280px; margin: 20px 0; border: 2px solid #c8c8c8;" loading="lazy" aria-label="Flick app banner featuring movie elements like film, popcorn, and movie-style spotlights shining at the phrase 'Flick'">
             </div>
             
             <hr>
@@ -203,52 +202,52 @@
                 <div class="screenshot-grid">
                     <figure class="screenshot-item">
                         <figcaption>Custom Splash Screen</figcaption>
-                        <img src="assets/images/flick/screen14.png" alt="Preparing app screen">
+                        <img src="assets/images/flick/screen14.png" loading="lazy" aria-label="Preparing app screen" alt="Preparing app screen">
                     </figure>
 
                     <figure class="screenshot-item">
                         <figcaption>Initial Loading</figcaption>
-                        <img src="assets/images/flick/screen4.png" alt="Traveling back in time screen">
+                        <img src="assets/images/flick/screen4.png" loading="lazy" aria-label="Traveling back in time screen" alt="Traveling back in time screen">
                     </figure>
 
                     <figure class="screenshot-item">
                         <figcaption>Swipe Up Hint</figcaption>
-                        <img src="assets/images/flick/screen1.png" alt="Up arrow hint">
+                        <img src="assets/images/flick/screen1.png" loading="lazy" aria-label="Swipe up hint" alt="Up arrow hint">
                     </figure>
 
                     <figure class="screenshot-item">
                         <figcaption>Static TV Effect</figcaption>
-                        <img src="assets/images/flick/screen5.png" alt="TV static screen">
+                        <img src="assets/images/flick/screen5.png" loading="lazy" aria-label="Static TV effect" alt="TV static screen">
                     </figure>
 
                     <figure class="screenshot-item">
                         <figcaption>Like Interaction</figcaption>
-                        <img src="assets/images/flick/screen7.png" alt="Alf video liked">
+                        <img src="assets/images/flick/screen7.png" loading="lazy" aria-label="Like interaction" alt="Alf video liked">
                     </figure>
 
                     <figure class="screenshot-item">
                         <figcaption>Dislike Interaction</figcaption>
-                        <img src="assets/images/flick/screen8.png" alt="Video disliked">
+                        <img src="assets/images/flick/screen8.png" loading="lazy" aria-label="Dislike interaction" alt="Video disliked">
                     </figure>
 
                     <figure class="screenshot-item">
                         <figcaption>Left Swipe Hint</figcaption>
-                        <img src="assets/images/flick/screen12.png" alt="Left arrow hint">
+                        <img src="assets/images/flick/screen12.png" loading="lazy" aria-label="Left swipe hint" alt="Left arrow hint">
                     </figure>
 
                     <figure class="screenshot-item">
                         <figcaption>End Dialog</figcaption>
-                        <img src="assets/images/flick/screen10.png" alt="Thank you dialog">
+                        <img src="assets/images/flick/screen10.png" loading="lazy" aria-label="End dialog" alt="Thank you dialog">
                     </figure>
 
                     <figure class="screenshot-item">
                         <figcaption>Custom Debug Tool</figcaption>
-                        <img src="assets/images/flick/screen11.png" alt="Similar video screen">
+                        <img src="assets/images/flick/screen11.png" loading="lazy" aria-label="Custom debug tool" alt="Similar video screen">
                     </figure>
 
                     <figure class="screenshot-item">
                         <figcaption>Tablet/Fold View</figcaption>
-                        <img src="assets/images/flick/tablet.png" alt="Flick on tablet">
+                        <img src="assets/images/flick/tablet.png" loading="lazy" aria-label="Flick on tablet" alt="Flick on tablet">
                     </figure>
                 </div>
             </div>
@@ -266,8 +265,8 @@
             </div>
 
             <div class="content-card" style="margin-top: 15px">
-                    <img src="assets/images/flick/figma-1.svg" alt="Figma design mockup - set 1" style="width: 100%; max-width: 1200px;">
-                    <img src="assets/images/flick/figma-2.svg" alt="Figma design mockup - set 2" style="width: 100%; max-width: 1200px;">
+                    <img src="assets/images/flick/figma-1.svg" aria-label="Figma designs for Flick" alt="Figma design mockup - set 1" style="width: 100%; max-width: 1200px;">
+                    <img src="assets/images/flick/figma-2.svg" aria-label="Figma designs for Flick" alt="Figma design mockup - set 2" style="width: 100%; max-width: 1200px;">
             </div>
 
             <div class="content-card" style="margin-top: 15px">         
@@ -342,8 +341,8 @@
             <h2>CI/CD</h2>
             <div class="image-card">
                 <div class="ci-images">
-                    <img src="assets/images/flick/ci1.png" alt="CI tests passed">
-                    <img src="assets/images/flick/ci2.png" alt="CI tests completed">
+                    <img src="assets/images/flick/ci1.png" loading="lazy" aria-label="Continuous Integration tests passed" alt="CI tests passed">
+                    <img src="assets/images/flick/ci2.png" loading="lazy" aria-label="Continuous Integration tests passed and completed" alt="CI tests completed">
                 </div>
             </div>
 
@@ -387,7 +386,7 @@
                     <span class="uh-divider">|</span>
                     <span class="uh-email" style="position:relative; display: inline-flex; align-items: center; padding-right: 28px;">
                         <a href="mailto:mathyou.me@gmail.com">mathyou.me@gmail.com</a>
-                        <button onclick="copyEmail(this, 'light')" style="background: none; border: none; cursor: pointer; padding: 4px; display: inline-flex; align-items: center; opacity: 0.7; transition: opacity 0.2s; position: absolute; right: 0; top: 50%; transform: translateY(-50%);" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
+                        <button onclick="copyEmail(this, 'light')" aria-label="Copy Email Address" style="background: none; border: none; cursor: pointer; padding: 4px; display: inline-flex; align-items: center; opacity: 0.7; transition: opacity 0.2s; position: absolute; right: 0; top: 50%; transform: translateY(-50%);" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.9)" stroke-width="2">
                                 <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                                 <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
@@ -801,7 +800,7 @@
 
             <div class="content-card" style="margin-bottom: 30px; border-top: 4px solid #3498db;">
                 <h3 style="margin-top: 0;">The Bottom Line</h3>
-                <p>Early-stage companies and fast-paced teams require engineers who understand the entire product lifecycle, not just a single silo. I build things end-to-end, and my background in hitting KPIs as a top-performing Fortune 500 sales agent means I never lose sight of the business perspective.</p>
+                <p>Early-stage companies and fast-paced teams require engineers who understand the entire product lifecycle, not just a single silo. I build things end-to-end, and my background in hitting KPIs as a top-performing sales agent for Fortune 500 clients like American Express, AT&T, and Citibank means I never lose sight of the business perspective. Additionally, I bring a strong track record of team leadership and mentorship, having actively trained junior representatives and new hires throughout my career.</p>
                 <p>I can design the UI in Figma, architect the ML engine, build the automated CI/CD pipeline, and pitch the final product to a user. Having proven my resourcefulness by building a custom Android platform with near-zero infrastructure costs, I am fully equipped to ship high-ROI software from day one.</p>
             </div>
 
@@ -814,7 +813,7 @@
                     <span class="uh-divider">|</span>
                     <span class="uh-email" style="position:relative; display: inline-flex; align-items: center; padding-right: 28px;">
                         <a href="mailto:mathyou.me@gmail.com">mathyou.me@gmail.com</a>
-                        <button onclick="copyEmail(this, 'light')" style="background: none; border: none; cursor: pointer; padding: 4px; display: inline-flex; align-items: center; opacity: 0.7; transition: opacity 0.2s; position: absolute; right: 0; top: 50%; transform: translateY(-50%);" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
+                        <button onclick="copyEmail(this, 'light')" aria-label="Copy Email Address" style="background: none; border: none; cursor: pointer; padding: 4px; display: inline-flex; align-items: center; opacity: 0.7; transition: opacity 0.2s; position: absolute; right: 0; top: 50%; transform: translateY(-50%);" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.9)" stroke-width="2">
                                 <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                                 <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
@@ -846,7 +845,7 @@
                 </p>
             
                 <div class="image-card" style="margin: 20px 0;">
-                    <img src="assets/images/new11.png" alt="System menu of the legacy application">
+                    <img src="assets/images/new11.png" loading="lazy" aria-label="System menu of the legacy Java application" alt="System menu of the legacy application">
                 </div>
 
                 <div class="project-links" style="justify-content: center; margin-top: 20px;">
@@ -873,14 +872,14 @@
 
                 <h4>Implemented JUnit Testing</h4>
                 <div class="code-gallery">
-                    <img src="assets/images/new1.png" alt="JUnit test coverage">
-                    <img src="assets/images/new3.png" alt="JUnit test results">
+                    <img src="assets/images/new1.png" loading="lazy" aria-label="JUnit test coverage" alt="JUnit test coverage">
+                    <img src="assets/images/new3.png" loading="lazy" aria-label="JUnit test results" alt="JUnit test results">
                 </div>
                 
                 <h4>Added JavaDocs & Validation</h4>
                 <div class="code-gallery">
-                    <img src="assets/images/new19.png" alt="Main class JavaDoc">
-                    <img src="assets/images/new9.png" alt="Error-handling">
+                    <img src="assets/images/new19.png" loading="lazy" aria-label="Main class JavaDoc" alt="Main class JavaDoc">
+                    <img src="assets/images/new9.png" loading="lazy" aria-label="Error-handling" alt="Error-handling">
                 </div>
 
                 <div class="content-card">
@@ -888,12 +887,12 @@
                     <p>I improved the CLI experience by implementing ANSI escape codes for colored output and clearer visual hierarchy.</p>
                     
                     <div class="code-gallery">
-                        <img src="assets/images/new6.png" alt="ANSI escape code declarations">
-                        <img src="assets/images/new10.png" alt="Various formatting">
+                        <img src="assets/images/new6.png" loading="lazy" aria-label="ANSI escape code declarations" alt="ANSI escape code declarations">
+                        <img src="assets/images/new10.png" loading="lazy" aria-label="Various formatting" alt="Various formatting">
                     </div>
                     <div class="code-gallery">
-                        <img src="assets/images/new12.png" alt="List output">
-                        <img src="assets/images/new14.png" alt="Quitting system">
+                        <img src="assets/images/new12.png" loading="lazy" aria-label="List output" alt="List output">
+                        <img src="assets/images/new14.png" loading="lazy" aria-label="Quitting system" alt="Quitting system">
                     </div>
                 </div>
             </div>
@@ -905,16 +904,16 @@
                 <p>I replaced volatile memory storage with MapDB to enable local persistence, ensuring data survives between program executions.</p>
                 
                 <div class="code-gallery">
-                    <img src="assets/images/new18.png" alt="MapDB imports">
-                    <img src="assets/images/new7.png" alt="MapDB implementation">
+                    <img src="assets/images/new18.png" loading="lazy" aria-label="MapDB imports" alt="MapDB imports">
+                    <img src="assets/images/new7.png" loading="lazy" aria-label="MapDB implementation" alt="MapDB implementation">
                 </div>
                 
                 <h4>Algorithmic Optimization</h4>
                 <p>Converted linear ArrayList lookups to HashMaps, improving retrieval time complexity from <i>O(n)</i> to <i>O(1)</i> (or O(log n) depending on collision handling).</p>
                 
                 <div class="code-gallery">
-                    <img src="assets/images/new5.png" alt="LinkedHashMap declarations">
-                    <img src="assets/images/new17.png" alt="Writing to the hash map">
+                    <img src="assets/images/new5.png" loading="lazy" aria-label="LinkedHashMap declarations" alt="LinkedHashMap declarations">
+                    <img src="assets/images/new17.png" loading="lazy" aria-label="Writing to the hash map" alt="Writing to the hash map">
                 </div>
             </div>
 
@@ -944,7 +943,7 @@
                     <span class="uh-divider">|</span>
                     <span class="uh-email" style="position:relative; display: inline-flex; align-items: center; padding-right: 28px;">
                         <a href="mailto:mathyou.me@gmail.com">mathyou.me@gmail.com</a>
-                        <button onclick="copyEmail(this, 'light')" style="background: none; border: none; cursor: pointer; padding: 4px; display: inline-flex; align-items: center; opacity: 0.7; transition: opacity 0.2s; position: absolute; right: 0; top: 50%; transform: translateY(-50%);" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
+                        <button onclick="copyEmail(this, 'light')" aria-label="Copy Email Address" style="background: none; border: none; cursor: pointer; padding: 4px; display: inline-flex; align-items: center; opacity: 0.7; transition: opacity 0.2s; position: absolute; right: 0; top: 50%; transform: translateY(-50%);" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.9)" stroke-width="2">
                                 <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                                 <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
@@ -982,7 +981,7 @@
         </ul>
 
         <div class="project-image-card">
-            <img src="assets/images/portfolio-dark.png" alt="Light mode view of the portfolio">
+            <img src="assets/images/portfolio-dark.png" loading="lazy" aria-label="Dark mode view of the portfolio" alt="Dark mode view of the portfolio">
         </div>
         <div class="project-links">
             <a href="https://github.com/matthew-pool/matthew-pool.github.io" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
@@ -1003,23 +1002,23 @@
             <li><strong>Event-Driven State:</strong> Implemented a flexible, event-driven narrative system to seamlessly manage complex story triggers, conditional paths, and state changes.</li>
         </ul>
 
-        <div class="project-image-card">
+        <div class="project-image-card" aria-label="Wormhole screenshots">
             <div class="screenshot-grid">
                 <figure class="screenshot-item">
                     <figcaption>Core Gameplay</figcaption>
-                    <img src="assets/images/wormhole-2.png" alt="Core Gameplay & Typewriter UI">
+                    <img src="assets/images/wormhole-2.png" aria-label="Core Gameplay & Typewriter UI" alt="Core Gameplay & Typewriter UI">
                 </figure>
                 <figure class="screenshot-item">
                     <figcaption>Live Map Screen</figcaption>
-                    <img src="assets/images/wormhole-3.png" alt="Live Interactive Map Screen">
+                    <img src="assets/images/wormhole-3.png" aria-label="Live Interactive Map Screen" alt="Live Interactive Map Screen">
                 </figure>
                 <figure class="screenshot-item">
                     <figcaption>Player Leaderboard</figcaption>
-                    <img src="assets/images/wormhole-4.png" alt="Leaderboard & High Scores">
+                    <img src="assets/images/wormhole-4.png" aria-label="Player Leaderboard" alt="Leaderboard & High Scores">
                 </figure>
                 <figure class="screenshot-item">
                     <figcaption>Custom Debug Tool</figcaption>
-                    <img src="assets/images/wormhole-5.png" alt="Custom Debug Tool Interface">
+                    <img src="assets/images/wormhole-5.png" aria-label="Custom Debug Tool Interface" alt="Custom Debug Tool Interface">
                 </figure>
             </div>
             <p style="text-align: center; font-style: italic; margin-top: 30px; font-weight: 600; color: #667eea;">
@@ -1077,9 +1076,9 @@
         </div>
 
         <div class="project-image-card">
-            <img class="mario-image" src="assets/images/mario3.png" alt="2D Super Mario Bros. scene with flagpole scene with steps and a pipe">
-            <img class="mario-image" src="assets/images/mario1.png" alt="3D Super Mario Bros. scene with flagpole scene with steps and a pipe">
-            <img class="mario-image" src="assets/images/mario2.png" alt="3D Super Mario Bros. scene with a Goomba sneaking around behind the steps">
+            <img class="mario-image" src="assets/images/mario3.png" loading="lazy" aria-label="2D Super Mario Bros. scene with flagpole scene with steps and a pipe" alt="2D Super Mario Bros. scene with flagpole scene with steps and a pipe">
+            <img class="mario-image" src="assets/images/mario1.png" loading="lazy" aria-label="3D Super Mario Bros. scene with flagpole scene with steps and a pipe" alt="3D Super Mario Bros. scene with flagpole scene with steps and a pipe">
+            <img class="mario-image" src="assets/images/mario2.png" loading="lazy" aria-label="3D Super Mario Bros. scene with a Goomba sneaking around behind the steps" alt="3D Super Mario Bros. scene with a Goomba sneaking around behind the steps">
         </div>
 
         <br>
@@ -1103,12 +1102,12 @@
         </ul>
 
         <div class="project-image-card">
-            <img class="paradox-image" src="assets/images/existence-paradox-2.png" alt="User choice for the prompted question">
+            <img class="paradox-image" src="assets/images/existence-paradox-2.png" loading="lazy" aria-label="User choice for the prompted question" alt="User choice for the prompted question">
         </div>
 
         <div class="launch-cta" style="margin-top: 30px; margin-bottom: 30px;">
             <div class="launch-cta-content">             
-                <a href="./existence-paradox/" target="_blank" rel="noopener noreferrer" class="web-badge">
+                <a href="./existence-paradox/" loading="lazy" aria-label="Launch Existence Paradox in browser" target="_blank" rel="noopener noreferrer" class="web-badge">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
                         <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
@@ -1163,7 +1162,7 @@
         </div>
 
         <div class="project-image-card">
-            <img src="assets/images/product-design-eatright-wireframe.png" alt="Eat Right low-fidelity wireframe">
+            <img src="assets/images/product-design-eatright-wireframe.png" loading="lazy" aria-label="Eat Right low-fidelity wireframe" alt="Eat Right low-fidelity wireframe">
         </div>
         
         <div class="project-links">
@@ -1197,7 +1196,7 @@
         </div>
 
         <div class="project-image-card">
-            <img src="assets/images/product-design-moneymobile-mockup.png" alt="MoneyMobile app high-fidelity mockup">
+            <img src="assets/images/product-design-moneymobile-mockup.png" loading="lazy" aria-label="MoneyMobile app high-fidelity mockup" alt="MoneyMobile app high-fidelity mockup">
         </div>
 
         <div class="project-links">
@@ -1227,11 +1226,11 @@
         </ul>
 
         <div class="project-image-card">
-            <img src="assets/images/travel2.png" alt="Travel client website Travel tab" class="travel-no-scale">
-            <img src="assets/images/travel1.png" alt="Travel admin website to add and edit trips" class="travel-no-scale">
+            <img src="assets/images/travel2.png" loading="lazy" aria-label="Travel client website Travel tab" class="travel-no-scale">
+            <img src="assets/images/travel1.png" loading="lazy" aria-label="Travel admin website to add and edit trips" class="travel-no-scale">
             <div class="travel-images-row">
-                <img src="assets/images/travel3.png" alt="Default Add Trip dialog">
-                <img src="assets/images/travel4.png" alt="Filled out Edit Trip dialog">
+                <img src="assets/images/travel3.png" loading="lazy" aria-label="Default Add Trip dialog" alt="Default Add Trip dialog">
+                <img src="assets/images/travel4.png" loading="lazy" aria-label="Filled out Edit Trip dialog" alt="Filled out Edit Trip dialog">
             </div>
         </div>
         
@@ -1256,14 +1255,14 @@
 
         <div class="project-image-card">
             <div class="buddy-screenshot-grid">
-                <img src="assets/images/buddy1.png" alt="InventoryBuddy default login screen">
-                <img src="assets/images/buddy2.png" alt="Login screen with username and masked password">
-                <img src="assets/images/buddy4.png" alt="Account created toast">
-                <img src="assets/images/buddy3.png" alt="SMS access request">
-                <img src="assets/images/buddy5.png" alt="Empty inventory">
-                <img src="assets/images/buddy6.png" alt="Default add window">
-                <img src="assets/images/buddy7.png" alt="Two cans of beans being added">
-                <img src="assets/images/buddy10.png" alt="Delete item prompt">
+                <img src="assets/images/buddy1.png" loading="lazy" aria-label="InventoryBuddy default login screen" alt="InventoryBuddy default login screen">
+                <img src="assets/images/buddy2.png" loading="lazy" aria-label="Login screen with username and masked password" alt="Login screen with username and masked password">
+                <img src="assets/images/buddy4.png" loading="lazy" aria-label="Account created toast" alt="Account created toast">
+                <img src="assets/images/buddy3.png" loading="lazy" aria-label="SMS access request" alt="SMS access request">
+                <img src="assets/images/buddy5.png" loading="lazy" aria-label="Empty inventory" alt="Empty inventory">
+                <img src="assets/images/buddy6.png" loading="lazy" aria-label="Default add window" alt="Default add window">
+                <img src="assets/images/buddy7.png" loading="lazy" aria-label="Two cans of beans being added" alt="Two cans of beans being added">
+                <img src="assets/images/buddy10.png" loading="lazy" aria-label="Delete item prompt" alt="Delete item prompt">
             </div>
         </div>
 
@@ -1287,10 +1286,10 @@
         </ul>
         
         <div class="project-image-card">
-            <img src="assets/images/aac1.png" alt="Spreadsheet showing first few database records">
-            <img src="assets/images/aac2.png" alt="Geolocation map showing the Austin, TX area">
-            <img src="assets/images/aac4.png" alt="Unit test results with all 16 tests passed" style="width: 700px; height: auto;">
-            <img src="assets/images/aac3.png" alt="AAC database and pie chart of animal distribution">
+            <img src="assets/images/aac1.png" loading="lazy" aria-label="Spreadsheet showing first few database records" alt="Spreadsheet showing first few database records">
+            <img src="assets/images/aac2.png" loading="lazy" aria-label="Geolocation map showing the Austin, TX area" alt="Geolocation map showing the Austin, TX area">
+            <img src="assets/images/aac4.png" loading="lazy" aria-label="Unit test results with all 16 tests passed" style="width: 700px; height: auto;" alt="Unit test results with all 16 tests passed">
+            <img src="assets/images/aac3.png" loading="lazy" aria-label="AAC database and pie chart of animal distribution" alt="AAC database and pie chart of animal distribution">
         </div>
 
         <div class="project-links">
@@ -1384,8 +1383,8 @@
         </ul>
 
         <div class="project-image-card">
-            <img src="assets/images/data2.png" style="width: 100%; max-width: 1280px;" alt="Screenshot of the script's output line graph with positive-curved trend line">
-            <img src="assets/images/data1.png" style="width: 100%; max-width: 1280px;" alt="Certification for Data Analysis awarded to Matthew Pool">        
+            <img src="assets/images/data2.png" loading="lazy" aria-label="Screenshot of the script's output line graph with positive-curved trend line" style="width: 100%; max-width: 1280px;" alt="Screenshot of the script's output line graph with positive-curved trend line">
+            <img src="assets/images/data1.png" loading="lazy" aria-label="Certification for Data Analysis awarded to Matthew Pool" style="width: 100%; max-width: 1280px;" alt="Certification for Data Analysis awarded to Matthew Pool">        
         </div>
 
         <div class="project-links">
@@ -1407,9 +1406,9 @@
         </ul>        
 
         <div class="project-image-card">
-            <img src="assets/images/stat1.png" alt="Null hypothesis, alternative hypothesis, and level of significance">
-            <img src="assets/images/stat2.png" alt="OLS Regression Results">
-            <img src="assets/images/stat3.png" alt="Scatterplot graph showing the correlation of 0.9072 between Elo and total number of wins, with a p-value of 0.0">
+            <img src="assets/images/stat1.png" loading="lazy" aria-label="Null hypothesis, alternative hypothesis, and level of significance" alt="Null hypothesis, alternative hypothesis, and level of significance">
+            <img src="assets/images/stat2.png" loading="lazy" aria-label="OLS Regression Results" alt="OLS Regression Results">
+            <img src="assets/images/stat3.png" loading="lazy" aria-label="Scatterplot graph showing the correlation of 0.9072 between Elo and total number of wins, with a p-value of 0.0" alt="Scatterplot graph showing the correlation of 0.9072 between Elo and total number of wins, with a p-value of 0.0">
         </div>
 
         <div class="project-links">
@@ -1438,11 +1437,11 @@
         </ul>
 
         <div class="project-image-card">
-            <img src="assets/images/eco-1.png" alt="Unemployment Rates from July 2017 to June 2018">
-            <img src="assets/images/eco-2.png" alt="Consumer Price Index from June 2017 to June 2018">
-            <img src="assets/images/eco-3.png" alt="GDP Change from 2016 Q3 to 2018 Q2">
-            <img src="assets/images/eco-4.png" alt="US Inflation Rates from 2012 to 2017">
-            <img src="assets/images/eco-5.png" alt="Purchasing Managers' Index from August 2017 to July 2018">
+            <img src="assets/images/eco-1.png" loading="lazy" aria-label="Unemployment Rates from July 2017 to June 2018" alt="Unemployment Rates from July 2017 to June 2018">
+            <img src="assets/images/eco-2.png" loading="lazy" aria-label="Consumer Price Index from June 2017 to June 2018" alt="Consumer Price Index from June 2017 to June 2018">
+            <img src="assets/images/eco-3.png" loading="lazy" aria-label="GDP Change from 2016 Q3 to 2018 Q2" alt="GDP Change from 2016 Q3 to 2018 Q2">
+            <img src="assets/images/eco-4.png" loading="lazy" aria-label="US Inflation Rates from 2012 to 2017" alt="US Inflation Rates from 2012 to 2017">
+            <img src="assets/images/eco-5.png" loading="lazy" aria-label="Purchasing Managers' Index from August 2017 to July 2018" alt="Purchasing Managers' Index from August 2017 to July 2018">
         </div>
 
         <div class="project-links">
@@ -1473,7 +1472,7 @@
         </ul>
         
         <div class="project-image-card">
-            <img src="assets/images/database-erd.png" alt="Quantigration Database ERD" style="width: 100%; height: auto; border-radius: 8px;">
+            <img src="assets/images/database-erd.png" loading="lazy" aria-label="Quantigration Database ERD" alt="Quantigration Database ERD" style="width: 100%; height: auto; border-radius: 8px;">
         </div>
 
         <div class="project-links">
@@ -1496,8 +1495,8 @@
         </ul>
 
         <div class="project-image-card">
-            <img src="assets/images/system2.png" style="width: 100%; max-width: 1280px;" alt="UML Activity Diagram for log in/log out ">
-            <img src="assets/images/system3.png" style="width: 100%; max-width: 1280px;" alt="UML Sequence Diagram for contact us">
+            <img src="assets/images/system2.png" loading="lazy" aria-label="UML Activity Diagram for log in/log out " style="width: 100%; max-width: 1280px;" alt="UML Activity Diagram for log in/log out ">
+            <img src="assets/images/system3.png" loading="lazy" aria-label="UML Sequence Diagram for contact us" style="width: 100%; max-width: 1280px;" alt="UML Sequence Diagram for contact us">
         </div>
 
         <div class="project-links">
@@ -1622,7 +1621,9 @@
         </ul>
 
         <div class="project-image-card">
-            <img src="assets/images/algo-1.png" 
+            <img src="assets/images/algo-1.png"
+                loading="lazy"
+                aria-label="C++ Code Snippet showing recursive Merge Sort implementation"
                 alt="C++ Code Snippet showing recursive Merge Sort implementation" 
                 style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
             
