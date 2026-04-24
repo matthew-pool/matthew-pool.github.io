@@ -42,7 +42,7 @@ p {
 }
 
 h1 {
-	font-family: robotoFont;
+	font-family: 'Roboto', sans-serif;
 	text-align: center;
 	padding: 20px 0;
 	margin: 0;
@@ -1345,7 +1345,7 @@ body.dark-mode .contact-card a:hover {
 
 .hero-section h1 {
     font-size: clamp(1.2rem, 4.2vw, 3.2rem);  
-    font-family: robotoFont;
+	font-family: 'Roboto', sans-serif;
     text-align: center;
     font-weight: 100;
     padding: 10px 0 5px 0;     
@@ -1425,33 +1425,23 @@ body.dark-mode .hero-section {
 
 .shelf-top {
 	height: 10px;
-	width: 100%;
-	background: linear-gradient(to bottom, #3a3a3a 0%, #1a1a1a 100%);
+	width: 100% !important;
+	background: linear-gradient(to bottom, #3a3a3a 0%, #1a1a1a 100%) !important;
 	transform: none !important;
 	border-top: 1px solid rgba(255,255,255,0.1);
+	border-left: 0 !important;
+    border-right: 0 !important;
 	box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+	box-sizing: border-box;
 }
 
 .shelf-front {
 	height: 5px;
-	width: 100%;
-	background: linear-gradient(to bottom, #111 0%, #000 100%);
+	width: 100% !important;
+	background: linear-gradient(to bottom, #111 0%, #000 100%) !important;
 	box-shadow: 0 5px 10px rgba(0,0,0,0.5); 
 	z-index: 100;
-}
-
-.shelf-top {
-    background: linear-gradient(to bottom, #3a3a3a 0%, #1a1a1a 100%) !important;
-}
-
-.shelf-front {
-    background: linear-gradient(to bottom, #111 0%, #000 100%) !important;
-}
-
-.shelf-top, 
-.shelf-front {
-    width: 100% !important;
-    border-left: 0 !important;
+	border-left: 0 !important;
     border-right: 0 !important;
     transform: none !important; 
     box-sizing: border-box;
