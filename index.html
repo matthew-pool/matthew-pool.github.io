@@ -2,8 +2,8 @@
     @project Portfolio Website
     @author Matthew Pool
     @filename index.html
-    @updated 2026-04-17
-    @version 1.22.14
+    @updated 2026-04-24
+    @version 1.22.24
 -->
 
 <!DOCTYPE html>
@@ -40,7 +40,7 @@
         <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
             <span class="toggle-track">
                 <span class="toggle-thumb"></span>
-                <svg class="toggle-icon sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg class="toggle-icon sun" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="12" r="5"></circle>
                     <line x1="12" y1="1" x2="12" y2="3"></line>
                     <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -51,7 +51,7 @@
                     <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
                     <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                 </svg>
-                <svg class="toggle-icon moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg class="toggle-icon moon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                 </svg>
             </span>
@@ -65,8 +65,8 @@
             <span class="uh-email" style="position:relative;">
                 <a href="mailto:mathyou.me@gmail.com">mathyou.me@gmail.com</a>
                 <button onclick="copyEmail(this)" aria-label="Copy email address" style="background:none; border:none; cursor:pointer; padding:4px; display:inline-flex; align-items:center; opacity:0.7; transition:opacity 0.2s; position:absolute; top:50%; transform:translateY(-50%); margin-left:4px;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2">
-                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.8)" stroke-width="2" aria-hidden="true">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                         <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                     </svg>
                 </button>
@@ -96,6 +96,9 @@
                 class="portfolio-banner"
             />
         </header>
+
+        <!-- Add space above top shelf -->
+        <div class="shelf-spacer"></div>
 
         <div class="shelf-container">
             <div class="shelf-top"></div>
@@ -148,7 +151,7 @@
             
             <h2 class="section-header">Overview</h2>
             <div class="about-intro">
-                <p>I build software end-to-end, bridging the gap between UI/UX design and technical implementation to deliver accessible, scalable solutions. Backed by a Summa Cum Laude B.S. in Computer Science <a href="assets/documents/transcript.pdf" class="guide-link" style="text-align: center;" target="_blank" rel="noopener noreferrer">(3.99 GPA)</a> and over a decade of technical support experience, I approach engineering with a deep understanding of the user. My work is rooted in adaptability and building systems from the ground up. You can see this in the object-oriented Python engine I built for "Wormhole", the native Android machine-learning architecture of "Flick", and even in my personal life, where I applied that same resourcefulness to construct a home from salvaged materials. <strong>To maximize my output and velocity, I actively leverage generative AI toolchains to rapidly iterate on UI assets, handle boilerplate, and scale my end-to-end development.</strong> I also leverage generative AI toolchains to accelerate this end-to-end development, rapidly iterating on high-fidelity UI assets and boilerplate code to scale my solo output. Because I have spent years on the front lines of customer support, I never lose sight of the business perspective, focusing always on solving practical problems and shipping real value.</p>
+                <p>I build software end-to-end, bridging the gap between UI/UX design and technical implementation to deliver accessible, scalable solutions. Backed by a Summa Cum Laude B.S. in Computer Science <a href="assets/documents/transcript.pdf" class="guide-link" style="text-align: center;" target="_blank" rel="noopener noreferrer">(3.99 GPA)</a> and over a decade of technical support experience, I approach engineering with a deep understanding of the user. My work is rooted in adaptability and building systems from the ground up. You can see this in the object-oriented Python engine I built for "Wormhole", the native Android machine-learning architecture of "Flick", and even in my personal life, where I applied that same resourcefulness to construct a home from salvaged materials. <strong>To maximize my output and velocity, I actively leverage generative AI toolchains to rapidly iterate on UI assets, handle boilerplate, and scale my end-to-end development.</strong> Because I have spent years on the front lines of customer support, I never lose sight of the business perspective, focusing always on solving practical problems and shipping real value.</p>
             </div>
 
             <p class="app-cta">
@@ -158,12 +161,12 @@
             <div class="dark-flick-header-card">
                 <div class="flick-card">
                     <div class="flick-header">
-                        <img src="assets/images/flick/logo-alt.svg" alt="Flick logo" class="flick-logo" loading="lazy" aria-label="Flick logo showing an old neon-tube light in the shape of an F">
+                        <img src="assets/images/flick/logo-alt.svg" alt="Flick logo" class="flick-logo" loading="lazy">
                         <h2>Flick (Android)</h2>
                     </div>
                     <p style="margin-top: -20px; color: #c8c8c8; font-size: 16px; padding-left: 75px;"><i>Designer/Engineer: Matthew Pool</i></p>
                 </div>
-                <img src="assets/images/flick/banner.png" alt="Flick app banner" style="width: 100%; max-width: 1280px; margin: 20px 0; border: 2px solid #c8c8c8;" loading="lazy" aria-label="Flick app banner featuring movie elements like film, popcorn, and movie-style spotlights shining at the phrase 'Flick'">
+                <img src="assets/images/flick/banner.png" style="width: 100%; max-width: 1280px; margin: 20px 0; border: 2px solid #c8c8c8;" loading="lazy" alt="Flick app banner featuring movie elements like film, popcorn, and movie-style spotlights shining at the phrase 'Flick'">
             </div>
             
             <hr>
@@ -180,7 +183,7 @@
 
             <div class="project-links" style="justify-content: center;">
                 <a href="assets/documents/flick-user-guide.pdf" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
-                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                         <polyline points="7 10 12 15 17 10"></polyline>
                         <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -188,7 +191,7 @@
                     User Guide
                 </a>
                 <a href="assets/documents/flick-security-summary.pdf" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
-                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                     </svg>
                     Security Summary
@@ -202,52 +205,52 @@
                 <div class="screenshot-grid">
                     <figure class="screenshot-item">
                         <figcaption>Custom Splash Screen</figcaption>
-                        <img src="assets/images/flick/screen14.png" loading="lazy" aria-label="Preparing app screen" alt="Preparing app screen">
+                        <img src="assets/images/flick/screen14.png" loading="lazy" alt="Preparing app screen">
                     </figure>
 
                     <figure class="screenshot-item">
                         <figcaption>Initial Loading</figcaption>
-                        <img src="assets/images/flick/screen4.png" loading="lazy" aria-label="Traveling back in time screen" alt="Traveling back in time screen">
+                        <img src="assets/images/flick/screen4.png" loading="lazy" alt="Traveling back in time screen">
                     </figure>
 
                     <figure class="screenshot-item">
                         <figcaption>Swipe Up Hint</figcaption>
-                        <img src="assets/images/flick/screen1.png" loading="lazy" aria-label="Swipe up hint" alt="Up arrow hint">
+                        <img src="assets/images/flick/screen1.png" loading="lazy" alt="Up arrow hint">
                     </figure>
 
                     <figure class="screenshot-item">
                         <figcaption>Static TV Effect</figcaption>
-                        <img src="assets/images/flick/screen5.png" loading="lazy" aria-label="Static TV effect" alt="TV static screen">
+                        <img src="assets/images/flick/screen5.png" loading="lazy" alt="TV static screen">
                     </figure>
 
                     <figure class="screenshot-item">
                         <figcaption>Like Interaction</figcaption>
-                        <img src="assets/images/flick/screen7.png" loading="lazy" aria-label="Like interaction" alt="Alf video liked">
+                        <img src="assets/images/flick/screen7.png" loading="lazy" alt="Alf video liked">
                     </figure>
 
                     <figure class="screenshot-item">
                         <figcaption>Dislike Interaction</figcaption>
-                        <img src="assets/images/flick/screen8.png" loading="lazy" aria-label="Dislike interaction" alt="Video disliked">
+                        <img src="assets/images/flick/screen8.png" loading="lazy" alt="Video disliked">
                     </figure>
 
                     <figure class="screenshot-item">
                         <figcaption>Left Swipe Hint</figcaption>
-                        <img src="assets/images/flick/screen12.png" loading="lazy" aria-label="Left swipe hint" alt="Left arrow hint">
+                        <img src="assets/images/flick/screen12.png" loading="lazy" alt="Left arrow hint">
                     </figure>
 
                     <figure class="screenshot-item">
                         <figcaption>End Dialog</figcaption>
-                        <img src="assets/images/flick/screen10.png" loading="lazy" aria-label="End dialog" alt="Thank you dialog">
+                        <img src="assets/images/flick/screen10.png" loading="lazy" alt="Thank you dialog">
                     </figure>
 
                     <figure class="screenshot-item">
                         <figcaption>Custom Debug Tool</figcaption>
-                        <img src="assets/images/flick/screen11.png" loading="lazy" aria-label="Custom debug tool" alt="Similar video screen">
+                        <img src="assets/images/flick/screen11.png" loading="lazy" alt="Similar video screen">
                     </figure>
 
                     <figure class="screenshot-item">
                         <figcaption>Tablet/Fold View</figcaption>
-                        <img src="assets/images/flick/tablet.png" loading="lazy" aria-label="Flick on tablet" alt="Flick on tablet">
+                        <img src="assets/images/flick/tablet.png" loading="lazy" alt="Flick on tablet">
                     </figure>
                 </div>
             </div>
@@ -265,8 +268,8 @@
             </div>
 
             <div class="content-card" style="margin-top: 15px">
-                    <img src="assets/images/flick/figma-1.svg" aria-label="Figma designs for Flick" alt="Figma design mockup - set 1" style="width: 100%; max-width: 1200px;">
-                    <img src="assets/images/flick/figma-2.svg" aria-label="Figma designs for Flick" alt="Figma design mockup - set 2" style="width: 100%; max-width: 1200px;">
+                    <img src="assets/images/flick/figma-1.svg" loading="lazy" alt="Figma design mockup - set 1" style="width: 100%; max-width: 1200px;">
+                    <img src="assets/images/flick/figma-2.svg" loading="lazy" alt="Figma design mockup - set 2" style="width: 100%; max-width: 1200px;">
             </div>
 
             <div class="content-card" style="margin-top: 15px">         
@@ -285,9 +288,9 @@
                     <li>DataStore (local persistence)</li>
                 </ul>
                 
-                <p style="margin-left: 25px; margin-top: 10px; margin-bottom: 5px; font-size: 19px; padding-top: 5px;"><strong>State Management & Reactivity</strong></p>
+                <p style="margin-left: 25px; margin-top: 10px; margin-bottom: 5px; font-size: 19px; padding-top: 5px;"><strong>Software Design Patterns</strong></p>
                 <ul style="margin-left: 45px; margin-top: 0;">
-                    <li> Observer Pattern</li>
+                    <li>Observer Pattern</li>
                     <li>Object Pool</li>
                     <li>Factory Pattern</li>
                     <li>Strategy Pattern</li>
@@ -326,7 +329,7 @@
                     <li>Android Studio Lint (static analysis)</li>
                 </ul>
                 
-                <p style="margin-left: 25px; margin-top: 10px; margin-bottom: 5px; font-size: 19px; padding-top: 5px;"><strong>Build & DevOps</strong></p>
+                <p style="margin-left: 25px; margin-top: 10px; margin-bottom: 5px; font-size: 19px; padding-top: 5px;"><strong>Build & Release</strong></p>
                 <ul style="margin-left: 45px; margin-top: 0;">
                     <li>Gradle (build automation)</li>
                     <li>Timber (logging)</li>
@@ -341,8 +344,8 @@
             <h2>CI/CD</h2>
             <div class="image-card">
                 <div class="ci-images">
-                    <img src="assets/images/flick/ci1.png" loading="lazy" aria-label="Continuous Integration tests passed" alt="CI tests passed">
-                    <img src="assets/images/flick/ci2.png" loading="lazy" aria-label="Continuous Integration tests passed and completed" alt="CI tests completed">
+                    <img src="assets/images/flick/ci1.png" loading="lazy" alt="CI tests passed">
+                    <img src="assets/images/flick/ci2.png" loading="lazy" alt="CI tests completed">
                 </div>
             </div>
 
@@ -351,10 +354,10 @@
             <div class="launch-cta" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
                 <div class="launch-cta-content" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
                     <h3>Try it now before the official release.</h3>
-                    <a href="javascript:void(0);" class="directions-link" onclick="showDirections()">Directions</a>
+                    <a href="javascript:void(0);" class="directions-link" id="directions-btn">Directions</a>
                     <br>
                     <a href="https://groups.google.com/g/appbuddy-flick" class="play-link">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" class="play-badge">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" loading="lazy" alt="Get it on Google Play" class="play-badge">
                     </a>
                 </div>
             </div>
@@ -387,7 +390,7 @@
                     <span class="uh-email" style="position:relative; display: inline-flex; align-items: center; padding-right: 28px;">
                         <a href="mailto:mathyou.me@gmail.com">mathyou.me@gmail.com</a>
                         <button onclick="copyEmail(this, 'light')" aria-label="Copy Email Address" style="background: none; border: none; cursor: pointer; padding: 4px; display: inline-flex; align-items: center; opacity: 0.7; transition: opacity 0.2s; position: absolute; right: 0; top: 50%; transform: translateY(-50%);" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.9)" stroke-width="2">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.9)" stroke-width="2" aria-hidden="true">
                                 <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                                 <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                             </svg>
@@ -413,17 +416,18 @@
                 <button class="filter-btn" onclick="filterProjects('systems', event)">Systems &amp; Design</button>
             </div>
 
-            <div class="project-grid">
+            <div class="project-grid"> 
                 
                 <div class="project-card" data-category="web"
                     onclick="openProjectModal('portfolio-site')"
                     tabindex="0"
                     role="button"
-                    aria-label="This Portfolio — click to view details"
+                    aria-label="View project details for this Portfolio website"
                     onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('portfolio-site')}">
                     <div class="project-card-image">
-                        <img src="assets/images/portfolio-light.png" alt="Portfolio website design" loading="lazy">
+                        <img src="assets/images/portfolio-light.png" alt="Preview of this portfolio website showing a clean, responsive layout in light mode" loading="lazy">
                     </div>
+                    
                     <div class="project-card-content">
                         <h3>(This) Portfolio</h3>
                         <p class="project-card-brief">Fully hand-coded responsive portfolio site featuring dark mode, animated SVG bird, tab navigation, modal system, lightbox, and CI/CD via GitHub Actions.</p>
@@ -814,7 +818,7 @@
                     <span class="uh-email" style="position:relative; display: inline-flex; align-items: center; padding-right: 28px;">
                         <a href="mailto:mathyou.me@gmail.com">mathyou.me@gmail.com</a>
                         <button onclick="copyEmail(this, 'light')" aria-label="Copy Email Address" style="background: none; border: none; cursor: pointer; padding: 4px; display: inline-flex; align-items: center; opacity: 0.7; transition: opacity 0.2s; position: absolute; right: 0; top: 50%; transform: translateY(-50%);" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.9)" stroke-width="2">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.9)" stroke-width="2" aria-hidden="true">
                                 <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                                 <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                             </svg>
@@ -845,12 +849,12 @@
                 </p>
             
                 <div class="image-card" style="margin: 20px 0;">
-                    <img src="assets/images/new11.png" loading="lazy" aria-label="System menu of the legacy Java application" alt="System menu of the legacy application">
+                    <img src="assets/images/new11.png" loading="lazy" alt="System menu of the legacy application">
                 </div>
 
                 <div class="project-links" style="justify-content: center; margin-top: 20px;">
                     <a href="java-enhancements/rescue_animal.zip" class="theme-action-btn" download>
-                        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                             <polyline points="7 10 12 15 17 10"></polyline>
                             <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -866,20 +870,20 @@
 
                 <h4>Converted to Maven Framework</h4>
                 <div class="code-gallery">
-                    <img src="assets/images/new2.png" alt="Maven project architecture">
-                    <img src="assets/images/new4.png" alt="Maven pom.xml file">
+                    <img src="assets/images/new2.png" loading="lazy" alt="Maven project architecture">
+                    <img src="assets/images/new4.png" loading="lazy" alt="Maven pom.xml file">
                 </div>
 
                 <h4>Implemented JUnit Testing</h4>
                 <div class="code-gallery">
-                    <img src="assets/images/new1.png" loading="lazy" aria-label="JUnit test coverage" alt="JUnit test coverage">
-                    <img src="assets/images/new3.png" loading="lazy" aria-label="JUnit test results" alt="JUnit test results">
+                    <img src="assets/images/new1.png" loading="lazy" alt="JUnit test coverage">
+                    <img src="assets/images/new3.png" loading="lazy" alt="JUnit test results">
                 </div>
                 
                 <h4>Added JavaDocs & Validation</h4>
                 <div class="code-gallery">
-                    <img src="assets/images/new19.png" loading="lazy" aria-label="Main class JavaDoc" alt="Main class JavaDoc">
-                    <img src="assets/images/new9.png" loading="lazy" aria-label="Error-handling" alt="Error-handling">
+                    <img src="assets/images/new19.png" loading="lazy" alt="Main class JavaDoc">
+                    <img src="assets/images/new9.png" loading="lazy" alt="Error-handling">
                 </div>
 
                 <div class="content-card">
@@ -887,12 +891,12 @@
                     <p>I improved the CLI experience by implementing ANSI escape codes for colored output and clearer visual hierarchy.</p>
                     
                     <div class="code-gallery">
-                        <img src="assets/images/new6.png" loading="lazy" aria-label="ANSI escape code declarations" alt="ANSI escape code declarations">
-                        <img src="assets/images/new10.png" loading="lazy" aria-label="Various formatting" alt="Various formatting">
+                        <img src="assets/images/new6.png" loading="lazy" alt="ANSI escape code declarations">
+                        <img src="assets/images/new10.png" loading="lazy" alt="Various formatting">
                     </div>
                     <div class="code-gallery">
-                        <img src="assets/images/new12.png" loading="lazy" aria-label="List output" alt="List output">
-                        <img src="assets/images/new14.png" loading="lazy" aria-label="Quitting system" alt="Quitting system">
+                        <img src="assets/images/new12.png" loading="lazy" alt="List output">
+                        <img src="assets/images/new14.png" loading="lazy" alt="Quitting system">
                     </div>
                 </div>
             </div>
@@ -904,16 +908,16 @@
                 <p>I replaced volatile memory storage with MapDB to enable local persistence, ensuring data survives between program executions.</p>
                 
                 <div class="code-gallery">
-                    <img src="assets/images/new18.png" loading="lazy" aria-label="MapDB imports" alt="MapDB imports">
-                    <img src="assets/images/new7.png" loading="lazy" aria-label="MapDB implementation" alt="MapDB implementation">
+                    <img src="assets/images/new18.png" loading="lazy" alt="MapDB imports">
+                    <img src="assets/images/new7.png" loading="lazy" alt="MapDB implementation">
                 </div>
                 
                 <h4>Algorithmic Optimization</h4>
                 <p>Converted linear ArrayList lookups to HashMaps, improving retrieval time complexity from <i>O(n)</i> to <i>O(1)</i> (or O(log n) depending on collision handling).</p>
                 
                 <div class="code-gallery">
-                    <img src="assets/images/new5.png" loading="lazy" aria-label="LinkedHashMap declarations" alt="LinkedHashMap declarations">
-                    <img src="assets/images/new17.png" loading="lazy" aria-label="Writing to the hash map" alt="Writing to the hash map">
+                    <img src="assets/images/new5.png" loading="lazy" alt="LinkedHashMap declarations">
+                    <img src="assets/images/new17.png" loading="lazy" alt="Writing to the hash map">
                 </div>
             </div>
 
@@ -923,7 +927,7 @@
             
             <div class="project-links" style="justify-content: center; margin-top: 20px;">
                 <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/java-enhancements" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
-                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                     </svg>
                     View Source Code
@@ -944,7 +948,7 @@
                     <span class="uh-email" style="position:relative; display: inline-flex; align-items: center; padding-right: 28px;">
                         <a href="mailto:mathyou.me@gmail.com">mathyou.me@gmail.com</a>
                         <button onclick="copyEmail(this, 'light')" aria-label="Copy Email Address" style="background: none; border: none; cursor: pointer; padding: 4px; display: inline-flex; align-items: center; opacity: 0.7; transition: opacity 0.2s; position: absolute; right: 0; top: 50%; transform: translateY(-50%);" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.9)" stroke-width="2">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.9)" stroke-width="2" aria-hidden="true">
                                 <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                                 <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                             </svg>
@@ -980,12 +984,24 @@
             <li><strong>Performance & Accessibility:</strong> Semantic HTML5, ARIA roles, lazy-loaded images, and keyboard-navigable interactive elements throughout.</li>
         </ul>
 
-        <div class="project-image-card">
-            <img src="assets/images/portfolio-dark.png" loading="lazy" aria-label="Dark mode view of the portfolio" alt="Dark mode view of the portfolio">
-        </div>
+        <figure class="project-image-card" aria-live="polite" style="margin: 0;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; padding: 0 4px;">
+                <figcaption id="preview-theme-text" style="font-weight: 600; font-size: 0.85em; letter-spacing: 0.5px; text-transform: uppercase;">
+                    PREVIEW: DARK MODE
+                </figcaption>
+                <button class="preview-toggle-btn" onclick="togglePortfolioPreview()" aria-label="Toggle portfolio preview image between dark and light themes">
+                    <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" aria-hidden="true">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+                    </svg>
+                    Toggle Theme
+                </button>
+            </div>
+            <img id="portfolio-preview-img" src="assets/images/portfolio-dark.png" loading="lazy" alt="High-fidelity preview of this portfolio website currently displaying the dark mode theme">
+        </figure>
         <div class="project-links">
             <a href="https://github.com/matthew-pool/matthew-pool.github.io" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                 </svg>
                 View Source Code
@@ -1002,23 +1018,23 @@
             <li><strong>Event-Driven State:</strong> Implemented a flexible, event-driven narrative system to seamlessly manage complex story triggers, conditional paths, and state changes.</li>
         </ul>
 
-        <div class="project-image-card" aria-label="Wormhole screenshots">
+        <div class="project-image-card">
             <div class="screenshot-grid">
                 <figure class="screenshot-item">
                     <figcaption>Core Gameplay</figcaption>
-                    <img src="assets/images/wormhole-2.png" aria-label="Core Gameplay & Typewriter UI" alt="Core Gameplay & Typewriter UI">
+                    <img src="assets/images/wormhole-2.png" loading="lazy" alt="Core Gameplay & Typewriter UI">
                 </figure>
                 <figure class="screenshot-item">
                     <figcaption>Live Map Screen</figcaption>
-                    <img src="assets/images/wormhole-3.png" aria-label="Live Interactive Map Screen" alt="Live Interactive Map Screen">
+                    <img src="assets/images/wormhole-3.png" loading="lazy" alt="Live Interactive Map Screen">
                 </figure>
                 <figure class="screenshot-item">
                     <figcaption>Player Leaderboard</figcaption>
-                    <img src="assets/images/wormhole-4.png" aria-label="Player Leaderboard" alt="Leaderboard & High Scores">
+                    <img src="assets/images/wormhole-4.png" loading="lazy" alt="Leaderboard & High Scores">
                 </figure>
                 <figure class="screenshot-item">
                     <figcaption>Custom Debug Tool</figcaption>
-                    <img src="assets/images/wormhole-5.png" aria-label="Custom Debug Tool Interface" alt="Custom Debug Tool Interface">
+                    <img src="assets/images/wormhole-5.png" loading="lazy" alt="Custom Debug Tool Interface">
                 </figure>
             </div>
             <p style="text-align: center; font-style: italic; margin-top: 30px; font-weight: 600; color: #667eea;">
@@ -1034,7 +1050,7 @@
                 <h3 style="margin-bottom: 15px;">Wormhole Text Adventure</h3>
                 
                 <a href="./wormhole/" target="_blank" rel="noopener noreferrer" class="web-badge">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
                         <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
                         <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
@@ -1066,7 +1082,7 @@
         </ul>
         <div class="project-links">
             <a href="assets/documents/mario-design-decisions-doc.pdf" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                     <polyline points="7 10 12 15 17 10"></polyline>
                     <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -1076,16 +1092,16 @@
         </div>
 
         <div class="project-image-card">
-            <img class="mario-image" src="assets/images/mario3.png" loading="lazy" aria-label="2D Super Mario Bros. scene with flagpole scene with steps and a pipe" alt="2D Super Mario Bros. scene with flagpole scene with steps and a pipe">
-            <img class="mario-image" src="assets/images/mario1.png" loading="lazy" aria-label="3D Super Mario Bros. scene with flagpole scene with steps and a pipe" alt="3D Super Mario Bros. scene with flagpole scene with steps and a pipe">
-            <img class="mario-image" src="assets/images/mario2.png" loading="lazy" aria-label="3D Super Mario Bros. scene with a Goomba sneaking around behind the steps" alt="3D Super Mario Bros. scene with a Goomba sneaking around behind the steps">
+            <img class="mario-image" src="assets/images/mario3.png" loading="lazy" alt="2D Super Mario Bros. scene with flagpole scene with steps and a pipe">
+            <img class="mario-image" src="assets/images/mario1.png" loading="lazy" alt="3D Super Mario Bros. scene with flagpole scene with steps and a pipe">
+            <img class="mario-image" src="assets/images/mario2.png" loading="lazy" alt="3D Super Mario Bros. scene with a Goomba sneaking around behind the steps">
         </div>
 
         <br>
         
         <div class="project-links">
             <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/super-mario-bros" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                 </svg>
                 View Source Code
@@ -1102,13 +1118,13 @@
         </ul>
 
         <div class="project-image-card">
-            <img class="paradox-image" src="assets/images/existence-paradox-2.png" loading="lazy" aria-label="User choice for the prompted question" alt="User choice for the prompted question">
+            <img class="paradox-image" src="assets/images/existence-paradox-2.png" loading="lazy" alt="User choice for the prompted question">
         </div>
 
         <div class="launch-cta" style="margin-top: 30px; margin-bottom: 30px;">
             <div class="launch-cta-content">             
-                <a href="./existence-paradox/" loading="lazy" aria-label="Launch Existence Paradox in browser" target="_blank" rel="noopener noreferrer" class="web-badge">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <a href="./existence-paradox/" target="_blank" rel="noopener noreferrer" class="web-badge">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
                         <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
                         <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
@@ -1136,7 +1152,7 @@
 
         <div class="project-links">
             <a href="assets/documents/eatright-interviews-personas.pdf" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                     <polyline points="7 10 12 15 17 10"></polyline>
                     <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -1144,7 +1160,7 @@
                 View Interviews & Personas
             </a>
             <a href="assets/documents/eatright-design-decisions-document.pdf" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                     <polyline points="7 10 12 15 17 10"></polyline>
                     <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -1152,7 +1168,7 @@
                 View Design Document
             </a>
             <a href="assets/documents/eatright-prototype-paper.pdf" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                     <polyline points="7 10 12 15 17 10"></polyline>
                     <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -1162,12 +1178,12 @@
         </div>
 
         <div class="project-image-card">
-            <img src="assets/images/product-design-eatright-wireframe.png" loading="lazy" aria-label="Eat Right low-fidelity wireframe" alt="Eat Right low-fidelity wireframe">
+            <img src="assets/images/product-design-eatright-wireframe.png" loading="lazy" alt="Eat Right low-fidelity wireframe">
         </div>
         
         <div class="project-links">
             <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/product-design" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                 </svg>
                 View Source Code
@@ -1186,7 +1202,7 @@
 
         <div class="project-links">
             <a href="assets/documents/moneymobile-design-proposal-document.pdf" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                     <polyline points="7 10 12 15 17 10"></polyline>
                     <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -1196,12 +1212,12 @@
         </div>
 
         <div class="project-image-card">
-            <img src="assets/images/product-design-moneymobile-mockup.png" loading="lazy" aria-label="MoneyMobile app high-fidelity mockup" alt="MoneyMobile app high-fidelity mockup">
+            <img src="assets/images/product-design-moneymobile-mockup.png" loading="lazy" alt="MoneyMobile app high-fidelity mockup">
         </div>
 
         <div class="project-links">
             <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/product-design" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                 </svg>
                 View Source Code
@@ -1222,21 +1238,21 @@
             <li><strong>Architecture & Frontend:</strong> Transitioned from a server-rendered Handlebars site to a modern Single Page Application (SPA) using Angular, TypeScript, and RxJS for reactive state management.</li>
             <li><strong>API Development:</strong> Refactored the backend utilizing the LoopBack API framework, automatically generating a strongly-typed Angular SDK to handle secure RESTful communications.</li>
             <li><strong>Security & Authentication:</strong> Implemented secure cloud login and session management for the admin portal utilizing JSON Web Tokens (JWT) and LoopBackAuth.</li>
-            <li><strong>DevOps & Cloud Migration:</strong> Containerized the multi-tier application environment using Docker and Docker Compose, successfully orchestrating a database migration from MongoDB to AWS DynamoDB.</li>
+            <li><strong>Infrastructure & Cloud Migration:</strong> Containerized the multi-tier application environment using Docker and Docker Compose, successfully orchestrating a database migration from MongoDB to AWS DynamoDB.</li>
         </ul>
 
         <div class="project-image-card">
-            <img src="assets/images/travel2.png" loading="lazy" aria-label="Travel client website Travel tab" class="travel-no-scale">
-            <img src="assets/images/travel1.png" loading="lazy" aria-label="Travel admin website to add and edit trips" class="travel-no-scale">
+            <img src="assets/images/travel2.png" loading="lazy" alt="Travel client website Travel tab" class="travel-no-scale">
+            <img src="assets/images/travel1.png" loading="lazy" alt="Travel admin website to add and edit trips" class="travel-no-scale">
             <div class="travel-images-row">
-                <img src="assets/images/travel3.png" loading="lazy" aria-label="Default Add Trip dialog" alt="Default Add Trip dialog">
-                <img src="assets/images/travel4.png" loading="lazy" aria-label="Filled out Edit Trip dialog" alt="Filled out Edit Trip dialog">
+                <img src="assets/images/travel3.png" loading="lazy" alt="Default Add Trip dialog" class="travel-no-scale">
+                <img src="assets/images/travel4.png" loading="lazy" alt="Filled out Edit Trip dialog" class="travel-no-scale">
             </div>
         </div>
         
         <div class="project-links">
             <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/travel-web-app" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                 </svg>
                 View Source Code
@@ -1255,20 +1271,20 @@
 
         <div class="project-image-card">
             <div class="buddy-screenshot-grid">
-                <img src="assets/images/buddy1.png" loading="lazy" aria-label="InventoryBuddy default login screen" alt="InventoryBuddy default login screen">
-                <img src="assets/images/buddy2.png" loading="lazy" aria-label="Login screen with username and masked password" alt="Login screen with username and masked password">
-                <img src="assets/images/buddy4.png" loading="lazy" aria-label="Account created toast" alt="Account created toast">
-                <img src="assets/images/buddy3.png" loading="lazy" aria-label="SMS access request" alt="SMS access request">
-                <img src="assets/images/buddy5.png" loading="lazy" aria-label="Empty inventory" alt="Empty inventory">
-                <img src="assets/images/buddy6.png" loading="lazy" aria-label="Default add window" alt="Default add window">
-                <img src="assets/images/buddy7.png" loading="lazy" aria-label="Two cans of beans being added" alt="Two cans of beans being added">
-                <img src="assets/images/buddy10.png" loading="lazy" aria-label="Delete item prompt" alt="Delete item prompt">
+                <img src="assets/images/buddy1.png" loading="lazy" alt="InventoryBuddy default login screen">
+                <img src="assets/images/buddy2.png" loading="lazy" alt="Login screen with username and masked password">
+                <img src="assets/images/buddy4.png" loading="lazy" alt="Account created toast">
+                <img src="assets/images/buddy3.png" loading="lazy" alt="SMS access request">
+                <img src="assets/images/buddy5.png" loading="lazy" alt="Empty inventory">
+                <img src="assets/images/buddy6.png" loading="lazy" alt="Default add window">
+                <img src="assets/images/buddy7.png" loading="lazy" alt="Two cans of beans being added">
+                <img src="assets/images/buddy10.png" loading="lazy" alt="Delete item prompt">
             </div>
         </div>
 
         <div class="project-links">
             <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/inventory-buddy" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                 </svg>
                 View Source Code
@@ -1286,15 +1302,15 @@
         </ul>
         
         <div class="project-image-card">
-            <img src="assets/images/aac1.png" loading="lazy" aria-label="Spreadsheet showing first few database records" alt="Spreadsheet showing first few database records">
-            <img src="assets/images/aac2.png" loading="lazy" aria-label="Geolocation map showing the Austin, TX area" alt="Geolocation map showing the Austin, TX area">
-            <img src="assets/images/aac4.png" loading="lazy" aria-label="Unit test results with all 16 tests passed" style="width: 700px; height: auto;" alt="Unit test results with all 16 tests passed">
-            <img src="assets/images/aac3.png" loading="lazy" aria-label="AAC database and pie chart of animal distribution" alt="AAC database and pie chart of animal distribution">
+            <img src="assets/images/aac1.png" loading="lazy" alt="Spreadsheet showing first few database records">
+            <img src="assets/images/aac2.png" loading="lazy" alt="Geolocation map showing the Austin, TX area">
+            <img src="assets/images/aac4.png" loading="lazy" alt="Unit test results with all 16 tests passed" style="width: 700px; height: auto;">
+            <img src="assets/images/aac3.png" loading="lazy" alt="AAC database and pie chart of animal distribution">
         </div>
 
         <div class="project-links">
             <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/aac-dashboard" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                 </svg>
                 View Source Code
@@ -1309,7 +1325,7 @@
             <li>Optimized <strong>Convolutional Neural Network (CNN)</strong> model for image recognition, experimenting with hyperparameters to balance accuracy and training efficiency</li>
             <div class="project-links">
                 <a href="assets/documents/cnn-image-recognition.pdf" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
-                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                         <polyline points="7 10 12 15 17 10"></polyline>
                         <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -1321,7 +1337,7 @@
             <li>Developed <strong>Deep Q-Learning Network (DQN)</strong> to train a gaming AI agent for pathfinding optimization</li>
             <div class="project-links">
                 <a href="assets/documents/dqn-report.pdf" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
-                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                         <polyline points="7 10 12 15 17 10"></polyline>
                         <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -1329,7 +1345,7 @@
                     View DQN Report
                 </a>
                 <a href="assets/documents/dqn-treasure-hunt.pdf" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
-                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                         <polyline points="7 10 12 15 17 10"></polyline>
                         <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -1341,7 +1357,7 @@
             <li>Implemented <strong>Markov Decision Process (MDP)</strong> and designed the training algorithm to teach a ML model to play Hasbro's Connect 4</li>
             <div class="project-links">
                 <a href="assets/documents/mdp-connect4.pdf" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
-                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                         <polyline points="7 10 12 15 17 10"></polyline>
                         <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -1353,7 +1369,7 @@
             <li>Explored ways <strong>artificial and biological intelligences</strong> compare</li>
             <div class="project-links">
                 <a href="assets/documents/artificial-vs-biological.pdf" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
-                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                         <polyline points="7 10 12 15 17 10"></polyline>
                         <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -1365,7 +1381,7 @@
         <br>
         <div class="project-links">
             <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/data-analysis" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                 </svg>
                 View Source Code
@@ -1383,13 +1399,13 @@
         </ul>
 
         <div class="project-image-card">
-            <img src="assets/images/data2.png" loading="lazy" aria-label="Screenshot of the script's output line graph with positive-curved trend line" style="width: 100%; max-width: 1280px;" alt="Screenshot of the script's output line graph with positive-curved trend line">
-            <img src="assets/images/data1.png" loading="lazy" aria-label="Certification for Data Analysis awarded to Matthew Pool" style="width: 100%; max-width: 1280px;" alt="Certification for Data Analysis awarded to Matthew Pool">        
+            <img src="assets/images/data2.png" loading="lazy" style="width: 100%; max-width: 1280px;" alt="Screenshot of the script's output line graph with positive-curved trend line">
+            <img src="assets/images/data1.png" loading="lazy" style="width: 100%; max-width: 1280px;" alt="Certification for Data Analysis awarded to Matthew Pool">        
         </div>
 
         <div class="project-links">
             <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/data-analysis" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                 </svg>
                 View Source Code
@@ -1406,14 +1422,14 @@
         </ul>        
 
         <div class="project-image-card">
-            <img src="assets/images/stat1.png" loading="lazy" aria-label="Null hypothesis, alternative hypothesis, and level of significance" alt="Null hypothesis, alternative hypothesis, and level of significance">
-            <img src="assets/images/stat2.png" loading="lazy" aria-label="OLS Regression Results" alt="OLS Regression Results">
-            <img src="assets/images/stat3.png" loading="lazy" aria-label="Scatterplot graph showing the correlation of 0.9072 between Elo and total number of wins, with a p-value of 0.0" alt="Scatterplot graph showing the correlation of 0.9072 between Elo and total number of wins, with a p-value of 0.0">
+            <img src="assets/images/stat1.png" loading="lazy" alt="Null hypothesis, alternative hypothesis, and level of significance">
+            <img src="assets/images/stat2.png" loading="lazy" alt="OLS Regression Results">
+            <img src="assets/images/stat3.png" loading="lazy" alt="Scatterplot graph showing the correlation of 0.9072 between Elo and total number of wins, with a p-value of 0.0">
         </div>
 
         <div class="project-links">
             <a href="assets/documents/statistics-report.pdf" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                     <polyline points="7 10 12 15 17 10"></polyline>
                     <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -1421,7 +1437,7 @@
                 View Summary Report
             </a>
             <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/statistical-analysis" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                 </svg>
                 View Source Code
@@ -1437,16 +1453,16 @@
         </ul>
 
         <div class="project-image-card">
-            <img src="assets/images/eco-1.png" loading="lazy" aria-label="Unemployment Rates from July 2017 to June 2018" alt="Unemployment Rates from July 2017 to June 2018">
-            <img src="assets/images/eco-2.png" loading="lazy" aria-label="Consumer Price Index from June 2017 to June 2018" alt="Consumer Price Index from June 2017 to June 2018">
-            <img src="assets/images/eco-3.png" loading="lazy" aria-label="GDP Change from 2016 Q3 to 2018 Q2" alt="GDP Change from 2016 Q3 to 2018 Q2">
-            <img src="assets/images/eco-4.png" loading="lazy" aria-label="US Inflation Rates from 2012 to 2017" alt="US Inflation Rates from 2012 to 2017">
-            <img src="assets/images/eco-5.png" loading="lazy" aria-label="Purchasing Managers' Index from August 2017 to July 2018" alt="Purchasing Managers' Index from August 2017 to July 2018">
+            <img src="assets/images/eco-1.png" loading="lazy" alt="Unemployment Rates from July 2017 to June 2018">
+            <img src="assets/images/eco-2.png" loading="lazy" alt="Consumer Price Index from June 2017 to June 2018">
+            <img src="assets/images/eco-3.png" loading="lazy" alt="GDP Change from 2016 Q3 to 2018 Q2">
+            <img src="assets/images/eco-4.png" loading="lazy" alt="US Inflation Rates from 2012 to 2017">
+            <img src="assets/images/eco-5.png" loading="lazy" alt="Purchasing Managers' Index from August 2017 to July 2018">
         </div>
 
         <div class="project-links">
             <a href="assets/documents/economic-analysis.pdf" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                     <polyline points="7 10 12 15 17 10"></polyline>
                     <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -1454,7 +1470,7 @@
                 View Analysis Report
             </a>
             <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/economic-analysis" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                 </svg>
                 View Source Code
@@ -1472,12 +1488,12 @@
         </ul>
         
         <div class="project-image-card">
-            <img src="assets/images/database-erd.png" loading="lazy" aria-label="Quantigration Database ERD" alt="Quantigration Database ERD" style="width: 100%; height: auto; border-radius: 8px;">
+            <img src="assets/images/database-erd.png" loading="lazy" alt="Quantigration Database ERD" style="width: 100%; height: auto; border-radius: 8px;">
         </div>
 
         <div class="project-links">
             <a href="database-administration/database-analysis.zip" class="theme-action-btn" target="_blank" rel="noopener noreferrer" download>
-                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                     <polyline points="7 10 12 15 17 10"></polyline>
                     <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -1495,13 +1511,13 @@
         </ul>
 
         <div class="project-image-card">
-            <img src="assets/images/system2.png" loading="lazy" aria-label="UML Activity Diagram for log in/log out " style="width: 100%; max-width: 1280px;" alt="UML Activity Diagram for log in/log out ">
-            <img src="assets/images/system3.png" loading="lazy" aria-label="UML Sequence Diagram for contact us" style="width: 100%; max-width: 1280px;" alt="UML Sequence Diagram for contact us">
+            <img src="assets/images/system2.png" loading="lazy" alt="UML Activity Diagram for log in/log out ">
+            <img src="assets/images/system3.png" loading="lazy" alt="UML Sequence Diagram for contact us">
         </div>
 
         <div class="project-links">
             <a href="assets/documents/sdd.pdf" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                     <polyline points="7 10 12 15 17 10"></polyline>
                     <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -1526,7 +1542,7 @@
                 
                 <div class="project-links">
                     <a href="assets/documents/vulnerability-assessment-report.pdf" target="_blank" class="theme-action-btn" rel="noopener noreferrer">
-                        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                             <polyline points="7 10 12 15 17 10"></polyline>
                             <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -1534,7 +1550,7 @@
                         View Audit Report
                     </a>
                     <a href="assets/documents/software-security-paper.pdf" target="_blank" class="theme-action-btn" rel="noopener noreferrer">
-                        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                             <polyline points="7 10 12 15 17 10"></polyline>
                             <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -1546,6 +1562,7 @@
 
             <div class="project-visual">
                 <img src="assets/images/security-1.png" 
+                    loading="lazy"
                     alt="Table of Security Vulnerabilities and Remediation Status" 
                     style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); border: 1px solid #ddd;">
                 
@@ -1572,7 +1589,7 @@
                 
                 <div class="project-links">
                     <a href="assets/documents/final-sprint-review-reflection.pdf" target="_blank" class="theme-action-btn" rel="noopener noreferrer">
-                        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                             <polyline points="7 10 12 15 17 10"></polyline>
                             <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -1580,7 +1597,7 @@
                         View Sprint Retrospective
                     </a>
                     <a href="assets/documents/scrum-master-journal.pdf" target="_blank" class="theme-action-btn" rel="noopener noreferrer">
-                        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                             <polyline points="7 10 12 15 17 10"></polyline>
                             <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -1588,7 +1605,7 @@
                         View Scrum Journal
                     </a>
                     <a href="assets/documents/agile-scrum-presentation.pdf" target="_blank" class="theme-action-btn" rel="noopener noreferrer">
-                        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                             <polyline points="7 10 12 15 17 10"></polyline>
                             <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -1600,6 +1617,7 @@
 
             <div class="project-visual">
                 <img src="assets/images/scrum-sdlc.png" 
+                    loading="lazy"
                     alt="Scrum Software Development Lifecycle Diagram" 
                     style="width: 100%; border: 1px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); border: 1px solid #ddd;">
                 
@@ -1623,7 +1641,6 @@
         <div class="project-image-card">
             <img src="assets/images/algo-1.png"
                 loading="lazy"
-                aria-label="C++ Code Snippet showing recursive Merge Sort implementation"
                 alt="C++ Code Snippet showing recursive Merge Sort implementation" 
                 style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
             
@@ -1634,7 +1651,7 @@
 
         <div class="project-links">
             <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/algorithmic-optimization" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                 </svg>
                 View Source Code
@@ -1657,6 +1674,7 @@
                 
                 <div class="project-visual">
                     <img src="assets/images/service-tests-1.png" 
+                        loading="lazy"
                         alt="JUnit 5 Test Runner showing 100% passing tests" 
                         style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); border: 1px solid #ddd;">
                     
@@ -1667,7 +1685,7 @@
 
                 <div class="project-links" style="justify-content: center; margin-top: 20px;">
                     <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/service-tests" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
-                        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                         </svg>
                         View Source Code
