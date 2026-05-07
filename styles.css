@@ -922,7 +922,8 @@ body.dark-mode .gpa-link:hover {
 }
 
 body.dark-mode .flick-text {
-	color: #9B1721; 
+    color: #ff6b8b;
+    /* Lighter, high-contrast pink for dark mode */
 }
 
 .tech-name {
