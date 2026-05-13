@@ -4,7 +4,7 @@ A modern, interactive portfolio website showcasing my work as a Software Enginee
 
 ## 🌟 Portfolio
 
-Visit my portfolio website for a more streamlined experience and to see my featured projects in action: [matthew-pool.github.io](https://matthew-pool.github.io)
+Visit my portfolio website for a more streamlined experience and a deeper dive into my projects: [matthew-pool.github.io](https://matthew-pool.github.io)
 
 ## 📋 Overview
 
@@ -82,7 +82,7 @@ matthew-pool.github.io/
 
 ## 🚀 Featured Projects
 
-Beyond the source code of this website, my recent heavy-lifting development work includes:
+My recently engineered apps that can be seen on my portfolio website in much greater detail:"
 
 *   **Flick:** A native vertical video streaming Android app featuring an ML-powered recommendation system and archive.org API integration.
 *   **Wormhole:** A terminal-based Python adventure game featuring custom leaderboard logic and terminal animations.
