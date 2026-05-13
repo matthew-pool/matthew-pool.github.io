@@ -87,7 +87,7 @@ My recently engineered apps that can be seen on my portfolio website in much gre
 *   **Flick:** A native vertical video streaming Android app featuring an ML-powered recommendation system and archive.org API integration.
 *   **Wormhole:** A terminal-based Python adventure game featuring custom leaderboard logic and terminal animations.
 
-👉 **[View architecture details, live demos, and case studies for these projects on my portfolio website.](https://matthew-pool.github.io)**
+👉 **[View more details on my portfolio website.](https://matthew-pool.github.io)**
 
 ## 📄 License
 
