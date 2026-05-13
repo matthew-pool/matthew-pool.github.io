@@ -1,6 +1,6 @@
 # Matthew Pool - Portfolio Website
 
-A modern, interactive portfolio website showcasing software development projects and technical expertise across mobile, web, and data science domains.
+A modern, interactive portfolio website showcasing my work as a Software Engineer & Product Designer, highlighting technical expertise across B2B/B2C mobile, web, and data science domains.
 
 ## 🌟 Portfolio
 
@@ -55,7 +55,7 @@ This portfolio website features a clean, professional design with three main sec
 
 ## 📁 Project Structure
 
-```text
+~~~text
 matthew-pool.github.io/
 ├─ aac-dashboard/            # Python/MongoDB dashboard for Austin Animal Center
 ├─ agile-scrum/              # Agile methodology documentation and project artifacts
@@ -78,7 +78,7 @@ matthew-pool.github.io/
 ├─ script.js                 # Interactive animations and bird flight logic
 ├─ styles.css                # Responsive styling with dark mode support
 └─ README.md                 # This file
-
+~~~
 
 ## 📱 Featured Project: Flick
 
