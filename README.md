@@ -4,13 +4,13 @@ A modern, interactive portfolio website showcasing my work as a Software Enginee
 
 ## 🌟 Portfolio
 
-Visit my portfolio website for a more streamlined experience and to see my new Android app, "Flick": [matthew-pool.github.io](https://matthew-pool.github.io)
+Visit my portfolio website for a more streamlined experience and to see my featured projects in action: [matthew-pool.github.io](https://matthew-pool.github.io)
 
 ## 📋 Overview
 
 This portfolio website features a clean, professional design with three main sections:
 
-- **Home**: Showcases Flick, a vertical video streaming Android app with intelligent recommendation algorithms
+- **Home**: Showcases featured applications and development focus
 - **Projects**: Displays a diverse collection of software development projects spanning multiple technologies
 - **Refactor**: Demonstrates software engineering skills through program enhancement and optimization
 
@@ -80,14 +80,14 @@ matthew-pool.github.io/
 └─ README.md                 # This file
 ```
 
-## 📱 Featured Project: Flick
+## 🚀 Featured Projects
 
-**Flick** is a vertical video streaming Android app featuring:
-- AI-powered recommendation engine based on user behavior
-- Archive.org API integration to provide users with free content
-- Firebase Firestore and Crashlytics implementation
-- Smooth video prebuffering for a zippy experience
-- Interactive gestures and visual feedback
+Beyond the source code of this website, my recent heavy-lifting development work includes:
+
+*   **Flick:** A native vertical video streaming Android app featuring an ML-powered recommendation system and archive.org API integration.
+*   **Wormhole:** A terminal-based Python adventure game featuring custom leaderboard logic and terminal animations.
+
+👉 **[View architecture details, live demos, and case studies for these projects on my portfolio website.](https://matthew-pool.github.io)**
 
 ## 📄 License
 
