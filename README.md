@@ -55,7 +55,7 @@ This portfolio website features a clean, professional design with three main sec
 
 ## 📁 Project Structure
 
-~~~text
+```text
 matthew-pool.github.io/
 ├─ aac-dashboard/            # Python/MongoDB dashboard for Austin Animal Center
 ├─ agile-scrum/              # Agile methodology documentation and project artifacts
@@ -78,7 +78,7 @@ matthew-pool.github.io/
 ├─ script.js                 # Interactive animations and bird flight logic
 ├─ styles.css                # Responsive styling with dark mode support
 └─ README.md                 # This file
-~~~
+```
 
 ## 📱 Featured Project: Flick
 
@@ -110,7 +110,7 @@ For any commercial use inquiries, contact me at the phone number or email listed
 
 * 🌐 **Portfolio** &nbsp;&nbsp; [matthew-pool.github.io](https://matthew-pool.github.io)
 * 📧 **Email** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [mathyou.me@gmail.com](mailto:mathyou.me@gmail.com)
-* 📱 **Phone** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [+1 (903) 576-0223](tel:+19035760223)
+* 📱 **Phone** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +1 (903) 576-0223
 
 ---
 
