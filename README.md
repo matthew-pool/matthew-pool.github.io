@@ -82,7 +82,7 @@ matthew-pool.github.io/
 
 ## 🚀 Featured Projects
 
-My recently engineered apps that can be seen on my portfolio website in much greater detail:"
+My recently engineered apps that can be seen on my portfolio website in much greater detail:
 
 *   **Flick:** A native vertical video streaming Android app featuring an ML-powered recommendation system and archive.org API integration.
 *   **Wormhole:** A terminal-based Python adventure game featuring custom leaderboard logic and terminal animations.
