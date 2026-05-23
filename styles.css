@@ -38,7 +38,7 @@
     --modal-close-hover-text: #333;
 
     /* ---> Buttons & Gradients <--- */
-    --bg-quick-link: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --bg-quick-link: #1a1a1a;
     
     --bg-action-btn: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     --text-action-btn: #ffffff;
@@ -61,8 +61,8 @@ body.dark-mode {
     --tab-bg-hover: #3a3a3a;        /* Slightly lighter on hover */
     --tab-text-hover: #ffffff;      /* Bright white on hover */
     --tab-bg-active: #202020;       /* Perfectly matches your dark tab content background! */
-    --tab-text-active: #a855f7;     /* Your signature dark mode purple */
-    --tab-border-active: #a855f7;
+    --tab-text-active: #c084fc; 
+    --tab-border-active: #c084fc;
 
     /* ---> Cards & Containers (Dark Mode) <--- */
     --bg-tab-content: #202020;
@@ -84,7 +84,7 @@ body.dark-mode {
     --modal-close-hover-text: #fff;
 
     /* ---> Buttons & Gradients (Dark Mode) <--- */
-    --bg-quick-link: linear-gradient(135deg, #4a5a8e 0%, #5a3b71 100%);
+    --bg-quick-link: #2a2a2a;
     
     --bg-action-btn: rgba(168, 85, 247, 0.1);
     --text-action-btn: #c4aaff;
@@ -378,12 +378,12 @@ body.dark-mode .toggle-thumb {
 
 /* Precise centering math */
 .toggle-icon.sun {
-    left: 9px;
+    left: 8px; /* Fixed mathematical center */
     opacity: 1;
 }
 
 .toggle-icon.moon {
-    right: 9px;
+    right: 4px; /* Fixed mathematical center */
     opacity: 0.4;
 }
 
@@ -392,6 +392,12 @@ body:not(.dark-mode) .toggle-icon.sun {
     color: #333333; 
     transform: translateY(-50%) scale(1.1);
     opacity: 1;
+}
+
+/* Light Mode: Moon is inactive (Visibility Fix) */
+body:not(.dark-mode) .toggle-icon.moon {
+    color: #333333; /* Dark color to contrast with the light track */
+    opacity: 0.3;
 }
 
 /* Dark Mode: Moon is active */
@@ -1048,23 +1054,24 @@ body.dark-mode .contact-card button svg {
     text-decoration: underline;
 }
 
-/* --- DARK MODE OVERRIDE: Remove Pills but keep Animation --- */
+/* --- DARK MODE OVERRIDE: Restore Pills for Legibility --- */
 body.dark-mode .contact-card a {
-    background-color: transparent;
-    padding: 0;
-    margin: 0;
-    border: none;
-    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(168, 85, 247, 0.4);
+    padding: 2px 12px;
+    border-radius: 12px;
     display: inline-block; 
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9); 
+    margin: 1px 0;
+    text-shadow: none;
+    color: #99ccff;
 }
 
 body.dark-mode .contact-card a:hover {
-    background-color: transparent;
-    color: #99ccff;
+    background-color: rgba(40, 20, 60, 0.8);
+    border-color: rgba(168, 85, 247, 0.8);
+    color: #cce0ff;
     transform: translateY(-1px); 
     text-decoration: underline;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
 }
 
 /* Installation Notice */
@@ -1554,7 +1561,7 @@ body.dark-mode .gradient-text {
 .tab-button:focus-visible, 
 .quick-link:focus-visible {
     outline: 3px solid #667eea;
-    outline-offset: 4px;
+    outline-offset: 6px;
     border-radius: 12px;
 }
 
@@ -2445,17 +2452,17 @@ body.dark-mode .unified-header {
     justify-content: center;
     gap: 0;
     border-radius: 20px;
-    background: linear-gradient(135deg, #2e1f7a 0%, #4a1280 100%);
+    background: #1a1a1a; /* Solid dark color for light mode */
     color: rgba(255, 255, 255, 0.92);
     text-decoration: none;
     display: inline-flex;
     align-items: center;
     transition: all 0.3s;
-    border: 1px solid rgba(140, 100, 255, 0.35);
+    border: 1px solid rgba(140, 100, 255, 0.6); /* Stark border */
 }
 
 .quick-links-bar .quick-link:hover {
-    background: linear-gradient(135deg, #3d2a99 0%, #5e1a99 100%);
+    background: #333333;
     transform: translateY(-2px);
     box-shadow: 0 6px 16px rgba(80, 20, 160, 0.4);
     text-decoration: none;
@@ -2463,12 +2470,12 @@ body.dark-mode .unified-header {
 }
 
 body.dark-mode .quick-links-bar .quick-link {
-    background: linear-gradient(135deg, #1e1450 0%, #30085a 100%);
-    border-color: rgba(160, 120, 255, 0.4);
+    background: #2a2a2a; /* Dark slate for dark mode */
+    border-color: rgba(168, 85, 247, 0.5);
 }
 
 body.dark-mode .quick-links-bar .quick-link:hover {
-    background: linear-gradient(135deg, #2a1a6e 0%, #420a7a 100%);
+    background: #404040;
     box-shadow: 0 6px 16px rgba(100, 40, 200, 0.5);
 }
 
@@ -2704,19 +2711,20 @@ body.dark-mode .code-gallery img {
     text-decoration: underline;
 }
 
-/* Dark Mode Overrides (Removes pill background, keeps bright text + shadow) */
+/* Dark Mode Overrides (Restores pill background for legibility) */
 body.dark-mode .footer-metallic-black a {
-    background-color: transparent;
-    padding: 0;
-    margin: 0;
-    border: none;
-    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(168, 85, 247, 0.4);
+    padding: 2px 12px;
+    border-radius: 12px;
+    margin: 1px 0;
     color: #99ccff;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9); 
+    text-shadow: none; 
 }
 
 body.dark-mode .footer-metallic-black a:hover {
-    background-color: transparent;
+    background-color: rgba(40, 20, 60, 0.8);
+    border-color: rgba(168, 85, 247, 0.8);
     color: #cce0ff;
     transform: translateY(-1px); 
     text-decoration: underline;
@@ -3143,6 +3151,15 @@ body.dark-mode .content-card:has(img[src*="figma-"]) {
 
     body.dark-mode .toggle-thumb {
         transform: translateX(38px);
+    }
+
+    /* ADD THESE: Mobile mathematical centers */
+    .toggle-icon.sun {
+        left: 9px;
+    }
+
+    .toggle-icon.moon {
+        right: 5px;
     }
 
     .hero-subtitle {
