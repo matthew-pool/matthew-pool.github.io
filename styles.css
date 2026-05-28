@@ -6,23 +6,23 @@
 
 :root {
     /* Main Body Colors */
-    --bg-main: #f4f4f4;
+    --bg-main: #d5d5d5; /* 1. Base Layer (Visibly darker gray) */
     --text-main: black;
 
     /* Tab Button Colors */
-    --tab-bg: #e0e0e0;
+    --tab-bg: #cccccc;
     --tab-text: #555555;
-    --tab-bg-hover: #d0d0d0;
+    --tab-bg-hover: #c0c0c0;
     --tab-text-hover: #222222;
-    --tab-bg-active: #ffffff;
+    --tab-bg-active: #e6e6e6; /* Matches Middle Layer */
     --tab-text-active: #0a0094;
     --tab-border-active: #0a0094;
 
     /* ---> Cards & Containers <--- */
-    --bg-tab-content: white;
-    --bg-card: white;
-    --border-card: rgba(0,0,0,0.05);
-    --shadow-card: 0 10px 40px -10px rgba(0,0,0,0.1);
+    --bg-tab-content: #e6e6e6; /* 2. Middle Layer (Soft gray) */
+    --bg-card: #ffffff;        /* 3. Top Layer (Pure white pop) */
+    --border-card: rgba(0,0,0,0.08);
+    --shadow-card: 0 12px 32px -8px rgba(0,0,0,0.15);
 
     /* ---> Typography & Links <--- */
     --text-heading: #2c3e50;
@@ -130,14 +130,6 @@ body {
 	box-sizing: border-box;
 }
 
-body {
-	font-family: Arial, sans-serif;
-	background-color: #f4f4f4;
-	color: black;
-	overflow-anchor: none;
-	transition: background-color 0.3s ease, color 0.3s ease;
-}
-
 p {
 	font-size: 16px;
 	line-height: 1.8;
@@ -183,6 +175,9 @@ body.dark-mode {
     background-color: #1a1440;
     position: static;
     z-index: auto;
+    max-width: 1000px;
+    width: 90%;
+    margin: 0 auto;
 }
 
 body.dark-mode .tab-container {
@@ -219,14 +214,12 @@ body.dark-mode hr {
 	border-top-color: transparent;
 }
 
-/* Dark background for card containing Figma images (white text needs dark bg in both modes) */
-.content-card:has(img[src*="figma-"]) {
-	background-color: #262626;
-}
+/* Show light image by default, hide dark */
+.figma-dark-img { display: none; }
 
-body.dark-mode .content-card:has(img[src*="figma-"]) {
-	background-color: #262626;
-}
+/* When dark mode is active, flip them */
+body.dark-mode .figma-light-img { display: none; }
+body.dark-mode .figma-dark-img { display: block; }
 
 /* Dark background for card containing CI images in both light and dark mode */
 .image-card:has(.ci-images) {
@@ -300,9 +293,9 @@ body.dark-mode .spec-value {
 /* Theme Toggle */
 .theme-toggle-wrapper {
     position: fixed;
-	top: 5px;  
-	left: 16px;
+    top: 5px;
     z-index: 10000;
+    left: max(16px, calc(50vw - 640px)); 
 }
 
 .theme-toggle {
@@ -1645,11 +1638,11 @@ GRID-INTEGRATED PROJECT DETAILS
 .project-details {
 	display: none;
 	grid-column: 1 / -1; 
-	background-color: #f9f9f9;
+	background-color: var(--bg-card);
 	border-radius: 12px;
 	padding: 30px;
 	margin: 10px 0 20px 0;
-	box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+	box-shadow: var(--shadow-card);
 	animation: slideDown 0.3s ease-out;
 	order: 999; 
 }
@@ -2247,8 +2240,8 @@ video {
 }
 
 .intro-card {
-	background-color: #ffffff;
-	border: 1px solid #ddd;
+	background-color: var(--bg-card);
+	border: 1px solid var(--border-card);
 	border-radius: 0px;
 	padding: 25px;
 	margin: 20px 0;
@@ -2265,8 +2258,8 @@ video {
 }
 
 .footer-contact {
-	background-color: #f9f9f9;
-	border: 1px solid #ddd;
+	background-color: var(--bg-card);
+	border: 1px solid var(--border-card);
 	border-radius: 8px;
 	padding: 25px;
 	margin: 40px 0 20px 0;
@@ -2485,11 +2478,13 @@ body.dark-mode .quick-links-bar .quick-link:hover {
 
 .portfolio-banner-container {
     width: 100%;
-    margin-left: 0;
     overflow: hidden;
     line-height: 0;
     margin-top: 0;
     margin-bottom: 0;
+    /* Add these 2 lines: */
+    max-width: 1280px; 
+    margin: 0 auto; 
 }
 
 .portfolio-banner {
@@ -2516,10 +2511,10 @@ body.dark-mode .quick-links-bar .quick-link:hover {
 }
 
 .project-image-card {
-	background: #eee7e7;
+	background: var(--bg-tab-content);
 	border-radius: 12px;
 	padding: 24px;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 	border: 1px solid #e5e7eb;
 }
 
