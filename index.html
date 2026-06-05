@@ -12,27 +12,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matthew Pool: Portfolio</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmflns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='100%' height='100%' fill='%233498db' rx='10'/><text x='50%' y='50%' dy='.35em' fill='white' font-family='sans-serif' font-weight='bold' font-size='40' text-anchor='middle'>M</text></svg>">
+    
+    <!-- FIXED: Corrected 'xmlns' typo so the SVG renders properly -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='100%' height='100%' fill='%233498db' rx='10'/><text x='50%' y='50%' dy='.35em' fill='white' font-family='sans-serif' font-weight='bold' font-size='40' text-anchor='middle'>M</text></svg>">
     
     <meta name="description" content="Matthew Pool - Software Engineer specializing in Android development, full-stack web applications, UI/UX design, and machine learning. View my portfolio of mobile apps, web projects, and creative coding solutions.">
     <meta name="keywords" content="software engineer, android developer, java, kotlin, react, typescript, portfolio, mobile app developer, UI/UX designer, full-stack developer, machine learning, web development, game development, event-driven architecture">
     <meta name="author" content="Matthew Pool">
     
+    <!-- Open Graph / LinkedIn / Facebook -->
     <meta property="og:title" content="Matthew Pool - Software Engineer & Product Designer">
     <meta property="og:description" content="Software Engineer specializing in mobile apps, web development, and ML. B.S. in Computer Science, Summa Cum Laude (3.99 GPA)">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://matthew-pool.github.io">
+    <!-- Ensure your new overlapping image is saved as og-image.png in this folder -->
     <meta property="og:image" content="https://matthew-pool.github.io/assets/images/og-image.png">
     
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Matthew Pool - Software Engineer & Product Designer">
-    <meta name="twitter:description" content="Software Engineer specializing in mobile apps, web development, and ML.">
+    <meta name="twitter:description" content="Software Engineer specializing in mobile apps, web development, and ML. B.S. in Computer Science, Summa Cum Laude (3.99 GPA)">
+    <!-- ADDED: The missing Twitter image tag -->
+    <meta name="twitter:image" content="https://matthew-pool.github.io/assets/images/og-image.png">
     
+    <!-- CSS & Fonts (The cache-busting ?v=5 is a great touch!) -->
     <link rel="stylesheet" href="styles.css?v=5">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet">
 
+    <!-- Preload LCP Image -->
     <link rel="preload" as="image" href="./assets/images/banner-expanded.webp" fetchpriority="high">
-
 </head>
 
 <body>
@@ -268,8 +276,9 @@
             </div>
 
             <div class="content-card" style="margin-top: 15px">
-                    <img src="assets/images/flick/figma-1.svg" loading="lazy" alt="Figma design mockup - set 1" style="width: 100%; max-width: 1200px;">
-                    <img src="assets/images/flick/figma-2.svg" loading="lazy" alt="Figma design mockup - set 2" style="width: 100%; max-width: 1200px;">
+                <img src="assets/images/flick/figma-light.svg" loading="lazy" alt="Figma design mockup" class="theme-img-light" style="width: 100%; max-width: 1200px;">
+                
+                <img src="assets/images/flick/figma-dark.svg" loading="lazy" alt="Figma design mockup" class="theme-img-dark" style="width: 100%; max-width: 1200px;">
             </div>
 
             <div class="content-card" style="margin-top: 15px">         
@@ -349,19 +358,26 @@
                 </div>
             </div>
 
+            <div class="image-card" style="margin-top: 15px;">
+                <img src="assets/images/flick/test-track.png" loading="lazy" alt="Google Play Console - Closed Test Track active deployment">
+            </div>
+
             <br>
 
             <div class="launch-cta" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
                 <div class="launch-cta-content" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-                    <h3>Try it now before the official release.</h3>
-                    <a href="javascript:void(0);" class="directions-link" id="directions-btn">Directions</a>
+                    
+                    <h3 style="color: #888888; opacity: 0.6; user-select: none;">Try it now before the official release.</h3>
+                    
+                    <span style="color: #ff6b6b; font-weight: 700; letter-spacing: 0.5px;">NO LONGER ACCEPTING TESTERS</span>
+                    
                     <br>
-                    <a href="https://groups.google.com/g/appbuddy-flick" class="play-link">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" loading="lazy" alt="Get it on Google Play" class="play-badge">
+                    <a href="javascript:void(0);" class="play-link" tabindex="-1" style="pointer-events: none; cursor: default;">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" loading="lazy" alt="Get it on Google Play (Unavailable)" class="play-badge" style="filter: grayscale(100%); opacity: 0.4;">
                     </a>
                 </div>
             </div>
-
+                        
             <div id="directionsPopup" class="directions-popup-overlay" onclick="hideDirections()">
                 <div class="directions-popup">
                     <strong><i>Try Flick!</i></strong><br>
@@ -378,31 +394,37 @@
                 </div>
             </div>
 
-            <div class="footer-metallic-black">
-                <p style="margin: 7px;">
-                <i>Try it out! The link is literally right there!</i>
-                <br>
-                <i>Tap "Directions" for details.</i></p>
-                
-                <div class="unified-header-inner" style="margin-top: 20px;">
-                    <span class="uh-name"><b>Matthew Pool</b></span>
-                    <span class="uh-divider">|</span>
-                    <span class="uh-email" style="position:relative; display: inline-flex; align-items: center; padding-right: 28px;">
-                        <a href="mailto:mathyou.me@gmail.com">mathyou.me@gmail.com</a>
-                        <button onclick="copyEmail(this, 'light')" aria-label="Copy Email Address" style="background: none; border: none; cursor: pointer; padding: 4px; display: inline-flex; align-items: center; opacity: 0.7; transition: opacity 0.2s; position: absolute; right: 0; top: 50%; transform: translateY(-50%);" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.9)" stroke-width="2" aria-hidden="true">
-                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                            </svg>
-                        </button>
-                        <span class="toast-container"></span>
-                    </span>
-                    <span class="uh-divider">|</span>
-                    <span class="uh-phone"><a href="tel:+19035760223">903-576-0223</a></span>
+            <div class="section">
+                <h2>Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <strong>💻 Programming Languages</strong>
+                        <span>Python, Kotlin, TypeScript, JavaScript, Java, SQL</span>
+                    </div>
+                    <div class="skill-category">
+                        <strong>📱 Frontend & Mobile</strong>
+                        <span>Android SDK, Jetpack Compose, React, Angular, HTML5, CSS3, Tailwind CSS, MVVM, Material Design 3</span>
+                    </div>
+                    <div class="skill-category">
+                        <strong>⚙️ Backend & Infrastructure</strong>
+                        <span>Node.js, Express.js, Spring Boot, REST APIs, AWS, Docker, CI/CD, Git/GitHub Actions</span>
+                    </div>
+                    <div class="skill-category">
+                        <strong>🗄️ Databases</strong>
+                        <span>MySQL, MongoDB, AWS DynamoDB, Firebase Firestore</span>
+                    </div>
+                    <div class="skill-category">
+                        <strong>🎨 UI/UX Design</strong>
+                        <span>Figma, Responsive Design, User Flows, Information Architecture, Wireframing, Prototyping</span>
+                    </div>
+                    <div class="skill-category">
+                        <strong>🧪 Testing & Data</strong>
+                        <span>Postman, pytest, JUnit, MockK, Espresso, TensorFlow (Keras), scikit-learn, Pandas</span>
+                    </div>
                 </div>
             </div>
         </div>
-        
+
         <div id="projects" class="tab-content">
             <br>
             <h2 class="section-header">Projects</h2>
