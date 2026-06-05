@@ -2901,6 +2901,30 @@ body.dark-mode .content-card:has(img[src*="figma-"]) {
 }
 
 /* =========================================
+    DARK MODE FIGMA IMAGE OVERRIDE
+/* ========================================= */
+
+/* 1. Hide the dark mode image by default (assuming light mode is default) */
+.theme-img-dark {
+    display: none;
+}
+
+/* 2. Ensure the light mode image is visible by default */
+.theme-img-light {
+    display: inline-block; /* Or 'block' depending on how you want them centered */
+}
+
+/* 3. When dark mode is active, swap the display properties */
+/* NOTE: Change 'body.dark-mode' to match the exact class or attribute your JavaScript uses! */
+body.dark-mode .theme-img-light {
+    display: none;
+}
+
+body.dark-mode .theme-img-dark {
+    display: inline-block;
+}
+
+    /* =========================================
    MOBILE BREAKPOINT (Max Width: 768px)
    ========================================= */
 @media (max-width: 768px) {
