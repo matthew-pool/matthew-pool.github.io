@@ -40,7 +40,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet">
 
     <!-- Preload LCP Image -->
-    <link rel="preload" as="image" href="./assets/images/banner-expanded.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="./assets/images/banner.svg" fetchpriority="high">
 </head>
 
 <body>
@@ -99,7 +99,7 @@
     <div class="sticky-header-zone">
         <header class="portfolio-banner-container">
             <img 
-                src="./assets/images/banner-expanded.webp" 
+                src="./assets/images/banner.svg" 
                 alt="Matthew Pool - Software Engineer and Product Designer" 
                 class="portfolio-banner"
             />
@@ -394,49 +394,62 @@
                 </div>
             </div>
 
-            <div class="section">
-                <h2>Technical Skills</h2>
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <strong>💻 Programming Languages</strong>
-                        <span>Python, Kotlin, TypeScript, JavaScript, Java, SQL</span>
-                    </div>
-                    <div class="skill-category">
-                        <strong>📱 Frontend & Mobile</strong>
-                        <span>Android SDK, Jetpack Compose, React, Angular, HTML5, CSS3, Tailwind CSS, MVVM, Material Design 3</span>
-                    </div>
-                    <div class="skill-category">
-                        <strong>⚙️ Backend & Infrastructure</strong>
-                        <span>Node.js, Express.js, Spring Boot, REST APIs, AWS, Docker, CI/CD, Git/GitHub Actions</span>
-                    </div>
-                    <div class="skill-category">
-                        <strong>🗄️ Databases</strong>
-                        <span>MySQL, MongoDB, AWS DynamoDB, Firebase Firestore</span>
-                    </div>
-                    <div class="skill-category">
-                        <strong>🎨 UI/UX Design</strong>
-                        <span>Figma, Responsive Design, User Flows, Information Architecture, Wireframing, Prototyping</span>
-                    </div>
-                    <div class="skill-category">
-                        <strong>🧪 Testing & Data</strong>
-                        <span>Postman, pytest, JUnit, MockK, Espresso, TensorFlow (Keras), scikit-learn, Pandas</span>
-                    </div>
+            <!-- TODO: Show Flick Footer:
+            <div class="footer-metallic-black">
+                <p style="margin: 7px;">
+                <i>Try it out!</i> The link is literally right there!
+                <br>
+                <i>Tap "Directions" for details.</i></p>
+                
+                <div class="unified-header-inner" style="margin-top: 20px;">
+                    <span class="uh-name"><b>Matthew Pool</b></span>
+                    <span class="uh-divider">|</span>
+                    <span class="uh-email" style="position:relative; display: inline-flex; align-items: center; padding-right: 28px;">
+                        <a href="mailto:mathyou.me@gmail.com">mathyou.me@gmail.com</a>
+                        <button onclick="copyEmail(this, 'light')" aria-label="Copy Email Address" style="background: none; border: none; cursor: pointer; padding: 4px; display: inline-flex; align-items: center; opacity: 0.7; transition: opacity 0.2s; position: absolute; right: 0; top: 50%; transform: translateY(-50%);" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.9)" stroke-width="2" aria-hidden="true">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                        </button>
+                        <span class="toast-container"></span>
+                    </span>
+                    <span class="uh-divider">|</span>
+                    <span class="uh-phone"><a href="tel:+19035760223">903-576-0223</a></span>
+                </div>
+            </div> -->
+
+            <!-- TODO: Remove Temporary Footer: -->
+            <div class="footer-metallic-black">
+                <p style="margin: 7px;">
+                <i>Aah, cool. You're still here!</i>
+                <br>
+                Click (or Tap) the <strong><i>Projects</i></strong> tab to see more of my work.</p>
+                
+                <div class="unified-header-inner" style="margin-top: 20px;">
+                    <span class="uh-name"><b>Matthew Pool</b></span>
+                    <span class="uh-divider">|</span>
+                    <span class="uh-email" style="position:relative; display: inline-flex; align-items: center; padding-right: 28px;">
+                        <a href="mailto:mathyou.me@gmail.com">mathyou.me@gmail.com</a>
+                        <button onclick="copyEmail(this, 'light')" aria-label="Copy Email Address" style="background: none; border: none; cursor: pointer; padding: 4px; display: inline-flex; align-items: center; opacity: 0.7; transition: opacity 0.2s; position: absolute; right: 0; top: 50%; transform: translateY(-50%);" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.9)" stroke-width="2" aria-hidden="true">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                        </button>
+                        <span class="toast-container"></span>
+                    </span>
+                    <span class="uh-divider">|</span>
+                    <span class="uh-phone"><a href="tel:+19035760223">903-576-0223</a></span>
                 </div>
             </div>
+
+
         </div>
 
         <div id="projects" class="tab-content">
             <br>
             <h2 class="section-header">Projects</h2>
-
-            <div class="project-filters">
-                <button class="filter-btn active" onclick="filterProjects('all', event)">All Projects</button>
-                <button class="filter-btn" onclick="filterProjects('design', event)">Mobile</button>
-                <button class="filter-btn" onclick="filterProjects('web', event)">Web</button>
-                <button class="filter-btn" onclick="filterProjects('graphics', event)">Graphics</button>
-                <button class="filter-btn" onclick="filterProjects('data', event)">Data/ML</button>
-                <button class="filter-btn" onclick="filterProjects('systems', event)">Systems &amp; Design</button>
-            </div>
 
             <div class="project-grid"> 
                 
@@ -840,7 +853,7 @@
 
             <div class="footer-metallic-black">
                 <p><i>Phew. That was a lot to look over!</i><br>
-                    <i>Aren't you tired?</i> I am.</p>
+                    Aren't you tired? I am.</p>
                 
                 <div class="unified-header-inner" style="margin-top: 20px;">
                     <span class="uh-name"><b>Matthew Pool</b></span>
@@ -953,7 +966,7 @@
 
             <hr>
 
-            <p style="text-align: center;">Meh, that's a little better I guess 😐</p>
+            <p style="text-align: center;"><i>Meh, that's a little better I guess</i> 😐</p>
             
             <div class="project-links" style="justify-content: center; margin-top: 20px;">
                 <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/java-enhancements" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
@@ -967,11 +980,14 @@
             <hr>
 
             <div class="footer-metallic-black">
-                <p><i>Are you still here?!</i> Thank you so much for looking over my portfolio.</p>
-                <p style="margin-top: 7px;">I give everything I am into everything I do. Give me a chance.
-                <br>
-                You won't regret it!</p>
+                <p><i>Are you still here?!</i> Thank you for viewing my portfolio.</p>
+                <p style="margin-top: 7px;"><i>Let's connect!</i> 
+                    <br>
+                    I'd love to help you reach your goals and build something amazing together.
+                </p>
                 
+                <br>
+    
                 <div class="unified-header-inner" style="margin-top: 25px;">
                     <span class="uh-name"><b>Matthew Pool</b></span>
                     <span class="uh-divider">|</span>
