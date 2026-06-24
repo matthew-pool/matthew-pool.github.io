@@ -13,7 +13,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matthew Pool: Portfolio</title>
     
-    <!-- FIXED: Corrected 'xmlns' typo so the SVG renders properly -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='100%' height='100%' fill='%233498db' rx='10'/><text x='50%' y='50%' dy='.35em' fill='white' font-family='sans-serif' font-weight='bold' font-size='40' text-anchor='middle'>M</text></svg>">
     
     <meta name="description" content="Matthew Pool - Software Engineer specializing in Android development, full-stack web applications, UI/UX design, and machine learning. View my portfolio of mobile apps, web projects, and creative coding solutions.">
@@ -25,9 +24,8 @@
     <meta property="og:description" content="Software Engineer specializing in mobile apps, web development, and ML. B.S. in Computer Science, Summa Cum Laude (3.99 GPA)">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://matthew-pool.github.io">
-    <!-- Ensure your new overlapping image is saved as og-image.png in this folder -->
-    <meta property="og:image" content="https://matthew-pool.github.io/assets/images/og-image.png">
-    
+    <meta property="og:image" content="https://matthew-pool.github.io/assets/images/portfolio-dark.png">
+
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Matthew Pool - Software Engineer & Product Designer">
@@ -451,8 +449,17 @@
             <br>
             <h2 class="section-header">Projects</h2>
 
+            <div class="project-filters">
+                <button class="filter-btn active" onclick="filterProjects('all', event)">All</button>
+                <button class="filter-btn" onclick="filterProjects('web', event)">Web</button>
+                <button class="filter-btn" onclick="filterProjects('graphics', event)">Graphics & Games</button>
+                <button class="filter-btn" onclick="filterProjects('design', event)">UI/UX Design</button>
+                <button class="filter-btn" onclick="filterProjects('data', event)">Data & ML</button>
+                <button class="filter-btn" onclick="filterProjects('systems', event)">Systems</button>
+            </div>
+
             <div class="project-grid"> 
-                
+
                 <div class="project-card" data-category="web"
                     onclick="openProjectModal('portfolio-site')"
                     tabindex="0"
@@ -462,7 +469,7 @@
                     <div class="project-card-image">
                         <img src="assets/images/portfolio-light.png" alt="Preview of this portfolio website showing a clean, responsive layout in light mode" loading="lazy">
                     </div>
-                    
+
                     <div class="project-card-content">
                         <h3>(This) Portfolio</h3>
                         <p class="project-card-brief">Fully hand-coded responsive portfolio site featuring dark mode, animated SVG bird, tab navigation, modal system, lightbox, and CI/CD via GitHub Actions.</p>
