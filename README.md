@@ -88,6 +88,7 @@ My recently engineered apps that can be seen on my portfolio website in much gre
 
 *   **Flick:** A native vertical video streaming Android app featuring an ML-powered recommendation system and archive.org API integration. This project was developed and successfully deployed to a Google Play Console closed test track, handling complex metadata processing for seamless content delivery.
 *   **Wormhole:** A terminal-based sci-fi text adventure game built entirely using Python object-oriented programming. It features a custom engine utilizing multi-threading logic and asynchronous UI elements to drive real-time terminal animations and dynamic leaderboard logic.
+*   **The Existence Paradox:** A high-fidelity interactive SPA (React/TypeScript) featuring complex state hooks, decision-tree navigation, and a WCAG 2.2 AA-compliant dark-theme UI. This project demonstrates advanced front-end state management and design implementation.
 
 👉 **[View more details on my portfolio website.](https://matthew-pool.github.io)**
 
