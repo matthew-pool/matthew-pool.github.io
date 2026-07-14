@@ -1,6 +1,6 @@
 # Matthew Pool - Portfolio Website
 
-A modern, interactive portfolio website showcasing my work as a Software Engineer & Product Designer, highlighting technical expertise across B2B/B2C mobile, web, and data science domains.
+A modern, interactive portfolio website showcasing my work as a Software Engineer & Technical Solutions Specialist, highlighting technical expertise across B2B/B2C mobile, web, and data science domains.
 
 ## 🌟 Portfolio
 
