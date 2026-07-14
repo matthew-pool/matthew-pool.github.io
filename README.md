@@ -8,7 +8,9 @@ Visit my portfolio website for a more streamlined experience and a deeper dive i
 
 ## 📋 Overview
 
-This portfolio website features a clean, professional design with three main sections:
+This portfolio website features a clean, professional design that reflects my academic foundation and professional journey. Building on an Associate of Arts with an information technology focus from Tyler Junior College, I graduated Summa Cum Laude with a Bachelor of Science in Computer Science from Southern New Hampshire University, achieving a 3.99 GPA. 
+
+The work showcased here stems from rigorous academic study and my independent software development venture, **App.Buddy** (established January 2025). The site is divided into three main sections:
 
 - **Home**: Showcases featured applications and development focus
 - **Projects**: Displays a diverse collection of software development projects spanning multiple technologies
@@ -84,8 +86,8 @@ matthew-pool.github.io/
 
 My recently engineered apps that can be seen on my portfolio website in much greater detail:
 
-*   **Flick:** A native vertical video streaming Android app featuring an ML-powered recommendation system and archive.org API integration.
-*   **Wormhole:** A terminal-based Python adventure game featuring custom leaderboard logic and terminal animations.
+*   **Flick:** A native vertical video streaming Android app featuring an ML-powered recommendation system and archive.org API integration. This project was developed and successfully deployed to a Google Play Console closed test track, handling complex metadata processing for seamless content delivery.
+*   **Wormhole:** A terminal-based sci-fi text adventure game built entirely using Python object-oriented programming. It features a custom engine utilizing multi-threading logic and asynchronous UI elements to drive real-time terminal animations and dynamic leaderboard logic.
 
 👉 **[View more details on my portfolio website.](https://matthew-pool.github.io)**
 
@@ -110,8 +112,7 @@ For any commercial use inquiries, contact me at the phone number or email listed
 
 * 🌐 **Portfolio** &nbsp;&nbsp; [matthew-pool.github.io](https://matthew-pool.github.io)
 * 📧 **Email** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [mathyou.me@gmail.com](mailto:mathyou.me@gmail.com)
-* 📱 **Phone** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +1 (903) 576-0223
-
+* 📱 **Phone** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [+1 (903) 576-0223](tel:+19035760223)
 ---
 
 *Made with ❤️ by Matthew Pool*
