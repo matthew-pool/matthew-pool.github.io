@@ -75,6 +75,27 @@
 }
 
 body.dark-mode {
+    background-color: #05070f; /* Deep space blue to match the resume */
+    color: #e0e0e0;
+    
+    /* The starry night and glowing orb gradients */
+    background-image:
+        radial-gradient(1.6px 1.6px at 12% 18%, rgba(255,255,255,0.9), transparent),
+        radial-gradient(1.2px 1.2px at 28% 52%, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1.6px 1.6px at 44% 8%,  rgba(255,255,255,0.85), transparent),
+        radial-gradient(1.2px 1.2px at 63% 68%, rgba(255,255,255,0.65), transparent),
+        radial-gradient(1.6px 1.6px at 78% 28%, rgba(255,255,255,0.9), transparent),
+        radial-gradient(1.2px 1.2px at 92% 58%, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1.4px 1.4px at 6% 82%,  rgba(255,255,255,0.75), transparent),
+        radial-gradient(1.2px 1.2px at 52% 90%, rgba(255,255,255,0.8), transparent),
+        radial-gradient(circle 800px at 10% 10%, rgba(176,136,249,0.25), transparent 60%),
+        radial-gradient(circle 700px at 90% 90%, rgba(79,209,232,0.25), transparent 60%);
+    background-repeat: repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat, no-repeat, no-repeat;
+    background-size: 190px 190px, 230px 230px, 270px 270px, 210px 210px, 250px 250px, 200px 200px, 240px 240px, 220px 220px, auto, auto;
+    
+    /* Locks the orbs and stars to the camera/screen */
+    background-attachment: fixed;
+
     /* Main Body Colors */
     --bg-main: #1a1a1a;
     --text-main: #e0e0e0;
@@ -129,25 +150,36 @@ html {
 
 body {
     /* Your Layout Reset */
-    font-family: 'Inter', 'Segoe UI', Tahoma, sans-serif;
-    line-height: 1.6;
-    color: var(--text-secondary);
-    background-color: var(--bg-page);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-anchor: none;
     
-    /* Layered radial-gradient starfield & ambient nebula glows */
+    /* Your New Theme Variables */
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    font-family: Arial, sans-serif;
+    
+    /* Light Mode "Stars" (Darker particles) and HIGH-VISIBILITY Orbs */
     background-image:
-        radial-gradient(1.6px 1.6px at 12% 18%, rgba(255,255,255,0.9), transparent),
-        radial-gradient(1.2px 1.2px at 28% 52%, rgba(255,255,255,0.7), transparent),
-        radial-gradient(1.6px 1.6px at 44% 8%,  rgba(255,255,255,0.85), transparent),
-        radial-gradient(1.2px 1.2px at 63% 68%, rgba(255,255,255,0.65), transparent),
-        radial-gradient(1.6px 1.6px at 78% 28%, rgba(255,255,255,0.9), transparent),
-        radial-gradient(1.2px 1.2px at 92% 58%, rgba(255,255,255,0.7), transparent),
-        radial-gradient(1.4px 1.4px at 6% 82%,  rgba(255,255,255,0.75), transparent),
-        radial-gradient(1.2px 1.2px at 52% 90%, rgba(255,255,255,0.8), transparent),
-        radial-gradient(760px circle at 10% 6%, rgba(176,136,249,0.14), transparent 62%),
-        radial-gradient(640px circle at 92% 94%, rgba(79,209,232,0.12), transparent 62%);
+        radial-gradient(1.6px 1.6px at 12% 18%, rgba(0,0,0,0.15), transparent),
+        radial-gradient(1.2px 1.2px at 28% 52%, rgba(0,0,0,0.1), transparent),
+        radial-gradient(1.6px 1.6px at 44% 8%,  rgba(0,0,0,0.12), transparent),
+        radial-gradient(1.2px 1.2px at 63% 68%, rgba(0,0,0,0.08), transparent),
+        radial-gradient(1.6px 1.6px at 78% 28%, rgba(0,0,0,0.15), transparent),
+        radial-gradient(1.2px 1.2px at 92% 58%, rgba(0,0,0,0.1), transparent),
+        radial-gradient(1.4px 1.4px at 6% 82%,  rgba(0,0,0,0.12), transparent),
+        radial-gradient(1.2px 1.2px at 52% 90%, rgba(0,0,0,0.14), transparent),
+        radial-gradient(circle 800px at 10% 10%, rgba(176,136,249,0.45), transparent 60%), /* High-Opacity Violet */
+        radial-gradient(circle 700px at 90% 90%, rgba(79,209,232,0.45), transparent 60%);  /* High-Opacity Cyan */
     background-repeat: repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat, no-repeat, no-repeat;
     background-size: 190px 190px, 230px 230px, 270px 270px, 210px 210px, 250px 250px, 200px 200px, 240px 240px, 220px 220px, auto, auto;
+    
+    /* Locks the orbs and stars to the camera/screen instead of the page height! */
+    background-attachment: fixed;
+    
+    /* Your Smooth Theme Transition */
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Ensure all elements calculate width including their padding/borders */
@@ -187,105 +219,6 @@ h3 {
 h4 {
 	margin-top: 1em;
 	margin-bottom: 0.5em;
-}
-
-/* ── 7. TYPOGRAPHY HIERARCHY ── */
-h1, h2, h3, .hero-title {
-    font-family: 'Space Grotesk', 'Segoe UI', Tahoma, sans-serif;
-    color: var(--text-primary);
-}
-
-.mono-data, .tech-tag {
-    font-family: 'JetBrains Mono', 'Courier New', monospace;
-}
-
-/* ── 8. HERO / GLOWING TEXT ── */
-.hero-title {
-    font-size: 32px;
-    background: linear-gradient(135deg, var(--accent-violet) 0%, var(--accent-cyan) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-shadow: 0 0 30px var(--glow-violet), 0 0 60px var(--glow-cyan);
-}
-
-/* ── 9. PORTFOLIO CARDS (Adapted from Resume Container) ── */
-.portfolio-card {
-    background: var(--bg-card);
-    border-radius: 18px;
-    padding: 30px;
-    box-shadow:
-        0 0 0 1px var(--border-subtle),
-        0 30px 70px -10px rgba(0,0,0,0.6),
-        0 0 120px -30px var(--glow-violet);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.portfolio-card:hover {
-    box-shadow:
-        0 0 0 1px var(--accent-cyan),
-        0 30px 70px -10px rgba(0,0,0,0.7),
-        0 0 140px -20px var(--glow-cyan);
-}
-
-/* ── 10. SECTION HEADERS WITH UNDERLINE GLOW ── */
-.section-heading {
-    font-size: 20px;
-    padding-bottom: 10px;
-    margin-bottom: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.6px;
-    position: relative;
-}
-
-.section-heading::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 44px;
-    height: 3px;
-    border-radius: 2px;
-    background: linear-gradient(90deg, var(--accent-cyan), var(--accent-violet));
-    box-shadow: 0 0 14px var(--glow-cyan);
-}
-
-/* ── 11. TECH STACK BADGES ── */
-.tech-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    background: linear-gradient(135deg, #0284c7, #0369a1); /* Default to tech-support blue */
-    color: #ffffff;
-    font-size: 10.5px;
-    font-weight: 700;
-    padding: 3px 10px;
-    border-radius: 20px;
-    font-family: 'JetBrains Mono', monospace;
-    text-transform: uppercase;
-    letter-spacing: 0.4px;
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.15);
-}
-
-/* Badge Variants */
-.tech-badge.violet { background: linear-gradient(135deg, #4f46e5, #3730a3); }
-.tech-badge.green { background: #065f46; }
-.tech-badge.orange { background: #ea6823; }
-
-/* ── 12. INTERACTIVE LINKS ── */
-.portfolio-link {
-    font-weight: 600;
-    color: var(--accent-cyan);
-    text-decoration: none;
-    transition: text-shadow 0.2s, color 0.2s;
-}
-
-.portfolio-link:hover { 
-    text-decoration: underline; 
-    text-shadow: 0 0 10px var(--glow-cyan); 
 }
 
 /* Dark mode body styles */
