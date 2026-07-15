@@ -3171,6 +3171,12 @@ body.dark-mode .theme-img-dark {
         margin: 0 auto;
     }
 
+    .flick-subtitle {
+        margin-top: 6px;
+        padding-left: 0;
+        text-align: center;
+    }
+
     .flick-card > p {
         margin-top: 6px;
         padding-left: 0;
