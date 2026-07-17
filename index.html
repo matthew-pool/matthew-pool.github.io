@@ -198,9 +198,12 @@
             
             <div class="app-description">
                 <h2>Synopsis & Engineering</h2>
-                <p><span class="flick-text">Flick</span> is a native Android streaming client built to provide an instant, vast content library without licensing hurdles by leveraging the Archive.org API. This architecture reduces backend content delivery costs to near-zero, ensuring high scalability and business viability - all delivered through a vigorously tested CI/CD pipeline.</p>
-                <p><strong>Architecture:</strong> I solo-engineered the entire stack (Kotlin + Jetpack Compose) and built a custom recommendation engine from scratch. The app tokenizes video metadata and weighs it against user interaction signals (view time, likes/dislikes) stored in Firestore to create dynamic user profile vectors.</p>
+                <p><span class="flick-text">Flick</span> is a native Android streaming client built to provide an instant, vast content library without licensing hurdles by leveraging the Archive.org API. This architecture reduces backend content delivery costs to near-zero, ensuring high scalability and business viability — all delivered through a vigorously tested CI/CD pipeline.</p>
+                
+                <p><strong>Architecture:</strong> Managing the complete product lifecycle from early Figma prototypes to Google Play closed testing, I solo-engineered the entire stack utilizing Kotlin, Jetpack Compose, and MVVM architecture. I built a custom recommendation engine from scratch and integrated async preloading for seamless, low-latency playback. The app tokenizes video metadata and weighs it against user interaction signals (view time, likes/dislikes) stored in Firestore to create dynamic user profile vectors.</p>
+                
                 <p><strong>Algorithm:</strong> I implemented cosine similarity to calculate the distance between the user's profile and available content. The main vertical feed uses an "exploration vs. exploitation" strategy, mixing high-confidence matches with random high-percentile videos to prevent echo chambers.</p>
+                
                 <p><strong>UI/UX:</strong> The UI features a dual-axis navigation system driven by this ML algorithm. A vertical swipe continues the mixed feed, while a horizontal swipe instantly branches into a "nearest neighbor" playlist, finding videos with the highest cosine similarity to the current video.</p>
             </div>
 
