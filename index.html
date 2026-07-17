@@ -494,14 +494,13 @@
 
                     <div class="project-card-content">
                         <h3>(This) Portfolio</h3>
-                        <p class="project-card-brief">Fully hand-coded responsive portfolio site featuring dark mode, animated SVG bird, tab navigation, modal system, lightbox, and CI/CD via GitHub Actions.</p>
+                        <p class="project-card-brief">Fully hand-coded, zero-dependency responsive portfolio featuring a persistent light/dark mode, JS-driven SVG animations, custom modals, and automated CI/CD.</p>
                         <div class="project-card-tags">
-                            <span class="project-card-tag">HTML5</span>
-                            <span class="project-card-tag">CSS3</span>
-                            <span class="project-card-tag">JavaScript</span>
-                            <span class="project-card-tag">Markdown</span>
-                            <span class="project-card-tag">SVG Animation</span>
-                            <span class="project-card-tag">Responsive</span>
+                            <span class="project-card-tag">HTML5 / CSS3</span>
+                            <span class="project-card-tag">Vanilla JS</span>
+                            <span class="project-card-tag">CI/CD (GitHub Actions)</span>
+                            <span class="project-card-tag">WCAG 2.2 AA</span>
+                            <span class="project-card-tag">Responsive Design</span>
                         </div>
                     </div>
                 </div>
@@ -520,14 +519,13 @@
                     </div>
                     <div class="project-card-content">
                         <h3>Wormhole - A Text Adventure Game</h3>
-                        <p class="project-card-brief">An immersive, terminal-based sci-fi text adventure featuring dynamic ANSI rendering, multithreading, and a real-time interactive map.</p>
+                        <p class="project-card-brief">A terminal-based sci-fi adventure driven by a custom Python OOP engine, featuring event-driven state management and multithreaded asynchronous UI updates.</p>
                         <div class="project-card-tags">
                             <span class="project-card-tag">Python</span>
                             <span class="project-card-tag">Multithreading</span>
                             <span class="project-card-tag">CLI / ANSI</span>
-                            <span class="project-card-tag">JSON</span>
+                            <span class="project-card-tag">Event-Driven State</span>
                             <span class="project-card-tag">Object-Oriented Design</span>
-                            <span class="project-card-tag">Story-telling / Game Design</span>
                         </div>
                     </div>
                 </div>
@@ -546,12 +544,13 @@
                     </div>
                     <div class="project-card-content">
                         <h3>The Existence Paradox</h3>
-                        <p class="project-card-brief">Interactive philosophy app featuring dynamic state management and complex decision-tree navigation.</p>
+                        <p class="project-card-brief">Interactive React/TypeScript SPA featuring complex state hooks, decision-tree navigation, and a high-fidelity WCAG 2.2 AA-compliant UI.</p>
                         <div class="project-card-tags">
                             <span class="project-card-tag">TypeScript</span>
                             <span class="project-card-tag">React</span>
                             <span class="project-card-tag">Tailwind CSS</span>
                             <span class="project-card-tag">Vite</span>
+                            <span class="project-card-tag">WCAG 2.2 AA</span>
                         </div>
                     </div>
                 </div>
@@ -1054,13 +1053,12 @@
         <div class="details">HTML5 · CSS3 · Vanilla JavaScript · GitHub Pages · GitHub Actions</div>
 
         <ul>
-            <li><strong>Zero Dependencies:</strong> Built entirely from scratch without any frontend framework — pure HTML, CSS, and Vanilla JS. Every component is hand-authored.</li>
+            <li><strong>Zero Dependencies:</strong> Built entirely from scratch without any frontend framework — pure HTML5, CSS3, and Vanilla JavaScript. Every component is hand-authored to ensure maximum performance and maintainability.</li>
+            <li><strong>Design System & Accessibility:</strong> Fully themeable light and dark mode using CSS custom properties, with preference persisted in <code>localStorage</code> and system preference detection on first visit. Enforces strict semantic HTML, ARIA roles, and keyboard-navigable interactive elements to ensure WCAG 2.2 AA compliance.</li>
             <li><strong>Animated SVG Bird:</strong> A custom animated cardinal perches on the shelf and flies to the Flick logo on scroll, using a cubic Bézier curve path calculated in JS via <code>requestAnimationFrame</code>. Features idle head-turns, squash-and-stretch landing physics, and a return flight when navigating away from the Home tab.</li>
-            <li><strong>Design System:</strong> Fully themeable dark/dark mode using CSS custom properties, with preference persisted in <code>localStorage</code> and system preference detection on first visit.</li>
-            <li><strong>Modal & Lightbox:</strong> Custom project-detail modal popup system and a full lightbox image viewer with keyboard navigation — no libraries.</li>
-            <li><strong>Responsive Layout:</strong> Fluid grid and flexbox layout with comprehensive breakpoints targeting mobile, tablet, and desktop viewports.</li>
-            <li><strong>CI/CD:</strong> Deployed automatically to GitHub Pages via GitHub Actions on every push to <code>main</code>.</li>
-            <li><strong>Performance & Accessibility:</strong> Semantic HTML5, ARIA roles, lazy-loaded images, and keyboard-navigable interactive elements throughout.</li>
+            <li><strong>Custom Components:</strong> Engineered a custom project-detail modal popup system and a full lightbox image viewer with keyboard navigation — completely avoiding third-party libraries.</li>
+            <li><strong>Responsive Layout:</strong> Fluid grid and flexbox architecture with comprehensive breakpoints targeting mobile, tablet, and desktop viewports.</li>
+            <li><strong>CI/CD Pipeline:</strong> Deployed automatically to GitHub Pages via GitHub Actions on every push to <code>main</code>, ensuring a reliable and automated release pipeline.</li>
         </ul>
 
         <figure class="project-image-card" aria-live="polite" style="margin: 0;">
@@ -1092,14 +1090,10 @@
         <h3>Wormhole Text Adventure</h3>
         <div class="details">Python · Game Development · Multithreading · Event-Driven Architecture · Markdown</div>
         <ul>
-            <li><strong>Custom Engine:</strong> Built a robust, object-oriented text adventure engine entirely in Python
-                featuring dynamic typewriter effects and a sophisticated command parser.</li>
-            <li><strong>Technical Documentation:</strong> Authored extensive Markdown documentation detailing the custom
-                engine's architecture, state management logic, and animated ASCII art.</li>
-            <li><strong>Asynchronous UI:</strong> Utilized multithreading to handle live UI updates, including real-time timers,
-                pulsing prompts, and a live-updating ASCII map without blocking user input.</li>
-            <li><strong>Event-Driven State:</strong> Implemented a flexible, event-driven narrative system to seamlessly manage
-                complex story triggers, conditional paths, and state changes.</li>
+            <li><strong>Custom Engine:</strong> Built a robust, object-oriented text adventure engine entirely in Python featuring dynamic ANSI rendering and a sophisticated command parser.</li>
+            <li><strong>Concurrency:</strong> Built multithreading for asynchronous live UI updates without blocking player input, including real-time timers, pulsing prompts, and a live-updating ASCII map.</li>
+            <li><strong>Event-Driven State:</strong> Implemented a flexible, event-driven narrative system to seamlessly manage complex story triggers, conditional paths, and state changes, actively troubleshooting and resolving complex system state conflicts.</li>
+            <li><strong>Technical Documentation:</strong> Authored extensive Markdown documentation detailing the custom engine's architecture and logic flow.</li>
         </ul>
 
         <div class="project-image-card">
@@ -1160,8 +1154,8 @@
         <h3>The Existence Paradox - Interactive Philosophy App</h3>
         <div class="details">TypeScript, React, Tailwind CSS, Vite</div>
         <ul>
-            <li>Built interactive web application exploring philosophical concepts through <strong>decision-tree navigation</strong> and dynamic content rendering</li>
-            <li>Implemented responsive design with <strong>modern React</strong> patterns ensuring optimal experience across desktop and mobile devices</li>
+            <li><strong>Engineering:</strong> Built an interactive Single Page Application (SPA) utilizing React/Vite. Leveraged complex state hooks to track progression through decision-tree navigation, driving conditional rendering and dynamic CSS3 properties.</li>
+            <li><strong>UX & Support:</strong> Engineered a high-fidelity, WCAG 2.2 AA-compliant dark-theme interface ensuring seamless product adoption across diverse technical and non-technical audiences. Implemented programmatic smooth scrolling and fluid typography for an optimal cross-device experience.</li>
         </ul>
 
         <div class="project-image-card">
