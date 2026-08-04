@@ -7,478 +7,459 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Matthew Pool: Portfolio</title>
-	<style>
-		@font-face {
-			font-family: robotoFont;
-			src: url(https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap);
-		}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matthew Pool: Portfolio</title>
+    
+    <link rel="icon" type="image/svg+xml" href="./assets/images/app-buddy-logo.svg">
 
-		* {
-			margin: 0;
-			padding: 0;
-			box-sizing: border-box;
-		}
+    <meta name="description" content="Matthew Pool - Software Engineer specializing in Android development, full-stack web applications, UI/UX design, and machine learning. View my portfolio of mobile apps, web projects, and creative coding solutions.">
+    <meta name="keywords" content="software engineer, android developer, java, kotlin, react, typescript, portfolio, mobile app developer, UI/UX designer, full-stack developer, machine learning, web development, game development, event-driven architecture">
+    <meta name="author" content="Matthew Pool">
+    
+    <!-- Open Graph / LinkedIn / Facebook -->
+    <meta property="og:title" content="Matthew Pool - Software Engineer & Product Designer">
+    <meta property="og:description" content="Software Engineer specializing in mobile apps, web development, and ML. B.S. in Computer Science, Summa Cum Laude (3.99 GPA)">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://matthew-pool.github.io">
+    <meta property="og:image" content="https://matthew-pool.github.io/assets/images/portfolio-dark.png">
 
-		body {
-			font-family: Arial, sans-serif;
-			background-color: #f4f4f4;
-			color: black;
-		}
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Matthew Pool - Software Engineer & Product Designer">
+    <meta name="twitter:description" content="Software Engineer specializing in mobile apps, web development, and ML. B.S. in Computer Science, Summa Cum Laude (3.99 GPA)">
+    <meta name="twitter:image" content="https://matthew-pool.github.io/assets/images/og-image.png">
+    
+    <link rel="stylesheet" href="styles.css?v=5">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet">
 
-		p {
-			font-size: 16px;
-			line-height: 1.8;
-			margin-bottom: 1em;
-		}
-
-		h1 {
-			font-family: robotoFont;
-			text-align: center;
-			padding: 20px 0;
-			margin: 0;
-		}
-
-		h2 {
-			margin-top: 1.5em;
-			margin-bottom: 0.8em;
-		}
-
-		h3 {
-			margin-top: 1.2em;
-			margin-bottom: 0.6em;
-		}
-
-		h4 {
-			margin-top: 1em;
-			margin-bottom: 0.5em;
-		}
-
-		img {
-			max-width: 100%;
-			height: auto;
-			display: block;
-			margin: 1em auto;
-		}
-
-		#refactor img {
-			margin-left: 0;
-			margin-right: auto;
-		}
-		
-		/* InventoryBuddy screenshot grid */
-		.buddy-screenshot-grid {
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: center;
-		}
-
-		.buddy-screenshot-grid img {
-			width: 45%;
-			max-width: 300px;
-			height: auto;
-			margin: 10px;
-			box-sizing: border-box;
-		}
-
-		/* Mario images - centered and same width */
-		.mario-image {
-			width: 80%;
-			max-width: 900px;
-			height: auto;
-			display: block;
-			margin: 1em auto;
-		}
-
-		hr {
-			margin: 2em 0;
-			border: none;
-			border-top: 1px solid #ccc;
-		}
-
-		a {
-			color: #0066cc;
-			text-decoration: none;
-		}
-
-		a:hover {
-			text-decoration: underline;
-		}
-
-		/* Tab Navigation */
-		.tab-container {
-			background-color: white;
-			box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-			position: sticky;
-			top: 0;
-			z-index: 1000;
-		}
-
-		.tab-nav {
-			display: flex;
-			justify-content: center;
-			max-width: 1200px;
-			margin: 0 auto;
-		}
-
-		.tab-button {
-			flex: 1;
-			max-width: 300px;
-			padding: 18px 30px;
-			background-color: #e0e0e0;
-			border: none;
-			cursor: pointer;
-			font-size: 18px;
-			font-weight: 500;
-			transition: all 0.3s ease;
-			border-bottom: 3px solid transparent;
-		}
-
-		.tab-button:hover {
-			background-color: #d0d0d0;
-		}
-
-		.tab-button.active {
-			background-color: white;
-			border-bottom: 3px solid #0a0094;
-			color: #0a0094;
-		}
-
-		/* Tab Content */
-		.tab-content {
-			display: none;
-			max-width: 1200px;
-			margin: 0 auto;
-			padding: 30px 20px;
-			background-color: white;
-			min-height: calc(100vh - 150px);
-		}
-
-		.tab-content.active {
-			display: block;
-		}
-
-		/* Animated gradient keyframes */
-		@keyframes gradientShift {
-			0% {
-				background-position: 0% 50%;
-			}
-			50% {
-				background-position: 100% 50%;
-			}
-			100% {
-				background-position: 0% 50%;
-			}
-		}
-		
-		@keyframes glow {
-			0%, 100% {
-				box-shadow: 0 0 20px rgba(102, 126, 234, 0.4), 
-							0 0 40px rgba(118, 75, 162, 0.3),
-							0 0 60px rgba(240, 147, 251, 0.2);
-			}
-			50% {
-				box-shadow: 0 0 30px rgba(102, 126, 234, 0.6), 
-							0 0 60px rgba(118, 75, 162, 0.5),
-							0 0 90px rgba(240, 147, 251, 0.4);
-			}
-		}
-
-		/* Contact Card */
-		.contact-card {
-			background: linear-gradient(135deg, #667eea, #764ba2, #f093fb, #4facfe, #667eea);
-			background-size: 300% 300%;
-			animation: gradientShift 8s ease infinite, glow 3s ease-in-out infinite;
-			border: 4px solid rgba(255, 255, 255, 0.3);
-			border-radius: 16px;
-			padding: 30px;
-			margin: 20px;
-			text-align: center;
-			position: relative;
-		}
-		
-		.contact-card p {
-			color: white;
-			text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-			font-size: 20px;
-			line-height: normal;
-			margin: 5px 0;
-		}
-		
-		.contact-card b {
-			font-size: 22px;
-		}
-		
-		.contact-card i {
-			font-size: 16px;
-		}
-		
-		.contact-card a {
-			color: #f0f0f0;
-			font-weight: 500;
-			font-size: 16px;
-		}
-		
-		.contact-card a:hover {
-			color: white;
-			text-decoration: none;
-		}
-
-		/* Flick Header */
-		.flick-card {
-			margin-bottom: 20px;
-		}
-
-		.flick-header {
-			display: flex;
-			align-items: center;
-			gap: 12px;
-			margin-bottom: 5px;
-		}
-
-		.flick-logo {
-			width: 64px;
-			height: 64px;
-			margin: 0;
-			flex-shrink: 0;
-		}
-
-		.flick-header h2 {
-			margin: 0;
-			line-height: 1;
-		}
-
-		/* Video Container */
-		.video-container {
-		position: relative;
-		overflow: hidden;
-		width: 100%;
-		max-width: 1280px;
-		margin: 20px auto;
-		padding-top: 56.25%;
-		}
-
-		.video-container iframe {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		}
-
-		video {
-			width: 100%;
-			height: auto;
-			max-width: 100%;
-			max-height: 720px;
-		}
-		
-		/* Introduction */
-		.intro-card {
-			background-color: #ffffff;
-			border: 1px solid #ddd;
-			border-radius: 0px;
-			padding: 25px;
-			margin: 20px 0;
-		}
-
-		/* Content Cards */
-		.content-card {
-			background-color: #eee7e7;
-			border: 1px solid #ddd;
-			border-radius: 8px;
-			padding: 25px;
-			margin: 20px 0;
-		}
-
-		.content-card ul {
-			margin-left: 25px;
-		}
-
-		/* Footer Contact */
-		.footer-contact {
-			background-color: #f9f9f9;
-			border: 1px solid #ddd;
-			border-radius: 8px;
-			padding: 25px;
-			margin: 40px 0 20px 0;
-			text-align: center;
-		}
-
-		.footer-contact p {
-			font-size: 18px;
-			line-height: normal;
-			margin: 5px 0;
-		}
-
-		.footer-contact b {
-			font-size: 20px;
-		}
-
-		.footer-contact i {
-			font-size: 16px;
-		}
-
-		.footer-contact a {
-			font-size: 16px;
-		}
-
-		/* Wraps images */ 
-		.image-card {
-			background: #eee7e7;
-			border-radius: 12px;
-			padding: 24px;
-			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-			border: 1px solid #e5e7eb;
-		}
-
-		.image-card:hover {
-			box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-			transition: box-shadow 0.3s ease;
-		}
-
-		.image-card .screenshot-grid {
-			margin: 0;
-		}
-
-		/* Flexbox */
-		.screenshot-grid {
-        	display: flex;
-        	flex-wrap: wrap;
-        	justify-content: center;
-    	}
-
-    	.screenshot-grid img:not([src$="tablet.png"]) {
-        	width: 45%;
-        	max-width: 300px;
-        	height: auto;
-        	margin: 10px;
-        	box-sizing: border-box;
-    	}
-
-    	.screenshot-grid img[src$="tablet.png"] {
-        	width: 90%; 
-        	max-width: 700px;
-        	height: auto;
-        	margin: 10px auto; 
-        	display: block;
-    	}
-
-		/* Bird styles */
-		.bird {
-			position: fixed;
-			z-index: 10000;
-			pointer-events: none;
-			background-color: transparent;
-			border-radius: 50%;
-			padding: 5px;
-			width: 60px;
-			height: 60px;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			transition: none;
-		}
-
-		.bird.flying #leftWing {
-			animation: flapLeft 0.15s ease-in-out infinite;
-		}
-
-		.bird.flying #rightWing {
-			animation: flapRight 0.15s ease-in-out infinite;
-		}
-		
-		.bird.idle #leftWing {
-			animation: idleFlapLeft 2s ease-in-out infinite;
-		}
-
-		.bird.idle #rightWing {
-			animation: idleFlapRight 2s ease-in-out infinite;
-		}
-
-		@keyframes flapLeft {
-			0%, 100% {
-				d: path("M 12 20 Q 8 18 6 22");
-			}
-			50% {
-				d: path("M 12 20 Q 8 12 6 8");
-			}
-		}
-
-		@keyframes flapRight {
-			0%, 100% {
-				d: path("M 28 20 Q 32 18 34 22");
-			}
-			50% {
-				d: path("M 28 20 Q 32 12 34 8");
-			}
-		}
-		
-		@keyframes idleFlapLeft {
-			0%, 90%, 100% {
-				d: path("M 12 20 Q 8 18 6 22");
-			}
-			95% {
-				d: path("M 12 20 Q 8 12 6 8");
-			}
-		}
-
-		@keyframes idleFlapRight {
-			0%, 90%, 100% {
-				d: path("M 28 20 Q 32 18 34 22");
-			}
-			95% {
-				d: path("M 28 20 Q 32 12 34 8");
-			}
-		}
-	</style>
+    <!-- Preload LCP Image -->
+    <link rel="preload" as="image" href="./assets/images/banner.svg" fetchpriority="high">
 </head>
 
 <body>
-	<!-- Header -->
-	<div class="contact-card">
-		<p><b>Matthew Pool</b><br>
-		<i><span style="font-size: 16px;">B.S. in Computer Science</span></i><br>
-		<a href="mailto:mathyou.me@gmail.com"><span style="font-size: 16px;">mathyou.me@gmail.com</span></a><br>
-		<a href="tel:+9035760223"><span style="font-size: 16px;">903-576-0223</span></a></p>
-	</div>
+    <div class="theme-toggle-wrapper">
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+            <span class="toggle-track">
+                <span class="toggle-thumb"></span>
+                <svg class="toggle-icon sun" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg class="toggle-icon moon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </span>
+        </button>
+    </div>
 
-	<!-- Bird SVG - must be before tabs -->
-	<div id="bird" class="bird">
-		<svg width="60" height="60" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-			<!-- Head -->
-			<circle cx="20" cy="12" r="6" fill="#DC143C" stroke="#8B0000" stroke-width="2"/>
-			<!-- Eye -->
-			<circle cx="22" cy="11" r="2" fill="#000"/>
-			<!-- Beak -->
-			<polygon points="25,12 29,11 25,10" fill="#FFA500" stroke="#8B0000" stroke-width="1"/>
-			<!-- Body -->
-			<ellipse cx="20" cy="22" rx="8" ry="10" fill="#DC143C" stroke="#8B0000" stroke-width="2"/>
-			<!-- Left wing -->
-			<path id="leftWing" d="M 12 20 Q 8 18 6 22" fill="#FF6347" stroke="#8B0000" stroke-width="2"/>
-			<!-- Right wing -->
-			<path id="rightWing" d="M 28 20 Q 32 18 34 22" fill="#FF6347" stroke="#8B0000" stroke-width="2"/>
-			<!-- Tail -->
-			<path id="tail" d="M 8 24 Q 4 26 2 30" fill="#DC143C" stroke="#8B0000" stroke-width="2"/>
-			<!-- Legs -->
-			<line x1="18" y1="32" x2="16" y2="36" stroke="#8B0000" stroke-width="1.5"/>
-			<line x1="22" y1="32" x2="24" y2="36" stroke="#8B0000" stroke-width="1.5"/>
-			<!-- Feet -->
-			<path d="M 16 36 L 14 36 L 15 37" fill="none" stroke="#FFA500" stroke-width="1"/>
-			<path d="M 24 36 L 26 36 L 25 37" fill="none" stroke="#FFA500" stroke-width="1"/>
+    <div class="unified-header">
+        <div class="unified-header-inner">
+            <h1 class="uh-name" style="margin: 0; font-size: inherit; font-weight: normal;"><b>Matthew Pool</b></h1>
+            <span class="uh-divider">|</span>
+            <span class="uh-email" style="position:relative;">
+                <a href="mailto:mathyou.me@gmail.com">mathyou.me@gmail.com</a>
+                <button onclick="copyEmail(this)" aria-label="Copy email address" style="background:none; border:none; cursor:pointer; padding:4px; display:inline-flex; align-items:center; opacity:0.7; transition:opacity 0.2s; position:absolute; top:50%; transform:translateY(-50%); margin-left:4px;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.8)" stroke-width="2" aria-hidden="true">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                </button>
+                <span class="toast-container"></span>
+            </span>
+            <span class="uh-divider">|</span>
+            <span class="uh-phone"><a href="tel:+19035760223">903-576-0223</a></span>
+        </div>
+    </div>
+
+    <div class="quick-links-bar">
+        <a href="https://github.com/matthew-pool" target="_blank" rel="noopener noreferrer" class="quick-link">GitHub</a>
+        <a href="https://linkedin.com/in/matthewpool" target="_blank" rel="noopener noreferrer" class="quick-link">LinkedIn</a>
+        <a href="#" class="quick-link" id="resume-btn" onclick="downloadResume(event)">
+            <span style="display:flex; flex-direction:column; align-items:center; gap:1px;">
+                <span style="font-size:1em; font-weight:700; line-height:1.2;">Resume</span>
+                <span id="resume-theme-label" style="font-size:0.65em; font-weight:400; opacity:0.75; line-height:1.2; letter-spacing:0.18em;">LIGHT</span>
+            </span>
+        </a>
+    </div>
+
+    <div class="sticky-header-zone">
+        <header class="portfolio-banner-container">
+            <img 
+                src="./assets/images/banner.svg" 
+                alt="Matthew Pool - Software Engineer and Product Designer" 
+                class="portfolio-banner"
+            />
+        </header>
+
+        <!-- Add space above top shelf -->
+        <div class="shelf-spacer"></div>
+
+        <div class="shelf-container">
+            <div class="shelf-top"></div>
+            <div class="shelf-front"></div>
+        </div>
+
+        <div class="tab-container">
+            <div class="tab-nav">
+                <button class="tab-button active" aria-label="Home tab" onclick="openTab(event, 'home')">Home</button>
+                <button class="tab-button" aria-label="Projects tab" onclick="openTab(event, 'projects')">Projects</button> 
+                <button class="tab-button" aria-label="Code Samples tab" onclick="openTab(event, 'refactoring')">Code Samples</button>
+            </div>
+        </div>
+
+        <div class="shelf-container">
+            <div class="shelf-top"></div>
+            <div class="shelf-front"></div>
+        </div>
+    </div>
+
+	<div id="bird" class="bird" aria-label="Interactive animated bird" role="button" tabindex="0">
+        <div id="bird-tooltip" class="bird-tooltip">Tweet Tweet</div>
+        <svg width="60" height="60" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+			<g id="legs">
+				<line x1="18" y1="32" x2="16" y2="36" stroke="#8B0000" stroke-width="1.5"/>
+				<line x1="22" y1="32" x2="24" y2="36" stroke="#8B0000" stroke-width="1.5"/>
+				<path d="M 16 36 L 14 36 L 15 37" fill="none" stroke="#FFA500" stroke-width="1"/>
+				<path d="M 24 36 L 26 36 L 25 37" fill="none" stroke="#FFA500" stroke-width="1"/>
+			</g>
+
+			<g id="birdUpper">
+				<ellipse cx="20" cy="22" rx="8" ry="10" fill="#DC143C" stroke="#8B0000" stroke-width="2"/>
+				<path id="leftWing" d="M 12 20 Q 8 18 6 22" fill="#FF6347" stroke="#8B0000" stroke-width="2"/>
+				<path id="rightWing" d="M 28 20 Q 32 18 34 22" fill="#FF6347" stroke="#8B0000" stroke-width="2"/>
+                <path id="tail" d="M 13 24 Q 6 26 4 30" fill="#DC143C" stroke="#8B0000" stroke-width="2"/>
+
+				<g id="birdHead">
+					<circle cx="20" cy="12" r="6" fill="#DC143C" stroke="#8B0000" stroke-width="2"/>
+					<circle cx="22" cy="11" r="2" fill="#000"/>
+					<polygon points="25,12 29,11 25,10" fill="#FFA500" stroke="#8B0000" stroke-width="1"/>
+				</g>
+			</g>
 		</svg>
 	</div>
 
-	<!-- Tabs -->
-	<div class="tab-container">
-		<div class="tab-nav">
-			<button class="tab-button active" onclick="openTab(event, 'home')">Home</button>
-			<button class="tab-button" onclick="openTab(event, 'projects')">Projects</button>
-			<button class="tab-button" onclick="openTab(event, 'refactor')">Refactor</button>
-		</div>
-	</div>
+    <main>
+        <div id="home" class="tab-content active">
+
+            <br>
+            
+            <h2 class="section-header">Overview</h2>
+            <div class="about-intro" style="display: flex; flex-wrap: wrap; gap: 2.5rem; max-width: 1000px; margin: 0 auto; align-items: flex-start;">
+                
+                <!-- Left Column: The Narrative -->
+                <div class="overview-narrative" style="flex: 1 1 450px;">
+                    <p style="font-size: 1.15em; line-height: 1.6; margin-top: 0;"><strong>I am a Software Engineer and Technical Solutions Specialist</strong> managing the entire product lifecycle to bridge the gap between WCAG 2.2 AA-compliant UI design, robust backend architecture, and reliable post-deployment support. Backed by a Summa Cum Laude B.S. in Computer Science <strong>(3.99 GPA)</strong>, my technical foundation is uniquely paired with nearly a decade of client-facing experience.</p>
+                    
+                    <p>From delivering remote technical support for consumer telecommunications to ranking in the top 1% of outbound B2B/B2C sales for Fortune 500 clients (AT&T, American Express, QVC), I understand how to drive both product adoption and lasting client retention. I execute rapid CRM pipeline management and systemic root-cause troubleshooting for enterprise clients.</p>
+                    
+                    <p style="margin-bottom: 0;">I solve real business problems. By combining engineering expertise with highly developed communication skills, I architect applications backed by automated CI/CD pipelines and translate technical complexity into intuitive, high-performing products.</p>
+                </div>
+
+                <!-- Right Column: The Highlights (App.Buddy) -->
+                <div style="flex: 1 1 350px; display: flex; flex-direction: column;">
+                    
+                    <div class="overview-highlights" style="background-color: var(--card-bg, rgba(128, 128, 128, 0.1)); padding: 1.8rem; border-radius: 12px; border: 1px solid var(--border-color, rgba(128, 128, 128, 0.2));">
+                        <p style="margin-top: 0;">This technical adaptability is the driving force behind my independent software development venture, <strong>App.Buddy</strong>. Some of my work includes:</p>
+                        
+                        <ul style="font-size: 0.95em; line-height: 1.5; margin-bottom: 0; margin-left: 1.5rem; padding-left: 0;">
+                            <li style="margin-bottom: 1em;"><strong>Native Android & ML:</strong> Architecting "Flick"—leveraging the Archive.org API via a custom machine-learning recommendation engine.</li>
+                            <li style="margin-bottom: 1em;"><strong>Python & OOP:</strong> Building "Wormhole," a multithreaded text adventure utilizing event-driven state management.</li>
+                            <li style="margin-bottom: 1em;"><strong>Full-Stack Web:</strong> Managing complex state hooks in "The Existence Paradox," an interactive React/TypeScript SPA.</li>
+                            <li style="margin-bottom: 0;"><strong>Game Design & Psychology:</strong> Achieving a <strong>Top 0.003% global ranking</strong> in Super Mario Maker (CheezSauce). By leveraging gameplay metrics, I captured 133,000+ player stars and a 20% engagement rate.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="app-cta gradient-text" style="margin-top: 25px;">
+                Check out Flick, below! 👇
+            </div>
+
+            <div class="dark-flick-header-card">
+                <div class="flick-card">
+                    <div class="flick-header">
+                        <img src="assets/images/flick/logo-alt.svg" alt="Flick logo" class="flick-logo" loading="lazy">
+                        <h2>Flick (Android)</h2>
+                    </div>
+                    <p class="flick-subtitle"><i>Designer/Engineer: Matthew Pool</i></p>
+                </div>
+                <img src="assets/images/flick/banner.png" style="width: 100%; max-width: 1280px; margin: 20px 0; border: 2px solid #c8c8c8;" loading="lazy" alt="Flick app banner featuring movie elements like film, popcorn, and movie-style spotlights shining at the phrase 'Flick'">
+            </div>
+            
+            <hr>
+            
+            <div class="app-description">
+                <h2>Synopsis & Engineering</h2>
+                <p><span class="flick-text">Flick</span> is a native Android streaming client built to provide an instant, vast content library without licensing hurdles by leveraging the Archive.org API. This architecture reduces backend content delivery costs to near-zero, ensuring high scalability and business viability — all delivered through a vigorously tested CI/CD pipeline.</p>
+                
+                <p><strong>Architecture:</strong> Managing the complete product lifecycle from early Figma prototypes to Google Play closed testing, I solo-engineered the entire stack utilizing Kotlin, Jetpack Compose, and MVVM architecture. I built a custom recommendation engine from scratch and integrated async preloading for seamless, low-latency playback. The app tokenizes video metadata and weighs it against user interaction signals (view time, likes/dislikes) stored in Firestore to create dynamic user profile vectors.</p>
+                
+                <p><strong>Algorithm:</strong> I implemented cosine similarity to calculate the distance between the user's profile and available content. The main vertical feed uses an "exploration vs. exploitation" strategy, mixing high-confidence matches with random high-percentile videos to prevent echo chambers.</p>
+                
+                <p><strong>UI/UX:</strong> The UI features a dual-axis navigation system driven by this ML algorithm. A vertical swipe continues the mixed feed, while a horizontal swipe instantly branches into a "nearest neighbor" playlist, finding videos with the highest cosine similarity to the current video.</p>
+            </div>
+
+            <br>
+
+            <div class="project-links" style="justify-content: center;">
+                <a href="assets/documents/flick-user-guide.pdf" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    User Guide
+                </a>
+                <a href="assets/documents/flick-security-summary.pdf" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                    Security Summary
+                </a>
+            </div>
+
+            <hr>
+
+            <h2 style="padding-top: 10px;">Screenshots</h2>
+            <div class="image-card">
+                <div class="screenshot-grid">
+                    <figure class="screenshot-item">
+                        <figcaption>Custom Splash Screen</figcaption>
+                        <img src="assets/images/flick/screen14.png" loading="lazy" alt="Preparing app screen">
+                    </figure>
+
+                    <figure class="screenshot-item">
+                        <figcaption>Initial Loading</figcaption>
+                        <img src="assets/images/flick/screen4.png" loading="lazy" alt="Traveling back in time screen">
+                    </figure>
+
+                    <figure class="screenshot-item">
+                        <figcaption>Swipe Up Hint</figcaption>
+                        <img src="assets/images/flick/screen1.png" loading="lazy" alt="Up arrow hint">
+                    </figure>
+
+                    <figure class="screenshot-item">
+                        <figcaption>Static TV Effect</figcaption>
+                        <img src="assets/images/flick/screen5.png" loading="lazy" alt="TV static screen">
+                    </figure>
+
+                    <figure class="screenshot-item">
+                        <figcaption>Like Interaction</figcaption>
+                        <img src="assets/images/flick/screen7.png" loading="lazy" alt="Alf video liked">
+                    </figure>
+
+                    <figure class="screenshot-item">
+                        <figcaption>Dislike Interaction</figcaption>
+                        <img src="assets/images/flick/screen8.png" loading="lazy" alt="Video disliked">
+                    </figure>
+
+                    <figure class="screenshot-item">
+                        <figcaption>Left Swipe Hint</figcaption>
+                        <img src="assets/images/flick/screen12.png" loading="lazy" alt="Left arrow hint">
+                    </figure>
+
+                    <figure class="screenshot-item">
+                        <figcaption>End Dialog</figcaption>
+                        <img src="assets/images/flick/screen10.png" loading="lazy" alt="Thank you dialog">
+                    </figure>
+
+                    <figure class="screenshot-item">
+                        <figcaption>Custom Debug Tool</figcaption>
+                        <img src="assets/images/flick/screen11.png" loading="lazy" alt="Similar video screen">
+                    </figure>
+
+                    <figure class="screenshot-item">
+                        <figcaption>Tablet/Fold View</figcaption>
+                        <img src="assets/images/flick/tablet.png" loading="lazy" alt="Flick on tablet">
+                    </figure>
+                </div>
+            </div>
+
+            <h2 style="margin-bottom: 16px;">Technologies</h2>
+            <div class="tech-specs-container">
+                <div class="tech-spec-item">
+                    <span class="spec-label">Design</span>
+                    <span class="spec-value">Figma</span>
+                </div>
+                <div class="tech-spec-item">
+                    <span class="spec-label">Architecture</span>
+                    <span class="spec-value">MVVM + Jetpack Compose</span>
+                </div>
+            </div>
+
+            <div class="content-card" style="margin-top: 15px">
+                <img src="assets/images/flick/figma-light.svg" loading="lazy" alt="Figma design mockup" class="theme-img-light" style="width: 100%; max-width: 1200px;">
+                
+                <img src="assets/images/flick/figma-dark.svg" loading="lazy" alt="Figma design mockup" class="theme-img-dark" style="width: 100%; max-width: 1200px;">
+            </div>
+
+            <div class="content-card" style="margin-top: 15px">         
+                <p style="margin-left: 25px; margin-top: 12px; margin-bottom: 5px; font-size: 19px;"><strong>Core Technologies</strong></p>
+                <ul style="margin-left: 45px; margin-top: 0;">
+                    <li>Kotlin (programming language)</li>
+                    <li>Coroutines (asynchronous operations)</li>
+                    <li>Hilt (dependency injection)</li>
+                </ul>
+                
+                <p style="margin-left: 25px; margin-top: 10px; margin-bottom: 5px; font-size: 19px; padding-top: 5px;"><strong>State Management & Reactivity</strong></p>
+                <ul style="margin-left: 45px; margin-top: 0;">
+                    <li>ViewModel (state management)</li>
+                    <li>Flow (reactive streams)</li>
+                    <li>LiveData (observable data)</li>
+                    <li>DataStore (local persistence)</li>
+                </ul>
+                
+                <p style="margin-left: 25px; margin-top: 10px; margin-bottom: 5px; font-size: 19px; padding-top: 5px;"><strong>Software Design Patterns</strong></p>
+                <ul style="margin-left: 45px; margin-top: 0;">
+                    <li>Observer Pattern</li>
+                    <li>Object Pool</li>
+                    <li>Factory Pattern</li>
+                    <li>Strategy Pattern</li>
+                    <li>State Pattern</li>
+                </ul>
+                
+                <p style="margin-left: 25px; margin-top: 10px; margin-bottom: 5px; font-size: 19px; padding-top: 5px;"><strong>Networking & Backend Services</strong></p>
+                <ul style="margin-left: 45px; margin-top: 0;">
+                    <li>Retrofit (HTTP networking)</li>
+                    <li>Moshi (JSON serialization)</li>
+                    <li>Firebase Firestore (cloud database)</li>
+                    <li>Firebase Crashlytics (error reporting)</li>
+                    <li>Archive.org API (video content)</li>
+                </ul>
+                
+                <p style="margin-left: 25px; margin-top: 10px; margin-bottom: 5px; font-size: 19px; padding-top: 5px;"><strong>Media & UI Resources</strong></p>
+                <ul style="margin-left: 45px; margin-top: 0;">
+                    <li>Media3 ExoPlayer (video playback)</li>
+                    <li>Coil (image loading)</li>
+                </ul>
+                
+                <p style="margin-left: 25px; margin-top: 10px; margin-bottom: 5px; font-size: 19px; padding-top: 5px;"><strong>Testing & Coverage</strong></p>
+                <ul style="margin-left: 45px; margin-top: 0;">
+                    <li>JUnit 5 (unit & integration tests)</li>
+                    <li>MockK (mocking framework)</li>
+                    <li>Espresso (UI testing)</li>
+                    <li>Roboelectric (Android testing framework)</li>
+                    <li>Compose Test Rules (Compose UI testing)</li>
+                    <li>Jacoco (test coverage analysis)</li>
+                </ul>
+                
+                <p style="margin-left: 25px; margin-top: 10px; margin-bottom: 5px; font-size: 19px; padding-top: 5px;"><strong>Security & Code Quality</strong></p>
+                <ul style="margin-left: 45px; margin-top: 0;">
+                    <li>Snyk (vulnerability scanning)</li>
+                    <li>OWASP Dependency Checker (dependency security)</li>
+                    <li>Android Studio Lint (static analysis)</li>
+                </ul>
+                
+                <p style="margin-left: 25px; margin-top: 10px; margin-bottom: 5px; font-size: 19px; padding-top: 5px;"><strong>Build & Release</strong></p>
+                <ul style="margin-left: 45px; margin-top: 0;">
+                    <li>Gradle (build automation)</li>
+                    <li>Timber (logging)</li>
+                    <li>Android Studio Profiler (performance monitoring)</li>
+                    <li>GitHub Actions (continuous integration)</li>
+                    <li>Google Play Console (app distribution)</li>
+                </ul>
+            </div>
+
+            <hr>
+
+            <h2>CI/CD</h2>
+            <div class="image-card">
+                <div class="ci-images">
+                    <img src="assets/images/flick/ci1.png" loading="lazy" alt="CI tests passed">
+                    <img src="assets/images/flick/ci2.png" loading="lazy" alt="CI tests completed">
+                </div>
+            </div>
+
+            <div class="image-card" style="margin-top: 15px;">
+                <img src="assets/images/flick/test-track.png" loading="lazy" alt="Google Play Console - Closed Test Track active deployment">
+            </div>
+
+            <br>
+
+            <div class="launch-cta" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                <div class="launch-cta-content" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                    
+                    <h3 style="color: #888888; opacity: 0.6; user-select: none;">Try it now before the official release.</h3>
+                    
+                    <span style="color: #ff6b6b; font-weight: 700; letter-spacing: 0.5px;">NO LONGER ACCEPTING TESTERS</span>
+                    
+                    <br>
+                    <a href="javascript:void(0);" class="play-link" tabindex="-1" style="pointer-events: none; cursor: default;">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" loading="lazy" alt="Get it on Google Play (Unavailable)" class="play-badge" style="filter: grayscale(100%); opacity: 0.4;">
+                    </a>
+                </div>
+            </div>
+                        
+            <div id="directionsPopup" class="directions-popup-overlay" onclick="hideDirections()">
+                <div class="directions-popup">
+                    <strong><i>Try Flick!</i></strong><br>
+                    <ol>
+                        <li>From an <strong>Android device</strong>,<br>
+                            tap the <strong>Google Play</strong> image below
+                        </li>
+                        <li><strong>Sign in</strong> (if needed)</li>
+                        <li>Tap <strong>Join</strong></li>
+                        <li>Tap <strong>Join Group</strong></li>
+                        <li>Tap the <strong>Google Play</strong> link in the group post</li>
+                        <li>Tap <strong>Install</strong></li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- TODO: Show Flick Footer:
+            <div class="footer-metallic-black">
+                <p style="margin: 7px;">
+                <i>Try it out!</i> The link is literally right there!
+                <br>
+                <i>Tap "Directions" for details.</i></p>
+                
+                <div class="unified-header-inner" style="margin-top: 20px;">
+                    <span class="uh-name"><b>Matthew Pool</b></span>
+                    <span class="uh-divider">|</span>
+                    <span class="uh-email" style="position:relative; display: inline-flex; align-items: center; padding-right: 28px;">
+                        <a href="mailto:mathyou.me@gmail.com">mathyou.me@gmail.com</a>
+                        <button onclick="copyEmail(this, 'light')" aria-label="Copy Email Address" style="background: none; border: none; cursor: pointer; padding: 4px; display: inline-flex; align-items: center; opacity: 0.7; transition: opacity 0.2s; position: absolute; right: 0; top: 50%; transform: translateY(-50%);" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.9)" stroke-width="2" aria-hidden="true">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                        </button>
+                        <span class="toast-container"></span>
+                    </span>
+                    <span class="uh-divider">|</span>
+                    <span class="uh-phone"><a href="tel:+19035760223">903-576-0223</a></span>
+                </div>
+            </div> -->
+
+            <!-- TODO: Remove Temporary Footer: -->
+            <div class="footer-metallic-black">
+                <p style="margin: 7px;">Tap the <strong><i>Projects</i></strong> tab to see more of my work.</p>
+                
+                <div class="unified-header-inner" style="margin-top: 20px;">
+                    <span class="uh-name"><b>Matthew Pool</b></span>
+                    <span class="uh-divider">|</span>
+                    <span class="uh-email" style="position:relative; display: inline-flex; align-items: center; padding-right: 28px;">
+                        <a href="mailto:mathyou.me@gmail.com">mathyou.me@gmail.com</a>
+                        <button onclick="copyEmail(this, 'light')" aria-label="Copy Email Address" style="background: none; border: none; cursor: pointer; padding: 4px; display: inline-flex; align-items: center; opacity: 0.7; transition: opacity 0.2s; position: absolute; right: 0; top: 50%; transform: translateY(-50%);" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.9)" stroke-width="2" aria-hidden="true">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                        </button>
+                        <span class="toast-container"></span>
+                    </span>
+                    <span class="uh-divider">|</span>
+                    <span class="uh-phone"><a href="tel:+19035760223">903-576-0223</a></span>
+                </div>
+            </div>
 
 
         </div>
