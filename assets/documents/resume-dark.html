@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <meta name="theme-color" content="#0d1326">
+    <title>Matthew Pool - Software Engineer</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='100%' height='100%' fill='%236d28d9' rx='14'/><text x='50%' y='50%' dy='.35em' fill='white' font-family='sans-serif' font-weight='bold' font-size='40' text-anchor='middle'>M</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* ── surfaces ── */
+            --bg-page: #05070f;
+            --bg-card: #0d1326;
+            --bg-panel: #141b36;
+            --bg-inner: #141b36;
+
+            /* ── text ── */
+            --text-primary: #f3f5fc;
+            --text-secondary: #c2c9e4;
+            --text-muted: #98a1c7;
+            --on-banner-text: #f3f5fc;   
+
+            /* ── accents ── */
+            --accent-cyan: #4fd1e8;
+            --accent-violet: #b088f9;
+            --gradient-start: #4fd1e8;
+            --gradient-end: #b088f9;
+
+            /* ── banner fill ── */
+            --banner-start: #1e1b4b;
+            --banner-end: #6d28d9;
+
+            /* ── structure ── */
+            --border-subtle: rgba(180, 190, 255, 0.16);
+            --border-featured: #f43f5e;
+            --gold: #ffd166;
+
+            /* ── glow ── */
+            --glow-cyan: rgba(79, 209, 232, 0.35);
+            --glow-violet: rgba(176, 136, 249, 0.32);
+            --glow-featured: rgba(244, 63, 94, 0.35);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            line-height: 1.35;
+            color: var(--text-secondary);
+            background-color: var(--bg-page);
+            background-image:
+                radial-gradient(1.6px 1.6px at 12% 18%, rgba(255,255,255,0.9), transparent),
+                radial-gradient(1.2px 1.2px at 28% 52%, rgba(255,255,255,0.7), transparent),
+                radial-gradient(1.6px 1.6px at 44% 8%,  rgba(255,255,255,0.85), transparent),
+                radial-gradient(1.2px 1.2px at 63% 68%, rgba(255,255,255,0.65), transparent),
+                radial-gradient(1.6px 1.6px at 78% 28%, rgba(255,255,255,0.9), transparent),
+                radial-gradient(1.2px 1.2px at 92% 58%, rgba(255,255,255,0.7), transparent),
+                radial-gradient(1.4px 1.4px at 6% 82%,  rgba(255,255,255,0.75), transparent),
+                radial-gradient(1.2px 1.2px at 52% 90%, rgba(255,255,255,0.8), transparent),
+                radial-gradient(760px circle at 10% 6%, rgba(176,136,249,0.14), transparent 62%),
+                radial-gradient(640px circle at 92% 94%, rgba(79,209,232,0.12), transparent 62%);
+            background-repeat: repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat, no-repeat, no-repeat;
+            background-size: 190px 190px, 230px 230px, 270px 270px, 210px 210px, 250px 250px, 200px 200px, 240px 240px, 220px 220px, auto, auto;
+            padding: 20px;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, .title { font-family: 'Space Grotesk', sans-serif; }
+        .tech-skills-bar, .contact-info a, .experience-dates, .details, .project-col-2, .exp-badge {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .resume-container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            box-shadow:
+                0 0 0 1px var(--border-subtle),
+                0 30px 70px -10px rgba(0,0,0,0.6),
+                0 0 120px -30px var(--glow-violet);
+            padding: 20px 24px; 
+            border-radius: 12px;
+        }
+
+        /* ── HEADER ── */
+        .header { text-align: center; margin-bottom: 8px; }
+        .header h1 { 
+            font-size: 24px; 
+            color: var(--text-primary); 
+            margin-bottom: 0px; 
+            font-weight: 700; 
+            letter-spacing: 4px; 
+            text-shadow: 0 0 24px rgba(243,245,252,0.18);
+        }
+        .header .title {
+            font-size: 19px;
+            background: linear-gradient(135deg, var(--accent-violet), var(--accent-cyan));
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
+            font-weight: 600; 
+            margin-bottom: 8px;
+            text-shadow: 0 0 30px var(--glow-violet), 0 0 60px var(--glow-cyan);
+        }
+
+        .tech-skills-bar {
+            background: linear-gradient(135deg, var(--banner-start), var(--banner-end));
+            color: var(--on-banner-text);
+            padding: 10px 14px;
+            border-radius: 8px 8px 0 0;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            border: 1px solid var(--border-subtle); border-bottom: none;
+            box-shadow: 0 4px 24px -8px var(--glow-violet);
+            text-align: center; text-transform: uppercase;
+        }
+
+        .contact-info {
+            display: flex; justify-content: center; flex-wrap: wrap; gap: 10px;
+            background: linear-gradient(135deg, var(--banner-start), var(--banner-end));
+            padding: 10px 16px;
+            border-radius: 0 0 8px 8px;
+            border: 1px solid var(--border-subtle); border-top: 1px solid rgba(255,255,255,0.14);
+            box-shadow: 0 14px 34px -12px rgba(0,0,0,0.55);
+        }
+        
+        .contact-group {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;
+        }
+
+        .contact-info a {
+            color: var(--on-banner-text); text-decoration: none; font-size: 11.5px;
+            display: inline-flex; align-items: center; gap: 4px; transition: color 0.2s, text-shadow 0.2s;
+        }
+        
+        .contact-info a:hover { color: var(--accent-cyan); text-shadow: 0 0 12px var(--glow-cyan); }
+        a[href^="tel:"]::before { content: "📱"; }
+        a[href^="mailto:"]::before { content: "📧"; }
+        a[href*="maps"]::before { content: "📍"; }
+
+        .pill-link {
+            background: rgba(255,255,255,0.10);
+            padding: 4px 14px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.28);
+            transition: all 0.2s;
+        }
+        .pill-link:hover {
+            background: rgba(255, 255, 255, 0.18);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 16px -4px var(--glow-cyan);
+        }
+
+        /* ── SECTIONS (Borderless except for featured cards) ── */
+        .top-split { display: grid; grid-template-columns: 2.2fr 1fr; gap: 8px; margin-bottom: 6px; }
+        .section {
+            background: transparent; border: none;
+            padding: 2px 0; margin-bottom: 6px;
+        }
+        .section.bordered-card {
+            background: rgba(20, 27, 54, 0.4); 
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px; padding: 8px 12px;
+        }
+        .section h2 {
+            font-size: 14.5px; color: var(--text-primary); margin-bottom: 4px;
+            text-transform: uppercase; padding-bottom: 3px; position: relative;
+        }
+        .section h2::after {
+            content: ''; position: absolute; left: 0; bottom: 0; width: 30px; height: 2px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-violet));
+            box-shadow: 0 0 14px var(--glow-cyan);
+        }
+        .section p { font-size: 12.5px; color: var(--text-secondary); line-height: 1.35; }
+
+        /* ── EDUCATION ── */
+        .education-item h3 { font-size: 13.5px; color: var(--text-primary); margin-bottom: 1px; line-height: 1.1; }
+        .details { color: var(--text-muted); font-size: 11px; }
+        .honors { 
+            color: var(--accent-cyan); font-size: 11.5px; font-weight: 600; margin-top: 2px; 
+            text-shadow: 0 0 12px rgba(255,209,102,0.25);
+        }
+
+        /* ── SKILLS GRID ── */
+        .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+        .skill-category {
+            background: var(--bg-panel); padding: 4px 8px; border-radius: 6px;
+            border: 1px solid var(--border-subtle); border-left: 4px solid var(--accent-cyan);
+        }
+        .skill-category dt strong { color: var(--accent-cyan); font-size: 11.5px; display: block; margin-bottom: 0px; }
+        .skill-category dd { color: var(--text-secondary); font-size: 11px; line-height: 1.3; }
+
+        /* ── EXPERIENCE & PROJECTS ── */
+        .experience-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px; }
+        .experience-title h3 { font-size: 13.5px; color: var(--text-primary); }
+        .experience-dates { color: var(--text-muted); font-size: 11px; }
+        .featured-role { 
+            border-left: 3px solid var(--border-featured); 
+            padding-left: 8px; margin-left: -8px; 
+            box-shadow: -6px 0 24px -10px var(--glow-featured);
+        }
+        
+        .experience-desc { 
+            margin-left: 48px; 
+            text-indent: -10px;
+            font-size: 11.5px; 
+            margin-top: 4px; 
+            margin-bottom: 8px; 
+            color: var(--text-secondary); 
+            line-height: 1.35; 
+        }
+
+        .project-row { display: flex; border-top: 1px solid var(--border-subtle); padding: 4px 0 4px 6px; align-items: flex-start; }
+        .project-row.first-row { border-top: none; padding-top: 5px; }
+        .project-col-1 { flex: 0 0 30%; font-size: 11.5px; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 6px; padding-right: 4px; }
+        .project-col-2 { flex: 0 0 22%; font-size: 10px; color: var(--text-muted); padding-right: 8px; line-height: 1.2; }
+        .project-col-3 { flex: 1; font-size: 11px; color: var(--text-secondary); line-height: 1.3; }
+        
+        .project-icon { width: 22px; height: 22px; border-radius: 5px; object-fit: contain; flex-shrink: 0; }
+        
+        .project-icon-gradient {
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            padding: 2px;
+            box-sizing: border-box;
+        }
+
+        .icon-dark-tint {
+            filter: brightness(0) invert(1) opacity(0.8);
+        }
+
+        .badge-featured { 
+            background: linear-gradient(135deg, #f43f5e, #be123c); 
+            color: #fff; font-size: 8px; font-weight: 700; letter-spacing: 0.5px;
+            padding: 2px 6px; border-radius: 12px; white-space: nowrap;
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.25), 0 0 10px var(--glow-featured);
+        }
+
+        /* ── ADDITIONAL EXPERIENCE ── */
+        .exp-badges { display: flex; gap: 6px; margin-bottom: 2px; }
+        
+        .exp-badge { 
+            color: #fff; 
+            font-size: 8px; 
+            padding: 2px 6px; 
+            border-radius: 12px; 
+            text-transform: uppercase; 
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2); 
+            font-weight: 600; letter-spacing: 0.3px;
+        }
+
+        .badge-blue { background: linear-gradient(135deg, #2563eb, #1d4ed8); }
+        .badge-orange { background: linear-gradient(135deg, #f97316, #ea580c); }
+        .badge-indigo { background: linear-gradient(135deg, #6366f1, #4338ca); }
+        .badge-violet { background: linear-gradient(135deg, #7c3aed, #5b21b6); }
+        .add-exp-list { margin-left: 16px; font-size: 11px; line-height: 1.35; margin-top: 4px; }
+        .add-exp-list li { margin-bottom: 2px; }
+        .add-exp-list li strong { color: var(--accent-cyan); font-weight: 600; }
+
+        /* ── PRINT ── */
+        @media print {
+            @page { margin: 0.3in; size: letter portrait; }
+            html, body { height: auto; min-height: 0; background: var(--bg-page) !important; }
+            body { padding: 0; margin: 0; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+            
+            .resume-container { background: var(--bg-card) !important; padding: 0 !important; box-shadow: none !important; border: none !important; }
+            
+            /* Removes gradient text for PDF generation to fix the clipping artifact */
+            .header .title { 
+                background: none !important; 
+                -webkit-background-clip: initial !important; 
+                -webkit-text-fill-color: initial !important; 
+                color: var(--accent-cyan) !important;
+            }
+            
+            /* Forces clean stacking in print mode without excess gaps */
+            .contact-info { flex-direction: column; align-items: center; gap: 4px !important; padding: 10px 12px !important; background: #1e1b4b !important; color: #ffffff !important;}
+            .contact-info a, .contact-info a:visited { color: #ffffff !important; text-decoration: none !important; }
+            .contact-group { gap: 10px !important; }
+            
+            .pill-link {
+                background: rgba(255,255,255,0.10) !important;
+                border: 1px solid rgba(255,255,255,0.28) !important;
+                color: #ffffff !important;
+            }
+
+            .section.bordered-card { background: rgba(20, 27, 54, 0.4) !important; }
+            .skill-category { background: var(--bg-panel) !important; border-left: 4px solid var(--accent-cyan) !important; }
+            .exp-badge { box-shadow: none !important; }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="resume-container">
+
+        <header class="header">
+            <h1>MATTHEW POOL</h1>
+            <div class="title">Software Engineer (SWE)</div>
+            <div class="tech-skills-bar">KOTLIN/ANDROID • PYTHON • REACT/TYPESCRIPT • FIGMA • UI/UX DESIGN • FULL-STACK • CI/CD</div>
+            <div class="contact-info">
+                <div class="contact-group">
+                    <a href="tel:+19035760223">903-576-0223</a>
+                    <a href="https://www.google.com/maps/place/Winnsboro,+TX">Winnsboro, TX</a>
+                    <a href="mailto:mathyou.me@gmail.com">mathyou.me@gmail.com</a>
+                </div>
+                <div class="contact-group">
+                    <a href="https://matthew-pool.github.io" class="pill-link">🌐 matthew-pool.github.io</a>
+                    <a href="https://linkedin.com/in/matthewpool" class="pill-link">🔗 linkedin.com/in/matthewpool</a>
+                </div>
+            </div>
+        </header>
+
+        <div class="top-split">
+            <section class="section">
+                <h2>Professional Summary</h2>
+                <p>Software Engineer managing the complete product lifecycle. Experienced in production-ready native Android apps, full-stack web applications, and Python-powered backends. Core practices include Figma wireframing, clean architecture, test-driven development (TDD), and strict WCAG 2.2 AA accessibility. Leverages nearly a decade of combined experience across technical support, customer solutions, and sales to deliver an exceptional user-empathy and communication advantage.</p>
+            </section>
+            <section class="section">
+                <h2>Education</h2>
+                <article class="education-item">
+                    <h3>B.S. Computer Science</h3>
+                    <div class="details">Southern New Hampshire University<br>Sept 2021 – Jan 2025</div>
+                    <div class="honors">🏆 Summa Cum Laude<br><span style="color:var(--text-muted);font-weight:400;font-size:11px;text-shadow:none;">3.99 GPA • President's List</span></div>
+                </article>
+            </section>
+        </div>
+
+        <section class="section">
+            <h2>Tools & Technologies</h2>
+            <dl class="skills-grid">
+                <div class="skill-category">
+                    <dt><strong>⌨️ Languages</strong></dt>
+                    <dd>Python, JS/TS, Kotlin, Java, C#, SQL</dd>
+                </div>
+                <div class="skill-category">
+                    <dt><strong>🎨 Frontend & Mobile</strong></dt>
+                    <dd>React, Android SDK, Compose, Tailwind, Figma, WCAG 2.2</dd>
+                </div>
+                <div class="skill-category">
+                    <dt><strong>🗄️ Backend & Databases</strong></dt>
+                    <dd>Node.js, MongoDB, AWS DynamoDB, REST APIs, Firebase</dd>
+                </div>
+                <div class="skill-category">
+                    <dt><strong>⚙️ Infrastructure & QA</strong></dt>
+                    <dd>Git/GitHub Actions, Docker, CI/CD, Agile, JUnit, Espresso</dd>
+                </div>
+            </dl>
+        </section>
+
+        <section class="section bordered-card">
+            <article class="featured-role" style="margin-bottom: 6px;">
+                <div class="experience-header">
+                    <div class="experience-title" style="display:flex; align-items:center; gap:8px;">
+                        <img src="images/app-buddy-logo.png" alt="Logo" style="width:34px; height:34px; border-radius:6px; object-fit:contain; flex-shrink:0;">
+                        <div>
+                            <h3 style="margin:0;">Software Engineer & Founder</h3>
+                            <div class="details">App.Buddy | DESIGN • DEVELOP • DEPLOY</div>
+                        </div>
+                    </div>
+                    <div class="experience-dates">Jan 2025 – Present</div>
+                </div>
+                
+                <div class="experience-desc">
+                    • <strong style="color: var(--accent-cyan);">DevOps & Engineering:</strong> Established automated deployment pipelines (GitHub Actions, Espresso, MockK), identifying logic bugs and accelerating development cycles across mobile and web platforms.
+                </div>
+
+                <div class="project-row">
+                    <div class="project-col-1"><img src="images/flick-logo-alt.png" alt="Flick" class="project-icon"> <span style="display: inline-block; width: 92px; white-space: nowrap;">Flick (Android)</span> <span class="badge-featured">⚡ FEATURED</span></div>
+                    <div class="project-col-2">Kotlin, Compose, Firebase</div>
+                    <div class="project-col-3">Engineered an Android app with a custom ML recommendation engine. Diagnosed production issues and maintained stable closed-track deployment environments.</div>
+                </div>
+                
+                <div class="project-row">
+                    <div class="project-col-1"><img src="images/wormhole-logo.png" alt="Wormhole" class="project-icon"> <span style="display: inline-block; width: 92px;">Wormhole</span> <span class="badge-featured">⚡ FEATURED</span></div>
+                    <div class="project-col-2">Python, OOP, Multithreading</div>
+                    <div class="project-col-3">Terminal sci-fi adventure with an event-driven game engine, dynamic ANSI rendering, and real-time mapping via async UI updates.</div>
+                </div>
+                
+                <div class="project-row">
+                    <div class="project-col-1"><img src="images/paradox-icon.png" alt="Paradox" class="project-icon project-icon-gradient"> The Existence Paradox</div>
+                    <div class="project-col-2">React, TS, Tailwind, Vite</div>
+                    <div class="project-col-3">Interactive SPA with decision-tree navigation, complex state hooks, and a WCAG 2.2 AA dark-theme UI featuring smooth programmatic scrolling.</div>
+                </div>
+            </article>
+
+            <div style="border-left: 3px solid #EDBB37; padding-left: 10px; margin-left: -10px;">
+                <div class="project-row first-row">
+                    <div class="project-col-1"><img src="images/question-block.png" alt="Mario" class="project-icon"> Level Design Analytics</div>
+                    <div class="project-col-2">Game Design, Psychology</div>
+                    <div class="project-col-3">Top 0.003% global creator (Rank #39/1.3M+) as CheezSauce on Super Mario Maker. Designed levels achieving 133k+ stars via iterative feedback.</div>
+                </div>
+                
+                <div class="project-row">
+                    <div class="project-col-1"><img src="images/cloud.png" alt="Cloud" class="project-icon icon-dark-tint"> Full-Stack Travel SPA</div>
+                    <div class="project-col-2">MEAN Stack, DynamoDB</div>
+                    <div class="project-col-3">Dual-interface web app featuring a cloud-secured admin panel, REST APIs, and migration to DynamoDB via Docker containers.</div>
+                </div>
+
+                <div class="project-row" style="border-bottom: none; padding-bottom: 0;">
+                    <div class="project-col-1"><img src="images/design.png" alt="Design" class="project-icon icon-dark-tint"> Accessibility & Legacy</div>
+                    <div class="project-col-2">Figma, Java, Maven, UML</div>
+                    <div class="project-col-3">Modernized a Java CLI app (O(log n) retrieval via MapDB). Authored end-to-end UX architecture and developer handoff documentation for low-bandwidth devices.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" style="margin-bottom: 0;">
+            <h2>Additional Experience</h2>
+            <div class="exp-badges">
+                <span class="exp-badge badge-blue">🎧 IT SUPPORT</span> 
+                <span class="exp-badge badge-orange">💻 REMOTE</span> 
+                <span class="exp-badge badge-indigo">⭐ TOP 1%</span>
+                <span class="exp-badge badge-violet">🗄️ CRM Support</span>
+            </div>
+            <ul class="add-exp-list">
+                <li><strong>B2B/B2C Sales (Top 1%):</strong> Ranked #1 among 100+ reps for five consecutive years in outbound sales for enterprise clients (AT&T, AMEX). Authored team call scripts and earned a state insurance license in one month.</li>
+                <li><strong>Technical Support:</strong> Delivered remote help desk support at NEW [acquired by Asurion]. Diagnosed ISP issues and managed CRM accounts for teleNetwork [now OneSupport].</li>
+            </ul>
+        </section>
+
+    </main>
+</body>
+</html>
