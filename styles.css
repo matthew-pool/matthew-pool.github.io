@@ -357,9 +357,10 @@ body.dark-mode .spec-value {
 /* Theme Toggle */
 .theme-toggle-wrapper {
     position: fixed;
-    top: 5px;
+    top: 38px;
     z-index: 10000;
     left: max(16px, calc(50vw - 640px)); 
+    transition: top 0.3s ease;
 }
 
 .theme-toggle {
@@ -1336,10 +1337,9 @@ body.dark-mode .contact-card a:hover {
     min-height: auto; 
 }
 
-/* Targeting `.shelf-container` inside the main flow, assuming they come after hero */
 /* Solid spacer to prevent text from showing through the sticky header */
 .shelf-spacer {
-    height: 20px;
+    height: 0px;
     width: 100%;
 }
 

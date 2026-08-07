@@ -149,7 +149,7 @@
   // 4. STICKY HEADER & LAYOUT LOCK
   // =========================================================================
   
-  const BANNER_SHOW_FRACTION = 0.12;
+  const BANNER_SHOW_FRACTION = 0;
   let STICKY_LOCK_PX = 170;
 
   function updateStickyLock() {
@@ -174,7 +174,7 @@
         if (toggleWrapper) {
           const toggleHeight = toggleWrapper.getBoundingClientRect().height || 36;
           const toggleTop = Math.max(4, Math.round((visibleStrip - toggleHeight) / 2));
-          toggleWrapper.style.top = `${toggleTop}px`;
+          // toggleWrapper.style.top = `${toggleTop}px`;
         }
       });
     });
