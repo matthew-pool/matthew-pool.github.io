@@ -4,46 +4,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="color-scheme" content="dark">
-    <meta name="theme-color" content="#0d1326">
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#f8fafc">
     <title>Matthew Pool - Software Engineer</title>
     <link rel="icon"
-        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='100%' height='100%' fill='%236d28d9' rx='14'/><text x='50%' y='50%' dy='.35em' fill='white' font-family='sans-serif' font-weight='bold' font-size='40' text-anchor='middle'>M</text></svg>">
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='100%' height='100%' fill='%237c3aed' rx='14'/><text x='50%' y='50%' dy='.35em' fill='white' font-family='sans-serif' font-weight='bold' font-size='40' text-anchor='middle'>M</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             /* ── surfaces ── */
-            --bg-page: #05070f;
-            --bg-card: #0d1326;
-            --bg-panel: #141b36;
+            --bg-page: #f1f5f9;
+            --bg-card: #ffffff;
+            --bg-panel: #f8fafc;
+            --bg-inner: #f1f5f9;
 
             /* ── text ── */
-            --text-primary: #f3f5fc;
-            --text-secondary: #c2c9e4;
-            --text-muted: #98a1c7;
-            --on-banner-text: #f3f5fc;   
+            --text-primary: #111827;
+            --text-secondary: #374151;
+            --text-muted: #4b5563;
+            --on-banner-text: #ffffff;   
 
             /* ── accents ── */
-            --accent-cyan: #4fd1e8;
-            --accent-violet: #b088f9;
-            --gradient-start: #4fd1e8;
-            --gradient-end: #b088f9;
+            --accent-blue: #2563eb;
+            --accent-violet: #7c3aed;
+            --gold: #d97706;
+            --gradient-start: #2563eb;
+            --gradient-end: #7c3aed;
 
             /* ── banner fill ── */
-            --banner-start: #1e1b4b;
-            --banner-end: #6d28d9;
+            --banner-start: #1e3a8a;
+            --banner-end: #5b21b6;
 
             /* ── structure ── */
-            --border-subtle: rgba(180, 190, 255, 0.16);
-            --border-featured: #f43f5e;
-            --gold: #ffd166;
+            --border-subtle: #cbd5e1;
+            --border-bold: #4b4b4b7e;
+            --border-featured: #e11d48;
+            --gold: #d97706;
 
             /* ── glow ── */
-            --glow-cyan: rgba(79, 209, 232, 0.35);
-            --glow-violet: rgba(176, 136, 249, 0.32);
-            --glow-featured: rgba(244, 63, 94, 0.35);
+            --glow-blue: rgba(37, 99, 235, 0.15);
+            --glow-violet: rgba(124, 58, 237, 0.1);
+            --glow-featured: rgba(225, 29, 72, 0.1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -55,16 +58,16 @@
             color: var(--text-secondary);
             background-color: var(--bg-page);
             background-image:
-                radial-gradient(1.6px 1.6px at 12% 18%, rgba(255,255,255,0.9), transparent),
-                radial-gradient(1.2px 1.2px at 28% 52%, rgba(255,255,255,0.7), transparent),
-                radial-gradient(1.6px 1.6px at 44% 8%,  rgba(255,255,255,0.85), transparent),
-                radial-gradient(1.2px 1.2px at 63% 68%, rgba(255,255,255,0.65), transparent),
-                radial-gradient(1.6px 1.6px at 78% 28%, rgba(255,255,255,0.9), transparent),
-                radial-gradient(1.2px 1.2px at 92% 58%, rgba(255,255,255,0.7), transparent),
-                radial-gradient(1.4px 1.4px at 6% 82%,  rgba(255,255,255,0.75), transparent),
-                radial-gradient(1.2px 1.2px at 52% 90%, rgba(255,255,255,0.8), transparent),
-                radial-gradient(760px circle at 10% 6%, rgba(176,136,249,0.14), transparent 62%),
-                radial-gradient(640px circle at 92% 94%, rgba(79,209,232,0.12), transparent 62%);
+                radial-gradient(1.6px 1.6px at 12% 18%, rgba(17,24,39,0.12), transparent),
+                radial-gradient(1.2px 1.2px at 28% 52%, rgba(17,24,39,0.08), transparent),
+                radial-gradient(1.6px 1.6px at 44% 8%,  rgba(17,24,39,0.11), transparent),
+                radial-gradient(1.2px 1.2px at 63% 68%, rgba(17,24,39,0.07), transparent),
+                radial-gradient(1.6px 1.6px at 78% 28%, rgba(17,24,39,0.12), transparent),
+                radial-gradient(1.2px 1.2px at 92% 58%, rgba(17,24,39,0.08), transparent),
+                radial-gradient(1.4px 1.4px at 6% 82%,  rgba(17,24,39,0.09), transparent),
+                radial-gradient(1.2px 1.2px at 52% 90%, rgba(17,24,39,0.1), transparent),
+                radial-gradient(760px circle at 10% 6%, rgba(124,58,237,0.06), transparent 62%),
+                radial-gradient(640px circle at 92% 94%, rgba(37,99,235,0.05), transparent 62%);
             background-repeat: repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat, no-repeat, no-repeat;
             background-size: 190px 190px, 230px 230px, 270px 270px, 210px 210px, 250px 250px, 200px 200px, 240px 240px, 220px 220px, auto, auto;
             padding: 40px;
@@ -88,7 +91,7 @@
             background: var(--bg-card);
             box-shadow:
                 0 0 0 1px var(--border-subtle),
-                0 30px 70px -10px rgba(0,0,0,0.6),
+                0 30px 70px -10px rgba(0,0,0,0.1),
                 0 0 120px -30px var(--glow-violet);
             padding: 40px 60px;
             border-radius: 18px;
@@ -108,12 +111,12 @@
             margin-bottom: 8px;
             font-weight: 700;
             letter-spacing: 2.2px;
-            text-shadow: 0 0 24px rgba(243,245,252,0.18);
+            text-shadow: 0 0 24px rgba(17,24,39,0.1);
         }
 
         .header .title {
             font-size: 32px;
-            background: linear-gradient(135deg, var(--accent-violet) 0%, var(--accent-cyan) 100%);
+            background: linear-gradient(135deg, var(--accent-violet) 0%, var(--accent-blue) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -121,7 +124,7 @@
             margin-bottom: 20px;
             letter-spacing: 2px;
             white-space: nowrap;
-            text-shadow: 0 0 30px var(--glow-violet), 0 0 60px var(--glow-cyan);
+            text-shadow: 0 0 30px var(--glow-violet), 0 0 60px var(--glow-blue);
         }
 
         .tech-skills-bar {
@@ -152,7 +155,7 @@
             border-radius: 0 0 12px 12px;
             border: 1px solid var(--border-subtle);
             border-top: 1px solid rgba(255,255,255,0.14);
-            box-shadow: 0 14px 34px -12px rgba(0,0,0,0.55);
+            box-shadow: 0 14px 34px -12px rgba(0,0,0,0.15);
         }
 
         .contact-row {
@@ -184,17 +187,17 @@
             opacity: 0.9;
         }
 
-        .contact-info a:hover { opacity: 1; color: var(--accent-cyan); text-shadow: 0 0 12px var(--glow-cyan); }
+        .contact-info a:hover { opacity: 1; color: var(--accent-blue); text-shadow: 0 0 12px var(--glow-blue); }
 
         a[href^="tel:"]::before    { content: "📱"; margin-right: 4px; }
         a[href^="mailto:"]::before { content: "📧"; margin-right: 4px; }
         a[href*="maps"]::before    { content: "📍"; margin-right: 4px; }
 
         .website-pill, .linkedin-pill {
-            background: rgba(255,255,255,0.10);
+            background: rgba(255,255,255,0.15);
             padding: 5px 18px;
             border-radius: 50px;
-            border: 1px solid rgba(255,255,255,0.28);
+            border: 1px solid rgba(255,255,255,0.3);
             color: var(--on-banner-text) !important;
             font-size: 12.5px;
             font-weight: 500;
@@ -206,9 +209,9 @@
         }
 
         .website-pill:hover, .linkedin-pill:hover {
-            background: rgba(255, 255, 255, 0.18);
-            border-color: var(--accent-cyan);
-            box-shadow: 0 0 16px -4px var(--glow-cyan);
+            background: rgba(255, 255, 255, 0.25);
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 16px -4px var(--glow-blue);
         }
 
         /* ── LAYOUT & SECTION CARDS ── */
@@ -224,7 +227,7 @@
         .section { margin-bottom: 16px; }
 
         .section.bordered-card {
-            background: rgba(20, 27, 54, 0.4);
+            background: var(--bg-panel);
             border: 1px solid var(--border-subtle);
             border-radius: 12px;
             padding: 20px;
@@ -249,8 +252,8 @@
             width: 44px;
             height: 3px;
             border-radius: 2px;
-            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-violet));
-            box-shadow: 0 0 14px var(--glow-cyan);
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-violet));
+            box-shadow: 0 0 14px var(--glow-blue);
         }
 
         .section p {
@@ -282,13 +285,12 @@
         }
 
         .education-item .honors {
-            color: var(--accent-cyan);
+            color: var(--accent-blue);
             font-size: 14px;
             font-weight: 600;
             margin-top: 6px;
             margin-bottom: 4px;
             display: block;
-            text-shadow: 0 0 12px rgba(255,209,102,0.25);
         }
 
         .edu-sub-degree {
@@ -313,11 +315,11 @@
             padding: 4px 10px;
             border-radius: 8px;
             border: 1px solid var(--border-subtle);
-            border-left: 4px solid var(--accent-cyan);
+            border-left: 4px solid var(--accent-blue);
         }
 
         .skill-category dt strong {
-            color: var(--accent-cyan);
+            color: var(--accent-blue);
             font-size: 14px;
             display: block;
             margin-bottom: 2px;
@@ -376,7 +378,7 @@
             line-height: 1.6;
         }
 
-        .experience-desc strong { color: var(--accent-cyan); font-weight: 600; }
+        .experience-desc strong { color: var(--accent-blue); font-weight: 600; }
 
         /* ── BADGES ── */
         .badge-featured {
@@ -384,7 +386,7 @@
             align-items: center; 
             justify-content: center;
             gap: 4px;
-            background: linear-gradient(135deg, #f43f5e, #be123c); 
+            background: linear-gradient(135deg, #e11d48, #be123c); 
             color: #ffffff;
             font-size: 10px; 
             font-weight: 700; 
@@ -450,7 +452,7 @@
         }
 
         .icon-dark-tint {
-            filter: brightness(0) invert(1) opacity(0.8);
+            filter: brightness(0) opacity(0.8);
         }
 
         /* ── ADDITIONAL EXPERIENCE ── */
@@ -468,10 +470,10 @@
             box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2); 
         }
 
-        .badge-blue { background: linear-gradient(135deg, #2563eb, #1d4ed8); }
-        .badge-orange { background: linear-gradient(135deg, #f97316, #ea580c); }
-        .badge-indigo { background: linear-gradient(135deg, #6366f1, #4338ca); }
-        .badge-violet { background: linear-gradient(135deg, #7c3aed, #5b21b6); }
+        .badge-blue { background: linear-gradient(135deg, #2563eb, #1e3a8a); }
+        .badge-orange { background: linear-gradient(135deg, #ea580c, #c2410c); }
+        .badge-indigo { background: linear-gradient(135deg, #4f46e5, #4338ca); }
+        .badge-violet { background: linear-gradient(135deg, #7c3aed, #6d28d9); }
 
         .additional-exp-list {
             margin-left: 20px;
@@ -491,7 +493,7 @@
         }
 
         .additional-exp-list li strong {
-            color: var(--accent-cyan);
+            color: var(--accent-blue);
             font-weight: 600;
         }
 
@@ -513,8 +515,8 @@
         .step-badge {
             display: inline-flex;
             align-items: center;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-subtle);
+            background: rgba(65, 65, 65, 0.17);
+            border: 1px solid var(--border-bold); 
             padding: 4px 8px;
             border-radius: 6px;
             font-size: 10.5px;
@@ -525,21 +527,21 @@
         }
         
         .step-badge.highlight {
-            border-color: rgba(79, 209, 232, 0.4);
-            color: var(--text-primary);
-            background: rgba(79, 209, 232, 0.08);
-            box-shadow: 0 0 10px rgba(79, 209, 232, 0.1);
+            border-color: rgba(37, 99, 235, 0.4);
+            color: var(--accent-blue);
+            background: rgba(37, 99, 235, 0.08);
+            box-shadow: 0 0 10px rgba(37, 99, 235, 0.1);
         }
 
         .step-badge.highlight-violet {
-            border-color: rgba(176, 136, 249, 0.4);
-            color: var(--text-primary);
-            background: rgba(176, 136, 249, 0.08);
-            box-shadow: 0 0 10px rgba(176, 136, 249, 0.15);
+            border-color: rgba(81, 26, 177, 0.4);
+            color: var(--accent-violet);
+            background: rgba(138, 71, 255, 0.158);
+            box-shadow: 0 0 10px rgba(124, 58, 237, 0.15);
         }
 
         .step-arrow {
-            color: var(--accent-cyan);
+            color: var(--accent-blue);
             font-size: 11px;
             opacity: 0.8;
         }
@@ -559,7 +561,7 @@
 
         /* ── ACCESSIBILITY ── */
         a:focus-visible {
-            outline: 2px solid var(--accent-cyan);
+            outline: 2px solid var(--accent-blue);
             outline-offset: 3px;
             border-radius: 4px;
         }
@@ -600,12 +602,11 @@
                 -webkit-background-clip: unset !important; 
                 background-clip: unset !important; 
                 -webkit-text-fill-color: unset !important; 
-                color: var(--accent-cyan) !important; 
+                color: var(--accent-violet) !important; 
                 margin-bottom: 10px !important; 
             }
 
             .tech-skills-bar, .contact-info { 
-                background: #1e1b4b !important; 
                 color: var(--on-banner-text) !important;
                 box-shadow: none !important;
             }
@@ -613,16 +614,16 @@
             .tech-skills-bar { padding: 8px 18px !important; margin-bottom: 0 !important; font-size: 0.82rem !important; }
             .contact-info { padding: 6px 20px !important; gap: 6px !important; }
             .contact-info a, .contact-info a:visited { color: #ffffff !important; text-decoration: none !important; }
-            .website-pill, .linkedin-pill { background: rgba(255,255,255,0.10) !important; border: 1px solid rgba(255,255,255,0.28) !important; color: #ffffff !important; }
+            .website-pill, .linkedin-pill { background: rgba(255,255,255,0.15) !important; border: 1px solid rgba(255,255,255,0.3) !important; color: #ffffff !important; }
 
             .top-split { display: grid; grid-template-columns: 2fr 1fr; gap: 24px !important; margin-bottom: 28px !important; }
             .skills-grid { gap: 9px !important; margin-top: 0 !important; }
-            .skill-category { padding: 6px 10px !important; page-break-inside: avoid; background: var(--bg-panel) !important; margin-bottom: 2px !important; border: 1px solid var(--border-subtle) !important; border-left: 4px solid var(--accent-cyan) !important; box-shadow: none !important; }
+            .skill-category { padding: 6px 10px !important; page-break-inside: avoid; background: var(--bg-panel) !important; margin-bottom: 2px !important; border: 1px solid var(--border-subtle) !important; border-left: 4px solid var(--accent-blue) !important; box-shadow: none !important; }
             .skill-category dt strong { margin-bottom: 0 !important; }
 
             .section { margin-bottom: 6px !important; margin-top: 6px !important; }
             .section.bordered-card { 
-                background: rgba(20, 27, 54, 0.4) !important; 
+                background: var(--bg-panel) !important; 
                 border: 1px solid var(--border-subtle) !important; 
                 padding: 12px 16px !important;
             }
@@ -648,21 +649,23 @@
             .additional-exp-list li { font-size: 12.5px !important; line-height: 1.3 !important; margin-bottom: 2px !important; color: var(--text-secondary) !important; }
 
             .lifecycle-track-row { padding-top: 4px !important; padding-bottom: 12px !important; page-break-inside: avoid; } 
-            .step-badge { padding: 3px 6px !important; font-size: 9.5px !important; background: var(--bg-panel) !important; border: 1px solid var(--border-subtle) !important; box-shadow: none !important; color: var(--text-secondary) !important; }
+            .step-badge { padding: 3px 6px !important; font-size: 9.5px !important; background: rgba(0, 0, 0, 0.05) !important; border: 1px solid var(--border-subtle) !important; box-shadow: none !important; color: var(--text-secondary) !important; }
             
             .step-badge.highlight {
-                border-color: rgba(79, 209, 232, 0.6) !important;
-                background: rgba(79, 209, 232, 0.12) !important;
-                color: var(--text-primary) !important;
+                border-color: rgba(37, 99, 235, 0.4) !important;
+                background: rgba(37, 99, 235, 0.08) !important;
+                color: var(--accent-blue) !important;
+                box-shadow: 0 0 10px rgba(37, 99, 235, 0.1) !important;
             }
 
             .step-badge.highlight-violet {
-                border-color: rgba(176, 136, 249, 0.6) !important;
-                background: rgba(176, 136, 249, 0.12) !important;
-                color: var(--text-primary) !important;
+                border-color: rgba(81, 26, 177, 0.4) !important;
+                background: rgba(138, 71, 255, 0.158) !important;
+                color: var(--accent-violet) !important;
+                box-shadow: 0 0 10px rgba(124, 58, 237, 0.15) !important;
             }
 
-            .step-arrow { font-size: 9px !important; color: var(--accent-cyan) !important;}
+            .step-arrow { font-size: 9px !important; color: var(--accent-blue) !important;}
 
             h1, h2, h3 { page-break-after: avoid; }
             .section:last-child { margin-bottom: 0 !important; padding-bottom: 0 !important; }
@@ -706,7 +709,8 @@
                 <h2>Education</h2>
                 <article class="education-item">
                     <h3>Bachelor of Science in<br>Computer Science</h3>
-                        <div class="details"><span style="white-space: nowrap;">Southern New Hampshire University</span><br>Sept 2021 – Jan 2025</div>                    <div class="honors">
+                        <div class="details"><span style="white-space: nowrap;">Southern New Hampshire University</span><br>Sept 2021 – Jan 2025</div>                    
+                        <div class="honors">
                         <div class="mb-2"><span>🏆</span> Summa Cum Laude</div>
                         <div class="details m-0">&nbsp;3.99 GPA • President's List</div>
                     </div>
@@ -773,7 +777,7 @@
                     <div class="lifecycle-track">
                         <span class="step-badge">📋 Requirements</span> <span class="step-arrow">➔</span>
                         <span class="step-badge">🎨 UI/UX Design</span> <span class="step-arrow">➔</span>
-                        <span class="step-badge">🤖 GenAI Prototyping</span> <span class="step-arrow">➔</span>
+                        <span class="step-badge highlight-violet">🤖 GenAI Prototyping</span> <span class="step-arrow">➔</span>
                         <span class="step-badge highlight">💻 Scalable Engineering</span> <span class="step-arrow">➔</span>
                         <span class="step-badge">🧪 QA &amp; Testing</span> <span class="step-arrow">➔</span>
                         <span class="step-badge">🔄 CI/CD</span> <span class="step-arrow">➔</span>
@@ -813,7 +817,7 @@
         </section>
 
         <section class="section">
-            <div style="border-left: 4px solid #f2da7c; padding-left: 20px; margin-left: 0;">
+            <div style="border-left: 4px solid #d97706; padding-left: 20px; margin-left: 0;">
                 <div class="project-row" style="padding-top: 4px; border-top: none;">
                     <div class="project-col-1">
                         <img src="images/question-block.png" alt="Question Block" loading="lazy" class="project-icon">
