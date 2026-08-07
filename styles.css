@@ -3,8 +3,6 @@
     File: styles.css
     @author: Matthew Pool
 */
-/* ── 1. FONT IMPORTS ── */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 :root {
     /* Main Body Colors */
@@ -158,8 +156,8 @@ body {
     /* Your New Theme Variables */
     background-color: var(--bg-main);
     color: var(--text-main);
-    font-family: Arial, sans-serif;
-    
+    font-family: 'Inter', 'Roboto', Arial, sans-serif;
+
     /* Light Mode "Stars" (Darker particles) and HIGH-VISIBILITY Orbs */
     background-image:
         radial-gradient(1.6px 1.6px at 12% 18%, rgba(0,0,0,0.15), transparent),
@@ -199,11 +197,14 @@ p {
 	margin-bottom: 1em;
 }
 
+h1, h2, h3, h4 {
+    font-family: 'Space Grotesk', sans-serif;
+}
+
 h1 {
-	font-family: 'Roboto', sans-serif;
-	text-align: center;
-	padding: 20px 0;
-	margin: 0;
+    text-align: center;
+    padding: 20px 0;
+    margin: 0;
 }
 
 h2 {
@@ -991,7 +992,7 @@ body.dark-mode .flick-text {
 .tech-name {
 	color: #fff;
 	font-weight: 700;
-	font-family: 'Courier New', Courier, monospace;
+    font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
 	display: block;
 	margin-bottom: 5px;
 }
@@ -1340,8 +1341,6 @@ body.dark-mode .contact-card a:hover {
 .shelf-spacer {
     height: 20px;
     width: 100%;
-    background-color: var(--bg-main);
-    transition: background-color 0.3s ease;
 }
 
 .main-content .hero-section + .shelf-container, 
