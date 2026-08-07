@@ -1386,12 +1386,14 @@ body.dark-mode .contact-card a:hover {
 
 .text-blue-gradient {
   background: linear-gradient(to right, #6ab8f7, #1e70d6);
+  background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
 }
 
 .text-orange-gradient {
   background: linear-gradient(to right, #f79d45, #d65c00);
+  background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
 }
@@ -1410,6 +1412,7 @@ body.dark-mode .contact-card a:hover {
 
 .banner-footer {
   background: linear-gradient(to bottom, #ffffff, #a0a0a0);
+  background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
   font-weight: 600;
@@ -2613,9 +2616,9 @@ body.dark-mode .quick-links-bar .quick-link:hover {
     line-height: 0;
     margin-top: 0;
     margin-bottom: 0;
-    /* Add these 2 lines: */
     max-width: 1280px; 
-    margin: 0 auto; 
+    margin: 0 auto;
+    border-radius: 16px 16px 16px 16px;
 }
 
 .portfolio-banner {
