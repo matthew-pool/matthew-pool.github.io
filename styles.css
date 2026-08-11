@@ -776,7 +776,7 @@ a:hover {
 }
 
 .overview-highlights {
-    background-color: #f8f9fa; /* Soft light gray for Light Mode */
+    background-color: #abc2f621;
     color: var(--text-main);
     padding: 1rem;
     border-radius: 12px;
@@ -784,7 +784,6 @@ a:hover {
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
-/* Add this right below it to handle Dark Mode */
 body.dark-mode .overview-highlights {
     background-color: var(--bg-panel); /* The dark blue (#141b36) */
     border-color: var(--border-subtle);
