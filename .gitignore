@@ -18,6 +18,9 @@ videos/
 *.mov
 *.mp4
 
+# Photos
+assets/RAW-images/
+
 # Ignore Node modules
 node_modules/
 

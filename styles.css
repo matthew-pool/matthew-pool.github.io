@@ -742,6 +742,76 @@ a:hover {
 	margin-top: 0;
 }
 
+/* =========================================
+   OVERVIEW & NARRATIVE SECTION
+   ========================================= */
+
+.about-intro-layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    max-width: 1000px;
+    margin: 0 auto 30px auto;
+    align-items: flex-start;
+}
+
+.overview-narrative {
+    flex: 1 1 450px;
+}
+
+.overview-narrative-lead {
+    font-size: 1.04em;
+    line-height: 1.6;
+    margin-top: 0;
+}
+
+.overview-narrative p:last-child {
+    margin-bottom: 0;
+}
+
+.overview-highlights-wrapper {
+    flex: 1 1 350px;
+    display: flex;
+    flex-direction: column;
+}
+
+.overview-highlights {
+    background-color: #f8f9fa; /* Soft light gray for Light Mode */
+    color: var(--text-main);
+    padding: 1rem;
+    border-radius: 12px;
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* Add this right below it to handle Dark Mode */
+body.dark-mode .overview-highlights {
+    background-color: var(--bg-panel); /* The dark blue (#141b36) */
+    border-color: var(--border-subtle);
+    color: #e0e0e0;
+    box-shadow: inset 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.overview-highlights p:first-child {
+    margin-top: 0;
+}
+
+.overview-highlights ul {
+    font-size: 0.95em;
+    line-height: 1.5;
+    margin-bottom: 0;
+    margin-left: 1.5rem;
+    padding-left: 0;
+}
+
+.overview-highlights ul li {
+    margin-bottom: 1em;
+}
+
+.overview-highlights ul li:last-child {
+    margin-bottom: 0;
+}
+
 /* Make the main Section Headers (Overview, Refactoring, All Projects) pop */
 .section-header {
     text-align: center;
@@ -1670,7 +1740,6 @@ body.dark-mode .project-card-brief {
 
 .project-card-tag {
 	background: #e5e7eb;
-	border: 1px solid #d1d5db;
 	color: #2c3e50;
 	padding: 4px 12px;
 	border-radius: 15px;
@@ -2667,7 +2736,7 @@ body.dark-mode .project-image-card {
 		padding: 30px 15px;
 	}
 
-	.screenshot-grid img:not([src$="tablet.png"]) {
+	.screenshot-grid img:not([src$="tablet.webp"]) {
 		max-width: 250px;
 	}
 }
@@ -2732,7 +2801,7 @@ body.dark-mode .project-image-card {
 	justify-content: center;
 }
 
-.screenshot-grid img:not([src$="tablet.png"]) {
+.screenshot-grid img:not([src$="tablet.webp"]) {
 	width: 90%;
 	max-width: 300px;
 	height: auto;
@@ -2742,7 +2811,7 @@ body.dark-mode .project-image-card {
 	box-shadow: none;
 }
 
-.screenshot-grid img[src$="tablet.png"] {
+.screenshot-grid img[src$="tablet.webp"] {
 	width: 90%; 
 	max-width: 700px;
 	height: auto;
@@ -3189,7 +3258,7 @@ body.dark-mode .theme-img-dark {
         grid-template-columns: 1fr;
     }
 
-    .screenshot-grid img:not([src$="tablet.png"]) {
+    .screenshot-grid img:not([src$="tablet.webp"]) {
         max-width: 100%;
         width: 100%;
     }

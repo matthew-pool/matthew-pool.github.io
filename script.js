@@ -106,12 +106,12 @@
     const img = document.getElementById("portfolio-preview-img");
     const text = document.getElementById("preview-theme-text");
 
-    if (img.src.includes("portfolio-dark.png")) {
-      img.src = "assets/images/portfolio-light.png";
+    if (img.src.includes("portfolio-dark.webp")) {
+      img.src = "assets/images/portfolio-light.webp";
       img.alt = "High-fidelity preview of this portfolio website currently displaying the light mode theme";
       text.textContent = "PREVIEW: LIGHT MODE";
     } else {
-      img.src = "assets/images/portfolio-dark.png";
+      img.src = "assets/images/portfolio-dark.webp";
       img.alt = "High-fidelity preview of this portfolio website currently displaying the dark mode theme";
       text.textContent = "PREVIEW: DARK MODE";
     }

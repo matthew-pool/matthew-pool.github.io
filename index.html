@@ -18,11 +18,12 @@
     <meta name="author" content="Matthew Pool">
     
     <!-- Open Graph / LinkedIn / Facebook -->
+    <!-- Note: Keeping these as PNGs ensures maximum compatibility with social media link scrapers -->
     <meta property="og:title" content="Matthew Pool - Software Engineer & Product Designer">
     <meta property="og:description" content="Software Engineer specializing in mobile apps, web development, and ML. B.S. in Computer Science, Summa Cum Laude (3.99 GPA)">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://matthew-pool.github.io">
-    <meta property="og:image" content="https://matthew-pool.github.io/assets/images/portfolio-dark.png">
+    <meta property="og:image" content="https://matthew-pool.github.io/assets/images/og-image.png">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
@@ -84,7 +85,7 @@
     <div class="quick-links-bar">
         <a href="https://github.com/matthew-pool" target="_blank" rel="noopener noreferrer" class="quick-link">GitHub</a>
         <a href="https://linkedin.com/in/matthewpool" target="_blank" rel="noopener noreferrer" class="quick-link">LinkedIn</a>
-        <a href="#" class="quick-link" id="resume-btn" onclick="downloadResume(event)">
+        <a href="assets/documents/Matthew_Pool_Resume.pdf" class="quick-link" id="resume-btn" onclick="downloadResume(event)">
             <span style="display:flex; flex-direction:column; align-items:center; gap:1px;">
                 <span style="font-size:1em; font-weight:700; line-height:1.2;">Resume</span>
                 <span id="resume-theme-label" style="font-size:0.65em; font-weight:400; opacity:0.75; line-height:1.2; letter-spacing:0.18em;">LIGHT</span>
@@ -154,26 +155,25 @@
             <br>
             
             <h2 class="section-header">Overview</h2>
-            <div class="about-intro" style="display: flex; flex-wrap: wrap; gap: 2.5rem; max-width: 1000px; margin: 0 auto; align-items: flex-start;">
+            <div class="about-intro-layout">
                 
                 <!-- Left Column: The Narrative -->
-                <div class="overview-narrative" style="flex: 1 1 450px;">
-                    <p style="font-size: 1.04em; line-height: 1.6; margin-top: 0;"><strong>I am a Software Engineer and Technical Solutions Specialist</strong> managing the entire product lifecycle to bridge the gap between WCAG 2.2 AA-compliant UI design, robust backend architecture, and reliable post-deployment support. Backed by a Summa Cum Laude B.S. in Computer Science, my technical foundation is uniquely paired with nearly a decade of client-facing experience.</p>
-                    <p>From delivering remote technical support for consumer telecommunications to ranking in the top 1% of outbound B2B/B2C sales for Fortune 500 clients (AT&T, American Express, QVC), I understand how to drive both product adoption and lasting client retention. I execute rapid CRM pipeline management and systemic root-cause troubleshooting for enterprise clients.</p>
-                    <p style="margin-bottom: 0;">I solve real business problems. By combining engineering expertise with highly developed communication skills, I architect applications backed by automated CI/CD pipelines and translate technical complexity into intuitive, high-performing products.</p>
+                <div class="overview-narrative">
+                    <p class="overview-narrative-lead"><strong>I am a Software Engineer and Technical Solutions Specialist</strong> managing the complete product lifecycle to bridge the gap between WCAG 2.2 AA-compliant UI design, robust backend architecture, and reliable post-deployment support. Backed by a Summa Cum Laude B.S. in Computer Science (3.99 GPA), my technical foundation is uniquely paired with nearly a decade of client-facing experience.</p>
+                    <p>From delivering remote technical support for consumer telecommunications to consistently ranking in the top 1% of outbound B2B/B2C sales for Fortune 500 campaigns (AT&T, American Express, QVC), I understand how to drive product adoption and ensure lasting client retention. I execute rapid CRM pipeline management and systemic root-cause troubleshooting for enterprise users.</p>
+                    <p>Ultimately, I solve real business problems. By combining engineering expertise with highly developed communication skills, I architect scalable applications backed by automated CI/CD pipelines and translate technical complexity into intuitive, high-performing products.</p>
                 </div>
 
                 <!-- Right Column: The Highlights (App.Buddy) -->
-                <div style="flex: 1 1 350px; display: flex; flex-direction: column;">
-                    
-                    <div class="overview-highlights" style="background-color: var(--card-bg, rgba(128, 128, 128, 0.1)); padding: 1rem; border-radius: 12px; border: 1px solid var(--border-color, rgba(128, 128, 128, 0.2));">
-                        <p style="margin-top: 0;">This technical adaptability is the driving force behind my independent software development venture, <strong>App.Buddy</strong>. Some of my work includes:</p>
+                <div class="overview-highlights-wrapper">
+                    <div class="overview-highlights">
+                        <p>This technical adaptability is the driving force behind my independent software development venture, <strong>App.Buddy</strong>. A snapshot of my work includes:</p>
                         
-                        <ul style="font-size: 0.95em; line-height: 1.5; margin-bottom: 0; margin-left: 1.5rem; padding-left: 0;">
-                            <li style="margin-bottom: 1em;"><strong>Native Android & ML:</strong> Architecting "Flick"—leveraging the Archive.org API via a custom machine-learning recommendation engine.</li>
-                            <li style="margin-bottom: 1em;"><strong>Python & OOP:</strong> Building "Wormhole," a multithreaded text adventure utilizing event-driven state management.</li>
-                            <li style="margin-bottom: 1em;"><strong>Full-Stack Web:</strong> Managing complex state hooks in "The Existence Paradox," an interactive React/TypeScript SPA.</li>
-                            <li style="margin-bottom: 0;"><strong>Game Design & Psychology:</strong> Achieving a <strong>Top 0.003% global ranking</strong> in Super Mario Maker (CheezSauce). By leveraging gameplay metrics, I captured 133,000+ player stars and a 20% engagement rate.</li>
+                        <ul>
+                            <li><strong>Native Android & ML:</strong> Architecting "Flick" — leveraging the Archive.org API via a custom machine-learning recommendation engine.</li>
+                            <li><strong>Python & OOP:</strong> Building "Wormhole" — a multithreaded text adventure utilizing event-driven state management.</li>
+                            <li><strong>Full-Stack Web:</strong> Managing complex state hooks in "The Existence Paradox" — an interactive React/TypeScript SPA.</li>
+                            <li><strong>Game Design & Psychology:</strong> Achieving a <strong>Top 0.003% global ranking</strong> in Super Mario Maker (CheezSauce). By leveraging gameplay metrics, I captured 133,000+ player stars and a 20% engagement rate.</li>
                         </ul>
                     </div>
                 </div>
@@ -191,7 +191,7 @@
                     </div>
                     <p class="flick-subtitle"><i>Designer/Engineer: Matthew Pool</i></p>
                 </div>
-                <img src="assets/images/flick/banner.png" style="width: 100%; max-width: 1280px; margin: 20px 0; border: 2px solid #c8c8c8;" loading="lazy" alt="Flick app banner featuring movie elements like film, popcorn, and movie-style spotlights shining at the phrase 'Flick'">
+                <img src="assets/images/flick/banner.webp" style="width: 100%; max-width: 1280px; margin: 20px 0; border: 2px solid #c8c8c8;" loading="lazy" alt="Flick app banner featuring movie elements like film, popcorn, and movie-style spotlights shining at the phrase 'Flick'">
             </div>
             
             <hr>
@@ -204,7 +204,7 @@
                 
                 <p><strong>Algorithm:</strong> I implemented cosine similarity to calculate the distance between the user's profile and available content. The main vertical feed uses an "exploration vs. exploitation" strategy, mixing high-confidence matches with random high-percentile videos to prevent echo chambers.</p>
                 
-                <p><strong>UI/UX:</strong> The UI features a dual-axis navigation system driven by this ML algorithm. A vertical swipe continues the mixed feed, while a horizontal swipe instantly branches into a "nearest neighbor" playlist, finding videos with the highest cosine similarity to the current video.</p>
+                <p><strong>UI/UX:</strong> The interface features a dual-axis navigation system driven by this ML algorithm. A vertical swipe continues the mixed feed, while a horizontal swipe instantly branches into a "nearest neighbor" playlist, finding videos with the highest cosine similarity to the current selection.</p>
             </div>
 
             <br>
@@ -233,52 +233,52 @@
                 <div class="screenshot-grid">
                     <figure class="screenshot-item">
                         <figcaption>Custom Splash Screen</figcaption>
-                        <img src="assets/images/flick/screen14.png" loading="lazy" alt="Preparing app screen">
+                        <img src="assets/images/flick/screen14.webp" loading="lazy" alt="Preparing app screen">
                     </figure>
 
                     <figure class="screenshot-item">
                         <figcaption>Initial Loading</figcaption>
-                        <img src="assets/images/flick/screen4.png" loading="lazy" alt="Traveling back in time screen">
+                        <img src="assets/images/flick/screen4.webp" loading="lazy" alt="Traveling back in time screen">
                     </figure>
 
                     <figure class="screenshot-item">
                         <figcaption>Swipe Up Hint</figcaption>
-                        <img src="assets/images/flick/screen1.png" loading="lazy" alt="Up arrow hint">
+                        <img src="assets/images/flick/screen1.webp" loading="lazy" alt="Up arrow hint">
                     </figure>
 
                     <figure class="screenshot-item">
                         <figcaption>Static TV Effect</figcaption>
-                        <img src="assets/images/flick/screen5.png" loading="lazy" alt="TV static screen">
+                        <img src="assets/images/flick/screen5.webp" loading="lazy" alt="TV static screen">
                     </figure>
 
                     <figure class="screenshot-item">
                         <figcaption>Like Interaction</figcaption>
-                        <img src="assets/images/flick/screen7.png" loading="lazy" alt="Alf video liked">
+                        <img src="assets/images/flick/screen7.webp" loading="lazy" alt="Alf video liked">
                     </figure>
 
                     <figure class="screenshot-item">
                         <figcaption>Dislike Interaction</figcaption>
-                        <img src="assets/images/flick/screen8.png" loading="lazy" alt="Video disliked">
+                        <img src="assets/images/flick/screen8.webp" loading="lazy" alt="Video disliked">
                     </figure>
 
                     <figure class="screenshot-item">
                         <figcaption>Left Swipe Hint</figcaption>
-                        <img src="assets/images/flick/screen12.png" loading="lazy" alt="Left arrow hint">
+                        <img src="assets/images/flick/screen12.webp" loading="lazy" alt="Left arrow hint">
                     </figure>
 
                     <figure class="screenshot-item">
                         <figcaption>End Dialog</figcaption>
-                        <img src="assets/images/flick/screen10.png" loading="lazy" alt="Thank you dialog">
+                        <img src="assets/images/flick/screen10.webp" loading="lazy" alt="Thank you dialog">
                     </figure>
 
                     <figure class="screenshot-item">
                         <figcaption>Custom Debug Tool</figcaption>
-                        <img src="assets/images/flick/screen11.png" loading="lazy" alt="Similar video screen">
+                        <img src="assets/images/flick/screen11.webp" loading="lazy" alt="Similar video screen">
                     </figure>
 
                     <figure class="screenshot-item">
                         <figcaption>Tablet/Fold View</figcaption>
-                        <img src="assets/images/flick/tablet.png" loading="lazy" alt="Flick on tablet">
+                        <img src="assets/images/flick/tablet.webp" loading="lazy" alt="Flick on tablet">
                     </figure>
                 </div>
             </div>
@@ -373,13 +373,13 @@
             <h2>CI/CD</h2>
             <div class="image-card">
                 <div class="ci-images">
-                    <img src="assets/images/flick/ci1.png" loading="lazy" alt="CI tests passed">
-                    <img src="assets/images/flick/ci2.png" loading="lazy" alt="CI tests completed">
+                    <img src="assets/images/flick/ci1.webp" loading="lazy" alt="CI tests passed">
+                    <img src="assets/images/flick/ci2.webp" loading="lazy" alt="CI tests completed">
                 </div>
             </div>
 
             <div class="image-card" style="margin-top: 15px;">
-                <img src="assets/images/flick/test-track.png" loading="lazy" alt="Google Play Console - Closed Test Track active deployment">
+                <img src="assets/images/flick/test-track.webp" loading="lazy" alt="Google Play Console - Closed Test Track active deployment">
             </div>
 
             <br>
@@ -487,7 +487,7 @@
                     aria-label="View project details for this Portfolio website"
                     onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('portfolio-site')}">
                     <div class="project-card-image">
-                        <img src="assets/images/portfolio-light.png" alt="Preview of this portfolio website showing a clean, responsive layout in light mode" loading="lazy">
+                        <img src="assets/images/portfolio-light.webp" alt="Preview of this portfolio website showing a clean, responsive layout in light mode" loading="lazy">
                     </div>
 
                     <div class="project-card-content">
@@ -513,7 +513,7 @@
                     <div class="project-badge badge-soon">Coming Soon</div>
 
                     <div class="project-card-image">
-                        <img src="assets/images/wormhole-1.png" alt="Wormhole Text Adventure Thumbnail" loading="lazy">
+                        <img src="assets/images/wormhole-1.webp" alt="Wormhole Text Adventure Thumbnail" loading="lazy">
                     </div>
                     <div class="project-card-content">
                         <h3>Wormhole - A Text Adventure Game</h3>
@@ -538,7 +538,7 @@
                     <div class="project-badge badge-live">LIVE Demo</div>
 
                     <div class="project-card-image">
-                        <img src="assets/images/existence-paradox-1.png" alt="The Existence Paradox App" loading="lazy">
+                        <img src="assets/images/existence-paradox-1.webp" alt="The Existence Paradox App" loading="lazy">
                     </div>
                     <div class="project-card-content">
                         <h3>The Existence Paradox</h3>
@@ -560,11 +560,11 @@
                     aria-label="Super Mario Bros. — click to view details"
                     onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('mario')}">
                     <div class="project-card-image">
-                        <img src="assets/images/mario1.png" alt="Super Mario Bros 1-1 Scene" loading="lazy">
+                        <img src="assets/images/mario1.webp" alt="Super Mario Bros 1-1 Scene" loading="lazy">
                     </div>
                     <div class="project-card-content">
                         <h3>Super Mario Bros.</h3>
-                        <p class="project-card-brief">3D scene recreation with custom shaders, Phong lighting, and hand-coded meshes</p>
+                        <p class="project-card-brief">3D scene recreation with custom shaders, Phong lighting, and hand-coded meshes.</p>
                         <div class="project-card-tags">
                             <span class="project-card-tag">C++</span>
                             <span class="project-card-tag">OpenGL</span>
@@ -581,7 +581,7 @@
                     aria-label="Full-Stack Travel Platform — click to view details"
                     onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('travel')}">
                     <div class="project-card-image">
-                        <img src="assets/images/travel2.png" alt="Travel Platform" loading="lazy">
+                        <img src="assets/images/travel2.webp" alt="Travel Platform" loading="lazy">
                     </div>
                     <div class="project-card-content">
                         <h3>Full-Stack Travel Platform</h3>
@@ -605,7 +605,7 @@
                     aria-label="Product Design: Eat Right! — click to view details"
                     onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('eatright')}">
                         <div class="project-card-image">
-                        <img src="assets/images/product-design-eatright-wireframe.png" alt="Eat Right! Product Design" loading="lazy">
+                        <img src="assets/images/product-design-eatright-wireframe.webp" alt="Eat Right! Product Design" loading="lazy">
                     </div>
                     <div class="project-card-content">
                         <h3>Product Design: Eat Right!</h3>
@@ -625,7 +625,7 @@
                     aria-label="Product Design: MoneyMobile — click to view details"
                     onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('moneymobile')}">
                     <div class="project-card-image">
-                        <img src="assets/images/product-design-moneymobile-mockup.png" alt="MoneyMobile Product Design" loading="lazy">
+                        <img src="assets/images/product-design-moneymobile-mockup.webp" alt="MoneyMobile Product Design" loading="lazy">
                     </div>
                     <div class="project-card-content">
                         <h3>Product Design: MoneyMobile</h3>
@@ -645,11 +645,11 @@
                     aria-label="Austin Animal Center Dashboard — click to view details"
                     onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('aac')}">
                     <div class="project-card-image">
-                        <img src="assets/images/aac1.png" alt="Austin Animal Center Dashboard" loading="lazy">
+                        <img src="assets/images/aac1.webp" alt="Austin Animal Center Dashboard" loading="lazy">
                     </div>
                     <div class="project-card-content">
                         <h3>Austin Animal Center Dashboard</h3>
-                        <p class="project-card-brief">Interactive data dashboard with MongoDB integration and geolocation mapping</p>
+                        <p class="project-card-brief">Interactive data dashboard with MongoDB integration and geolocation mapping.</p>
                         <div class="project-card-tags">
                             <span class="project-card-tag">Python</span>
                             <span class="project-card-tag">MongoDB</span>
@@ -666,11 +666,11 @@
                     aria-label="Machine Learning — click to view details"
                     onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('ml')}">
                     <div class="project-card-image">
-                        <img src="assets/images/ml1.png" alt="ML model training and testing output" loading="lazy">
+                        <img src="assets/images/ml1.webp" alt="ML model training and testing output" loading="lazy">
                     </div>
                     <div class="project-card-content">
                         <h3>Machine Learning</h3>
-                        <p class="project-card-brief">Neural networks, deep Q-learning, and Markov decision processes</p>
+                        <p class="project-card-brief">Neural networks, deep Q-learning, and Markov decision processes.</p>
                         <div class="project-card-tags">
                             <span class="project-card-tag">Python</span>
                             <span class="project-card-tag">Keras (TensorFlow)</span>
@@ -687,11 +687,11 @@
                     aria-label="NASA Climate Data Analysis — click to view details"
                     onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('data-analysis')}">
                     <div class="project-card-image">
-                        <img src="assets/images/data2.png" alt="NASA Climate Data Analysis" loading="lazy">
+                        <img src="assets/images/data2.webp" alt="NASA Climate Data Analysis" loading="lazy">
                     </div>
                     <div class="project-card-content">
                         <h3>NASA Climate Data Analysis</h3>
-                        <p class="project-card-brief">Temperature deviation analysis with curved trend line visualization</p>
+                        <p class="project-card-brief">Temperature deviation analysis with curved trend line visualization.</p>
                         <div class="project-card-tags">
                             <span class="project-card-tag">Python</span>
                             <span class="project-card-tag">Pandas</span>
@@ -708,11 +708,11 @@
                     aria-label="NBA Statistical Analysis — click to view details"
                     onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('statistics')}">
                     <div class="project-card-image">
-                        <img src="assets/images/stat3.png" alt="Statistical Analysis" loading="lazy">
+                        <img src="assets/images/stat3.webp" alt="Statistical Analysis" loading="lazy">
                     </div>
                     <div class="project-card-content">
                         <h3>NBA Statistical Analysis</h3>
-                        <p class="project-card-brief">Regression modeling to predict regular-season wins from team metrics</p>
+                        <p class="project-card-brief">Regression modeling to predict regular-season wins from team metrics.</p>
                         <div class="project-card-tags">
                             <span class="project-card-tag">Python</span>
                             <span class="project-card-tag">SciPy</span>
@@ -729,11 +729,11 @@
                     aria-label="Economic Analysis — click to view details"
                     onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('economics')}">
                     <div class="project-card-image">
-                        <img src="assets/images/eco-3.png" alt="Economic Analysis" loading="lazy">
+                        <img src="assets/images/eco-3.webp" alt="Economic Analysis" loading="lazy">
                     </div>
                     <div class="project-card-content">
                         <h3>Economic Analysis</h3>
-                        <p class="project-card-brief">Data visualization and reporting on economic indicators</p>
+                        <p class="project-card-brief">Data visualization and reporting on historical economic indicators.</p>
                         <div class="project-card-tags">
                             <span class="project-card-tag">Data Viz</span>
                             <span class="project-card-tag">Economics</span>
@@ -750,13 +750,13 @@
                     onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('database')}">
                     <div class="project-card-image">
                         <figure>
-                            <img src="assets/images/database-erd.png" alt="Database ERD" loading="lazy">
+                            <img src="assets/images/database-erd.webp" alt="Database ERD" loading="lazy">
                             <figcaption>Created ERD (Entity Relationship Diagram) based on the database requirements</figcaption>
                         </figure>
                     </div>
                     <div class="project-card-content">
                         <h3>Database Case Study</h3>
-                        <p class="project-card-brief">MySQL database administration and ERD design</p>
+                        <p class="project-card-brief">MySQL database administration, data analysis, and ERD design.</p>
                         <div class="project-card-tags">
                             <span class="project-card-tag">MySQL</span>
                             <span class="project-card-tag">Database Administration</span>
@@ -772,11 +772,11 @@
                     aria-label="System Design & UML — click to view details"
                     onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('system-design')}">
                     <div class="project-card-image">
-                        <img src="assets/images/system2.png" alt="System Design Diagrams" loading="lazy">
+                        <img src="assets/images/system2.webp" alt="System Design Diagrams" loading="lazy">
                     </div>
                     <div class="project-card-content">
                         <h3>System Design & UML</h3>
-                        <p class="project-card-brief">Comprehensive system design documentation with UML diagrams</p>
+                        <p class="project-card-brief">Comprehensive system design documentation with mapped UML diagrams.</p>
                         <div class="project-card-tags">
                             <span class="project-card-tag">UML</span>
                             <span class="project-card-tag">SDD</span>
@@ -793,11 +793,11 @@
                     aria-label="Security Audit & Remediation — click to view details"
                     onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('security')}">
                     <div class="project-card-image">
-                        <img src="assets/images/security-1.png" alt="Security Audit" loading="lazy">
+                        <img src="assets/images/security-1.webp" alt="Security Audit" loading="lazy">
                     </div>
                     <div class="project-card-content">
                         <h3>Security Audit & Remediation</h3>
-                        <p class="project-card-brief">Financial software vulnerability assessment with OWASP compliance</p>
+                        <p class="project-card-brief">Financial software vulnerability assessment with OWASP compliance.</p>
                         <div class="project-card-tags">
                             <span class="project-card-tag">Java</span>
                             <span class="project-card-tag">Spring Boot</span>
@@ -814,7 +814,7 @@
                     aria-label="Agile & Scrum Leadership — click to view details"
                     onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('scrum')}">
                     <div class="project-card-image">
-                        <img src="assets/images/scrum-sdlc.png" alt="Scrum SDLC" loading="lazy">
+                        <img src="assets/images/scrum-sdlc.webp" alt="Scrum SDLC" loading="lazy">
                     </div>
                     <div class="project-card-content">
                         <h3>Agile & Scrum Leadership</h3>
@@ -837,11 +837,11 @@
                     aria-label="Algorithmic Optimization — click to view details"
                     onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('algorithms')}">
                     <div class="project-card-image">
-                        <img src="assets/images/algo-1.png" alt="Algorithm Code" loading="lazy">
+                        <img src="assets/images/algo-1.webp" alt="Algorithm Code" loading="lazy">
                     </div>
                     <div class="project-card-content">
                         <h3>Algorithmic Optimization</h3>
-                        <p class="project-card-brief">Custom merge sort implementation with Big O analysis</p>
+                        <p class="project-card-brief">Custom merge sort implementation utilizing Big O time-complexity analysis.</p>
                         <div class="project-card-tags">
                             <span class="project-card-tag">C++</span>
                             <span class="project-card-tag">Algorithms</span>
@@ -857,11 +857,11 @@
                     aria-label="Unit Testing — click to view details"
                     onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('unit-testing')}">
                     <div class="project-card-image">
-                        <img src="assets/images/service-tests-1.png" alt="Unit Tests" loading="lazy">
+                        <img src="assets/images/service-tests-1.webp" alt="Unit Tests" loading="lazy">
                     </div>
                     <div class="project-card-content">
                         <h3>Unit Testing</h3>
-                        <p class="project-card-brief">JUnit 5 test suite with comprehensive coverage</p>
+                        <p class="project-card-brief">Defensive JUnit 5 test suite featuring comprehensive edge-case coverage.</p>
                         <div class="project-card-tags">
                             <span class="project-card-tag">Java</span>
                             <span class="project-card-tag">JUnit 5</span>
@@ -875,11 +875,11 @@
             <div class="content-card" style="margin-bottom: 30px; border-top: 4px solid #3498db;">
                 <h3 style="margin-top: 0;">The Bottom Line</h3>
    
-                <p>Agile teams require engineers who understand the entire product lifecycle—not just a small isolated part of a much bigger picture. I can build things end-to-end. I understand business needs and constraints, recently solo-engineering a native Android app with (virtually) unlimited free content available to users at near-zero infrastructure costs.</p>
+                <p>Agile teams require engineers who understand the entire product lifecycle — not just a small, isolated part of a much bigger picture. I can build scalable systems end-to-end. I understand business needs and constraints, recently solo-engineering a native Android app that delivers a massive content library to users at near-zero infrastructure costs.</p>
    
-                <p>Drawing on nearly a decade of combined customer solutions experience—including five years as a top 1% B2B/B2C sales agent consistently outperforming pools of 100+ representatives, alongside remote technical support for consumer telecommunications—I never lose sight of the business perspective. I thrive in fast-paced environments, maintaining a relentless focus on first-contact resolution, lasting customer retention, and maximizing business revenue.</p>
+                <p>Drawing on nearly a decade of combined customer solutions experience — including five years as a top 1% B2B/B2C sales agent consistently outperforming pools of 100+ representatives, alongside remote technical support for consumer telecommunications — I never lose sight of the business perspective. I thrive in fast-paced environments, maintaining a relentless focus on first-contact resolution, lasting customer retention, and maximizing revenue.</p>
    
-                <p>I can innovate. I can design. And I know how to manage a product throughout its entire lifecycle—from early Figma wireframes and API integrations to deploying automated CI/CD pipelines—with the user experience and business objectives always top of mind.</p>
+                <p>I can innovate. I can design. And I know how to manage a product throughout its entire lifecycle — from early Figma wireframes and API integrations to deploying automated CI/CD pipelines — with the user experience and business objectives always top of mind.</p>
             </div>
 
             <div class="footer-metallic-black">
@@ -923,7 +923,7 @@
                 </p>
             
                 <div class="image-card" style="margin: 20px 0;">
-                    <img src="assets/images/new11.png" loading="lazy" alt="System menu of the legacy application">
+                    <img src="assets/images/new11.webp" loading="lazy" alt="System menu of the legacy application">
                 </div>
 
                 <div class="project-links" style="justify-content: center; margin-top: 20px;">
@@ -944,20 +944,20 @@
 
                 <h4>Converted to Maven Framework</h4>
                 <div class="code-gallery">
-                    <img src="assets/images/new2.png" loading="lazy" alt="Maven project architecture">
-                    <img src="assets/images/new4.png" loading="lazy" alt="Maven pom.xml file">
+                    <img src="assets/images/new2.webp" loading="lazy" alt="Maven project architecture">
+                    <img src="assets/images/new4.webp" loading="lazy" alt="Maven pom.xml file">
                 </div>
 
                 <h4>Implemented JUnit Testing</h4>
                 <div class="code-gallery">
-                    <img src="assets/images/new1.png" loading="lazy" alt="JUnit test coverage">
-                    <img src="assets/images/new3.png" loading="lazy" alt="JUnit test results">
+                    <img src="assets/images/new1.webp" loading="lazy" alt="JUnit test coverage">
+                    <img src="assets/images/new3.webp" loading="lazy" alt="JUnit test results">
                 </div>
                 
                 <h4>Added JavaDocs & Validation</h4>
                 <div class="code-gallery">
-                    <img src="assets/images/new19.png" loading="lazy" alt="Main class JavaDoc">
-                    <img src="assets/images/new9.png" loading="lazy" alt="Error-handling">
+                    <img src="assets/images/new19.webp" loading="lazy" alt="Main class JavaDoc">
+                    <img src="assets/images/new9.webp" loading="lazy" alt="Error-handling">
                 </div>
 
                 <div class="content-card">
@@ -965,12 +965,12 @@
                     <p>I improved the CLI experience by implementing ANSI escape codes for colored output and clearer visual hierarchy.</p>
                     
                     <div class="code-gallery">
-                        <img src="assets/images/new6.png" loading="lazy" alt="ANSI escape code declarations">
-                        <img src="assets/images/new10.png" loading="lazy" alt="Various formatting">
+                        <img src="assets/images/new6.webp" loading="lazy" alt="ANSI escape code declarations">
+                        <img src="assets/images/new10.webp" loading="lazy" alt="Various formatting">
                     </div>
                     <div class="code-gallery">
-                        <img src="assets/images/new12.png" loading="lazy" alt="List output">
-                        <img src="assets/images/new14.png" loading="lazy" alt="Quitting system">
+                        <img src="assets/images/new12.webp" loading="lazy" alt="List output">
+                        <img src="assets/images/new14.webp" loading="lazy" alt="Quitting system">
                     </div>
                 </div>
             </div>
@@ -982,16 +982,16 @@
                 <p>I replaced volatile memory storage with MapDB to enable local persistence, ensuring data survives between program executions.</p>
                 
                 <div class="code-gallery">
-                    <img src="assets/images/new18.png" loading="lazy" alt="MapDB imports">
-                    <img src="assets/images/new7.png" loading="lazy" alt="MapDB implementation">
+                    <img src="assets/images/new18.webp" loading="lazy" alt="MapDB imports">
+                    <img src="assets/images/new7.webp" loading="lazy" alt="MapDB implementation">
                 </div>
                 
                 <h4>Algorithmic Optimization</h4>
                 <p>Converted linear ArrayList lookups to HashMaps, improving retrieval time complexity from <i>O(n)</i> to <i>O(1)</i> (or O(log n) depending on collision handling).</p>
                 
                 <div class="code-gallery">
-                    <img src="assets/images/new5.png" loading="lazy" alt="LinkedHashMap declarations">
-                    <img src="assets/images/new17.png" loading="lazy" alt="Writing to the hash map">
+                    <img src="assets/images/new5.webp" loading="lazy" alt="LinkedHashMap declarations">
+                    <img src="assets/images/new17.webp" loading="lazy" alt="Writing to the hash map">
                 </div>
             </div>
 
@@ -1069,7 +1069,7 @@
                     Toggle Theme
                 </button>
             </div>
-            <img id="portfolio-preview-img" src="assets/images/portfolio-dark.png" loading="lazy" alt="High-fidelity preview of this portfolio website currently displaying the dark mode theme">
+            <img id="portfolio-preview-img" src="assets/images/portfolio-dark.webp" loading="lazy" alt="High-fidelity preview of this portfolio website currently displaying the dark mode theme">
         </figure>
         <div class="project-links">
             <a href="https://github.com/matthew-pool/matthew-pool.github.io" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
@@ -1095,19 +1095,19 @@
             <div class="screenshot-grid">
                 <figure class="screenshot-item">
                     <figcaption>Core Gameplay</figcaption>
-                    <img src="assets/images/wormhole-2.png" loading="lazy" alt="Core Gameplay & Typewriter UI">
+                    <img src="assets/images/wormhole-2.webp" loading="lazy" alt="Core Gameplay & Typewriter UI">
                 </figure>
                 <figure class="screenshot-item">
                     <figcaption>Live Map Screen</figcaption>
-                    <img src="assets/images/wormhole-3.png" loading="lazy" alt="Live Interactive Map Screen">
+                    <img src="assets/images/wormhole-3.webp" loading="lazy" alt="Live Interactive Map Screen">
                 </figure>
                 <figure class="screenshot-item">
                     <figcaption>Player Leaderboard</figcaption>
-                    <img src="assets/images/wormhole-4.png" loading="lazy" alt="Leaderboard & High Scores">
+                    <img src="assets/images/wormhole-4.webp" loading="lazy" alt="Leaderboard & High Scores">
                 </figure>
                 <figure class="screenshot-item">
                     <figcaption>Custom Debug Tool</figcaption>
-                    <img src="assets/images/wormhole-5.png" loading="lazy" alt="Custom Debug Tool Interface">
+                    <img src="assets/images/wormhole-5.webp" loading="lazy" alt="Custom Debug Tool Interface">
                 </figure>
             </div>
             <p style="text-align: center; font-style: italic; margin-top: 30px; font-weight: 600; color: #667eea;">
@@ -1154,7 +1154,7 @@
         </ul>
 
         <div class="project-image-card">
-            <img class="paradox-image" src="assets/images/existence-paradox-2.png" loading="lazy" alt="User choice for the prompted question">
+            <img class="paradox-image" src="assets/images/existence-paradox-2.webp" loading="lazy" alt="User choice for the prompted question">
         </div>
 
         <div class="launch-cta" style="margin-top: 30px; margin-bottom: 30px;">
@@ -1196,9 +1196,9 @@
         </div>
 
         <div class="project-image-card">
-            <img class="mario-image" src="assets/images/mario3.png" loading="lazy" alt="2D Super Mario Bros. scene with flagpole scene with steps and a pipe">
-            <img class="mario-image" src="assets/images/mario1.png" loading="lazy" alt="3D Super Mario Bros. scene with flagpole scene with steps and a pipe">
-            <img class="mario-image" src="assets/images/mario2.png" loading="lazy" alt="3D Super Mario Bros. scene with a Goomba sneaking around behind the steps">
+            <img class="mario-image" src="assets/images/mario3.webp" loading="lazy" alt="2D Super Mario Bros. scene with flagpole scene with steps and a pipe">
+            <img class="mario-image" src="assets/images/mario1.webp" loading="lazy" alt="3D Super Mario Bros. scene with flagpole scene with steps and a pipe">
+            <img class="mario-image" src="assets/images/mario2.webp" loading="lazy" alt="3D Super Mario Bros. scene with a Goomba sneaking around behind the steps">
         </div>
 
         <br>
@@ -1251,7 +1251,7 @@
         </div>
 
         <div class="project-image-card">
-            <img src="assets/images/product-design-eatright-wireframe.png" loading="lazy" alt="Eat Right low-fidelity wireframe">
+            <img src="assets/images/product-design-eatright-wireframe.webp" loading="lazy" alt="Eat Right low-fidelity wireframe">
         </div>
         
         <div class="project-links">
@@ -1285,8 +1285,8 @@
         </div>
 
         <div class="project-image-card">
-            <img src="assets/images/product-design-moneymobile-lofi-wireframe.jpg" loading="lazy" alt="MoneyMobile app low-fidelity wireframe">
-            <img src="assets/images/product-design-moneymobile-mockup.png" loading="lazy" alt="MoneyMobile app high-fidelity mockup">
+            <img src="assets/images/product-design-moneymobile-lofi-wireframe.webp" loading="lazy" alt="MoneyMobile app low-fidelity wireframe">
+            <img src="assets/images/product-design-moneymobile-mockup.webp" loading="lazy" alt="MoneyMobile app high-fidelity mockup">
         </div>
 
         <div class="project-links">
@@ -1311,11 +1311,11 @@
         </ul>
 
         <div class="project-image-card">
-            <img src="assets/images/travel2.png" loading="lazy" alt="Travel client website Travel tab" class="travel-no-scale">
-            <img src="assets/images/travel1.png" loading="lazy" alt="Travel admin website to add and edit trips" class="travel-no-scale">
+            <img src="assets/images/travel2.webp" loading="lazy" alt="Travel client website Travel tab" class="travel-no-scale">
+            <img src="assets/images/travel1.webp" loading="lazy" alt="Travel admin website to add and edit trips" class="travel-no-scale">
             <div class="travel-images-row">
-                <img src="assets/images/travel3.png" loading="lazy" alt="Default Add Trip dialog" class="travel-no-scale">
-                <img src="assets/images/travel4.png" loading="lazy" alt="Filled out Edit Trip dialog" class="travel-no-scale">
+                <img src="assets/images/travel3.webp" loading="lazy" alt="Default Add Trip dialog" class="travel-no-scale">
+                <img src="assets/images/travel4.webp" loading="lazy" alt="Filled out Edit Trip dialog" class="travel-no-scale">
             </div>
         </div>
         
@@ -1340,14 +1340,14 @@
 
         <div class="project-image-card">
             <div class="buddy-screenshot-grid">
-                <img src="assets/images/buddy1.png" loading="lazy" alt="InventoryBuddy default login screen">
-                <img src="assets/images/buddy2.png" loading="lazy" alt="Login screen with username and masked password">
-                <img src="assets/images/buddy4.png" loading="lazy" alt="Account created toast">
-                <img src="assets/images/buddy3.png" loading="lazy" alt="SMS access request">
-                <img src="assets/images/buddy5.png" loading="lazy" alt="Empty inventory">
-                <img src="assets/images/buddy6.png" loading="lazy" alt="Default add window">
-                <img src="assets/images/buddy7.png" loading="lazy" alt="Two cans of beans being added">
-                <img src="assets/images/buddy10.png" loading="lazy" alt="Delete item prompt">
+                <img src="assets/images/buddy1.webp" loading="lazy" alt="InventoryBuddy default login screen">
+                <img src="assets/images/buddy2.webp" loading="lazy" alt="Login screen with username and masked password">
+                <img src="assets/images/buddy4.webp" loading="lazy" alt="Account created toast">
+                <img src="assets/images/buddy3.webp" loading="lazy" alt="SMS access request">
+                <img src="assets/images/buddy5.webp" loading="lazy" alt="Empty inventory">
+                <img src="assets/images/buddy6.webp" loading="lazy" alt="Default add window">
+                <img src="assets/images/buddy7.webp" loading="lazy" alt="Two cans of beans being added">
+                <img src="assets/images/buddy10.webp" loading="lazy" alt="Delete item prompt">
             </div>
         </div>
 
@@ -1371,10 +1371,10 @@
         </ul>
         
         <div class="project-image-card">
-            <img src="assets/images/aac1.png" loading="lazy" alt="Spreadsheet showing first few database records">
-            <img src="assets/images/aac2.png" loading="lazy" alt="Geolocation map showing the Austin, TX area">
-            <img src="assets/images/aac4.png" loading="lazy" alt="Unit test results with all 16 tests passed" style="width: 700px; height: auto;">
-            <img src="assets/images/aac3.png" loading="lazy" alt="AAC database and pie chart of animal distribution">
+            <img src="assets/images/aac1.webp" loading="lazy" alt="Spreadsheet showing first few database records">
+            <img src="assets/images/aac2.webp" loading="lazy" alt="Geolocation map showing the Austin, TX area">
+            <img src="assets/images/aac4.webp" loading="lazy" alt="Unit test results with all 16 tests passed" style="width: 700px; height: auto;">
+            <img src="assets/images/aac3.webp" loading="lazy" alt="AAC database and pie chart of animal distribution">
         </div>
 
         <div class="project-links">
@@ -1468,8 +1468,8 @@
         </ul>
 
         <div class="project-image-card">
-            <img src="assets/images/data2.png" loading="lazy" style="width: 100%; max-width: 1280px;" alt="Screenshot of the script's output line graph with positive-curved trend line">
-            <img src="assets/images/data1.png" loading="lazy" style="width: 100%; max-width: 1280px;" alt="Certification for Data Analysis awarded to Matthew Pool">        
+            <img src="assets/images/data2.webp" loading="lazy" style="width: 100%; max-width: 1280px;" alt="Screenshot of the script's output line graph with positive-curved trend line">
+            <img src="assets/images/data1.webp" loading="lazy" style="width: 100%; max-width: 1280px;" alt="Certification for Data Analysis awarded to Matthew Pool">        
         </div>
 
         <div class="project-links">
@@ -1491,9 +1491,9 @@
         </ul>        
 
         <div class="project-image-card">
-            <img src="assets/images/stat1.png" loading="lazy" alt="Null hypothesis, alternative hypothesis, and level of significance">
-            <img src="assets/images/stat2.png" loading="lazy" alt="OLS Regression Results">
-            <img src="assets/images/stat3.png" loading="lazy" alt="Scatterplot graph showing the correlation of 0.9072 between Elo and total number of wins, with a p-value of 0.0">
+            <img src="assets/images/stat1.webp" loading="lazy" alt="Null hypothesis, alternative hypothesis, and level of significance">
+            <img src="assets/images/stat2.webp" loading="lazy" alt="OLS Regression Results">
+            <img src="assets/images/stat3.webp" loading="lazy" alt="Scatterplot graph showing the correlation of 0.9072 between Elo and total number of wins, with a p-value of 0.0">
         </div>
 
         <div class="project-links">
@@ -1522,11 +1522,11 @@
         </ul>
 
         <div class="project-image-card">
-            <img src="assets/images/eco-1.png" loading="lazy" alt="Unemployment Rates from July 2017 to June 2018">
-            <img src="assets/images/eco-2.png" loading="lazy" alt="Consumer Price Index from June 2017 to June 2018">
-            <img src="assets/images/eco-3.png" loading="lazy" alt="GDP Change from 2016 Q3 to 2018 Q2">
-            <img src="assets/images/eco-4.png" loading="lazy" alt="US Inflation Rates from 2012 to 2017">
-            <img src="assets/images/eco-5.png" loading="lazy" alt="Purchasing Managers' Index from August 2017 to July 2018">
+            <img src="assets/images/eco-1.webp" loading="lazy" alt="Unemployment Rates from July 2017 to June 2018">
+            <img src="assets/images/eco-2.webp" loading="lazy" alt="Consumer Price Index from June 2017 to June 2018">
+            <img src="assets/images/eco-3.webp" loading="lazy" alt="GDP Change from 2016 Q3 to 2018 Q2">
+            <img src="assets/images/eco-4.webp" loading="lazy" alt="US Inflation Rates from 2012 to 2017">
+            <img src="assets/images/eco-5.webp" loading="lazy" alt="Purchasing Managers' Index from August 2017 to July 2018">
         </div>
 
         <div class="project-links">
@@ -1556,7 +1556,7 @@
         </ul>
         
         <div class="project-image-card">
-            <img src="assets/images/database-erd.png" loading="lazy" alt="Quantigration Database ERD" style="width: 100%; height: auto; border-radius: 8px;">
+            <img src="assets/images/database-erd.webp" loading="lazy" alt="Quantigration Database ERD" style="width: 100%; height: auto; border-radius: 8px;">
         </div>
 
         <div class="project-links">
@@ -1579,8 +1579,8 @@
                 and mapping out various UML diagrams for developer hand-off.</li>
         </ul>
         <div class="project-image-card">
-            <img src="assets/images/system2.png" loading="lazy" alt="UML Activity Diagram for log in/log out ">
-            <img src="assets/images/system3.png" loading="lazy" alt="UML Sequence Diagram for contact us">
+            <img src="assets/images/system2.webp" loading="lazy" alt="UML Activity Diagram for log in/log out ">
+            <img src="assets/images/system3.webp" loading="lazy" alt="UML Sequence Diagram for contact us">
         </div>
 
         <div class="project-links">
@@ -1629,7 +1629,7 @@
             </div>
 
             <div class="project-visual">
-                <img src="assets/images/security-1.png" 
+                <img src="assets/images/security-1.webp" 
                     loading="lazy"
                     alt="Table of Security Vulnerabilities and Remediation Status" 
                     style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); border: 1px solid #ddd;">
@@ -1693,7 +1693,7 @@
             </div>
 
             <div class="project-visual">
-                <img src="assets/images/scrum-sdlc.png" 
+                <img src="assets/images/scrum-sdlc.webp" 
                     loading="lazy"
                     alt="Scrum Software Development Lifecycle Diagram" 
                     style="width: 100%; border: 1px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); border: 1px solid #ddd;">
@@ -1730,7 +1730,7 @@
         </ul>
 
         <div class="project-image-card">
-            <img src="assets/images/algo-1.png"
+            <img src="assets/images/algo-1.webp"
                 loading="lazy"
                 alt="C++ Code Snippet showing recursive Merge Sort implementation" 
                 style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
@@ -1764,7 +1764,7 @@
                 </ul>
                 
                 <div class="project-visual">
-                    <img src="assets/images/service-tests-1.png" 
+                    <img src="assets/images/service-tests-1.webp" 
                         loading="lazy"
                         alt="JUnit 5 Test Runner showing 100% passing tests" 
                         style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); border: 1px solid #ddd;">
