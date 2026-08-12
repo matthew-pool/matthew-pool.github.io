@@ -586,6 +586,80 @@ const modal = document.getElementById("project-modal");
   });
 
   // =========================================================================
+  // CONTACT MODAL SYSTEM
+  // =========================================================================
+
+  window.openContactModal = function () {
+    document.getElementById('contactModal').classList.add('show');
+    document.body.style.overflow = 'hidden'; // Prevents background scrolling
+
+    // Set up form validation listener when opened
+    const contactForm = document.getElementById('contactForm');
+    const sendBtn = document.getElementById('sendContactBtn');
+    
+    if (contactForm && sendBtn) {
+        sendBtn.disabled = true; // Ensure button starts disabled
+        contactForm.addEventListener('input', validateContactForm);
+    }
+  };
+
+  window.closeContactModal = function () {
+    document.getElementById('contactModal').classList.remove('show');
+    document.body.style.overflow = ''; // Restores background scrolling
+    
+    // Clear the form upon closing
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.reset();
+        contactForm.removeEventListener('input', validateContactForm);
+    }
+  };
+
+  window.cancelContactModal = function (event) {
+    if (event) event.preventDefault();
+    
+    // Instantly close the modal
+    window.closeContactModal();
+  };
+
+  function validateContactForm() {
+    const name = document.getElementById('senderName').value.trim();
+    const email = document.getElementById('senderEmail').value.trim();
+    const message = document.getElementById('message').value.trim();
+    const sendBtn = document.getElementById('sendContactBtn');
+    
+    // Basic email format validation
+    const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    
+    // Enable button only if all fields are correctly populated
+    if (name && isEmailValid && message) {
+        sendBtn.disabled = false;
+        sendBtn.style.opacity = '1';
+        sendBtn.style.cursor = 'pointer';
+    } else {
+        sendBtn.disabled = true;
+        sendBtn.style.opacity = '0.5';
+        sendBtn.style.cursor = 'not-allowed';
+    }
+  }
+
+  window.sendContactMessage = function (event) {
+    event.preventDefault(); // Prevent standard HTTP form submission
+    
+    const name = document.getElementById('senderName').value.trim();
+    const message = document.getElementById('message').value.trim();
+    
+    // Format the subject and body for the email client
+    const encodedSubject = encodeURIComponent(`CONTACT-MESSAGE - ${name}`);
+    const encodedBody = encodeURIComponent(message);
+    
+    // Trigger the user's default email client
+    window.location.href = `mailto:mathyou.me@gmail.com?subject=${encodedSubject}&body=${encodedBody}`;
+    
+    window.closeContactModal();
+  };
+  
+  // =========================================================================
   // 7. LIGHTBOX SYSTEM
   // =========================================================================
   

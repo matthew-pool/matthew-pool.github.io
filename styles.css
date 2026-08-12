@@ -465,6 +465,67 @@ body.dark-mode .toggle-icon.moon {
     opacity: 1;
 }
 
+/* ========================================
+   CONTACT FORM MODAL STYLES
+======================================== */
+.contact-modal-body {
+    max-width: 500px; /* Keeps the form sleek and readable */
+    padding: 35px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-heading);
+}
+
+body.dark-mode .form-group label {
+    color: #e0e0e0;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid var(--border-card);
+    background-color: var(--bg-card);
+    color: var(--text-main);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+/* Light Mode Focus Ring */
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+/* Dark Mode Input Styles */
+body.dark-mode .form-group input,
+body.dark-mode .form-group textarea {
+    background-color: #1f1f1f;
+    border-color: #444;
+    color: #e0e0e0;
+}
+
+/* Dark Mode Focus Ring */
+body.dark-mode .form-group input:focus,
+body.dark-mode .form-group textarea:focus {
+    border-color: #a855f7;
+    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.2);
+}
+
 /* Directions popup */
 .directions-popup-overlay {
 	display: none;

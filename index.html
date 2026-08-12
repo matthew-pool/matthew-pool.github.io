@@ -161,24 +161,37 @@
             <div class="overview-narrative">
                 <p class="overview-narrative-lead"><strong>I am a Software Engineer and Technical Solutions Specialist</strong>, managing the complete product lifecycle — from robust backend architecture and accessible WCAG 2.2 AA-compliant visual design to reliable post-deployment support.</p>
                 <p>My technical foundation is backed by a Summa Cum Laude B.S. in Computer Science and nearly a decade of combined experience across technical support, face-to-face customer service, and ranking as a top 1% performer in outbound B2B/B2C sales for Fortune 500 clients like AT&T, American Express, and QVC.</p>
-                <p>I deliver scalable solutions to solve real business problems from the ground up, utilizing continues integration and deployment pipelines and artificial intelligence to boost productivity and translate complex technical requirements into intuitive high-performing products for both businesses and consumers.</p>
+                <p>Whether integrating with an engineering team or partnering directly with business clients, I deliver scalable solutions to solve real business problems from the ground up. By utilizing continuous integration and deployment pipelines and artificial intelligence to boost productivity, I translate complex technical requirements into intuitive, high-performing products.</p>
             </div>
 
                 <!-- Right Column: The Highlights (App.Buddy) -->
                 <div class="overview-highlights-wrapper">
                     <div class="overview-highlights">
-                        <p>As the founder of <em><b>App.Buddy</b></em>, this technical business acumen and passion for innovation is what drives the creation of proprietary software, including the following production-ready applications:</p>
-                        
+                        <p>As the founder of <em><b>App.Buddy</b></em>, my technical business acumen and passion for innovation drive the creation of proprietary, production-ready software, including:</p>
+
                         <ul>
-                            <li><strong>Native Android & ML:</strong> Architecting "Flick" — leveraging the Archive.org API via a custom machine-learning recommendation engine.</li>
-                            <li><strong>Python & OOP:</strong> Building "Wormhole" — a multithreaded text adventure utilizing event-driven state management.</li>
-                            <li><strong>Modern UI Development:</strong> "The Existence Paradox" — an interactive React, TypeScript, and Vite SPA featuring complex state hooks.</li>
-                            <li><strong>Game Design & Psychology:</strong> Achieving a <strong>Top 0.003% global ranking</strong> in Super Mario Maker (CheezSauce). By leveraging gameplay metrics, I captured 133,000+ player stars and a 20% engagement rate.</li>
+                            <li><strong>Flick (Native Android & ML):</strong> Architecting a video-streaming application leveraging the Archive.org API via a custom machine-learning recommendation engine.</li>
+                            <li><strong>Wormhole (Python & OOP):</strong> Engineering a multithreaded text adventure utilizing event-driven state management.</li>
+                            <li><strong>The Existence Paradox (Modern UI):</strong> Developing an interactive React, TypeScript, and Vite SPA featuring complex state hooks.</li>
                         </ul>
                     </div>
                 </div>
             </div>
-            
+
+            <!-- Separated Contact Card -->
+            <div class="cta-contact-card" style="background: rgba(128, 128, 128, 0.1); border: 1px solid rgba(128, 128, 128, 0.2); border-radius: 8px; padding: 15px 20px; max-width: 700px; margin: 30px auto 10px auto; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05); display: flex; flex-direction: column; align-items: center; gap: 12px;">
+                
+                <p style="margin: 0; font-size: 1.15rem; font-weight: 300; color: var(--text-muted);">
+                    Looking for a custom software solution or technical assistance?
+                </p>
+
+                <!-- The Button (using your btn-try class for the gradient) -->
+                <button onclick="openContactModal()" class="btn-try" style="margin: 0; border: none; cursor: pointer; padding: 8px 28px; font-size: 1rem;">
+                    Let's connect!
+                </button>
+            </div>
+
+            <!-- Navigational Anchor -->
             <div class="app-cta gradient-text" style="margin-top: 20px;">
                 Check out Flick, below! 👇
             </div>
@@ -1802,6 +1815,55 @@
             <button class="lightbox-nav lightbox-prev" onclick="changeLightboxImage(-1)" aria-label="Previous image">&#8249;</button>
             <button class="lightbox-nav lightbox-next" onclick="changeLightboxImage(1)" aria-label="Next image">&#8250;</button>
             <div id="lightbox-caption" class="lightbox-caption" aria-live="polite"></div>
+        </div>
+    </div>
+
+    <!-- Contact Form Modal -->
+    <div id="contactModal" class="project-modal">
+        <div class="project-modal-body contact-modal-body" style="text-align: left; max-width: 440px; padding: 30px;">
+            <button class="project-modal-close" onclick="cancelContactModal(event)" style="top: 15px; right: 15px;">&times;</button>
+            
+            <!-- Header Wrapper (Relative positioning allows true center) -->
+            <div style="position: relative; text-align: center; margin-bottom: 20px;">
+                <!-- App.Buddy Logo (Pinned to the top left) -->
+                <img src="assets/images/app-buddy-logo.svg" alt="App.Buddy Logo" style="width: 32px; height: 32px; position: absolute; left: 0; top: 0; margin: 0; display: block;">
+                
+                <!-- Added margin-top: 8px to push the text block down slightly -->
+                <h3 style="margin: 8px 0 5px 0; padding: 0 40px;">Get in Touch</h3>
+                
+                <!-- Added padding: 0 45px to create a permanent safe-zone away from the logo -->
+                <p style="color: var(--text-muted); margin: 0; line-height: 1.4; font-size: 0.95rem; padding: 0 45px;">
+                    Fill out the form below and I will get back to you as soon as possible.
+                </p>
+            </div>
+            
+            <form id="contactForm">
+                <div class="form-group" style="margin-bottom: 15px;">
+                    <label for="senderName" style="margin-bottom: 5px;">Name</label>
+                    <input type="text" id="senderName" name="name" required placeholder="John Doe" style="padding: 10px 12px;">
+                </div>
+                <div class="form-group" style="margin-bottom: 15px;">
+                    <label for="senderEmail" style="margin-bottom: 5px;">Email</label>
+                    <input type="email" id="senderEmail" name="email" required placeholder="john@example.com" style="padding: 10px 12px;">
+                </div>
+                <div class="form-group" style="margin-bottom: 15px;">
+                    <label for="message" style="margin-bottom: 5px;">Message</label>
+                    <textarea id="message" name="message" rows="4" required placeholder="How can I help you?" style="padding: 10px 12px;"></textarea>
+                </div>
+                
+                <!-- Buttons container aligned to the right -->
+                <div style="display: flex; gap: 12px; margin-top: 25px; justify-content: flex-end;">
+                    <!-- Stylized Cancel Button -->
+                    <button type="button" onclick="cancelContactModal(event)" style="background: transparent; color: var(--text-main); border: 2px solid var(--border-card); border-radius: 25px; padding: 8px 20px; font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: all 0.3s ease;">
+                        Cancel
+                    </button>
+                    
+                    <!-- Stylized Send Button (Inherits your .btn-try gradient) -->
+                    <button type="button" id="sendContactBtn" onclick="sendContactMessage(event)" class="btn-try" style="margin: 0; padding: 8px 20px; font-size: 0.95rem; width: auto; opacity: 0.5; cursor: not-allowed; border: none;" disabled>
+                        Send Message
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 
