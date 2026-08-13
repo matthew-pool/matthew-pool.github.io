@@ -99,11 +99,11 @@ body.dark-mode {
     --text-main: #e0e0e0;
 
     /* Tab Button Colors */
-	--tab-bg: #2c2c2c;              /* Matches your dark cards */
+	--tab-bg: #2c2c2c;              /* Matches dark cards */
     --tab-text: #a0a0a0;            /* Muted gray text */
     --tab-bg-hover: #3a3a3a;        /* Slightly lighter on hover */
     --tab-text-hover: #ffffff;      /* Bright white on hover */
-    --tab-bg-active: #202020;       /* Perfectly matches your dark tab content background! */
+    --tab-bg-active: #202020;       /* Matches dark tab content background */
     --tab-text-active: #c084fc; 
     --tab-border-active: #c084fc;
 
@@ -147,13 +147,13 @@ html {
 }
 
 body {
-    /* Your Layout Reset */
+    /* Layout Reset */
     margin: 0;
     padding: 0;
     width: 100%;
     overflow-anchor: none;
     
-    /* Your New Theme Variables */
+    /* Theme Variables *//
     background-color: var(--bg-main);
     color: var(--text-main);
     font-family: 'Inter', 'Roboto', Arial, sans-serif;
@@ -173,10 +173,10 @@ body {
     background-repeat: repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat, no-repeat, no-repeat;
     background-size: 190px 190px, 230px 230px, 270px 270px, 210px 210px, 250px 250px, 200px 200px, 240px 240px, 220px 220px, auto, auto;
     
-    /* Locks the orbs and stars to the camera/screen instead of the page height! */
+    /* Locks background elements to the viewport */
     background-attachment: fixed;
     
-    /* Your Smooth Theme Transition */
+    /* Theme Transition */
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -794,7 +794,7 @@ hr {
 a {
     color: var(--link-color);
     text-decoration: none;
-    transition: color 0.3s ease; /* Added a smooth fade for you! */
+    transition: color 0.3s ease; /* Smooth hover transition */
 }
 
 a:hover {
@@ -909,7 +909,6 @@ body.dark-mode .overview-highlights {
     margin: 0 auto 30px auto;
 }
 
-/* Add a small colored underline to the header */
 .section-header::after {
 	content: '';
 	position: absolute;
@@ -945,7 +944,7 @@ body.dark-mode hr {
 }
 
 .tab-button {
-    /* Your Layout Rules */
+    /* Layout Rules */
     flex: 1;
     max-width: none;
     padding: 18px 30px;
@@ -2320,7 +2319,7 @@ body.dark-mode .project-card::after {
     border-radius: 20px;
     transform: rotate(4deg);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    /* Uses your card background variable to look like a cutout sticker */
+    /* Applies card background variable for cutout effect */
     border: 3px solid var(--bg-card); 
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
     pointer-events: none; /* Allows clicks to pass through to the card */
@@ -3174,7 +3173,7 @@ a.theme-action-btn:hover svg {
 /* =========================================
    DARK MODE ELEVATION & DEPTH CORRECTIONS
    ========================================= */
-/* 3. Recessed / "Terminal" Cards (Fixing the #010409 Black Holes) */
+/* Recessed Terminal Cards */
 body.dark-mode .dark-flick-header-card,
 body.dark-mode .dark-info-card,
 body.dark-mode .image-card:has(.ci-images),
@@ -3188,18 +3187,18 @@ body.dark-mode .content-card:has(img[src*="figma-"]) {
     DARK MODE FIGMA IMAGE OVERRIDE
 /* ========================================= */
 
-/* 1. Hide the dark mode image by default (assuming light mode is default) */
+/* Hide dark mode image by default */
 .theme-img-dark {
     display: none;
 }
 
 /* 2. Ensure the light mode image is visible by default */
 .theme-img-light {
-    display: inline-block; /* Or 'block' depending on how you want them centered */
+    display: inline-block;
 }
 
 /* 3. When dark mode is active, swap the display properties */
-/* NOTE: Change 'body.dark-mode' to match the exact class or attribute your JavaScript uses! */
+
 body.dark-mode .theme-img-light {
     display: none;
 }
@@ -3462,7 +3461,7 @@ body.dark-mode .theme-img-dark {
         transform: translateX(38px);
     }
 
-    /* ADD THESE: Mobile mathematical centers */
+    /* Mobile mathematical centers */
     .toggle-icon.sun {
         left: 9px;
     }

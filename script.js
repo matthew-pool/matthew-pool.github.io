@@ -39,7 +39,7 @@
     });
   };
 
-// Bind the event listener dynamically to the ID you added!
+  // Bind event listener for the directions popup
   const directionsBtn = document.getElementById("directions-btn");
   if (directionsBtn) {
     directionsBtn.addEventListener("click", function() {
