@@ -656,6 +656,21 @@ body.dark-mode .web-badge:hover {
 	font-family: sans-serif;
 }
 
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 10px;
+    background: #667eea;
+    color: #ffffff;
+    padding: 10px 16px;
+    border-radius: 6px;
+    z-index: 100001;
+    transition: top 0.2s ease;
+}
+.skip-link:focus {
+    top: 10px;
+}
+
 /* Subtle, on-brand glow for the Play Store badge on hover */
 .play-link .play-badge {
     transition: transform 0.3s ease, filter 0.3s ease;
@@ -2639,6 +2654,12 @@ body.dark-mode .dark-info-card {
 
 .uh-email {
     padding-right: 26px;
+}
+
+.uh-email button {
+    min-width: 24px;
+    min-height: 24px;
+    padding: 6px;
 }
 
 .quick-links-bar {

@@ -41,6 +41,8 @@
 </head>
 
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
     <div class="theme-toggle-wrapper">
         <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
             <span class="toggle-track">
@@ -111,10 +113,10 @@
         </div>
 
         <div class="tab-container">
-            <div class="tab-nav">
-                <button class="tab-button active" aria-label="Home tab" onclick="openTab(event, 'home')">Home</button>
-                <button class="tab-button" aria-label="Projects tab" onclick="openTab(event, 'projects')">Projects</button> 
-                <button class="tab-button" aria-label="Legacy Refactor tab" onclick="openTab(event, 'refactor')">Legacy Refactor</button>
+            <div class="tab-nav" role="tablist" aria-label="Portfolio sections">
+                <button class="tab-button active" role="tab" aria-selected="true" aria-controls="home" id="tab-home" onclick="openTab(event, 'home')">Home</button>
+                <button class="tab-button" role="tab" aria-selected="false" aria-controls="projects" id="tab-projects" onclick="openTab(event, 'projects')">Projects</button> 
+                <button class="tab-button" role="tab" aria-selected="false" aria-controls="refactor" id="tab-refactor" onclick="openTab(event, 'refactor')">Legacy Refactor</button>
             </div>
         </div>
 
@@ -149,7 +151,7 @@
 		</svg>
 	</div>
 
-    <main>
+    <main id="main-content">
         <div id="home" class="tab-content active">
 
             <br>
@@ -400,8 +402,8 @@
                     <!--
                     <h3 style="color: #888888; opacity: 0.6; user-select: none;">Try it now before the official release.</h3>
                     -->
-                    <span style="color: #ff6b6b; font-weight: 700; letter-spacing: 0.5px;">NO LONGER ACCEPTING TESTERS</span>
-                    
+                    <span style="color: #EE392F; font-weight: 700; font-size: 19px; letter-spacing: 0.5px;">NO LONGER ACCEPTING TESTERS</span>
+
                     <br>
                     <a href="javascript:void(0);" class="play-link" tabindex="-1" style="pointer-events: none; cursor: default;">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" loading="lazy" alt="Get it on Google Play (Unavailable)" class="play-badge" style="filter: grayscale(100%); opacity: 0.4;">
@@ -409,7 +411,13 @@
                 </div>
             </div>
                         
-            <div id="directionsPopup" class="directions-popup-overlay" onclick="hideDirections()">
+            <div id="directionsPopup" 
+                class="directions-popup-overlay" 
+                onclick="hideDirections()" 
+                onkeydown="if(event.key==='Enter'||event.key==='Escape'){hideDirections()}" 
+                role="button" 
+                tabindex="0" 
+                aria-label="Close directions popup">
                 <div class="directions-popup">
                     <strong><i>Try Flick!</i></strong><br>
                     <ol>
@@ -1040,11 +1048,10 @@
         </div>
     </main>
 
-    <div id="project-modal" class="project-modal">
+    <div id="project-modal" class="project-modal" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
         <div class="project-modal-body">
-            <button class="project-modal-close" onclick="closeProjectModal()" aria-label="Close">×</button>
-            <div id="project-modal-content">
-                </div>
+            <button class="project-modal-close" onclick="closeProjectModal()" aria-label="Close modal">&times;</button>
+            <div id="project-modal-content"></div>
         </div>
     </div>
 
