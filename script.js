@@ -538,9 +538,14 @@
     if (!modal || !modalContent || !detailsElement) return;
 
     modalContent.innerHTML = detailsElement.innerHTML;
+    
+    const modalTitle = modalContent.querySelector('h3');
+    if (modalTitle) modalTitle.id = 'project-modal-title';
+    
     modal.classList.add("show");
     document.body.style.overflow = "hidden";
-    
+    trapFocus(modal);
+
     const modalBody = modal.querySelector('.project-modal-body');
     
     requestAnimationFrame(() => {
@@ -585,13 +590,55 @@ const modal = document.getElementById("project-modal");
     if (e.key === "Escape") window.closeProjectModal();
   });
 
+  // Utility: Trap focus inside a specific element
+  function trapFocus(modalElement) {
+    // Select all focusable elements inside the modal
+    const focusableElements = modalElement.querySelectorAll(
+      'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    );
+    
+    if (focusableElements.length === 0) return;
+
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+
+    // Focus the first element automatically when the modal opens
+    firstElement.focus();
+
+    // Remove any previous listener to prevent duplicates
+    modalElement.removeEventListener('keydown', modalElement._focusTrap);
+
+    // Create the listener
+    modalElement._focusTrap = function(e) {
+      const isTabPressed = e.key === 'Tab' || e.keyCode === 9;
+      if (!isTabPressed) return;
+
+      if (e.shiftKey) { // Shift + Tab
+        if (document.activeElement === firstElement) {
+          lastElement.focus();
+          e.preventDefault();
+        }
+      } else { // Tab
+        if (document.activeElement === lastElement) {
+          firstElement.focus();
+          e.preventDefault();
+        }
+      }
+    };
+
+    // Attach the listener
+    modalElement.addEventListener('keydown', modalElement._focusTrap);
+  }
+
   // =========================================================================
   // CONTACT MODAL SYSTEM
   // =========================================================================
 
   window.openContactModal = function () {
-    document.getElementById('contactModal').classList.add('show');
-    document.body.style.overflow = 'hidden'; // Prevents background scrolling
+    const modal = document.getElementById('contactModal');
+    modal.classList.add('show');
+    document.body.style.overflow = 'hidden';
+    trapFocus(modal);
 
     // Set up form validation listener when opened
     const contactForm = document.getElementById('contactForm');

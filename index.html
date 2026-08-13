@@ -126,7 +126,7 @@
         </div>
     </div>
 
-	<div id="bird" class="bird" aria-label="Interactive animated bird" role="button" tabindex="0">
+    <div id="bird" class="bird" aria-hidden="true">
         <div id="bird-tooltip" class="bird-tooltip">Tweet Tweet</div>
         <svg width="60" height="60" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
 			<g id="legs">
@@ -152,7 +152,7 @@
 	</div>
 
     <main id="main-content">
-        <div id="home" class="tab-content active">
+        <div id="home" class="tab-content active" role="tabpanel" aria-labelledby="tab-home">
 
             <br>
             
@@ -483,7 +483,7 @@
 
         </div>
 
-        <div id="projects" class="tab-content">
+        <div id="projects" class="tab-content" role="tabpanel" aria-labelledby="tab-projects">
             <br>
             <h2 class="section-header">Projects</h2>
 
@@ -918,7 +918,7 @@
             </div>
         </div>
 
-        <div id="refactor" class="tab-content">
+        <div id="refactor" class="tab-content" role="tabpanel" aria-labelledby="tab-refactor">
             <br>
             <h2 class="section-header">Legacy Refactor: Rescue Animal System</h2>
             <p class="lead">This project involved taking a legacy Java command-line application that I had originally developed at the beginning of my Computer Science program and modernizing it with industry-standard practices.</p>
@@ -1818,7 +1818,7 @@
     </div>
 
     <!-- Contact Form Modal -->
-    <div id="contactModal" class="project-modal">
+    <div id="contactModal" class="project-modal" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
         <div class="project-modal-body contact-modal-body" style="text-align: left; max-width: 440px; padding: 30px;">
             <button class="project-modal-close" onclick="cancelContactModal(event)" style="top: 15px; right: 15px;">&times;</button>
             
