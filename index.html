@@ -1,5 +1,5 @@
 <!--
-    @project Portfolio Website
+    @project Portfolio Website (WCAG 2.2 AA-compliant with zero dependencies)
     @author Matthew Pool
     @filename index.html
 -->
@@ -18,7 +18,6 @@
     <meta name="author" content="Matthew Pool">
     
     <!-- Open Graph / LinkedIn / Facebook -->
-    <!-- NOTE: PNG format for maximum compatibility with social media link scrapers -->
     <meta property="og:title" content="Matthew Pool - Software Engineer & Product Designer">
     <meta property="og:description" content="Software Engineer specializing in mobile apps, web development, and ML. B.S. in Computer Science, Summa Cum Laude (3.99 GPA)">
     <meta property="og:type" content="website">
@@ -67,11 +66,11 @@
 
     <div class="unified-header">
         <div class="unified-header-inner">
-            <h1 class="uh-name" style="margin: 0; font-size: inherit; font-weight: normal;"><b>Matthew Pool</b></h1>
+            <h1 class="uh-name m-0 text-inherit font-weight-normal"><b>Matthew Pool</b></h1>
             <span class="uh-divider">|</span>
-            <span class="uh-email" style="position:relative;">
+            <span class="uh-email relative">
                 <a href="mailto:mathyou.me@gmail.com">mathyou.me@gmail.com</a>
-                <button onclick="copyEmail(this)" aria-label="Copy email address" style="background:none; border:none; cursor:pointer; padding:4px; display:inline-flex; align-items:center; opacity:0.7; transition:opacity 0.2s; position:absolute; top:50%; transform:translateY(-50%); margin-left:4px;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
+                <button data-action="copy-email" aria-label="Copy email address" class="btn-copy-email left-aligned" title="Copy email">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.8)" stroke-width="2" aria-hidden="true">
                             <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                         <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
@@ -87,10 +86,10 @@
     <div class="quick-links-bar">
         <a href="https://github.com/matthew-pool" target="_blank" rel="noopener noreferrer" class="quick-link">GitHub</a>
         <a href="https://linkedin.com/in/matthewpool" target="_blank" rel="noopener noreferrer" class="quick-link">LinkedIn</a>
-        <a href="assets/documents/Matthew_Pool_Resume.pdf" class="quick-link" id="resume-btn" onclick="downloadResume(event)">
-            <span style="display:flex; flex-direction:column; align-items:center; gap:1px;">
-                <span style="font-size:1em; font-weight:700; line-height:1.2;">Resume</span>
-                <span id="resume-theme-label" style="font-size:0.65em; font-weight:400; opacity:0.75; line-height:1.2; letter-spacing:0.18em;">LIGHT</span>
+        <a href="assets/documents/resume-light.pdf" class="quick-link" id="resume-btn">
+            <span class="flex flex-col items-center gap-1">
+                <span class="resume-btn-title">Resume</span>
+                <span id="resume-theme-label" class="resume-btn-theme">LIGHT</span>
             </span>
         </a>
     </div>
@@ -104,7 +103,6 @@
             />
         </header>
 
-        <!-- Space above top shelf -->
         <div class="shelf-spacer"></div>
 
         <div class="shelf-container">
@@ -114,9 +112,9 @@
 
         <div class="tab-container">
             <div class="tab-nav" role="tablist" aria-label="Portfolio sections">
-                <button class="tab-button active" role="tab" aria-selected="true" aria-controls="home" id="tab-home" onclick="openTab(event, 'home')">Home</button>
-                <button class="tab-button" role="tab" aria-selected="false" aria-controls="projects" id="tab-projects" onclick="openTab(event, 'projects')">Projects</button> 
-                <button class="tab-button" role="tab" aria-selected="false" aria-controls="refactor" id="tab-refactor" onclick="openTab(event, 'refactor')">Legacy Refactor</button>
+                <button class="tab-button active" role="tab" aria-selected="true" aria-controls="home" id="tab-home" data-tab-target="home">Home</button>
+                <button class="tab-button" role="tab" aria-selected="false" aria-controls="projects" id="tab-projects" data-tab-target="projects">Projects</button> 
+                <button class="tab-button" role="tab" aria-selected="false" aria-controls="refactor" id="tab-refactor" data-tab-target="refactor">Legacy Refactor</button>
             </div>
         </div>
 
@@ -153,24 +151,19 @@
 
     <main id="main-content">
         <div id="home" class="tab-content active" role="tabpanel" aria-labelledby="tab-home">
-
             <br>
-            
             <h2 class="section-header">Overview</h2>
             <div class="about-intro-layout">
                 
-            <!-- Left Column: The Narrative -->
-            <div class="overview-narrative">
-                <p class="overview-narrative-lead"><strong>I am a Software Engineer and Technical Solutions Specialist</strong>, managing the complete product lifecycle — from robust backend architecture and accessible WCAG 2.2 AA-compliant visual design to reliable post-deployment support.</p>
-                <p>My technical foundation is backed by a Summa Cum Laude B.S. in Computer Science and nearly a decade of combined experience across technical support, face-to-face customer service, and ranking as a top 1% performer in outbound B2B/B2C sales for Fortune 500 clients like AT&T, American Express, and QVC.</p>
-                <p>Whether integrating with an engineering team or partnering directly with business clients, I deliver scalable solutions to solve real business problems from the ground up. By utilizing continuous integration and deployment pipelines and artificial intelligence to boost productivity, I translate complex technical requirements into intuitive, high-performing products.</p>
-            </div>
+                <div class="overview-narrative">
+                    <p class="overview-narrative-lead"><strong>I am a Software Engineer and Technical Solutions Specialist</strong>, managing the complete product lifecycle — from robust backend architecture and accessible WCAG 2.2 AA-compliant visual design to reliable post-deployment support.</p>
+                    <p>My technical foundation is backed by a Summa Cum Laude B.S. in Computer Science and nearly a decade of combined experience across technical support, face-to-face customer service, and ranking as a top 1% performer in outbound B2B/B2C sales for Fortune 500 clients like AT&T, American Express, and QVC.</p>
+                    <p>Whether integrating with an engineering team or partnering directly with business clients, I deliver scalable solutions to solve real business problems from the ground up. By utilizing continuous integration and deployment pipelines and artificial intelligence to boost productivity, I translate complex technical requirements into intuitive, high-performing products.</p>
+                </div>
 
-                <!-- Right Column: The Highlights (App.Buddy) -->
                 <div class="overview-highlights-wrapper">
                     <div class="overview-highlights">
                         <p>As the founder of <em><b>App.Buddy</b></em>, my technical business acumen and passion for innovation drive the creation of proprietary, production-ready software, including:</p>
-
                         <ul>
                             <li><strong>Flick (Native Android & ML):</strong> Architecting a video-streaming application leveraging the Archive.org API via a custom machine-learning recommendation engine.</li>
                             <li><strong>Wormhole (Python & OOP):</strong> Engineering a multithreaded text adventure utilizing event-driven state management.</li>
@@ -181,20 +174,16 @@
             </div>
 
             <!-- Separated Contact Card -->
-            <div class="cta-contact-card" style="background: rgba(128, 128, 128, 0.1); border: 1px solid rgba(128, 128, 128, 0.2); border-radius: 8px; padding: 15px 20px; max-width: 700px; margin: 30px auto 10px auto; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05); display: flex; flex-direction: column; align-items: center; gap: 12px;">
-                
-                <p style="margin: 0; font-size: 1.15rem; font-weight: 300; color: var(--text-muted);">
+            <div class="enhanced-contact-card flex flex-col items-center gap-12 text-center relative max-w-700 m-auto mt-30 mb-10">
+                <p class="contact-card-text">
                     Looking for a custom software solution or technical assistance?
                 </p>
-
-                <!-- Connect Button -->
-                <button onclick="openContactModal()" class="btn-try" style="margin: 0; border: none; cursor: pointer; padding: 8px 28px; font-size: 1rem;">
+                <button data-action="open-contact" class="btn-try btn-connect">
                     Let's connect!
                 </button>
             </div>
 
-            <!-- Navigational Anchor -->
-            <div class="app-cta gradient-text" style="margin-top: 20px;">
+            <div class="app-cta gradient-text mt-20">
                 Check out Flick, below! 👇
             </div>
 
@@ -206,7 +195,7 @@
                     </div>
                     <p class="flick-subtitle"><i>Designer/Engineer: Matthew Pool</i></p>
                 </div>
-                <img src="assets/images/flick/banner.webp" style="width: 100%; max-width: 1280px; margin: 20px 0; border: 2px solid #c8c8c8;" loading="lazy" alt="Flick app banner featuring movie elements like film, popcorn, and movie-style spotlights shining at the phrase 'Flick'">
+                <img src="assets/images/flick/banner.webp" class="flick-banner-img w-full max-w-1280" loading="lazy" alt="Flick app banner featuring movie elements like film, popcorn, and movie-style spotlights shining at the phrase 'Flick'">
             </div>
             
             <hr>
@@ -221,7 +210,7 @@
 
             <br>
 
-            <div class="project-links" style="justify-content: center;">
+            <div class="project-links justify-center">
                 <a href="assets/documents/flick-user-guide.pdf" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
                     <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
@@ -240,54 +229,45 @@
 
             <hr>
 
-            <h2 style="padding-top: 10px;">Screenshots</h2>
+            <h2 class="pt-10">Screenshots</h2>
             <div class="image-card">
                 <div class="screenshot-grid">
                     <figure class="screenshot-item">
                         <figcaption>Custom Splash Screen</figcaption>
                         <img src="assets/images/flick/screen14.webp" loading="lazy" alt="Preparing app screen">
                     </figure>
-
                     <figure class="screenshot-item">
                         <figcaption>Initial Loading</figcaption>
                         <img src="assets/images/flick/screen4.webp" loading="lazy" alt="Traveling back in time screen">
                     </figure>
-
                     <figure class="screenshot-item">
                         <figcaption>Swipe Up Hint</figcaption>
                         <img src="assets/images/flick/screen1.webp" loading="lazy" alt="Up arrow hint">
                     </figure>
-
                     <figure class="screenshot-item">
                         <figcaption>Static TV Effect</figcaption>
                         <img src="assets/images/flick/screen5.webp" loading="lazy" alt="TV static screen">
                     </figure>
-
                     <figure class="screenshot-item">
                         <figcaption>Like Interaction</figcaption>
                         <img src="assets/images/flick/screen7.webp" loading="lazy" alt="Alf video liked">
                     </figure>
-
                     <figure class="screenshot-item">
                         <figcaption>Dislike Interaction</figcaption>
                         <img src="assets/images/flick/screen8.webp" loading="lazy" alt="Video disliked">
                     </figure>
-
                     <figure class="screenshot-item">
                         <figcaption>Left Swipe Hint</figcaption>
                         <img src="assets/images/flick/screen12.webp" loading="lazy" alt="Left arrow hint">
                     </figure>
-
                     <figure class="screenshot-item">
                         <figcaption>End Dialog</figcaption>
                         <img src="assets/images/flick/screen10.webp" loading="lazy" alt="Thank you dialog">
                     </figure>
-
                     <figure class="screenshot-item">
                         <figcaption>Custom Debug Tool</figcaption>
                         <img src="assets/images/flick/screen11.webp" loading="lazy" alt="Similar video screen">
                     </figure>
-
                     <figure class="screenshot-item">
                         <figcaption>Tablet/Fold View</figcaption>
                         <img src="assets/images/flick/tablet.webp" loading="lazy" alt="Flick on tablet">
@@ -295,7 +275,7 @@
                 </div>
             </div>
 
-            <h2 style="margin-bottom: 16px;">Technologies</h2>
+            <h2 class="mb-16">Technologies</h2>
             <div class="tech-specs-container">
                 <div class="tech-spec-item">
                     <span class="spec-label">Design</span>
@@ -307,30 +287,29 @@
                 </div>
             </div>
 
-            <div class="content-card" style="margin-top: 15px">
-                <img src="assets/images/flick/figma-light.svg" loading="lazy" alt="Figma design mockup" class="theme-img-light" style="width: 100%; max-width: 1200px;">
-                
-                <img src="assets/images/flick/figma-dark.svg" loading="lazy" alt="Figma design mockup" class="theme-img-dark" style="width: 100%; max-width: 1200px;">
+            <div class="content-card mt-15">
+                <img src="assets/images/flick/figma-light.svg" loading="lazy" alt="Figma design mockup" class="theme-img-light w-full max-w-1200">
+                <img src="assets/images/flick/figma-dark.svg" loading="lazy" alt="Figma design mockup" class="theme-img-dark w-full max-w-1200">
             </div>
 
-            <div class="content-card" style="margin-top: 15px">         
-                <p style="margin-left: 25px; margin-top: 12px; margin-bottom: 5px; font-size: 19px;"><strong>Core Technologies</strong></p>
-                <ul style="margin-left: 45px; margin-top: 0;">
+            <div class="content-card mt-15">         
+                <p class="ml-25 mt-12 mb-5 tech-list-title"><strong>Core Technologies</strong></p>
+                <ul class="ml-45 mt-0">
                     <li>Kotlin (programming language)</li>
                     <li>Coroutines (asynchronous operations)</li>
                     <li>Hilt (dependency injection)</li>
                 </ul>
                 
-                <p style="margin-left: 25px; margin-top: 10px; margin-bottom: 5px; font-size: 19px; padding-top: 5px;"><strong>State Management & Reactivity</strong></p>
-                <ul style="margin-left: 45px; margin-top: 0;">
+                <p class="ml-25 mt-10 mb-5 pt-5 tech-list-title"><strong>State Management & Reactivity</strong></p>
+                <ul class="ml-45 mt-0">
                     <li>ViewModel (state management)</li>
                     <li>Flow (reactive streams)</li>
                     <li>LiveData (observable data)</li>
                     <li>DataStore (local persistence)</li>
                 </ul>
                 
-                <p style="margin-left: 25px; margin-top: 10px; margin-bottom: 5px; font-size: 19px; padding-top: 5px;"><strong>Software Design Patterns</strong></p>
-                <ul style="margin-left: 45px; margin-top: 0;">
+                <p class="ml-25 mt-10 mb-5 pt-5 tech-list-title"><strong>Software Design Patterns</strong></p>
+                <ul class="ml-45 mt-0">
                     <li>Observer Pattern</li>
                     <li>Object Pool</li>
                     <li>Factory Pattern</li>
@@ -338,8 +317,8 @@
                     <li>State Pattern</li>
                 </ul>
                 
-                <p style="margin-left: 25px; margin-top: 10px; margin-bottom: 5px; font-size: 19px; padding-top: 5px;"><strong>Networking & Backend Services</strong></p>
-                <ul style="margin-left: 45px; margin-top: 0;">
+                <p class="ml-25 mt-10 mb-5 pt-5 tech-list-title"><strong>Networking & Backend Services</strong></p>
+                <ul class="ml-45 mt-0">
                     <li>Retrofit (HTTP networking)</li>
                     <li>Moshi (JSON serialization)</li>
                     <li>Firebase Firestore (cloud database)</li>
@@ -347,14 +326,14 @@
                     <li>Archive.org API (video content)</li>
                 </ul>
                 
-                <p style="margin-left: 25px; margin-top: 10px; margin-bottom: 5px; font-size: 19px; padding-top: 5px;"><strong>Media & UI Resources</strong></p>
-                <ul style="margin-left: 45px; margin-top: 0;">
+                <p class="ml-25 mt-10 mb-5 pt-5 tech-list-title"><strong>Media & UI Resources</strong></p>
+                <ul class="ml-45 mt-0">
                     <li>Media3 ExoPlayer (video playback)</li>
                     <li>Coil (image loading)</li>
                 </ul>
                 
-                <p style="margin-left: 25px; margin-top: 10px; margin-bottom: 5px; font-size: 19px; padding-top: 5px;"><strong>Testing & Coverage</strong></p>
-                <ul style="margin-left: 45px; margin-top: 0;">
+                <p class="ml-25 mt-10 mb-5 pt-5 tech-list-title"><strong>Testing & Coverage</strong></p>
+                <ul class="ml-45 mt-0">
                     <li>JUnit 5 (unit & integration tests)</li>
                     <li>MockK (mocking framework)</li>
                     <li>Espresso (UI testing)</li>
@@ -363,15 +342,15 @@
                     <li>Jacoco (test coverage analysis)</li>
                 </ul>
                 
-                <p style="margin-left: 25px; margin-top: 10px; margin-bottom: 5px; font-size: 19px; padding-top: 5px;"><strong>Security & Code Quality</strong></p>
-                <ul style="margin-left: 45px; margin-top: 0;">
+                <p class="ml-25 mt-10 mb-5 pt-5 tech-list-title"><strong>Security & Code Quality</strong></p>
+                <ul class="ml-45 mt-0">
                     <li>Snyk (vulnerability scanning)</li>
                     <li>OWASP Dependency Checker (dependency security)</li>
                     <li>Android Studio Lint (static analysis)</li>
                 </ul>
                 
-                <p style="margin-left: 25px; margin-top: 10px; margin-bottom: 5px; font-size: 19px; padding-top: 5px;"><strong>Build & Release</strong></p>
-                <ul style="margin-left: 45px; margin-top: 0;">
+                <p class="ml-25 mt-10 mb-5 pt-5 tech-list-title"><strong>Build & Release</strong></p>
+                <ul class="ml-45 mt-0">
                     <li>Gradle (build automation)</li>
                     <li>Timber (logging)</li>
                     <li>Android Studio Profiler (performance monitoring)</li>
@@ -390,31 +369,24 @@
                 </div>
             </div>
 
-            <div class="image-card" style="margin-top: 15px;">
+            <div class="image-card mt-15">
                 <img src="assets/images/flick/test-track.webp" loading="lazy" alt="Google Play Console - Closed Test Track active deployment">
             </div>
 
             <br>
 
-            <div class="launch-cta" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-                <div class="launch-cta-content" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-                    
-                    <!--
-                    <h3 style="color: #888888; opacity: 0.6; user-select: none;">Try it now before the official release.</h3>
-                    -->
-                    <span style="color: #EE392F; font-weight: 700; font-size: 19px; letter-spacing: 0.5px;">NO LONGER ACCEPTING TESTERS</span>
-
+            <div class="launch-cta flex flex-col items-center text-center">
+                <div class="launch-cta-content flex flex-col items-center text-center">
+                    <span class="launch-cta-unavailable">NO LONGER ACCEPTING TESTERS</span>
                     <br>
-                    <a href="javascript:void(0);" class="play-link" tabindex="-1" style="pointer-events: none; cursor: default;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" loading="lazy" alt="Get it on Google Play (Unavailable)" class="play-badge" style="filter: grayscale(100%); opacity: 0.4;">
+                    <a href="javascript:void(0);" class="play-link unclickable-link" tabindex="-1">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" loading="lazy" alt="Get it on Google Play (Unavailable)" class="play-badge play-badge-unavailable">
                     </a>
                 </div>
             </div>
                         
             <div id="directionsPopup" 
                 class="directions-popup-overlay" 
-                onclick="hideDirections()" 
-                onkeydown="if(event.key==='Enter'||event.key==='Escape'){hideDirections()}" 
                 role="button" 
                 tabindex="0" 
                 aria-label="Close directions popup">
@@ -433,41 +405,15 @@
                 </div>
             </div>
 
-            <!-- TODO: Show Flick Footer when testing opens again:
             <div class="footer-metallic-black">
-                <p style="margin: 7px;">
-                <i>Try it out!</i> The link is literally right there!
-                <br>
-                <i>Tap "Directions" for details.</i></p>
+                <p class="m-0 pt-10 pb-5 text-center">Tap the <strong><i>Projects</i></strong> tab to see more of my work.</p>
                 
-                <div class="unified-header-inner" style="margin-top: 20px;">
-                    <span class="uh-name"><b>Matthew Pool</b></span>
+                <div class="unified-header-inner mt-20">
+                    <span class="uh-name font-weight-normal"><b>Matthew Pool</b></span>
                     <span class="uh-divider">|</span>
-                    <span class="uh-email" style="position:relative; display: inline-flex; align-items: center; padding-right: 28px;">
+                    <span class="uh-email relative inline-flex items-center uh-email-pad">
                         <a href="mailto:mathyou.me@gmail.com">mathyou.me@gmail.com</a>
-                        <button onclick="copyEmail(this, 'light')" aria-label="Copy Email Address" style="background: none; border: none; cursor: pointer; padding: 4px; display: inline-flex; align-items: center; opacity: 0.7; transition: opacity 0.2s; position: absolute; right: 0; top: 50%; transform: translateY(-50%);" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.9)" stroke-width="2" aria-hidden="true">
-                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                            </svg>
-                        </button>
-                        <span class="toast-container"></span>
-                    </span>
-                    <span class="uh-divider">|</span>
-                    <span class="uh-phone"><a href="tel:+19035760223">903-576-0223</a></span>
-                </div>
-            </div> -->
-
-            <!-- TODO: Remove Temporary Footer: -->
-            <div class="footer-metallic-black">
-                <p style="margin: 7px;">Tap the <strong><i>Projects</i></strong> tab to see more of my work.</p>
-                
-                <div class="unified-header-inner" style="margin-top: 20px;">
-                    <span class="uh-name"><b>Matthew Pool</b></span>
-                    <span class="uh-divider">|</span>
-                    <span class="uh-email" style="position:relative; display: inline-flex; align-items: center; padding-right: 28px;">
-                        <a href="mailto:mathyou.me@gmail.com">mathyou.me@gmail.com</a>
-                        <button onclick="copyEmail(this, 'light')" aria-label="Copy Email Address" style="background: none; border: none; cursor: pointer; padding: 4px; display: inline-flex; align-items: center; opacity: 0.7; transition: opacity 0.2s; position: absolute; right: 0; top: 50%; transform: translateY(-50%);" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
+                        <button data-action="copy-email" data-theme="light" aria-label="Copy Email Address" class="btn-copy-email right-aligned" title="Copy email">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.9)" stroke-width="2" aria-hidden="true">
                                 <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                                 <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
@@ -479,7 +425,6 @@
                     <span class="uh-phone"><a href="tel:+19035760223">903-576-0223</a></span>
                 </div>
             </div>
-
 
         </div>
 
@@ -488,26 +433,24 @@
             <h2 class="section-header">Projects</h2>
 
             <div class="project-filters">
-                <button class="filter-btn active" onclick="filterProjects('all', event)">All</button>
-                <button class="filter-btn" onclick="filterProjects('web', event)">Web</button>
-                <button class="filter-btn" onclick="filterProjects('graphics', event)">Graphics & Games</button>
-                <button class="filter-btn" onclick="filterProjects('design', event)">UI/UX Design</button>
-                <button class="filter-btn" onclick="filterProjects('data', event)">Data & ML</button>
-                <button class="filter-btn" onclick="filterProjects('systems', event)">Systems</button>
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="graphics">Graphics & Games</button>
+                <button class="filter-btn" data-filter="design">UI/UX Design</button>
+                <button class="filter-btn" data-filter="data">Data & ML</button>
+                <button class="filter-btn" data-filter="systems">Systems</button>
             </div>
 
             <div class="project-grid"> 
 
                 <div class="project-card" data-category="web"
-                    onclick="openProjectModal('portfolio-site')"
+                    data-project-target="portfolio-site"
                     tabindex="0"
                     role="button"
-                    aria-label="View project details for this Portfolio website"
-                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('portfolio-site')}">
+                    aria-label="View project details for this Portfolio website">
                     <div class="project-card-image">
                         <img src="assets/images/portfolio-light.webp" alt="Preview of this portfolio website showing a clean, responsive layout in light mode" loading="lazy">
                     </div>
-
                     <div class="project-card-content">
                         <h3>(This) Portfolio</h3>
                         <p class="project-card-brief">Fully hand-coded, zero-dependency responsive portfolio featuring a persistent light/dark mode, JS-driven SVG animations, custom modals, and automated CI/CD.</p>
@@ -522,14 +465,11 @@
                 </div>
 
                 <div class="project-card" data-category="graphics" 
-                    onclick="openProjectModal('wormhole')"
+                    data-project-target="wormhole"
                     tabindex="0"
                     role="button"
-                    aria-label="Wormhole Text Adventure — click to view details"
-                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('wormhole')}">
-
+                    aria-label="Wormhole Text Adventure — click to view details">
                     <div class="project-badge badge-soon">Coming Soon</div>
-
                     <div class="project-card-image">
                         <img src="assets/images/wormhole-1.webp" alt="Wormhole Text Adventure Thumbnail" loading="lazy">
                     </div>
@@ -547,11 +487,10 @@
                 </div>
 
                 <div class="project-card" data-category="web" 
-                    onclick="openProjectModal('paradox')"
+                    data-project-target="paradox"
                     tabindex="0"
                     role="button"
-                    aria-label="The Existence Paradox — click to view details & experience the LIVE DEMO now!"
-                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('paradox')}">
+                    aria-label="The Existence Paradox — click to view details & experience the LIVE DEMO now!">
                     
                     <div class="project-badge badge-live">LIVE Demo</div>
 
@@ -572,11 +511,10 @@
                 </div>
 
                 <div class="project-card" data-category="graphics" 
-                    onclick="openProjectModal('mario')"
+                    data-project-target="mario"
                     tabindex="0"
                     role="button"
-                    aria-label="Super Mario Bros. — click to view details"
-                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('mario')}">
+                    aria-label="Super Mario Bros. — click to view details">
                     <div class="project-card-image">
                         <img src="assets/images/mario1.webp" alt="Super Mario Bros 1-1 Scene" loading="lazy">
                     </div>
@@ -593,11 +531,10 @@
                 </div>
 
                 <div class="project-card" data-category="web" 
-                    onclick="openProjectModal('travel')"
+                    data-project-target="travel"
                     tabindex="0"
                     role="button"
-                    aria-label="Full-Stack Travel Platform — click to view details"
-                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('travel')}">
+                    aria-label="Full-Stack Travel Platform — click to view details">
                     <div class="project-card-image">
                         <img src="assets/images/travel2.webp" alt="Travel Platform" loading="lazy">
                     </div>
@@ -617,11 +554,10 @@
                 </div>
 
                 <div class="project-card" data-category="design" 
-                    onclick="openProjectModal('eatright')"
+                    data-project-target="eatright"
                     tabindex="0"
                     role="button"
-                    aria-label="Product Design: Eat Right! — click to view details"
-                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('eatright')}">
+                    aria-label="Product Design: Eat Right! — click to view details">
                         <div class="project-card-image">
                         <img src="assets/images/product-design-eatright-wireframe.webp" alt="Eat Right! Product Design" loading="lazy">
                     </div>
@@ -637,11 +573,10 @@
                 </div>
 
                 <div class="project-card" data-category="design" 
-                    onclick="openProjectModal('moneymobile')"
+                    data-project-target="moneymobile"
                     tabindex="0"
                     role="button"
-                    aria-label="Product Design: MoneyMobile — click to view details"
-                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('moneymobile')}">
+                    aria-label="Product Design: MoneyMobile — click to view details">
                     <div class="project-card-image">
                         <img src="assets/images/product-design-moneymobile-mockup.webp" alt="MoneyMobile Product Design" loading="lazy">
                     </div>
@@ -657,11 +592,10 @@
                 </div>
 
                 <div class="project-card" data-category="web" 
-                    onclick="openProjectModal('aac')"
+                    data-project-target="aac"
                     tabindex="0"
                     role="button"
-                    aria-label="Austin Animal Center Dashboard — click to view details"
-                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('aac')}">
+                    aria-label="Austin Animal Center Dashboard — click to view details">
                     <div class="project-card-image">
                         <img src="assets/images/aac1.webp" alt="Austin Animal Center Dashboard" loading="lazy">
                     </div>
@@ -678,11 +612,10 @@
                 </div>
 
                 <div class="project-card" data-category="data" 
-                    onclick="openProjectModal('ml')"
+                    data-project-target="ml"
                     tabindex="0"
                     role="button"
-                    aria-label="Machine Learning — click to view details"
-                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('ml')}">
+                    aria-label="Machine Learning — click to view details">
                     <div class="project-card-image">
                         <img src="assets/images/ml1.webp" alt="ML model training and testing output" loading="lazy">
                     </div>
@@ -699,11 +632,10 @@
                 </div>
 
                 <div class="project-card" data-category="data" 
-                    onclick="openProjectModal('data-analysis')"
+                    data-project-target="data-analysis"
                     tabindex="0"
                     role="button"
-                    aria-label="NASA Climate Data Analysis — click to view details"
-                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('data-analysis')}">
+                    aria-label="NASA Climate Data Analysis — click to view details">
                     <div class="project-card-image">
                         <img src="assets/images/data2.webp" alt="NASA Climate Data Analysis" loading="lazy">
                     </div>
@@ -720,11 +652,10 @@
                 </div>
 
                 <div class="project-card" data-category="data" 
-                    onclick="openProjectModal('statistics')"
+                    data-project-target="statistics"
                     tabindex="0"
                     role="button"
-                    aria-label="NBA Statistical Analysis — click to view details"
-                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('statistics')}">
+                    aria-label="NBA Statistical Analysis — click to view details">
                     <div class="project-card-image">
                         <img src="assets/images/stat3.webp" alt="Statistical Analysis" loading="lazy">
                     </div>
@@ -741,11 +672,10 @@
                 </div>
 
                 <div class="project-card" data-category="data" 
-                    onclick="openProjectModal('economics')"
+                    data-project-target="economics"
                     tabindex="0"
                     role="button"
-                    aria-label="Economic Analysis — click to view details"
-                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('economics')}">
+                    aria-label="Economic Analysis — click to view details">
                     <div class="project-card-image">
                         <img src="assets/images/eco-3.webp" alt="Economic Analysis" loading="lazy">
                     </div>
@@ -761,11 +691,10 @@
                 </div>
 
                 <div class="project-card" data-category="systems" 
-                    onclick="openProjectModal('database')"
+                    data-project-target="database"
                     tabindex="0"
                     role="button"
-                    aria-label="Database Case Study — click to view details"
-                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('database')}">
+                    aria-label="Database Case Study — click to view details">
                     <div class="project-card-image">
                         <figure>
                             <img src="assets/images/database-erd.webp" alt="Database ERD" loading="lazy">
@@ -784,11 +713,10 @@
                 </div>
 
                 <div class="project-card" data-category="systems" 
-                    onclick="openProjectModal('system-design')"
+                    data-project-target="system-design"
                     tabindex="0"
                     role="button"
-                    aria-label="System Design & UML — click to view details"
-                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('system-design')}">
+                    aria-label="System Design & UML — click to view details">
                     <div class="project-card-image">
                         <img src="assets/images/system2.webp" alt="System Design Diagrams" loading="lazy">
                     </div>
@@ -805,11 +733,10 @@
                 </div>
 
                 <div class="project-card" data-category="systems" 
-                    onclick="openProjectModal('security')"
+                    data-project-target="security"
                     tabindex="0"
                     role="button"
-                    aria-label="Security Audit & Remediation — click to view details"
-                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('security')}">
+                    aria-label="Security Audit & Remediation — click to view details">
                     <div class="project-card-image">
                         <img src="assets/images/security-1.webp" alt="Security Audit" loading="lazy">
                     </div>
@@ -826,11 +753,10 @@
                 </div>
 
                 <div class="project-card" data-category="systems" 
-                    onclick="openProjectModal('scrum')"
+                    data-project-target="scrum"
                     tabindex="0"
                     role="button"
-                    aria-label="Agile & Scrum Leadership — click to view details"
-                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('scrum')}">
+                    aria-label="Agile & Scrum Leadership — click to view details">
                     <div class="project-card-image">
                         <img src="assets/images/scrum-sdlc.webp" alt="Scrum SDLC" loading="lazy">
                     </div>
@@ -849,11 +775,10 @@
                 </div>
 
                 <div class="project-card" data-category="systems" 
-                    onclick="openProjectModal('algorithms')"
+                    data-project-target="algorithms"
                     tabindex="0"
                     role="button"
-                    aria-label="Algorithmic Optimization — click to view details"
-                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('algorithms')}">
+                    aria-label="Algorithmic Optimization — click to view details">
                     <div class="project-card-image">
                         <img src="assets/images/algo-1.webp" alt="Algorithm Code" loading="lazy">
                     </div>
@@ -869,11 +794,10 @@
                 </div>
 
                 <div class="project-card" data-category="systems" 
-                    onclick="openProjectModal('unit-testing')"
+                    data-project-target="unit-testing"
                     tabindex="0"
                     role="button"
-                    aria-label="Unit Testing — click to view details"
-                    onkeydown="if(event.key==='Enter'||event.key===' '){openProjectModal('unit-testing')}">
+                    aria-label="Unit Testing — click to view details">
                     <div class="project-card-image">
                         <img src="assets/images/service-tests-1.webp" alt="Unit Tests" loading="lazy">
                     </div>
@@ -890,21 +814,19 @@
                 </div>
             </div>
 
-            <div class="content-card" style="margin-bottom: 30px; border-top: 4px solid #3498db;">
-                <h3 style="margin-top: 0;">The Bottom Line</h3>
+            <div class="content-card mb-30 content-card-top-bordered">
+                <h3 class="mt-0">The Bottom Line</h3>
                 <p>I build scalable systems with modern UIs engineered to solve real business problems—backed by a Summa Cum Laude B.S. in Computer Science and nearly a decade of front-line experience in Fortune 500 sales and customer support. If you need a developer who can own the complete product lifecycle—from design and development to deployment and beyond—let's talk!</p>
             </div>
 
             <div class="footer-metallic-black">
-                <p><i>Phew. That was a lot to look over!</i><br>
-                    Aren't you tired? I am.</p>
-                
-                <div class="unified-header-inner" style="margin-top: 20px;">
-                    <span class="uh-name"><b>Matthew Pool</b></span>
+                <p class="text-center"><i>Phew. That was a lot to look over!</i><br>Aren't you tired? I am.</p>
+                <div class="unified-header-inner mt-20">
+                    <span class="uh-name font-weight-normal"><b>Matthew Pool</b></span>
                     <span class="uh-divider">|</span>
-                    <span class="uh-email" style="position:relative; display: inline-flex; align-items: center; padding-right: 28px;">
+                    <span class="uh-email relative inline-flex items-center uh-email-pad">
                         <a href="mailto:mathyou.me@gmail.com">mathyou.me@gmail.com</a>
-                        <button onclick="copyEmail(this, 'light')" aria-label="Copy Email Address" style="background: none; border: none; cursor: pointer; padding: 4px; display: inline-flex; align-items: center; opacity: 0.7; transition: opacity 0.2s; position: absolute; right: 0; top: 50%; transform: translateY(-50%);" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
+                        <button data-action="copy-email" data-theme="light" aria-label="Copy Email Address" class="btn-copy-email right-aligned" title="Copy email">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.9)" stroke-width="2" aria-hidden="true">
                                 <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                                 <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
@@ -923,8 +845,8 @@
             <h2 class="section-header">Legacy Refactor: Rescue Animal System</h2>
             <p class="lead">This project involved taking a legacy Java command-line application that I had originally developed at the beginning of my Computer Science program and modernizing it with industry-standard practices.</p>
             
-            <div class="content-card" style="border-left: 5px solid #ff6b6b;">
-                <h3 style="margin-top: 0;">Challenge: Modernizing a Legacy Application</h3>
+            <div class="content-card content-card-bordered">
+                <h3 class="mt-0">Challenge: Modernizing a Legacy Application</h3>
                 <p>
                     The original software was a fragile command-line tool for tracking rescue animals. It lacked persistence, had no input validation, and used inefficient data structures.
                     <br><br>
@@ -935,7 +857,7 @@
                     But wait! Is there yet a shimmer of hope remaining after all...
                 </p>
             
-                <div class="image-card" style="margin: 20px 0;">
+                <div class="image-card mt-20 mb-20">
                     <img src="assets/images/new11.webp" loading="lazy" alt="System menu of the legacy application">
                 </div>
 
@@ -1024,16 +946,15 @@
             <hr>
 
             <div class="footer-metallic-black">
-                <p><i>Are you still here?!</i></p>
-                <p><i>Let's connect and build something amazing together!</i></p>
-                <br>
+                <p class="m-0 pt-10"><i>Are you still here?!</i></p>
+                <p class="m-0 pb-5"><i>Let's connect and build something amazing together!</i></p>
     
-                <div class="unified-header-inner" style="margin-top: 25px;">
-                    <span class="uh-name"><b>Matthew Pool</b></span>
+                <div class="unified-header-inner mt-20">
+                    <span class="uh-name font-weight-normal"><b>Matthew Pool</b></span>
                     <span class="uh-divider">|</span>
-                    <span class="uh-email" style="position:relative; display: inline-flex; align-items: center; padding-right: 28px;">
+                    <span class="uh-email relative inline-flex items-center uh-email-pad">
                         <a href="mailto:mathyou.me@gmail.com">mathyou.me@gmail.com</a>
-                        <button onclick="copyEmail(this, 'light')" aria-label="Copy Email Address" style="background: none; border: none; cursor: pointer; padding: 4px; display: inline-flex; align-items: center; opacity: 0.7; transition: opacity 0.2s; position: absolute; right: 0; top: 50%; transform: translateY(-50%);" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" title="Copy email">
+                        <button data-action="copy-email" data-theme="light" aria-label="Copy Email Address" class="btn-copy-email right-aligned" title="Copy email">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.9)" stroke-width="2" aria-hidden="true">
                                 <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                                 <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
@@ -1048,13 +969,18 @@
         </div>
     </main>
 
+    <!---------------------------------------------------------------------------------------------------------->
+    <!-- Project Modal -->
+    <!---------------------------------------------------------------------------------------------------------->
+    
     <div id="project-modal" class="project-modal" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
         <div class="project-modal-body">
-            <button class="project-modal-close" onclick="closeProjectModal()" aria-label="Close modal">&times;</button>
+            <button class="project-modal-close" data-action="close-project" aria-label="Close modal">&times;</button>
             <div id="project-modal-content"></div>
         </div>
     </div>
 
+    <!-- Project Details Blocks -->
     <div id="details-portfolio-site" class="project-details">
         <h3>This Portfolio — matthew-pool.github.io</h3>
         <div class="details">HTML5 · CSS3 · Vanilla JavaScript · GitHub Pages · GitHub Actions</div>
@@ -1068,12 +994,12 @@
             <li><strong>CI/CD Pipeline:</strong> Deployed automatically to GitHub Pages via GitHub Actions on every push to <code>main</code>, ensuring a reliable and automated release pipeline.</li>
         </ul>
 
-        <figure class="project-image-card" aria-live="polite" style="margin: 0;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; padding: 0 4px;">
-                <figcaption id="preview-theme-text" style="font-weight: 600; font-size: 0.85em; letter-spacing: 0.5px; text-transform: uppercase;">
+        <figure class="project-image-card m-0" aria-live="polite">
+            <div class="flex justify-between items-center mb-12 px-4">
+                <figcaption class="preview-theme-text">
                     PREVIEW: DARK MODE
                 </figcaption>
-                <button class="preview-toggle-btn" onclick="togglePortfolioPreview()" aria-label="Toggle portfolio preview image between dark and light themes">
+                <button class="preview-toggle-btn" data-action="toggle-preview" aria-label="Toggle portfolio preview image between dark and light themes">
                     <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" aria-hidden="true">
                         <circle cx="12" cy="12" r="5"></circle>
                         <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
@@ -1081,7 +1007,7 @@
                     Toggle Theme
                 </button>
             </div>
-            <img id="portfolio-preview-img" src="assets/images/portfolio-dark.webp" loading="lazy" alt="High-fidelity preview of this portfolio website currently displaying the dark mode theme">
+            <img class="portfolio-preview-img" src="assets/images/portfolio-dark.webp" loading="lazy" alt="High-fidelity preview of this portfolio website currently displaying the dark mode theme">
         </figure>
         <div class="project-links">
             <a href="https://github.com/matthew-pool/matthew-pool.github.io" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
@@ -1122,40 +1048,39 @@
                     <img src="assets/images/wormhole-5.webp" loading="lazy" alt="Custom Debug Tool Interface">
                 </figure>
             </div>
-            <p style="text-align: center; font-style: italic; margin-top: 30px; font-weight: 600; color: #667eea;">
-                Demo coming soon!
-            </p>
+            <p class="wormhole-demo-text text-center mt-30">Demo coming soon!</p>
         </div>
-
         <br>
-        
-        <!-- TODO:Wormhole CTA
-        <div class="launch-cta" style="margin-top: 30px; margin-bottom: 30px; display: flex; flex-direction: column; align-items: center; text-align: center;">
-            <div class="launch-cta-content" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-                <h3 style="margin-bottom: 15px;">Wormhole Text Adventure</h3>
-                
-                <a href="./wormhole/" target="_blank" rel="noopener noreferrer" class="web-badge">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
-                        <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
-                        <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
-                        <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
-                    </svg>
-                    
-                    <div class="badge-text-container">
-                        <span class="badge-small">Launch in</span>
-                        <span class="badge-large">Browser</span>
-                    </div>
-                </a>
-                
-                <br>
-                <a href="javascript:void(0);" class="directions-link" style="margin-top: 15px; font-size: 0.9em; text-decoration: underline; color: #3498db;" onclick="showWormholeDisclaimer(); event.stopPropagation();">Disclaimer</a>
-            </div>
-        </div>
-        -->
     </div>
     
     <br>
+        
+    <!-- TODO:Wormhole CTA
+    <div class="launch-cta" style="margin-top: 30px; margin-bottom: 30px; display: flex; flex-direction: column; align-items: center; text-align: center;">
+        <div class="launch-cta-content" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+            <h3 style="margin-bottom: 15px;">Wormhole Text Adventure</h3>
+            
+            <a href="./wormhole/" target="_blank" rel="noopener noreferrer" class="web-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
+                    <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
+                    <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
+                    <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
+                </svg>
+                
+                <div class="badge-text-container">
+                    <span class="badge-small">Launch in</span>
+                    <span class="badge-large">Browser</span>
+                </div>
+            </a>
+            
+            <br>
+            <a href="javascript:void(0);" class="directions-link" style="margin-top: 15px; font-size: 0.9em; text-decoration: underline; color: #3498db;" data-action="show-disclaimer">Disclaimer</a>
+        </div>
+    </div>
+    
+    <br>
+    -->
     
     <div id="details-paradox" class="project-details">
         <h3>The Existence Paradox - Interactive Philosophy App</h3>
@@ -1169,7 +1094,7 @@
             <img class="paradox-image" src="assets/images/existence-paradox-2.webp" loading="lazy" alt="User choice for the prompted question">
         </div>
 
-        <div class="launch-cta" style="margin-top: 30px; margin-bottom: 30px;">
+        <div class="launch-cta mt-30 mb-30">
             <div class="launch-cta-content">             
                 <a href="./existence-paradox/" target="_blank" rel="noopener noreferrer" class="web-badge">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -1385,7 +1310,7 @@
         <div class="project-image-card">
             <img src="assets/images/aac1.webp" loading="lazy" alt="Spreadsheet showing first few database records">
             <img src="assets/images/aac2.webp" loading="lazy" alt="Geolocation map showing the Austin, TX area">
-            <img src="assets/images/aac4.webp" loading="lazy" alt="Unit test results with all 16 tests passed" style="width: 700px; height: auto;">
+            <img src="assets/images/aac4.webp" loading="lazy" alt="Unit test results with all 16 tests passed" class="max-w-700">
             <img src="assets/images/aac3.webp" loading="lazy" alt="AAC database and pie chart of animal distribution">
         </div>
 
@@ -1480,8 +1405,8 @@
         </ul>
 
         <div class="project-image-card">
-            <img src="assets/images/data2.webp" loading="lazy" style="width: 100%; max-width: 1280px;" alt="Screenshot of the script's output line graph with positive-curved trend line">
-            <img src="assets/images/data1.webp" loading="lazy" style="width: 100%; max-width: 1280px;" alt="Certification for Data Analysis awarded to Matthew Pool">        
+            <img src="assets/images/data2.webp" loading="lazy" class="w-full max-w-1280" alt="Screenshot of the script's output line graph with positive-curved trend line">
+            <img src="assets/images/data1.webp" loading="lazy" class="w-full max-w-1280" alt="Certification for Data Analysis awarded to Matthew Pool">        
         </div>
 
         <div class="project-links">
@@ -1568,7 +1493,7 @@
         </ul>
         
         <div class="project-image-card">
-            <img src="assets/images/database-erd.webp" loading="lazy" alt="Quantigration Database ERD" style="width: 100%; height: auto; border-radius: 8px;">
+            <img src="assets/images/database-erd.webp" loading="lazy" alt="Quantigration Database ERD" class="w-full project-image-shadow">
         </div>
 
         <div class="project-links">
@@ -1644,9 +1569,9 @@
                 <img src="assets/images/security-1.webp" 
                     loading="lazy"
                     alt="Table of Security Vulnerabilities and Remediation Status" 
-                    style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); border: 1px solid #ddd;">
+                    class="w-full project-image-shadow">
                 
-                <p class="caption" style="text-align: center; font-size: 0.85rem; color: #666; margin-top: 5px;">
+                <p class="caption-text">
                     <em>Summary of findings from the Manual & Static Analysis phases</em>
                 </p>
             </div>
@@ -1708,9 +1633,9 @@
                 <img src="assets/images/scrum-sdlc.webp" 
                     loading="lazy"
                     alt="Scrum Software Development Lifecycle Diagram" 
-                    style="width: 100%; border: 1px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); border: 1px solid #ddd;">
+                    class="w-full project-image-shadow">
                 
-                <p class="caption" style="text-align: center; font-size: 0.85rem; color: #666; margin-top: 5px;">
+                <p class="caption-text">
                     <em>The Iterative Scrum Framework used for SNHU Travel App</em>
                 </p>
             </div>
@@ -1745,9 +1670,9 @@
             <img src="assets/images/algo-1.webp"
                 loading="lazy"
                 alt="C++ Code Snippet showing recursive Merge Sort implementation" 
-                style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                class="w-full project-image-shadow">
             
-            <p class="caption" style="text-align: center; font-size: 0.85rem; color: #666; margin-top: 5px;">
+            <p class="caption-text">
                 <em>Snippet: Custom recursive Merge Sort implementation</em>
             </p>
         </div>
@@ -1779,14 +1704,14 @@
                     <img src="assets/images/service-tests-1.webp" 
                         loading="lazy"
                         alt="JUnit 5 Test Runner showing 100% passing tests" 
-                        style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); border: 1px solid #ddd;">
+                        class="w-full project-image-shadow">
                     
-                    <p class="caption" style="text-align: center; font-size: 0.85rem; color: #666; margin-top: 5px;">
+                    <p class="caption-text">
                         <em>100% Pass Rate: Verifying validation logic and exception handling</em>
                     </p>
                 </div>
 
-                <div class="project-links" style="justify-content: center; margin-top: 20px;">
+                <div class="project-links justify-center mt-20">
                     <a href="https://github.com/matthew-pool/matthew-pool.github.io/tree/main/service-tests" class="theme-action-btn" target="_blank" rel="noopener noreferrer">
                         <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
@@ -1798,10 +1723,10 @@
         </div>
     </div>
     
-    <div id="wormholeDisclaimerPopup" class="directions-popup-overlay" style="z-index: 10005;" onclick="hideWormholeDisclaimer()">
+    <div id="wormholeDisclaimerPopup" class="directions-popup-overlay z-modal">
         <div class="directions-popup">
             <strong><i>Disclaimer: Wormhole</i></strong><br><br>
-            <p style="margin: 0; font-size: 0.9em; opacity: 0.9; line-height: 1.5; text-align: left;">
+            <p class="disclaimer-text">
                 <em>Wormhole</em> is a work of fiction and is currently unrated. Any resemblance to actual persons, entities, or events is purely coincidental. References to real-world brands or products are used strictly for parody. This project is provided "as is" for educational and employment evaluation purposes only. The live leaderboard stores user-submitted display names; no personally identifiable information is collected.
             </p>
         </div>
@@ -1809,56 +1734,44 @@
 
     <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
         <div class="lightbox-content">
-            <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close image viewer">×</button>
+            <button class="lightbox-close" data-action="close-lightbox" aria-label="Close image viewer">×</button>
             <img id="lightbox-img" src="" alt="">
-            <button class="lightbox-nav lightbox-prev" onclick="changeLightboxImage(-1)" aria-label="Previous image">&#8249;</button>
-            <button class="lightbox-nav lightbox-next" onclick="changeLightboxImage(1)" aria-label="Next image">&#8250;</button>
+            <button class="lightbox-nav lightbox-prev" data-action="prev-lightbox" aria-label="Previous image">&#8249;</button>
+            <button class="lightbox-nav lightbox-next" data-action="next-lightbox" aria-label="Next image">&#8250;</button>
             <div id="lightbox-caption" class="lightbox-caption" aria-live="polite"></div>
         </div>
     </div>
 
-    <!-- Contact Form Modal -->
     <div id="contactModal" class="project-modal" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
-        <div class="project-modal-body contact-modal-body" style="text-align: left; max-width: 440px; padding: 30px;">
-            <button class="project-modal-close" onclick="cancelContactModal(event)" style="top: 15px; right: 15px;">&times;</button>
+        <div class="project-modal-body contact-modal-body">
+            <button class="project-modal-close contact-modal-close" data-action="close-contact">&times;</button>
             
-            <!-- Header Wrapper (Relative positioning allows true center) -->
-            <div style="position: relative; text-align: center; margin-bottom: 20px;">
-                <!-- App.Buddy Logo (Pinned to the top left) -->
-                <img src="assets/images/app-buddy-logo.svg" alt="App.Buddy Logo" style="width: 32px; height: 32px; position: absolute; left: 0; top: 0; margin: 0; display: block;">
-                
-                <h3 style="margin: 8px 0 5px 0; padding: 0 40px;">Get in Touch</h3>
-                
-                <p style="color: var(--text-muted); margin: 0; line-height: 1.4; font-size: 0.95rem; padding: 0 45px;">
+            <div class="text-center mb-20 flex flex-col items-center">
+                <img src="assets/images/app-buddy-logo.svg" alt="App.Buddy Logo" class="contact-modal-logo">
+                <h2 class="contact-modal-title">App.Buddy</h2>
+                <h3 class="contact-modal-header">Get in Touch</h3>
+                <p class="contact-modal-desc">
                     Fill out the form below and I will get back to you as soon as possible.
                 </p>
             </div>
             
             <form id="contactForm">
-                <div class="form-group" style="margin-bottom: 15px;">
-                    <label for="senderName" style="margin-bottom: 5px;">Name</label>
-                    <input type="text" id="senderName" name="name" required placeholder="John Doe" style="padding: 10px 12px;">
+                <div class="form-group mb-15">
+                    <label for="senderName" class="mb-5 block">Name</label>
+                    <input type="text" id="senderName" name="name" required placeholder="John Doe" class="form-input">
                 </div>
-                <div class="form-group" style="margin-bottom: 15px;">
-                    <label for="senderEmail" style="margin-bottom: 5px;">Email</label>
-                    <input type="email" id="senderEmail" name="email" required placeholder="john@example.com" style="padding: 10px 12px;">
+                <div class="form-group mb-15">
+                    <label for="senderEmail" class="mb-5 block">Email</label>
+                    <input type="email" id="senderEmail" name="email" required placeholder="john@example.com" class="form-input">
                 </div>
-                <div class="form-group" style="margin-bottom: 15px;">
-                    <label for="message" style="margin-bottom: 5px;">Message</label>
-                    <textarea id="message" name="message" rows="4" required placeholder="How can I help you?" style="padding: 10px 12px;"></textarea>
+                <div class="form-group mb-15">
+                    <label for="message" class="mb-5 block">Message</label>
+                    <textarea id="message" name="message" rows="4" required placeholder="How can I help you?" class="form-input"></textarea>
                 </div>
                 
-                <!-- Buttons container aligned to the right -->
-                <div style="display: flex; gap: 12px; margin-top: 25px; justify-content: flex-end;">
-                    <!-- Stylized Cancel Button -->
-                    <button type="button" onclick="cancelContactModal(event)" style="background: transparent; color: var(--text-main); border: 2px solid var(--border-card); border-radius: 25px; padding: 8px 20px; font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: all 0.3s ease;">
-                        Cancel
-                    </button>
-                    
-                    <!-- Send Button -->
-                    <button type="button" id="sendContactBtn" onclick="sendContactMessage(event)" class="btn-try" style="margin: 0; padding: 8px 20px; font-size: 0.95rem; width: auto; opacity: 0.5; cursor: not-allowed; border: none;" disabled>
-                        Send Message
-                    </button>
+                <div class="flex gap-12 mt-25 justify-end">
+                    <button type="button" data-action="close-contact" class="btn-cancel">Cancel</button>
+                    <button type="button" id="sendContactBtn" class="btn-try btn-send" disabled>Send Message</button>
                 </div>
             </form>
         </div>

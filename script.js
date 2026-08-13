@@ -11,6 +11,13 @@
   "use strict";
 
   // =========================================================================
+  // DOM QUERY CACHING (Performance Optimization)
+  // =========================================================================
+  // Cache these outside the function so we aren't querying the DOM 60x a second
+  let stickyZone;
+  let bannerContainer;
+
+  // =========================================================================
   // 1. GENERAL UTILITIES & UI
   // =========================================================================
 
@@ -33,32 +40,25 @@
     }, 500);
   }
 
-  window.copyEmail = function (button) {
+  function copyEmail(button) {
     navigator.clipboard.writeText("mathyou.me@gmail.com").then(() => {
       showToast(button);
     });
-  };
-
-  // Bind event listener for the directions popup
-  const directionsBtn = document.getElementById("directions-btn");
-  if (directionsBtn) {
-    directionsBtn.addEventListener("click", function() {
-      document.getElementById("directionsPopup").classList.add("show");
-    });
   }
-  
-  window.hideDirections = function () {
-    document.getElementById("directionsPopup").classList.remove("show");
-  };
 
-  window.downloadResume = function (e) {
+  function hideDirections() {
+    const popup = document.getElementById("directionsPopup");
+    if (popup) popup.classList.remove("show");
+  }
+
+  function downloadResume(e) {
     e.preventDefault();
     const isDark = document.body.classList.contains("dark-mode");
     window.open(
       `assets/documents/${isDark ? "resume-dark.pdf" : "resume-light.pdf"}`,
       "_blank"
     );
-  };
+  }
 
   function updateResumeLabel() {
     const label = document.getElementById("resume-theme-label");
@@ -70,41 +70,223 @@
   }
 
   // =========================================================================
-  // 2. THEME MANAGEMENT
+  // 2. DOM CONTENT LOADED (All Initialization)
   // =========================================================================
-  
-  const themeToggle = document.getElementById("themeToggle");
-  const savedTheme = localStorage.getItem("theme");
-  
-  if (savedTheme === "dark") {
-    document.body.classList.add("dark-mode");
-  } else if (
-    !savedTheme &&
-    window.matchMedia("(prefers-color-scheme: dark)").matches
-  ) {
-    document.body.classList.add("dark-mode");
-  }
 
-  updateResumeLabel();
+  document.addEventListener('DOMContentLoaded', () => {
+    
+    // Initialize cached elements once the DOM is ready
+    stickyZone = document.querySelector(".sticky-header-zone");
+    bannerContainer = document.querySelector(".portfolio-banner-container");
 
-  if (themeToggle) {
-    themeToggle.addEventListener("click", () => {
-      document.body.classList.toggle("dark-mode");
-      localStorage.setItem(
-        "theme",
-        document.body.classList.contains("dark-mode") ? "dark" : "light"
-      );
-      updateResumeLabel();
+    // --- Theme Management ---
+    const themeToggle = document.getElementById("themeToggle");
+    const savedTheme = localStorage.getItem("theme");
+    
+    if (savedTheme === "dark" || (!savedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+      document.body.classList.add("dark-mode");
+    }
+    updateResumeLabel();
 
-      setTimeout(() => {
-        if (!birdHasFlown) positionBird();
-      }, 350);
+    if (themeToggle) {
+      themeToggle.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+        localStorage.setItem("theme", document.body.classList.contains("dark-mode") ? "dark" : "light");
+        updateResumeLabel();
+
+        setTimeout(() => {
+          if (!birdHasFlown) positionBird();
+        }, 350);
+      });
+    }
+
+    // --- Tab Navigation ---
+    document.querySelectorAll('[data-tab-target]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            if (typeof openTab === 'function') openTab(e, btn.getAttribute('data-tab-target'));
+        });
     });
-  }
 
-  window.togglePortfolioPreview = function () {
-    const img = document.getElementById("portfolio-preview-img");
-    const text = document.getElementById("preview-theme-text");
+    // --- Copy Email ---
+    document.querySelectorAll('[data-action="copy-email"]').forEach(btn => {
+        btn.addEventListener('click', function() {
+            if (typeof copyEmail === 'function') copyEmail(this);
+        });
+    });
+
+    // --- Resume Download ---
+    const resumeBtn = document.getElementById('resume-btn');
+    if (resumeBtn) {
+        resumeBtn.addEventListener('click', (e) => {
+            if (typeof downloadResume === 'function') downloadResume(e);
+        });
+    }
+
+    // --- Project Filtering ---
+    document.querySelectorAll('[data-filter]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            if (typeof filterProjects === 'function') filterProjects(btn.getAttribute('data-filter'), e);
+        });
+    });
+
+    // --- Project Modals ---
+    document.querySelectorAll('[data-project-target]').forEach(card => {
+        const target = card.getAttribute('data-project-target');
+        card.addEventListener('click', () => {
+            if (typeof openProjectModal === 'function') openProjectModal(target);
+        });
+        card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                if (typeof openProjectModal === 'function') openProjectModal(target);
+            }
+        });
+    });
+    
+    document.querySelectorAll('[data-action="close-project"]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (typeof closeProjectModal === 'function') closeProjectModal();
+        });
+    });
+
+    // Modal Click-Anywhere-To-Close
+    const projectModal = document.getElementById("project-modal");
+    if (projectModal) {
+      projectModal.addEventListener("click", function (e) {
+        // Ignore clicks on links or buttons (let them work normally)
+        if (e.target.closest("a") || e.target.closest("button")) {
+            return;
+        }
+        // Clicking anywhere else closes the modal
+        closeProjectModal();
+      });
+    }
+
+    // --- Contact Modal ---
+    document.querySelectorAll('[data-action="open-contact"]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (typeof openContactModal === 'function') openContactModal();
+        });
+    });
+    
+    document.querySelectorAll('[data-action="close-contact"]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            if (typeof cancelContactModal === 'function') cancelContactModal(e);
+        });
+    });
+
+    const contactModal = document.getElementById("contactModal");
+    if (contactModal) {
+      contactModal.addEventListener("click", function (e) {
+        if (e.target === this) closeContactModal();
+      });
+    }
+
+    const sendContactBtn = document.getElementById('sendContactBtn');
+    if (sendContactBtn) {
+        sendContactBtn.addEventListener('click', (e) => {
+            if (typeof sendContactMessage === 'function') sendContactMessage(e);
+        });
+    }
+
+    // --- Popups and Disclaimers ---
+    const directionsBtn = document.getElementById("directions-btn");
+    if (directionsBtn) {
+      directionsBtn.addEventListener("click", function() {
+        const popup = document.getElementById("directionsPopup");
+        if (popup) popup.classList.add("show");
+      });
+    }
+
+    const directionsPopup = document.getElementById('directionsPopup');
+    if (directionsPopup) {
+        directionsPopup.addEventListener('click', () => {
+            if (typeof hideDirections === 'function') hideDirections();
+        });
+        directionsPopup.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === 'Escape') {
+                if (typeof hideDirections === 'function') hideDirections();
+            }
+        });
+    }
+
+    const wormholeDisclaimer = document.getElementById('wormholeDisclaimerPopup');
+    if (wormholeDisclaimer) {
+        wormholeDisclaimer.addEventListener('click', () => {
+            if (typeof hideWormholeDisclaimer === 'function') hideWormholeDisclaimer();
+        });
+    }
+
+    document.querySelectorAll('[data-action="show-disclaimer"]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (typeof showWormholeDisclaimer === 'function') showWormholeDisclaimer();
+        });
+    });
+
+    // --- Portfolio Preview Toggle ---
+    document.querySelectorAll('[data-action="toggle-preview"]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (typeof togglePortfolioPreview === 'function') togglePortfolioPreview();
+        });
+    });
+
+    // --- Lightbox Navigation ---
+    document.querySelectorAll('[data-action="close-lightbox"]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (typeof closeLightbox === 'function') closeLightbox();
+        });
+    });
+    
+    document.querySelectorAll('[data-action="prev-lightbox"]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (typeof changeLightboxImage === 'function') changeLightboxImage(-1);
+        });
+    });
+    
+    document.querySelectorAll('[data-action="next-lightbox"]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (typeof changeLightboxImage === 'function') changeLightboxImage(1);
+        });
+    });
+
+    const lightboxElement = document.getElementById("lightbox");
+    if (lightboxElement) {
+      lightboxElement.addEventListener("click", function (e) {
+        if (e.target === this) closeLightbox();
+      });
+    }
+
+    // Keyboard Accessibility for Modals
+    document.addEventListener("keydown", function (e) {
+      const lightbox = document.getElementById("lightbox");
+      const projectModal = document.getElementById("project-modal");
+      const contactModal = document.getElementById("contactModal");
+      
+      if (lightbox && lightbox.classList.contains("active")) {
+          if (e.key === "Escape") closeLightbox();
+          else if (e.key === "ArrowLeft") changeLightboxImage(-1);
+          else if (e.key === "ArrowRight") changeLightboxImage(1);
+      } else if (projectModal && projectModal.classList.contains("show")) {
+          if (e.key === "Escape") closeProjectModal();
+      } else if (contactModal && contactModal.classList.contains("show")) {
+          if (e.key === "Escape") closeContactModal();
+      }
+    });
+
+  }); // End DOMContentLoaded
+
+  // =========================================================================
+  // 3. UI FUNCTIONS
+  // =========================================================================
+
+  function togglePortfolioPreview() {
+    const modalContent = document.getElementById("project-modal-content");
+    if (!modalContent) return;
+
+    const img = modalContent.querySelector(".portfolio-preview-img");
+    const text = modalContent.querySelector(".preview-theme-text");
+    if (!img || !text) return;
 
     if (img.src.includes("portfolio-dark.webp")) {
       img.src = "assets/images/portfolio-light.webp";
@@ -115,13 +297,9 @@
       img.alt = "High-fidelity preview of this portfolio website currently displaying the dark mode theme";
       text.textContent = "PREVIEW: DARK MODE";
     }
-  };
+  }
 
-  // =========================================================================
-  // 3. TAB NAVIGATION
-  // =========================================================================
-
-  window.openTab = function (evt, tabName) {
+  function openTab(evt, tabName) {
     const tabContents = document.getElementsByClassName("tab-content");
     for (let i = 0; i < tabContents.length; i++) {
       tabContents[i].classList.remove("active");
@@ -143,7 +321,7 @@
     if (!birdHasFlown) {
       requestAnimationFrame(() => positionBird());
     }
-  };
+  }
 
   // =========================================================================
   // 4. STICKY HEADER & LAYOUT LOCK
@@ -155,10 +333,6 @@
   function updateStickyLock() {
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        const stickyZone = document.querySelector(".sticky-header-zone");
-        const bannerContainer = document.querySelector(".portfolio-banner-container");
-        const toggleWrapper = document.querySelector(".theme-toggle-wrapper");
-
         if (!stickyZone || !bannerContainer) return;
 
         const bannerHeight = bannerContainer.getBoundingClientRect().height;
@@ -170,28 +344,23 @@
         const visibleStrip = bannerHeight * BANNER_SHOW_FRACTION;
         STICKY_LOCK_PX = Math.round(bannerHeight - visibleStrip);
         stickyZone.style.top = `-${STICKY_LOCK_PX}px`;
-
-        if (toggleWrapper) {
-          const toggleHeight = toggleWrapper.getBoundingClientRect().height || 36;
-          const toggleTop = Math.max(4, Math.round((visibleStrip - toggleHeight) / 2));
-          // toggleWrapper.style.top = `${toggleTop}px`;
-        }
       });
     });
   }
 
-  const _bannerImg = document.querySelector(".portfolio-banner");
-  if (_bannerImg) {
-    if (_bannerImg.complete && _bannerImg.naturalHeight > 0) {
-      updateStickyLock();
-    } else {
-      _bannerImg.addEventListener("load", updateStickyLock);
+  window.addEventListener("load", () => {
+    const _bannerImg = document.querySelector(".portfolio-banner");
+    if (_bannerImg) {
+      if (_bannerImg.complete && _bannerImg.naturalHeight > 0) {
+        updateStickyLock();
+      } else {
+        _bannerImg.addEventListener("load", updateStickyLock);
+      }
     }
-  }
-
-  window.addEventListener("load", updateStickyLock);
+  });
+  
   window.addEventListener("resize", updateStickyLock, { passive: true });
-
+  
   // =========================================================================
   // 5. BIRD ANIMATION SYSTEM
   // =========================================================================
@@ -516,7 +685,7 @@
   // 6. PORTFOLIO & MODAL SYSTEM
   // =========================================================================
 
-  window.filterProjects = function (category, event) {
+  function filterProjects(category, event) {
     const filterButtons = document.querySelectorAll(".filter-btn");
     filterButtons.forEach((btn) => btn.classList.remove("active"));
     event.currentTarget.classList.add("active");
@@ -528,9 +697,9 @@
           ? "block"
           : "none";
     });
-  };
+  }
 
-  window.openProjectModal = function (projectId) {
+  function openProjectModal(projectId) {
     const modal = document.getElementById("project-modal");
     const modalContent = document.getElementById("project-modal-content");
     const detailsElement = document.getElementById(`details-${projectId}`);
@@ -542,6 +711,14 @@
     const modalTitle = modalContent.querySelector('h3');
     if (modalTitle) modalTitle.id = 'project-modal-title';
     
+    const previewBtn = modalContent.querySelector('[data-action="toggle-preview"]');
+    if (previewBtn) {
+        previewBtn.addEventListener('click', function(e) {
+            e.stopPropagation(); 
+            if (typeof togglePortfolioPreview === 'function') togglePortfolioPreview();
+        });
+    }
+
     modal.classList.add("show");
     document.body.style.overflow = "hidden";
     trapFocus(modal);
@@ -555,44 +732,22 @@
         }
         modalContent.scrollTop = 0;
     });
-  };
+  }
 
-  window.closeProjectModal = function () {
+  function closeProjectModal() {
     const modal = document.getElementById("project-modal");
     if (!modal) return;
     modal.classList.remove("show");
     document.body.style.overflow = "";
-  };
-
-  window.showWormholeDisclaimer = function () {
-    const popup = document.getElementById("wormholeDisclaimerPopup");
-    if (popup) popup.classList.add("show");
-  };
-
-  window.hideWormholeDisclaimer = function () {
-    const popup = document.getElementById("wormholeDisclaimerPopup");
-    if (popup) popup.classList.remove("show");
-  };
-
-const modal = document.getElementById("project-modal");
-  if (modal) {
-    modal.addEventListener("click", function (e) {
-      // Ignore clicks on links or buttons (let them work normally)
-      if (e.target.closest("a") || e.target.closest("button")) {
-          return;
-      }
-      // Clicking anywhere else closes the modal
-      window.closeProjectModal();
-    });
   }
 
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") window.closeProjectModal();
-  });
+  function showWormholeDisclaimer() {
+    const popup = document.getElementById("wormholeDisclaimerPopup");
+    if (popup) popup.classList.add("show");
+  }
 
   // Utility: Trap focus inside a specific element
   function trapFocus(modalElement) {
-    // Select all focusable elements inside the modal
     const focusableElements = modalElement.querySelectorAll(
       'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'
     );
@@ -602,23 +757,20 @@ const modal = document.getElementById("project-modal");
     const firstElement = focusableElements[0];
     const lastElement = focusableElements[focusableElements.length - 1];
 
-    // Focus the first element automatically when the modal opens
     firstElement.focus();
 
-    // Remove any previous listener to prevent duplicates
     modalElement.removeEventListener('keydown', modalElement._focusTrap);
 
-    // Create the listener
     modalElement._focusTrap = function(e) {
       const isTabPressed = e.key === 'Tab' || e.keyCode === 9;
       if (!isTabPressed) return;
 
-      if (e.shiftKey) { // Shift + Tab
+      if (e.shiftKey) { 
         if (document.activeElement === firstElement) {
           lastElement.focus();
           e.preventDefault();
         }
-      } else { // Tab
+      } else { 
         if (document.activeElement === lastElement) {
           firstElement.focus();
           e.preventDefault();
@@ -626,7 +778,6 @@ const modal = document.getElementById("project-modal");
       }
     };
 
-    // Attach the listener
     modalElement.addEventListener('keydown', modalElement._focusTrap);
   }
 
@@ -634,40 +785,41 @@ const modal = document.getElementById("project-modal");
   // CONTACT MODAL SYSTEM
   // =========================================================================
 
-  window.openContactModal = function () {
+  function openContactModal() {
     const modal = document.getElementById('contactModal');
+    if(!modal) return;
+
     modal.classList.add('show');
     document.body.style.overflow = 'hidden';
     trapFocus(modal);
 
-    // Set up form validation listener when opened
     const contactForm = document.getElementById('contactForm');
     const sendBtn = document.getElementById('sendContactBtn');
     
     if (contactForm && sendBtn) {
-        sendBtn.disabled = true; // Ensure button starts disabled
+        sendBtn.disabled = true; 
         contactForm.addEventListener('input', validateContactForm);
     }
-  };
+  }
 
-  window.closeContactModal = function () {
-    document.getElementById('contactModal').classList.remove('show');
-    document.body.style.overflow = ''; // Restores background scrolling
+  function closeContactModal() {
+    const modal = document.getElementById('contactModal');
+    if(!modal) return;
+
+    modal.classList.remove('show');
+    document.body.style.overflow = ''; 
     
-    // Clear the form upon closing
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.reset();
         contactForm.removeEventListener('input', validateContactForm);
     }
-  };
+  }
 
-  window.cancelContactModal = function (event) {
+  function cancelContactModal(event) {
     if (event) event.preventDefault();
-    
-    // Instantly close the modal
-    window.closeContactModal();
-  };
+    closeContactModal();
+  }
 
   function validateContactForm() {
     const name = document.getElementById('senderName').value.trim();
@@ -675,10 +827,8 @@ const modal = document.getElementById("project-modal");
     const message = document.getElementById('message').value.trim();
     const sendBtn = document.getElementById('sendContactBtn');
     
-    // Basic email format validation
     const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     
-    // Enable button only if all fields are correctly populated
     if (name && isEmailValid && message) {
         sendBtn.disabled = false;
         sendBtn.style.opacity = '1';
@@ -690,21 +840,19 @@ const modal = document.getElementById("project-modal");
     }
   }
 
-  window.sendContactMessage = function (event) {
-    event.preventDefault(); // Prevent standard HTTP form submission
+  function sendContactMessage(event) {
+    event.preventDefault(); 
     
     const name = document.getElementById('senderName').value.trim();
     const message = document.getElementById('message').value.trim();
     
-    // Format the subject and body for the email client
     const encodedSubject = encodeURIComponent(`CONTACT-MESSAGE - ${name}`);
     const encodedBody = encodeURIComponent(message);
     
-    // Trigger the user's default email client
     window.location.href = `mailto:mathyou.me@gmail.com?subject=${encodedSubject}&body=${encodedBody}`;
     
-    window.closeContactModal();
-  };
+    closeContactModal();
+  }
   
   // =========================================================================
   // 7. LIGHTBOX SYSTEM
@@ -722,12 +870,12 @@ const modal = document.getElementById("project-modal");
       img.style.cursor = "pointer";
       img.addEventListener("click", function (e) {
         e.stopPropagation();
-        window.openLightbox(this, Array.from(clickableImages));
+        openLightbox(this, Array.from(clickableImages));
       });
     });
   }
 
-  window.openLightbox = function (clickedImg, allImages) {
+  function openLightbox(clickedImg, allImages) {
     lightboxImages = allImages;
     currentImageIndex = lightboxImages.indexOf(clickedImg);
 
@@ -741,17 +889,17 @@ const modal = document.getElementById("project-modal");
     lightboxCaption.textContent = clickedImg.alt || "";
     lightbox.classList.add("active");
     document.body.style.overflow = "hidden";
-  };
+  }
 
-  window.closeLightbox = function () {
+  function closeLightbox() {
     const lightbox = document.getElementById("lightbox");
     if (lightbox) {
         lightbox.classList.remove("active");
         document.body.style.overflow = "";
     }
-  };
+  }
 
-  window.changeLightboxImage = function (direction) {
+  function changeLightboxImage(direction) {
     if (lightboxImages.length === 0) return;
     
     currentImageIndex = (currentImageIndex + direction + lightboxImages.length) % lightboxImages.length;
@@ -763,23 +911,7 @@ const modal = document.getElementById("project-modal");
         lightboxImg.src = lightboxImages[currentImageIndex].src;
         lightboxCaption.textContent = lightboxImages[currentImageIndex].alt || "";
     }
-  };
-
-  const lightboxElement = document.getElementById("lightbox");
-  if (lightboxElement) {
-    lightboxElement.addEventListener("click", function (e) {
-      if (e.target === this) window.closeLightbox();
-    });
   }
-
-  document.addEventListener("keydown", function (e) {
-    const lightbox = document.getElementById("lightbox");
-    if (!lightbox || !lightbox.classList.contains("active")) return;
-    
-    if (e.key === "Escape") window.closeLightbox();
-    else if (e.key === "ArrowLeft") window.changeLightboxImage(-1);
-    else if (e.key === "ArrowRight") window.changeLightboxImage(1);
-  });
 
   window.addEventListener("load", initLightbox);
 

@@ -154,12 +154,25 @@ body {
     width: 100%;
     overflow-anchor: none;
     
-    /* Theme Variables *//
+    /* Theme Variables */
     background-color: var(--bg-main);
     color: var(--text-main);
     font-family: 'Inter', 'Roboto', Arial, sans-serif;
+    
+    /* Theme Transition */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
 
-    /* Light Mode "Stars" (Darker particles) and HIGH-VISIBILITY Orbs */
+/* Offload the heavy rendering to a dedicated pseudo-element */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none; /* Let clicks pass through */
+    will-change: transform; /* Force GPU acceleration */
+    
+    /* Light Mode "Stars" and Orbs */
     background-image:
         radial-gradient(1.6px 1.6px at 12% 18%, rgba(0,0,0,0.15), transparent),
         radial-gradient(1.2px 1.2px at 28% 52%, rgba(0,0,0,0.1), transparent),
@@ -169,27 +182,40 @@ body {
         radial-gradient(1.2px 1.2px at 92% 58%, rgba(0,0,0,0.1), transparent),
         radial-gradient(1.4px 1.4px at 6% 82%,  rgba(0,0,0,0.12), transparent),
         radial-gradient(1.2px 1.2px at 52% 90%, rgba(0,0,0,0.14), transparent),
-        radial-gradient(circle 800px at 10% 10%, rgba(176,136,249,0.45), transparent 60%), /* High-Opacity Violet */
-        radial-gradient(circle 700px at 90% 90%, rgba(79,209,232,0.45), transparent 60%);  /* High-Opacity Cyan */
+        radial-gradient(circle 800px at 10% 10%, rgba(176,136,249,0.45), transparent 60%),
+        radial-gradient(circle 700px at 90% 90%, rgba(79,209,232,0.45), transparent 60%);
     background-repeat: repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat, no-repeat, no-repeat;
     background-size: 190px 190px, 230px 230px, 270px 270px, 210px 210px, 250px 250px, 200px 200px, 240px 240px, 220px 220px, auto, auto;
     
-    /* Locks background elements to the viewport */
-    background-attachment: fixed;
-    
-    /* Theme Transition */
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: opacity 0.3s ease;
+}
+
+/* Base dark mode adjustments */
+body.dark-mode {
+    background-color: #05070f;
+    color: #e0e0e0;
+}
+
+/* Swap the background-image for dark mode */
+body.dark-mode::before {
+    background-image:
+        radial-gradient(1.6px 1.6px at 12% 18%, rgba(255,255,255,0.9), transparent),
+        radial-gradient(1.2px 1.2px at 28% 52%, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1.6px 1.6px at 44% 8%,  rgba(255,255,255,0.85), transparent),
+        radial-gradient(1.2px 1.2px at 63% 68%, rgba(255,255,255,0.65), transparent),
+        radial-gradient(1.6px 1.6px at 78% 28%, rgba(255,255,255,0.9), transparent),
+        radial-gradient(1.2px 1.2px at 92% 58%, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1.4px 1.4px at 6% 82%,  rgba(255,255,255,0.75), transparent),
+        radial-gradient(1.2px 1.2px at 52% 90%, rgba(255,255,255,0.8), transparent),
+        radial-gradient(circle 800px at 10% 10%, rgba(176,136,249,0.25), transparent 60%),
+        radial-gradient(circle 700px at 90% 90%, rgba(79,209,232,0.25), transparent 60%);
 }
 
 /* Ensure all elements calculate width including their padding/borders */
 *, *::before, *::after {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
-}
-
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
 }
 
 p {
@@ -278,13 +304,6 @@ body.dark-mode .screenshot-item figcaption {
 body.dark-mode hr {
 	border-top-color: transparent;
 }
-
-/* Show light image by default, hide dark */
-.figma-dark-img { display: none; }
-
-/* When dark mode is active, flip them */
-body.dark-mode .figma-light-img { display: none; }
-body.dark-mode .figma-dark-img { display: block; }
 
 /* Dark background for card containing CI images in both light and dark mode */
 .image-card:has(.ci-images) {
@@ -2158,28 +2177,6 @@ PROJECT MODAL POPUP STYLES
     transform: scale(1.1);
 }
 
-.project-modal-close {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: none;
-    border: none;
-    font-size: 32px;
-    color: var(--modal-close-text);
-    cursor: pointer;
-    padding: 5px 10px;
-    line-height: 1;
-    transition: all 0.2s;
-    border-radius: 4px;
-    z-index: 10;
-}
-
-.project-modal-close:hover {
-    color: var(--modal-close-hover-text);
-    background-color: var(--modal-close-hover-bg);
-    transform: scale(1.1);
-}
-
 #project-modal-content h3 {
     color: #2c3e50;
     margin-top: 0;
@@ -2423,6 +2420,8 @@ body.dark-mode .project-card:hover::after {
 body.dark-mode #project-modal-content .caption {
 	color: #aaa;
 }
+
+.wormhole-demo-text { font-style: italic; font-weight: 600; color: #667eea; }
 
 /* Quick Links Section */
 .quick-links {
@@ -3065,6 +3064,111 @@ a.theme-action-btn:hover svg {
     transform: scale(1.1);
 }
 
+/* Typography & Utility Alignments */
+.font-weight-normal { font-weight: normal; }
+.text-inherit { font-size: inherit; }
+.m-auto { margin-left: auto; margin-right: auto; }
+.m-0 { margin: 0; }
+.mt-0 { margin-top: 0; }
+.mt-10 { margin-top: 10px; }
+.mt-12 { margin-top: 12px; }
+.mt-15 { margin-top: 15px; }
+.mt-20 { margin-top: 20px; }
+.mt-25 { margin-top: 25px; }
+.mt-30 { margin-top: 30px; }
+.mb-5 { margin-bottom: 5px; }
+.mb-15 { margin-bottom: 15px; }
+.mb-16 { margin-bottom: 16px; }
+.mb-20 { margin-bottom: 20px; }
+.mb-30 { margin-bottom: 30px; }
+.ml-25 { margin-left: 25px; }
+.ml-45 { margin-left: 45px; }
+.pt-5 { padding-top: 5px; }
+.pt-10 { padding-top: 10px; }
+.pb-5 { padding-bottom: 5px; }
+.text-center { text-align: center; }
+.relative { position: relative; }
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.justify-end { justify-content: flex-end; }
+.gap-1 { gap: 1px; }
+.gap-12 { gap: 12px; }
+.w-full { width: 100%; }
+.max-w-700 { max-width: 700px; }
+.max-w-1200 { max-width: 1200px; }
+.max-w-1280 { max-width: 1280px; }
+.px-4 { padding-left: 4px; padding-right: 4px; }
+.block { display: block; }
+.inline-flex { display: inline-flex; }
+.z-modal { z-index: 10005; }
+
+/* Component-Specific Classes */
+.btn-copy-email {
+    background: none; border: none; cursor: pointer; padding: 4px;
+    display: inline-flex; align-items: center; opacity: 0.7;
+    transition: opacity 0.2s; position: absolute; top: 50%;
+    transform: translateY(-50%);
+}
+.btn-copy-email:hover, .btn-copy-email:focus { opacity: 1; }
+.btn-copy-email.left-aligned { margin-left: 4px; }
+.btn-copy-email.right-aligned { right: 0; }
+.uh-email-pad { padding-right: 28px; }
+
+.resume-btn-title { font-size: 1em; font-weight: 700; line-height: 1.2; }
+.resume-btn-theme { font-size: 0.65em; font-weight: 400; opacity: 0.75; line-height: 1.2; letter-spacing: 0.18em; }
+
+.enhanced-contact-card {
+    background: rgba(128, 128, 128, 0.1);
+    border: 1px solid rgba(128, 128, 128, 0.2);
+    border-radius: 8px; padding: 15px 20px; max-width: 700px;
+    margin: 30px auto 10px auto; box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.contact-card-text { margin: 0; font-size: 1.15rem; font-weight: 300; color: var(--text-muted); }
+.btn-connect { margin: 0; border: none; cursor: pointer; padding: 8px 28px; font-size: 1rem; }
+
+.flick-banner-img { border: 2px solid #c8c8c8; margin: 20px 0; }
+.tech-list-title { font-size: 19px; }
+
+.launch-cta-unavailable { color: #EE392F; font-weight: 700; font-size: 19px; letter-spacing: 0.5px; }
+.play-badge-unavailable { filter: grayscale(100%); opacity: 0.4; }
+.unclickable-link { pointer-events: none; cursor: default; }
+
+/* Modal and Form Enhancements */
+.contact-modal-body { text-align: left; max-width: 440px; padding: 30px; }
+.contact-modal-close { top: 15px; right: 15px; }
+
+/* Increased logo size and centered it in the natural flow */
+.contact-modal-logo { width: 64px; height: 64px; margin: 0 auto 15px auto; display: block; }
+
+/* New Title Styling */
+.contact-modal-title { font-size: 28px; margin: 0 0 5px 0; color: var(--text-heading); font-family: 'Space Grotesk', sans-serif; }
+body.dark-mode .contact-modal-title { color: #e0e0e0; }
+
+/* Adjusted Subheader and Description (removed side padding) */
+.contact-modal-header { font-size: 18px; font-weight: 500; margin: 0 0 20px 0; color: var(--text-muted); }
+.contact-modal-desc { color: var(--text-muted); line-height: 1.4; font-size: 0.95rem; }
+
+.form-input { padding: 10px 12px; width: 100%; box-sizing: border-box; }
+.btn-cancel {
+    background: transparent; color: var(--text-main);
+    border: 2px solid var(--border-card); border-radius: 25px;
+    padding: 8px 20px; font-weight: 600; font-size: 0.95rem;
+    cursor: pointer; transition: all 0.3s ease;
+}
+.btn-send { padding: 8px 20px; font-size: 0.95rem; width: auto; opacity: 0.5; cursor: not-allowed; border: none; }
+
+/* Image and Content Cards */
+.disclaimer-text { font-size: 0.9em; opacity: 0.9; line-height: 1.5; text-align: left; }
+.project-image-shadow { border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); border: 1px solid #ddd; }
+.caption-text { text-align: center; font-size: 0.85rem; color: #666; margin-top: 5px; }
+.preview-theme-text { font-weight: 600; font-size: 0.85em; letter-spacing: 0.5px; text-transform: uppercase; }
+.content-card-bordered { border-left: 5px solid #ff6b6b; }
+.content-card-top-bordered { border-top: 4px solid #3498db; }
+
 /* ---------------------------------------------------------------- */
 /* Birdie Animation */
 /* ---------------------------------------------------------------- */
@@ -3186,7 +3290,7 @@ body.dark-mode .content-card:has(img[src*="figma-"]) {
 
 /* =========================================
     DARK MODE FIGMA IMAGE OVERRIDE
-/* ========================================= */
+ * ========================================= */
 
 /* Hide dark mode image by default */
 .theme-img-dark {
