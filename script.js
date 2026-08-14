@@ -41,7 +41,7 @@
   }
 
   function copyEmail(button) {
-    navigator.clipboard.writeText("mathyou.me@gmail.com").then(() => {
+    navigator.clipboard.writeText("appbuddy.contact@gmail.com").then(() => {
       showToast(button);
     });
   }
@@ -849,7 +849,7 @@
     const encodedSubject = encodeURIComponent(`CONTACT-MESSAGE - ${name}`);
     const encodedBody = encodeURIComponent(message);
     
-    window.location.href = `mailto:mathyou.me@gmail.com?subject=${encodedSubject}&body=${encodedBody}`;
+    window.location.href = `mailto:appbuddy.contact@gmail.com?subject=${encodedSubject}&body=${encodedBody}`;
     
     closeContactModal();
   }
