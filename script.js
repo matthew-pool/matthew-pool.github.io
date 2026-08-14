@@ -46,6 +46,12 @@
     });
   }
 
+  function copyPhone(button) {
+    navigator.clipboard.writeText("903-576-0223").then(() => {
+      showToast(button);
+    });
+  }
+
   function hideDirections() {
     const popup = document.getElementById("directionsPopup");
     if (popup) popup.classList.remove("show");
@@ -117,6 +123,13 @@
         });
     });
 
+    // --- Copy Phone ---
+    document.querySelectorAll('[data-action="copy-phone"]').forEach(btn => {
+        btn.addEventListener('click', function() {
+            if (typeof copyPhone === 'function') copyPhone(this);
+        });
+    });
+    
     // --- Resume Download ---
     const resumeBtn = document.getElementById('resume-btn');
     if (resumeBtn) {
@@ -185,9 +198,9 @@
       });
     }
 
-    const sendContactBtn = document.getElementById('sendContactBtn');
-    if (sendContactBtn) {
-        sendContactBtn.addEventListener('click', (e) => {
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
             if (typeof sendContactMessage === 'function') sendContactMessage(e);
         });
     }
@@ -277,29 +290,6 @@
       }
     });
 
-    // Content Protection Deterrents
-    // 1. Disable Right-Click (Context Menu)
-    document.addEventListener('contextmenu', (e) => {
-        e.preventDefault();
-    });
-
-    // 2. Disable the native "Copy" action
-    document.addEventListener('copy', (e) => {
-        e.preventDefault();
-    });
-
-    // 3. Disable specific Keyboard Shortcuts
-    document.addEventListener('keydown', (e) => {
-        // Check if Ctrl (Windows) or Cmd (Mac) is pressed
-        if (e.ctrlKey || e.metaKey) {
-            // Block 'C' (Copy), 'S' (Save), 'P' (Print), 'A' (Select All), 'U' (View Source)
-            const blockedKeys = ['c', 's', 'p', 'a', 'u'];
-            if (blockedKeys.includes(e.key.toLowerCase())) {
-                e.preventDefault();
-            }
-        }
-    });
-
   }); // End DOMContentLoaded
 
   // =========================================================================
@@ -360,24 +350,33 @@
       // Rebuild the HTML
       footer.innerHTML = `
         <div class="footer-metallic-black">
-            ${customText}
-            
-            <div class="unified-header-inner mt-20">
-                <span class="uh-name font-weight-normal"><b>Matthew Pool</b></span>
-                <span class="uh-divider">|</span>
-                <span class="uh-email relative inline-flex items-center uh-email-pad">
-                    <a href="mailto:appbuddy.contact@gmail.com">appbuddy.contact@gmail.com</a>
-                    <button data-action="copy-email" data-theme="light" aria-label="Copy Email Address" class="btn-copy-email right-aligned" title="Copy email">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.9)" stroke-width="2" aria-hidden="true">
-                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                        </svg>
-                    </button>
-                    <span class="toast-container"></span>
-                </span>
-                <span class="uh-divider">|</span>
-                <span class="uh-phone"><a href="tel:+19035760223">903-576-0223</a></span>
-            </div>
+          ${customText}
+          
+          <div class="unified-header-inner mt-20">
+            <span class="uh-name font-weight-normal"><b>Matthew Pool</b></span>
+            <span class="uh-divider">|</span>
+            <span class="uh-email relative inline-flex items-center uh-email-pad">
+              <a href="mailto:appbuddy.contact@gmail.com">appbuddy.contact@gmail.com</a>
+              <button data-action="copy-email" data-theme="light" aria-label="Copy Email Address" class="btn-copy-email right-aligned" title="Copy email">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.9)" stroke-width="2" aria-hidden="true">
+                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                  </svg>
+              </button>
+              <span class="toast-container"></span>
+            </span>
+            <span class="uh-divider">|</span>
+            <span class="uh-phone relative inline-flex items-center">
+              <a href="tel:+19035760223">903-576-0223</a>
+              <button data-action="copy-phone" data-theme="light" aria-label="Copy Phone Number" class="btn-copy-email right-aligned" title="Copy phone">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.9)" stroke-width="2" aria-hidden="true">
+                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                  </svg>
+              </button>
+              <span class="toast-container"></span>
+            </span>
+          </div>
         </div>
         <div class="copyright-notice">
             &copy; ${currentYear} Matthew Pool. All rights reserved.

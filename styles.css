@@ -526,6 +526,11 @@ body.dark-mode .form-group label {
     font-family: inherit;
     font-size: 1rem;
     transition: all 0.3s ease;
+
+    /* Restore text selection and cursor placement for inputs */
+    -webkit-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
 }
 
 /* Light Mode Focus Ring */
@@ -602,12 +607,13 @@ img {
 	height: auto;
 	display: block;
 	margin: 1em auto;
-    
-    /* Prevent images from being dragged to the desktop */
+
+    /* Content Protection Deterrent */
     -webkit-user-drag: none;
     -khtml-user-drag: none;
     -moz-user-drag: none;
     -o-user-drag: none;
+    user-drag: none; /* Standard property for future support */
 }
 
 #refactoring img {
@@ -772,16 +778,14 @@ body.dark-mode .play-link:hover .play-badge {
 	pointer-events: none;
 	white-space: nowrap;
 	z-index: 10000;
-	left: 100%;
-	top: 50%;
-	transform: translateY(-50%);
-	margin-left: 28px;
+	right: -15px;
+	top: -35px;
 }
 
 .toast.show {
 	opacity: 1;
 }
-	
+
 /* Styles the text caption */
 .screenshot-item figcaption {
 	margin-top: 8px;
@@ -2630,7 +2634,7 @@ body.dark-mode .dark-info-card {
     justify-content: center;
     text-align: center;
     position: relative;
-    width: min(700px, 95%);
+    width: min(800px, 95%);
     margin: 24px auto 0;
     padding: 14px 28px;
     box-sizing: border-box;
@@ -2676,7 +2680,7 @@ body.dark-mode .dark-info-card {
     white-space: nowrap;
 }
 
-.uh-email {
+.uh-email, .uh-phone {
     padding-right: 26px;
 }
 
@@ -2686,8 +2690,14 @@ body.dark-mode .dark-info-card {
     padding: 6px;
 }
 
+.uh-email button, .uh-phone button {
+    min-width: 24px;
+    min-height: 24px;
+    padding: 6px;
+}
+
 .quick-links-bar {
-    width: min(700px, 95%);
+    width: min(800px, 95%);
 }
 
 .unified-header p {
