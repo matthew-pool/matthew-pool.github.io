@@ -2549,6 +2549,20 @@ video {
 	margin: 5px 0;
 }
 
+.copyright-notice {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 5px;
+    font-size: 13px;
+    color: #625D69;
+    letter-spacing: 0.5px;
+}
+
+/* Dark Mode Override */
+body.dark-mode .copyright-notice {
+    color: #888;
+}
+
 .dark-flick-header-card {
 	background-color: #010409;
 	border: 1px solid #a1a1a1;

@@ -79,6 +79,9 @@
     stickyZone = document.querySelector(".sticky-header-zone");
     bannerContainer = document.querySelector(".portfolio-banner-container");
 
+    // Render footers dynamically FIRST
+    renderFooters();
+
     // --- Theme Management ---
     const themeToggle = document.getElementById("themeToggle");
     const savedTheme = localStorage.getItem("theme");
@@ -321,6 +324,45 @@
     if (!birdHasFlown) {
       requestAnimationFrame(() => positionBird());
     }
+  }
+
+  function renderFooters() {
+    const footers = document.querySelectorAll('.dynamic-footer');
+    const currentYear = new Date().getFullYear(); // Automatically gets the current year!
+
+    footers.forEach(footer => {
+      // Grab the custom text you left inside the placeholder
+      const customText = footer.innerHTML;
+
+      // Rebuild the HTML
+      footer.innerHTML = `
+        <div class="footer-metallic-black">
+            ${customText}
+            
+            <div class="unified-header-inner mt-20">
+                <span class="uh-name font-weight-normal"><b>Matthew Pool</b></span>
+                <span class="uh-divider">|</span>
+                <span class="uh-email relative inline-flex items-center uh-email-pad">
+                    <a href="mailto:appbuddy.contact@gmail.com">appbuddy.contact@gmail.com</a>
+                    <button data-action="copy-email" data-theme="light" aria-label="Copy Email Address" class="btn-copy-email right-aligned" title="Copy email">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.9)" stroke-width="2" aria-hidden="true">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                    </button>
+                    <span class="toast-container"></span>
+                </span>
+                <span class="uh-divider">|</span>
+                <span class="uh-phone"><a href="tel:+19035760223">903-576-0223</a></span>
+            </div>
+        </div>
+        <div class="copyright-notice">
+            &copy; ${currentYear} Matthew Pool. All rights reserved.
+        </div>
+      `;
+      
+      footer.classList.remove('dynamic-footer');
+    });
   }
 
   // =========================================================================
