@@ -55,7 +55,7 @@
 	/* ---> Modals <--- */
     --bg-modal: #ffffff;
     --shadow-modal: 0 20px 60px rgba(0, 0, 0, 0.4);
-    --modal-close-text: #666;
+    --modal-close-text: #625D69;
     --modal-close-hover-bg: rgba(0, 0, 0, 0.05);
     --modal-close-hover-text: #333;
 
@@ -161,6 +161,11 @@ body {
     
     /* Theme Transition */
     transition: background-color 0.3s ease, color 0.3s ease;
+
+    /* Prevent text selection */
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
 }
 
 /* Offload the heavy rendering to a dedicated pseudo-element */
@@ -597,6 +602,12 @@ img {
 	height: auto;
 	display: block;
 	margin: 1em auto;
+    
+    /* Prevent images from being dragged to the desktop */
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
 }
 
 #refactoring img {

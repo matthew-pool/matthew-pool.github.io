@@ -277,6 +277,29 @@
       }
     });
 
+    // Content Protection Deterrents
+    // 1. Disable Right-Click (Context Menu)
+    document.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+    });
+
+    // 2. Disable the native "Copy" action
+    document.addEventListener('copy', (e) => {
+        e.preventDefault();
+    });
+
+    // 3. Disable specific Keyboard Shortcuts
+    document.addEventListener('keydown', (e) => {
+        // Check if Ctrl (Windows) or Cmd (Mac) is pressed
+        if (e.ctrlKey || e.metaKey) {
+            // Block 'C' (Copy), 'S' (Save), 'P' (Print), 'A' (Select All), 'U' (View Source)
+            const blockedKeys = ['c', 's', 'p', 'a', 'u'];
+            if (blockedKeys.includes(e.key.toLowerCase())) {
+                e.preventDefault();
+            }
+        }
+    });
+
   }); // End DOMContentLoaded
 
   // =========================================================================
