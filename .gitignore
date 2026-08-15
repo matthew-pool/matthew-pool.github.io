@@ -20,6 +20,7 @@ videos/
 
 # Photos
 assets/RAW-images/
+assets/images/doc.odt
 
 # Ignore Node modules
 node_modules/
