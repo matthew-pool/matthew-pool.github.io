@@ -3273,6 +3273,91 @@ body.dark-mode .contact-modal-title { color: #e0e0e0; }
     right: auto;
 }
 
+/* =========================================================================
+   DARK MODE BIRD VARIANT (Neon Theme)
+   ========================================================================= */
+
+/* Body, Head, and Tail -> Cool Indigo */
+body.dark-mode #birdUpper ellipse,
+body.dark-mode #birdHead circle:first-child,
+body.dark-mode #tail {
+    fill: #667eea;
+    stroke: #1e0f40; 
+}
+
+/* Wings -> Vibrant Purple */
+body.dark-mode #leftWing,
+body.dark-mode #rightWing {
+    fill: #a855f7;
+    stroke: #1e0f40;
+}
+
+/* Beak -> Bright Cyan */
+body.dark-mode #birdHead polygon {
+    fill: #4fd1e8;
+    stroke: #1e0f40;
+}
+
+/* Feet -> Bright Cyan (Keeping the path as a stroke) */
+body.dark-mode #legs path {
+    fill: none;
+    stroke: #4fd1e8;
+}
+
+/* Legs -> Dark Violet */
+body.dark-mode #legs line {
+    stroke: #1e0f40;
+}
+
+/* Eye -> Bright White for contrast against the dark background */
+body.dark-mode #birdHead circle:nth-child(2) {
+    fill: #ffffff;
+}
+
+/* Match the tooltip border to the neon bird's purple wings */
+body.dark-mode .bird-tooltip {
+    border-color: rgba(168, 85, 247, 0.6);
+}
+
+/* =========================================================================
+   BIRD GEOMETRIC SHADOW (REAL PHYSICS)
+   ========================================================================= */
+
+/* 1. Strip away all SVG drop-shadows so the bird remains crisp */
+#bird svg {
+    filter: none !important;
+    transition: none !important;
+}
+body:not(.dark-mode) #bird.flying svg,
+body.dark-mode #bird svg,
+body.dark-mode #bird.flying svg,
+body.dark-mode #bird.landed svg {
+    filter: none !important;
+    animation: none !important;
+}
+
+/* 2. The Physical Shadow on the Shelf */
+#shelf-shadow {
+    position: absolute;
+    right: 16px; /* Mathematically centered exactly under the bird's width */
+    bottom: 5px; /* Rests flat on top of the shelf */
+    width: 36px;
+    height: 6px;
+    background: rgba(0, 0, 0, 0.45);
+    border-radius: 50%;
+    filter: blur(2px);
+    z-index: 10;
+    pointer-events: none;
+    transform-origin: center;
+    /* Opacity and Scale are actively calculated by JS flight progress */
+}
+
+/* 3. Dark Mode variant for the shadow */
+body.dark-mode #shelf-shadow {
+    background: rgba(168, 85, 247, 0.6);
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+}
+
 @keyframes flapLeft { 0%, 100% { d: path("M 12 20 Q 8 18 6 22"); } 50% { d: path("M 12 20 Q 8 12 6 8"); } }
 @keyframes flapRight { 0%, 100% { d: path("M 28 20 Q 32 18 34 22"); } 50% { d: path("M 28 20 Q 32 12 34 8"); } }
 @keyframes idleFlapLeft { 0%, 90%, 100% { d: path("M 12 20 Q 8 18 6 22"); } 95% { d: path("M 12 20 Q 8 12 6 8"); } }

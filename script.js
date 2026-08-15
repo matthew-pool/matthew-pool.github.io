@@ -541,6 +541,13 @@
   function positionBird(force = false) {
     if ((birdHasFlown && !force) || !bird) return;
 
+    // Restoring the geometric shadow when bird is perched
+    const shelfShadow = document.getElementById('shelf-shadow');
+    if (shelfShadow) {
+        shelfShadow.style.opacity = 1;
+        shelfShadow.style.transform = "scale(1)";
+    }
+
     bird.classList.remove("flying", "idle", "landed");
     bird.style.transform = "scaleX(1) rotate(0deg)";
     
@@ -583,6 +590,18 @@
     function animateReturn(currentTime) {
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
+
+      // Geometric shadow fade-in on landing approach
+      const shelfShadow = document.getElementById('shelf-shadow');
+      if (shelfShadow) {
+          if (progress > 0.8) {
+              const p = (progress - 0.8) / 0.2; // 0 to 1 during final descent
+              shelfShadow.style.opacity = p;
+              shelfShadow.style.transform = `scale(${1.5 - p * 0.5})`; // Condenses as it darkens
+          } else {
+              shelfShadow.style.opacity = 0;
+          }
+      }
 
       const t = 1 - Math.pow(1 - progress, 3);
       const invT = 1 - t;
@@ -688,6 +707,18 @@
         function animateBird(currentTime) {
           const elapsed = currentTime - startTime;
           const progress = Math.min(elapsed / duration, 1);
+
+          // Geometric shadow fade on take-off
+          const shelfShadow = document.getElementById('shelf-shadow');
+          if (shelfShadow) {
+              if (progress < 0.15) {
+                  const fp = progress / 0.15; // 0 to 1 during the 80px upward lift
+                  shelfShadow.style.opacity = 1 - fp;
+                  shelfShadow.style.transform = `scale(${1 + fp * 0.5})`; // Spreads as it fades
+              } else {
+                  shelfShadow.style.opacity = 0;
+              }
+          }
 
           let x, y, rotation, scaleX;
 
