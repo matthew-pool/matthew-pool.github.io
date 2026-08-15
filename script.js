@@ -547,6 +547,12 @@
         shelfShadow.style.opacity = 1;
         shelfShadow.style.transform = "scale(1)";
     }
+    
+    // Hide bottom shadow when resetting to top shelf
+    const flickShadow = document.getElementById('flick-shadow');
+    if (flickShadow) {
+        flickShadow.style.opacity = 0;
+    }
 
     bird.classList.remove("flying", "idle", "landed");
     bird.style.transform = "scaleX(1) rotate(0deg)";
@@ -591,7 +597,19 @@
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
 
-      // Geometric shadow fade-in on landing approach
+      // Geometric shadow fade on take-off (Flick Logo)
+      const flickShadow = document.getElementById('flick-shadow');
+      if (flickShadow) {
+          if (progress < 0.15) {
+              const fp = progress / 0.15; // 0 to 1 during upward lift
+              flickShadow.style.opacity = 1 - fp;
+              flickShadow.style.transform = `scale(${1 + fp * 0.5})`; // Spreads as it fades
+          } else {
+              flickShadow.style.opacity = 0;
+          }
+      }
+
+      // Geometric shadow fade-in on landing approach (Top Shelf)
       const shelfShadow = document.getElementById('shelf-shadow');
       if (shelfShadow) {
           if (progress > 0.8) {
@@ -708,15 +726,27 @@
           const elapsed = currentTime - startTime;
           const progress = Math.min(elapsed / duration, 1);
 
-          // Geometric shadow fade on take-off
+          // Geometric shadow fade on take-off (Top Shelf)
           const shelfShadow = document.getElementById('shelf-shadow');
           if (shelfShadow) {
               if (progress < 0.15) {
-                  const fp = progress / 0.15; // 0 to 1 during the 80px upward lift
+                  const fp = progress / 0.15;
                   shelfShadow.style.opacity = 1 - fp;
-                  shelfShadow.style.transform = `scale(${1 + fp * 0.5})`; // Spreads as it fades
+                  shelfShadow.style.transform = `scale(${1 + fp * 0.5})`; 
               } else {
                   shelfShadow.style.opacity = 0;
+              }
+          }
+
+          // Geometric shadow fade-in on landing approach (Flick Logo)
+          const flickShadow = document.getElementById('flick-shadow');
+          if (flickShadow) {
+              if (progress > 0.85) {
+                  const p = (progress - 0.85) / 0.15; // 0 to 1 during final descent
+                  flickShadow.style.opacity = p;
+                  flickShadow.style.transform = `scale(${1.5 - p * 0.5})`; // Condenses as it darkens
+              } else {
+                  flickShadow.style.opacity = 0;
               }
           }
 

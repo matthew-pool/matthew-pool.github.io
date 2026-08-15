@@ -1386,6 +1386,7 @@ body.dark-mode .contact-card a:hover {
 	align-items: center;
 	gap: 12px;
 	margin-bottom: 5px;
+    position: relative;
 }
 
 .flick-logo {
@@ -3354,6 +3355,28 @@ body.dark-mode #bird.landed svg {
 
 /* 3. Dark Mode variant for the shadow */
 body.dark-mode #shelf-shadow {
+    background: rgba(168, 85, 247, 0.6);
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+}
+
+#flick-shadow {
+    position: absolute;
+    /* Centers the 36px shadow perfectly under the 64px logo */
+    left: 14px; 
+    top: 54px; 
+    width: 36px;
+    height: 6px;
+    background: rgba(0, 0, 0, 0.45);
+    border-radius: 50%;
+    filter: blur(2px);
+    z-index: 10;
+    pointer-events: none;
+    transform-origin: center;
+    opacity: 0; /* Hidden by default until the bird arrives */
+}
+
+/* Dark Mode variant for the Flick shadow */
+body.dark-mode #flick-shadow {
     background: rgba(168, 85, 247, 0.6);
     box-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
 }
