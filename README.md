@@ -1,5 +1,16 @@
 # Matthew Pool - Portfolio Website
 
+![B.S. Computer Science](https://img.shields.io/badge/B.S._Computer_Science-005A9C?style=for-the-badge&logo=googlescholar&logoColor=white)
+![Summa Cum Laude](https://img.shields.io/badge/Summa_Cum_Laude-FFD700?style=for-the-badge&logo=googlescholar&logoColor=black)
+![WCAG 2.2 AA](https://img.shields.io/badge/WCAG_2.2_AA-005A9C?style=for-the-badge&logo=w3c&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![Vanilla JS](https://img.shields.io/badge/Vanilla_JS-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Kotlin](https://img.shields.io/badge/Kotlin-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+
 A modern, interactive portfolio website showcasing my work as a Software Engineer & Technical Solutions Specialist, highlighting technical expertise across B2B/B2C mobile, web, systems, and data science domains.
 
 ## 🌟 Portfolio
@@ -79,3 +90,10 @@ matthew-pool.github.io/
 ├─ script.js                 # Interactive animations, modals, and bird flight logic
 ├─ styles.css                # Responsive styling with light/dark mode variables
 └─ README.md                 # This file
+```
+
+## Copyright & License
+
+© 2026 Matthew Pool. All Rights Reserved.
+
+This repository and its contents are provided for portfolio viewing and employment evaluation purposes only. The code, design, and assets (including all App.Buddy branding and project materials) may not be copied, cloned, or reused without express written permission.
